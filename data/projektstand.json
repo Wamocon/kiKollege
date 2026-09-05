@@ -1,0 +1,570 @@
+{
+  "stand": "2026-09-05",
+  "herkunft": {
+    "arbeitsordner": "D:\\KFBM",
+    "einstieg": "00_Vault/10_KI-Mitarbeiter/KI-Mitarbeiter — Einstieg.md",
+    "erzeugt": "2026-09-05",
+    "verfahren": "Erstbefüllung von Hand aus dem Übergabedokument vom 05.09.2026. Spätere Stände schreibt scripts/export-vault.mjs aus dem Frontmatter der Laufnotizen.",
+    "freigabe": "intern"
+  },
+  "kennzahlen": [
+    {
+      "id": "ki-mitarbeiter",
+      "zahl": 1,
+      "label": "KI-Mitarbeiter im Betrieb: Fritz, der Reviewer",
+      "freigabe": "oeffentlich"
+    },
+    {
+      "id": "agenten",
+      "zahl": 8,
+      "label": "Agenten am Werkzeug. Keiner prüft eine Unterlage",
+      "freigabe": "oeffentlich"
+    },
+    {
+      "id": "regeln",
+      "zahl": 26,
+      "label": "Regeln mit Zweck und Testfällen",
+      "freigabe": "oeffentlich"
+    },
+    {
+      "id": "prueflaeufe",
+      "zahl": 15,
+      "label": "protokollierte Prüfläufe seit dem 27.08.2026",
+      "freigabe": "oeffentlich"
+    },
+    {
+      "id": "fragen",
+      "zahl": 3090,
+      "label": "Fragen einzeln gegen den Volltext ihres Enablers gehalten",
+      "freigabe": "oeffentlich"
+    },
+    {
+      "id": "befunde",
+      "zahl": 63,
+      "label": "Befunde aus den urteilenden Läufen, davon zehn Blocker",
+      "freigabe": "oeffentlich"
+    },
+    {
+      "id": "bewertet",
+      "zahl": 0,
+      "label": "davon von einem Menschen bewertet. Ohne Bewertung keine Fehlalarmquote",
+      "art": "warnung",
+      "freigabe": "oeffentlich"
+    }
+  ],
+  "schichten": [
+    {
+      "nr": 1,
+      "name": "Identität",
+      "frage": "Wer bin ich, was tue ich nie?",
+      "traegt": false
+    },
+    {
+      "nr": 2,
+      "name": "Haltung",
+      "frage": "Wie entscheide ich im Zweifel?",
+      "traegt": false
+    },
+    {
+      "nr": 3,
+      "name": "Wissen",
+      "frage": "Was gilt?",
+      "traegt": false
+    },
+    {
+      "nr": 4,
+      "name": "Fähigkeiten",
+      "frage": "Was kann ich?",
+      "traegt": false
+    },
+    {
+      "nr": 5,
+      "name": "Werkzeuge",
+      "frage": "Womit arbeite ich?",
+      "traegt": false
+    },
+    {
+      "nr": 6,
+      "name": "Verfahren",
+      "frage": "Wie läuft ein Auftrag ab?",
+      "traegt": false
+    },
+    {
+      "nr": 7,
+      "name": "Gedächtnis",
+      "frage": "Was habe ich gelernt?",
+      "traegt": true
+    },
+    {
+      "nr": 8,
+      "name": "Schnittstelle und Aufsicht",
+      "frage": "Wie kommt Arbeit hin und zurück?",
+      "traegt": true
+    }
+  ],
+  "schichtenEntschieden": "2026-09-03",
+  "begriffe": [
+    {
+      "begriff": "KI-Mitarbeiter",
+      "erklaerung": "Eine benannte Rolle mit einer Grenze, einem Maßstab und einem Gedächtnis.",
+      "anzahl": "Bisher gibt es einen, Fritz."
+    },
+    {
+      "begriff": "Agent",
+      "erklaerung": "Ein Helfer, der am Werkzeug baut.",
+      "anzahl": "Acht. Keiner prüft eine Unterlage; sie bauen und pflegen das, womit geprüft wird."
+    },
+    {
+      "begriff": "Harness",
+      "erklaerung": "Die Maschine, in der ein KI-Mitarbeiter läuft. Ein Sprachmodell allein bekommt Text und gibt Text zurück. Dass es eine Datei liest, ein Skript startet, das Ergebnis sieht und weitermacht, tut die Umgebung darum herum.",
+      "anzahl": "Fritz ist eine Beschreibung, der Harness führt sie aus."
+    }
+  ],
+  "auftrag": {
+    "pflichtangaben": [
+      "Jahrgang, also Vertragsbeginn vor oder ab dem 01.08.2025, weil davon abhängt, gegen welche Ausbildungsordnung geprüft wird",
+      "Lernfeld oder Berufsbildposition",
+      "Wahlqualifikation, falls einschlägig",
+      "Zielgruppe und Kursformat",
+      "Prüfumfang"
+    ],
+    "ablauf": [
+      "Auftrag lesen und Pflichtangaben prüfen",
+      "mechanischer Vorfilter",
+      "Abdeckungsabgleich gegen die einschlägigen Positionen",
+      "urteilende Prüfung",
+      "Bericht nach Schweregrad sortiert",
+      "bei mehreren Unterlagen ein Sammelbericht mit paketübergreifenden Mustern"
+    ],
+    "harteRegeln": [
+      {
+        "regel": "Kein Befund ohne Fundstelle",
+        "grund": "Wer eine Stelle nicht zitieren kann, hat eine Vermutung."
+      },
+      {
+        "regel": "Keine Regel ohne Testfälle",
+        "grund": "Eine Regel geht erst produktiv, wenn sie an einem bekannten richtigen und einem bekannten falschen Beispiel richtig entscheidet."
+      },
+      {
+        "regel": "Der Reviewer bewertet, er gibt nicht frei",
+        "grund": "Ein KI-Mitarbeiter, der für sein Ergebnis selbst einsteht, ist keine Rolle, sondern ein Haftungsproblem."
+      },
+      {
+        "regel": "Was nicht geprüft wurde, steht im Bericht",
+        "grund": "Stillschweigende Lücken lesen sich wie Unbedenklichkeitsbescheinigungen."
+      }
+    ]
+  },
+  "massstab": {
+    "kriterien": {
+      "gesamt": 11,
+      "mechanisch": 7,
+      "urteilend": 4,
+      "liste": [
+        "fachliche Richtigkeit",
+        "Curriculum-Abdeckung",
+        "Prüfungsrelevanz",
+        "Aktualität und Rechtsstand",
+        "didaktische Qualität",
+        "Struktur und Logik",
+        "Sprache und Zielgruppe",
+        "Formales und Corporate Design",
+        "Rechte und Lizenzen",
+        "Barrierefreiheit",
+        "Nachhaltigkeit und digitalisierte Arbeitswelt"
+      ],
+      "gewichtung": "offen, kann nur von WAMOCON kommen"
+    },
+    "schweregrade": [
+      {
+        "stufe": "Blocker",
+        "bedeutung": "Die Unterlage darf so nicht in den Unterricht."
+      },
+      {
+        "stufe": "Major",
+        "bedeutung": "Wesentlicher Mangel, Überarbeitung vor Einsatz."
+      },
+      {
+        "stufe": "Minor",
+        "bedeutung": "Sammelkorrektur bei der nächsten Überarbeitung."
+      },
+      {
+        "stufe": "Hinweis",
+        "bedeutung": "Vorschlag ohne Mängelcharakter."
+      }
+    ],
+    "kalibrierung": {
+      "entschiedenAm": "2026-08-28",
+      "satz": "Der Fehlalarm wiegt schwerer als der übersehene Fehler.",
+      "begruendung": "Ein Reviewer, der zu oft Alarm schlägt, wird nach dem dritten Mal ignoriert und ist dann auch für echte Befunde nutzlos.",
+      "offen": "Ob diese Zurückhaltung gleichmäßig über alle Stufen gilt oder bei Blocker gelockert wird, ist noch nicht entschieden."
+    }
+  },
+  "gegenstand": {
+    "gliederung": "entlang des betrieblichen Ausbildungsrahmenplans, nicht nach den schulischen Lernfeldern",
+    "komponenten": 3,
+    "themenkomplexe": 25,
+    "enabler": 239,
+    "enablerVollstaendig": 222,
+    "dateien": 1409,
+    "format": "ausschließlich Word",
+    "jeEnabler": "ein Hauptdokument, drei Quizfassungen und ein Szenario, dazu Use-Cases auf Themenkomplex-Ebene",
+    "wahlqualifikationen": 10,
+    "rechtsstand": "Verordnung 2025",
+    "normbasis": {
+      "notizen": 55,
+      "positionenAbschnittA": 9,
+      "wahlqualifikationen": 10,
+      "integrativeAbschnittC": 6,
+      "lernfelder": 13,
+      "weitere": [
+        "Prüfungsstruktur",
+        "Alt-Neu-Marker",
+        "Quellenverzeichnis",
+        "Archivnotiz"
+      ],
+      "primaerquelle": "Bundesgesetzblatt"
+    },
+    "parallellauf": {
+      "bis": "etwa 2028",
+      "regel": "Verträge ab dem 01.08.2025 folgen der Verordnung 2025, frühere der Verordnung von 2013.",
+      "folge": "Alte Terminologie in Material für einen Alt-Jahrgang ist korrekt und kein Befund."
+    }
+  },
+  "prueflaeufe": {
+    "zeitraum": {
+      "von": "2026-08-27",
+      "bis": "2026-09-04"
+    },
+    "protokolliert": 15,
+    "imDokumentAusgewiesen": 5,
+    "laeufe": [
+      {
+        "id": "2026-08-27-usecases",
+        "datum": "2026-08-27",
+        "art": "mechanisch",
+        "gegenstand": "vollständiger Lauf über 238 Use-Cases",
+        "geprueft": 238,
+        "blocker": 2,
+        "major": 8,
+        "minor": null,
+        "hinweise": 219,
+        "laufzeit": "rund vier Minuten",
+        "zusatz": {
+          "gleichungen": 10752,
+          "gleichungenFalsch": 0
+        },
+        "notiz": "Der wichtigste Einzelbefund war kein Einzelbefund: 163 der 238 Dokumente setzen Tabellen in der falschen Schriftgröße, weil die Standardgröße durchschlägt und niemand sie zurücksetzt. Das ist eine Sammelkorrektur und ein Hinweis an die Erstellungsanleitung, kein Fehler von 163 Autoren.",
+        "freigabe": "oeffentlich"
+      },
+      {
+        "id": "2026-08-28-usecases-schleife2",
+        "datum": "2026-08-28",
+        "art": "mechanisch",
+        "gegenstand": "zweite Schleife über dieselben 238 Dokumente mit zwei zusätzlichen Fragen",
+        "geprueft": 238,
+        "blocker": null,
+        "major": null,
+        "minor": null,
+        "hinweise": 87,
+        "laufzeit": null,
+        "freigabe": "oeffentlich"
+      },
+      {
+        "id": "2026-08-31-quiz-voll",
+        "datum": "2026-08-31",
+        "art": "mechanisch",
+        "gegenstand": "Vollprüfung aller 666 Quizdokumente",
+        "geprueft": 666,
+        "ohneBefund": 506,
+        "blocker": 4,
+        "major": 3,
+        "minor": 361,
+        "hinweise": null,
+        "laufzeit": "37 Sekunden",
+        "freigabe": "oeffentlich"
+      },
+      {
+        "id": "2026-08-31-bis-09-03-fachreview",
+        "datumVon": "2026-08-31",
+        "datumBis": "2026-09-03",
+        "art": "urteilend",
+        "gegenstand": "zehn Themenkomplexe vollständig fachlich geprüft, jede Frage einzeln gegen den Volltext ihres Enablers gehalten",
+        "themenkomplexe": 10,
+        "enabler": 103,
+        "fragen": 3090,
+        "befunde": 63,
+        "blocker": 10,
+        "laufzeit": null,
+        "notiz": "Aus dem Frontmatter summiert sind es 64. Die Differenz von eins ist ungeklärt und steht als offener Punkt im Änderungsprotokoll.",
+        "freigabe": "oeffentlich"
+      },
+      {
+        "id": "2026-09-04-wiederholung",
+        "datum": "2026-09-04",
+        "art": "wiederholung",
+        "gegenstand": "ein Themenkomplex ein zweites Mal geprüft, an nachweislich unverändertem Material",
+        "bestaetigt": 7,
+        "neuGefunden": 1,
+        "laufzeit": null,
+        "notiz": "Alle sieben Befunde des Erstreviews wurden bestätigt, bis hin zu Nebenbeobachtungen. Ein achter kam hinzu, gefunden vom mechanischen Lauf, nicht vom Lesen. Umgekehrt hatte der Erstreview einen Bruch gefunden, den das mechanische Muster nicht erfasste. Die beiden Stufen fangen Verschiedenes.",
+        "freigabe": "oeffentlich"
+      }
+    ],
+    "befunddichte": {
+      "einheit": "Befunde je 100 Fragen",
+      "min": 0.4,
+      "max": 4.3,
+      "buendelung": "In einem Themenkomplex mit fünfzehn Enablern trugen zwei Enabler fünf der acht Befunde. Wer nacharbeitet, arbeitet an zwei Stellen, nicht an fünfzehn.",
+      "freigabe": "intern"
+    },
+    "leitbefund": {
+      "titel": "Die Fehler stehen in der Quelle, nicht erst im Quiz",
+      "text": "Ein erheblicher Teil der Fehler stand bereits in den Enablern und wurde von den Quizfragen getreu wiedergegeben. Wer die Quizze korrigiert, ohne die Enabler zu korrigieren, hat nichts erreicht. Mehrfach ließ sich derselbe fehlerhafte Satzbaustein durch mehrere Enabler verfolgen.",
+      "freigabe": "oeffentlich"
+    }
+  },
+  "messluecken": [
+    {
+      "id": "fehlalarmquote",
+      "titel": "Die Fehlalarmquote ist nicht gemessen",
+      "text": "Kein einziger der 219 Hinweise aus dem ersten Lauf, keiner der 87 aus dem zweiten und keiner der 63 Befunde aus den Fachreviews ist bisher von einem Menschen bewertet worden. Ohne bewertete Befunde gibt es keine Quote je Regel, ohne Quote keine begründete Abnahmeschwelle.",
+      "unbewertet": 369,
+      "unbewertetHerkunft": "Summe der drei im Übergabedokument genannten Serien: 219 + 87 + 63",
+      "freigabe": "oeffentlich"
+    },
+    {
+      "id": "vorherwert",
+      "titel": "Der Vorher-Wert ist nicht erhoben",
+      "text": "Wie lange dauert heute das Review einer Unterlage, und wer macht es? Diese Zahl ist billig zu bekommen und später nicht mehr rekonstruierbar. Ohne sie lässt sich Entlastung behaupten, aber nicht belegen.",
+      "freigabe": "oeffentlich"
+    },
+    {
+      "id": "blindtest",
+      "titel": "Ein echter Blindtest steht aus",
+      "text": "Der Wiederholungslauf am 04.09. war nicht blind. Die Wiederholbarkeit an unverändertem Material ist damit gezeigt, die Unabhängigkeit vom Vorwissen nicht.",
+      "freigabe": "oeffentlich"
+    }
+  ],
+  "fehlalarmBelege": [
+    {
+      "id": "rechenpruefung",
+      "titel": "Rechenprüfung, frühe Fassung",
+      "fehlalarme": 209,
+      "ausEinerRegel": null,
+      "testfaelle": 15,
+      "text": "209 gemeldete fehlerhafte Dokumente, keines davon war fehlerhaft. Jeder Treffer war ein Fehler der Regel.",
+      "freigabe": "oeffentlich"
+    },
+    {
+      "id": "quizmeldungen",
+      "titel": "Quizprüfung, erste Meldungen",
+      "fehlalarme": 105,
+      "ausEinerRegel": 99,
+      "testfaelle": 20,
+      "text": "105 der ersten Meldungen waren Fehlalarme, 99 davon aus einer einzigen Regel.",
+      "freigabe": "oeffentlich"
+    }
+  ],
+  "uebertragbarkeit": {
+    "kern": "Ablauf, Schweregrade, Berichtsform, Rückweg der Bewertung",
+    "profil": "welcher Wissenszweig ist Maßstab, welche Regeln gelten, welche entfallen",
+    "satz": "Ein neuer Ausbildungsberuf oder ein neuer Dokumenttyp ist ein neues Profil, kein neuer Kern.",
+    "zweiterMitarbeiter": "Die Beschreibungsdatei ist in einer Stunde geschrieben, die Arbeit steckt in den anderen sieben Schichten. Gemeinsam bleiben das Wissen und die harten Regeln, eigen sind Maßstab, Regeln und Fälle.",
+    "uebergabe": "Die Übergabe zwischen zwei KI-Mitarbeitern läuft über Dateien, nicht über Gespräch. Ein Ergebnis muss auf eine Regel und eine Fundstelle zurückführbar bleiben, gleich wie viele Rollen daran beteiligt waren.",
+    "auswahlregel": "Vor jeder neuen Rolle steht die Frage, welche menschliche Tätigkeit im Haus heute knapp ist. Eine Rolle ohne Engpass dahinter schafft Beschäftigung, keinen Nutzen."
+  },
+  "plattform": {
+    "werkbank": "Claude Code",
+    "dauerbetrieb": "Hermes Agent mit einem lokalen Qwen-Modell auf einer DGX Spark im Haus",
+    "entschiedenAm": "2026-09-03",
+    "termin": "2026-09-11",
+    "terminEntschiedenAm": "2026-09-04",
+    "freigabe": "intern",
+    "schritte": [
+      "Hermes installieren",
+      "das Sprachmodell anbinden",
+      "Wissen und Regeln übertragen",
+      "die Fähigkeit des Agenten abschalten, sich selbst Regeln zu schreiben",
+      "einen Referenzlauf zum Vergleich fahren"
+    ],
+    "warumAbschaltung": "Ein Agent, der sich nach Aufgaben eigene Regeln destilliert, unterläuft die Testfallpflicht.",
+    "erreichbar": "Betrieb auf eigener Hardware, bei dem die Unterlagen das Haus nicht mehr verlassen.",
+    "nichtBeantwortet": "Ob Fritz auf dem lokalen Modell genauso gut prüft. Mit dem Umzug wechselt das Sprachmodell, und der Vergleich am selben Prüfsatz ist der letzte der fünf Schritte. Bis dahin ist es ein Pilotbetrieb.",
+    "ablageregel": "Was Fritz zum Prüfen braucht, darf nie allein im werkzeugspezifischen Ordner liegen. Es gehört in die werkzeugneutrale Auftragsdatei, ins Wissen, ins Regel-Repository oder in eine Skill-Datei. Sonst reist es beim Plattformwechsel nicht mit."
+  },
+  "entscheidungen": [
+    {
+      "datum": "2026-08-27",
+      "entscheidung": "Erst die Anbindung des Wissens, dann die Skalierung",
+      "freigabe": "oeffentlich"
+    },
+    {
+      "datum": "2026-08-28",
+      "entscheidung": "Der Reviewer heißt Fritz",
+      "freigabe": "oeffentlich"
+    },
+    {
+      "datum": "2026-08-28",
+      "entscheidung": "Der Fehlalarm wiegt schwerer als der übersehene Fehler",
+      "freigabe": "oeffentlich"
+    },
+    {
+      "datum": "2026-08-31",
+      "entscheidung": "KI-Mitarbeiter meint die benannte Rolle, Agent den Helfer am Werkzeug",
+      "freigabe": "oeffentlich"
+    },
+    {
+      "datum": "2026-08-31",
+      "entscheidung": "Die Auftragsdatei ist werkzeugneutral, das Werkzeugspezifische bindet sie ein",
+      "freigabe": "oeffentlich"
+    },
+    {
+      "datum": "2026-09-03",
+      "entscheidung": "Dauerbetrieb auf Hermes und Qwen auf eigener Hardware, Claude Code bleibt Werkbank",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-09-03",
+      "entscheidung": "Die acht Schichten sind das Referenzmodell",
+      "freigabe": "oeffentlich"
+    },
+    {
+      "datum": "2026-09-04",
+      "entscheidung": "Harter Termin für den Betrieb auf eigener Hardware: 11.09.2026",
+      "freigabe": "intern"
+    }
+  ],
+  "entscheidungenNachtrag": "Die Entscheidung vom 04.09. dreht bewusst eine zuvor festgelegte Reihenfolge um: Ursprünglich sollte die Fehlalarmquote vor dem Plattformwechsel gemessen werden. Die Technik wurde vorgezogen. Das ist kein Widerspruch, sondern eine andere Reihenfolge mit einer benannten Folge, und die Folge steht im Abschnitt zur Messlücke.",
+  "offenePunkte": [
+    {
+      "nr": 1,
+      "punkt": "Die vorliegenden Befunde bewerten",
+      "grund": "Ohne das keine Fehlalarmquote, ohne die keine Abnahme.",
+      "freigabe": "oeffentlich"
+    },
+    {
+      "nr": 2,
+      "punkt": "Den Kriterienkatalog gewichten",
+      "grund": "Das kann nur WAMOCON, und es wird nicht geraten.",
+      "freigabe": "oeffentlich"
+    },
+    {
+      "nr": 3,
+      "punkt": "Das Berichtsformat festlegen",
+      "grund": null,
+      "freigabe": "oeffentlich"
+    },
+    {
+      "nr": 4,
+      "punkt": "Die 26 Regelnotizen mit gemessener Quote anlegen, eine je Regel",
+      "grund": null,
+      "freigabe": "oeffentlich"
+    },
+    {
+      "nr": 5,
+      "punkt": "Den Rückweg schließen, auf dem eine Bewertung wieder beim Werkzeug ankommt",
+      "grund": null,
+      "freigabe": "oeffentlich"
+    },
+    {
+      "nr": 6,
+      "punkt": "Drei bis fünf vergangene Entscheidungen sammeln, an denen sich die Haltung des Hauses zeigt",
+      "grund": "Eine Philosophie, die nur an der Wand hängt, lässt sich nicht anwenden; sie zeigt sich in Abwägungen, nicht in einer Werteliste.",
+      "freigabe": "oeffentlich"
+    },
+    {
+      "nr": 7,
+      "punkt": "Den Zeitbedarf des heutigen Reviews erheben, solange er noch erhebbar ist",
+      "grund": null,
+      "freigabe": "oeffentlich"
+    }
+  ],
+  "beobachtungen": [
+    {
+      "id": "normbasis-summe",
+      "titel": "Die Teilzahlen der Normbasis ergeben nicht 55",
+      "text": "Das Übergabedokument nennt 55 verlinkte Notizen und schlüsselt auf: neun Positionen aus Abschnitt A, zehn Wahlqualifikationen, sechs integrative Positionen aus Abschnitt C, dreizehn Lernfelder sowie Prüfungsstruktur, Alt-Neu-Marker, Quellenverzeichnis und Archivnotiz. Aufsummiert sind das 42. In der Aufschlüsselung fehlen 13 Notizen. Hier nicht aufgelöst, weil dafür der Vault gebraucht wird.",
+      "quelle": "Übergabedokument, Abschnitt „Der Gegenstand“",
+      "freigabe": "intern"
+    },
+    {
+      "id": "befunde-63-64",
+      "titel": "Befundzahl 63 gegen 64",
+      "text": "Die Fachreviews weisen 63 Befunde aus, die Summe aus dem Frontmatter 64. Die Differenz von eins ist ungeklärt und im Änderungsprotokoll vermerkt.",
+      "quelle": "Übergabedokument, Abschnitt „Was gemessen wurde“",
+      "freigabe": "oeffentlich"
+    },
+    {
+      "id": "ci-eyebrow",
+      "titel": "Das CI-Blatt widerspricht in einem Punkt sich selbst",
+      "text": "Block 10 verbietet Rot 600 als Textfarbe unter 18,7 px, die Eyebrow-Zeilen des Blattes setzen es aber bei 5,9 pt ein. Diese Seite folgt der Regel und nimmt für kleinen roten Text durchgängig Rot 700.",
+      "quelle": "CI-Profil Version 1.0, Blöcke 06 und 10",
+      "freigabe": "intern"
+    }
+  ],
+  "gesellschaften": [
+    {
+      "name": "WAMOCON GmbH",
+      "rolle": "Leistungsmarke",
+      "auftrag": "IT-Dienstleister für Testmanagement und Qualitätssicherung mit KI-Fokus",
+      "gegruendet": "2007 als Einzelunternehmen, 2015 in eine GmbH überführt",
+      "register": "HRB 103893, AG Frankfurt am Main",
+      "sitz": "Mergenthalerallee 79–81, 65760 Eschborn",
+      "kontakt": "+49 6196 5838311, info@wamocon.com",
+      "freigabe": "oeffentlich"
+    },
+    {
+      "name": "WAMOCON Academy GmbH",
+      "rolle": "Bildungsmarke",
+      "auftrag": "ISTQB-akkreditiertes Schulungszentrum für Softwaretesting und Testmanagement, führt die Ausbildung Kaufleute für Büromanagement durch",
+      "gegruendet": null,
+      "register": "HRB 123666, gemeinsame Geschäftsführung",
+      "sitz": "Mergenthalerallee 79–81, 65760 Eschborn",
+      "kontakt": "+49 6196 5838312, info@test-it-academy.com",
+      "freigabe": "oeffentlich"
+    }
+  ],
+  "geschaeftsfuehrung": "Dipl.-Ing. Waleri Moretz",
+  "ansprechpartner": {
+    "name": "Erwin Moretz",
+    "rolle": "Pflege dieser Seite"
+  },
+  "quellen": [
+    {
+      "ort": "00_Vault/10_KI-Mitarbeiter/",
+      "inhalt": "Konzept, Anatomie, Harness, Maßstab, Prüfläufe",
+      "freigabe": "intern"
+    },
+    {
+      "ort": "00_Vault/15_Academy/",
+      "inhalt": "Unterlagensystematik, Checklisten, Corporate Design",
+      "freigabe": "intern"
+    },
+    {
+      "ort": "00_Vault/20_Ausbildungsberufe/KFBM/",
+      "inhalt": "Normbasis, 55 Notizen",
+      "freigabe": "intern"
+    },
+    {
+      "ort": "00_Vault/00_Meta/Aenderungsprotokoll.md",
+      "inhalt": "jede inhaltliche Änderung mit Datum",
+      "freigabe": "intern"
+    },
+    {
+      "ort": "reviewer/",
+      "inhalt": "Prüfskripte, Profile, Testfälle, Fallgedächtnis, Berichte",
+      "freigabe": "intern"
+    },
+    {
+      "ort": "Unternehmensvault/",
+      "inhalt": "Gesellschaften, Leistungen, Auftreten, Leitplanken-Entwurf",
+      "freigabe": "intern"
+    },
+    {
+      "ort": "AGENTS.md",
+      "inhalt": "die harten Regeln, werkzeugneutral",
+      "freigabe": "intern"
+    }
+  ]
+}

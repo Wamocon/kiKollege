@@ -1,0 +1,552 @@
+/* ============================================================================
+   WAMOCON Design-Tokens
+   Quelle: CI-Profil Version 1.0, Stand 18.08.2026, Bloecke 01, 03, 04, 07, 11.
+   Die Skalenwerte sind unveraendert uebernommen. Ergaenzt sind nur Rollen-
+   variablen (Flaeche, Rand, Fokus), die das CI-Blatt in Block 11 vorzeichnet.
+   ========================================================================= */
+
+:root {
+  /* --- 01 Kernfarben (gesetzt) --- */
+  --wmc-bg: #FFFFFF;
+  --wmc-ink: #140B0B;
+  --wmc-primary: #F40E0E;
+
+  /* --- 03 Primaerskala WMC Red, verankert auf Stufe 600 --- */
+  --r50:  #FEEBEB;
+  --r100: #FDD7D7;
+  --r200: #FBAFAF;
+  --r300: #FA8686;
+  --r400: #F85E5E;
+  --r500: #F63636;
+  --r600: #F40E0E;
+  --r700: #B90808;
+  --r800: #7B0606;
+  --r900: #3E0303;
+  --r950: #1F0101;
+
+  /* --- 04 Neutralskala WMC Ink, verankert auf Stufe 950 --- */
+  --i50:  #F6EFEF;
+  --i100: #EDDEDE;
+  --i200: #DBBEBE;
+  --i300: #C99D9D;
+  --i400: #B77D7D;
+  --i500: #A65C5C;
+  --i600: #864A4A;
+  --i700: #653838;
+  --i800: #452626;
+  --i900: #241414;
+  --i950: #140B0B;
+
+  /* --- 04 Ink UI: entsaettigte Variante fuer Flaechen und Linien --- */
+  --ui50:  #F3F2F2;
+  --ui100: #E8E4E4;
+  --ui200: #D2C7C7;
+  --ui300: #BCAAAA;
+  --ui400: #A88C8C;
+  --ui500: #956D6D;
+  --ui600: #7A5555;
+  --ui700: #5F3E3E;
+  --ui800: #422929;
+
+  /* --- 07 Zustands- und Semantikfarben --- */
+  --wmc-success: #0A6E37;
+  --wmc-warning: #96600A;
+  --wmc-info:    #0B5FBF;
+  --wmc-danger:  #7B0606;
+
+  /* --- 11 Rollen --- */
+  --wmc-primary-text: var(--r700);   /* Rot 600 traegt keinen Kleintext */
+  --wmc-surface-soft: var(--r50);
+  --wmc-border:       var(--ui200);
+  --wmc-muted:        var(--ui700);
+
+  /* --- abgeleitete Rollen fuer diese Seite --- */
+  --flaeche:        var(--ui50);
+  --flaeche-stark:  var(--ui100);
+  --rand-leise:     var(--ui100);
+  --fokus:          var(--r700);
+  --zahl-farbe:     var(--r600);
+
+  /* --- 08 Typografie --- */
+  --schrift: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --schrift-mono: ui-monospace, "DejaVu Sans Mono", Menlo, Consolas, monospace;
+
+  /* --- Mass --- */
+  --spalte: 1180px;
+  --lesebreite: 68ch;   /* Block 08: hoechstens 75 Zeichen je Zeile */
+  --nav-breite: 250px;
+
+  color-scheme: light;
+}
+
+/* Dark Mode. Das CI-Blatt belegt in Block 06 genau eine Paarung fuer dunkle
+   Flaechen: Rot 300 auf Ink 950, 8,15 : 1, AA. Alle weiteren Werte hier stammen
+   aus denselben dokumentierten Skalen, es kommt kein neuer Ton hinzu. */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --wmc-bg: var(--i950);
+    --wmc-ink: var(--i50);
+    --wmc-primary-text: var(--r300);
+    --wmc-surface-soft: var(--i900);
+    --wmc-border: var(--i800);
+    --wmc-muted: var(--i300);
+    --flaeche: var(--i900);
+    --flaeche-stark: var(--i800);
+    --rand-leise: var(--i800);
+    --fokus: var(--r300);
+    --zahl-farbe: var(--r300);
+    --wmc-success: #4FBF83;
+    --wmc-warning: #D6A33C;
+    --wmc-info:    #7FB2F0;
+    --wmc-danger:  var(--r300);
+    color-scheme: dark;
+  }
+}
+
+/* ============================================================================
+   Grundlagen
+   ========================================================================= */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+body {
+  margin: 0;
+  background: var(--wmc-bg);
+  color: var(--wmc-ink);
+  font-family: var(--schrift);
+  font-size: 16px;
+  line-height: 1.6;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 { margin: 0; font-weight: 800; line-height: 1.15; }
+h1 { font-size: clamp(1.9rem, 3.6vw, 2.6rem); letter-spacing: -0.04em; }
+h2 { font-size: clamp(1.35rem, 2.2vw, 1.65rem); letter-spacing: -0.035em; }
+h3 { font-size: 1.02rem; font-weight: 700; letter-spacing: -0.012em; }
+h4 { font-size: 0.9rem; font-weight: 700; letter-spacing: -0.005em; }
+
+p { margin: 0 0 0.85em; }
+p:last-child { margin-bottom: 0; }
+
+a {
+  color: var(--wmc-primary-text);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+a:hover { text-decoration-thickness: 2px; }
+
+/* Block 10: Fokusrahmen 2 px Rot 700, Abstand 2 px */
+:where(a, button, summary, [tabindex]):focus-visible {
+  outline: 2px solid var(--fokus);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+code, .mono { font-family: var(--schrift-mono); font-size: 0.86em; }
+
+hr { border: 0; border-top: 1px solid var(--wmc-border); margin: 2rem 0; }
+
+/* ============================================================================
+   Seitengeruest
+   ========================================================================= */
+
+.kopfkante { height: 4px; background: var(--wmc-primary); }
+
+.kopf {
+  border-bottom: 1px solid var(--wmc-border);
+  padding: 1.8rem 1.5rem 1.6rem;
+}
+.kopf-innen {
+  max-width: var(--spalte);
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.5rem 2rem;
+}
+.marke { display: flex; align-items: center; gap: 0.9rem; }
+.marke img { height: 34px; width: auto; display: block; }
+.wortmarke {
+  font-size: 1.35rem;
+  font-weight: 800;
+  letter-spacing: -0.045em;
+  line-height: 1;
+  white-space: nowrap;
+}
+.claim {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--wmc-primary-text);
+  margin-top: 0.25rem;
+}
+.kopf h1 { margin-top: 0.9rem; max-width: 22ch; }
+.kopf-meta {
+  font-size: 0.8rem;
+  color: var(--wmc-muted);
+  line-height: 1.7;
+  text-align: right;
+}
+.kopf-meta b { color: var(--wmc-ink); font-weight: 700; }
+@media (max-width: 720px) { .kopf-meta { text-align: left; } }
+
+.rumpf {
+  max-width: var(--spalte);
+  margin: 0 auto;
+  padding: 0 1.5rem 4rem;
+  display: grid;
+  grid-template-columns: var(--nav-breite) minmax(0, 1fr);
+  gap: 3rem;
+  align-items: start;
+}
+@media (max-width: 900px) {
+  .rumpf { grid-template-columns: minmax(0, 1fr); gap: 1.5rem; }
+}
+
+/* ============================================================================
+   Ankernavigation
+   ========================================================================= */
+
+.nav {
+  position: sticky;
+  top: 1.5rem;
+  padding-top: 2.4rem;
+  font-size: 0.82rem;
+}
+@media (max-width: 900px) {
+  .nav {
+    position: static;
+    padding-top: 1.6rem;
+    border-bottom: 1px solid var(--wmc-border);
+    padding-bottom: 1.2rem;
+  }
+}
+.nav-titel {
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--wmc-muted);
+  margin-bottom: 0.7rem;
+}
+.nav ol { list-style: none; margin: 0; padding: 0; }
+.nav li { margin: 0; }
+.nav a {
+  display: grid;
+  grid-template-columns: 1.8rem 1fr;
+  gap: 0.2rem;
+  padding: 0.3rem 0;
+  color: var(--wmc-muted);
+  text-decoration: none;
+  border-left: 2px solid transparent;
+  padding-left: 0.55rem;
+  margin-left: -0.55rem;
+}
+.nav a:hover { color: var(--wmc-ink); border-left-color: var(--wmc-primary); }
+.nav a .nr {
+  font-family: var(--schrift-mono);
+  font-size: 0.72rem;
+  color: var(--wmc-primary-text);
+  font-weight: 700;
+}
+@media (max-width: 900px) {
+  /* Flex-Umbruch reisst Nummer und Titel auseinander, das Raster haelt die
+     Spalten in einer Flucht. */
+  .nav ol {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 0.1rem 1.4rem;
+  }
+  .nav a { border-left: 0; padding-left: 0; margin-left: 0; }
+  .nav a:hover { border-left: 0; }
+}
+
+/* ============================================================================
+   Abschnitte
+   ========================================================================= */
+
+.inhalt > section { padding: 2.4rem 0; border-top: 1px solid var(--rand-leise); }
+.inhalt > section:first-child { border-top: 0; padding-top: 2.4rem; }
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--wmc-primary-text);
+  margin-bottom: 0.6rem;
+}
+.eyebrow::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--wmc-border);
+}
+
+.prosa { max-width: var(--lesebreite); }
+.prosa p + p { margin-top: 0; }
+section > h2 + .prosa,
+section > .eyebrow + h2 + .prosa { margin-top: 0.75rem; }
+
+.lead { font-size: 1.06rem; color: var(--wmc-ink); }
+
+.fussnote { font-size: 0.82rem; color: var(--wmc-muted); }
+
+/* ============================================================================
+   Kennzahlen
+   ========================================================================= */
+
+/* Rahmen sitzen an den Zellen, nicht im Raster-Zwischenraum. Sonst zeigt eine
+   nicht aufgefuellte letzte Reihe die Rahmenfarbe als grosse Flaeche. */
+.kacheln {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(148px, 1fr));
+  border-top: 1px solid var(--wmc-border);
+  border-left: 1px solid var(--wmc-border);
+  margin: 1.4rem 0 0;
+}
+.kachel {
+  background: var(--wmc-bg);
+  padding: 1rem 1.05rem 1.05rem;
+  border-right: 1px solid var(--wmc-border);
+  border-bottom: 1px solid var(--wmc-border);
+}
+.kachel .zahl {
+  font-size: 2rem;              /* Block 06: Rot 600 erst ab 24 px zulaessig */
+  font-weight: 800;
+  letter-spacing: -0.045em;
+  line-height: 1;
+  color: var(--zahl-farbe);
+  font-variant-numeric: tabular-nums;
+}
+.kachel .einheit { font-size: 0.95rem; font-weight: 700; letter-spacing: -0.01em; }
+.kachel .label {
+  margin-top: 0.5rem;
+  font-size: 0.76rem;
+  line-height: 1.4;
+  color: var(--wmc-muted);
+}
+.kachel.warnung { background: var(--flaeche); }
+.kachel.warnung .zahl { color: var(--wmc-warning); }
+.kachel.warnung .label { color: var(--wmc-ink); }
+
+/* ============================================================================
+   Tabellen
+   ========================================================================= */
+
+.tabellenrahmen { overflow-x: auto; margin: 1.3rem 0 0; }
+table { border-collapse: collapse; width: 100%; font-size: 0.88rem; }
+/* Tabellenunterschriften stehen ausserhalb des Scrollbereichs, sonst laufen sie
+   auf schmalen Bildschirmen mit der Tabelle aus dem Bild. */
+.tabellennote {
+  margin-top: 0.6rem;
+  max-width: var(--lesebreite);
+}
+th {
+  text-align: left;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--wmc-muted);
+  border-bottom: 1px solid var(--wmc-border);
+  padding: 0.4rem 0.9rem 0.4rem 0;
+  white-space: nowrap;
+}
+td {
+  padding: 0.55rem 0.9rem 0.55rem 0;
+  border-bottom: 1px solid var(--rand-leise);
+  vertical-align: top;
+}
+td:last-child, th:last-child { padding-right: 0; }
+tbody tr:last-child td { border-bottom: 0; }
+td b, td strong { font-weight: 700; }
+.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+th.num { text-align: right; }
+.datum { white-space: nowrap; font-variant-numeric: tabular-nums; }
+
+/* ============================================================================
+   Listen
+   ========================================================================= */
+
+.liste { list-style: none; margin: 1.1rem 0 0; padding: 0; max-width: var(--lesebreite); }
+.liste li { position: relative; padding-left: 1.1rem; margin-bottom: 0.45rem; }
+.liste li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 5px;
+  height: 5px;
+  background: var(--wmc-primary);
+}
+.liste li b { font-weight: 700; }
+
+.schritte { list-style: none; margin: 1.1rem 0 0; padding: 0; counter-reset: schritt; max-width: var(--lesebreite); }
+.schritte li {
+  counter-increment: schritt;
+  position: relative;
+  padding-left: 2.1rem;
+  margin-bottom: 0.6rem;
+}
+.schritte li::before {
+  content: counter(schritt);
+  position: absolute;
+  left: 0;
+  top: 0.05em;
+  font-family: var(--schrift-mono);
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--wmc-primary-text);
+  border: 1px solid var(--wmc-border);
+  width: 1.45rem;
+  height: 1.45rem;
+  display: grid;
+  place-items: center;
+}
+
+/* ============================================================================
+   Bloecke
+   ========================================================================= */
+
+.block {
+  border: 1px solid var(--wmc-border);
+  border-top: 3px solid var(--wmc-primary);
+  padding: 1.1rem 1.2rem;
+  margin: 1.3rem 0 0;
+}
+.block h3 { margin-bottom: 0.45rem; }
+.block .prosa { max-width: none; }
+
+/* Block 07: ein Zustand darf nie allein ueber Farbe kodiert sein.
+   Jeder Hinweisblock traegt deshalb ein Zeichen und einen Klartext. */
+.hinweis {
+  border: 1px solid var(--wmc-border);
+  border-left: 4px solid var(--wmc-warning);
+  background: var(--flaeche);
+  padding: 1rem 1.15rem;
+  margin: 1.3rem 0 0;
+}
+.hinweis.wichtig { border-left-color: var(--wmc-danger); }
+.hinweis.gut { border-left-color: var(--wmc-success); }
+.hinweis-kopf {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--wmc-warning);
+  margin-bottom: 0.45rem;
+}
+.hinweis.wichtig .hinweis-kopf { color: var(--wmc-danger); }
+.hinweis.gut .hinweis-kopf { color: var(--wmc-success); }
+.hinweis-kopf .zeichen { font-size: 0.85rem; line-height: 1; }
+.hinweis-titel { margin-bottom: 0.4rem; }
+.hinweis .prosa { max-width: none; }
+
+.raster {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1.1rem;
+  margin: 1.3rem 0 0;
+}
+.karte {
+  border: 1px solid var(--wmc-border);
+  padding: 0.95rem 1.05rem;
+}
+.karte h3 { margin-bottom: 0.35rem; }
+.karte p { font-size: 0.9rem; color: var(--wmc-muted); }
+
+/* ============================================================================
+   Marker
+   ========================================================================= */
+
+.marker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.64rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.16rem 0.42rem;
+  border: 1px solid currentColor;
+  color: var(--wmc-muted);
+  white-space: nowrap;
+  vertical-align: 0.12em;
+}
+.marker.intern { color: var(--wmc-warning); }
+.marker.gemessen { color: var(--wmc-success); }
+.marker.offen { color: var(--wmc-danger); }
+
+.stufe {
+  display: inline-block;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.stufe.blocker { color: var(--wmc-danger); }
+.stufe.major   { color: var(--wmc-warning); }
+.stufe.minor   { color: var(--wmc-muted); }
+.stufe.hinweis { color: var(--wmc-info); }
+
+/* ============================================================================
+   Fussbereich
+   ========================================================================= */
+
+.fuss {
+  border-top: 4px solid var(--wmc-primary);
+  background: var(--flaeche);
+  padding: 2rem 1.5rem 2.6rem;
+  font-size: 0.84rem;
+  color: var(--wmc-muted);
+}
+.fuss-innen {
+  max-width: var(--spalte);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.6rem 2.4rem;
+}
+.fuss h4 {
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--wmc-ink);
+  margin-bottom: 0.5rem;
+}
+.fuss b { color: var(--wmc-ink); font-weight: 700; }
+.fuss p { margin-bottom: 0.4rem; line-height: 1.65; }
+
+.sprungmarke {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--wmc-bg);
+  color: var(--wmc-ink);
+  padding: 0.6rem 1rem;
+  border: 2px solid var(--fokus);
+  z-index: 10;
+}
+.sprungmarke:focus { left: 0.5rem; top: 0.5rem; }
+
+@media print {
+  .nav, .sprungmarke { display: none; }
+  .rumpf { grid-template-columns: 1fr; }
+  body { font-size: 10pt; }
+}

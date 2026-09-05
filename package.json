@@ -1,0 +1,24 @@
+{
+  "name": "kikollege",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Interne Standseite zum Vorhaben KI-Mitarbeiter der WAMOCON GmbH",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "export:vault": "node scripts/export-vault.mjs",
+    "test:export": "node --test scripts/export-vault.test.mjs"
+  },
+  "dependencies": {
+    "next": "^16.3.4",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.0",
+    "@types/react": "^19.1.9",
+    "@types/react-dom": "^19.1.7",
+    "typescript": "^5.9.2"
+  }
+}
