@@ -1,11 +1,41 @@
 # kiKollege
 
-Interne Standseite zum Vorhaben KI-Mitarbeiter der WAMOCON GmbH. Ein One-Pager mit
-Ankernavigation, der Konzept, Maßstab, Kennzahlen der Prüfläufe, die offene Messlücke
-und die Entscheidungen mit Datum zeigt.
+Zwei Seiten zum Vorhaben KI-Mitarbeiter der WAMOCON GmbH, gespeist aus derselben
+Datenquelle.
+
+| Route | Was sie ist |
+|---|---|
+| `/` | Landing Page. Erzählt das Vorhaben vom Hero bis zu den offenen Punkten. |
+| `/stand/` | Dichte Standseite mit Ankernavigation, allen Tabellen und Prüfläufen. |
 
 Grundlage ist das Übergabedokument vom 05.09.2026 aus dem Arbeitsordner `D:\KFBM`.
-Gestaltung und Farben folgen dem CI-Profil Version 1.0 vom 18.08.2026.
+Farben und Typografie folgen dem CI-Profil Version 1.0 vom 18.08.2026.
+
+## Die Gestaltung der Landing Page
+
+Das Vorbild war der Auftritt von Nous Research. Die Seite selbst war beim Bauen nicht
+erreichbar, der Netzzugang dieser Umgebung lässt nur Paket-Registries durch. Gebaut ist
+deshalb die Gestaltungssprache, die mit diesem Vorbild verbunden ist, und nicht ein
+Abbild davon:
+
+- Monospace trägt Labels, Metadaten, Abschnittsindizes und Datumsangaben. Fließtext und
+  Überschriften bleiben bei Inter.
+- Haarlinien bilden ein sichtbares Raster. Abschnitte, Zellen und Spezifikationszeilen
+  sitzen in einer Struktur wie in einer technischen Zeichnung.
+- Aussagen stehen sehr groß und eng, Abschnitte haben viel Luft.
+- Rot erscheint selten. Auf der ganzen Seite trägt es die Abschnittsindizes, die beiden
+  tragenden Schichten und den Strich unter der einen Zahl, um die es geht.
+
+Zwei Abweichungen vom CI-Blatt sind bewusst:
+
+**Monospace** kommt im CI-Blatt nicht vor. Block 08 legt nur die neogroteske Sans für
+Überschrift und Fließtext fest. Die Monospace ist eine Ergänzung für Labels und Zahlen,
+kein Ersatz.
+
+**Die weiße Grundfläche** bleibt die Voreinstellung, weil Block 01 sie als Grundfläche
+aller Medien mit rund 60 Prozent Anteil setzt. Die dunkle Fassung steht gleichwertig
+daneben und lässt sich über den Schalter in der Kopfleiste wählen. Wer die Seite
+dunkel-zuerst will, dreht in `app/globals.css` die beiden Token-Blöcke um.
 
 ## Starten
 
@@ -23,6 +53,29 @@ braucht es einen kleinen Webserver, weil die Seite absolute Pfade nutzt:
 npx serve out
 ```
 
+## Der Themenschalter
+
+Die Kopfleiste schaltet zwischen System, Hell und Dunkel. Die Wahl liegt in
+`localStorage` und wird von einem kurzen Skript im `<head>` gesetzt, bevor der Browser
+das erste Mal zeichnet, sonst blitzt die falsche Fassung auf. Ohne Wahl gilt die
+Systemeinstellung.
+
+Dasselbe Skript setzt die Klasse `js` auf das Dokument. Die Einblend-Animation beim
+Scrollen startet nur unter dieser Klasse unsichtbar, damit ohne JavaScript kein Inhalt
+verborgen bleibt.
+
+## Die beiden Figuren
+
+Die Landing Page zeigt zwei Datenfiguren, beide aus `data/projektstand.json`:
+
+**Das Enabler-Feld** im Hero hat eine Zelle je Enabler, gefüllt heißt vollständig
+ausgestattet. Die Zellen stehen in fester Reihenfolge, gefüllte zuerst. Eine gestreute
+Anordnung würde eine Verteilung über die Themenkomplexe behaupten, die nicht gemessen
+ist.
+
+**Die Null** im Abschnitt zur Messlücke ist die einzige Hero-Zahl der Seite. Ein Balken
+mit Nullfüllung wäre ein Ein-Balken-Diagramm; die Zahl ist hier die Figur.
+
 ## Zwei Fassungen aus einer Quelle
 
 Jedes Datenelement in `data/projektstand.json` trägt ein Feld `freigabe`, das
@@ -35,10 +88,12 @@ npm run build                    # interne Fassung, zeigt alles
 FREIGABE=oeffentlich npm run build   # öffentliche Fassung
 ```
 
-Die öffentliche Fassung lässt drei Abschnitte weg (Plattform, Beobachtungen,
-Quellen), dazu die beiden internen Entscheidungen, die Befunddichte je Themenkomplex
-und alle Pfadangaben. Was ohne Angabe bleibt, gilt als öffentlich, damit die
-Datenpflege nicht stillschweigend Inhalt verliert.
+Die öffentliche Fassung lässt auf der Landing Page die Abschnitte zum Betrieb und zum
+Abgleich weg, auf der Standseite zusätzlich die Quellen. Dazu entfallen auf beiden
+Seiten die internen Entscheidungen, die Befunddichte je Themenkomplex und alle
+Pfadangaben. Die Abschnittsnummern der Landing Page rücken nach, damit die Zählung
+keine Lücke zeigt. Was ohne Angabe bleibt, gilt als öffentlich, damit die Datenpflege
+nicht stillschweigend Inhalt verliert.
 
 Die interne Fassung setzt zusätzlich `robots: noindex`.
 
@@ -69,12 +124,13 @@ sind sie dort anzupassen. Die Auswertung selbst ist durch
 
 ## Logo
 
-Die Seite sucht beim Bauen unter `public/` nach `logo.svg`, `logo.png`,
-`wamocon-logo.svg` oder `wamocon-logo.png`. Liegt eine dieser Dateien da, erscheint
-sie im Fußbereich. Bis dahin steht dort die gesetzte Wortmarke, so wie es auch das
-CI-Blatt selbst hält.
+Beide Seiten suchen beim Bauen unter `public/` nach `logo.svg`, `logo.png`,
+`wamocon-logo.svg` oder `wamocon-logo.png`. Liegt eine dieser Dateien da, erscheint sie
+im Fußbereich. Bis dahin steht dort die gesetzte Wortmarke, so wie es auch das CI-Blatt
+selbst hält.
 
-Im Kopf steht bewusst kein Absender: Die Seite ist ohne Markenführung angelegt.
+Das Favicon liegt als `app/icon.svg` und zeigt drei weiße Zellen auf Rot 600, ein
+Anklang an das Enabler-Feld.
 
 ## Farben und Typografie
 
@@ -112,9 +168,18 @@ Beides ist hier nicht angelegt, weil die Seite zunächst intern bleibt.
 ## Aufbau
 
 ```
-app/            Layout, Seite, Farbsystem
-components/     Kopf, Navigation, Fußbereich, Bausteine
-data/           projektstand.json, die einzige Zahlenquelle der Seite
-lib/            Typen, Datumsformat, Freigabelogik, Abschnittsliste
-scripts/        Exportskript für den Vault samt Tests und Fixtures
+app/
+  page.tsx          Landing Page
+  stand/page.tsx    dichte Standseite
+  globals.css       CI-Tokens, gemeinsame Bausteine, Landing-Layout (lp-)
+  icon.svg          Favicon
+components/
+  landing/          Kopfleiste, Sektion, Fußleiste der Landing Page
+  figuren/          Enabler-Feld
+  ThemaSchalter     Hell, Dunkel, System
+  Enthuellen        blendet Blöcke beim Scrollen ein
+  Kopf, Nav, Fuss, bausteine   Bausteine der Standseite
+data/             projektstand.json, die einzige Zahlenquelle beider Seiten
+lib/              Typen, Datumsformat, Freigabelogik, Abschnittslisten
+scripts/          Exportskript für den Vault samt Tests und Fixtures
 ```

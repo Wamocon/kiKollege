@@ -8,8 +8,12 @@ export function Kopf() {
       <header className="kopf">
         <div className="kopf-innen">
           <div>
-            <p className="claim">Projektstand</p>
-            <h1>KI-Mitarbeiter: Fritz prüft, ein Mensch gibt frei</h1>
+            <p className="claim">
+              <a href="/" style={{ color: 'inherit', textDecoration: 'none' }}>
+                WAMOCON / KI-Mitarbeiter
+              </a>
+            </p>
+            <h1>Projektstand: Fritz prüft, ein Mensch gibt frei</h1>
           </div>
           <div className="kopf-meta">
             Stand <b>{datum(daten.stand)}</b>

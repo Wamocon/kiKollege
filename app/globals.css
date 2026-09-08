@@ -79,11 +79,13 @@
   color-scheme: light;
 }
 
-/* Dark Mode. Das CI-Blatt belegt in Block 06 genau eine Paarung fuer dunkle
+/* Dunkle Faerbung. Das CI-Blatt belegt in Block 06 genau eine Paarung fuer dunkle
    Flaechen: Rot 300 auf Ink 950, 8,15 : 1, AA. Alle weiteren Werte hier stammen
-   aus denselben dokumentierten Skalen, es kommt kein neuer Ton hinzu. */
+   aus denselben dokumentierten Skalen, es kommt kein neuer Ton hinzu.
+   Die Zuweisung steht zweimal, weil CSS keinen Weg kennt, denselben Block an zwei
+   Selektoren zu haengen. Beide Bloecke muessen gleich bleiben. */
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme='light']) {
     --wmc-bg: var(--i950);
     --wmc-ink: var(--i50);
     --wmc-primary-text: var(--r300);
@@ -101,6 +103,25 @@
     --wmc-danger:  var(--r300);
     color-scheme: dark;
   }
+}
+
+:root[data-theme='dark'] {
+  --wmc-bg: var(--i950);
+  --wmc-ink: var(--i50);
+  --wmc-primary-text: var(--r300);
+  --wmc-surface-soft: var(--i900);
+  --wmc-border: var(--i800);
+  --wmc-muted: var(--i300);
+  --flaeche: var(--i900);
+  --flaeche-stark: var(--i800);
+  --rand-leise: var(--i800);
+  --fokus: var(--r300);
+  --zahl-farbe: var(--r300);
+  --wmc-success: #4FBF83;
+  --wmc-warning: #D6A33C;
+  --wmc-info:    #7FB2F0;
+  --wmc-danger:  var(--r300);
+  color-scheme: dark;
 }
 
 /* ============================================================================
@@ -329,7 +350,6 @@ section > .eyebrow + h2 + .prosa { margin-top: 0.75rem; }
   letter-spacing: -0.045em;
   line-height: 1;
   color: var(--zahl-farbe);
-  font-variant-numeric: tabular-nums;
 }
 .kachel .einheit { font-size: 0.95rem; font-weight: 700; letter-spacing: -0.01em; }
 .kachel .label {
@@ -549,4 +569,428 @@ th.num { text-align: right; }
   .nav, .sprungmarke { display: none; }
   .rumpf { grid-template-columns: 1fr; }
   body { font-size: 10pt; }
+}
+
+/* ============================================================================
+   LANDING PAGE
+   Technischer Dokumentstil: Monospace traegt Labels, Metadaten und Zahlen,
+   Haarlinien bilden ein sichtbares Raster, Aussagen stehen gross und eng,
+   Rot erscheint selten und dann als Signal.
+   Alle Klassen tragen das Praefix lp-, damit die Standseite unter /stand
+   unberuehrt bleibt.
+   ========================================================================= */
+
+:root {
+  --lp-spalte: 1240px;
+  --lp-rinne: 148px;
+  --lp-luft: clamp(4rem, 8vw, 8.5rem);
+}
+
+/* --- Enthüllen beim Scrollen. Ohne JavaScript bleibt alles sichtbar, weil die
+       Startwerte nur unter .js gelten. --- */
+.js [data-enthuellen] {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.55s ease, transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.js [data-enthuellen].sichtbar {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .js [data-enthuellen] { opacity: 1; transform: none; transition: none; }
+}
+
+/* --- Kopfleiste --- */
+.lp-bar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: color-mix(in srgb, var(--wmc-bg) 88%, transparent);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--wmc-border);
+}
+.lp-bar-innen {
+  max-width: var(--lp-spalte);
+  margin: 0 auto;
+  padding: 0 clamp(1.25rem, 3vw, 2.5rem);
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+.lp-marke {
+  font-family: var(--schrift-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--wmc-ink);
+  white-space: nowrap;
+}
+.lp-marke span { color: var(--wmc-primary-text); }
+.lp-bar-meta {
+  display: flex;
+  align-items: center;
+  gap: clamp(0.8rem, 2vw, 1.8rem);
+  font-family: var(--schrift-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: var(--wmc-muted);
+}
+.lp-bar-meta a { color: var(--wmc-muted); text-decoration: none; white-space: nowrap; }
+.lp-bar-meta a:hover { color: var(--wmc-primary-text); }
+.lp-bar-meta b { color: var(--wmc-ink); font-weight: 700; }
+@media (max-width: 720px) {
+  .lp-bar-meta .lp-weg-schmal { display: none; }
+  .lp-bar-innen { gap: 0.75rem; }
+  .lp-marke { font-size: 0.62rem; letter-spacing: 0.1em; }
+}
+
+.thema {
+  font: inherit;
+  font-family: var(--schrift-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: var(--wmc-muted);
+  background: none;
+  border: 1px solid var(--wmc-border);
+  padding: 0.22rem 0.5rem;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.thema:hover { color: var(--wmc-ink); border-color: var(--wmc-muted); }
+.thema-wert { color: var(--wmc-ink); font-weight: 700; min-width: 3.6em; display: inline-block; }
+.nur-vorlesen {
+  position: absolute;
+  width: 1px; height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* --- Abschnitte --- */
+.lp-sektion { border-top: 1px solid var(--rand-leise); }
+.lp-sektion:first-of-type { border-top: 0; }
+.lp-sektion-innen {
+  max-width: var(--lp-spalte);
+  margin: 0 auto;
+  padding: var(--lp-luft) clamp(1.25rem, 3vw, 2.5rem);
+  display: grid;
+  grid-template-columns: var(--lp-rinne) minmax(0, 1fr);
+  gap: 0 clamp(1.5rem, 4vw, 4rem);
+  align-items: start;
+}
+@media (max-width: 860px) {
+  .lp-sektion-innen { grid-template-columns: minmax(0, 1fr); gap: 1.6rem; }
+}
+.lp-index {
+  position: sticky;
+  top: 84px;
+  font-family: var(--schrift-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  line-height: 1.7;
+}
+.lp-index .nr { color: var(--wmc-primary-text); font-weight: 700; display: block; }
+.lp-index .was { color: var(--wmc-muted); display: block; }
+@media (max-width: 860px) {
+  .lp-index { position: static; display: flex; gap: 0.8rem; }
+  .lp-index .nr, .lp-index .was { display: inline; }
+}
+
+/* --- Typografie der Seite --- */
+.lp-display .zeile { display: block; text-wrap: balance; }
+.lp-display {
+  font-size: clamp(2.5rem, 6.6vw, 5.2rem);
+  font-weight: 800;
+  letter-spacing: -0.046em;
+  line-height: 0.97;
+  margin: 0;
+  text-wrap: balance;
+}
+.lp-aussage {
+  font-size: clamp(1.6rem, 3.3vw, 2.75rem);
+  font-weight: 700;
+  letter-spacing: -0.032em;
+  line-height: 1.13;
+  margin: 0;
+  max-width: 22ch;
+  text-wrap: balance;
+}
+.lp-aussage.breit { max-width: 30ch; }
+.lp-lead {
+  font-size: clamp(1.02rem, 1.25vw, 1.2rem);
+  line-height: 1.62;
+  max-width: 62ch;
+  margin: 0;
+}
+.lp-text { max-width: 62ch; }
+.lp-text p { margin: 0 0 0.85em; }
+.lp-text p:last-child { margin-bottom: 0; }
+.lp-klein {
+  font-family: var(--schrift-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--wmc-muted);
+}
+.lp-luft-oben { margin-top: clamp(1.6rem, 3vw, 2.8rem); }
+.lp-luft-oben-klein { margin-top: 1.1rem; }
+
+/* --- Hero --- */
+.lp-hero .lp-sektion-innen { padding-top: clamp(3.5rem, 7vw, 6.5rem); }
+.lp-hero-raster {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+  gap: clamp(2rem, 5vw, 4.5rem);
+  align-items: start;
+  margin-top: clamp(1.8rem, 4vw, 3.2rem);
+}
+@media (max-width: 900px) {
+  .lp-hero-raster { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* --- Spezifikationszeilen: Schlüssel links, Wert rechts, Haarlinie darunter --- */
+.lp-spec { margin: clamp(2rem, 4vw, 3.4rem) 0 0; border-top: 1px solid var(--wmc-border); }
+.lp-spec-zeile {
+  display: grid;
+  grid-template-columns: minmax(7rem, 12rem) minmax(0, 1fr);
+  gap: 0.4rem 1.5rem;
+  padding: 0.7rem 0;
+  border-bottom: 1px solid var(--rand-leise);
+}
+.lp-spec-zeile dt {
+  font-family: var(--schrift-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--wmc-muted);
+  padding-top: 0.15rem;
+}
+.lp-spec-zeile dd { margin: 0; font-size: 0.95rem; }
+.lp-spec-zeile dd b { font-weight: 700; }
+@media (max-width: 560px) {
+  .lp-spec-zeile { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* --- Zellenraster --- */
+.lp-zellen {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  border-top: 1px solid var(--wmc-border);
+  border-left: 1px solid var(--wmc-border);
+  margin-top: clamp(1.6rem, 3vw, 2.6rem);
+}
+.lp-zellen.vier { grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); }
+.lp-zelle {
+  border-right: 1px solid var(--wmc-border);
+  border-bottom: 1px solid var(--wmc-border);
+  padding: 1.15rem 1.25rem 1.4rem;
+  min-height: 148px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+.lp-zelle .kopf {
+  font-family: var(--schrift-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--wmc-muted);
+}
+.lp-zelle h3 { font-size: 1.02rem; font-weight: 700; letter-spacing: -0.012em; margin: 0; }
+.lp-zelle p { margin: 0; font-size: 0.9rem; line-height: 1.55; color: var(--wmc-muted); }
+.lp-zelle p.stark { color: var(--wmc-ink); }
+.lp-zelle.traegt { border-top: 2px solid var(--wmc-primary); margin-top: -1px; }
+.lp-zelle.traegt .kopf { color: var(--wmc-primary-text); }
+
+/* --- Kennzahlen als Stat-Kacheln --- */
+.lp-kpi {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  border-top: 1px solid var(--wmc-border);
+  border-left: 1px solid var(--wmc-border);
+  margin-top: clamp(1.6rem, 3vw, 2.6rem);
+}
+.lp-kpi-kachel {
+  border-right: 1px solid var(--wmc-border);
+  border-bottom: 1px solid var(--wmc-border);
+  padding: 1.1rem 1.15rem 1.25rem;
+}
+.lp-kpi-wert {
+  font-size: clamp(1.9rem, 3.2vw, 2.5rem);
+  font-weight: 800;
+  letter-spacing: -0.045em;
+  line-height: 1;
+  margin: 0;
+}
+.lp-kpi-label {
+  margin: 0.55rem 0 0;
+  font-size: 0.78rem;
+  line-height: 1.45;
+  color: var(--wmc-muted);
+}
+
+/* --- Die eine Hero-Zahl der Seite --- */
+.lp-hero-zahl {
+  display: flex;
+  align-items: baseline;
+  gap: clamp(1rem, 3vw, 2.2rem);
+  flex-wrap: wrap;
+  padding-bottom: 1.4rem;
+  border-bottom: 2px solid var(--wmc-primary);
+}
+.lp-hero-zahl .wert {
+  font-size: clamp(5rem, 15vw, 11rem);
+  font-weight: 800;
+  letter-spacing: -0.055em;
+  line-height: 0.82;
+  margin: 0;
+}
+.lp-hero-zahl .beschriftung {
+  font-size: clamp(1.05rem, 1.7vw, 1.4rem);
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  max-width: 30ch;
+  text-wrap: balance;
+  margin: 0;
+}
+
+/* --- Protokollzeilen für Entscheidungen und Läufe --- */
+.lp-log { margin-top: clamp(1.6rem, 3vw, 2.6rem); border-top: 1px solid var(--wmc-border); }
+.lp-log-zeile {
+  display: grid;
+  grid-template-columns: 7.5rem minmax(0, 1fr) auto;
+  gap: 0.3rem 1.5rem;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid var(--rand-leise);
+  align-items: baseline;
+}
+.lp-log-zeile .wann {
+  font-family: var(--schrift-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
+  color: var(--wmc-muted);
+  font-variant-numeric: tabular-nums;
+}
+.lp-log-zeile .was { font-size: 0.98rem; line-height: 1.45; }
+.lp-log-zeile .zusatz {
+  font-family: var(--schrift-mono);
+  font-size: 0.64rem;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: var(--wmc-muted);
+  white-space: nowrap;
+}
+@media (max-width: 620px) {
+  .lp-log-zeile { grid-template-columns: minmax(0, 1fr); }
+  .lp-log-zeile .zusatz { grid-row: 1; justify-self: start; }
+}
+
+/* --- Nummerierte Punkte --- */
+.lp-punkte { list-style: none; margin: clamp(1.6rem, 3vw, 2.6rem) 0 0; padding: 0; }
+.lp-punkte li {
+  display: grid;
+  grid-template-columns: 3rem minmax(0, 1fr);
+  gap: 0.3rem 1rem;
+  padding: 0.9rem 0;
+  border-top: 1px solid var(--rand-leise);
+}
+.lp-punkte li:last-child { border-bottom: 1px solid var(--rand-leise); }
+.lp-punkte .nr {
+  font-family: var(--schrift-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--wmc-primary-text);
+  padding-top: 0.2rem;
+  font-variant-numeric: tabular-nums;
+}
+.lp-punkte .punkt { font-size: 1rem; font-weight: 700; letter-spacing: -0.012em; }
+.lp-punkte .grund { margin: 0.2rem 0 0; font-size: 0.9rem; color: var(--wmc-muted); max-width: 58ch; }
+
+/* --- Figur mit Unterschrift --- */
+.lp-figur { margin: 0; }
+.lp-figur svg { display: block; width: 100%; height: auto; overflow: visible; }
+.lp-figur figcaption {
+  margin-top: 1rem;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: var(--wmc-muted);
+  max-width: 46ch;
+}
+.lp-legende {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1.4rem;
+  margin-top: 0.9rem;
+  font-family: var(--schrift-mono);
+  font-size: 0.64rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--wmc-muted);
+}
+.lp-legende span { display: inline-flex; align-items: center; gap: 0.45rem; }
+.lp-legende i {
+  width: 9px;
+  height: 9px;
+  border: 1px solid var(--wmc-ink);
+  display: inline-block;
+}
+.lp-legende i.voll { background: var(--wmc-ink); }
+
+/* --- Hinweis, intern --- */
+.lp-intern {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: var(--schrift-mono);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--wmc-warning);
+  border: 1px solid currentColor;
+  padding: 0.12rem 0.4rem;
+}
+
+/* --- Fußbereich --- */
+.lp-fuss { border-top: 1px solid var(--wmc-border); background: var(--flaeche); }
+.lp-fuss-innen {
+  max-width: var(--lp-spalte);
+  margin: 0 auto;
+  padding: clamp(3rem, 6vw, 5rem) clamp(1.25rem, 3vw, 2.5rem) clamp(2.5rem, 4vw, 3.5rem);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 2.2rem clamp(1.5rem, 4vw, 3.5rem);
+}
+.lp-fuss h4 {
+  font-family: var(--schrift-mono);
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--wmc-muted);
+  margin: 0 0 0.7rem;
+}
+.lp-fuss p { margin: 0 0 0.4rem; font-size: 0.86rem; line-height: 1.6; color: var(--wmc-muted); }
+.lp-fuss b { color: var(--wmc-ink); font-weight: 700; }
+.lp-fuss a { color: var(--wmc-primary-text); }
+.lp-fuss img { height: 30px; width: auto; display: block; margin-bottom: 0.9rem; }
+.lp-fuss .lp-wortmarke {
+  font-size: 1.2rem;
+  font-weight: 800;
+  letter-spacing: -0.045em;
+  color: var(--wmc-ink);
+  line-height: 1;
+}
+
+@media print {
+  .lp-bar, .thema { display: none; }
+  .js [data-enthuellen] { opacity: 1; transform: none; }
 }

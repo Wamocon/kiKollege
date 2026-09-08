@@ -218,6 +218,15 @@ export function datum(iso: string): string {
   return `${tag}.${monat}.${jahr}`
 }
 
+/** Tage zwischen zwei ISO-Daten, beide Enden mitgezaehlt. Haelt Formulierungen
+ *  wie "in neun Tagen" an den Daten, statt sie in die Prosa zu schreiben. */
+export function tageZwischen(vonIso: string, bisIso: string): number {
+  const tag = 24 * 60 * 60 * 1000
+  const von = Date.parse(`${vonIso}T00:00:00Z`)
+  const bis = Date.parse(`${bisIso}T00:00:00Z`)
+  return Math.round((bis - von) / tag) + 1
+}
+
 /** Zahlen mit Tausenderpunkt, damit 10752 als 10.752 lesbar bleibt. */
 export function zahl(wert: number): string {
   return wert.toLocaleString('de-DE')

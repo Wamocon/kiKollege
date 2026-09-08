@@ -1,683 +1,471 @@
-import { Kopf } from '@/components/Kopf'
-import { Nav } from '@/components/Nav'
-import { Fuss } from '@/components/Fuss'
-import { Block, Hinweis, Kachelband, Kopfzeile, Marker } from '@/components/bausteine'
-import { abschnitt } from '@/lib/abschnitte'
-import { daten, datum, zahl } from '@/lib/daten'
-import { istIntern, nurSichtbare, sichtbar } from '@/lib/freigabe'
+import { Enthuellen } from '@/components/Enthuellen'
+import { EnablerRaster } from '@/components/figuren/EnablerRaster'
+import { Fussleiste } from '@/components/landing/Fussleiste'
+import { Kopfleiste } from '@/components/landing/Kopfleiste'
+import { Sektion } from '@/components/landing/Sektion'
+import { daten, datum, tageZwischen, zahl } from '@/lib/daten'
+import { istIntern, nurSichtbare } from '@/lib/freigabe'
 
-const zeigen = (id: string) => sichtbar(abschnitt(id))
-
-export default function Seite() {
+export default function Landing() {
   const d = daten
-  const mechanisch = d.prueflaeufe.laeufe.filter((l) => l.art === 'mechanisch')
-  const urteilend = d.prueflaeufe.laeufe.filter((l) => l.art === 'urteilend')
+  const fachreview = d.prueflaeufe.laeufe.find((l) => l.art === 'urteilend')!
+  const rechenlauf = d.prueflaeufe.laeufe.find((l) => l.zusatz != null)
   const wiederholung = d.prueflaeufe.laeufe.find((l) => l.art === 'wiederholung')
-  const rechenlauf = mechanisch.find((l) => l.zusatz != null)
-  const quizlauf = mechanisch.find((l) => l.ohneBefund != null)
-  const fachreview = urteilend[0]
-  const n = d.gegenstand.normbasis
+  const fehlalarmquote = d.messluecken.find((m) => m.id === 'fehlalarmquote')!
+  const weitereLuecken = nurSichtbare(d.messluecken).filter((m) => m.id !== 'fehlalarmquote')
 
   return (
     <>
-      <Kopf />
+      <Kopfleiste />
+      <Enthuellen />
 
-      <div className="rumpf">
-        <Nav />
+      <main id="inhalt">
+        {/* 01 --------------------------------------------------------------- */}
+        <Sektion id="vorhaben" klasse="lp-hero">
+          <h1 className="lp-display">
+            <span className="zeile">Fritz prüft.</span>
+            <span className="zeile">Ein Mensch gibt frei.</span>
+          </h1>
 
-        <main className="inhalt" id="inhalt">
-          {/* 01 ------------------------------------------------------------ */}
-          <section id="vorhaben">
-            <Kopfzeile id="vorhaben" />
-            <div className="prosa">
-              <p className="lead">
-                Die WAMOCON GmbH baut KI-Mitarbeiter. Der erste heißt Fritz und ist ein Reviewer. Er prüft
-                Schulungsunterlagen der WAMOCON Academy für die IHK-Ausbildung Kaufleute für Büromanagement
-                gegen einen definierten Maßstab und liefert einen priorisierten Bericht mit Fundstellen.
-              </p>
-              <p>
-                Fritz bewertet. Er erstellt keine Unterlagen und erteilt keine Freigabe. Die Freigabe bleibt
-                bei einem Menschen. Das ist eine Rollengrenze mit einem Grund: Ein KI-Mitarbeiter, der für
-                sein Ergebnis selbst einsteht, ist keine Rolle, sondern ein Haftungsproblem.
-              </p>
-              <p>
-                Das zweite Ziel steht gleichrangig neben dem ersten. Das Vorgehen soll auf weitere Rollen und
-                weitere Ausbildungsberufe übertragbar sein. Nichts wird gebaut, was nur für einen Beruf
-                funktioniert, wenn es ohne Mehraufwand allgemein geht.
-              </p>
-            </div>
-
-            <Kachelband kacheln={nurSichtbare(d.kennzahlen)} />
-
-            <p className="fussnote" style={{ marginTop: '1rem' }}>
-              Jede Zahl auf dieser Seite stammt aus einer Notiz im Vault oder aus dem Frontmatter eines
-              Prüflaufs. Wo etwas nicht gemessen ist, steht das ausdrücklich dabei.
+          <div className="lp-hero-raster">
+            <p className="lp-lead">
+              Die WAMOCON GmbH baut KI-Mitarbeiter. Der erste ist ein Reviewer. Er prüft
+              Schulungsunterlagen der WAMOCON Academy gegen einen definierten Maßstab und liefert
+              einen priorisierten Bericht mit Fundstellen. Wie zuverlässig er dabei ist, ist noch
+              nicht gemessen. Auch das steht auf dieser Seite.
             </p>
-          </section>
+            <div data-enthuellen>
+              <EnablerRaster />
+            </div>
+          </div>
 
-          {/* 02 ------------------------------------------------------------ */}
-          <section id="begriffe">
-            <Kopfzeile id="begriffe" />
-            <div className="prosa">
-              <p>
-                Die drei Begriffe gehen im Gespräch leicht durcheinander. Wer sie nicht auseinanderhält, hält
-                den Chat-Verlauf für Wissen und das Sprachmodell für den Mitarbeiter.
-              </p>
+          <dl className="lp-spec" data-enthuellen>
+            <div className="lp-spec-zeile">
+              <dt>Rolle</dt>
+              <dd>
+                Reviewer für Schulungsunterlagen der IHK-Ausbildung Kaufleute für Büromanagement
+              </dd>
             </div>
-            <div className="raster">
-              {d.begriffe.map((b) => (
-                <div className="karte" key={b.begriff}>
-                  <h3>{b.begriff}</h3>
-                  <p>{b.erklaerung}</p>
-                  <p style={{ marginTop: '0.5rem' }}>
-                    <b>{b.anzahl}</b>
-                  </p>
-                </div>
-              ))}
+            <div className="lp-spec-zeile">
+              <dt>Grenze</dt>
+              <dd>
+                <b>bewertet</b>, erstellt keine Unterlagen, erteilt keine Freigabe
+              </dd>
             </div>
-          </section>
+            <div className="lp-spec-zeile">
+              <dt>Maßstab</dt>
+              <dd>
+                {d.massstab.kriterien.gesamt} Kriterien, {d.massstab.schweregrade.length}{' '}
+                Schweregrade, {zahl(26)} Regeln mit Testfällen
+              </dd>
+            </div>
+            <div className="lp-spec-zeile">
+              <dt>Bisher geprüft</dt>
+              <dd>
+                {zahl(fachreview.fragen!)} Fragen in {zahl(fachreview.enabler!)} Enablern,{' '}
+                {d.prueflaeufe.protokolliert} protokollierte Prüfläufe
+              </dd>
+            </div>
+            <div className="lp-spec-zeile">
+              <dt>Nicht gemessen</dt>
+              <dd>
+                <b>die Fehlalarmquote.</b> Kein Befund ist bisher von einem Menschen bewertet
+                worden.
+              </dd>
+            </div>
+          </dl>
+        </Sektion>
 
-          {/* 03 ------------------------------------------------------------ */}
-          <section id="schichten">
-            <Kopfzeile id="schichten" />
-            <div className="prosa">
-              <p>
-                Es gibt keinen Industriestandard dafür, wie ein KI-Mitarbeiter aufgebaut ist. Für einzelne
-                Schichten gibt es Konventionen: <span className="mono">AGENTS.md</span> für den Auftragstext,
-                das Agent-Skills-Format für Fähigkeiten, MCP für Werkzeuge. Die acht Schichten sind die
-                Ordnung dieses Projekts darüber, seit dem {datum(d.schichtenEntschieden)} als Referenzmodell.
-              </p>
-            </div>
-
-            <div className="tabellenrahmen">
-              <table aria-describedby="schichten-note">
-                <thead>
-                  <tr>
-                    <th style={{ width: '3rem' }}>Nr.</th>
-                    <th style={{ width: '14rem' }}>Schicht</th>
-                    <th>Frage</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {d.schichten.map((s) => (
-                    <tr key={s.nr}>
-                      <td className="mono">{s.nr}</td>
-                      <td>
-                        <b>{s.name}</b>{' '}
-                        {s.traegt ? <Marker art="offen">trägt</Marker> : null}
-                      </td>
-                      <td>{s.frage}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-            <p className="fussnote tabellennote" id="schichten-note">
-              Die beiden mit „trägt“ markierten Schichten sind die, an denen der Rest hängt.
+        {/* 02 --------------------------------------------------------------- */}
+        <Sektion id="grenze">
+          <p className="lp-aussage" data-enthuellen>
+            Ein KI-Mitarbeiter, der für sein Ergebnis selbst einsteht, ist keine Rolle, sondern ein
+            Haftungsproblem.
+          </p>
+          <div className="lp-text lp-luft-oben" data-enthuellen>
+            <p>
+              Fritz bewertet. Er erstellt keine Unterlagen und erteilt keine Freigabe. Die Freigabe
+              bleibt bei einem Menschen. Das ist eine Rollengrenze mit einem Grund, keine
+              Vorsichtsformel.
             </p>
+            <p>
+              Dass ein Testhaus seinen ersten KI-Mitarbeiter als Prüfer baut und nicht als
+              Ersteller, hat denselben Ursprung wie die Entscheidung zum Fehlalarm weiter unten.
+              Die Haltung zum Befund kommt aus dem Kerngeschäft.
+            </p>
+            <p>
+              Daneben steht ein zweites Ziel gleichrangig: Das Vorgehen soll auf weitere Rollen und
+              weitere Ausbildungsberufe übertragbar sein. Gebaut wird nichts, was nur für einen
+              Beruf funktioniert, wenn es ohne Mehraufwand allgemein geht.
+            </p>
+          </div>
+        </Sektion>
 
-            <Hinweis art="wichtig" wort="Schwerpunkt">
-              <p>
-                Zwei Schichten tragen den Rest, und es sind nicht die, die man erwartet: das Gedächtnis und
-                die Aufsicht. Ohne bewertete Befunde gibt es keine Fehlalarmquote, ohne Quote keine Abnahme.
-                Alles andere vergrößert, was ein KI-Mitarbeiter tut, ohne zu klären, wie gut er es tut.
-              </p>
-            </Hinweis>
-
-            <div className="prosa" style={{ marginTop: '1.3rem' }}>
-              <p>
-                Eine ältere Kurzform mit fünf Bausteinen ist weiter gültig, hat aber keinen Baustein für das
-                Gedächtnis. Genau das war der Grund, die acht Schichten zur Referenz zu machen: Wer mit fünf
-                Bausteinen plant, plant das Lernen nicht mit.
-              </p>
-            </div>
-          </section>
-
-          {/* 04 ------------------------------------------------------------ */}
-          <section id="gedaechtnis">
-            <Kopfzeile id="gedaechtnis" />
-            <div className="prosa">
-              <p>
-                Wissen ist, was jemand entschieden hat, dass es gilt. Gedächtnis ist, was beim Arbeiten
-                herausgekommen ist. Wissen schreiben Menschen, Gedächtnis fällt bei Läufen an. Verwechselt
-                werden die beiden regelmäßig, weil sie teilweise am selben Ort liegen.
-              </p>
-            </div>
-
-            <div className="raster">
-              <div className="karte">
-                <h3>Wissen: vier Sorten</h3>
-                <ul className="liste" style={{ marginTop: '0.6rem' }}>
-                  <li>Die Normbasis, amtlicher Wortlaut, wörtlich abgeschrieben. Fehlt sie, kann der Reviewer die Abdeckung nicht beurteilen.</li>
-                  <li>Der interne Maßstab aus Checklisten, Systematik, Corporate Design und Schweregraden. Fehlt er, prüft Fritz Konformität statt Qualität.</li>
-                  <li>Die Begriffe. Fehlen sie, meinen zwei Sitzungen dasselbe Wort verschieden.</li>
-                  <li>Die Entscheidungen mit Datum. Fehlen sie, wird dieselbe Frage alle zwei Wochen neu entschieden.</li>
-                </ul>
+        {/* 03 --------------------------------------------------------------- */}
+        <Sektion id="begriffe">
+          <p className="lp-aussage breit" data-enthuellen>
+            Drei Begriffe, die auseinandergehalten werden.
+          </p>
+          <div className="lp-text lp-luft-oben-klein" data-enthuellen>
+            <p>
+              Wer sie vermischt, hält den Chat-Verlauf für Wissen und das Sprachmodell für den
+              Mitarbeiter.
+            </p>
+          </div>
+          <div className="lp-zellen" data-enthuellen>
+            {d.begriffe.map((b, i) => (
+              <div className="lp-zelle" key={b.begriff}>
+                <span className="kopf">{String(i + 1).padStart(2, '0')}</span>
+                <h3>{b.begriff}</h3>
+                <p>{b.erklaerung}</p>
+                <p className="stark">{b.anzahl}</p>
               </div>
-              <div className="karte">
-                <h3>Gedächtnis: drei Körnungen</h3>
-                <ul className="liste" style={{ marginTop: '0.6rem' }}>
-                  <li>Der einzelne Befund, mehrere hundert je Lauf.</li>
-                  <li>Die Regel: {zahl(d.kennzahlen.find((k) => k.id === 'regeln')?.zahl ?? 0)} Stück, stabil, mit Zweck, Testfällen und gemessener Fehlalarmquote.</li>
-                  <li>Der Lauf, eine Notiz mit Kennzahlen.</li>
-                </ul>
-                <p style={{ marginTop: '0.7rem' }}>
-                  Die mittlere Körnung fehlt heute.
-                </p>
-              </div>
-            </div>
-
-            <Hinweis wort="Lücke">
-              <p>
-                Zwischen hunderten Einzelbefunden und einer Gesamtkennzahl gibt es nichts, was über eine
-                einzelne Regel Auskunft gibt. Das ist genau die Frage, die man stellt, wenn man wissen will,
-                ob man einem Befund glauben darf.
-              </p>
-            </Hinweis>
-
-            <div className="prosa" style={{ marginTop: '1.3rem' }}>
-              <p>
-                Der Weg, auf dem aus Gedächtnis wieder Wissen wird, ist der einzige Mechanismus, durch den ein
-                KI-Mitarbeiter über die Zeit besser wird: Ein Mensch bewertet einen Befund mit Fundstelle,
-                über viele Bewertungen ergibt sich je Regel eine Quote, und ein urteilender Prüfpunkt, der
-                dreimal gleich ausfällt, wird zu einer mechanischen Regel mit Testfällen aus genau den Fällen,
-                die sie ausgelöst haben.
-              </p>
-              <p>
-                Ausdrücklich kein Gedächtnis ist der Verlauf einer Sitzung. Was nicht geschrieben wurde, ist
-                nicht passiert.
-              </p>
-            </div>
-          </section>
-
-          {/* 05 ------------------------------------------------------------ */}
-          <section id="fritz">
-            <Kopfzeile id="fritz" />
-            <div className="prosa">
-              <p>
-                Ohne {d.auftrag.pflichtangaben.length} Angaben kann Fritz nicht sinnvoll prüfen. Fehlt eine
-                davon, wird nachgefragt statt geraten.
-              </p>
-            </div>
-            <ul className="liste">
-              {d.auftrag.pflichtangaben.map((p) => (
-                <li key={p}>{p}</li>
-              ))}
-            </ul>
-
-            <h3 style={{ marginTop: '1.8rem' }}>Der Ablauf</h3>
-            <ol className="schritte">
-              {d.auftrag.ablauf.map((s) => (
-                <li key={s}>{s}</li>
-              ))}
-            </ol>
-
-            <h3 style={{ marginTop: '1.8rem' }}>
-              Vier Regeln sind nicht verhandelbar
-            </h3>
-            <div className="raster">
-              {d.auftrag.harteRegeln.map((r) => (
-                <div className="karte" key={r.regel}>
-                  <h3>{r.regel}</h3>
-                  <p>{r.grund}</p>
-                </div>
-              ))}
-            </div>
-          </section>
-
-          {/* 06 ------------------------------------------------------------ */}
-          <section id="massstab">
-            <Kopfzeile id="massstab" />
-            <div className="prosa">
-              <p>
-                Der Kriterienkatalog hat {d.massstab.kriterien.gesamt} benannte Kriterien.{' '}
-                {d.massstab.kriterien.mechanisch} davon sind mechanisch prüfbar,{' '}
-                {d.massstab.kriterien.urteilend} verlangen ein Urteil.
-              </p>
-            </div>
-            <ul className="liste">
-              {d.massstab.kriterien.liste.map((k) => (
-                <li key={k}>{k}</li>
-              ))}
-            </ul>
-
-            <Hinweis wort="offen">
-              <p>
-                Die Gewichtung der Kriterien ist {d.massstab.kriterien.gewichtung}.
-              </p>
-            </Hinweis>
-
-            <div className="tabellenrahmen">
-              <table>
-                <thead>
-                  <tr>
-                    <th style={{ width: '9rem' }}>Schweregrad</th>
-                    <th>Bedeutung</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {d.massstab.schweregrade.map((s) => (
-                    <tr key={s.stufe}>
-                      <td>
-                        <span className={`stufe ${s.stufe.toLowerCase()}`}>{s.stufe}</span>
-                      </td>
-                      <td>{s.bedeutung}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-
-            <Block titel={d.massstab.kalibrierung.satz}>
-              <p>
-                Am {datum(d.massstab.kalibrierung.entschiedenAm)} entschieden, und diese Entscheidung
-                kalibriert alles andere. Die Begründung ist die eines Testhauses:{' '}
-                {d.massstab.kalibrierung.begruendung}
-              </p>
-              <p style={{ marginTop: '0.7rem' }}>{d.massstab.kalibrierung.offen}</p>
-            </Block>
-          </section>
-
-          {/* 07 ------------------------------------------------------------ */}
-          <section id="gegenstand">
-            <Kopfzeile id="gegenstand" />
-            <div className="prosa">
-              <p>
-                Die WAMOCON Academy gliedert ihre Unterlagen {d.gegenstand.gliederung}. Drei Ebenen:{' '}
-                {d.gegenstand.komponenten} Komponenten entlang der Zeitachse,{' '}
-                {d.gegenstand.themenkomplexe} Themenkomplexe, je einer Berufsbildposition entsprechend, und{' '}
-                {d.gegenstand.enabler} Enabler, je einem Buchstaben der Position entsprechend. An jedem
-                Enabler hängen {d.gegenstand.jeEnabler}. Zusammen {zahl(d.gegenstand.dateien)} Dateien,{' '}
-                {d.gegenstand.format}. {d.gegenstand.enablerVollstaendig} der {d.gegenstand.enabler} Enabler
-                sind vollständig ausgestattet.
-              </p>
-              <p>
-                Die Academy deckt alle {d.gegenstand.wahlqualifikationen} Wahlqualifikationen ab. Der
-                Rechtsstand ist die {d.gegenstand.rechtsstand}.
-              </p>
-              <p>
-                Als Normbasis liegen {n.notizen} verlinkte Notizen im Vault: {n.positionenAbschnittA}{' '}
-                Positionen aus Abschnitt A, {n.wahlqualifikationen} Wahlqualifikationen,{' '}
-                {n.integrativeAbschnittC} integrative Positionen aus Abschnitt C, {n.lernfelder} Lernfelder,
-                dazu {n.weitere.join(', ')}. Primärquelle ist das {n.primaerquelle}.
-              </p>
-            </div>
-
-            <Hinweis
-              wort="Rechtsstand"
-              titel={`Zwei Ordnungen laufen parallel bis ${d.gegenstand.parallellauf.bis}`}
-            >
-              <p>
-                {d.gegenstand.parallellauf.regel} Deshalb ist die Standsangabe in jeder Notiz Pflicht.{' '}
-                {d.gegenstand.parallellauf.folge}
-              </p>
-            </Hinweis>
-          </section>
-
-          {/* 08 ------------------------------------------------------------ */}
-          <section id="gemessen">
-            <Kopfzeile id="gemessen" />
-            <div className="prosa">
-              <p>
-                Zwischen dem {datum(d.prueflaeufe.zeitraum.von)} und dem {datum(d.prueflaeufe.zeitraum.bis)}{' '}
-                sind {d.prueflaeufe.protokolliert} Prüfläufe protokolliert. Die Zahlen stammen aus dem
-                Frontmatter der Laufnotizen. Ausgewiesen sind hier die{' '}
-                {d.prueflaeufe.imDokumentAusgewiesen} Läufe, zu denen das Übergabedokument Kennzahlen nennt.
-              </p>
-            </div>
-
-            <h3 style={{ marginTop: '1.8rem' }}>Mechanische Läufe</h3>
-            <div className="tabellenrahmen">
-              <table aria-describedby="mechanisch-note">
-                <thead>
-                  <tr>
-                    <th>Datum</th>
-                    <th>Gegenstand</th>
-                    <th className="num">Geprüft</th>
-                    <th className="num">Blocker</th>
-                    <th className="num">Major</th>
-                    <th className="num">Minor</th>
-                    <th className="num">Hinweise</th>
-                    <th>Laufzeit</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {mechanisch.map((l) => (
-                    <tr key={l.id}>
-                      <td className="datum">{l.datum ? datum(l.datum) : '—'}</td>
-                      <td>{l.gegenstand}</td>
-                      <td className="num">{l.geprueft != null ? zahl(l.geprueft) : '—'}</td>
-                      <td className="num">{l.blocker != null ? zahl(l.blocker) : '—'}</td>
-                      <td className="num">{l.major != null ? zahl(l.major) : '—'}</td>
-                      <td className="num">{l.minor != null ? zahl(l.minor) : '—'}</td>
-                      <td className="num">{l.hinweise != null ? zahl(l.hinweise) : '—'}</td>
-                      <td>{l.laufzeit ?? '—'}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-            <p className="fussnote tabellennote" id="mechanisch-note">
-              Ein Strich heißt: für diesen Lauf nicht ausgewiesen.
-              {rechenlauf?.zusatz ? (
-                <>
-                  {' '}
-                  Beim Lauf vom {datum(rechenlauf.datum!)} wurden zusätzlich{' '}
-                  {zahl(rechenlauf.zusatz.gleichungen)} Gleichungen nachgerechnet, davon{' '}
-                  {zahl(rechenlauf.zusatz.gleichungenFalsch)} falsch.
-                </>
-              ) : null}
-              {quizlauf?.ohneBefund != null ? (
-                <> Beim Quizlauf blieben {zahl(quizlauf.ohneBefund)} Dokumente ohne Befund.</>
-              ) : null}
-            </p>
-
-            {mechanisch[0].notiz ? (
-              <Hinweis wort="Sammelkorrektur">
-                <p>{mechanisch[0].notiz}</p>
-              </Hinweis>
-            ) : null}
-
-            <h3 style={{ marginTop: '1.8rem' }}>Urteilende Läufe</h3>
-            <div className="tabellenrahmen">
-              <table aria-describedby="urteilend-note">
-                <thead>
-                  <tr>
-                    <th>Zeitraum</th>
-                    <th className="num">Themenkomplexe</th>
-                    <th className="num">Enabler</th>
-                    <th className="num">Fragen</th>
-                    <th className="num">Befunde</th>
-                    <th className="num">davon Blocker</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {urteilend.map((l) => (
-                    <tr key={l.id}>
-                      <td className="datum">
-                        {datum(l.datumVon!)} bis {datum(l.datumBis!)}
-                      </td>
-                      <td className="num">{zahl(l.themenkomplexe!)}</td>
-                      <td className="num">{zahl(l.enabler!)}</td>
-                      <td className="num">{zahl(l.fragen!)}</td>
-                      <td className="num">{zahl(l.befunde!)}</td>
-                      <td className="num">{zahl(l.blocker!)}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-            <p className="fussnote tabellennote" id="urteilend-note">
-              {fachreview.gegenstand}.
-            </p>
-
-            <Hinweis wort="ungeklärt" titel="Die Befundzahl geht nicht auf">
-              <p>{fachreview.notiz}</p>
-            </Hinweis>
-
-            {sichtbar(d.prueflaeufe.befunddichte) ? (
-              <Block titel="Wo die Befunde sitzen">
-                <p>
-                  Die Befunddichte streut deutlich, zwischen {d.prueflaeufe.befunddichte.min} und{' '}
-                  {d.prueflaeufe.befunddichte.max} {d.prueflaeufe.befunddichte.einheit}, und sie bündelt sich
-                  innerhalb der Kapitel. {d.prueflaeufe.befunddichte.buendelung}
-                </p>
-                {istIntern ? (
-                  <p style={{ marginTop: '0.7rem' }}>
-                    <Marker art="intern">nur intern</Marker> Aufschlüsselung je Themenkomplex gehört nicht auf
-                    eine öffentliche Seite.
-                  </p>
-                ) : null}
-              </Block>
-            ) : null}
-
-            <Hinweis art="wichtig" wort="Leitbefund" titel={d.prueflaeufe.leitbefund.titel}>
-              <p>{d.prueflaeufe.leitbefund.text}</p>
-            </Hinweis>
-
-            {wiederholung ? (
-              <Block titel="Wiederholbarkeit">
-                <p>
-                  Am {datum(wiederholung.datum!)} wurde {wiederholung.gegenstand}.{' '}
-                  {wiederholung.notiz}
-                </p>
-                <p style={{ marginTop: '0.7rem' }} className="fussnote">
-                  Der Lauf war nicht blind. Ein echter Blindtest steht aus.
-                </p>
-              </Block>
-            ) : null}
-          </section>
-
-          {/* 09 ------------------------------------------------------------ */}
-          <section id="luecke">
-            <Kopfzeile id="luecke" />
-            <div className="prosa">
-              <p className="lead">
-                Das ist der Engpass des Projekts, und er steht hier ausgeschrieben. Eine Seite, die ihn
-                verschweigt, wird unglaubwürdig, sobald jemand nachfragt.
-              </p>
-            </div>
-
-            {nurSichtbare(d.messluecken).map((m) => (
-              <Hinweis
-                key={m.id}
-                art={m.id === 'fehlalarmquote' ? 'wichtig' : 'offen'}
-                wort="nicht gemessen"
-                titel={m.titel}
-              >
-                <p>{m.text}</p>
-                {m.unbewertet != null ? (
-                  <p style={{ marginTop: '0.7rem' }} className="fussnote">
-                    Unbewertet: {zahl(m.unbewertet)} Befunde und Hinweise. {m.unbewertetHerkunft}.
-                  </p>
-                ) : null}
-              </Hinweis>
             ))}
+          </div>
+        </Sektion>
 
-            <div className="prosa" style={{ marginTop: '1.8rem' }}>
-              <p>
-                Bekannt ist nur, wie es aussieht, wenn eine Regel danebengreift. Beide Serien liegen heute als
-                Testfälle vor, jeweils mit der Fundstelle, aus der sie stammen. Wer die Regel ändert, lässt
-                sie vorher laufen.
+        {/* 04 --------------------------------------------------------------- */}
+        <Sektion id="schichten">
+          <p className="lp-aussage breit" data-enthuellen>
+            Acht Schichten. Zwei davon tragen den Rest.
+          </p>
+          <div className="lp-text lp-luft-oben-klein" data-enthuellen>
+            <p>
+              Es gibt keinen Industriestandard dafür, wie ein KI-Mitarbeiter aufgebaut ist. Für
+              einzelne Schichten gibt es Konventionen: <span className="mono">AGENTS.md</span> für
+              den Auftragstext, das Agent-Skills-Format für Fähigkeiten, MCP für Werkzeuge. Die acht
+              Schichten sind die Ordnung dieses Projekts darüber, seit dem{' '}
+              {datum(d.schichtenEntschieden)} als Referenzmodell.
+            </p>
+          </div>
+
+          <div className="lp-zellen vier" data-enthuellen>
+            {d.schichten.map((s) => (
+              <div className={s.traegt ? 'lp-zelle traegt' : 'lp-zelle'} key={s.nr}>
+                <span className="kopf">
+                  {String(s.nr).padStart(2, '0')}
+                  {s.traegt ? ' · trägt' : ''}
+                </span>
+                <h3>{s.name}</h3>
+                <p>{s.frage}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="lp-text lp-luft-oben" data-enthuellen>
+            <p>
+              Die beiden tragenden sind nicht die, die man erwartet: das Gedächtnis und die
+              Aufsicht. Ohne bewertete Befunde gibt es keine Fehlalarmquote, ohne Quote keine
+              Abnahme. Alles andere vergrößert, was ein KI-Mitarbeiter tut, ohne zu klären, wie gut
+              er es tut.
+            </p>
+            <p>
+              Wissen ist, was jemand entschieden hat, dass es gilt. Gedächtnis ist, was beim
+              Arbeiten herausgekommen ist. Wissen schreiben Menschen, Gedächtnis fällt bei Läufen
+              an. Ausdrücklich kein Gedächtnis ist der Verlauf einer Sitzung: Was nicht geschrieben
+              wurde, ist nicht passiert.
+            </p>
+          </div>
+        </Sektion>
+
+        {/* 05 --------------------------------------------------------------- */}
+        <Sektion id="massstab">
+          <p className="lp-klein" data-enthuellen>
+            Entschieden am {datum(d.massstab.kalibrierung.entschiedenAm)}
+          </p>
+          <p className="lp-aussage lp-luft-oben-klein" data-enthuellen>
+            {d.massstab.kalibrierung.satz}
+          </p>
+          <div className="lp-text lp-luft-oben" data-enthuellen>
+            <p>
+              Diese Entscheidung kalibriert alles andere. Die Begründung ist die eines Testhauses:{' '}
+              {d.massstab.kalibrierung.begruendung}
+            </p>
+            <p>Der Beleg lag zu diesem Zeitpunkt bereits vor.</p>
+          </div>
+
+          <dl className="lp-spec" data-enthuellen>
+            {nurSichtbare(d.fehlalarmBelege).map((f) => (
+              <div className="lp-spec-zeile" key={f.id}>
+                <dt>{f.titel}</dt>
+                <dd>
+                  <b>{zahl(f.fehlalarme)} Fehlalarme</b>
+                  {f.ausEinerRegel != null
+                    ? `, ${zahl(f.ausEinerRegel)} davon aus einer einzigen Regel`
+                    : ', kein einziger Treffer war echt'}
+                  {'. '}
+                  Heute liegen {zahl(f.testfaelle)} Testfälle daraus vor, jeder mit seiner
+                  Fundstelle.
+                </dd>
+              </div>
+            ))}
+          </dl>
+
+          <p className="lp-klein lp-luft-oben" data-enthuellen>
+            Vier Regeln sind nicht verhandelbar
+          </p>
+          <div className="lp-zellen vier" data-enthuellen>
+            {d.auftrag.harteRegeln.map((r, i) => (
+              <div className="lp-zelle" key={r.regel}>
+                <span className="kopf">{String(i + 1).padStart(2, '0')}</span>
+                <h3>{r.regel}</h3>
+                <p>{r.grund}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="lp-text lp-luft-oben" data-enthuellen>
+            <p>
+              Der Kriterienkatalog hat {d.massstab.kriterien.gesamt} benannte Kriterien,{' '}
+              {d.massstab.kriterien.mechanisch} davon mechanisch prüfbar,{' '}
+              {d.massstab.kriterien.urteilend} verlangen ein Urteil. Die Gewichtung ist{' '}
+              {d.massstab.kriterien.gewichtung}. Die vier Schweregrade und der vollständige Katalog
+              stehen im <a href="/stand/#massstab">ausführlichen Stand</a>.
+            </p>
+          </div>
+        </Sektion>
+
+        {/* 06 --------------------------------------------------------------- */}
+        <Sektion id="gemessen">
+          <p className="lp-aussage breit" data-enthuellen>
+            {d.prueflaeufe.protokolliert} Prüfläufe in{' '}
+            {tageZwischen(d.prueflaeufe.zeitraum.von, d.prueflaeufe.zeitraum.bis)} Tagen.
+          </p>
+          <div className="lp-text lp-luft-oben-klein" data-enthuellen>
+            <p>
+              Zwischen dem {datum(d.prueflaeufe.zeitraum.von)} und dem{' '}
+              {datum(d.prueflaeufe.zeitraum.bis)} protokolliert. Die Zahlen stammen aus dem
+              Frontmatter der Laufnotizen, nicht aus dieser Seite.
+            </p>
+          </div>
+
+          <div className="lp-kpi" data-enthuellen>
+            <div className="lp-kpi-kachel">
+              <p className="lp-kpi-wert">{zahl(fachreview.fragen!)}</p>
+              <p className="lp-kpi-label">Fragen einzeln gegen den Volltext ihres Enablers gehalten</p>
+            </div>
+            <div className="lp-kpi-kachel">
+              <p className="lp-kpi-wert">{zahl(fachreview.befunde!)}</p>
+              <p className="lp-kpi-label">
+                Befunde daraus, davon {zahl(fachreview.blocker!)} Blocker
               </p>
             </div>
-
-            <div className="tabellenrahmen">
-              <table>
-                <thead>
-                  <tr>
-                    <th>Serie</th>
-                    <th className="num">Fehlalarme</th>
-                    <th className="num">davon aus einer Regel</th>
-                    <th className="num">Testfälle</th>
-                    <th>Befund</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {nurSichtbare(d.fehlalarmBelege).map((f) => (
-                    <tr key={f.id}>
-                      <td>
-                        <b>{f.titel}</b>
-                      </td>
-                      <td className="num">{zahl(f.fehlalarme)}</td>
-                      <td className="num">{f.ausEinerRegel != null ? zahl(f.ausEinerRegel) : '—'}</td>
-                      <td className="num">{zahl(f.testfaelle)}</td>
-                      <td>{f.text}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </section>
-
-          {/* 10 ------------------------------------------------------------ */}
-          <section id="uebertragbarkeit">
-            <Kopfzeile id="uebertragbarkeit" />
-            <div className="prosa">
-              <p>
-                Der Reviewer besteht aus einem Kern, der für jeden Prüfgegenstand gleich ist ({d.uebertragbarkeit.kern}),
-                und aus Profilen je Gegenstand ({d.uebertragbarkeit.profil}).{' '}
-                {d.uebertragbarkeit.satz}
-              </p>
-              <p>{d.uebertragbarkeit.zweiterMitarbeiter}</p>
-              <p>{d.uebertragbarkeit.uebergabe}</p>
-            </div>
-
-            <Hinweis wort="Auswahlregel">
-              <p>{d.uebertragbarkeit.auswahlregel}</p>
-            </Hinweis>
-          </section>
-
-          {/* 11 ------------------------------------------------------------ */}
-          {zeigen('plattform') ? (
-            <section id="plattform">
-              <Kopfzeile id="plattform" />
-              <div className="prosa">
-                <p>
-                  Gebaut und gemessen wird auf {d.plattform.werkbank}. Für den Dauerbetrieb ist am{' '}
-                  {datum(d.plattform.entschiedenAm)} entschieden: {d.plattform.dauerbetrieb}. Dort soll ein
-                  Klon von Fritz stehen und den Kollegen bereitstehen. {d.plattform.werkbank} bleibt die
-                  Werkbank.
+            {rechenlauf?.zusatz ? (
+              <div className="lp-kpi-kachel">
+                <p className="lp-kpi-wert">{zahl(rechenlauf.zusatz.gleichungen)}</p>
+                <p className="lp-kpi-label">
+                  nachgerechnete Gleichungen, davon{' '}
+                  {zahl(rechenlauf.zusatz.gleichungenFalsch)} falsch
                 </p>
-                <p>{d.plattform.ablageregel}</p>
               </div>
-
-              <h3 style={{ marginTop: '1.8rem' }}>
-                Fünf Schritte bis zum {datum(d.plattform.termin)}
-              </h3>
-              <ol className="schritte">
-                {d.plattform.schritte.map((s) => (
-                  <li key={s}>{s}</li>
-                ))}
-              </ol>
-
-              <Hinweis wort="Testfallpflicht" titel="Warum die Abschaltung kein Detail ist">
-                <p>{d.plattform.warumAbschaltung}</p>
-              </Hinweis>
-
-              <div className="raster">
-                <div className="karte">
-                  <h3>Was am {datum(d.plattform.termin)} erreicht sein kann</h3>
-                  <p>{d.plattform.erreichbar}</p>
-                </div>
-                <div className="karte">
-                  <h3>Was damit nicht beantwortet ist</h3>
-                  <p>{d.plattform.nichtBeantwortet}</p>
-                </div>
-              </div>
-            </section>
-          ) : null}
-
-          {/* 12 ------------------------------------------------------------ */}
-          <section id="entscheidungen">
-            <Kopfzeile id="entscheidungen" />
-            <div className="tabellenrahmen">
-              <table>
-                <thead>
-                  <tr>
-                    <th style={{ width: '7rem' }}>Datum</th>
-                    <th>Entscheidung</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {nurSichtbare(d.entscheidungen).map((e) => (
-                    <tr key={e.datum + e.entscheidung}>
-                      <td className="datum">{datum(e.datum)}</td>
-                      <td>
-                        {e.entscheidung}{' '}
-                        {istIntern && e.freigabe === 'intern' ? (
-                          <Marker art="intern">nur intern</Marker>
-                        ) : null}
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+            ) : null}
+            <div className="lp-kpi-kachel">
+              <p className="lp-kpi-wert">{zahl(d.gegenstand.dateien)}</p>
+              <p className="lp-kpi-label">Dateien im geprüften Bestand, ausschließlich Word</p>
             </div>
-            <div className="prosa" style={{ marginTop: '1.3rem' }}>
+          </div>
+
+          <div className="lp-log" data-enthuellen>
+            {nurSichtbare(d.prueflaeufe.laeufe).map((l) => (
+              <div className="lp-log-zeile" key={l.id}>
+                <span className="wann">
+                  {l.datum ? datum(l.datum) : `${datum(l.datumVon!)}–${datum(l.datumBis!)}`}
+                </span>
+                <span className="was">{l.gegenstand}</span>
+                <span className="zusatz">{l.art}</span>
+              </div>
+            ))}
+          </div>
+
+          <p className="lp-aussage lp-luft-oben" data-enthuellen>
+            {d.prueflaeufe.leitbefund.titel}
+          </p>
+          <div className="lp-text lp-luft-oben-klein" data-enthuellen>
+            <p>{d.prueflaeufe.leitbefund.text}</p>
+            {wiederholung ? <p>{wiederholung.notiz}</p> : null}
+          </div>
+        </Sektion>
+
+        {/* 07 --------------------------------------------------------------- */}
+        <Sektion id="luecke">
+          <div className="lp-hero-zahl" data-enthuellen>
+            <p className="wert">0</p>
+            <p className="beschriftung">
+              von {zahl(fehlalarmquote.unbewertet!)} Befunden und Hinweisen sind bisher von einem
+              Menschen bewertet worden.
+            </p>
+          </div>
+
+          <div className="lp-text lp-luft-oben" data-enthuellen>
+            <p>{fehlalarmquote.text}</p>
+            <p>
+              Das ist der Engpass des Projekts, und er steht hier ausgeschrieben. Eine Seite, die
+              ihn verschweigt, wird unglaubwürdig, sobald jemand nachfragt.
+            </p>
+          </div>
+
+          <div className="lp-zellen" data-enthuellen>
+            {weitereLuecken.map((m) => (
+              <div className="lp-zelle" key={m.id}>
+                <span className="kopf">nicht gemessen</span>
+                <h3>{m.titel}</h3>
+                <p>{m.text}</p>
+              </div>
+            ))}
+            <div className="lp-zelle">
+              <span className="kopf">Reihenfolge</span>
+              <h3>Die Technik wurde vorgezogen</h3>
               <p>{d.entscheidungenNachtrag}</p>
             </div>
-          </section>
+          </div>
 
-          {/* 13 ------------------------------------------------------------ */}
-          <section id="offen">
-            <Kopfzeile id="offen" />
-            <div className="prosa">
-              <p>Nach Priorität, mit dem Grund für die Reihenfolge.</p>
+          <p className="lp-aussage lp-luft-oben" data-enthuellen>
+            Was diese Seite von einer üblichen KI-Seite unterscheidet, ist nicht die Technik,
+            sondern dass sie ihre eigene Messlücke benennt.
+          </p>
+        </Sektion>
+
+        {/* 08 --------------------------------------------------------------- */}
+        <Sektion id="uebertragbarkeit">
+          <p className="lp-aussage" data-enthuellen>
+            {d.uebertragbarkeit.satz}
+          </p>
+          <div className="lp-zellen" data-enthuellen>
+            <div className="lp-zelle">
+              <span className="kopf">Kern</span>
+              <h3>Für jeden Prüfgegenstand gleich</h3>
+              <p>{d.uebertragbarkeit.kern}</p>
             </div>
-            <ol className="schritte">
-              {nurSichtbare(d.offenePunkte).map((p) => (
-                <li key={p.nr}>
-                  <b>{p.punkt}.</b> {p.grund ?? ''}
-                </li>
-              ))}
-            </ol>
-            <p className="fussnote" style={{ marginTop: '1rem' }}>
-              Dazu kommt eine längere Liste fachlicher Einzelfragen aus den Prüfläufen. Die wird im
-              Änderungsprotokoll geführt und gehört nicht hierher.
+            <div className="lp-zelle">
+              <span className="kopf">Profil</span>
+              <h3>Je Gegenstand eigen</h3>
+              <p>{d.uebertragbarkeit.profil}</p>
+            </div>
+            <div className="lp-zelle">
+              <span className="kopf">Auswahl</span>
+              <h3>Eine Rolle braucht einen Engpass</h3>
+              <p>{d.uebertragbarkeit.auswahlregel}</p>
+            </div>
+          </div>
+          <div className="lp-text lp-luft-oben" data-enthuellen>
+            <p>{d.uebertragbarkeit.zweiterMitarbeiter}</p>
+            <p>{d.uebertragbarkeit.uebergabe}</p>
+          </div>
+        </Sektion>
+
+        {/* 09 --------------------------------------------------------------- */}
+        <Sektion id="plattform">
+          <p className="lp-intern" data-enthuellen>
+            nur intern
+          </p>
+          <p className="lp-aussage lp-luft-oben-klein" data-enthuellen>
+            Der Dauerbetrieb läuft im Haus, die Werkbank bleibt außen.
+          </p>
+          <div className="lp-text lp-luft-oben" data-enthuellen>
+            <p>
+              Gebaut und gemessen wird auf {d.plattform.werkbank}. Für den Dauerbetrieb ist am{' '}
+              {datum(d.plattform.entschiedenAm)} entschieden: {d.plattform.dauerbetrieb}. Dort soll
+              ein Klon von Fritz stehen und den Kollegen bereitstehen.
             </p>
-          </section>
+            <p>{d.plattform.ablageregel}</p>
+          </div>
 
-          {/* 14 ------------------------------------------------------------ */}
-          {zeigen('beobachtungen') ? (
-            <section id="beobachtungen">
-              <Kopfzeile id="beobachtungen" />
-              <div className="prosa">
-                <p>
-                  Beim Übertragen der Zahlen aus dem Übergabedokument und dem CI-Blatt sind drei Stellen
-                  aufgefallen, die nicht aufgehen. Sie stehen hier, statt beim Übertragen geglättet zu werden.
-                </p>
-              </div>
-              {nurSichtbare(d.beobachtungen).map((b) => (
-                <Block key={b.id} titel={b.titel}>
-                  <p>{b.text}</p>
-                  <p className="fussnote" style={{ marginTop: '0.6rem' }}>
-                    Quelle: {b.quelle}
-                  </p>
-                </Block>
-              ))}
-            </section>
-          ) : null}
+          <p className="lp-klein lp-luft-oben" data-enthuellen>
+            Fünf Schritte bis zum {datum(d.plattform.termin)}
+          </p>
+          <ol className="lp-punkte" data-enthuellen>
+            {d.plattform.schritte.map((s, i) => (
+              <li key={s}>
+                <span className="nr">{String(i + 1).padStart(2, '0')}</span>
+                <span>
+                  <span className="punkt">{s}</span>
+                  {i === 3 ? <p className="grund">{d.plattform.warumAbschaltung}</p> : null}
+                </span>
+              </li>
+            ))}
+          </ol>
 
-          {/* 15 ------------------------------------------------------------ */}
-          {zeigen('quellen') ? (
-            <section id="quellen">
-              <Kopfzeile id="quellen" />
-              <div className="prosa">
-                <p>
-                  Alles auf dieser Seite Zusammengefasste stammt aus dem Arbeitsordner{' '}
-                  <span className="mono">{d.herkunft.arbeitsordner}</span>. Der Einstieg für einen Menschen,
-                  der den Zusammenhang braucht, ist{' '}
-                  <span className="mono">{d.herkunft.einstieg}</span>.
-                </p>
-              </div>
-              <div className="tabellenrahmen">
-                <table>
-                  <thead>
-                    <tr>
-                      <th style={{ width: '20rem' }}>Ort</th>
-                      <th>Inhalt</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {nurSichtbare(d.quellen).map((q) => (
-                      <tr key={q.ort}>
-                        <td className="mono">{q.ort}</td>
-                        <td>{q.inhalt}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-              <p className="fussnote" style={{ marginTop: '1rem' }}>
-                {d.herkunft.verfahren}
-              </p>
-            </section>
-          ) : null}
-        </main>
-      </div>
+          <div className="lp-zellen" data-enthuellen>
+            <div className="lp-zelle">
+              <span className="kopf">erreichbar</span>
+              <h3>Was am {datum(d.plattform.termin)} stehen kann</h3>
+              <p>{d.plattform.erreichbar}</p>
+            </div>
+            <div className="lp-zelle">
+              <span className="kopf">offen</span>
+              <h3>Was damit nicht beantwortet ist</h3>
+              <p>{d.plattform.nichtBeantwortet}</p>
+            </div>
+          </div>
+        </Sektion>
 
-      <Fuss />
+        {/* 10 --------------------------------------------------------------- */}
+        <Sektion id="entscheidungen">
+          <p className="lp-aussage breit" data-enthuellen>
+            Jede Entscheidung mit Datum, damit dieselbe Frage nicht alle zwei Wochen neu entschieden
+            wird.
+          </p>
+          <div className="lp-log" data-enthuellen>
+            {nurSichtbare(d.entscheidungen).map((e) => (
+              <div className="lp-log-zeile" key={e.datum + e.entscheidung}>
+                <span className="wann">{datum(e.datum)}</span>
+                <span className="was">{e.entscheidung}</span>
+                {istIntern && e.freigabe === 'intern' ? (
+                  <span className="zusatz">nur intern</span>
+                ) : (
+                  <span className="zusatz" />
+                )}
+              </div>
+            ))}
+          </div>
+        </Sektion>
+
+        {/* 11 --------------------------------------------------------------- */}
+        <Sektion id="offen">
+          <p className="lp-aussage breit" data-enthuellen>
+            Was als Nächstes ansteht, nach Priorität.
+          </p>
+          <ol className="lp-punkte" data-enthuellen>
+            {nurSichtbare(d.offenePunkte).map((p) => (
+              <li key={p.nr}>
+                <span className="nr">{String(p.nr).padStart(2, '0')}</span>
+                <span>
+                  <span className="punkt">{p.punkt}</span>
+                  {p.grund ? <p className="grund">{p.grund}</p> : null}
+                </span>
+              </li>
+            ))}
+          </ol>
+        </Sektion>
+
+        {/* 12 --------------------------------------------------------------- */}
+        <Sektion id="beobachtungen">
+          <p className="lp-intern" data-enthuellen>
+            nur intern
+          </p>
+          <p className="lp-aussage lp-luft-oben-klein" data-enthuellen>
+            Drei Stellen, die nicht aufgehen.
+          </p>
+          <div className="lp-text lp-luft-oben-klein" data-enthuellen>
+            <p>
+              Beim Übertragen der Zahlen aus dem Übergabedokument und dem CI-Blatt sind sie
+              aufgefallen. Sie stehen hier, statt beim Übertragen geglättet zu werden.
+            </p>
+          </div>
+          <div className="lp-zellen" data-enthuellen>
+            {nurSichtbare(d.beobachtungen).map((b) => (
+              <div className="lp-zelle" key={b.id}>
+                <span className="kopf">ungeklärt</span>
+                <h3>{b.titel}</h3>
+                <p>{b.text}</p>
+                <p className="kopf">{b.quelle}</p>
+              </div>
+            ))}
+          </div>
+        </Sektion>
+      </main>
+
+      <Fussleiste />
     </>
   )
 }
