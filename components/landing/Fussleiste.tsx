@@ -12,7 +12,7 @@ export function Fussleiste() {
         <div>
           {logo ? (
             // eslint-disable-next-line @next/next/no-img-element
-            <img src={logo} alt="WAMOCON" width={160} height={30} />
+            <img src={logo} alt="WAMOCON" />
           ) : (
             <p className="lp-wortmarke">WAMOCON</p>
           )}
@@ -34,6 +34,7 @@ export function Fussleiste() {
               <b>{g.name}</b>
             </p>
             <p>{g.auftrag}</p>
+            <p className="leistungen">{g.leistungen.join(' · ')}</p>
             <p>
               {g.register}
               <br />

@@ -96,6 +96,11 @@ export interface Gesellschaft extends MitFreigabe {
   name: string
   rolle: string
   auftrag: string
+  /** Leistungslinien je Marke, aus Block 02 des CI-Profils. */
+  leistungen: string[]
+  /** Anredeform der Marke. Gilt, sobald die Seite jemanden anspricht. */
+  ansprache: string
+  quelleLeistungen: string
   gegruendet: string | null
   register: string
   sitz: string
@@ -205,6 +210,15 @@ export interface Projektstand {
   offenePunkte: OffenerPunkt[]
   beobachtungen: Beobachtung[]
   gesellschaften: Gesellschaft[]
+  /** Regeln aus Block 09 des CI-Profils, die beim Einsetzen der Logodatei gelten. */
+  auftreten: {
+    logoMindestbreiteBildschirm: number
+    logoZulaessigeUntergruende: string[]
+    logoSchutzraum: string
+    bildsprache: string
+    quelle: string
+    freigabe: Freigabe
+  }
   geschaeftsfuehrung: string
   ansprechpartner: { name: string; rolle: string }
   quellen: Quelle[]

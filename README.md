@@ -129,8 +129,38 @@ Beide Seiten suchen beim Bauen unter `public/` nach `logo.svg`, `logo.png`,
 im Fußbereich. Bis dahin steht dort die gesetzte Wortmarke, so wie es auch das CI-Blatt
 selbst hält.
 
+Block 09 des CI-Profils stellt drei Bedingungen an die Platzierung, alle drei sind im
+Stylesheet umgesetzt und in `data/projektstand.json` unter `auftreten` festgehalten:
+
+- **Mindestbreite 120 px am Bildschirm.** Das Logo wird deshalb über die Breite
+  skaliert, nicht über die Höhe, und die Regel nutzt `box-sizing: content-box`, damit
+  der Schutzraum nicht gegen das Mindestmaß zählt.
+- **Zulässige Untergründe sind Weiß, Ink 950 und Rot 600.** Beide Fußbereiche stehen
+  deshalb auf der Grundfläche und nicht auf einem Grauton; getrennt werden sie durch
+  eine rote Kante.
+- **Schutzraum rundum mindestens die Höhe des W der Wortmarke.** Der Wert steht als
+  `--logo-schutzraum` an einer Stelle und ist mit 14 px eine Näherung. Er ist am
+  Original nachzumessen, sobald die Datei vorliegt.
+
+Nicht im Markup stehen feste Bildmaße: Eine dort eingetragene Höhe staucht jede Datei,
+deren Seitenverhältnis nicht zufällig passt.
+
+Für Bildmaterial gilt Block 09 weiter: echte Aufnahmen von Team und Arbeit,
+KI-Grafik nur abstrakt und gekennzeichnet. Das Enabler-Feld im Hero ist eine
+Datenfigur und fällt nicht darunter.
+
 Das Favicon liegt als `app/icon.svg` und zeigt drei weiße Zellen auf Rot 600, ein
 Anklang an das Enabler-Feld.
+
+## Anrede
+
+Block 02 des CI-Profils setzt für die WAMOCON GmbH **Sie, sachlich und
+belegorientiert**. Die Seite spricht den Leser bisher nirgends an, verletzt die Regel
+also nicht. Sobald ein Abschluss dazukommt, der jemanden anspricht, gilt sie.
+
+Für die Academy führt das CI-Blatt die Anrede in Block 05 ausdrücklich als offenen
+Widerspruch: Der Teaser duzt, test-it-academy.com siezt. Da die Landing Page eine Seite
+der GmbH ist, greift hier die Sie-Form ohne Zweifelsfall.
 
 ## Farben und Typografie
 

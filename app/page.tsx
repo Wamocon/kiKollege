@@ -13,6 +13,7 @@ export default function Landing() {
   const wiederholung = d.prueflaeufe.laeufe.find((l) => l.art === 'wiederholung')
   const fehlalarmquote = d.messluecken.find((m) => m.id === 'fehlalarmquote')!
   const weitereLuecken = nurSichtbare(d.messluecken).filter((m) => m.id !== 'fehlalarmquote')
+  const gmbh = d.gesellschaften[0]
 
   return (
     <>
@@ -92,7 +93,10 @@ export default function Landing() {
             <p>
               Dass ein Testhaus seinen ersten KI-Mitarbeiter als Prüfer baut und nicht als
               Ersteller, hat denselben Ursprung wie die Entscheidung zum Fehlalarm weiter unten.
-              Die Haltung zum Befund kommt aus dem Kerngeschäft.
+              Das Kerngeschäft der {gmbh.name} ist{' '}
+              {gmbh.leistungen.slice(0, -1).join(', ')} und{' '}
+              {gmbh.leistungen[gmbh.leistungen.length - 1]}. Die Haltung zum Befund kommt von dort
+              und nicht aus einer KI-Strategie.
             </p>
             <p>
               Daneben steht ein zweites Ziel gleichrangig: Das Vorgehen soll auf weitere Rollen und

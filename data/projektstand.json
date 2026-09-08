@@ -512,7 +512,15 @@
       "register": "HRB 103893, AG Frankfurt am Main",
       "sitz": "Mergenthalerallee 79–81, 65760 Eschborn",
       "kontakt": "+49 6196 5838311, info@wamocon.com",
-      "freigabe": "oeffentlich"
+      "freigabe": "oeffentlich",
+      "leistungen": [
+        "Testmanagement",
+        "Qualitätssicherung",
+        "Testautomatisierung",
+        "KI-Testing"
+      ],
+      "ansprache": "Sie, sachlich und belegorientiert",
+      "quelleLeistungen": "CI-Profil 1.0, Block 02"
     },
     {
       "name": "WAMOCON Academy GmbH",
@@ -522,7 +530,13 @@
       "register": "HRB 123666, gemeinsame Geschäftsführung",
       "sitz": "Mergenthalerallee 79–81, 65760 Eschborn",
       "kontakt": "+49 6196 5838312, info@test-it-academy.com",
-      "freigabe": "oeffentlich"
+      "freigabe": "oeffentlich",
+      "leistungen": [
+        "ISTQB-Training: CTFL 4.0, Agile Tester 1.0",
+        "DiTeLe"
+      ],
+      "ansprache": "im CI-Blatt als offen geführt, siehe Block 05",
+      "quelleLeistungen": "CI-Profil 1.0, Block 02"
     }
   ],
   "geschaeftsfuehrung": "Dipl.-Ing. Waleri Moretz",
@@ -566,5 +580,17 @@
       "inhalt": "die harten Regeln, werkzeugneutral",
       "freigabe": "intern"
     }
-  ]
+  ],
+  "auftreten": {
+    "logoMindestbreiteBildschirm": 120,
+    "logoZulaessigeUntergruende": [
+      "Weiß",
+      "Ink 950",
+      "Rot 600"
+    ],
+    "logoSchutzraum": "rundum mindestens die Höhe des Buchstabens W der Wortmarke",
+    "bildsprache": "echte Aufnahmen von Team und Arbeit; KI-Grafik nur abstrakt und gekennzeichnet",
+    "quelle": "CI-Profil 1.0, Block 09",
+    "freigabe": "oeffentlich"
+  }
 }
