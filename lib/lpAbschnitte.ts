@@ -12,16 +12,20 @@ export interface LpAbschnitt {
  *  keine Luecke zeigt. */
 const alle: readonly LpAbschnitt[] = [
   { id: 'vorhaben', label: 'Vorhaben' },
-  { id: 'grenze', label: 'Rollengrenze' },
-  { id: 'begriffe', label: 'Begriffe' },
-  { id: 'schichten', label: 'Aufbau' },
-  { id: 'massstab', label: 'Maßstab' },
-  { id: 'gemessen', label: 'Gemessen' },
-  { id: 'luecke', label: 'Nicht gemessen' },
-  { id: 'uebertragbarkeit', label: 'Übertragbarkeit' },
+  { id: 'chatbot', label: 'Abgrenzung' },
+  { id: 'eignung', label: 'Eignung' },
+  { id: 'ertrag', label: 'Ertrag' },
+  { id: 'aufbau', label: 'Aufbau' },
+  { id: 'wissen', label: 'Wissen' },
+  { id: 'durchlauf', label: 'Durchlauf' },
+  { id: 'messung', label: 'Messung' },
+  { id: 'erster', label: 'Der erste' },
+  { id: 'steuerung', label: 'Steuerung' },
+  { id: 'stand', label: 'Stand' },
+  { id: 'stufen', label: 'Stufen' },
+  { id: 'arbeit', label: 'Aufwand' },
   { id: 'plattform', label: 'Betrieb', freigabe: 'intern' },
   { id: 'entscheidungen', label: 'Entscheidungen' },
-  { id: 'offen', label: 'Offen' },
   { id: 'beobachtungen', label: 'Abgleich', freigabe: 'intern' },
 ]
 

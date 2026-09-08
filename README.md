@@ -8,8 +8,16 @@ Datenquelle.
 | `/` | Landing Page. Erzählt das Vorhaben vom Hero bis zu den offenen Punkten. |
 | `/stand/` | Dichte Standseite mit Ankernavigation, allen Tabellen und Prüfläufen. |
 
-Grundlage ist das Übergabedokument vom 05.09.2026 aus dem Arbeitsordner `D:\KFBM`.
-Farben und Typografie folgen dem CI-Profil Version 1.0 vom 18.08.2026.
+Drei Quellen liegen zugrunde, alle aus dem Arbeitsordner `D:\KFBM`:
+
+| Quelle | Was daraus kommt |
+|---|---|
+| KI-Mitarbeiter — Einführung, 04.09.2026 | Die Argumentation der Landing Page: Abgrenzung zum Chatbot, Eignungskriterien, die acht Fragen mit Dateizuordnung, die zwei Wissensablagen, der Durchlauf, die Steuerung, die drei Stufen |
+| Übergabedokument, 05.09.2026 | Kennzahlen der Prüfläufe, Entscheidungen mit Datum, offene Punkte, die Angaben zu beiden Gesellschaften |
+| CI-Profil Version 1.0, 18.08.2026 | Farben, Skalen, Kontrastregeln, Typografie, Logoregeln, Leistungslinien, Anredeform |
+
+Wo die Quellen sich widersprechen, steht der Widerspruch im Abschnitt „Abgleich" der
+internen Fassung, statt beim Übertragen geglättet zu werden.
 
 ## Die Gestaltung der Landing Page
 
@@ -64,9 +72,27 @@ Dasselbe Skript setzt die Klasse `js` auf das Dokument. Die Einblend-Animation b
 Scrollen startet nur unter dieser Klasse unsichtbar, damit ohne JavaScript kein Inhalt
 verborgen bleibt.
 
-## Die beiden Figuren
+## Die Figuren
 
-Die Landing Page zeigt zwei Datenfiguren, beide aus `data/projektstand.json`:
+Fünf Zeichnungen, alle aus `data/projektstand.json` gespeist und in
+`components/figuren/`. Sie sind eigene SVG in den CI-Farben, keine Kopien der
+Vorlagen aus der Einführung. Farben kommen aus den Tokens, damit sie in beiden Themen
+mitwandern; Rot trägt in jeder Figur genau ein Element, nämlich das, worum es geht.
+
+Weil die Beschriftungen eine feste Größe im `viewBox` haben, behalten die Zeichnungen
+eine Mindestbreite von 880 px und scrollen darunter waagerecht im eigenen Kasten. Ohne
+das wäre die Beschriftung auf Handybreite unleserlich.
+
+- **Durchlauf** — die beiden Prüfstufen und der gestrichelte Rückweg, über den aus einer
+  Bewertung eine schärfere Regel wird.
+- **Prüfpunkte** — wie die 26 Zeilen der Checkliste zwischen Skript und Mensch
+  aufgeteilt sind, mit dem Satz, dass die Freigabe in keiner davon steht.
+- **Wissensablagen** — warum es zwei braucht und welche davon alle teilen.
+- **Steuerung** — wer ihn anstößt, was er an Helfer abgibt, wie eine Übergabe an einen
+  zweiten läuft.
+- **Enabler-Feld** — der geprüfte Bestand, eine Zelle je Enabler.
+
+Dazu zwei Entscheidungen zur Darstellung:
 
 **Das Enabler-Feld** im Hero hat eine Zelle je Enabler, gefüllt heißt vollständig
 ausgestattet. Die Zellen stehen in fester Reihenfolge, gefüllte zuerst. Eine gestreute

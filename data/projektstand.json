@@ -5,7 +5,12 @@
     "einstieg": "00_Vault/10_KI-Mitarbeiter/KI-Mitarbeiter — Einstieg.md",
     "erzeugt": "2026-09-05",
     "verfahren": "Erstbefüllung von Hand aus dem Übergabedokument vom 05.09.2026. Spätere Stände schreibt scripts/export-vault.mjs aus dem Frontmatter der Laufnotizen.",
-    "freigabe": "intern"
+    "freigabe": "intern",
+    "quellen": [
+      "Übergabedokument vom 05.09.2026",
+      "KI-Mitarbeiter — Einführung vom 04.09.2026",
+      "CI-Profil Version 1.0 vom 18.08.2026"
+    ]
   },
   "kennzahlen": [
     {
@@ -56,50 +61,74 @@
     {
       "nr": 1,
       "name": "Identität",
-      "frage": "Wer bin ich, was tue ich nie?",
-      "traegt": false
+      "frage": "Wofür bin ich zuständig, was tue ich nie?",
+      "traegt": false,
+      "frageUebergabe": "Wer bin ich, was tue ich nie?",
+      "datei": "name · description",
+      "gruppe": "Wer er ist"
     },
     {
       "nr": 2,
       "name": "Haltung",
       "frage": "Wie entscheide ich im Zweifel?",
-      "traegt": false
+      "traegt": false,
+      "frageUebergabe": "Wie entscheide ich im Zweifel?",
+      "datei": "im Auftragstext",
+      "gruppe": "Wer er ist"
     },
     {
       "nr": 3,
       "name": "Wissen",
-      "frage": "Was gilt?",
-      "traegt": false
+      "frage": "Was gilt hier?",
+      "traegt": false,
+      "frageUebergabe": "Was gilt?",
+      "datei": "im Auftragstext benannt",
+      "gruppe": "Was er weiß und kann"
     },
     {
       "nr": 4,
       "name": "Fähigkeiten",
       "frage": "Was kann ich?",
-      "traegt": false
+      "traegt": false,
+      "frageUebergabe": "Was kann ich?",
+      "datei": "skills",
+      "gruppe": "Was er weiß und kann"
     },
     {
       "nr": 5,
       "name": "Werkzeuge",
       "frage": "Womit arbeite ich?",
-      "traegt": false
+      "traegt": false,
+      "frageUebergabe": "Womit arbeite ich?",
+      "datei": "tools · disallowedTools",
+      "gruppe": "Was er weiß und kann"
     },
     {
       "nr": 6,
       "name": "Verfahren",
       "frage": "Wie läuft ein Auftrag ab?",
-      "traegt": false
+      "traegt": false,
+      "frageUebergabe": "Wie läuft ein Auftrag ab?",
+      "datei": "im Auftragstext · hooks",
+      "gruppe": "Wie er arbeitet"
     },
     {
       "nr": 7,
       "name": "Gedächtnis",
       "frage": "Was habe ich gelernt?",
-      "traegt": true
+      "traegt": true,
+      "frageUebergabe": "Was habe ich gelernt?",
+      "datei": "memory",
+      "gruppe": "Was er lernt, wer ihn prüft"
     },
     {
       "nr": 8,
       "name": "Schnittstelle und Aufsicht",
-      "frage": "Wie kommt Arbeit hin und zurück?",
-      "traegt": true
+      "frage": "Wer sieht meine Arbeit durch?",
+      "traegt": true,
+      "frageUebergabe": "Wie kommt Arbeit hin und zurück?",
+      "datei": "permissionMode",
+      "gruppe": "Was er lernt, wer ihn prüft"
     }
   ],
   "schichtenEntschieden": "2026-09-03",
@@ -354,7 +383,8 @@
       "ausEinerRegel": null,
       "testfaelle": 15,
       "text": "209 gemeldete fehlerhafte Dokumente, keines davon war fehlerhaft. Jeder Treffer war ein Fehler der Regel.",
-      "freigabe": "oeffentlich"
+      "freigabe": "oeffentlich",
+      "ursache": "Die Regel hatte Rechenketten abgeschnitten und den deutschen Doppelpunkt für ein Geteiltzeichen gehalten. Der Fehler lag im Werkzeug, nicht in den Unterlagen."
     },
     {
       "id": "quizmeldungen",
@@ -501,6 +531,13 @@
       "text": "Block 10 verbietet Rot 600 als Textfarbe unter 18,7 px, die Eyebrow-Zeilen des Blattes setzen es aber bei 5,9 pt ein. Diese Seite folgt der Regel und nimmt für kleinen roten Text durchgängig Rot 700.",
       "quelle": "CI-Profil Version 1.0, Blöcke 06 und 10",
       "freigabe": "intern"
+    },
+    {
+      "id": "themenkomplexe-10-11",
+      "titel": "Zehn oder elf Themenkomplexe",
+      "text": "Das Übergabedokument vom 05.09. nennt zehn vollständig fachlich geprüfte Themenkomplexe, die Einführung vom 04.09. an zwei Stellen elf. Beide beziehen sich auf denselben Lauf mit 3 090 Fragen über 103 Enabler. Welche Zahl gilt, ist hier nicht zu entscheiden.",
+      "quelle": "Übergabedokument „Was gemessen wurde\" gegen Einführung Block 08 und den Beispielteil",
+      "freigabe": "intern"
     }
   ],
   "gesellschaften": [
@@ -591,6 +628,282 @@
     "logoSchutzraum": "rundum mindestens die Höhe des Buchstabens W der Wortmarke",
     "bildsprache": "echte Aufnahmen von Team und Arbeit; KI-Grafik nur abstrakt und gekennzeichnet",
     "quelle": "CI-Profil 1.0, Block 09",
+    "freigabe": "oeffentlich"
+  },
+  "abgrenzung": {
+    "satz": "Der Unterschied liegt nicht in der Technik. Beide benutzen dasselbe Sprachmodell. Der Unterschied ist, was jemand vorher aufgeschrieben hat.",
+    "zeilen": [
+      {
+        "merkmal": "Auftrag",
+        "chatbot": "beantwortet, was gerade gefragt wird",
+        "mitarbeiter": "hat eine Aufgabe, die immer dieselbe ist"
+      },
+      {
+        "merkmal": "Maßstab",
+        "chatbot": "allgemeines Wissen aus dem Training",
+        "mitarbeiter": "die Regeln dieses Hauses, als Dateien hinterlegt"
+      },
+      {
+        "merkmal": "Ergebnis",
+        "chatbot": "ein Text im Fenster",
+        "mitarbeiter": "ein Ergebnis in fester Form, jede Aussage mit Fundstelle"
+      },
+      {
+        "merkmal": "Wiederholbar",
+        "chatbot": "jedes Mal etwas anders",
+        "mitarbeiter": "wird gemessen"
+      },
+      {
+        "merkmal": "Gedächtnis",
+        "chatbot": "endet mit dem Fenster",
+        "mitarbeiter": "Ergebnisse bleiben, Regeln werden nachgeschärft"
+      },
+      {
+        "merkmal": "Grenze",
+        "chatbot": "keine",
+        "mitarbeiter": "schriftlich festgelegt, was er nie tut"
+      }
+    ],
+    "freigabe": "oeffentlich"
+  },
+  "eignung": {
+    "geeignet": [
+      "die Aufgabe kehrt regelmäßig wieder und läuft immer gleich ab",
+      "es gibt einen Maßstab, den man aufschreiben kann: eine Vorschrift, eine Checkliste, eine Vorlage",
+      "hinterher lässt sich sagen, ob das Ergebnis richtig war",
+      "die Menge ist größer, als sich von Hand vollständig bewältigen lässt"
+    ],
+    "ungeeignet": [
+      "der Maßstab steckt nur in Köpfen und niemand bringt ihn in Sätze",
+      "jeder Fall liegt anders und Erfahrung ist die Hauptsache",
+      "niemand meldet zurück, ob das Ergebnis getaugt hat",
+      "am Ende steht eine Entscheidung, die niemand zurücknehmen kann"
+    ],
+    "nachsatz": "Der letzte Punkt schließt nichts aus. Er beschreibt eine Aufgabenteilung. Wo die Entscheidung schwer wiegt, arbeitet der KI-Mitarbeiter zu und ein Mensch entscheidet. Diese Trennung ist schriftlich festgelegt, nicht dem Einzelfall überlassen.",
+    "freigabe": "oeffentlich"
+  },
+  "ertrag": {
+    "einleitung": "Es geht nicht darum, dass eine Maschine schneller liest. Es geht um zwei Dinge, die menschliche Arbeit unter Zeitdruck kaum leisten kann.",
+    "punkte": [
+      {
+        "titel": "Vollständigkeit",
+        "text": "Nicht eine Stichprobe, sondern alles. Und beim zweiten Mal nach denselben Regeln wie beim ersten, auch am Freitagnachmittag.",
+        "beleg": "In einem Lauf über 238 Übungsfälle wurden 10 752 Rechnungen nachgerechnet. Von Hand tut das niemand, also war es nie getan worden."
+      },
+      {
+        "titel": "Der Blick über den ganzen Bestand",
+        "text": "Ein Mensch liest Dokumente nacheinander. Was sich erst im Vergleich von hundert Dokumenten zeigt, sieht er nicht.",
+        "beleg": "Dieselbe Formatabweichung in zwei Dritteln aller Dokumente. Nicht 163 Einzelfehler, sondern eine falsche Vorlage. Aus 163 Rückmeldungen an Einzelne wird eine Korrektur an der Vorlage."
+      }
+    ],
+    "freigabe": "oeffentlich"
+  },
+  "schichtenErklaerung": "Wer am ersten Arbeitstag anfängt, erfährt acht Dinge. Bei einem KI-Mitarbeiter ist es dieselbe Liste, nur steht jede Antwort in einer Datei. Was nicht aufgeschrieben ist, weiß er nicht.",
+  "schichtenDatei": "Ein KI-Mitarbeiter ist genau eine Textdatei mit zwei Teilen: oben ein Kopf aus kurzen Feldern, den die Maschine liest. Darunter ein Rumpf aus ganzen Sätzen: die Haltung, welches Wissen gilt und wie ein Auftrag abläuft. Der Kopf ist in einer Stunde geschrieben. Der Rumpf ist die Arbeit, und den muss ein Mensch schreiben, der die Aufgabe kennt.",
+  "schichtenErbe": "Ein zweiter KI-Mitarbeiter erbt die erste, dritte und vierte Gruppe fast unverändert. Neu zu bauen ist die mittlere.",
+  "wissensablagen": {
+    "satz": "Zeile 3 der Liste, „Was gilt hier?\", zerfällt in zwei Teile. Den einen braucht nur dieser eine Mitarbeiter für seine Aufgabe. Den anderen brauchen alle, die je dazukommen.",
+    "eigen": {
+      "titel": "Fachwissen des Mitarbeiters",
+      "inhalt": "Norm von außen und Maßstab des Hauses für seinen Gegenstand",
+      "geteilt": false,
+      "hinweis": "nicht übertragbar, jeder weitere baut es selbst auf"
+    },
+    "gemeinsam": {
+      "titel": "Wissen über das Unternehmen",
+      "inhalt": "Werte, Leitplanken, Leistungen, Markt, Auftreten",
+      "geteilt": true,
+      "bereiche": 11,
+      "angelegtAm": "2026-09-02",
+      "stand": "alles noch ungeprüft",
+      "offeneFragen": 22,
+      "haltenFreigabeAuf": 7,
+      "hinweis": "Ein KI-Mitarbeiter, der sich auf selbst zusammengereimte Werte beruft, wäre schlimmer als einer ohne."
+    },
+    "freigabe": "oeffentlich"
+  },
+  "durchlauf": {
+    "schritte": [
+      {
+        "name": "Vorgang",
+        "zusatz": "mit Auftrag"
+      },
+      {
+        "name": "Maschinell prüfen",
+        "zusatz": "was ein Skript entscheidet"
+      },
+      {
+        "name": "Urteilend prüfen",
+        "zusatz": "was Sprachverständnis braucht"
+      },
+      {
+        "name": "Ergebnis",
+        "zusatz": "nach Schwere sortiert"
+      },
+      {
+        "name": "Mensch entscheidet",
+        "zusatz": "immer"
+      }
+    ],
+    "rueckweg": "Was ein Mensch als Fehlalarm markiert, wird zur Nachbesserung an der Regel. Das ist der einzige Mechanismus, durch den so ein Mitarbeiter über die Zeit besser wird.",
+    "zweiStufen": "Was sich in eine Regel fassen lässt, macht ein Skript: schneller, billiger und immer gleich. Was Sprachverständnis braucht, macht das Sprachmodell.",
+    "verdichtung": "Fällt ein fachliches Urteil dreimal gleich aus und lässt es sich in Worte fassen, wird daraus ein Skript. Das prüft künftig ohne Sprachmodell.",
+    "freigabe": "oeffentlich"
+  },
+  "pruefpunkte": {
+    "gesamt": 26,
+    "skript": 16,
+    "mensch": 10,
+    "skriptBeispiele": "Rechnungen, Sprachmuster, Vollständigkeit, Formales",
+    "menschBeispiele": "Ist die Aufgabe lösbar? Ist die Situation glaubwürdig?",
+    "hinweisSkript": "Der maschinelle Teil ist die Arbeit, die ermüdet, und die deshalb als erste unvollständig wird.",
+    "hinweisFreigabe": "Die Freigabe trifft er nie. Sie steht in keiner der 26 Zeilen.",
+    "freigabe": "oeffentlich"
+  },
+  "steuerung": {
+    "beauftragt": [
+      {
+        "wer": "Ein Mensch",
+        "wie": "gibt einen Vorgang"
+      },
+      {
+        "wer": "Ein Zeitplan",
+        "wie": "jede Nacht, jeden Montag"
+      },
+      {
+        "wer": "Ein Ablaufskript",
+        "wie": "feste Stufen, keine fällt aus"
+      }
+    ],
+    "warumSkript": "Wo eine Stufe niemals ausfallen darf, bestimmt ein Skript die Reihenfolge, nicht das Sprachmodell.",
+    "helfer": "Er kann Teilaufgaben an Helfer weiterreichen, die abgeschottet arbeiten und nur ein Ergebnis zurückgeben. Das geht schnell und parallel. Der Preis: Ein Helfer sieht nur, was ihm mitgegeben wurde.",
+    "uebergabe": "Zwischen zwei KI-Mitarbeitern läuft die Übergabe über Dateien, nicht über ein Gespräch. Was nicht geschrieben wurde, ist nicht passiert. Genau das macht die Übergabe nachvollziehbar.",
+    "abwaegung": "Je mehr im Skript steht, desto nachvollziehbarer läuft es. Je mehr das Sprachmodell selbst entscheidet, desto beweglicher ist es, und desto schwerer nachzuvollziehen. Für einen Prüflauf mit festen Stufen fällt die Wahl auf das Skript.",
+    "freigabe": "oeffentlich"
+  },
+  "arbeitstage": {
+    "beginn": "2026-08-26",
+    "eintraege": [
+      {
+        "datum": "2026-08-26",
+        "text": "Wissensablage angelegt. Die Ausbildungsverordnung aus dem Bundesgesetzblatt als 55 verknüpfte Notizen erfasst, im amtlichen Wortlaut"
+      },
+      {
+        "datum": "2026-08-27",
+        "text": "Die Unterlagensystematik der Academy erhoben. Erster vollständiger Prüflauf: 238 Übungsfälle in vier Minuten, 10 752 Rechnungen nachgerechnet"
+      },
+      {
+        "datum": "2026-08-28",
+        "text": "Der Reviewer bekommt einen Namen. Grundsatz entschieden: Fehlalarm wiegt schwerer als übersehener Fehler"
+      },
+      {
+        "datum": "2026-08-31",
+        "text": "Alle 666 Quizze maschinell geprüft. Erster Lauf mit fachlichem Urteil"
+      },
+      {
+        "datum": "2026-09-02",
+        "text": "Zweite Wissensablage angelegt: das Wissen über das Unternehmen selbst, elf Bereiche, das sich künftig alle KI-Mitarbeiter teilen"
+      },
+      {
+        "datum": "2026-09-03",
+        "text": "Elf Themenkomplexe fachlich vollständig geprüft: 3 090 Fragen über 103 Enabler. Zielplattform für den Dauerbetrieb entschieden"
+      },
+      {
+        "datum": "2026-09-04",
+        "text": "Wiederholbarkeit erstmals gemessen: derselbe Stoff zweimal geprüft, sieben von sieben Befunden bestätigt"
+      }
+    ],
+    "freigabe": "oeffentlich"
+  },
+  "hemmnisse": {
+    "satz": "Von vier Gruppen ist genau eine technisch, und sie betrifft nur den Umzug. Was aufhält, sind Entscheidungen und Zeit von Menschen, die den Maßstab kennen. Das gilt erfahrungsgemäß für jeden KI-Mitarbeiter, nicht nur für diesen.",
+    "gruppen": [
+      {
+        "titel": "Wartet auf eine Entscheidung",
+        "zusatz": "Kann nur ein Mensch treffen",
+        "punkte": [
+          "Wie schwer wiegt welches Kriterium? Elf sind formuliert, die Gewichtung ist leer",
+          "In welcher Form kommt der Bericht: Dokument, Tabelle, Kommentare im Original?",
+          "Vier Stellen, an denen die Unterlagen sich selbst widersprechen. Welche Fassung gilt?",
+          "Welche Werte gelten verbindlich, und was darf ein KI-Mitarbeiter nie tun? Sieben Fragen halten die Freigabe der Unternehmens-Wissensdatenbank auf"
+        ]
+      },
+      {
+        "titel": "Wartet auf Zuarbeit",
+        "zusatz": "Braucht Zeit von Fachleuten",
+        "punkte": [
+          "Befunde durchsehen: berechtigt oder Fehlalarm. Ohne das keine Fehlalarmquote, ohne die keine Abnahme",
+          "Beispiele mit bekannten Schwächen, an denen sich der Maßstab kalibrieren lässt",
+          "Eine Trefferquote benennen, ab der er produktiv gehen darf"
+        ]
+      },
+      {
+        "titel": "Noch nicht gebaut",
+        "zusatz": "Arbeit, die ansteht",
+        "punkte": [
+          "Der Rückweg ist offen: Bewertungen finden noch nicht zurück in die Ablage",
+          "Zu jeder der 26 Regeln fehlt die Notiz, die sagt, wie zuverlässig sie ist",
+          "Der Mitarbeiter hat noch keine eigene Beschreibungsdatei"
+        ]
+      },
+      {
+        "titel": "Technisch ungeprüft",
+        "zusatz": "Akut, vier Arbeitstage",
+        "punkte": [
+          "Ob die vorgesehene Laufzeit auf diesem Rechnertyp überhaupt läuft, ist nicht getestet",
+          "Dabei wechselt auch das Sprachmodell. Ob es genauso zuverlässig prüft, muss am selben Prüfsatz neu gemessen werden",
+          "Die Laufzeit schreibt sich selbst neue Regeln, ohne die Testfälle, auf denen das Vorgehen besteht. Das gehört abgeschaltet"
+        ]
+      }
+    ],
+    "freigabe": "oeffentlich"
+  },
+  "stufen": [
+    {
+      "wann": "Bis Freitag, 11.09.",
+      "titel": "Umzug auf die DGX",
+      "text": "Vom Arbeitsplatzrechner auf den KI-Rechner im Haus, mit Hermes als Laufzeit und einem Sprachmodell, das dort läuft. Danach bleiben die Unterlagen im Unternehmen.",
+      "bedingung": "Vier Arbeitstage. Ob die Software auf diesem Rechnertyp läuft, ist ungeprüft.",
+      "freigabe": "intern"
+    },
+    {
+      "wann": "Herbst 2026",
+      "titel": "Messen und vergleichen",
+      "text": "Zwei Fragen zugleich: Wie oft meldet er etwas, das keins ist? Und prüft er auf der neuen Maschine genauso gut? Fachleute bewerten eine Stichprobe, derselbe Prüfsatz läuft noch einmal.",
+      "bedingung": "Bis die Zahlen vorliegen, bleibt es beim Pilotbetrieb.",
+      "freigabe": "oeffentlich"
+    },
+    {
+      "wann": "2027",
+      "titel": "Der zweite",
+      "text": "Eine andere Aufgabe, ein anderer Bereich. Er erbt Haltung, Verfahren und Aufsicht; neu sind Maßstab, Fähigkeiten und Werkzeuge.",
+      "bedingung": "Setzt voraus: der erste hat sich im Betrieb bewährt.",
+      "freigabe": "oeffentlich"
+    }
+  ],
+  "arbeitsschwerpunkt": {
+    "satz": "Die Technik ist der kleinere Teil. Ein Sprachmodell einzurichten dauert Stunden. Was Wochen dauert, ist die dritte Zeile: aufzuschreiben, was gilt.",
+    "brauchtEs": "Menschen, die den Maßstab ihres Bereichs kennen und bereit sind, ihn in Sätze zu bringen. Und dieselben Menschen später noch einmal, um zu sagen, ob ein Ergebnis berechtigt war.",
+    "auswahl": "Der nächste KI-Mitarbeiter entsteht nicht dort, wo die Technik am einfachsten ist, sondern dort, wo der Maßstab schon halb geschrieben herumliegt: als Checkliste, Vorschrift oder Vorlage.",
+    "schluss": "Was heute erfahrene Leute im Kopf haben, muss jemand aufschreiben. Das kann kein Werkzeug übernehmen.",
+    "freigabe": "oeffentlich"
+  },
+  "standSatz": "Ein Pilot, der sich gerade selbst vermisst. Ein KI-Mitarbeiter arbeitet, die zweite Messung steht aus. Ob er gut genug ist, ist noch nicht entschieden.",
+  "beschreibungsdatei": {
+    "name": "fritz.md",
+    "stand": "Entwurf",
+    "kopf": "Sieben kurze Angaben, die die Maschine liest. tools ist eine Positivliste, disallowedTools die Gegenprobe. memory sagt, wo seine Fälle liegen; skills, welche Anleitungen beim Start mitkommen.",
+    "rumpf": "Ganze Sätze, an einen neuen Kollegen gerichtet. Hier steht die Haltung, der Ablauf und was er nie tut. Diesen Teil kann kein Werkzeug erzeugen.",
+    "grenze": "Die wichtigste Zeile ist „darf nie\". Eine Fähigkeit, die nicht eingetragen ist, hat er nicht: Er kann nichts versenden, nichts löschen und nichts freigeben, weil ihm die Werkzeuge dafür fehlen. Das ist keine Vereinbarung, sondern eine technische Grenze.",
+    "einzigeQuelle": "Wer diese Datei ändert, ändert den Mitarbeiter. Es gibt nichts daneben, das ihn heimlich anders steuert.",
+    "auszug": "---\nname: fritz\ndescription: Prüft eine Schulungsunterlage gegen den Maßstab und\n  schreibt einen Bericht. Beauftragen, bevor eine Unterlage\n  in den Unterricht geht.\ntools: Lesen, Suchen, Nachrechnen, Prüfskripte ausführen\ndisallowedTools: Schreiben, Löschen, Versenden\nskills: kfbm-review\nmemory: project\n---\nDu prüfst Schulungsunterlagen für die Ausbildung Kaufleute\nfür Büromanagement. Du bewertest. Du erstellst keine\nUnterlagen, und du erteilst keine Freigabe.\n\n## Bevor du anfängst\n\nOhne Angabe des Jahrgangs prüfst du nicht. Bis 2028 gelten\nzwei Ausbildungsordnungen nebeneinander. Material für einen\nAlt-Jahrgang gegen die neue Ordnung zu prüfen, erzeugt nur\nFehlalarme. Fehlt die Angabe, frag nach.\n\n## Im Zweifel\n\nMelde nichts. Ein Prüfer, der Unfug meldet, wird nach dem\ndritten Mal übergangen. Dann nützt auch das nichts mehr,\nwas du richtig gefunden hast.\n\n## Jeder Befund nennt drei Dinge\n\nDie Fundstelle, das Kriterium und den Schweregrad. Ein\nBefund ohne Fundstelle ist für den Autor wertlos.\n\n… weiter mit dem Ablauf und den Prüfregeln",
+    "freigabe": "oeffentlich"
+  },
+  "beispielbefund": {
+    "stufe": "Blocker",
+    "text": "Als richtige Antwort ist die Zustimmung des Integrationsrats markiert. Zuständig ist das Integrationsamt, § 168 SGB IX.",
+    "fundstelle": "Quiz „mittel\", Frage 7, Option B",
+    "nachsatz": "Dasselbe Thema ist an anderer Stelle im Bestand richtig dargestellt. Die Korrektur lag im Haus und musste nur gefunden werden.",
     "freigabe": "oeffentlich"
   }
 }

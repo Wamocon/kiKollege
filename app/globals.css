@@ -1032,3 +1032,126 @@ th.num { text-align: right; }
   .lp-bar, .thema { display: none; }
   .js [data-enthuellen] { opacity: 1; transform: none; }
 }
+
+
+/* --- Diagramme ------------------------------------------------------------
+   Die Zeichnungen haben eine feste Textgroesse im viewBox. Skaliert man sie auf
+   Handybreite herunter, wird die Beschriftung unleserlich; deshalb behalten sie
+   eine Mindestbreite und scrollen darunter waagerecht im eigenen Kasten. */
+.lp-diagramm { overflow-x: auto; margin: clamp(1.6rem, 3vw, 2.6rem) 0 0; }
+.lp-diagramm svg { min-width: 880px; width: 100%; height: auto; }
+.lp-diagramm figcaption { max-width: 68ch; }
+
+/* --- Gegenueberstellung ---------------------------------------------------- */
+.lp-gegen { width: 100%; border-collapse: collapse; margin-top: clamp(1.6rem, 3vw, 2.6rem); }
+.lp-gegen th {
+  text-align: left;
+  font-family: var(--schrift-mono);
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--wmc-muted);
+  border-bottom: 1px solid var(--wmc-border);
+  padding: 0 1.2rem 0.5rem 0;
+  vertical-align: bottom;
+}
+.lp-gegen th.stark { color: var(--wmc-ink); }
+.lp-gegen td { padding: 0.75rem 1.2rem 0.75rem 0; border-bottom: 1px solid var(--rand-leise); font-size: 0.92rem; line-height: 1.5; }
+.lp-gegen td:last-child, .lp-gegen th:last-child { padding-right: 0; }
+.lp-gegen td.merkmal { font-family: var(--schrift-mono); font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--wmc-muted); width: 9rem; }
+.lp-gegen td.leise { color: var(--wmc-muted); }
+.lp-gegen-rahmen { overflow-x: auto; }
+
+/* --- Zwei Listen nebeneinander --------------------------------------------- */
+.lp-paar {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 0;
+  border-top: 1px solid var(--wmc-border);
+  border-left: 1px solid var(--wmc-border);
+  margin-top: clamp(1.6rem, 3vw, 2.6rem);
+}
+.lp-paar > div {
+  border-right: 1px solid var(--wmc-border);
+  border-bottom: 1px solid var(--wmc-border);
+  padding: 1.15rem 1.25rem 1.4rem;
+}
+.lp-paar h3 { font-size: 1rem; margin: 0 0 0.35rem; }
+.lp-untertitel { margin: 0 0 0.8rem; font-size: 0.84rem; color: var(--wmc-muted); }
+.lp-paar ul { list-style: none; margin: 0; padding: 0; }
+.lp-paar li { position: relative; padding-left: 1.1rem; margin-bottom: 0.55rem; font-size: 0.9rem; line-height: 1.5; color: var(--wmc-muted); }
+.lp-paar li::before { content: ""; position: absolute; left: 0; top: 0.55em; width: 5px; height: 5px; background: var(--wmc-primary); }
+.lp-paar .nein li::before { background: none; border: 1px solid var(--ui300); }
+
+/* --- Quelltext-Auszug ------------------------------------------------------- */
+.lp-quelltext {
+  margin-top: clamp(1.6rem, 3vw, 2.6rem);
+  border: 1px solid var(--wmc-border);
+  border-top: 3px solid var(--wmc-primary);
+}
+.lp-quelltext-kopf {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.6rem 1rem;
+  border-bottom: 1px solid var(--rand-leise);
+  font-family: var(--schrift-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--wmc-muted);
+}
+.lp-quelltext-kopf b { color: var(--wmc-ink); font-weight: 700; }
+.lp-quelltext pre {
+  margin: 0;
+  padding: 1rem 1.15rem 1.2rem;
+  overflow-x: auto;
+  font-family: var(--schrift-mono);
+  font-size: 0.74rem;
+  line-height: 1.65;
+  color: var(--wmc-ink);
+  white-space: pre;
+}
+
+/* --- Zeitleiste ------------------------------------------------------------- */
+.lp-zeit { margin-top: clamp(1.6rem, 3vw, 2.6rem); border-top: 1px solid var(--wmc-border); }
+.lp-zeit-zeile {
+  display: grid;
+  grid-template-columns: 6rem minmax(0, 1fr);
+  gap: 0.3rem 1.5rem;
+  padding: 0.8rem 0;
+  border-bottom: 1px solid var(--rand-leise);
+}
+.lp-zeit-zeile .wann {
+  font-family: var(--schrift-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--wmc-primary-text);
+  font-variant-numeric: tabular-nums;
+}
+.lp-zeit-zeile .was { font-size: 0.94rem; line-height: 1.5; }
+@media (max-width: 560px) { .lp-zeit-zeile { grid-template-columns: minmax(0, 1fr); } }
+
+/* --- Stufen mit Bedingung --------------------------------------------------- */
+.lp-stufe {
+  display: grid;
+  grid-template-columns: 11rem minmax(0, 1fr);
+  gap: 0.5rem 2rem;
+  padding: 1.3rem 0;
+  border-top: 1px solid var(--rand-leise);
+}
+.lp-stufe:first-of-type { border-top: 1px solid var(--wmc-border); }
+.lp-stufe .wann {
+  font-family: var(--schrift-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--wmc-primary-text);
+  padding-top: 0.25rem;
+}
+.lp-stufe h3 { font-size: 1.15rem; margin: 0 0 0.4rem; }
+.lp-stufe p { margin: 0 0 0.4rem; max-width: 62ch; }
+.lp-stufe .bedingung { font-size: 0.86rem; color: var(--wmc-muted); }
+@media (max-width: 620px) { .lp-stufe { grid-template-columns: minmax(0, 1fr); } }

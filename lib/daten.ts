@@ -11,8 +11,49 @@ export interface Kennzahl extends MitFreigabe {
 export interface Schicht {
   nr: number
   name: string
+  /** Wortlaut der Einführung vom 04.09., an ein Publikum gerichtet. */
   frage: string
+  /** Wortlaut des Übergabedokuments vom 05.09., knapper. */
+  frageUebergabe: string
+  /** Wo die Antwort in der Beschreibungsdatei steht. */
+  datei: string
+  gruppe: string
   traegt: boolean
+}
+
+export interface AbgrenzungsZeile {
+  merkmal: string
+  chatbot: string
+  mitarbeiter: string
+}
+
+export interface ErtragsPunkt {
+  titel: string
+  text: string
+  beleg: string
+}
+
+export interface DurchlaufSchritt {
+  name: string
+  zusatz: string
+}
+
+export interface HemmnisGruppe {
+  titel: string
+  zusatz: string
+  punkte: string[]
+}
+
+export interface Stufe extends MitFreigabe {
+  wann: string
+  titel: string
+  text: string
+  bedingung: string
+}
+
+export interface Arbeitstag {
+  datum: string
+  text: string
 }
 
 export interface Begriff {
@@ -66,6 +107,8 @@ export interface Messluecke extends MitFreigabe {
 export interface FehlalarmBeleg extends MitFreigabe {
   id: string
   titel: string
+  /** Woran die Regel danebengriff, falls aufgeklärt. */
+  ursache?: string
   /** Zahl der Meldungen, die sich als Fehlalarm erwiesen haben. */
   fehlalarme: number
   /** Wie viele davon aus einer einzigen Regel stammten, falls erhoben. */
@@ -119,11 +162,92 @@ export interface Projektstand {
     einstieg: string
     erzeugt: string
     verfahren: string
+    quellen: string[]
     freigabe: Freigabe
   }
   kennzahlen: Kennzahl[]
   schichten: Schicht[]
   schichtenEntschieden: string
+  schichtenErklaerung: string
+  schichtenDatei: string
+  schichtenErbe: string
+  abgrenzung: { satz: string; zeilen: AbgrenzungsZeile[]; freigabe: Freigabe }
+  eignung: {
+    geeignet: string[]
+    ungeeignet: string[]
+    nachsatz: string
+    freigabe: Freigabe
+  }
+  ertrag: { einleitung: string; punkte: ErtragsPunkt[]; freigabe: Freigabe }
+  wissensablagen: {
+    satz: string
+    eigen: { titel: string; inhalt: string; geteilt: boolean; hinweis: string }
+    gemeinsam: {
+      titel: string
+      inhalt: string
+      geteilt: boolean
+      bereiche: number
+      angelegtAm: string
+      stand: string
+      offeneFragen: number
+      haltenFreigabeAuf: number
+      hinweis: string
+    }
+    freigabe: Freigabe
+  }
+  durchlauf: {
+    schritte: DurchlaufSchritt[]
+    rueckweg: string
+    zweiStufen: string
+    verdichtung: string
+    freigabe: Freigabe
+  }
+  pruefpunkte: {
+    gesamt: number
+    skript: number
+    mensch: number
+    skriptBeispiele: string
+    menschBeispiele: string
+    hinweisSkript: string
+    hinweisFreigabe: string
+    freigabe: Freigabe
+  }
+  steuerung: {
+    beauftragt: { wer: string; wie: string }[]
+    warumSkript: string
+    helfer: string
+    uebergabe: string
+    abwaegung: string
+    freigabe: Freigabe
+  }
+  arbeitstage: { beginn: string; eintraege: Arbeitstag[]; freigabe: Freigabe }
+  hemmnisse: { satz: string; gruppen: HemmnisGruppe[]; freigabe: Freigabe }
+  stufen: Stufe[]
+  arbeitsschwerpunkt: {
+    satz: string
+    brauchtEs: string
+    auswahl: string
+    schluss: string
+    freigabe: Freigabe
+  }
+  standSatz: string
+  beschreibungsdatei: {
+    name: string
+    stand: string
+    kopf: string
+    rumpf: string
+    grenze: string
+    einzigeQuelle: string
+    auszug: string
+    freigabe: Freigabe
+  }
+  beispielbefund: {
+    stufe: string
+    text: string
+    fundstelle: string
+    nachsatz: string
+    freigabe: Freigabe
+  }
   begriffe: Begriff[]
   auftrag: {
     pflichtangaben: string[]
