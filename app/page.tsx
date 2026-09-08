@@ -23,16 +23,17 @@ export default function Landing() {
         {/* 01 --------------------------------------------------------------- */}
         <Sektion id="vorhaben" klasse="lp-hero">
           <h1 className="lp-display">
-            <span className="zeile">Fritz prüft.</span>
+            <span className="zeile">Der KI-Mitarbeiter bewertet.</span>
             <span className="zeile">Ein Mensch gibt frei.</span>
           </h1>
 
           <div className="lp-hero-raster">
             <p className="lp-lead">
-              Die WAMOCON GmbH baut KI-Mitarbeiter. Der erste ist ein Reviewer. Er prüft
-              Schulungsunterlagen der WAMOCON Academy gegen einen definierten Maßstab und liefert
-              einen priorisierten Bericht mit Fundstellen. Wie zuverlässig er dabei ist, ist noch
-              nicht gemessen. Auch das steht auf dieser Seite.
+              Ein KI-Mitarbeiter ist eine benannte Rolle mit einer Grenze, einem Maßstab und einem
+              Gedächtnis. Die WAMOCON GmbH baut solche Rollen und misst, was sie leisten. Der
+              erste, ein Reviewer namens Fritz, prüft Schulungsunterlagen der WAMOCON Academy und
+              liefert einen priorisierten Bericht mit Fundstellen. Wie zuverlässig er dabei ist,
+              ist noch nicht gemessen. Auch das steht auf dieser Seite.
             </p>
             <div data-enthuellen>
               <EnablerRaster />
@@ -41,7 +42,7 @@ export default function Landing() {
 
           <dl className="lp-spec" data-enthuellen>
             <div className="lp-spec-zeile">
-              <dt>Rolle</dt>
+              <dt>Erste Rolle</dt>
               <dd>
                 Reviewer für Schulungsunterlagen der IHK-Ausbildung Kaufleute für Büromanagement
               </dd>
@@ -84,9 +85,9 @@ export default function Landing() {
           </p>
           <div className="lp-text lp-luft-oben" data-enthuellen>
             <p>
-              Fritz bewertet. Er erstellt keine Unterlagen und erteilt keine Freigabe. Die Freigabe
-              bleibt bei einem Menschen. Das ist eine Rollengrenze mit einem Grund, keine
-              Vorsichtsformel.
+              Ein KI-Mitarbeiter bewertet. Er erstellt keine Unterlagen und erteilt keine Freigabe.
+              Die Freigabe bleibt bei einem Menschen. Das ist eine Rollengrenze mit einem Grund,
+              keine Vorsichtsformel.
             </p>
             <p>
               Dass ein Testhaus seinen ersten KI-Mitarbeiter als Prüfer baut und nicht als
@@ -216,11 +217,14 @@ export default function Landing() {
 
           <div className="lp-text lp-luft-oben" data-enthuellen>
             <p>
-              Der Kriterienkatalog hat {d.massstab.kriterien.gesamt} benannte Kriterien,{' '}
+              Die vier harten Regeln und die {d.massstab.schweregrade.length} Schweregrade gehören
+              zum Kern und gelten für jede Rolle. Der Kriterienkatalog gehört zum Profil und hängt
+              am Prüfgegenstand: Für die Schulungsunterlagen hat er{' '}
+              {d.massstab.kriterien.gesamt} benannte Kriterien,{' '}
               {d.massstab.kriterien.mechanisch} davon mechanisch prüfbar,{' '}
               {d.massstab.kriterien.urteilend} verlangen ein Urteil. Die Gewichtung ist{' '}
-              {d.massstab.kriterien.gewichtung}. Die vier Schweregrade und der vollständige Katalog
-              stehen im <a href="/stand/#massstab">ausführlichen Stand</a>.
+              {d.massstab.kriterien.gewichtung}. Katalog und Schweregrade im Einzelnen stehen im{' '}
+              <a href="/stand/#massstab">ausführlichen Stand</a>.
             </p>
           </div>
         </Sektion>
@@ -234,8 +238,8 @@ export default function Landing() {
           <div className="lp-text lp-luft-oben-klein" data-enthuellen>
             <p>
               Zwischen dem {datum(d.prueflaeufe.zeitraum.von)} und dem{' '}
-              {datum(d.prueflaeufe.zeitraum.bis)} protokolliert. Die Zahlen stammen aus dem
-              Frontmatter der Laufnotizen, nicht aus dieser Seite.
+              {datum(d.prueflaeufe.zeitraum.bis)} protokolliert, alle aus der ersten Rolle. Die
+              Zahlen stammen aus dem Frontmatter der Laufnotizen, nicht aus dieser Seite.
             </p>
           </div>
 

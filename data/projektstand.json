@@ -117,7 +117,7 @@
     {
       "begriff": "Harness",
       "erklaerung": "Die Maschine, in der ein KI-Mitarbeiter läuft. Ein Sprachmodell allein bekommt Text und gibt Text zurück. Dass es eine Datei liest, ein Skript startet, das Ergebnis sieht und weitermacht, tut die Umgebung darum herum.",
-      "anzahl": "Fritz ist eine Beschreibung, der Harness führt sie aus."
+      "anzahl": "Ein KI-Mitarbeiter ist eine Beschreibung, der Harness führt sie aus."
     }
   ],
   "auftrag": {
@@ -391,7 +391,7 @@
     "warumAbschaltung": "Ein Agent, der sich nach Aufgaben eigene Regeln destilliert, unterläuft die Testfallpflicht.",
     "erreichbar": "Betrieb auf eigener Hardware, bei dem die Unterlagen das Haus nicht mehr verlassen.",
     "nichtBeantwortet": "Ob Fritz auf dem lokalen Modell genauso gut prüft. Mit dem Umzug wechselt das Sprachmodell, und der Vergleich am selben Prüfsatz ist der letzte der fünf Schritte. Bis dahin ist es ein Pilotbetrieb.",
-    "ablageregel": "Was Fritz zum Prüfen braucht, darf nie allein im werkzeugspezifischen Ordner liegen. Es gehört in die werkzeugneutrale Auftragsdatei, ins Wissen, ins Regel-Repository oder in eine Skill-Datei. Sonst reist es beim Plattformwechsel nicht mit."
+    "ablageregel": "Was ein KI-Mitarbeiter zum Arbeiten braucht, darf nie allein im werkzeugspezifischen Ordner liegen. Es gehört in die werkzeugneutrale Auftragsdatei, ins Wissen, ins Regel-Repository oder in eine Skill-Datei. Sonst reist es beim Plattformwechsel nicht mit."
   },
   "entscheidungen": [
     {

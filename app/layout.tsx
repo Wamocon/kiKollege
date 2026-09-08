@@ -6,7 +6,7 @@ import './globals.css'
 export const metadata: Metadata = {
   title: 'KI-Mitarbeiter bei WAMOCON',
   description:
-    'Fritz prüft Schulungsunterlagen gegen einen definierten Maßstab, ein Mensch gibt frei. Konzept, Kennzahlen der Prüfläufe und die offene Messlücke.',
+    'Ein KI-Mitarbeiter bewertet, ein Mensch gibt frei. Konzept, Maßstab, Kennzahlen der Prüfläufe und die offene Messlücke.',
   robots: istIntern ? { index: false, follow: false } : undefined,
 }
 

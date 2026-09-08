@@ -706,8 +706,11 @@ th.num { text-align: right; }
 
 /* --- Typografie der Seite --- */
 .lp-display .zeile { display: block; text-wrap: balance; }
+/* Die Schriftgroesse ist am laengsten Satz der Ueberschrift ausgemessen, damit
+   er ueber den ganzen Bereich auf einer Zeile bleibt und kein einzelnes Wort
+   allein steht. Wer die Ueberschrift aendert, misst neu. */
 .lp-display {
-  font-size: clamp(2.5rem, 6.6vw, 5.2rem);
+  font-size: clamp(2.4rem, 5.9vw, 5rem);
   font-weight: 800;
   letter-spacing: -0.046em;
   line-height: 0.97;
