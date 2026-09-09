@@ -3,27 +3,99 @@
  * Liest Kennzahlen, Entscheidungen und offene Punkte aus dem Vault und schreibt
  * sie nach data/projektstand.json.
  *
- *   npm run export:vault -- --vault "D:\KFBM"
- *   npm run export:vault -- --vault "D:\KFBM" --probelauf
+ *   npm run export:vault -- --vault "D:\WAMOCON\KI-Mitarbeiter" --probelauf
+ *   npm run export:vault -- --vault "D:\WAMOCON\KI-Mitarbeiter"
  *
  * Das Skript ersetzt nur die Abschnitte, die es aus dem Vault ableiten kann.
  * Prosa, Begriffe, Massstab und alles andere von Hand Geschriebene bleibt stehen.
  * Ein bereits gesetztes Feld "freigabe" bleibt erhalten, damit die Grenze
  * zwischen intern und oeffentlich nicht bei jedem Export verloren geht.
  *
- * ACHTUNG: Die Pfade unter ORTE sind aus dem Uebergabedokument abgeleitet und
- * am echten Vault noch nicht geprueft. Stimmen sie nicht, hier anpassen; die
- * Auswertung selbst ist durch scripts/export-vault.test.mjs abgedeckt.
+ * Der Ordner mit den Laufnotizen wird gesucht, nicht vorausgesetzt: --vault
+ * darf auf den Vault oder gleich auf den Notizordner zeigen. Der Probelauf
+ * schreibt nichts und meldet, welche Ordner und Dateien gefunden wurden.
  */
 
 import { readFile, readdir, writeFile } from 'node:fs/promises'
 import { existsSync } from 'node:fs'
-import { join, relative, resolve } from 'node:path'
+import { basename, join, relative, resolve } from 'node:path'
 
 export const ORTE = {
-  laufnotizen: '00_Vault/10_KI-Mitarbeiter',
-  entscheidungen: '00_Vault/10_KI-Mitarbeiter/Entscheidungen.md',
-  offenePunkte: '00_Vault/10_KI-Mitarbeiter/Offene Punkte.md',
+  /** Aus dem Uebergabedokument bekannte Lagen, in dieser Reihenfolge geprueft. */
+  ordner: ['00_Vault/10_KI-Mitarbeiter', '00_Vault/KI-Mitarbeiter', 'KI-Mitarbeiter', '10_KI-Mitarbeiter'],
+  /** Passt keine, wird bis drei Ebenen tief nach einem so benannten Ordner gesucht. */
+  ordnerMuster: /^(\d+[_-])?KI[-_ ]?Mitarbeiter$/i,
+  entscheidungen: ['Entscheidungen.md'],
+  offenePunkte: ['Offene Punkte.md', 'Offene-Punkte.md', 'Offene_Punkte.md'],
+}
+
+async function eintraege(pfad, art) {
+  try {
+    const gelesen = await readdir(pfad, { withFileTypes: true })
+    return gelesen.filter((e) => (art === 'ordner' ? e.isDirectory() : e.isFile())).map((e) => e.name)
+  } catch {
+    return []
+  }
+}
+
+/** Windows unterscheidet Gross- und Kleinschreibung nicht, Linux schon. Der
+ *  Export soll auf beiden dieselben Ordner finden, also wird Schritt fuer
+ *  Schritt verglichen statt der Pfad einfach zusammengesetzt. */
+async function loesePfad(wurzel, teile) {
+  let pfad = wurzel
+  for (const teil of teile) {
+    const treffer = (await eintraege(pfad, 'ordner')).find(
+      (n) => n.toLowerCase() === teil.toLowerCase(),
+    )
+    if (!treffer) return null
+    pfad = join(pfad, treffer)
+  }
+  return pfad
+}
+
+async function sucheOrdner(wurzel, tiefe) {
+  let ebene = [wurzel]
+  for (let i = 0; i < tiefe && ebene.length; i++) {
+    const naechste = []
+    for (const pfad of ebene) {
+      for (const name of await eintraege(pfad, 'ordner')) {
+        if (name.startsWith('.') || name === 'node_modules') continue
+        const voll = join(pfad, name)
+        if (ORTE.ordnerMuster.test(name)) return voll
+        naechste.push(voll)
+      }
+    }
+    ebene = naechste
+  }
+  return null
+}
+
+/** Sucht den Ordner mit den Laufnotizen: erst die bekannten Lagen, dann der
+ *  angegebene Ordner selbst, dann eine Suche in der Breite. So laesst sich
+ *  --vault auf den Vault oder gleich auf den Notizordner richten. */
+export async function findeNotizordner(vault, tiefe = 3) {
+  for (const kandidat of ORTE.ordner) {
+    const pfad = await loesePfad(vault, kandidat.split('/'))
+    if (pfad) return pfad
+  }
+  if (ORTE.ordnerMuster.test(basename(vault))) return vault
+  const gefunden = await sucheOrdner(vault, tiefe)
+  if (gefunden) return gefunden
+  const hatNotizen = (await eintraege(vault, 'datei')).some((n) => n.toLowerCase().endsWith('.md'))
+  return hatNotizen ? vault : null
+}
+
+/** Erste Datei, die einen der Namen traegt, in den Ordnern der Reihe nach. */
+export async function findeDatei(namen, ordner) {
+  for (const pfad of ordner) {
+    if (!pfad) continue
+    const vorhanden = await eintraege(pfad, 'datei')
+    for (const name of namen) {
+      const treffer = vorhanden.find((n) => n.toLowerCase() === name.toLowerCase())
+      if (treffer) return join(pfad, treffer)
+    }
+  }
+  return null
 }
 
 /** Frontmatter am Dateianfang, begrenzt durch --- Zeilen. Nur flache
@@ -183,7 +255,8 @@ export async function exportieren({ vault, ziel, probelauf = false, log = consol
   const alt = JSON.parse(await readFile(ziel, 'utf8'))
 
   // Prueflaeufe
-  const notizen = await sammleDateien(join(vault, ORTE.laufnotizen))
+  const notizordner = await findeNotizordner(vault)
+  const notizen = notizordner ? await sammleDateien(notizordner) : []
   const laeufe = []
   for (const datei of notizen) {
     const { felder } = leseFrontmatter(await readFile(datei, 'utf8'))
@@ -194,16 +267,16 @@ export async function exportieren({ vault, ziel, probelauf = false, log = consol
 
   // Entscheidungen
   let entscheidungen = alt.entscheidungen
-  const entscheidungsdatei = join(vault, ORTE.entscheidungen)
-  if (existsSync(entscheidungsdatei)) {
+  const entscheidungsdatei = await findeDatei(ORTE.entscheidungen, [notizordner, vault])
+  if (entscheidungsdatei) {
     const gelesen = leseEntscheidungen(await readFile(entscheidungsdatei, 'utf8'))
     if (gelesen.length) entscheidungen = gelesen
   }
 
   // Offene Punkte
   let offenePunkte = alt.offenePunkte
-  const punktedatei = join(vault, ORTE.offenePunkte)
-  if (existsSync(punktedatei)) {
+  const punktedatei = await findeDatei(ORTE.offenePunkte, [notizordner, vault])
+  if (punktedatei) {
     const gelesen = leseOffenePunkte(await readFile(punktedatei, 'utf8'))
     if (gelesen.length) offenePunkte = gelesen
   }
@@ -231,15 +304,25 @@ export async function exportieren({ vault, ziel, probelauf = false, log = consol
     herkunft: {
       ...alt.herkunft,
       arbeitsordner: vault,
+      notizordner: notizordner ? relative(vault, notizordner) || '.' : alt.herkunft.notizordner,
       erzeugt: new Date().toISOString().slice(0, 10),
       verfahren: 'Erzeugt von scripts/export-vault.mjs aus dem Frontmatter der Laufnotizen.',
     },
   }
 
+  const fehlt = 'nicht gefunden, bisheriger Stand bleibt'
   log(
-    `Laufnotizen gelesen: ${notizen.length}, davon als Prüflauf erkannt: ${laeufe.length}\n` +
-      `Entscheidungen: ${neu.entscheidungen.length}, offene Punkte: ${neu.offenePunkte.length}\n` +
-      `Stand: ${neu.stand}`,
+    `Gefunden\n` +
+      `  Vault            ${vault}\n` +
+      `  Notizordner      ${notizordner ?? fehlt}\n` +
+      `  Entscheidungen   ${entscheidungsdatei ?? fehlt}\n` +
+      `  Offene Punkte    ${punktedatei ?? fehlt}\n` +
+      `Gelesen\n` +
+      `  Laufnotizen      ${notizen.length}, davon als Prüflauf erkannt: ${laeufe.length}\n` +
+      `Übernommen\n` +
+      `  Entscheidungen   ${neu.entscheidungen.length}\n` +
+      `  Offene Punkte    ${neu.offenePunkte.length}\n` +
+      `  Stand            ${neu.stand}`,
   )
 
   if (probelauf) {
@@ -253,14 +336,14 @@ export async function exportieren({ vault, ziel, probelauf = false, log = consol
 
 const direktAufgerufen = process.argv[1] && import.meta.url.endsWith(process.argv[1].split(/[\\/]/).pop())
 if (direktAufgerufen) {
-  const vault = argument('vault', process.env.VAULT ?? 'D:\\KFBM')
+  const vault = argument('vault', process.env.VAULT ?? 'D:\\WAMOCON\\KI-Mitarbeiter')
   const ziel = resolve(argument('ziel', 'data/projektstand.json'))
   const probelauf = process.argv.includes('--probelauf') || process.argv.includes('--dry-run')
 
   if (!existsSync(vault)) {
     console.error(
-      `Vault nicht gefunden: ${vault}\n` +
-        'Pfad mit --vault "D:\\KFBM" angeben oder die Umgebungsvariable VAULT setzen.',
+      `Ordner nicht gefunden: ${vault}\n` +
+        'Pfad mit --vault "D:\\WAMOCON\\KI-Mitarbeiter" angeben oder die Umgebungsvariable VAULT setzen.',
     )
     process.exit(1)
   }

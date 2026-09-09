@@ -177,6 +177,8 @@ export interface Projektstand {
   stand: string
   herkunft: {
     arbeitsordner: string
+    /** Vom Export gesetzt: der Ordner mit den Laufnotizen, relativ zum Arbeitsordner. */
+    notizordner?: string
     einstieg: string
     erzeugt: string
     verfahren: string

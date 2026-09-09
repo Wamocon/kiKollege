@@ -1,0 +1,32 @@
+# Baut beide Fassungen bei jedem Push und prueft die oeffentliche darauf, dass
+# nichts als intern Markiertes darin steht. Es wird nichts veroeffentlicht.
+name: Prüfen
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  bauen:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Skripte testen
+        run: npm test
+      - name: Interne Fassung bauen
+        run: npm run build
+      - name: Öffentliche Fassung bauen
+        run: npm run build
+        env:
+          FREIGABE: oeffentlich
+      - name: Öffentliche Fassung auf internen Inhalt prüfen
+        run: npm run pruefe:oeffentlich

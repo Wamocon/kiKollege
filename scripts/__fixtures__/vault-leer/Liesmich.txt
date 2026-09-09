@@ -1,0 +1,2 @@
+Ein Ordner ohne Markdown und ohne Notizordner. Der Export muss das melden,
+statt irgendetwas zu lesen.

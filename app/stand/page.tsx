@@ -650,6 +650,12 @@ export default function Seite() {
                   der den Zusammenhang braucht, ist{' '}
                   <span className="mono">{d.herkunft.einstieg}</span>.
                 </p>
+                {d.herkunft.notizordner ? (
+                  <p>
+                    Die Zahlen dieser Seite liest der Export aus{' '}
+                    <span className="mono">{d.herkunft.notizordner}</span>.
+                  </p>
+                ) : null}
               </div>
               <div className="tabellenrahmen">
                 <table>

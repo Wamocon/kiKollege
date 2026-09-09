@@ -8,7 +8,8 @@ Datenquelle.
 | `/` | Landing Page. Erzählt das Vorhaben vom Hero bis zu den offenen Punkten. |
 | `/stand/` | Dichte Standseite mit Ankernavigation, allen Tabellen und Prüfläufen. |
 
-Drei Quellen liegen zugrunde, alle aus dem Arbeitsordner `D:\KFBM`:
+Drei Quellen liegen zugrunde, alle aus dem Arbeitsordner `D:\KFBM`, den das
+Übergabedokument nennt:
 
 | Quelle | Was daraus kommt |
 |---|---|
@@ -73,7 +74,7 @@ dunkel-zuerst will, dreht in `app/globals.css` die beiden Token-Blöcke um.
 npm install
 npm run dev          # http://localhost:3000
 npm run build        # statischer Export nach out/
-npm run test:export  # Tests des Exportskripts
+npm test             # Tests der Skripte
 ```
 
 Der Build erzeugt einen statischen Export ohne Server. Zum Ansehen des Ergebnisses
@@ -195,8 +196,8 @@ Seite altern kann, ohne falsch zu werden.
 `scripts/export-vault.mjs` schreibt diese Datei aus dem Vault fort:
 
 ```bash
-npm run export:vault -- --vault "D:\KFBM" --probelauf   # nur anzeigen
-npm run export:vault -- --vault "D:\KFBM"               # schreiben
+npm run export:vault -- --vault "D:\WAMOCON\KI-Mitarbeiter" --probelauf   # nur anzeigen
+npm run export:vault -- --vault "D:\WAMOCON\KI-Mitarbeiter"               # schreiben
 ```
 
 Das Skript liest das Frontmatter der Laufnotizen (`geprueft`, `blocker`, `major`,
@@ -205,11 +206,63 @@ Liste der offenen Punkte. Es ersetzt nur diese Abschnitte; Begriffe, Maßstab,
 Übertragbarkeit und alles andere von Hand Geschriebene bleibt stehen. Ein bereits
 gesetztes `freigabe` wird übernommen.
 
-**Noch zu prüfen:** Die Pfade in `ORTE` am Kopf des Skripts sind aus dem
-Übergabedokument abgeleitet und am echten Vault nicht getestet, weil der Vault hier
-nicht vorlag. Stimmen die Dateinamen für Entscheidungen und offene Punkte nicht,
-sind sie dort anzupassen. Die Auswertung selbst ist durch
-`scripts/export-vault.test.mjs` gegen einen Fixture-Vault abgedeckt.
+Den Ordner mit den Laufnotizen sucht das Skript, statt ihn vorauszusetzen: erst die
+aus dem Übergabedokument bekannten Lagen (`00_Vault/10_KI-Mitarbeiter` und
+Ähnliches), dann den angegebenen Ordner selbst, dann bis drei Ebenen tief nach einem
+Ordner, der KI-Mitarbeiter heißt. `--vault` darf deshalb auf den Vault oder gleich
+auf den Notizordner zeigen. Der Probelauf schreibt nichts und sagt, was er gefunden
+hat:
+
+```
+Gefunden
+  Vault            D:\WAMOCON\KI-Mitarbeiter
+  Notizordner      D:\WAMOCON\KI-Mitarbeiter
+  Entscheidungen   D:\WAMOCON\KI-Mitarbeiter\Entscheidungen.md
+  Offene Punkte    nicht gefunden, bisheriger Stand bleibt
+```
+
+Fehlt eine Zeile, heißt die Datei im Vault anders. Weitere Namen trägt man in
+`ORTE` am Kopf des Skripts nach.
+
+## Der Stand aktualisiert sich nicht von selbst
+
+Der Vault liegt auf einem Rechner im Haus, das Repository liegt bei GitHub. Der
+Export läuft also dort, wo der Vault liegt, und schiebt nur `data/projektstand.json`
+weiter — Notizen, Testfälle und Ausbildungsunterlagen bleiben liegen. Ein Durchgang
+steht als Windows-Skript bereit:
+
+```bat
+scripts\stand-aktualisieren.cmd "D:\WAMOCON\KI-Mitarbeiter"
+```
+
+Es exportiert, prüft ob sich etwas geändert hat, und committet und pusht nur dann.
+Für den regelmäßigen Teil hängt man es in die Aufgabenplanung, hier täglich um sieben:
+
+```bat
+schtasks /create /tn "KI-Mitarbeiter Stand" /tr "\"C:\Pfad\zum\kiKollege\scripts\stand-aktualisieren.cmd\" \"D:\WAMOCON\KI-Mitarbeiter\"" /sc daily /st 07:00
+```
+
+Voraussetzungen: Node und Git auf dem Rechner, ein Klon des Repositories, eine
+Push-Berechtigung für den angemeldeten Benutzer und ein Branch mit Upstream.
+
+## Was der Build prüft
+
+`.github/workflows/pruefen.yml` baut bei jedem Push beide Fassungen und lässt
+`npm run pruefe:oeffentlich` über die öffentliche laufen. Die Prüfung pflegt keine
+Wortliste, sondern zieht aus `data/projektstand.json` jeden Text aus einem Objekt
+mit `freigabe: "intern"` und sucht ihn in den erzeugten HTML-Dateien. Findet sie
+etwas, schlägt der Lauf fehl. Gegen die interne Fassung meldet sie 42 Stellen,
+gegen die öffentliche keine — damit belegt sie, dass die Grenze im Build
+tatsächlich greift und nicht nur im Datenmodell steht.
+
+`.github/workflows/veroeffentlichen.yml` stellt die öffentliche Fassung auf GitHub
+Pages, läuft aber nur von Hand (`workflow_dispatch`) und erst nach derselben
+Prüfung. Solange niemand ihn auslöst, verlässt die Seite das Haus nicht. In den
+Repository-Einstellungen muss Pages dazu auf "GitHub Actions" stehen.
+
+Die Auswertung des Vaults ist durch `scripts/export-vault.test.mjs` gegen drei
+Fixture-Vaults abgedeckt, die Prüfung durch `scripts/pruefe-oeffentlich.test.mjs`.
+`npm test` läuft über beide.
 
 ## Logo
 
@@ -279,10 +332,16 @@ Liegt sie nicht in der Wurzel, ist `BASE_PATH` zu setzen:
 
 ```bash
 FREIGABE=oeffentlich BASE_PATH=/kiKollege npm run build
+npm run pruefe:oeffentlich
 ```
 
-Vor einem öffentlichen Auftritt fehlen noch Impressum und Datenschutzerklärung.
-Beides ist hier nicht angelegt, weil die Seite zunächst intern bleibt.
+Genau das tut `.github/workflows/veroeffentlichen.yml`, siehe oben. Vor einem
+öffentlichen Auftritt fehlen noch Impressum und Datenschutzerklärung. Beides ist
+hier nicht angelegt, weil die Seite zunächst intern bleibt.
+
+Zu bedenken: Pages ist bei einem privaten Repository ohne Enterprise-Tarif immer
+öffentlich. Wer den Workflow auslöst, stellt die Seite ins offene Netz. Deshalb
+läuft er nur von Hand und erst nach der Prüfung.
 
 ## Aufbau
 
@@ -293,12 +352,18 @@ app/
   globals.css       CI-Tokens, gemeinsame Bausteine, Landing-Layout (lp-)
   icon.svg          Favicon
 components/
-  landing/          Kopfleiste, Sektion, Fußleiste der Landing Page
-  figuren/          Enabler-Feld
+  landing/          Kopfleiste, Navigation, Hero, Sektion, Fußleiste
+  figuren/          sechs gezeichnete Diagramme, alle aus den Daten
   ThemaSchalter     Hell, Dunkel, System
-  Enthuellen        blendet Blöcke beim Scrollen ein
   Kopf, Nav, Fuss, bausteine   Bausteine der Standseite
 data/             projektstand.json, die einzige Zahlenquelle beider Seiten
 lib/              Typen, Datumsformat, Freigabelogik, Abschnittslisten
-scripts/          Exportskript für den Vault samt Tests und Fixtures
+scripts/
+  export-vault.mjs         schreibt die Daten aus dem Vault fort
+  pruefe-oeffentlich.mjs   sucht Internes in einer öffentlichen Ausgabe
+  stand-aktualisieren.cmd  ein Durchgang für die Aufgabenplanung
+  __fixtures__/            drei Vaults mit verschiedenem Aufbau
+.github/workflows/
+  pruefen.yml              baut beide Fassungen, prüft die öffentliche
+  veroeffentlichen.yml     stellt die öffentliche Fassung auf Pages, von Hand
 ```

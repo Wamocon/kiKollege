@@ -1,11 +1,14 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
+import { readFileSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { dirname, join } from 'node:path'
 
 import {
   alsPrueflauf,
   exportieren,
+  findeDatei,
+  findeNotizordner,
   freigabeUebernehmen,
   leseEntscheidungen,
   leseFrontmatter,
@@ -15,8 +18,12 @@ import {
 
 const hier = dirname(fileURLToPath(import.meta.url))
 const vault = join(hier, '__fixtures__', 'vault')
+const vaultFlach = join(hier, '__fixtures__', 'vault-flach')
+const vaultOhneLaeufe = join(hier, '__fixtures__', 'vault-ohne-laeufe')
+const vaultLeer = join(hier, '__fixtures__', 'vault-leer')
 const ziel = join(hier, '..', 'data', 'projektstand.json')
 const still = () => {}
+const bisher = JSON.parse(readFileSync(ziel, 'utf8'))
 
 test('leseFrontmatter liest flache Felder und lässt den Rumpf stehen', () => {
   const { felder, rumpf } = leseFrontmatter(
@@ -122,7 +129,51 @@ test('exportieren liest den Fixture-Vault und lässt Handgeschriebenes stehen', 
 })
 
 test('exportieren behält den alten Stand, wenn der Vault keine Läufe hat', async () => {
-  const neu = await exportieren({ vault: join(vault, '00_Vault'), ziel, probelauf: true, log: still })
+  const neu = await exportieren({ vault: vaultOhneLaeufe, ziel, probelauf: true, log: still })
   assert.equal(neu.prueflaeufe.laeufe.length, 5, 'Fallback auf den bisherigen Stand')
   assert.equal(neu.stand, '2026-09-05')
+})
+
+test('findeNotizordner findet den Ordner aus dem Übergabedokument', async () => {
+  assert.equal(await findeNotizordner(vault), join(vault, '00_Vault', '10_KI-Mitarbeiter'))
+})
+
+test('findeNotizordner nimmt auch den Notizordner selbst', async () => {
+  const ordner = join(vault, '00_Vault', '10_KI-Mitarbeiter')
+  assert.equal(await findeNotizordner(ordner), ordner)
+})
+
+test('findeNotizordner sucht den Ordner, wenn er woanders liegt', async () => {
+  assert.equal(
+    await findeNotizordner(vaultFlach),
+    join(vaultFlach, 'Notizen', 'KI-Mitarbeiter'),
+  )
+})
+
+test('findeNotizordner meldet einen Ordner ohne Notizen als leer', async () => {
+  assert.equal(await findeNotizordner(vaultLeer), null)
+})
+
+test('findeDatei nimmt den ersten Treffer und achtet nicht auf Grossschreibung', async () => {
+  const ordner = join(vault, '00_Vault', '10_KI-Mitarbeiter')
+  assert.equal(await findeDatei(['entscheidungen.md'], [ordner]), join(ordner, 'Entscheidungen.md'))
+  assert.equal(await findeDatei(['Fehlt.md'], [ordner]), null)
+})
+
+test('exportieren liest einen Vault mit abweichendem Aufbau', async () => {
+  const neu = await exportieren({ vault: vaultFlach, ziel, probelauf: true, log: still })
+  assert.deepEqual(
+    neu.prueflaeufe.laeufe.map((l) => l.id),
+    ['2026-09-08-stichprobe'],
+  )
+  assert.equal(neu.stand, '2026-09-08')
+  assert.deepEqual(neu.entscheidungen, [
+    { datum: '2026-09-08', entscheidung: 'Der Notizordner liegt außerhalb von 00_Vault' },
+  ])
+  assert.equal(neu.herkunft.notizordner, join('Notizen', 'KI-Mitarbeiter'))
+  assert.equal(
+    neu.offenePunkte.length,
+    bisher.offenePunkte.length,
+    'ohne Datei bleibt der bisherige Stand',
+  )
 })
