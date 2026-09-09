@@ -30,14 +30,14 @@ export function Wissensablagen() {
                   zusatz={i === 0 ? w.eigen.hinweis : 'baut er selbst auf'}
                   gestrichelt={i === 1} />
           <line x1={x + breite / 2} y1={176} x2={x + breite / 2} y2={222}
-                stroke="var(--wmc-primary)" strokeWidth="1.5" markerEnd="url(#spitze-rot)" />
+                stroke="var(--signal)" strokeWidth="1.5" markerEnd="url(#spitze-rot)" />
         </g>
       ))}
 
       <Bereich x={0} y={206} breite={960} text="teilen sich alle" />
 
       <rect x={0} y={230} width={960} height={64}
-            fill="var(--wmc-surface-soft)" stroke="var(--wmc-primary)" strokeWidth="1" />
+            fill="var(--wmc-surface-soft)" stroke="var(--signal)" strokeWidth="1" />
       <text x={480} y={258} textAnchor="middle" fontSize="13" fontWeight="700" fill="var(--wmc-ink)">
         {w.gemeinsam.titel}
       </text>

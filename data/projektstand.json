@@ -168,19 +168,23 @@
     "harteRegeln": [
       {
         "regel": "Kein Befund ohne Fundstelle",
-        "grund": "Wer eine Stelle nicht zitieren kann, hat eine Vermutung."
+        "grund": "Wer eine Stelle nicht zitieren kann, hat eine Vermutung.",
+        "id": "fundstelle"
       },
       {
         "regel": "Keine Regel ohne Testfälle",
-        "grund": "Eine Regel geht erst produktiv, wenn sie an einem bekannten richtigen und einem bekannten falschen Beispiel richtig entscheidet."
+        "grund": "Eine Regel geht erst produktiv, wenn sie an einem bekannten richtigen und einem bekannten falschen Beispiel richtig entscheidet.",
+        "id": "testfaelle"
       },
       {
         "regel": "Der Reviewer bewertet, er gibt nicht frei",
-        "grund": "Ein KI-Mitarbeiter, der für sein Ergebnis selbst einsteht, ist keine Rolle, sondern ein Haftungsproblem."
+        "grund": "Ein KI-Mitarbeiter, der für sein Ergebnis selbst einsteht, ist keine Rolle, sondern ein Haftungsproblem.",
+        "id": "rollengrenze"
       },
       {
         "regel": "Was nicht geprüft wurde, steht im Bericht",
-        "grund": "Stillschweigende Lücken lesen sich wie Unbedenklichkeitsbescheinigungen."
+        "grund": "Stillschweigende Lücken lesen sich wie Unbedenklichkeitsbescheinigungen.",
+        "id": "luecken"
       }
     ]
   },
@@ -631,7 +635,7 @@
     "freigabe": "oeffentlich"
   },
   "abgrenzung": {
-    "satz": "Der Unterschied liegt nicht in der Technik. Beide benutzen dasselbe Sprachmodell. Der Unterschied ist, was jemand vorher aufgeschrieben hat.",
+    "satz": "Der Unterschied liegt nicht in der Technik.",
     "zeilen": [
       {
         "merkmal": "Auftrag",
@@ -664,7 +668,8 @@
         "mitarbeiter": "schriftlich festgelegt, was er nie tut"
       }
     ],
-    "freigabe": "oeffentlich"
+    "freigabe": "oeffentlich",
+    "erklaerung": "Ein Chatbot beantwortet, was man ihn fragt, und vergisst es danach. Ein KI-Mitarbeiter hat eine feste Aufgabe, einen aufgeschriebenen Maßstab und eine Grenze. Beide benutzen dasselbe Sprachmodell. Der Unterschied ist, was jemand vorher aufgeschrieben hat."
   },
   "eignung": {
     "geeignet": [
@@ -726,23 +731,28 @@
     "schritte": [
       {
         "name": "Vorgang",
-        "zusatz": "mit Auftrag"
+        "zusatz": "mit Auftrag",
+        "id": "vorgang"
       },
       {
         "name": "Maschinell prüfen",
-        "zusatz": "was ein Skript entscheidet"
+        "zusatz": "was ein Skript entscheidet",
+        "id": "maschinell"
       },
       {
         "name": "Urteilend prüfen",
-        "zusatz": "was Sprachverständnis braucht"
+        "zusatz": "was Sprachverständnis braucht",
+        "id": "urteilend"
       },
       {
         "name": "Ergebnis",
-        "zusatz": "nach Schwere sortiert"
+        "zusatz": "nach Schwere sortiert",
+        "id": "ergebnis"
       },
       {
         "name": "Mensch entscheidet",
-        "zusatz": "immer"
+        "zusatz": "immer",
+        "id": "mensch"
       }
     ],
     "rueckweg": "Was ein Mensch als Fehlalarm markiert, wird zur Nachbesserung an der Regel. Das ist der einzige Mechanismus, durch den so ein Mitarbeiter über die Zeit besser wird.",
@@ -864,21 +874,24 @@
       "titel": "Umzug auf die DGX",
       "text": "Vom Arbeitsplatzrechner auf den KI-Rechner im Haus, mit Hermes als Laufzeit und einem Sprachmodell, das dort läuft. Danach bleiben die Unterlagen im Unternehmen.",
       "bedingung": "Vier Arbeitstage. Ob die Software auf diesem Rechnertyp läuft, ist ungeprüft.",
-      "freigabe": "intern"
+      "freigabe": "intern",
+      "bedingungsart": "termin"
     },
     {
       "wann": "Herbst 2026",
       "titel": "Messen und vergleichen",
       "text": "Zwei Fragen zugleich: Wie oft meldet er etwas, das keins ist? Und prüft er auf der neuen Maschine genauso gut? Fachleute bewerten eine Stichprobe, derselbe Prüfsatz läuft noch einmal.",
       "bedingung": "Bis die Zahlen vorliegen, bleibt es beim Pilotbetrieb.",
-      "freigabe": "oeffentlich"
+      "freigabe": "oeffentlich",
+      "bedingungsart": "zahl"
     },
     {
       "wann": "2027",
       "titel": "Der zweite",
       "text": "Eine andere Aufgabe, ein anderer Bereich. Er erbt Haltung, Verfahren und Aufsicht; neu sind Maßstab, Fähigkeiten und Werkzeuge.",
       "bedingung": "Setzt voraus: der erste hat sich im Betrieb bewährt.",
-      "freigabe": "oeffentlich"
+      "freigabe": "oeffentlich",
+      "bedingungsart": "zahl"
     }
   ],
   "arbeitsschwerpunkt": {

@@ -65,7 +65,10 @@
   --flaeche-stark:  var(--ui100);
   --rand-leise:     var(--ui100);
   --fokus:          var(--r700);
-  --zahl-farbe:     var(--r600);
+  /* Signalfarbe fuer Flaechen, Striche und grosse Zahlen. Auf dunklem Grund
+     belegt das CI-Blatt nur Rot 300, deshalb wandert der Wert dort mit. */
+  --signal:         var(--r600);
+  --zahl-farbe:     var(--signal);
 
   /* --- 08 Typografie --- */
   --schrift: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -96,7 +99,7 @@
     --flaeche-stark: var(--i800);
     --rand-leise: var(--i800);
     --fokus: var(--r300);
-    --zahl-farbe: var(--r300);
+    --signal: var(--r300);
     --wmc-success: #4FBF83;
     --wmc-warning: #D6A33C;
     --wmc-info:    #7FB2F0;
@@ -116,7 +119,7 @@
   --flaeche-stark: var(--i800);
   --rand-leise: var(--i800);
   --fokus: var(--r300);
-  --zahl-farbe: var(--r300);
+  --signal: var(--r300);
   --wmc-success: #4FBF83;
   --wmc-warning: #D6A33C;
   --wmc-info:    #7FB2F0;
@@ -178,7 +181,7 @@ hr { border: 0; border-top: 1px solid var(--wmc-border); margin: 2rem 0; }
    Seitengeruest
    ========================================================================= */
 
-.kopfkante { height: 4px; background: var(--wmc-primary); }
+.kopfkante { height: 4px; background: var(--signal); }
 
 .kopf {
   border-bottom: 1px solid var(--wmc-border);
@@ -273,7 +276,7 @@ hr { border: 0; border-top: 1px solid var(--wmc-border); margin: 2rem 0; }
   padding-left: 0.55rem;
   margin-left: -0.55rem;
 }
-.nav a:hover { color: var(--wmc-ink); border-left-color: var(--wmc-primary); }
+.nav a:hover { color: var(--wmc-ink); border-left-color: var(--signal); }
 .nav a .nr {
   font-family: var(--schrift-mono);
   font-size: 0.72rem;
@@ -411,7 +414,7 @@ th.num { text-align: right; }
   top: 0.62em;
   width: 5px;
   height: 5px;
-  background: var(--wmc-primary);
+  background: var(--signal);
 }
 .liste li b { font-weight: 700; }
 
@@ -444,7 +447,7 @@ th.num { text-align: right; }
 
 .block {
   border: 1px solid var(--wmc-border);
-  border-top: 3px solid var(--wmc-primary);
+  border-top: 3px solid var(--signal);
   padding: 1.1rem 1.2rem;
   margin: 1.3rem 0 0;
 }
@@ -531,7 +534,7 @@ th.num { text-align: right; }
    ========================================================================= */
 
 .fuss {
-  border-top: 4px solid var(--wmc-primary);
+  border-top: 4px solid var(--signal);
   /* Block 09: Weiss, Ink 950 oder Rot 600 als Logountergrund, kein Grauton. */
   background: var(--wmc-bg);
   padding: 2rem 1.5rem 2.6rem;
@@ -823,7 +826,7 @@ th.num { text-align: right; }
 .lp-zelle h3 { font-size: 1.02rem; font-weight: 700; letter-spacing: -0.012em; margin: 0; }
 .lp-zelle p { margin: 0; font-size: 0.9rem; line-height: 1.55; color: var(--wmc-muted); }
 .lp-zelle p.stark { color: var(--wmc-ink); }
-.lp-zelle.traegt { border-top: 2px solid var(--wmc-primary); margin-top: -1px; }
+.lp-zelle.traegt { border-top: 2px solid var(--signal); margin-top: -1px; }
 .lp-zelle.traegt .kopf { color: var(--wmc-primary-text); }
 
 /* --- Kennzahlen als Stat-Kacheln --- */
@@ -860,7 +863,7 @@ th.num { text-align: right; }
   gap: clamp(1rem, 3vw, 2.2rem);
   flex-wrap: wrap;
   padding-bottom: 1.4rem;
-  border-bottom: 2px solid var(--wmc-primary);
+  border-bottom: 2px solid var(--signal);
 }
 .lp-hero-zahl .wert {
   font-size: clamp(5rem, 15vw, 11rem);
@@ -979,7 +982,7 @@ th.num { text-align: right; }
 /* Der Fussbereich traegt das Logo. Block 09 des CI-Profils laesst dafuer nur
    Weiss, Ink 950 und Rot 600 als Untergrund zu, deshalb steht er auf der
    Grundflaeche und nicht auf einem Grauton. Die rote Kante trennt ihn. */
-.lp-fuss { border-top: 3px solid var(--wmc-primary); background: var(--wmc-bg); }
+.lp-fuss { border-top: 3px solid var(--signal); background: var(--wmc-bg); }
 .lp-fuss-innen {
   max-width: var(--lp-spalte);
   margin: 0 auto;
@@ -1081,14 +1084,14 @@ th.num { text-align: right; }
 .lp-untertitel { margin: 0 0 0.8rem; font-size: 0.84rem; color: var(--wmc-muted); }
 .lp-paar ul { list-style: none; margin: 0; padding: 0; }
 .lp-paar li { position: relative; padding-left: 1.1rem; margin-bottom: 0.55rem; font-size: 0.9rem; line-height: 1.5; color: var(--wmc-muted); }
-.lp-paar li::before { content: ""; position: absolute; left: 0; top: 0.55em; width: 5px; height: 5px; background: var(--wmc-primary); }
+.lp-paar li::before { content: ""; position: absolute; left: 0; top: 0.55em; width: 5px; height: 5px; background: var(--signal); }
 .lp-paar .nein li::before { background: none; border: 1px solid var(--ui300); }
 
 /* --- Quelltext-Auszug ------------------------------------------------------- */
 .lp-quelltext {
   margin-top: clamp(1.6rem, 3vw, 2.6rem);
   border: 1px solid var(--wmc-border);
-  border-top: 3px solid var(--wmc-primary);
+  border-top: 3px solid var(--signal);
 }
 .lp-quelltext-kopf {
   display: flex;

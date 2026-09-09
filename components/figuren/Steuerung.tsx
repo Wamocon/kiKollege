@@ -41,9 +41,9 @@ export function Steuerung() {
       {/* Übergabe an einen zweiten */}
       <Bereich x={632} y={12} breite={328} text="übergabe an einen zweiten" />
       <line x1={588} y1={131} x2={644} y2={131}
-            stroke="var(--wmc-primary)" strokeWidth="1.5" markerEnd="url(#spitze-rot)" />
+            stroke="var(--signal)" strokeWidth="1.5" markerEnd="url(#spitze-rot)" />
       <rect x={648} y={100} width={130} height={62}
-            fill="var(--wmc-surface-soft)" stroke="var(--wmc-primary)" strokeWidth="1" />
+            fill="var(--wmc-surface-soft)" stroke="var(--signal)" strokeWidth="1" />
       <text x={713} y={126} textAnchor="middle" fontSize="13" fontWeight="700" fill="var(--wmc-ink)">
         Datei
       </text>
@@ -51,7 +51,7 @@ export function Steuerung() {
         kein Gespräch
       </text>
       <line x1={782} y1={131} x2={824} y2={131}
-            stroke="var(--wmc-primary)" strokeWidth="1.5" markerEnd="url(#spitze-rot)" />
+            stroke="var(--signal)" strokeWidth="1.5" markerEnd="url(#spitze-rot)" />
       <Kasten x={828} y={100} breite={132} hoehe={62} titel="Zweiter" zusatz="andere Aufgabe" gestrichelt />
     </Figur>
   )

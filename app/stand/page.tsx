@@ -3,7 +3,7 @@ import { Nav } from '@/components/Nav'
 import { Fuss } from '@/components/Fuss'
 import { Block, Hinweis, Kachelband, Kopfzeile, Marker } from '@/components/bausteine'
 import { abschnitt } from '@/lib/abschnitte'
-import { daten, datum, zahl } from '@/lib/daten'
+import { daten, datum, harteRegel, zahl } from '@/lib/daten'
 import { istIntern, nurSichtbare, sichtbar } from '@/lib/freigabe'
 
 const zeigen = (id: string) => sichtbar(abschnitt(id))
@@ -36,9 +36,9 @@ export default function Seite() {
                 gegen einen definierten Maßstab und liefert einen priorisierten Bericht mit Fundstellen.
               </p>
               <p>
-                Fritz bewertet. Er erstellt keine Unterlagen und erteilt keine Freigabe. Die Freigabe bleibt
-                bei einem Menschen. Das ist eine Rollengrenze mit einem Grund: Ein KI-Mitarbeiter, der für
-                sein Ergebnis selbst einsteht, ist keine Rolle, sondern ein Haftungsproblem.
+                Fritz bewertet. Er erstellt keine Unterlagen und erteilt keine Freigabe. Die Freigabe
+                bleibt bei einem Menschen. Das ist eine Rollengrenze mit einem Grund:{' '}
+                {harteRegel('rollengrenze').grund}
               </p>
               <p>
                 Das zweite Ziel steht gleichrangig neben dem ersten. Das Vorgehen soll auf weitere Rollen und

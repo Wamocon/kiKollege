@@ -13,7 +13,7 @@ export function Pfeilspitzen() {
         <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--wmc-ink)" />
       </marker>
       <marker id="spitze-rot" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-        <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--wmc-primary)" />
+        <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--signal)" />
       </marker>
     </defs>
   )

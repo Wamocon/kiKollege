@@ -34,6 +34,7 @@ export interface ErtragsPunkt {
 }
 
 export interface DurchlaufSchritt {
+  id: string
   name: string
   zusatz: string
 }
@@ -49,6 +50,8 @@ export interface Stufe extends MitFreigabe {
   titel: string
   text: string
   bedingung: string
+  /** Haengt die Stufe an einem festen Datum oder an einer Messung? */
+  bedingungsart: 'termin' | 'zahl'
 }
 
 export interface Arbeitstag {
@@ -63,6 +66,7 @@ export interface Begriff {
 }
 
 export interface HarteRegel {
+  id: string
   regel: string
   grund: string
 }
@@ -171,7 +175,12 @@ export interface Projektstand {
   schichtenErklaerung: string
   schichtenDatei: string
   schichtenErbe: string
-  abgrenzung: { satz: string; zeilen: AbgrenzungsZeile[]; freigabe: Freigabe }
+  abgrenzung: {
+    satz: string
+    erklaerung: string
+    zeilen: AbgrenzungsZeile[]
+    freigabe: Freigabe
+  }
   eignung: {
     geeignet: string[]
     ungeeignet: string[]
@@ -354,6 +363,14 @@ export const daten = rohdaten as unknown as Projektstand
 export function datum(iso: string): string {
   const [jahr, monat, tag] = iso.split('-')
   return `${tag}.${monat}.${jahr}`
+}
+
+/** Eine der vier harten Regeln über ihre Kennung. Wirft, statt still eine
+ *  falsche Regel zu liefern, wenn die Kennung nicht mehr existiert. */
+export function harteRegel(id: string): HarteRegel {
+  const treffer = daten.auftrag.harteRegeln.find((r) => r.id === id)
+  if (!treffer) throw new Error(`Unbekannte harte Regel: ${id}`)
+  return treffer
 }
 
 /** Tage zwischen zwei ISO-Daten, beide Enden mitgezaehlt. Haelt Formulierungen

@@ -7,7 +7,7 @@ import { Wissensablagen } from '@/components/figuren/Wissensablagen'
 import { Fussleiste } from '@/components/landing/Fussleiste'
 import { Kopfleiste } from '@/components/landing/Kopfleiste'
 import { Sektion } from '@/components/landing/Sektion'
-import { daten, datum, tageZwischen, zahl } from '@/lib/daten'
+import { daten, datum, harteRegel, tageZwischen, zahl } from '@/lib/daten'
 import { istIntern, nurSichtbare } from '@/lib/freigabe'
 
 export default function Landing() {
@@ -15,8 +15,9 @@ export default function Landing() {
   const gmbh = d.gesellschaften[0]
   const fachreview = d.prueflaeufe.laeufe.find((l) => l.art === 'urteilend')!
   const rechenlauf = d.prueflaeufe.laeufe.find((l) => l.zusatz != null)
-  const wiederholung = d.prueflaeufe.laeufe.find((l) => l.art === 'wiederholung')!
+  const wiederholung = d.prueflaeufe.laeufe.find((l) => l.art === 'wiederholung')
   const fehlalarmquote = d.messluecken.find((m) => m.id === 'fehlalarmquote')!
+  const stufen = nurSichtbare(d.stufen)
 
   return (
     <>
@@ -77,14 +78,10 @@ export default function Landing() {
         {/* 02 Kein Chatbot -------------------------------------------------- */}
         <Sektion id="chatbot">
           <p className="lp-aussage" data-enthuellen>
-            Der Unterschied liegt nicht in der Technik.
+            {d.abgrenzung.satz}
           </p>
           <div className="lp-text lp-luft-oben" data-enthuellen>
-            <p>
-              Ein Chatbot beantwortet, was man ihn fragt, und vergisst es danach. Ein KI-Mitarbeiter
-              hat eine feste Aufgabe, einen aufgeschriebenen Maßstab und eine Grenze. Beide benutzen
-              dasselbe Sprachmodell. Der Unterschied ist, was jemand vorher aufgeschrieben hat.
-            </p>
+            <p>{d.abgrenzung.erklaerung}</p>
           </div>
 
           <div className="lp-gegen-rahmen" data-enthuellen>
@@ -139,8 +136,7 @@ export default function Landing() {
           </div>
 
           <p className="lp-aussage lp-luft-oben" data-enthuellen>
-            Ein KI-Mitarbeiter, der für sein Ergebnis selbst einsteht, ist keine Rolle, sondern ein
-            Haftungsproblem.
+            {harteRegel('rollengrenze').grund}
           </p>
           <div className="lp-text lp-luft-oben-klein" data-enthuellen>
             <p>
@@ -336,17 +332,26 @@ export default function Landing() {
 
           <div className="lp-zellen" data-enthuellen>
             <div className="lp-zelle">
-              <span className="kopf">Frage 1 · gemessen</span>
+              <span className="kopf">
+                Frage 1 · {wiederholung ? 'gemessen' : 'offen'}
+              </span>
               <h3>Sagt er zweimal dasselbe?</h3>
               <p>
                 Derselbe Vorgang, zweimal geprüft. Kommt etwas anderes heraus, ist das Ergebnis
                 wertlos, egal wie gut es klingt.
               </p>
-              <p className="stark">
-                Am {datum(wiederholung.datum!)} erstmals gemessen:{' '}
-                {zahl(wiederholung.bestaetigt!)} von {zahl(wiederholung.bestaetigt!)} Befunden
-                bestätigt, an derselben Stelle. {zahl(wiederholung.neuGefunden!)} kam hinzu.
-              </p>
+              {wiederholung?.datum && wiederholung.bestaetigt != null ? (
+                <p className="stark">
+                  Am {datum(wiederholung.datum)} erstmals gemessen:{' '}
+                  {zahl(wiederholung.bestaetigt)} von {zahl(wiederholung.bestaetigt)} Befunden
+                  bestätigt, an derselben Stelle.
+                  {wiederholung.neuGefunden
+                    ? ` ${zahl(wiederholung.neuGefunden)} kam hinzu.`
+                    : ''}
+                </p>
+              ) : (
+                <p className="stark">Noch kein Wiederholungslauf protokolliert.</p>
+              )}
             </div>
             <div className="lp-zelle traegt">
               <span className="kopf">Frage 2 · offen</span>
@@ -528,16 +533,19 @@ export default function Landing() {
         {/* 12 Stufen --------------------------------------------------------- */}
         <Sektion id="stufen">
           <p className="lp-aussage breit" data-enthuellen>
-            Drei Stufen, jede an eine Bedingung geknüpft.
+            {stufen.length} Stufen, jede an eine Bedingung geknüpft.
           </p>
           <div className="lp-text lp-luft-oben-klein" data-enthuellen>
             <p>
-              Der erste KI-Mitarbeiter ist ein Pilot. Die erste Stufe ist ein Termin, die beiden
-              anderen hängen an Zahlen. Dieselbe Reihenfolge gilt für jeden weiteren.
+              Der erste KI-Mitarbeiter ist ein Pilot.{' '}
+              {stufen[0]?.bedingungsart === 'termin'
+                ? 'Die erste Stufe ist ein Termin, die übrigen hängen an Zahlen.'
+                : 'Jede Stufe hängt an einer Zahl, nicht an einem Wunschdatum.'}{' '}
+              Dieselbe Reihenfolge gilt für jeden weiteren.
             </p>
           </div>
           <div className="lp-luft-oben" data-enthuellen>
-            {nurSichtbare(d.stufen).map((s) => (
+            {stufen.map((s) => (
               <div className="lp-stufe" key={s.titel}>
                 <span className="wann">{s.wann}</span>
                 <div>
