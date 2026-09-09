@@ -181,6 +181,8 @@ export interface Projektstand {
     notizordner?: string
     einstieg: string
     erzeugt: string
+    /** Ab wie vielen Tagen der Stand auf der Seite als alt ausgewiesen wird. */
+    fristTage: number
     verfahren: string
     quellen: string[]
     freigabe: Freigabe

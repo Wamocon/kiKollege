@@ -245,6 +245,15 @@ schtasks /create /tn "KI-Mitarbeiter Stand" /tr "\"C:\Pfad\zum\kiKollege\scripts
 Voraussetzungen: Node und Git auf dem Rechner, ein Klon des Repositories, eine
 Push-Berechtigung für den angemeldeten Benutzer und ein Branch mit Upstream.
 
+Solange das nicht läuft, altert die Seite still. Deshalb weist sie ihr eigenes
+Alter aus: neben dem Stand steht, wie alt die Zahlen sind, und überschreiten sie
+`herkunft.fristTage`, wird die Angabe rot und der Fußbereich sagt, wann zuletzt
+fortgeschrieben wurde. Gerechnet wird das im Browser gegen die Uhr des Lesers,
+nicht beim Bauen — sonst hinge "heute" am Tag des Builds und die Seite behauptete
+eine Frische, die sie nicht hat. Ohne JavaScript bleibt es beim Datum, das immer
+stimmt. Die Formulierungen liegen in `lib/alter.ts`, geprüft in
+`lib/alter.test.mjs`.
+
 ## Was der Build prüft
 
 `.github/workflows/pruefen.yml` baut bei jedem Push beide Fassungen und lässt

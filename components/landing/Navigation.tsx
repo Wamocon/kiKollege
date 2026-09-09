@@ -14,6 +14,7 @@ export function Navigation({
 }) {
   const [aktiv, setAktiv] = useState(abschnitte[0]?.id ?? '')
   const [offen, setOffen] = useState(false)
+  const [amFuss, setAmFuss] = useState(false)
   const fortschritt = useRef<HTMLDivElement>(null)
 
   // Aktiven Abschnitt bestimmen
@@ -38,6 +39,20 @@ export function Navigation({
     }
     return () => beobachter.disconnect()
   }, [abschnitte])
+
+  // Die Schiene tritt ab, wenn der Fussbereich heraufkommt: er nutzt die volle
+  // Breite, die Schiene stuende sonst ueber seinem Text. Der untere Rand des
+  // Beobachters liegt ungefaehr dort, wo die Schiene endet.
+  useEffect(() => {
+    const fuss = document.querySelector('.lp-fuss')
+    if (!fuss) return
+    const beobachter = new IntersectionObserver(
+      ([eintrag]) => setAmFuss(eintrag.isIntersecting),
+      { rootMargin: '0px 0px -25% 0px' },
+    )
+    beobachter.observe(fuss)
+    return () => beobachter.disconnect()
+  }, [])
 
   // Fortschrittslinie
   useEffect(() => {
@@ -114,7 +129,7 @@ export function Navigation({
         </div>
       </div>
 
-      <nav className="lp-schiene" aria-label="Abschnitte">
+      <nav className={amFuss ? 'lp-schiene weg' : 'lp-schiene'} aria-label="Abschnitte">
         <ol>
           {abschnitte.map((a) => (
             <li key={a.id}>

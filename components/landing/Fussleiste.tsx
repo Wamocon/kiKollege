@@ -1,6 +1,7 @@
 import { daten, datum } from '@/lib/daten'
 import { istIntern, nurSichtbare } from '@/lib/freigabe'
 import { logoPfad } from '@/lib/logo'
+import { StandAlter } from '@/components/StandAlter'
 
 export function Fussleiste() {
   const logo = logoPfad()
@@ -22,6 +23,7 @@ export function Fussleiste() {
           <p>
             Stand <b>{datum(daten.stand)}</b>
           </p>
+          <StandAlter satz />
           <p>
             Pflege: <b>{daten.ansprechpartner.name}</b>
           </p>

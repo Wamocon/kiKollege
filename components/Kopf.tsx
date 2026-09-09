@@ -1,5 +1,6 @@
 import { daten, datum } from '@/lib/daten'
 import { istIntern } from '@/lib/freigabe'
+import { StandAlter } from '@/components/StandAlter'
 
 export function Kopf() {
   return (
@@ -16,7 +17,7 @@ export function Kopf() {
             <h1>Projektstand: Fritz prüft, ein Mensch gibt frei</h1>
           </div>
           <div className="kopf-meta">
-            Stand <b>{datum(daten.stand)}</b>
+            Stand <b>{datum(daten.stand)}</b> <StandAlter />
             <br />
             Fassung <b>{istIntern ? 'intern' : 'öffentlich'}</b>
             {istIntern ? (

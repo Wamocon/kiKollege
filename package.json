@@ -10,7 +10,7 @@
     "export:vault": "node scripts/export-vault.mjs",
     "pruefe:oeffentlich": "node scripts/pruefe-oeffentlich.mjs",
     "test:export": "node --test scripts/export-vault.test.mjs",
-    "test": "node --test \"scripts/*.test.mjs\""
+    "test": "node --test \"scripts/*.test.mjs\" \"lib/*.test.mjs\""
   },
   "dependencies": {
     "next": "^16.3.4",

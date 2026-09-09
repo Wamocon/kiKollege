@@ -4,6 +4,7 @@
     "arbeitsordner": "D:\\KFBM",
     "einstieg": "00_Vault/10_KI-Mitarbeiter/KI-Mitarbeiter — Einstieg.md",
     "erzeugt": "2026-09-05",
+    "fristTage": 7,
     "verfahren": "Erstbefüllung von Hand aus dem Übergabedokument vom 05.09.2026. Spätere Stände schreibt scripts/export-vault.mjs aus dem Frontmatter der Laufnotizen.",
     "freigabe": "intern",
     "quellen": [

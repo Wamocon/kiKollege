@@ -1,5 +1,6 @@
 import { daten, datum } from '@/lib/daten'
 import { istIntern } from '@/lib/freigabe'
+import { StandAlter } from '@/components/StandAlter'
 import { ThemaSchalter } from '@/components/ThemaSchalter'
 import { Navigation } from '@/components/landing/Navigation'
 import { sichtbareAbschnitte, lpAbschnitt } from '@/lib/lpAbschnitte'
@@ -19,7 +20,7 @@ export function Kopfleiste() {
         </a>
         <nav className="lp-bar-meta" aria-label="Seiteninformationen">
           <span className="lp-weg-schmal">
-            Stand <b>{datum(daten.stand)}</b>
+            Stand <b>{datum(daten.stand)}</b> <StandAlter />
           </span>
           {istIntern ? (
             <span className="lp-weg-schmal">
