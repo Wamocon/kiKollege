@@ -618,12 +618,15 @@ th.num { text-align: right; }
 }
 
 /* --- Kopfleiste --- */
+/* Deckend, nicht weichgezeichnet: backdrop-filter macht die Leiste zum
+   Bezugsrahmen fuer position: fixed, womit die Navigationsschiene darin
+   haengenbliebe statt am Fenster zu haengen. Und einen Weichzeichner kennt das
+   CI-Blatt ohnehin nicht. */
 .lp-bar {
   position: sticky;
   top: 0;
   z-index: 20;
-  background: color-mix(in srgb, var(--wmc-bg) 88%, transparent);
-  backdrop-filter: blur(10px);
+  background: var(--wmc-bg);
   border-bottom: 1px solid var(--wmc-border);
 }
 .lp-bar-innen {
@@ -646,7 +649,7 @@ th.num { text-align: right; }
   color: var(--wmc-ink);
   white-space: nowrap;
 }
-.lp-marke span { color: var(--wmc-primary-text); }
+.lp-marke .strich { color: var(--wmc-primary-text); }
 .lp-bar-meta {
   display: flex;
   align-items: center;
@@ -664,6 +667,12 @@ th.num { text-align: right; }
   .lp-bar-meta .lp-weg-schmal { display: none; }
   .lp-bar-innen { gap: 0.75rem; }
   .lp-marke { font-size: 0.62rem; letter-spacing: 0.1em; }
+}
+/* Auf ganz engen Bildschirmen bleiben nur Marke, Thema und Inhalt. Der Weg zur
+   Standseite steht auch im Fussbereich. */
+@media (max-width: 620px) {
+  .lp-weg-eng { display: none; }
+  .lp-bar-innen { gap: 0.5rem; padding: 0 1rem; }
 }
 
 .thema {
@@ -1158,3 +1167,225 @@ th.num { text-align: right; }
 .lp-stufe p { margin: 0 0 0.4rem; max-width: 62ch; }
 .lp-stufe .bedingung { font-size: 0.86rem; color: var(--wmc-muted); }
 @media (max-width: 620px) { .lp-stufe { grid-template-columns: minmax(0, 1fr); } }
+
+/* ============================================================================
+   NAVIGATION
+   Eine feste Leiste am linken Rand, ein aufklappbares Verzeichnis und eine
+   Fortschrittslinie. Die Leiste sitzt genau dort, wo sonst der Abschnittsindex
+   steht, und ersetzt ihn auf breiten Bildschirmen.
+   ========================================================================= */
+
+.lp-fortschritt {
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 100%;
+  height: 2px;
+  overflow: hidden;
+}
+.lp-fortschritt > div {
+  width: 100%;
+  height: 100%;
+  background: var(--signal);
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+}
+
+/* --- Knopf in der Kopfleiste --- */
+.lp-inhalt-knopf {
+  font: inherit;
+  font-family: var(--schrift-mono);
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: var(--wmc-ink);
+  background: none;
+  border: 1px solid var(--wmc-border);
+  padding: 0.22rem 0.6rem;
+  cursor: pointer;
+  white-space: nowrap;
+  min-width: 6.2em;
+}
+.lp-inhalt-knopf:hover { border-color: var(--wmc-muted); }
+.lp-inhalt-knopf[aria-expanded='true'] {
+  background: var(--wmc-ink);
+  color: var(--wmc-bg);
+  border-color: var(--wmc-ink);
+}
+
+/* --- Aufgeklapptes Verzeichnis --- */
+.lp-verzeichnis {
+  position: fixed;
+  inset: 52px 0 auto 0;
+  z-index: 19;
+  background: var(--wmc-bg);
+  border-bottom: 1px solid var(--wmc-border);
+  max-height: calc(100vh - 52px);
+  overflow-y: auto;
+}
+.lp-verzeichnis-innen {
+  max-width: var(--lp-spalte);
+  margin: 0 auto;
+  padding: 1.6rem clamp(1.25rem, 3vw, 2.5rem) 2rem;
+}
+.lp-verzeichnis-titel {
+  font-family: var(--schrift-mono);
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--wmc-muted);
+  margin: 0 0 0.9rem;
+}
+.lp-verzeichnis ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(215px, 1fr));
+  border-top: 1px solid var(--rand-leise);
+}
+.lp-verzeichnis li { border-bottom: 1px solid var(--rand-leise); }
+.lp-verzeichnis a {
+  display: grid;
+  grid-template-columns: 2.2rem 1fr;
+  gap: 0.6rem;
+  align-items: baseline;
+  padding: 0.6rem 0.8rem 0.6rem 0;
+  text-decoration: none;
+  color: var(--wmc-ink);
+}
+.lp-verzeichnis a:hover { color: var(--wmc-primary-text); }
+.lp-verzeichnis a .nr {
+  font-family: var(--schrift-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--wmc-primary-text);
+}
+.lp-verzeichnis a[aria-current] { font-weight: 700; }
+.lp-verzeichnis a[aria-current]::after { content: " ·"; color: var(--signal); }
+
+/* --- Feste Leiste am linken Rand --- */
+.lp-schiene { display: none; }
+
+@media (min-width: 1240px) {
+  .lp-schiene {
+    display: block;
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    left: calc(max((100vw - var(--lp-spalte)) / 2, 0px) + clamp(1.25rem, 3vw, 2.5rem));
+    width: var(--lp-rinne);
+    max-height: calc(100vh - 120px);
+    overflow-y: auto;
+    z-index: 5;
+  }
+  .lp-schiene ol { list-style: none; margin: 0; padding: 0; }
+  .lp-schiene a {
+    display: grid;
+    grid-template-columns: 1.9rem 1fr;
+    gap: 0.35rem;
+    align-items: baseline;
+    padding: 0.24rem 0;
+    text-decoration: none;
+    font-family: var(--schrift-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    color: var(--wmc-muted);
+    opacity: 0.55;
+    transition: opacity 0.2s ease, color 0.2s ease;
+  }
+  .lp-schiene a .nr { color: inherit; }
+  .lp-schiene a .was { text-transform: uppercase; }
+  .lp-schiene a:hover { opacity: 1; color: var(--wmc-ink); }
+  .lp-schiene a[aria-current] {
+    opacity: 1;
+    color: var(--wmc-ink);
+    font-weight: 700;
+  }
+  .lp-schiene a[aria-current] .nr { color: var(--wmc-primary-text); }
+
+  /* Der Index in jedem Abschnitt wird von der Leiste übernommen. */
+  .lp-index { visibility: hidden; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lp-schiene a { transition: none; }
+}
+
+/* ============================================================================
+   HERO MIT SCROLLBINDUNG
+   Die Bahn gibt den Scrollweg her, der Halt bleibt darin stehen. Ohne
+   JavaScript und bei abgeschalteter Bewegung faellt beides weg: Dann steht die
+   Zeichnung einmal da und alle vier Erklaerungen darunter.
+   ========================================================================= */
+
+.lp-bahn { margin-top: clamp(2rem, 4vw, 3.4rem); }
+.lp-bahn-halt { display: block; }
+
+.js .lp-bahn { min-height: 240vh; }
+.js .lp-bahn-halt {
+  position: sticky;
+  top: 53px;
+  min-height: calc(100vh - 53px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-bottom: 1rem;
+}
+@media (prefers-reduced-motion: reduce) {
+  .js .lp-bahn { min-height: 0; }
+  .js .lp-bahn-halt { position: static; }
+}
+
+.lp-anatomie { margin: 0; }
+/* Die Zeichnung haelt eine Mindestbreite, damit die Beschriftung lesbar bleibt.
+   Sie scrollt darunter im eigenen Kasten, sonst schiebt sie die ganze Seite
+   seitwaerts. */
+.lp-anatomie-bild { overflow-x: auto; max-width: 860px; }
+.lp-anatomie svg {
+  display: block;
+  width: 100%;
+  min-width: 620px;
+  height: auto;
+  overflow: visible;
+}
+.lp-anatomie figcaption { margin-top: 1.4rem; max-width: 66ch; }
+.lp-anatomie .teil rect,
+.lp-anatomie .teil line,
+.lp-anatomie .teil text { transition: opacity 0.35s ease, stroke 0.35s ease; }
+.lp-anatomie .teil { opacity: 0.42; }
+.lp-anatomie .teil.hell { opacity: 1; }
+@media (prefers-reduced-motion: reduce) {
+  .lp-anatomie .teil { opacity: 1; transition: none; }
+}
+
+.lp-anatomie-satz {
+  margin: 0 0 0.7rem;
+  font-family: var(--schrift-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  line-height: 1.6;
+  color: var(--wmc-muted);
+}
+.lp-anatomie-text {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.55;
+  min-height: 4.7em;
+  animation: einblenden 0.35s ease;
+}
+.lp-anatomie-alle { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.5rem; }
+.lp-anatomie-alle li { font-size: 0.94rem; line-height: 1.5; color: var(--wmc-muted); }
+.lp-anatomie-alle b, .lp-anatomie-text b { color: var(--wmc-ink); font-weight: 700; }
+@keyframes einblenden {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .lp-anatomie-text { animation: none; }
+}
+
+/* Die Bahn braucht keinen Aufschlag durch die Abschnittspolsterung. */
+.lp-hero .lp-sektion-innen { padding-bottom: clamp(2rem, 4vw, 3rem); }

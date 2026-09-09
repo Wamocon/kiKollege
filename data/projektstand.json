@@ -918,5 +918,73 @@
     "fundstelle": "Quiz „mittel\", Frage 7, Option B",
     "nachsatz": "Dasselbe Thema ist an anderer Stelle im Bestand richtig dargestellt. Die Korrektur lag im Haus und musste nur gefunden werden.",
     "freigabe": "oeffentlich"
-  }
+  },
+  "anatomie": {
+    "kern": {
+      "titel": "Sprachmodell",
+      "zusatz": "bekommt Text, gibt Text zurück"
+    },
+    "satz": "Ein Sprachmodell allein ist noch kein Mitarbeiter. Vier Dinge kommen dazu, und alle vier schreibt ein Mensch auf.",
+    "teile": [
+      {
+        "id": "auftrag",
+        "titel": "Auftrag und Grenze",
+        "kurz": "was er tut, was nie",
+        "text": "Eine Aufgabe, die immer dieselbe ist, und eine Liste dessen, was er nie tut. Eine Fähigkeit, die nicht eingetragen ist, hat er nicht: Ihm fehlen die Werkzeuge dafür."
+      },
+      {
+        "id": "massstab",
+        "titel": "Maßstab",
+        "kurz": "wogegen er prüft",
+        "text": "Die Regeln dieses Hauses, als Dateien hinterlegt. Ohne aufgeschriebenen Maßstab bliebe ihm nur das allgemeine Wissen aus dem Training."
+      },
+      {
+        "id": "gedaechtnis",
+        "titel": "Gedächtnis",
+        "kurz": "was hängen bleibt",
+        "text": "Ergebnisse bleiben, Regeln werden nachgeschärft. Was ein Mensch als Fehlalarm markiert, geht zurück in die Regel. Ein Chatbot vergisst mit dem Fenster."
+      },
+      {
+        "id": "aufsicht",
+        "titel": "Aufsicht",
+        "kurz": "wer entscheidet",
+        "text": "Jedes Ergebnis geht an einen Menschen. Die Freigabe steht in keiner seiner Regeln, und das ist keine Vereinbarung, sondern eine technische Grenze."
+      }
+    ],
+    "freigabe": "oeffentlich"
+  },
+  "schichtenGruppen": [
+    {
+      "name": "Wer er ist",
+      "schichten": [
+        1,
+        2
+      ],
+      "erbt": true
+    },
+    {
+      "name": "Was er weiß und kann",
+      "schichten": [
+        3,
+        4,
+        5
+      ],
+      "erbt": false
+    },
+    {
+      "name": "Wie er arbeitet",
+      "schichten": [
+        6
+      ],
+      "erbt": true
+    },
+    {
+      "name": "Was er lernt, wer ihn prüft",
+      "schichten": [
+        7,
+        8
+      ],
+      "erbt": true
+    }
+  ]
 }

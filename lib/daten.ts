@@ -59,6 +59,20 @@ export interface Arbeitstag {
   text: string
 }
 
+export interface AnatomieTeil {
+  id: string
+  titel: string
+  kurz: string
+  text: string
+}
+
+export interface SchichtenGruppe {
+  name: string
+  schichten: number[]
+  /** Übernimmt ein zweiter KI-Mitarbeiter diese Gruppe fast unverändert? */
+  erbt: boolean
+}
+
 export interface Begriff {
   begriff: string
   erklaerung: string
@@ -240,6 +254,13 @@ export interface Projektstand {
     freigabe: Freigabe
   }
   standSatz: string
+  anatomie: {
+    kern: { titel: string; zusatz: string }
+    satz: string
+    teile: AnatomieTeil[]
+    freigabe: Freigabe
+  }
+  schichtenGruppen: SchichtenGruppe[]
   beschreibungsdatei: {
     name: string
     stand: string

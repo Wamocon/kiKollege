@@ -1,10 +1,12 @@
 import { Enthuellen } from '@/components/Enthuellen'
 import { EnablerRaster } from '@/components/figuren/EnablerRaster'
+import { Schichtenstapel } from '@/components/figuren/Schichtenstapel'
 import { Durchlauf } from '@/components/figuren/Durchlauf'
 import { Pruefpunkte } from '@/components/figuren/Pruefpunkte'
 import { Steuerung } from '@/components/figuren/Steuerung'
 import { Wissensablagen } from '@/components/figuren/Wissensablagen'
 import { Fussleiste } from '@/components/landing/Fussleiste'
+import { HeroAnatomie } from '@/components/landing/HeroAnatomie'
 import { Kopfleiste } from '@/components/landing/Kopfleiste'
 import { Sektion } from '@/components/landing/Sektion'
 import { daten, datum, harteRegel, tageZwischen, zahl } from '@/lib/daten'
@@ -38,6 +40,12 @@ export default function Landing() {
             kein Mitarbeiter. Diese Seite erklärt, worum es geht, woraus so einer besteht und wie
             die {gmbh.name} vorgeht. Einen gibt es seit Ende August im Einsatz.
           </p>
+
+          <HeroAnatomie
+            kern={d.anatomie.kern}
+            satz={d.anatomie.satz}
+            teile={d.anatomie.teile}
+          />
 
           <dl className="lp-spec" data-enthuellen>
             <div className="lp-spec-zeile">
@@ -177,41 +185,16 @@ export default function Landing() {
             <p>{d.schichtenErklaerung}</p>
           </div>
 
-          <div className="lp-gegen-rahmen" data-enthuellen>
-            <table className="lp-gegen">
-              <thead>
-                <tr>
-                  <th style={{ width: '3rem' }}>Nr.</th>
-                  <th className="stark">Schicht</th>
-                  <th>Frage</th>
-                  <th>Wo es in seiner Datei steht</th>
-                </tr>
-              </thead>
-              <tbody>
-                {d.schichten.map((s) => (
-                  <tr key={s.nr}>
-                    <td className="merkmal" style={{ width: '3rem' }}>
-                      {String(s.nr).padStart(2, '0')}
-                    </td>
-                    <td>
-                      <b>{s.name}</b>
-                    </td>
-                    <td className="leise">{s.frage}</td>
-                    <td className="merkmal" style={{ width: '13rem' }}>
-                      {s.datei}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+          <div data-enthuellen>
+            <Schichtenstapel />
           </div>
 
           <div className="lp-text lp-luft-oben" data-enthuellen>
             <p>{d.schichtenDatei}</p>
             <p>
-              Die beiden untersten Schichten tragen den Rest. Ohne bewertete Ergebnisse gibt es
-              keine Messung, und ohne Messung keinen Grund, dem Werkzeug zu glauben.{' '}
-              {d.schichtenErbe}
+              Die beiden mit einem Balken markierten Schichten tragen den Rest. Ohne bewertete
+              Ergebnisse gibt es keine Messung, und ohne Messung keinen Grund, dem Werkzeug zu
+              glauben.
             </p>
           </div>
 

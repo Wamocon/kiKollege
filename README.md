@@ -61,6 +61,43 @@ braucht es einen kleinen Webserver, weil die Seite absolute Pfade nutzt:
 npx serve out
 ```
 
+## Navigation
+
+Sechzehn Abschnitte brauchen eine. Sie besteht aus drei Teilen, alle in
+`components/landing/Navigation.tsx`:
+
+- **Die Schiene** am linken Rand, ab 1240 px. Sie listet alle Abschnitte und
+  markiert den aktuellen. Auf breiten Bildschirmen übernimmt sie die Rolle des
+  Abschnittsindex, der dort ausgeblendet wird.
+- **Das Verzeichnis**, das sich aus der Kopfleiste aufklappt. Es trägt auf jeder
+  Breite und ist unterhalb von 1240 px der einzige Weg zum Springen.
+- **Die Fortschrittslinie** an der Unterkante der Kopfleiste.
+
+Welcher Abschnitt gerade gilt, bestimmt ein IntersectionObserver mit einem Band
+zwischen 20 und 30 Prozent der Fensterhöhe, nicht eine Scroll-Rechnung. Bei
+mehreren Treffern gewinnt der oberste, damit die Marke beim Zurückscrollen nicht
+springt.
+
+Die Kopfleiste ist deckend und nicht weichgezeichnet. `backdrop-filter` macht ein
+Element zum Bezugsrahmen für `position: fixed` — die Schiene hing damit in einer
+52 Pixel hohen Box statt am Fenster.
+
+## Der Hero
+
+Die Zeichnung zeigt, was aus einem Sprachmodell einen Mitarbeiter macht: Auftrag
+und Grenze, Maßstab, Gedächtnis, Aufsicht. Beim Scrollen tritt eines nach dem
+anderen hervor, die Erklärung darunter wechselt mit.
+
+Die Bahn (`.lp-bahn`) gibt den Scrollweg her, der Halt darin bleibt stehen. Beides
+hängt an der Klasse `js`:
+
+- **Ohne JavaScript** entfällt der Scrollweg. Die Zeichnung steht einmal da, alle
+  vier Teile gleich hell, alle vier Erklärungen untereinander.
+- **Bei `prefers-reduced-motion`** gilt dasselbe, zusätzlich ohne Übergänge.
+
+So ist im Ruhezustand alles lesbar, was gelesen werden soll. Nichts wartet auf
+einen Beobachter.
+
 ## Der Themenschalter
 
 Die Kopfleiste schaltet zwischen System, Hell und Dunkel. Die Wahl liegt in
@@ -91,6 +128,10 @@ das wäre die Beschriftung auf Handybreite unleserlich.
 - **Steuerung** — wer ihn anstößt, was er an Helfer abgibt, wie eine Übergabe an einen
   zweiten läuft.
 - **Enabler-Feld** — der geprüfte Bestand, eine Zelle je Enabler.
+- **Schichtenstapel** — die acht Schichten in vier Gruppen, mit der Dateizuordnung
+  und der Markierung, welche Gruppen ein zweiter KI-Mitarbeiter erbt. Rot trägt
+  hier die eine Gruppe, die neu zu bauen ist.
+- **Anatomie** — die Zeichnung im Hero, die einzige mit Scrollbindung.
 
 Dazu zwei Entscheidungen zur Darstellung:
 
