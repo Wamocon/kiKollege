@@ -25,7 +25,7 @@ export function Sektion({
           <span className="nr">[ {a.nr} ]</span>
           <span className="was">
             {a.label}
-            {nurIntern ? ' · nur intern' : ''}
+            {nurIntern ? ', nur intern' : ''}
           </span>
         </p>
         <div className="lp-inhalt">{children}</div>

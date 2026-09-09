@@ -34,7 +34,7 @@ export function Fussleiste() {
               <b>{g.name}</b>
             </p>
             <p>{g.auftrag}</p>
-            <p className="leistungen">{g.leistungen.join(' · ')}</p>
+            <p className="leistungen">{g.leistungen.join(', ')}</p>
             <p>
               {g.register}
               <br />

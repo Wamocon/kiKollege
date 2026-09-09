@@ -602,21 +602,6 @@ th.num { text-align: right; }
   --logo-schutzraum: 14px;
 }
 
-/* --- Enthüllen beim Scrollen. Ohne JavaScript bleibt alles sichtbar, weil die
-       Startwerte nur unter .js gelten. --- */
-.js [data-enthuellen] {
-  opacity: 0;
-  transform: translateY(14px);
-  transition: opacity 0.55s ease, transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
-}
-.js [data-enthuellen].sichtbar {
-  opacity: 1;
-  transform: none;
-}
-@media (prefers-reduced-motion: reduce) {
-  .js [data-enthuellen] { opacity: 1; transform: none; transition: none; }
-}
-
 /* --- Kopfleiste --- */
 /* Deckend, nicht weichgezeichnet: backdrop-filter macht die Leiste zum
    Bezugsrahmen fuer position: fixed, womit die Navigationsschiene darin
@@ -679,8 +664,7 @@ th.num { text-align: right; }
   font: inherit;
   font-family: var(--schrift-mono);
   font-size: 0.66rem;
-  letter-spacing: 0.11em;
-  text-transform: uppercase;
+  letter-spacing: 0.04em;
   color: var(--wmc-muted);
   background: none;
   border: 1px solid var(--wmc-border);
@@ -699,7 +683,9 @@ th.num { text-align: right; }
 }
 
 /* --- Abschnitte --- */
-.lp-sektion { border-top: 1px solid var(--rand-leise); }
+/* Beim Sprung aus der Navigation darf die Kopfleiste die Ueberschrift des
+   Ziels nicht verdecken. */
+.lp-sektion { border-top: 1px solid var(--rand-leise); scroll-margin-top: 68px; }
 .lp-sektion:first-of-type { border-top: 0; }
 .lp-sektion-innen {
   max-width: var(--lp-spalte);
@@ -764,8 +750,7 @@ th.num { text-align: right; }
 .lp-klein {
   font-family: var(--schrift-mono);
   font-size: 0.68rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  letter-spacing: 0.04em;
   color: var(--wmc-muted);
 }
 .lp-luft-oben { margin-top: clamp(1.6rem, 3vw, 2.8rem); }
@@ -796,8 +781,7 @@ th.num { text-align: right; }
 .lp-spec-zeile dt {
   font-family: var(--schrift-mono);
   font-size: 0.68rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  letter-spacing: 0.03em;
   color: var(--wmc-muted);
   padding-top: 0.15rem;
 }
@@ -828,13 +812,24 @@ th.num { text-align: right; }
 .lp-zelle .kopf {
   font-family: var(--schrift-mono);
   font-size: 0.66rem;
-  letter-spacing: 0.13em;
-  text-transform: uppercase;
+  letter-spacing: 0.03em;
   color: var(--wmc-muted);
 }
 .lp-zelle h3 { font-size: 1.02rem; font-weight: 700; letter-spacing: -0.012em; margin: 0; }
 .lp-zelle p { margin: 0; font-size: 0.9rem; line-height: 1.55; color: var(--wmc-muted); }
 .lp-zelle p.stark { color: var(--wmc-ink); }
+.lp-stufe-marke {
+  align-self: flex-start;
+  margin: 0;
+  font-family: var(--schrift-mono);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--wmc-danger);
+  border: 1px solid currentColor;
+  padding: 0.12rem 0.4rem;
+}
 .lp-zelle.traegt { border-top: 2px solid var(--signal); margin-top: -1px; }
 .lp-zelle.traegt .kopf { color: var(--wmc-primary-text); }
 
@@ -1004,8 +999,7 @@ th.num { text-align: right; }
   font-family: var(--schrift-mono);
   font-size: 0.66rem;
   font-weight: 700;
-  letter-spacing: 0.13em;
-  text-transform: uppercase;
+  letter-spacing: 0.04em;
   color: var(--wmc-muted);
   margin: 0 0 0.7rem;
 }
@@ -1041,8 +1035,9 @@ th.num { text-align: right; }
 }
 
 @media print {
-  .lp-bar, .thema { display: none; }
-  .js [data-enthuellen] { opacity: 1; transform: none; }
+  .lp-bar, .thema, .lp-schiene, .lp-verzeichnis { display: none; }
+  .lp-bahn { min-height: 0; }
+  .lp-bahn-halt { position: static; min-height: 0; }
 }
 
 
@@ -1071,7 +1066,7 @@ th.num { text-align: right; }
 .lp-gegen th.stark { color: var(--wmc-ink); }
 .lp-gegen td { padding: 0.75rem 1.2rem 0.75rem 0; border-bottom: 1px solid var(--rand-leise); font-size: 0.92rem; line-height: 1.5; }
 .lp-gegen td:last-child, .lp-gegen th:last-child { padding-right: 0; }
-.lp-gegen td.merkmal { font-family: var(--schrift-mono); font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--wmc-muted); width: 9rem; }
+.lp-gegen td.merkmal { font-family: var(--schrift-mono); font-size: 0.72rem; letter-spacing: 0.02em; color: var(--wmc-muted); width: 9rem; }
 .lp-gegen td.leise { color: var(--wmc-muted); }
 .lp-gegen-rahmen { overflow-x: auto; }
 
@@ -1110,8 +1105,7 @@ th.num { text-align: right; }
   border-bottom: 1px solid var(--rand-leise);
   font-family: var(--schrift-mono);
   font-size: 0.68rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+  letter-spacing: 0.03em;
   color: var(--wmc-muted);
 }
 .lp-quelltext-kopf b { color: var(--wmc-ink); font-weight: 700; }
@@ -1158,8 +1152,7 @@ th.num { text-align: right; }
   font-family: var(--schrift-mono);
   font-size: 0.7rem;
   font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+  letter-spacing: 0.03em;
   color: var(--wmc-primary-text);
   padding-top: 0.25rem;
 }
@@ -1197,8 +1190,7 @@ th.num { text-align: right; }
   font-family: var(--schrift-mono);
   font-size: 0.66rem;
   font-weight: 700;
-  letter-spacing: 0.11em;
-  text-transform: uppercase;
+  letter-spacing: 0.04em;
   color: var(--wmc-ink);
   background: none;
   border: 1px solid var(--wmc-border);
@@ -1233,8 +1225,7 @@ th.num { text-align: right; }
   font-family: var(--schrift-mono);
   font-size: 0.66rem;
   font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+  letter-spacing: 0.04em;
   color: var(--wmc-muted);
   margin: 0 0 0.9rem;
 }

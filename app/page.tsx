@@ -1,4 +1,3 @@
-import { Enthuellen } from '@/components/Enthuellen'
 import { EnablerRaster } from '@/components/figuren/EnablerRaster'
 import { Schichtenstapel } from '@/components/figuren/Schichtenstapel'
 import { Durchlauf } from '@/components/figuren/Durchlauf'
@@ -24,7 +23,6 @@ export default function Landing() {
   return (
     <>
       <Kopfleiste />
-      <Enthuellen />
 
       <main id="inhalt">
         {/* 01 Vorhaben ------------------------------------------------------ */}
@@ -47,7 +45,7 @@ export default function Landing() {
             teile={d.anatomie.teile}
           />
 
-          <dl className="lp-spec" data-enthuellen>
+          <dl className="lp-spec">
             <div className="lp-spec-zeile">
               <dt>Erste Rolle</dt>
               <dd>
@@ -85,14 +83,14 @@ export default function Landing() {
 
         {/* 02 Kein Chatbot -------------------------------------------------- */}
         <Sektion id="chatbot">
-          <p className="lp-aussage" data-enthuellen>
+          <p className="lp-aussage">
             {d.abgrenzung.satz}
           </p>
-          <div className="lp-text lp-luft-oben" data-enthuellen>
+          <div className="lp-text lp-luft-oben">
             <p>{d.abgrenzung.erklaerung}</p>
           </div>
 
-          <div className="lp-gegen-rahmen" data-enthuellen>
+          <div className="lp-gegen-rahmen">
             <table className="lp-gegen">
               <thead>
                 <tr>
@@ -116,11 +114,11 @@ export default function Landing() {
 
         {/* 03 Eignung ------------------------------------------------------- */}
         <Sektion id="eignung">
-          <p className="lp-aussage breit" data-enthuellen>
+          <p className="lp-aussage breit">
             Vier Merkmale entscheiden, ob eine Aufgabe in Frage kommt.
           </p>
 
-          <div className="lp-paar" data-enthuellen>
+          <div className="lp-paar">
             <div>
               <h3>Geeignet, wenn</h3>
               <ul>
@@ -139,14 +137,14 @@ export default function Landing() {
             </div>
           </div>
 
-          <div className="lp-text lp-luft-oben" data-enthuellen>
+          <div className="lp-text lp-luft-oben">
             <p>{d.eignung.nachsatz}</p>
           </div>
 
-          <p className="lp-aussage lp-luft-oben" data-enthuellen>
+          <p className="lp-aussage lp-luft-oben">
             {harteRegel('rollengrenze').grund}
           </p>
-          <div className="lp-text lp-luft-oben-klein" data-enthuellen>
+          <div className="lp-text lp-luft-oben-klein">
             <p>
               Dass ein Testhaus seinen ersten KI-Mitarbeiter als Prüfer baut und nicht als
               Ersteller, hat denselben Ursprung wie die Entscheidung zum Fehlalarm weiter unten. Das
@@ -159,13 +157,13 @@ export default function Landing() {
 
         {/* 04 Ertrag -------------------------------------------------------- */}
         <Sektion id="ertrag">
-          <p className="lp-aussage breit" data-enthuellen>
+          <p className="lp-aussage breit">
             Was dabei herauskommt, das anders nicht zu haben ist.
           </p>
-          <div className="lp-text lp-luft-oben-klein" data-enthuellen>
+          <div className="lp-text lp-luft-oben-klein">
             <p>{d.ertrag.einleitung}</p>
           </div>
-          <div className="lp-zellen" data-enthuellen>
+          <div className="lp-zellen">
             {d.ertrag.punkte.map((p) => (
               <div className="lp-zelle" key={p.titel}>
                 <span className="kopf">{p.titel}</span>
@@ -178,18 +176,16 @@ export default function Landing() {
 
         {/* 05 Aufbau -------------------------------------------------------- */}
         <Sektion id="aufbau">
-          <p className="lp-aussage breit" data-enthuellen>
+          <p className="lp-aussage breit">
             Acht Fragen, die auch ein neuer Kollege beantwortet bekommt.
           </p>
-          <div className="lp-text lp-luft-oben-klein" data-enthuellen>
+          <div className="lp-text lp-luft-oben-klein">
             <p>{d.schichtenErklaerung}</p>
           </div>
 
-          <div data-enthuellen>
-            <Schichtenstapel />
-          </div>
+          <Schichtenstapel />
 
-          <div className="lp-text lp-luft-oben" data-enthuellen>
+          <div className="lp-text lp-luft-oben">
             <p>{d.schichtenDatei}</p>
             <p>
               Die beiden mit einem Balken markierten Schichten tragen den Rest. Ohne bewertete
@@ -198,7 +194,7 @@ export default function Landing() {
             </p>
           </div>
 
-          <div className="lp-quelltext" data-enthuellen>
+          <div className="lp-quelltext">
             <p className="lp-quelltext-kopf">
               <b>{d.beschreibungsdatei.name}</b>
               <span>{d.beschreibungsdatei.stand}</span>
@@ -206,7 +202,7 @@ export default function Landing() {
             <pre>{d.beschreibungsdatei.auszug}</pre>
           </div>
 
-          <div className="lp-zellen lp-luft-oben" data-enthuellen>
+          <div className="lp-zellen lp-luft-oben">
             <div className="lp-zelle">
               <span className="kopf">Oben der Kopf</span>
               <p>{d.beschreibungsdatei.kopf}</p>
@@ -220,32 +216,30 @@ export default function Landing() {
               <p className="stark">{d.beschreibungsdatei.grenze}</p>
             </div>
           </div>
-          <div className="lp-text lp-luft-oben" data-enthuellen>
+          <div className="lp-text lp-luft-oben">
             <p>{d.beschreibungsdatei.einzigeQuelle}</p>
           </div>
         </Sektion>
 
         {/* 06 Wissen -------------------------------------------------------- */}
         <Sektion id="wissen">
-          <p className="lp-aussage breit" data-enthuellen>
+          <p className="lp-aussage breit">
             Zwei Wissensablagen, nicht eine.
           </p>
-          <div className="lp-text lp-luft-oben-klein" data-enthuellen>
+          <div className="lp-text lp-luft-oben-klein">
             <p>{d.wissensablagen.satz}</p>
           </div>
 
-          <div data-enthuellen>
-            <Wissensablagen />
-          </div>
+          <Wissensablagen />
 
-          <div className="lp-text lp-luft-oben" data-enthuellen>
+          <div className="lp-text lp-luft-oben">
             <p>{d.wissensablagen.gemeinsam.hinweis}</p>
           </div>
 
-          <div className="lp-paar" data-enthuellen>
+          <div className="lp-paar">
             <div>
-              <h3>Wissen — was gilt</h3>
-              <p className="lp-untertitel">Schreiben Menschen. Ändert sich selten, und nie von allein.</p>
+              <h3>Wissen</h3>
+              <p className="lp-untertitel">Was gilt. Schreiben Menschen, ändert sich selten und nie von allein.</p>
               <ul>
                 <li>Norm von außen: Gesetze, Verordnungen, wörtlich abgeschrieben</li>
                 <li>Maßstab des Hauses: Checklisten, Vorlagen, Corporate Design</li>
@@ -254,8 +248,8 @@ export default function Landing() {
               </ul>
             </div>
             <div>
-              <h3>Gedächtnis — was herauskam</h3>
-              <p className="lp-untertitel">Fällt beim Arbeiten an. Wächst mit jedem Auftrag.</p>
+              <h3>Gedächtnis</h3>
+              <p className="lp-untertitel">Was herauskam. Fällt beim Arbeiten an und wächst mit jedem Auftrag.</p>
               <ul>
                 <li>Einzelergebnis: hunderte je Lauf, maschinell geschrieben</li>
                 <li>
@@ -266,7 +260,7 @@ export default function Landing() {
             </div>
           </div>
 
-          <div className="lp-text lp-luft-oben" data-enthuellen>
+          <div className="lp-text lp-luft-oben">
             <p>
               Er liest nicht alles. Zu jedem Auftrag gehört die Angabe, welcher Teil des Wissens
               dafür der Maßstab ist. Deshalb trägt jede Notiz ein Datum: Wissen ohne Stand lässt
@@ -282,41 +276,37 @@ export default function Landing() {
 
         {/* 07 Durchlauf ------------------------------------------------------ */}
         <Sektion id="durchlauf">
-          <p className="lp-aussage breit" data-enthuellen>
+          <p className="lp-aussage breit">
             Zwei Stufen, weil sie Verschiedenes finden.
           </p>
 
-          <div data-enthuellen>
-            <Durchlauf />
-          </div>
+          <Durchlauf />
 
-          <div className="lp-text lp-luft-oben" data-enthuellen>
+          <div className="lp-text lp-luft-oben">
             <p>{d.durchlauf.zweiStufen}</p>
             <p>{d.durchlauf.rueckweg}</p>
             <p>{d.durchlauf.verdichtung}</p>
           </div>
 
-          <div data-enthuellen>
-            <Pruefpunkte />
-          </div>
+          <Pruefpunkte />
         </Sektion>
 
         {/* 08 Messung -------------------------------------------------------- */}
         <Sektion id="messung">
-          <p className="lp-aussage" data-enthuellen>
+          <p className="lp-aussage">
             Ein KI-Mitarbeiter, dem man nicht glauben kann, ist schlimmer als keiner.
           </p>
-          <div className="lp-text lp-luft-oben" data-enthuellen>
+          <div className="lp-text lp-luft-oben">
             <p>
               Dann muss man seine Arbeit zusätzlich nachprüfen. Zwei Zahlen entscheiden, und beide
               muss man tatsächlich erheben.
             </p>
           </div>
 
-          <div className="lp-zellen" data-enthuellen>
+          <div className="lp-zellen">
             <div className="lp-zelle">
               <span className="kopf">
-                Frage 1 · {wiederholung ? 'gemessen' : 'offen'}
+                Frage 1, {wiederholung ? 'gemessen' : 'offen'}
               </span>
               <h3>Sagt er zweimal dasselbe?</h3>
               <p>
@@ -337,7 +327,7 @@ export default function Landing() {
               )}
             </div>
             <div className="lp-zelle traegt">
-              <span className="kopf">Frage 2 · offen</span>
+              <span className="kopf">Frage 2, offen</span>
               <h3>Wie oft meldet er etwas, das keins ist?</h3>
               <p>
                 Die härtere Zahl. Sie lässt sich nur erheben, wenn Fachleute eine Stichprobe
@@ -347,7 +337,7 @@ export default function Landing() {
             </div>
           </div>
 
-          <div className="lp-hero-zahl lp-luft-oben" data-enthuellen>
+          <div className="lp-hero-zahl lp-luft-oben">
             <p className="wert">0</p>
             <p className="beschriftung">
               von {zahl(fehlalarmquote.unbewertet!)} Befunden und Hinweisen sind bisher von einem
@@ -355,13 +345,13 @@ export default function Landing() {
             </p>
           </div>
 
-          <p className="lp-klein lp-luft-oben" data-enthuellen>
+          <p className="lp-klein lp-luft-oben">
             Entschieden am {datum(d.massstab.kalibrierung.entschiedenAm)}
           </p>
-          <p className="lp-aussage lp-luft-oben-klein" data-enthuellen>
+          <p className="lp-aussage lp-luft-oben-klein">
             {d.massstab.kalibrierung.satz}
           </p>
-          <div className="lp-text lp-luft-oben" data-enthuellen>
+          <div className="lp-text lp-luft-oben">
             <p>
               Wer dreimal einen falschen Alarm bekommt, sieht beim vierten Mal nicht mehr hin. Dann
               nützt auch das nichts mehr, was richtig gefunden wurde. Deshalb gilt die Regel, im
@@ -370,7 +360,7 @@ export default function Landing() {
             </p>
           </div>
 
-          <dl className="lp-spec" data-enthuellen>
+          <dl className="lp-spec">
             {nurSichtbare(d.fehlalarmBelege).map((f) => (
               <div className="lp-spec-zeile" key={f.id}>
                 <dt>{f.titel}</dt>
@@ -390,13 +380,13 @@ export default function Landing() {
 
         {/* 09 Der erste ------------------------------------------------------ */}
         <Sektion id="erster">
-          <p className="lp-klein" data-enthuellen>
+          <p className="lp-klein">
             Seit Ende August im Einsatz
           </p>
-          <p className="lp-aussage breit lp-luft-oben-klein" data-enthuellen>
+          <p className="lp-aussage breit lp-luft-oben-klein">
             Fritz, Reviewer für Schulungsunterlagen.
           </p>
-          <div className="lp-text lp-luft-oben" data-enthuellen>
+          <div className="lp-text lp-luft-oben">
             <p>
               Er prüft die Unterlagen der WAMOCON Academy für die Ausbildung zu Kaufleuten für
               Büromanagement gegen die Checklisten des Hauses und die Ausbildungsverordnung, und
@@ -406,7 +396,7 @@ export default function Landing() {
             </p>
           </div>
 
-          <div className="lp-kpi" data-enthuellen>
+          <div className="lp-kpi">
             <div className="lp-kpi-kachel">
               <p className="lp-kpi-wert">{zahl(rechenlauf?.geprueft ?? 0)}</p>
               <p className="lp-kpi-label">
@@ -436,9 +426,10 @@ export default function Landing() {
             </div>
           </div>
 
-          <div className="lp-zellen lp-luft-oben" data-enthuellen>
+          <div className="lp-zellen lp-luft-oben">
             <div className="lp-zelle traegt">
-              <span className="kopf">So sieht ein Befund aus · {d.beispielbefund.stufe}</span>
+              <span className="kopf">So sieht ein Befund aus</span>
+              <p className="lp-stufe-marke">{d.beispielbefund.stufe}</p>
               <p className="stark">{d.beispielbefund.text}</p>
               <p className="kopf">{d.beispielbefund.fundstelle}</p>
               <p>{d.beispielbefund.nachsatz}</p>
@@ -452,15 +443,13 @@ export default function Landing() {
 
         {/* 10 Steuerung ------------------------------------------------------ */}
         <Sektion id="steuerung">
-          <p className="lp-aussage breit" data-enthuellen>
+          <p className="lp-aussage breit">
             Wie er gesteuert wird, und was er selbst steuert.
           </p>
 
-          <div data-enthuellen>
-            <Steuerung />
-          </div>
+          <Steuerung />
 
-          <div className="lp-zellen lp-luft-oben" data-enthuellen>
+          <div className="lp-zellen lp-luft-oben">
             <div className="lp-zelle">
               <span className="kopf">Beauftragt werden</span>
               <p>{d.steuerung.warumSkript}</p>
@@ -478,10 +467,10 @@ export default function Landing() {
 
         {/* 11 Stand ---------------------------------------------------------- */}
         <Sektion id="stand">
-          <p className="lp-aussage breit" data-enthuellen>
+          <p className="lp-aussage breit">
             {tageZwischen(d.arbeitstage.beginn, d.stand)} Tage, mit Datum.
           </p>
-          <div className="lp-zeit" data-enthuellen>
+          <div className="lp-zeit">
             {d.arbeitstage.eintraege.map((e) => (
               <div className="lp-zeit-zeile" key={e.datum}>
                 <span className="wann">{datum(e.datum)}</span>
@@ -490,10 +479,10 @@ export default function Landing() {
             ))}
           </div>
 
-          <p className="lp-aussage lp-luft-oben" data-enthuellen>
+          <p className="lp-aussage lp-luft-oben">
             Von vier Gruppen ist genau eine technisch.
           </p>
-          <div className="lp-zellen vier" data-enthuellen>
+          <div className="lp-zellen vier">
             {d.hemmnisse.gruppen.map((g) => (
               <div className="lp-zelle" key={g.titel}>
                 <span className="kopf">{g.zusatz}</span>
@@ -508,17 +497,17 @@ export default function Landing() {
               </div>
             ))}
           </div>
-          <div className="lp-text lp-luft-oben" data-enthuellen>
+          <div className="lp-text lp-luft-oben">
             <p>{d.hemmnisse.satz}</p>
           </div>
         </Sektion>
 
         {/* 12 Stufen --------------------------------------------------------- */}
         <Sektion id="stufen">
-          <p className="lp-aussage breit" data-enthuellen>
+          <p className="lp-aussage breit">
             {stufen.length} Stufen, jede an eine Bedingung geknüpft.
           </p>
-          <div className="lp-text lp-luft-oben-klein" data-enthuellen>
+          <div className="lp-text lp-luft-oben-klein">
             <p>
               Der erste KI-Mitarbeiter ist ein Pilot.{' '}
               {stufen[0]?.bedingungsart === 'termin'
@@ -527,7 +516,7 @@ export default function Landing() {
               Dieselbe Reihenfolge gilt für jeden weiteren.
             </p>
           </div>
-          <div className="lp-luft-oben" data-enthuellen>
+          <div className="lp-luft-oben">
             {stufen.map((s) => (
               <div className="lp-stufe" key={s.titel}>
                 <span className="wann">{s.wann}</span>
@@ -543,10 +532,10 @@ export default function Landing() {
 
         {/* 13 Aufwand -------------------------------------------------------- */}
         <Sektion id="arbeit">
-          <p className="lp-aussage" data-enthuellen>
+          <p className="lp-aussage">
             {d.arbeitsschwerpunkt.satz}
           </p>
-          <div className="lp-zellen lp-luft-oben" data-enthuellen>
+          <div className="lp-zellen lp-luft-oben">
             <div className="lp-zelle">
               <span className="kopf">Was es braucht</span>
               <p className="stark">{d.arbeitsschwerpunkt.brauchtEs}</p>
@@ -556,7 +545,7 @@ export default function Landing() {
               <p className="stark">{d.arbeitsschwerpunkt.auswahl}</p>
             </div>
           </div>
-          <div className="lp-text lp-luft-oben" data-enthuellen>
+          <div className="lp-text lp-luft-oben">
             <p>{d.arbeitsschwerpunkt.schluss}</p>
             <p>{d.uebertragbarkeit.auswahlregel}</p>
           </div>
@@ -564,13 +553,13 @@ export default function Landing() {
 
         {/* 14 Betrieb, nur intern -------------------------------------------- */}
         <Sektion id="plattform">
-          <p className="lp-intern" data-enthuellen>
+          <p className="lp-intern">
             nur intern
           </p>
-          <p className="lp-aussage lp-luft-oben-klein" data-enthuellen>
+          <p className="lp-aussage lp-luft-oben-klein">
             Der Dauerbetrieb läuft im Haus, die Werkbank bleibt außen.
           </p>
-          <div className="lp-text lp-luft-oben" data-enthuellen>
+          <div className="lp-text lp-luft-oben">
             <p>
               Gebaut und gemessen wird auf {d.plattform.werkbank}. Für den Dauerbetrieb ist am{' '}
               {datum(d.plattform.entschiedenAm)} entschieden: {d.plattform.dauerbetrieb}.
@@ -578,10 +567,10 @@ export default function Landing() {
             <p>{d.plattform.ablageregel}</p>
           </div>
 
-          <p className="lp-klein lp-luft-oben" data-enthuellen>
+          <p className="lp-klein lp-luft-oben">
             Fünf Schritte bis zum {datum(d.plattform.termin)}
           </p>
-          <ol className="lp-punkte" data-enthuellen>
+          <ol className="lp-punkte">
             {d.plattform.schritte.map((s, i) => (
               <li key={s}>
                 <span className="nr">{String(i + 1).padStart(2, '0')}</span>
@@ -592,18 +581,18 @@ export default function Landing() {
               </li>
             ))}
           </ol>
-          <div className="lp-text lp-luft-oben" data-enthuellen>
+          <div className="lp-text lp-luft-oben">
             <p>{d.plattform.nichtBeantwortet}</p>
           </div>
         </Sektion>
 
         {/* 15 Entscheidungen -------------------------------------------------- */}
         <Sektion id="entscheidungen">
-          <p className="lp-aussage breit" data-enthuellen>
+          <p className="lp-aussage breit">
             Jede Entscheidung mit Datum, damit dieselbe Frage nicht alle zwei Wochen neu entschieden
             wird.
           </p>
-          <div className="lp-log" data-enthuellen>
+          <div className="lp-log">
             {nurSichtbare(d.entscheidungen).map((e) => (
               <div className="lp-log-zeile" key={e.datum + e.entscheidung}>
                 <span className="wann">{datum(e.datum)}</span>
@@ -620,19 +609,19 @@ export default function Landing() {
 
         {/* 16 Abgleich, nur intern -------------------------------------------- */}
         <Sektion id="beobachtungen">
-          <p className="lp-intern" data-enthuellen>
+          <p className="lp-intern">
             nur intern
           </p>
-          <p className="lp-aussage lp-luft-oben-klein" data-enthuellen>
+          <p className="lp-aussage lp-luft-oben-klein">
             Stellen, die nicht aufgehen.
           </p>
-          <div className="lp-text lp-luft-oben-klein" data-enthuellen>
+          <div className="lp-text lp-luft-oben-klein">
             <p>
               Beim Übertragen der Zahlen aus den drei Quellen sind sie aufgefallen. Sie stehen hier,
               statt beim Übertragen geglättet zu werden.
             </p>
           </div>
-          <div className="lp-zellen" data-enthuellen>
+          <div className="lp-zellen">
             {nurSichtbare(d.beobachtungen).map((b) => (
               <div className="lp-zelle" key={b.id}>
                 <span className="kopf">ungeklärt</span>

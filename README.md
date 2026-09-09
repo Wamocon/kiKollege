@@ -34,6 +34,28 @@ Abbild davon:
 - Rot erscheint selten. Auf der ganzen Seite trägt es die Abschnittsindizes, die beiden
   tragenden Schichten und den Strich unter der einen Zahl, um die es geht.
 
+## Was bewusst nicht gemacht ist
+
+Der Skill `anthropics/skills@frontend-design` führt eine Liste von Mustern, die
+unabhängig vom Thema auftauchen und deshalb als Voreinstellung statt als
+Entscheidung lesen. Drei davon standen hier drin und sind raus:
+
+- **Einblenden beim Scrollen auf jedem Block.** Das gab es an 68 Stellen. Bewegung
+  gibt es jetzt an genau einer: dem Hero. Nebeneffekt: Im Ruhezustand steht alles
+  da, statt auf einen Beobachter zu warten.
+- **Großbuchstaben auf jedem Label.** Sie bleiben, wo sie strukturell tragen: Marke,
+  Tabellenköpfe, Navigationsschiene, Statusabzeichen. Überall sonst sind sie weg.
+  Im Deutschen kommt ein handfester Grund dazu: `text-transform: uppercase` macht
+  aus „Maßstab" ein „MASSSTAB" und aus „Schließen" ein „SCHLIESSEN".
+- **Mittelpunkte als Bindeglied** („A · B · C") und **Label mit Gedankenstrich**
+  („Wissen — was gilt"). Beide durch Kommas, eigene Elemente oder schlichte
+  Überschriften ersetzt.
+
+Was aus der Liste stehen bleibt, steht auf Ansage: die Monospace für Labels und das
+Haarlinien-Raster sind die gewünschte Richtung, das warme Schwarz #140B0B steht so
+im CI-Blatt, und die Abschnittsnummern spiegeln die Blocknummerierung der
+Einführung.
+
 Zwei Abweichungen vom CI-Blatt sind bewusst:
 
 **Monospace** kommt im CI-Blatt nicht vor. Block 08 legt nur die neogroteske Sans für
