@@ -21,6 +21,23 @@ const MINDESTLAENGE = 24
 
 const NICHT_PRUEFEN = new Set(['freigabe', 'id', 'datei', 'gruppe', 'ort'])
 
+/** Eigennamen, die in der oeffentlichen Fassung nichts zu suchen haben, egal in
+ *  welchem Datenfeld sie auftauchen: Hersteller, Produkte, Laufzeiten, Pfade.
+ *  Die Seite spricht nach aussen von der Werkbank und vom KI-Rechner. Wer einen
+ *  dieser Namen oeffentlich zeigen will, entscheidet das und streicht ihn hier. */
+export const NUR_INTERN = [
+  'Hermes',
+  'Qwen',
+  'DGX',
+  'Spark',
+  'Anthropic',
+  'Claude',
+  'Telegram',
+  'Obsidian',
+  'KFBM',
+  'D:\\',
+]
+
 export function interneTexte(knoten, geerbt = false, treffer = new Set()) {
   if (Array.isArray(knoten)) {
     for (const eintrag of knoten) interneTexte(eintrag, geerbt, treffer)
@@ -77,9 +94,15 @@ export async function pruefen({ ausgabe, daten, log = console.log }) {
     for (const satz of verboten) {
       if (inhalt.includes(satz)) funde.push({ datei, satz })
     }
+    for (const name of NUR_INTERN) {
+      if (inhalt.includes(name)) funde.push({ datei, satz: `Eigenname: ${name}` })
+    }
   }
 
-  log(`Geprüft: ${dateien.length} Seiten gegen ${verboten.length} interne Texte.`)
+  log(
+    `Geprüft: ${dateien.length} Seiten gegen ${verboten.length} interne Texte ` +
+      `und ${NUR_INTERN.length} Eigennamen.`,
+  )
   return funde
 }
 

@@ -1,29 +1,31 @@
 {
-  "stand": "2026-09-05",
+  "stand": "2026-09-09",
   "herkunft": {
     "arbeitsordner": "D:\\KFBM",
     "einstieg": "00_Vault/10_KI-Mitarbeiter/KI-Mitarbeiter — Einstieg.md",
-    "erzeugt": "2026-09-05",
+    "erzeugt": "2026-09-11",
     "fristTage": 7,
-    "verfahren": "Erstbefüllung von Hand aus dem Übergabedokument vom 05.09.2026. Spätere Stände schreibt scripts/export-vault.mjs aus dem Frontmatter der Laufnotizen.",
+    "verfahren": "Erstbefüllung von Hand aus dem Übergabedokument vom 05.09.2026, am 11.09. fortgeschrieben aus den beiden Blättern vom 09.09. Spätere Stände schreibt scripts/export-vault.mjs aus dem Frontmatter der Laufnotizen.",
     "freigabe": "intern",
     "quellen": [
       "Übergabedokument vom 05.09.2026",
       "KI-Mitarbeiter — Einführung vom 04.09.2026",
-      "CI-Profil Version 1.0 vom 18.08.2026"
+      "CI-Profil Version 1.0 vom 18.08.2026",
+      "Systemarchitektur Orchestrator vom 09.09.2026",
+      "Organigramm KI-Mitarbeiter vom 09.09.2026"
     ]
   },
   "kennzahlen": [
     {
       "id": "ki-mitarbeiter",
-      "zahl": 1,
-      "label": "KI-Mitarbeiter im Betrieb: Fritz, der Reviewer",
+      "zahl": 2,
+      "label": "von sieben entschiedenen KI-Mitarbeitern existieren: der Orchestrator verteilt, der Reviewer prüft",
       "freigabe": "oeffentlich"
     },
     {
       "id": "agenten",
       "zahl": 8,
-      "label": "Agenten am Werkzeug. Keiner prüft eine Unterlage",
+      "label": "Werkzeugmacher an der Werkbank. Vier gehen nach Vorschlag in neue Rollen auf",
       "freigabe": "oeffentlich"
     },
     {
@@ -34,8 +36,8 @@
     },
     {
       "id": "prueflaeufe",
-      "zahl": 15,
-      "label": "protokollierte Prüfläufe seit dem 27.08.2026",
+      "zahl": 17,
+      "label": "protokollierte Prüfläufe, gezählt am 09.09.2026",
       "freigabe": "oeffentlich"
     },
     {
@@ -54,6 +56,13 @@
       "id": "bewertet",
       "zahl": 0,
       "label": "davon von einem Menschen bewertet. Ohne Bewertung keine Fehlalarmquote",
+      "art": "warnung",
+      "freigabe": "oeffentlich"
+    },
+    {
+      "id": "verbindlich",
+      "zahl": 6,
+      "label": "verbindliche Wissensnotizen. Alles Fachliche gilt als ungeprüft",
       "art": "warnung",
       "freigabe": "oeffentlich"
     }
@@ -270,7 +279,7 @@
       "von": "2026-08-27",
       "bis": "2026-09-04"
     },
-    "protokolliert": 15,
+    "protokolliert": 17,
     "imDokumentAusgewiesen": 5,
     "laeufe": [
       {
@@ -424,7 +433,7 @@
       "einen Referenzlauf zum Vergleich fahren"
     ],
     "warumAbschaltung": "Ein Agent, der sich nach Aufgaben eigene Regeln destilliert, unterläuft die Testfallpflicht.",
-    "erreichbar": "Betrieb auf eigener Hardware, bei dem die Unterlagen das Haus nicht mehr verlassen.",
+    "erreichbar": "Dauerbetrieb auf eigener Hardware. Die Begründung vom 03.09., die Unterlagen damit im Haus zu halten, gilt seit dem 09.09. nicht mehr: Prüfobjekte dürfen auch an Claude. Was die eigene Hardware weiter trägt, ist der Dauerbetrieb ohne offene Sitzung.",
     "nichtBeantwortet": "Ob Fritz auf dem lokalen Modell genauso gut prüft. Mit dem Umzug wechselt das Sprachmodell, und der Vergleich am selben Prüfsatz ist der letzte der fünf Schritte. Bis dahin ist es ein Pilotbetrieb.",
     "ablageregel": "Was ein KI-Mitarbeiter zum Arbeiten braucht, darf nie allein im werkzeugspezifischen Ordner liegen. Es gehört in die werkzeugneutrale Auftragsdatei, ins Wissen, ins Regel-Repository oder in eine Skill-Datei. Sonst reist es beim Plattformwechsel nicht mit."
   },
@@ -468,6 +477,36 @@
       "datum": "2026-09-04",
       "entscheidung": "Harter Termin für den Betrieb auf eigener Hardware: 11.09.2026",
       "freigabe": "intern"
+    },
+    {
+      "datum": "2026-09-09",
+      "entscheidung": "Der Orchestrator verteilt und sammelt ein, nichts weiter",
+      "freigabe": "oeffentlich"
+    },
+    {
+      "datum": "2026-09-09",
+      "entscheidung": "Der Orchestrator heißt Hermes, die Laufzeit heißt Hermes Agent",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-09-09",
+      "entscheidung": "Dieselbe Mannschaft läuft auf beiden Laufzeiten, aus einer Akte je Kopf",
+      "freigabe": "oeffentlich"
+    },
+    {
+      "datum": "2026-09-09",
+      "entscheidung": "Prüfobjekte dürfen uneingeschränkt an Claude",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-09-09",
+      "entscheidung": "Der dritte KI-Mitarbeiter ist der Archivar: Form pflegen, nie Inhalt",
+      "freigabe": "oeffentlich"
+    },
+    {
+      "datum": "2026-09-09",
+      "entscheidung": "Vier weitere Rollen sind gesetzt: Entwickler, Reporter, Technischer Architekt, UI-UX-Experte",
+      "freigabe": "oeffentlich"
     }
   ],
   "entscheidungenNachtrag": "Die Entscheidung vom 04.09. dreht bewusst eine zuvor festgelegte Reihenfolge um: Ursprünglich sollte die Fehlalarmquote vor dem Plattformwechsel gemessen werden. Die Technik wurde vorgezogen. Das ist kein Widerspruch, sondern eine andere Reihenfolge mit einer benannten Folge, und die Folge steht im Abschnitt zur Messlücke.",
@@ -480,36 +519,84 @@
     },
     {
       "nr": 2,
+      "punkt": "Benennen, wer Wissen freigibt",
+      "grund": "Seit dem 29.08. offen. Solange niemand benannt ist, bleibt die Wissensschicht ungeprüft und jeder Bericht trägt den Vorbehalt.",
+      "freigabe": "oeffentlich"
+    },
+    {
+      "nr": 3,
       "punkt": "Den Kriterienkatalog gewichten",
       "grund": "Das kann nur WAMOCON, und es wird nicht geraten.",
       "freigabe": "oeffentlich"
     },
     {
-      "nr": 3,
+      "nr": 4,
       "punkt": "Das Berichtsformat festlegen",
       "grund": null,
       "freigabe": "oeffentlich"
     },
     {
-      "nr": 4,
+      "nr": 5,
       "punkt": "Die 26 Regelnotizen mit gemessener Quote anlegen, eine je Regel",
       "grund": null,
       "freigabe": "oeffentlich"
     },
     {
-      "nr": 5,
+      "nr": 6,
       "punkt": "Den Rückweg schließen, auf dem eine Bewertung wieder beim Werkzeug ankommt",
       "grund": null,
       "freigabe": "oeffentlich"
     },
     {
-      "nr": 6,
+      "nr": 7,
+      "punkt": "Entscheiden, ob die vier Helfer in den neuen Rollen aufgehen oder daneben bestehen bleiben",
+      "grund": null,
+      "freigabe": "oeffentlich"
+    },
+    {
+      "nr": 8,
+      "punkt": "Entscheiden, ob die Laufzeitbereiche ohne Freigabe geschrieben werden dürfen",
+      "grund": "Aufträge, Prüfläufe und Befunde entstehen im Betrieb. Ein Auftrag auf einem Zweig, den niemand zusammenführt, erreicht seinen Mitarbeiter nicht.",
+      "freigabe": "intern"
+    },
+    {
+      "nr": 9,
+      "punkt": "Die Form des Änderungsprotokolls bei drei Schreibern festlegen",
+      "grund": null,
+      "freigabe": "intern"
+    },
+    {
+      "nr": 10,
+      "punkt": "Den Übergabeweg für die Ablage entscheiden",
+      "grund": "Angenommen ist er, entschieden nicht.",
+      "freigabe": "intern"
+    },
+    {
+      "nr": 11,
+      "punkt": "Die Zugänge trennen, bevor der erste Kollege dazukommt",
+      "grund": null,
+      "freigabe": "intern"
+    },
+    {
+      "nr": 12,
+      "punkt": "Entscheiden, ob Unterlagen der Academy über den Messenger laufen dürfen",
+      "grund": "Die Frage nach dem Anbieter ist entschieden, die nach dem Messenger nicht.",
+      "freigabe": "intern"
+    },
+    {
+      "nr": 13,
+      "punkt": "Die vertragliche Lage der Academy-Unterlagen klären",
+      "grund": "Folge der Entscheidung vom 09.09.",
+      "freigabe": "intern"
+    },
+    {
+      "nr": 14,
       "punkt": "Drei bis fünf vergangene Entscheidungen sammeln, an denen sich die Haltung des Hauses zeigt",
       "grund": "Eine Philosophie, die nur an der Wand hängt, lässt sich nicht anwenden; sie zeigt sich in Abwägungen, nicht in einer Werteliste.",
       "freigabe": "oeffentlich"
     },
     {
-      "nr": 7,
+      "nr": 15,
       "punkt": "Den Zeitbedarf des heutigen Reviews erheben, solange er noch erhebbar ist",
       "grund": null,
       "freigabe": "oeffentlich"
@@ -519,8 +606,8 @@
     {
       "id": "normbasis-summe",
       "titel": "Die Teilzahlen der Normbasis ergeben nicht 55",
-      "text": "Das Übergabedokument nennt 55 verlinkte Notizen und schlüsselt auf: neun Positionen aus Abschnitt A, zehn Wahlqualifikationen, sechs integrative Positionen aus Abschnitt C, dreizehn Lernfelder sowie Prüfungsstruktur, Alt-Neu-Marker, Quellenverzeichnis und Archivnotiz. Aufsummiert sind das 42. In der Aufschlüsselung fehlen 13 Notizen. Hier nicht aufgelöst, weil dafür der Vault gebraucht wird.",
-      "quelle": "Übergabedokument, Abschnitt „Der Gegenstand“",
+      "text": "Das Übergabedokument nennt 55 verlinkte Notizen und schlüsselt auf: neun Positionen aus Abschnitt A, zehn Wahlqualifikationen, sechs integrative Positionen aus Abschnitt C, dreizehn Lernfelder sowie Prüfungsstruktur, Alt-Neu-Marker, Quellenverzeichnis und Archivnotiz. Aufsummiert sind das 42. In der Aufschlüsselung fehlen 13 Notizen. Hier nicht aufgelöst, weil dafür der Vault gebraucht wird. Das Blatt vom 09.09. zählt für dieselbe Ablage 43 Notizen und nennt 25 Positionen und dreizehn Lernfelder. Damit stehen drei Zahlen für einen Bestand: 55, 42 und 43.",
+      "quelle": "Übergabedokument, Abschnitt „Der Gegenstand“ gegen Systemarchitektur Orchestrator vom 09.09., Abschnitt 6",
       "freigabe": "intern"
     },
     {
@@ -542,6 +629,20 @@
       "titel": "Zehn oder elf Themenkomplexe",
       "text": "Das Übergabedokument vom 05.09. nennt zehn vollständig fachlich geprüfte Themenkomplexe, die Einführung vom 04.09. an zwei Stellen elf. Beide beziehen sich auf denselben Lauf mit 3 090 Fragen über 103 Enabler. Welche Zahl gilt, ist hier nicht zu entscheiden.",
       "quelle": "Übergabedokument „Was gemessen wurde\" gegen Einführung Block 08 und den Beispielteil",
+      "freigabe": "intern"
+    },
+    {
+      "id": "prueflaeufe-17",
+      "titel": "Siebzehn Laufnotizen, letzter datierter Lauf vom 04.09.",
+      "text": "Am 09.09. zählt das Blatt siebzehn Laufnotizen. Das Übergabedokument vom 05.09. weist fünfzehn aus und datiert den letzten auf den 04.09. Welche zwei Läufe dazugekommen sind und wann, steht in keinem der beiden Blätter. Die Zeitspanne auf dieser Seite endet deshalb weiter am 04.09.",
+      "quelle": "Übergabedokument vom 05.09. gegen Organigramm KI-Mitarbeiter vom 09.09.",
+      "freigabe": "intern"
+    },
+    {
+      "id": "pruefobjekte-widerruf",
+      "titel": "Die Begründung für die eigene Hardware ist entfallen",
+      "text": "Am 03.09. wurde der Dauerbetrieb auf eigener Hardware unter anderem damit begründet, die Unterlagen im Haus zu halten. Am 09.09. wurde entschieden, dass Prüfobjekte uneingeschränkt an Claude gehen dürfen. Der Umzug bleibt, seine Begründung ist um einen Punkt kürzer. Das Blatt vom 09.09. führt den Punkt selbst als hohes Risiko.",
+      "quelle": "Systemarchitektur Orchestrator vom 09.09., Abschnitte 1 und 8",
       "freigabe": "intern"
     }
   ],
@@ -721,7 +822,7 @@
       "geteilt": true,
       "bereiche": 11,
       "angelegtAm": "2026-09-02",
-      "stand": "alles noch ungeprüft",
+      "stand": "alles noch ungeprüft, und niemand ist benannt, der freigibt",
       "offeneFragen": 22,
       "haltenFreigabeAuf": 7,
       "hinweis": "Ein KI-Mitarbeiter, der sich auf selbst zusammengereimte Werte beruft, wäre schlimmer als einer ohne."
@@ -822,12 +923,20 @@
       {
         "datum": "2026-09-04",
         "text": "Wiederholbarkeit erstmals gemessen: derselbe Stoff zweimal geprüft, sieben von sieben Befunden bestätigt"
+      },
+      {
+        "datum": "2026-09-08",
+        "text": "Orchestrator und Spezialisten entworfen. Empfehlung: eine Laufzeit zuerst, so gebaut, dass die anderen Wege offen bleiben"
+      },
+      {
+        "datum": "2026-09-09",
+        "text": "Vier Entscheidungen an einem Tag: der Orchestrator verteilt nur, dieselbe Mannschaft läuft auf beiden Laufzeiten, der dritte Mitarbeiter ist der Archivar, und die Prüfobjekte dürfen künftig auch nach außen. Der Orchestrator läuft seither als Profil auf dem KI-Rechner"
       }
     ],
     "freigabe": "oeffentlich"
   },
   "hemmnisse": {
-    "satz": "Von vier Gruppen ist genau eine technisch, und sie betrifft nur den Umzug. Was aufhält, sind Entscheidungen und Zeit von Menschen, die den Maßstab kennen. Das gilt erfahrungsgemäß für jeden KI-Mitarbeiter, nicht nur für diesen.",
+    "satz": "Von vier Gruppen ist eine technisch. Die anderen drei warten auf Entscheidungen und auf Zeit von Menschen, die den Maßstab kennen. Das gilt erfahrungsgemäß für jeden KI-Mitarbeiter, nicht nur für diesen.",
     "gruppen": [
       {
         "titel": "Wartet auf eine Entscheidung",
@@ -836,7 +945,9 @@
           "Wie schwer wiegt welches Kriterium? Elf sind formuliert, die Gewichtung ist leer",
           "In welcher Form kommt der Bericht: Dokument, Tabelle, Kommentare im Original?",
           "Vier Stellen, an denen die Unterlagen sich selbst widersprechen. Welche Fassung gilt?",
-          "Welche Werte gelten verbindlich, und was darf ein KI-Mitarbeiter nie tun? Sieben Fragen halten die Freigabe der Unternehmens-Wissensdatenbank auf"
+          "Welche Werte gelten verbindlich, und was darf ein KI-Mitarbeiter nie tun? Sieben Fragen halten die Freigabe der Unternehmens-Wissensdatenbank auf",
+          "Wer gibt Wissen frei? Seit dem 29.08. offen. Ohne Antwort steht jeder Bericht unter Vorbehalt",
+          "Dürfen die Unterlagen der Academy vertraglich an einen Anbieter außerhalb des Hauses?"
         ]
       },
       {
@@ -852,18 +963,21 @@
         "titel": "Noch nicht gebaut",
         "zusatz": "Arbeit, die ansteht",
         "punkte": [
+          "Beide bestehenden Mitarbeiter haben keine Akte, aus der sich ihre zwei Ausprägungen erzeugen lassen",
           "Der Rückweg ist offen: Bewertungen finden noch nicht zurück in die Ablage",
           "Zu jeder der 26 Regeln fehlt die Notiz, die sagt, wie zuverlässig sie ist",
-          "Der Mitarbeiter hat noch keine eigene Beschreibungsdatei"
+          "Das Auftragsbuch, über das ein Auftrag nachvollziehbar wird, ist entschieden und nicht angelegt"
         ]
       },
       {
         "titel": "Technisch ungeprüft",
-        "zusatz": "Akut, vier Arbeitstage",
+        "zusatz": "Belege fehlen, Frist 11.09.",
         "punkte": [
-          "Ob die vorgesehene Laufzeit auf diesem Rechnertyp überhaupt läuft, ist nicht getestet",
+          "Ob die vorgesehene Laufzeit die Beschreibungsdatei eines Mitarbeiters überhaupt liest",
+          "Ob beide Laufzeiten denselben Zaun mit derselben Eingabe aufrufen können",
+          "Ob die Helfer an der Werkbank auf dem lokalen Modell tragen. Die anspruchsvollen Rollen sind dafür gebaut",
           "Dabei wechselt auch das Sprachmodell. Ob es genauso zuverlässig prüft, muss am selben Prüfsatz neu gemessen werden",
-          "Die Laufzeit schreibt sich selbst neue Regeln, ohne die Testfälle, auf denen das Vorgehen besteht. Das gehört abgeschaltet"
+          "Die zwei Ausprägungen eines Mitarbeiters driften, sobald jemand die erzeugte Datei statt der Akte ändert"
         ]
       }
     ],
@@ -871,26 +985,50 @@
   },
   "stufen": [
     {
-      "wann": "Bis Freitag, 11.09.",
-      "titel": "Umzug auf die DGX",
-      "text": "Vom Arbeitsplatzrechner auf den KI-Rechner im Haus, mit Hermes als Laufzeit und einem Sprachmodell, das dort läuft. Danach bleiben die Unterlagen im Unternehmen.",
-      "bedingung": "Vier Arbeitstage. Ob die Software auf diesem Rechnertyp läuft, ist ungeprüft.",
+      "wann": "bis 11.09.",
+      "titel": "Die Akte für Fritz",
+      "text": "Auftrag, Haltung und Grenze als Dateien, ein Zaun mit Testfällen, ein Referenzsatz aus zehn bis fünfzehn Aufgaben, das Profil auf dem KI-Rechner von Hand nach der Akte.",
+      "bedingung": "Abnahme: Fritz läuft das Prüfskript über den Referenzsatz, und ein Schreibversuch außerhalb seiner Ordner wird abgewiesen.",
       "freigabe": "intern",
       "bedingungsart": "termin"
     },
     {
-      "wann": "Herbst 2026",
-      "titel": "Messen und vergleichen",
-      "text": "Zwei Fragen zugleich: Wie oft meldet er etwas, das keins ist? Und prüft er auf der neuen Maschine genauso gut? Fachleute bewerten eine Stichprobe, derselbe Prüfsatz läuft noch einmal.",
-      "bedingung": "Bis die Zahlen vorliegen, bleibt es beim Pilotbetrieb.",
+      "wann": "Woche danach",
+      "titel": "Ein Auftrag von Anfang bis Ende",
+      "text": "Die Akte für den Orchestrator mit seiner Zuordnungstabelle, ein Auftragsbuch im Vault, eine Tafel mit den offenen Aufträgen.",
+      "bedingung": "Abnahme: ein Befund ist von der Nachricht über die Auftragsnotiz bis zur Zeile im Prüfobjekt rückverfolgbar.",
+      "freigabe": "intern",
+      "bedingungsart": "zahl"
+    },
+    {
+      "wann": "danach",
+      "titel": "Derselbe Auftrag auf beiden Laufzeiten",
+      "text": "Ein Skript spielt die Akte für beide Seiten aus. Derselbe Auftrag läuft zweimal, ein zweites Skript stellt die Befunde je Regel nebeneinander.",
+      "bedingung": "Abnahme: die Vergleichstabelle liegt vor. Wo die beiden auseinandergehen, ist die erste Stichprobe für die Bewertung.",
       "freigabe": "oeffentlich",
       "bedingungsart": "zahl"
     },
     {
-      "wann": "2027",
-      "titel": "Der zweite",
-      "text": "Eine andere Aufgabe, ein anderer Bereich. Er erbt Haltung, Verfahren und Aufsicht; neu sind Maßstab, Fähigkeiten und Werkzeuge.",
-      "bedingung": "Setzt voraus: der erste hat sich im Betrieb bewährt.",
+      "wann": "danach",
+      "titel": "Der Archivar und die Übergabe",
+      "text": "Die Ablage wird zum Übergabeweg zwischen den Laufzeiten. Der Archivar bekommt seine Akte, jeder Schreibvorgang trägt seinen Verfasser.",
+      "bedingung": "Abnahme: das Änderungsprotokoll zeigt drei Handschriften ohne Konflikt, und eine Laufnotiz entsteht ohne offene Sitzung.",
+      "freigabe": "intern",
+      "bedingungsart": "zahl"
+    },
+    {
+      "wann": "danach",
+      "titel": "Die Werkzeugmacher ziehen um",
+      "text": "Die Helfer an der Werkbank werden auch auf der eigenen Hardware verfügbar, die einfacheren Rollen zuerst.",
+      "bedingung": "Abnahme: ein Werkzeugauftrag auf dem lokalen Modell liefert dasselbe Ergebnis wie auf der Werkbank, an einem Referenzauftrag.",
+      "freigabe": "intern",
+      "bedingungsart": "zahl"
+    },
+    {
+      "wann": "vor dem ersten Kollegen",
+      "titel": "Trennung der Zugänge",
+      "text": "Bis hierhin läuft alles unter einem Benutzer. Vor dem ersten Kollegen wird getrennt, danach kommen Sprachbedienung und eine Übersicht im Erscheinungsbild des Hauses.",
+      "bedingung": "Abnahme: ein Kollege gibt Fritz über den Orchestrator einen Auftrag, ohne dass jemand anderes eine Sitzung öffnet.",
       "freigabe": "oeffentlich",
       "bedingungsart": "zahl"
     }
@@ -902,7 +1040,7 @@
     "schluss": "Was heute erfahrene Leute im Kopf haben, muss jemand aufschreiben. Das kann kein Werkzeug übernehmen.",
     "freigabe": "oeffentlich"
   },
-  "standSatz": "Ein Pilot, der sich gerade selbst vermisst. Ein KI-Mitarbeiter arbeitet, die zweite Messung steht aus. Ob er gut genug ist, ist noch nicht entschieden.",
+  "standSatz": "Ein Pilot, der sich gerade selbst vermisst. Zwei KI-Mitarbeiter arbeiten, fünf weitere sind entschieden und nicht gebaut. Die zweite Messung steht aus, und ob einer gut genug ist, ist nicht entschieden.",
   "beschreibungsdatei": {
     "name": "fritz.md",
     "stand": "Entwurf",
@@ -987,5 +1125,99 @@
       ],
       "erbt": true
     }
-  ]
+  ],
+  "mannschaft": {
+    "satz": "Aus einem Mitarbeiter ist eine Mannschaft geworden. Sieben Rollen sind entschieden, zwei davon arbeiten.",
+    "gezaehltAm": "2026-09-09",
+    "trennung": "Wer baut, prüft nicht. Wer prüft, baut nicht. Wer pflegt, urteilt nicht.",
+    "engpass": "Die vier neuen Rollen sind heute Helfer an der Werkbank, und die Werkbank hängt an einer offenen Sitzung. Als Mitarbeiter mit eigener Akte lassen sie sich beauftragen, ohne dass jemand dafür am Rechner sitzt.",
+    "akte": "Beiden Bestehenden fehlt die Akte: ein Ordner mit Auftrag, Haltung und Grenze, aus dem sich die Ausprägung für jede Laufzeit erzeugen lässt. Sie ist die erste Stufe des Fahrplans.",
+    "koepfe": [
+      {
+        "id": "orchestrator",
+        "rolle": "Orchestrator",
+        "kurz": "Orchestrator",
+        "kern": "verteilend",
+        "tut": "Aufträge annehmen, die Pflichtangaben prüfen, aus einer Tabelle zuweisen und das Ergebnis unverändert weitergeben: mit Verfasser, Nummer und Fundstelle.",
+        "tutNie": "prüfen, erstellen, freigeben, zusammenfassen",
+        "zustand": "arbeitet",
+        "seit": "2026-09-09",
+        "hinweis": "Läuft seit dem 09.09. Was er nicht in seiner Tabelle findet, lehnt er ab und sagt warum.",
+        "freigabe": "oeffentlich"
+      },
+      {
+        "id": "reviewer",
+        "rolle": "Reviewer",
+        "kurz": "Reviewer",
+        "kern": "prüfend",
+        "tut": "Unterlagen gegen den aufgeschriebenen Maßstab prüfen und jeden Befund mit Fundstelle ablegen.",
+        "tutNie": "Unterlagen ändern, freigeben, ins Netz gehen",
+        "zustand": "arbeitet",
+        "seit": "2026-08-28",
+        "hinweis": "Der erste. Zieht nach dem Fahrplan als Erster auf die eigene Hardware um.",
+        "freigabe": "oeffentlich"
+      },
+      {
+        "id": "archivar",
+        "rolle": "Archivar",
+        "kurz": "Archivar",
+        "kern": "pflegend",
+        "tut": "Form pflegen: Verweise, Feldnamen, Übersichten, Änderungsprotokoll, die Laufnotiz aus den Befunden, und am Ende abgeben.",
+        "tutNie": "Inhalt ändern, Befunde bewerten, eine Notiz auf verbindlich heben",
+        "zustand": "entschieden",
+        "seit": null,
+        "hinweis": "Am 09.09. entschieden. Er ändert die Form, nie den Inhalt.",
+        "freigabe": "oeffentlich"
+      },
+      {
+        "id": "entwickler",
+        "rolle": "Entwickler",
+        "kurz": "Entwickler",
+        "kern": "bauend",
+        "tut": "Skripte, Prüfregeln, Zäune und Testfälle bauen und laufen lassen.",
+        "tutNie": "eine Regel ohne Testfall produktiv setzen, Unterlagen prüfen",
+        "zustand": "entschieden",
+        "seit": null,
+        "hinweis": "Der erste der vier neuen. Er baut, was die ersten Stufen brauchen.",
+        "freigabe": "oeffentlich"
+      },
+      {
+        "id": "reporter",
+        "rolle": "Reporter",
+        "kurz": "Reporter",
+        "kern": "erstellend",
+        "tut": "Aus Befunden und Laufnotizen Berichte und Blätter im Erscheinungsbild des Hauses erzeugen.",
+        "tutNie": "eine Zahl erfinden, einen Befund bewerten oder umschreiben",
+        "zustand": "entschieden",
+        "seit": null,
+        "hinweis": "Macht die Ergebnisse lesbar, ohne dass jemand eine Sitzung öffnet.",
+        "freigabe": "oeffentlich"
+      },
+      {
+        "id": "architekt",
+        "rolle": "Technischer Architekt",
+        "kurz": "Architekt",
+        "kern": "entwerfend",
+        "tut": "Notizen, Vorlagen, Risikoliste und Fahrplan pflegen und Widersprüche zwischen Notizen finden.",
+        "tutNie": "entscheiden, bauen, prüfen",
+        "zustand": "entschieden",
+        "seit": null,
+        "hinweis": "Kommt, wenn genug entstanden ist, das er ordnen kann.",
+        "freigabe": "oeffentlich"
+      },
+      {
+        "id": "gestalter",
+        "rolle": "Gestalter für Bedienung und Bild",
+        "kurz": "Gestalter",
+        "kern": "gestaltend",
+        "tut": "Übersicht, Berichtsvorlagen und Bedienabläufe gestalten und jede Ausgabe gegen das Erscheinungsbild prüfen.",
+        "tutNie": "Inhalt ändern, das Erscheinungsbild ändern, Befunde bewerten",
+        "zustand": "entschieden",
+        "seit": null,
+        "hinweis": "Kommt zuletzt, nach dem Vergleichslauf.",
+        "freigabe": "oeffentlich"
+      }
+    ],
+    "freigabe": "oeffentlich"
+  }
 }

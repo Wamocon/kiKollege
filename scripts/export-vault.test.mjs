@@ -130,8 +130,12 @@ test('exportieren liest den Fixture-Vault und lässt Handgeschriebenes stehen', 
 
 test('exportieren behält den alten Stand, wenn der Vault keine Läufe hat', async () => {
   const neu = await exportieren({ vault: vaultOhneLaeufe, ziel, probelauf: true, log: still })
-  assert.equal(neu.prueflaeufe.laeufe.length, 5, 'Fallback auf den bisherigen Stand')
-  assert.equal(neu.stand, '2026-09-05')
+  assert.equal(
+    neu.prueflaeufe.laeufe.length,
+    bisher.prueflaeufe.laeufe.length,
+    'Fallback auf den bisherigen Stand',
+  )
+  assert.equal(neu.stand, bisher.stand)
 })
 
 test('findeNotizordner findet den Ordner aus dem Übergabedokument', async () => {

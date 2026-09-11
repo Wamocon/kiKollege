@@ -20,6 +20,7 @@ const alle: readonly LpAbschnitt[] = [
   { id: 'durchlauf', label: 'Durchlauf' },
   { id: 'messung', label: 'Messung' },
   { id: 'erster', label: 'Der erste' },
+  { id: 'mannschaft', label: 'Mannschaft' },
   { id: 'steuerung', label: 'Steuerung' },
   { id: 'stand', label: 'Stand' },
   { id: 'stufen', label: 'Stufen' },

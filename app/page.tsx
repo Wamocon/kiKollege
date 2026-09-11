@@ -1,4 +1,5 @@
 import { EnablerRaster } from '@/components/figuren/EnablerRaster'
+import { MannschaftFigur } from '@/components/figuren/Mannschaft'
 import { Schichtenstapel } from '@/components/figuren/Schichtenstapel'
 import { Durchlauf } from '@/components/figuren/Durchlauf'
 import { Pruefpunkte } from '@/components/figuren/Pruefpunkte'
@@ -19,6 +20,8 @@ export default function Landing() {
   const wiederholung = d.prueflaeufe.laeufe.find((l) => l.art === 'wiederholung')
   const fehlalarmquote = d.messluecken.find((m) => m.id === 'fehlalarmquote')!
   const stufen = nurSichtbare(d.stufen)
+  const m = d.mannschaft
+  const koepfe = nurSichtbare(m.koepfe)
 
   return (
     <>
@@ -441,7 +444,38 @@ export default function Landing() {
           </div>
         </Sektion>
 
-        {/* 10 Steuerung ------------------------------------------------------ */}
+        {/* 10 Mannschaft ----------------------------------------------------- */}
+        <Sektion id="mannschaft">
+          <p className="lp-aussage breit">{m.satz}</p>
+          <div className="lp-text lp-luft-oben-klein">
+            <p>{m.trennung} Jede Rolle hat eine Grenze, und die Grenze steht als Datei neben ihr.</p>
+          </div>
+          <MannschaftFigur />
+          <div className="lp-luft-oben">
+            {koepfe.map((k) => (
+              <div className="lp-stufe" key={k.id}>
+                <span className="wann">{k.zustand === 'arbeitet' ? 'arbeitet' : 'entschieden'}</span>
+                <div>
+                  <h3>{k.rolle}</h3>
+                  <p>{k.tut}</p>
+                  <p className="bedingung">Tut nie: {k.tutNie}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="lp-zellen lp-luft-oben">
+            <div className="lp-zelle traegt">
+              <span className="kopf">Warum sie Rollen werden</span>
+              <p className="stark">{m.engpass}</p>
+            </div>
+            <div className="lp-zelle">
+              <span className="kopf">Was beiden Bestehenden fehlt</span>
+              <p className="stark">{m.akte}</p>
+            </div>
+          </div>
+        </Sektion>
+
+        {/* 11 Steuerung ------------------------------------------------------ */}
         <Sektion id="steuerung">
           <p className="lp-aussage breit">
             Wie er gesteuert wird, und was er selbst steuert.
@@ -465,7 +499,7 @@ export default function Landing() {
           </div>
         </Sektion>
 
-        {/* 11 Stand ---------------------------------------------------------- */}
+        {/* 12 Stand ---------------------------------------------------------- */}
         <Sektion id="stand">
           <p className="lp-aussage breit">
             {tageZwischen(d.arbeitstage.beginn, d.stand)} Tage, mit Datum.
@@ -502,18 +536,19 @@ export default function Landing() {
           </div>
         </Sektion>
 
-        {/* 12 Stufen --------------------------------------------------------- */}
+        {/* 13 Stufen --------------------------------------------------------- */}
         <Sektion id="stufen">
           <p className="lp-aussage breit">
-            {stufen.length} Stufen, jede an eine Bedingung geknüpft.
+            {stufen.length} Stufen, jede mit einer Abnahme.
           </p>
           <div className="lp-text lp-luft-oben-klein">
             <p>
-              Der erste KI-Mitarbeiter ist ein Pilot.{' '}
+              Ohne Abnahme beginnt die nächste Stufe nicht.{' '}
               {stufen[0]?.bedingungsart === 'termin'
-                ? 'Die erste Stufe ist ein Termin, die übrigen hängen an Zahlen.'
-                : 'Jede Stufe hängt an einer Zahl, nicht an einem Wunschdatum.'}{' '}
-              Dieselbe Reihenfolge gilt für jeden weiteren.
+                ? 'Die erste hängt an einem Termin, die übrigen an einem Ergebnis.'
+                : 'Jede hängt an einem Ergebnis, nicht an einem Wunschdatum.'}{' '}
+              Die Fehlalarmquote steht in keiner Stufe: sie ist kein Bauschritt, sondern
+              Bewertungsarbeit.
             </p>
           </div>
           <div className="lp-luft-oben">
@@ -530,7 +565,7 @@ export default function Landing() {
           </div>
         </Sektion>
 
-        {/* 13 Aufwand -------------------------------------------------------- */}
+        {/* 14 Aufwand -------------------------------------------------------- */}
         <Sektion id="arbeit">
           <p className="lp-aussage">
             {d.arbeitsschwerpunkt.satz}
@@ -551,7 +586,7 @@ export default function Landing() {
           </div>
         </Sektion>
 
-        {/* 14 Betrieb, nur intern -------------------------------------------- */}
+        {/* 15 Betrieb, nur intern -------------------------------------------- */}
         <Sektion id="plattform">
           <p className="lp-intern">
             nur intern
@@ -586,7 +621,7 @@ export default function Landing() {
           </div>
         </Sektion>
 
-        {/* 15 Entscheidungen -------------------------------------------------- */}
+        {/* 16 Entscheidungen -------------------------------------------------- */}
         <Sektion id="entscheidungen">
           <p className="lp-aussage breit">
             Jede Entscheidung mit Datum, damit dieselbe Frage nicht alle zwei Wochen neu entschieden
@@ -607,7 +642,7 @@ export default function Landing() {
           </div>
         </Sektion>
 
-        {/* 16 Abgleich, nur intern -------------------------------------------- */}
+        {/* 17 Abgleich, nur intern -------------------------------------------- */}
         <Sektion id="beobachtungen">
           <p className="lp-intern">
             nur intern

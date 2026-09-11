@@ -4,7 +4,7 @@ import { mkdtemp, writeFile } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 
-import { interneTexte, pruefen } from './pruefe-oeffentlich.mjs'
+import { NUR_INTERN, interneTexte, pruefen } from './pruefe-oeffentlich.mjs'
 
 const still = () => {}
 
@@ -65,4 +65,24 @@ test('pruefen meldet eine leere Ausgabe als Fehler', async () => {
   const daten = join(ordner, 'stand.json')
   await writeFile(daten, JSON.stringify({}))
   await assert.rejects(() => pruefen({ ausgabe: ordner, daten, log: still }), /Erst bauen/)
+})
+
+test('pruefen schlägt bei einem Eigennamen an, auch ohne internes Datenfeld', async () => {
+  const ordner = await mkdtemp(join(tmpdir(), 'pruefe-'))
+  const daten = join(ordner, 'stand.json')
+  await writeFile(daten, JSON.stringify({ a: { freigabe: 'oeffentlich', satz: 'Alles harmlos hier.' } }))
+  await writeFile(join(ordner, 'index.html'), `<p>Der Dauerbetrieb läuft auf ${NUR_INTERN[0]}.</p>`)
+
+  const funde = await pruefen({ ausgabe: ordner, daten, log: still })
+  assert.equal(funde.length, 1)
+  assert.match(funde[0].satz, /^Eigenname: /)
+})
+
+test('pruefen lässt eine Seite ohne Eigennamen durch', async () => {
+  const ordner = await mkdtemp(join(tmpdir(), 'pruefe-'))
+  const daten = join(ordner, 'stand.json')
+  await writeFile(daten, JSON.stringify({}))
+  await writeFile(join(ordner, 'index.html'), '<p>Der Dauerbetrieb läuft auf dem KI-Rechner.</p>')
+
+  assert.deepEqual(await pruefen({ ausgabe: ordner, daten, log: still }), [])
 })

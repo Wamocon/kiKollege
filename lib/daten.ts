@@ -173,6 +173,28 @@ export interface Quelle extends MitFreigabe {
   inhalt: string
 }
 
+export interface Kopf extends MitFreigabe {
+  id: string
+  rolle: string
+  /** Kurzform für das Diagramm, wo eine Zeile 126 Einheiten breit ist. */
+  kurz: string
+  kern: string
+  tut: string
+  tutNie: string
+  zustand: 'arbeitet' | 'entschieden'
+  seit: string | null
+  hinweis: string
+}
+
+export interface Mannschaft extends MitFreigabe {
+  satz: string
+  gezaehltAm: string
+  trennung: string
+  engpass: string
+  akte: string
+  koepfe: Kopf[]
+}
+
 export interface Projektstand {
   stand: string
   herkunft: {
@@ -188,6 +210,7 @@ export interface Projektstand {
     freigabe: Freigabe
   }
   kennzahlen: Kennzahl[]
+  mannschaft: Mannschaft
   schichten: Schicht[]
   schichtenEntschieden: string
   schichtenErklaerung: string
