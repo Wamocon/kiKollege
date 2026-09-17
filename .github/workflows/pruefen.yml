@@ -1,5 +1,7 @@
-# Baut beide Fassungen bei jedem Push und prueft die oeffentliche darauf, dass
-# nichts als intern Markiertes darin steht. Es wird nichts veroeffentlicht.
+# Baut beide Fassungen bei jedem Push, prueft die oeffentliche darauf, dass
+# nichts als intern Markiertes darin steht, und bei einem Pull Request
+# zusaetzlich, dass der Bestand an Daten nicht kleiner geworden ist. Es wird
+# nichts veroeffentlicht.
 name: Prüfen
 
 on:
@@ -30,3 +32,16 @@ jobs:
           FREIGABE: oeffentlich
       - name: Öffentliche Fassung auf internen Inhalt prüfen
         run: npm run pruefe:oeffentlich
+      # Ändern ist erlaubt, entfernen nicht: ein Pull Request darf keine Zahl,
+      # keine Entscheidung und keinen offenen Punkt aus den Daten verlieren.
+      - name: Bestand gegen den Zielzweig prüfen
+        if: github.event_name == 'pull_request'
+        run: |
+          git fetch --no-tags --depth=1 origin "$BASIS"
+          if git show "origin/$BASIS:data/projektstand.json" > /tmp/alt.json 2>/dev/null; then
+            npm run pruefe:bestand -- --alt /tmp/alt.json
+          else
+            echo "Der Zielzweig führt die Datei noch nicht, nichts zu vergleichen."
+          fi
+        env:
+          BASIS: ${{ github.base_ref }}

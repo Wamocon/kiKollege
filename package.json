@@ -9,6 +9,7 @@
     "start": "next start",
     "export:vault": "node scripts/export-vault.mjs",
     "pruefe:oeffentlich": "node scripts/pruefe-oeffentlich.mjs",
+    "pruefe:bestand": "node scripts/pruefe-bestand.mjs",
     "test:export": "node --test scripts/export-vault.test.mjs",
     "test": "node --test \"scripts/*.test.mjs\" \"lib/*.test.mjs\""
   },

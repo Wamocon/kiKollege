@@ -25,8 +25,19 @@ Seite.
 - eine Zahl in die Prosa im Code schreiben, statt in die Daten
 - nach `main` pushen, einen Pull Request zusammenführen oder freigeben
 - einen Pull Request stellen, wenn sich nichts geändert hat
+- etwas aus den Daten entfernen
 
-Der letzte Punkt ist der wichtigste: Ein leerer Lauf ist ein guter Lauf.
+Zwei Punkte tragen schwerer als die anderen. Der eine: Ein leerer Lauf ist ein
+guter Lauf. Der andere: **Ändern ist erlaubt, entfernen nicht.** Eine Zahl, die
+sich korrigiert, ist Arbeit. Ein Eintrag, der verschwindet, ist Verlust, und
+niemand merkt ihn später. Was eine neue Quelle nicht mehr nennt, bleibt stehen
+und bekommt eine Beobachtung mit dem Satz, dass die neuere Quelle es nicht mehr
+führt. Gelöscht wird nur, wenn ein Mensch es entscheidet.
+
+`npm run pruefe:bestand -- --alt <alter Stand>` prüft das nach: Es vergleicht
+zwei Stände der Datei und schlägt an, sobald ein Schlüssel fehlt, eine Liste
+kürzer wird, ein Eintrag mit Kennung verschwindet oder ein Satz geleert wird. Im
+Pull Request läuft dieselbe Prüfung gegen den Zielzweig.
 
 ## Quellen
 
@@ -61,10 +72,13 @@ npm run export:vault -- --vault "<Pfad>" --probelauf
    npm test
    npm run build
    FREIGABE=oeffentlich npm run build && npm run pruefe:oeffentlich
+   git show main:data/projektstand.json > /tmp/alt.json
+   npm run pruefe:bestand -- --alt /tmp/alt.json
    ```
 
-   Schlägt eines an, wird nichts gestellt. Die Prüfung der öffentlichen Fassung
-   ist der Zaun dieses Auftrags.
+   Schlägt eines an, wird nichts gestellt. Die beiden Prüfungen sind der Zaun
+   dieses Auftrags: die eine hält Internes zurück, die andere hält fest, dass
+   nichts verloren geht.
 8. Pull Request gegen `main`, Titel `Stand vom TT.MM.JJJJ`, Körper nach der
    Vorlage unten, als Prüfer den Verantwortlichen der Seite eintragen
    (`ansprechpartner` in den Daten, auf GitHub `erwinmoretz`). Kein

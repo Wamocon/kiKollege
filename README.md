@@ -286,11 +286,19 @@ zum Vorhaben, vergleicht sie mit `data/projektstand.json`, trägt ein, was neu
 ist, und stellt die Änderung als Pull Request. Er führt nichts zusammen und gibt
 nichts frei; das bleibt bei einem Menschen.
 
-Drei Regeln tragen ihn, und sie sind dieselben wie die des Vorhabens selbst:
-keine Zahl ohne Quelle, kein geglätteter Widerspruch, und nichts wandert von
-selbst aus der internen in die öffentliche Fassung. Vor jedem Pull Request laufen
-`npm test`, beide Builds und `npm run pruefe:oeffentlich`; schlägt eines an, wird
+Vier Regeln tragen ihn, und sie sind dieselben wie die des Vorhabens selbst:
+keine Zahl ohne Quelle, kein geglätteter Widerspruch, nichts wandert von selbst
+aus der internen in die öffentliche Fassung, und **ändern ist erlaubt, entfernen
+nicht**. Vor jedem Pull Request laufen `npm test`, beide Builds,
+`npm run pruefe:oeffentlich` und `npm run pruefe:bestand`; schlägt eines an, wird
 nichts gestellt.
+
+Die letzte Regel hängt nicht an gutem Willen. `scripts/pruefe-bestand.mjs`
+vergleicht zwei Stände von `data/projektstand.json` und schlägt an, sobald ein
+Schlüssel fehlt, eine Liste kürzer wird, ein Eintrag mit Kennung verschwindet
+oder ein Satz geleert wird. Bei jedem Pull Request läuft diese Prüfung gegen den
+Zielzweig. Was eine neue Quelle nicht mehr nennt, bleibt deshalb stehen und
+bekommt eine Beobachtung; gelöscht wird nur, was ein Mensch löschen will.
 
 Geweckt wird er von einer Routine. Ein leerer Lauf ist ein guter Lauf: Hat sich
 nichts geändert, gibt es keinen Pull Request und keine Nachricht.
@@ -392,6 +400,7 @@ lib/              Typen, Datumsformat, Freigabelogik, Abschnittslisten
 scripts/
   export-vault.mjs         schreibt die Daten aus dem Vault fort
   pruefe-oeffentlich.mjs   sucht Internes in einer öffentlichen Ausgabe
+  pruefe-bestand.mjs       schlägt an, wenn ein Stand weniger enthält als der alte
   stand-aktualisieren.cmd  ein Durchgang für die Aufgabenplanung
   __fixtures__/            drei Vaults mit verschiedenem Aufbau
 .claude/skills/
