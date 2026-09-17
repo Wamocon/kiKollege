@@ -162,6 +162,12 @@ das wäre die Beschriftung auf Handybreite unleserlich.
   (gefüllt läuft, leer vorhanden, gestrichelt entschieden). Rot trägt die eine
   Verbindung, an der der Rest hängt: die Ablage über Git auf dem KI-Rechner.
   Daneben steht dieselbe Aufzählung als Text, für Leser ohne Bild.
+- **Zeitplan** — der Meilensteinplan über seine vier Wochen: oben die
+  Entscheidungen mit Frist, darunter je Meilenstein die Arbeiten als Balken,
+  unten Erwins Zeit je Woche. Rot trägt der kritische Pfad, leere Balken sind
+  Bewertungszeit, grau hinterlegt sind die Wochenenden. Die gestrichelte Linie
+  ist der Stand des Plans, nicht der heutige Tag, weil die Seite statisch gebaut
+  ist.
 - **Ablage** — das Abbild des Vaults: jede Notiz ein Kästchen, gefärbt nach ihrem
   Freigabestand, je Bereich eine Zeile, rechts der Bereich, auf den am häufigsten
   verwiesen wird. Rot trägt das Verbindliche. Die Zahlen kommen aus
@@ -471,7 +477,7 @@ app/
   icon.svg          Favicon
 components/
   landing/          Kopfleiste, Navigation, Hero, Sektion, Fußleiste
-  figuren/          neun gezeichnete Diagramme, alle aus den Daten
+  figuren/          zehn gezeichnete Diagramme, alle aus den Daten
   ThemaSchalter     Hell, Dunkel, System
   Kopf, Nav, Fuss, bausteine   Bausteine der Standseite
 data/             projektstand.json, die einzige Zahlenquelle beider Seiten

@@ -1,6 +1,7 @@
 import { AblageFigur } from '@/components/figuren/Ablage'
 import { EnablerRaster } from '@/components/figuren/EnablerRaster'
 import { LandschaftFigur } from '@/components/figuren/Landschaft'
+import { ZeitplanFigur } from '@/components/figuren/Zeitplan'
 import { MannschaftFigur } from '@/components/figuren/Mannschaft'
 import { Schichtenstapel } from '@/components/figuren/Schichtenstapel'
 import { Durchlauf } from '@/components/figuren/Durchlauf'
@@ -11,7 +12,7 @@ import { Fussleiste } from '@/components/landing/Fussleiste'
 import { HeroAnatomie } from '@/components/landing/HeroAnatomie'
 import { Kopfleiste } from '@/components/landing/Kopfleiste'
 import { Sektion } from '@/components/landing/Sektion'
-import { daten, datum, harteRegel, tageZwischen, zahl } from '@/lib/daten'
+import { daten, datum, dauer, harteRegel, spanne, tageZwischen, zahl } from '@/lib/daten'
 import { istIntern, nurSichtbare, sichtbar } from '@/lib/freigabe'
 
 export default function Landing() {
@@ -32,6 +33,11 @@ export default function Landing() {
     { zustand: 'vorhanden', kopf: 'Vorhanden, noch nicht im Einsatz' },
     { zustand: 'geplant', kopf: 'Entschieden, nicht gebaut' },
   ] as const
+  const plan = d.meilensteinplan
+  const woche = new Map(plan.wochen.map((w) => [w.id, w]))
+  const minuten = new Map(plan.zeit.map((z) => [z.woche, z.entscheiden + z.lesen + z.bewerten]))
+  const minutenGesamt = [...minuten.values()].reduce((s, m) => s + m, 0)
+  const bewertenGesamt = plan.zeit.reduce((s, z) => s + z.bewerten, 0)
   const fachlich = d.ablage.bereiche.filter((a) => a.id === 'normbasis' || a.id === 'massstab')
   const fachlichVerbindlich = fachlich.reduce((s, a) => s + a.verbindlich, 0)
 
@@ -732,6 +738,190 @@ export default function Landing() {
             </div>
           ) : null}
         </Sektion>
+
+        {/* Meilensteine ------------------------------------------------------ */}
+        {sichtbar(plan) ? (
+          <Sektion id="plan">
+            {istIntern ? <p className="lp-intern">nur intern</p> : null}
+            <p className="lp-klein">
+              {plan.status}. Ersetzt den {plan.ersetzt}
+            </p>
+            <p className="lp-aussage breit lp-luft-oben-klein">{plan.satz}</p>
+            <div className="lp-text lp-luft-oben">
+              <p>
+                <b>„{plan.ziel}“</b> {plan.zielVon}. Der Rahmen: {plan.rahmen}.
+              </p>
+              <p>{plan.kurz}</p>
+              <p>{plan.lauffaehig}</p>
+            </div>
+
+            <ZeitplanFigur />
+
+            <div className="lp-luft-oben">
+              {plan.meilensteine.map((ms) => {
+                const w = woche.get(ms.woche)
+                return (
+                  <div className="lp-stufe" key={ms.id}>
+                    <span className="wann">
+                      {ms.id}
+                      {w ? ` · ${spanne(w.von, w.bis)}` : ''}
+                    </span>
+                    <div>
+                      <h3>{ms.titel}</h3>
+                      <ul className="liste" style={{ marginTop: '0.2rem', marginBottom: '0.6rem' }}>
+                        {ms.inhalt.map((t) => (
+                          <li key={t} style={{ fontSize: '0.9rem' }}>
+                            {t}
+                          </li>
+                        ))}
+                      </ul>
+                      <p className="bedingung">Abnahme: {ms.abnahme}</p>
+                      <p className="bedingung">
+                        Erwins Anteil
+                        {minuten.has(ms.woche) ? `, ${dauer(minuten.get(ms.woche)!)}` : ''}: {ms.erwin}
+                      </p>
+                    </div>
+                  </div>
+                )
+              })}
+            </div>
+
+            <div className="lp-gegen-rahmen">
+              <table className="lp-gegen">
+                <thead>
+                  <tr>
+                    <th>Teil des Ziels</th>
+                    <th>Am {datum(plan.bis)} erfüllt, wenn</th>
+                    <th className="stark">Was davon übrig bleibt</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {plan.zielteile.map((z) => (
+                    <tr key={z.teil}>
+                      <td className="merkmal">{z.teil}</td>
+                      <td className="leise">{z.erfuellt}</td>
+                      <td>{z.uebrig}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+            <div className="lp-kpi">
+              <div className="lp-kpi-kachel">
+                <p className="lp-kpi-wert">{dauer(minutenGesamt)}</p>
+                <p className="lp-kpi-label">
+                  Erwins Zeit über alle Wochen, davon {dauer(bewertenGesamt)} Bewerten. Rahmen:
+                  unter {dauer(plan.budgetMinutenJeWoche)} je Woche
+                </p>
+              </div>
+              {plan.zeit.map((z) => {
+                const w = woche.get(z.woche)
+                return (
+                  <div className="lp-kpi-kachel" key={z.woche}>
+                    <p className="lp-kpi-wert">{dauer(minuten.get(z.woche) ?? 0)}</p>
+                    <p className="lp-kpi-label">
+                      {z.woche}
+                      {w ? `, ${spanne(w.von, w.bis)}` : ''}: entscheiden {dauer(z.entscheiden)}, lesen{' '}
+                      {dauer(z.lesen)}, {z.bewerten ? `bewerten ${dauer(z.bewerten)}` : 'keine Bewertung'}
+                    </p>
+                  </div>
+                )
+              })}
+            </div>
+            <div className="lp-text lp-luft-oben">
+              <p>
+                {plan.zeitVorher} {plan.zeitPreis}
+              </p>
+            </div>
+
+            <p className="lp-aussage lp-luft-oben">Entscheidungen mit Frist.</p>
+            <div className="lp-log">
+              {plan.entscheidungen.map((e) => (
+                <div className="lp-log-zeile" key={e.nr}>
+                  <span className="wann">
+                    {e.termine ? `ab ${datum(e.termine[0]).slice(0, 6)}` : `bis ${datum(e.bis).slice(0, 6)}`}
+                  </span>
+                  <span className="was">
+                    <b>{e.nr}</b> {e.text}
+                    {/[.?!]$/.test(e.text) ? '' : '.'} Blockiert sonst: {e.blockiert}. Empfehlung:{' '}
+                    {e.empfehlung}
+                    {/[.?!]$/.test(e.empfehlung) ? '' : '.'}
+                  </span>
+                  <span className="zusatz">
+                    {e.ueberfaelligSeit
+                      ? `überfällig seit ${datum(e.ueberfaelligSeit).slice(0, 6)}`
+                      : e.kritisch
+                        ? 'kritischer Pfad'
+                        : ''}
+                  </span>
+                </div>
+              ))}
+            </div>
+            <div className="lp-text lp-luft-oben-klein">
+              <p>{plan.entscheidungenHinweis}</p>
+            </div>
+
+            <div className="lp-text lp-luft-oben">
+              <p>
+                <b>Der kritische Pfad:</b> {plan.pfad.join(' → ')}.
+              </p>
+              <p>{plan.pfadSatz}</p>
+              <p>{plan.daneben}</p>
+            </div>
+
+            <div className="lp-zellen lp-luft-oben">
+              <div className="lp-zelle">
+                <span className="kopf">Was in diesen Wochen nicht passt</span>
+                <ul className="liste" style={{ marginTop: '0.2rem' }}>
+                  {plan.nichtDrin.map((t) => (
+                    <li key={t} style={{ fontSize: '0.86rem' }}>
+                      {t}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            <p className="lp-aussage lp-luft-oben">Risiken nach Eintritt und Auswirkung.</p>
+            <div className="lp-gegen-rahmen">
+              <table className="lp-gegen">
+                <thead>
+                  <tr>
+                    <th>Nr.</th>
+                    <th>Risiko</th>
+                    <th>Stufe</th>
+                    <th className="stark">Was dagegen hilft</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {plan.risiken.map((r) => (
+                    <tr key={r.nr}>
+                      <td className="merkmal">{r.nr}</td>
+                      <td>
+                        <b>{r.titel}.</b> {r.text}
+                      </td>
+                      <td className="leise">
+                        {r.stufe === 'kritisch' ? <b>kritisch</b> : r.stufe}
+                        <br />
+                        Eintritt {r.eintritt}, Auswirkung {r.auswirkung}
+                      </td>
+                      <td>
+                        {r.gegenmassnahme}
+                        {/[.?!]$/.test(r.gegenmassnahme) ? '' : '.'} Frühwarnzeichen: {r.warnzeichen}.
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <div className="lp-text lp-luft-oben">
+              <p>{plan.risikenKern}</p>
+              <p>{plan.risikenHinweis}</p>
+              <p className="lp-klein">Quelle: {plan.quelle}</p>
+            </div>
+          </Sektion>
+        ) : null}
 
         {/* 14 Aufwand -------------------------------------------------------- */}
         <Sektion id="arbeit">

@@ -114,6 +114,8 @@ mit Datum im Namen.
 | Ein Tag in der Chronik | `arbeitstage.eintraege` |
 | Rolle, Kern, Tut, Tut nie | `mannschaft.koepfe` |
 | Stufe mit Abnahme | `stufen`, Abnahme in `bedingung` |
+| Meilensteinplan, Wochen, Fristen, Risiken | `meilensteinplan` |
+| Baustein oder Verbindung der Systemlandschaft | `landschaft` |
 | Risiko | `hemmnisse.gruppen[].punkte` |
 | Offene Entscheidung | `offenePunkte` |
 | Zwei Quellen, zwei Zahlen | `beobachtungen` |

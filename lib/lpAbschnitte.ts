@@ -25,6 +25,9 @@ const alle: readonly LpAbschnitt[] = [
   { id: 'steuerung', label: 'Steuerung' },
   { id: 'stand', label: 'Stand' },
   { id: 'stufen', label: 'Stufen' },
+  // Der Fahrplan gehört nach der Übergabe vom 11.09. nicht in die öffentliche
+  // Fassung. Pages zeigt seit dem 17.09. ohnehin alles.
+  { id: 'plan', label: 'Meilensteine', freigabe: 'intern' },
   { id: 'arbeit', label: 'Aufwand' },
   { id: 'plattform', label: 'Betrieb', freigabe: 'intern' },
   { id: 'entscheidungen', label: 'Entscheidungen' },

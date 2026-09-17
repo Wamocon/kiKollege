@@ -34,6 +34,12 @@ Dinge, die über das Nachtragen hinausgehen:
   öffentlich darin; die Eigennamenliste der Prüfung ist entsprechend gekürzt.
   Der Stand der eigenen Hardware ist der vom 11.09., von Erwin am 17.09. als
   unverändert bestätigt.
+- **Der Meilensteinplan** vom 17.09. als eigener Abschnitt „Meilensteine“: Ziel,
+  vier Meilensteine mit Abnahme, Zeitplan als Figur, Erwins Zeit je Woche,
+  Entscheidungen mit Frist, kritischer Pfad, was nicht passt, Risiken. Er ist als
+  Entwurf gekennzeichnet. Was Zugänge, Grenzen einzelner Profile, Dienste und
+  Datenwege betrifft, steht nur im Vault; die Seite sagt, dass es fehlt. Ändert
+  sich der Plan, wird `meilensteinplan` in den Daten nachgezogen.
 - **Ein Leck ist geschlossen.** `StandAlter` hat als Client-Komponente den ganzen
   Datensatz ins JavaScript der öffentlichen Seite gezogen, das Interne
   eingeschlossen. Die Freigabeprüfung liest jetzt auch JavaScript und

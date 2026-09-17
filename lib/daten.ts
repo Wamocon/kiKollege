@@ -279,6 +279,85 @@ export interface Landschaft extends MitFreigabe {
   quelle: string
 }
 
+export interface PlanMeilenstein {
+  id: string
+  woche: string
+  /** Tag der Abnahme. */
+  datum: string
+  titel: string
+  inhalt: string[]
+  abnahme: string
+  /** Erwins Anteil in Worten; die Minuten stehen in `zeit`. */
+  erwin: string
+}
+
+export interface PlanBalken {
+  meilenstein: string
+  text: string
+  von: string
+  tage: number
+  /** Liegt auf dem kritischen Pfad. */
+  kritisch: boolean
+  /** bauen: Werkbank oder eigene Hardware. bewerten: Erwins Zeit. */
+  art: 'bauen' | 'bewerten'
+}
+
+export interface PlanEntscheidung {
+  nr: string
+  bis: string
+  /** Mehrere Fristen, wenn die Entscheidung gestaffelt fällt. */
+  termine?: string[]
+  ueberfaelligSeit?: string
+  text: string
+  blockiert: string
+  empfehlung: string
+  kritisch?: boolean
+}
+
+export interface PlanRisiko {
+  nr: string
+  titel: string
+  text: string
+  eintritt: 'hoch' | 'mittel' | 'niedrig'
+  auswirkung: 'hoch' | 'mittel' | 'niedrig'
+  stufe: 'kritisch' | 'hoch' | 'mittel' | 'niedrig'
+  gegenmassnahme: string
+  warnzeichen: string
+}
+
+/** Der Meilensteinplan, wie er im Vault steht, ohne Zugänge und Datenwege. */
+export interface Meilensteinplan extends MitFreigabe {
+  stand: string
+  status: string
+  von: string
+  bis: string
+  ersetzt: string
+  satz: string
+  ziel: string
+  zielVon: string
+  rahmen: string
+  budgetMinutenJeWoche: number
+  kurz: string
+  lauffaehig: string
+  zielteile: { teil: string; erfuellt: string; uebrig: string }[]
+  wochen: { id: string; von: string; bis: string; name: string }[]
+  meilensteine: PlanMeilenstein[]
+  balken: PlanBalken[]
+  zeit: { woche: string; entscheiden: number; lesen: number; bewerten: number }[]
+  zeitVorher: string
+  zeitPreis: string
+  entscheidungen: PlanEntscheidung[]
+  entscheidungenHinweis: string
+  pfad: string[]
+  pfadSatz: string
+  daneben: string
+  nichtDrin: string[]
+  risiken: PlanRisiko[]
+  risikenHinweis: string
+  risikenKern: string
+  quelle: string
+}
+
 /** Die ersten Bewertungen durch einen Menschen, aus den Quoten je Regel. */
 export interface Bewertungen extends MitFreigabe {
   erstmalsAm: string
@@ -319,6 +398,7 @@ export interface Projektstand {
   ablage: Ablage
   bewertungen: Bewertungen
   landschaft: Landschaft
+  meilensteinplan: Meilensteinplan
   schichten: Schicht[]
   schichtenEntschieden: string
   schichtenErklaerung: string
@@ -547,6 +627,21 @@ export function tageZwischen(vonIso: string, bisIso: string): number {
   const von = Date.parse(`${vonIso}T00:00:00Z`)
   const bis = Date.parse(`${bisIso}T00:00:00Z`)
   return Math.round((bis - von) / tag) + 1
+}
+
+/** Zeitspanne in der Kurzform des Hauses: 17.–25.09. oder 28.09.–02.10. */
+export function spanne(vonIso: string, bisIso: string): string {
+  const [, vm, vt] = vonIso.split('-')
+  const [, bm, bt] = bisIso.split('-')
+  return vm === bm ? `${vt}.–${bt}.${bm}.` : `${vt}.${vm}.–${bt}.${bm}.`
+}
+
+/** Minuten als Dauer: 105 wird 1 h 45, 40 wird 40 min. */
+export function dauer(minuten: number): string {
+  const h = Math.floor(minuten / 60)
+  const m = minuten % 60
+  if (h === 0) return `${m} min`
+  return m === 0 ? `${h} h` : `${h} h ${String(m).padStart(2, '0')}`
 }
 
 /** Zahlen mit Tausenderpunkt, damit 10752 als 10.752 lesbar bleibt. */
