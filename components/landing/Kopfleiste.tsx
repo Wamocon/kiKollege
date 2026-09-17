@@ -20,7 +20,7 @@ export function Kopfleiste() {
         </a>
         <nav className="lp-bar-meta" aria-label="Seiteninformationen">
           <span className="lp-weg-schmal">
-            Stand <b>{datum(daten.stand)}</b> <StandAlter />
+            Stand <b>{datum(daten.stand)}</b> <StandAlter stand={daten.stand} fristTage={daten.herkunft.fristTage} />
           </span>
           {istIntern ? (
             <span className="lp-weg-schmal">

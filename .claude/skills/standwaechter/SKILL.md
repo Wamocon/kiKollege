@@ -17,6 +17,19 @@ Der Standwächter verteilt nicht, prüft nicht und entscheidet nicht. Er trägt
 Zahlen mit ihrer Quelle. Was in den Quellen nicht steht, steht auch nicht auf der
 Seite.
 
+## Welche Fassung auf Pages steht
+
+Seit dem 17.09.2026 stellt GitHub Pages die vollständige Fassung
+(`FREIGABE=alles`). Erwin hat entschieden, vorerst keinen Unterschied zwischen
+intern und öffentlich zu machen. Die Felder `freigabe` werden trotzdem weiter
+gepflegt, und die Prüfung der öffentlichen Fassung läuft weiter, damit die
+Trennung mit einer Zeile im Workflow zurückkommen kann.
+
+Unabhängig davon kommt nichts in die Daten, was auch intern nicht öffentlich
+lesbar sein darf: Sicherheitsbefunde, Rechnernamen, Adressen, Ports, Versionen,
+Zugangsdaten, und Angaben, die erst zusammen mit anderen einen
+Sicherheitshinweis ergeben. Das Repository ist öffentlich.
+
 ## Was dieser Auftrag nie tut
 
 - eine Zahl schätzen, runden, hochrechnen oder aus zwei Quellen mitteln
@@ -101,6 +114,8 @@ mit Datum im Namen.
 | Ein Tag in der Chronik | `arbeitstage.eintraege` |
 | Rolle, Kern, Tut, Tut nie | `mannschaft.koepfe` |
 | Stufe mit Abnahme | `stufen`, Abnahme in `bedingung` |
+| Meilensteinplan, Wochen, Fristen, Risiken | `meilensteinplan` |
+| Baustein oder Verbindung der Systemlandschaft | `landschaft` |
 | Risiko | `hemmnisse.gruppen[].punkte` |
 | Offene Entscheidung | `offenePunkte` |
 | Zwei Quellen, zwei Zahlen | `beobachtungen` |

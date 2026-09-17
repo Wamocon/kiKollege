@@ -1,4 +1,4 @@
-# Baut beide Fassungen bei jedem Push, prueft die oeffentliche darauf, dass
+# Baut alle drei Fassungen bei jedem Push, prueft die oeffentliche darauf, dass
 # nichts als intern Markiertes darin steht, und bei einem Pull Request
 # zusaetzlich, dass der Bestand an Daten nicht kleiner geworden ist. Es wird
 # nichts veroeffentlicht.
@@ -26,6 +26,11 @@ jobs:
         run: npm test
       - name: Interne Fassung bauen
         run: npm run build
+      # Diese Fassung stellt Pages seit dem 17.09.2026.
+      - name: Vollständige Fassung bauen
+        run: npm run build
+        env:
+          FREIGABE: alles
       - name: Öffentliche Fassung bauen
         run: npm run build
         env:

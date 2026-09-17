@@ -1,5 +1,5 @@
 import { daten, datum } from '@/lib/daten'
-import { nurSichtbare, istIntern } from '@/lib/freigabe'
+import { nurSichtbare, zeigtInternes } from '@/lib/freigabe'
 import { logoPfad } from '@/lib/logo'
 import { StandAlter } from '@/components/StandAlter'
 
@@ -48,11 +48,11 @@ export function Fuss() {
           <p>
             Stand <b>{datum(daten.stand)}</b>
           </p>
-          <StandAlter satz />
+          <StandAlter satz stand={daten.stand} fristTage={daten.herkunft.fristTage} erzeugt={datum(daten.herkunft.erzeugt)} />
           <p>
             Pflege: <b>{daten.ansprechpartner.name}</b>
           </p>
-          {istIntern ? (
+          {zeigtInternes ? (
             <p>
               Zahlen, Entscheidungen und offene Punkte stammen aus{' '}
               <span className="mono">data/projektstand.json</span>. Die Quelle der Wahrheit bleibt der

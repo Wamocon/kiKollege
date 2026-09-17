@@ -9,6 +9,11 @@
  * data/projektstand.json abgeleitet: jedes Objekt mit freigabe "intern" liefert
  * seine Textwerte. Wer ein Datenelement neu auf intern setzt, ist damit ohne
  * weiteres Zutun mit abgedeckt.
+ *
+ * Geprueft wird alles, was ausgeliefert wird und Text traegt: die HTML-Seiten,
+ * die RSC-Dateien daneben und das JavaScript. Eine Client-Komponente, die den
+ * Datensatz selbst importiert, schreibt ihn vollstaendig ins JavaScript, auch
+ * das Interne, und im HTML sieht man davon nichts.
  */
 
 import { readFile, readdir } from 'node:fs/promises'
@@ -24,14 +29,15 @@ const NICHT_PRUEFEN = new Set(['freigabe', 'id', 'datei', 'gruppe', 'ort'])
 /** Eigennamen, die in der oeffentlichen Fassung nichts zu suchen haben, egal in
  *  welchem Datenfeld sie auftauchen: Hersteller, Produkte, Laufzeiten, Pfade.
  *  Die Seite spricht nach aussen von der Werkbank und vom KI-Rechner. Wer einen
- *  dieser Namen oeffentlich zeigen will, entscheidet das und streicht ihn hier. */
+ *  dieser Namen oeffentlich zeigen will, entscheidet das und streicht ihn hier.
+ *
+ *  Gestrichen am 17.09.2026, entschieden von Erwin Moretz: Claude, Hermes, DGX
+ *  und Spark. Die Systemlandschaft nennt Claude Code, Hermes Agent und DGX
+ *  Spark auch oeffentlich. Das Modell, der Anbieter dahinter, der Messenger,
+ *  die Ablagesoftware und Pfade bleiben intern. */
 export const NUR_INTERN = [
-  'Hermes',
   'Qwen',
-  'DGX',
-  'Spark',
   'Anthropic',
-  'Claude',
   'Telegram',
   'Obsidian',
   'KFBM',
@@ -57,7 +63,9 @@ export function interneTexte(knoten, geerbt = false, treffer = new Set()) {
   return treffer
 }
 
-async function htmlDateien(verzeichnis) {
+const AUSGELIEFERT = ['.html', '.txt', '.js']
+
+async function ausgelieferteDateien(verzeichnis) {
   const gefunden = []
   async function lauf(pfad) {
     let eintraege
@@ -69,7 +77,7 @@ async function htmlDateien(verzeichnis) {
     for (const e of eintraege) {
       const voll = join(pfad, e.name)
       if (e.isDirectory()) await lauf(voll)
-      else if (e.isFile() && e.name.toLowerCase().endsWith('.html')) gefunden.push(voll)
+      else if (e.isFile() && AUSGELIEFERT.some((x) => e.name.toLowerCase().endsWith(x))) gefunden.push(voll)
     }
   }
   await lauf(verzeichnis)
@@ -77,16 +85,22 @@ async function htmlDateien(verzeichnis) {
 }
 
 /** HTML entkommt Anfuehrungszeichen und Umlaute nicht, wohl aber & < >. Damit
- *  ein Satz mit Ampersand nicht durchrutscht, wird gleich verglichen. */
+ *  ein Satz mit Ampersand nicht durchrutscht, wird gleich verglichen. Im
+ *  JavaScript koennen Zeichen als Unicode-Escape stehen; auch die werden
+ *  aufgeloest. */
 function entschaerfen(text) {
-  return text.replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&#x27;/g, "'").replace(/&quot;/g, '"')
+  return text
+    .replace(/\\u([0-9a-fA-F]{4})/g, (_, hex) => String.fromCharCode(parseInt(hex, 16)))
+    .replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&#x27;/g, "'").replace(/&quot;/g, '"')
 }
 
 export async function pruefen({ ausgabe, daten, log = console.log }) {
   const stand = JSON.parse(await readFile(daten, 'utf8'))
   const verboten = [...interneTexte(stand)]
-  const dateien = await htmlDateien(ausgabe)
-  if (!dateien.length) throw new Error(`Keine HTML-Dateien unter ${ausgabe}. Erst bauen.`)
+  const dateien = await ausgelieferteDateien(ausgabe)
+  if (!dateien.some((d) => d.toLowerCase().endsWith('.html'))) {
+    throw new Error(`Keine HTML-Dateien unter ${ausgabe}. Erst bauen.`)
+  }
 
   const funde = []
   for (const datei of dateien) {
@@ -100,7 +114,7 @@ export async function pruefen({ ausgabe, daten, log = console.log }) {
   }
 
   log(
-    `Geprüft: ${dateien.length} Seiten gegen ${verboten.length} interne Texte ` +
+    `Geprüft: ${dateien.length} ausgelieferte Dateien gegen ${verboten.length} interne Texte ` +
       `und ${NUR_INTERN.length} Eigennamen.`,
   )
   return funde

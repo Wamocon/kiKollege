@@ -9,17 +9,33 @@ export interface MitFreigabe {
   freigabe?: Freigabe
 }
 
-/** Stufe dieses Builds. FREIGABE=oeffentlich npm run build baut die Fassung,
- *  die nach aussen tragfaehig ist. Ohne Angabe gilt die interne Fassung. */
-export const stufe: Freigabe =
-  process.env.NEXT_PUBLIC_FREIGABE === 'oeffentlich' ? 'oeffentlich' : 'intern'
+/** Fassung dieses Builds, gesetzt ueber FREIGABE:
+ *
+ *  - intern: alles, und was intern ist, traegt eine Markierung. Voreinstellung.
+ *  - oeffentlich: nur, was nach aussen tragfaehig ist.
+ *  - alles: alles, ohne Markierung.
+ *
+ *  Seit dem 17.09.2026 stellt GitHub Pages die Fassung "alles". Erwin Moretz
+ *  hat entschieden, vorerst keinen Unterschied zwischen intern und oeffentlich
+ *  zu machen. Die Felder werden weiter gepflegt, damit die Trennung mit einer
+ *  Zeile im Workflow zurueckkommt. */
+export type Fassung = Freigabe | 'alles'
 
-export const istIntern = stufe === 'intern'
+const angefordert = process.env.NEXT_PUBLIC_FREIGABE
+
+export const fassung: Fassung =
+  angefordert === 'oeffentlich' || angefordert === 'alles' ? angefordert : 'intern'
+
+/** Zeigt diese Fassung auch, was als intern markiert ist? */
+export const zeigtInternes = fassung !== 'oeffentlich'
+
+/** Markiert diese Fassung, was intern ist? Das tut nur die interne. */
+export const istIntern = fassung === 'intern'
 
 /** Ein Element ohne Angabe gilt als oeffentlich, weil die Datenpflege sonst
  *  stillschweigend Inhalt verlieren wuerde, sobald jemand das Feld vergisst. */
 export function sichtbar(element: MitFreigabe): boolean {
-  if (istIntern) return true
+  if (zeigtInternes) return true
   return (element.freigabe ?? 'oeffentlich') === 'oeffentlich'
 }
 

@@ -3,6 +3,7 @@ import { Nav } from '@/components/Nav'
 import { Fuss } from '@/components/Fuss'
 import { Block, Hinweis, Kachelband, Kopfzeile, Marker } from '@/components/bausteine'
 import { abschnitt } from '@/lib/abschnitte'
+import { inWorten } from '@/lib/alter'
 import { daten, datum, harteRegel, zahl } from '@/lib/daten'
 import { istIntern, nurSichtbare, sichtbar } from '@/lib/freigabe'
 
@@ -17,6 +18,8 @@ export default function Seite() {
   const quizlauf = mechanisch.find((l) => l.ohneBefund != null)
   const fachreview = urteilend[0]
   const n = d.gegenstand.normbasis
+  const b = d.bewertungen
+  const beobachtungen = nurSichtbare(d.beobachtungen)
 
   return (
     <>
@@ -205,12 +208,25 @@ export default function Seite() {
               ))}
             </ul>
 
-            <h3 style={{ marginTop: '1.8rem' }}>Der Ablauf</h3>
+            <h3 style={{ marginTop: '1.8rem' }}>
+              Der Ablauf laut Akte vom {datum(d.auftrag.ablaufAkteStand)}
+            </h3>
             <ol className="schritte">
-              {d.auftrag.ablauf.map((s) => (
+              {d.auftrag.ablaufAkte.map((s) => (
                 <li key={s}>{s}</li>
               ))}
             </ol>
+            <p className="fussnote" style={{ marginTop: '0.8rem' }}>
+              Die frühere Beschreibung im Übergabedokument nannte{' '}
+              {inWorten(d.auftrag.ablauf.length)} Schritte: {d.auftrag.ablauf.join('; ')}.
+            </p>
+
+            <Hinweis wort="Grenze" titel={d.auftrag.anweisungImDokument.satz}>
+              <p>
+                In der Akte seit dem {datum(d.auftrag.anweisungImDokument.seit)}.{' '}
+                {d.auftrag.anweisungImDokument.grund}
+              </p>
+            </Hinweis>
 
             <h3 style={{ marginTop: '1.8rem' }}>
               Vier Regeln sind nicht verhandelbar
@@ -322,7 +338,8 @@ export default function Seite() {
                 Zwischen dem {datum(d.prueflaeufe.zeitraum.von)} und dem {datum(d.prueflaeufe.zeitraum.bis)}{' '}
                 sind {d.prueflaeufe.protokolliert} Prüfläufe protokolliert. Die Zahlen stammen aus dem
                 Frontmatter der Laufnotizen. Ausgewiesen sind hier die{' '}
-                {d.prueflaeufe.imDokumentAusgewiesen} Läufe, zu denen das Übergabedokument Kennzahlen nennt.
+                {d.prueflaeufe.imDokumentAusgewiesen} Läufe, zu denen die beiden Übergabedokumente
+                Kennzahlen nennen.
               </p>
             </div>
 
@@ -338,11 +355,12 @@ export default function Seite() {
                     <th className="num">Major</th>
                     <th className="num">Minor</th>
                     <th className="num">Hinweise</th>
+                    <th className="num">Bewertet</th>
                     <th>Laufzeit</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {mechanisch.map((l) => (
+                  {nurSichtbare(mechanisch).map((l) => (
                     <tr key={l.id}>
                       <td className="datum">{l.datum ? datum(l.datum) : '—'}</td>
                       <td>{l.gegenstand}</td>
@@ -351,6 +369,7 @@ export default function Seite() {
                       <td className="num">{l.major != null ? zahl(l.major) : '—'}</td>
                       <td className="num">{l.minor != null ? zahl(l.minor) : '—'}</td>
                       <td className="num">{l.hinweise != null ? zahl(l.hinweise) : '—'}</td>
+                      <td className="num">{l.bewertet != null ? zahl(l.bewertet) : '—'}</td>
                       <td>{l.laufzeit ?? '—'}</td>
                     </tr>
                   ))}
@@ -358,7 +377,8 @@ export default function Seite() {
               </table>
             </div>
             <p className="fussnote tabellennote" id="mechanisch-note">
-              Ein Strich heißt: für diesen Lauf nicht ausgewiesen.
+              Ein Strich heißt: für diesen Lauf nicht ausgewiesen. Bewertet heißt: Ein Mensch hat
+              ein Urteil eingetragen, gezählt nach der Laufnotiz.
               {rechenlauf?.zusatz ? (
                 <>
                   {' '}
@@ -458,11 +478,42 @@ export default function Seite() {
               </p>
             </div>
 
+            {sichtbar(b) ? (
+              <Block titel={`Die ersten Bewertungen, seit dem ${datum(b.erstmalsAm)}`}>
+                <p>
+                  {zahl(b.bewertet)} Befunde über {zahl(b.regeln)} Regeln hat ein Mensch bewertet,{' '}
+                  {zahl(b.gesehen)} davon einzeln angesehen. Fehlalarme darunter:{' '}
+                  {zahl(b.fehlalarme)}. Das ist ein gutes Zeichen und noch keine Abnahme:
+                </p>
+                <ul className="liste">
+                  <li>
+                    {b.gruppen} Einzeln angesehen wurden {zahl(b.gesehen)} von {zahl(b.bewertet)}.
+                  </li>
+                  <li>
+                    Das eigene Ziel sind {zahl(b.zielGesehenJeRegel)} einzeln angesehene Fälle je
+                    Regel.{' '}
+                    {b.regelnAmZiel === 0
+                      ? 'Das erreicht bisher keine Regel'
+                      : `Das erreichen ${zahl(b.regelnAmZiel)} von ${zahl(b.regeln)} Regeln`}
+                    , die weiteste steht bei {zahl(b.hoechstesGesehen)}.
+                  </li>
+                  <li>{b.ungemessen}</li>
+                </ul>
+                <p style={{ marginTop: '0.7rem' }}>{b.umgewichtet}</p>
+                <p style={{ marginTop: '0.7rem' }}>
+                  <b>{b.beispiel.satz}</b> {b.beispiel.text}
+                </p>
+                <p className="fussnote" style={{ marginTop: '0.6rem' }}>
+                  Stand der Quoten {datum(b.stand)}.
+                </p>
+              </Block>
+            ) : null}
+
             {nurSichtbare(d.messluecken).map((m) => (
               <Hinweis
                 key={m.id}
                 art={m.id === 'fehlalarmquote' ? 'wichtig' : 'offen'}
-                wort="nicht gemessen"
+                wort={m.id === 'fehlalarmquote' && sichtbar(b) ? 'nicht belastbar' : 'nicht gemessen'}
                 titel={m.titel}
               >
                 <p>{m.text}</p>
@@ -519,6 +570,7 @@ export default function Seite() {
                 und aus Profilen je Gegenstand ({d.uebertragbarkeit.profil}).{' '}
                 {d.uebertragbarkeit.satz}
               </p>
+              <p>{d.uebertragbarkeit.beleg}</p>
               <p>{d.uebertragbarkeit.zweiterMitarbeiter}</p>
               <p>{d.uebertragbarkeit.uebergabe}</p>
             </div>
@@ -546,8 +598,15 @@ export default function Seite() {
                 Fünf Schritte bis zum {datum(d.plattform.termin)}
               </h3>
               <ol className="schritte">
-                {d.plattform.schritte.map((s) => (
-                  <li key={s}>{s}</li>
+                {d.plattform.schritte.map((s, i) => (
+                  <li key={s}>
+                    {s}{' '}
+                    {d.plattform.schritteStand[i] === 'erreicht' ? (
+                      <Marker art="gemessen">erreicht</Marker>
+                    ) : (
+                      <Marker art="offen">offen</Marker>
+                    )}
+                  </li>
                 ))}
               </ol>
 
@@ -559,6 +618,10 @@ export default function Seite() {
                 <div className="karte">
                   <h3>Was am {datum(d.plattform.termin)} erreicht sein kann</h3>
                   <p>{d.plattform.erreichbar}</p>
+                </div>
+                <div className="karte">
+                  <h3>Was am {datum(d.plattform.termin)} erreicht war</h3>
+                  <p>{d.plattform.amTermin}</p>
                 </div>
                 <div className="karte">
                   <h3>Was damit nicht beantwortet ist</h3>
@@ -596,6 +659,12 @@ export default function Seite() {
             </div>
             <div className="prosa" style={{ marginTop: '1.3rem' }}>
               <p>{d.entscheidungenNachtrag}</p>
+              {sichtbar(d.entscheidungenNachtragIntern) ? (
+                <p>
+                  {istIntern ? <Marker art="intern">nur intern</Marker> : null}{' '}
+                  {d.entscheidungenNachtragIntern.text}
+                </p>
+              ) : null}
             </div>
           </section>
 
@@ -608,10 +677,28 @@ export default function Seite() {
             <ol className="schritte">
               {nurSichtbare(d.offenePunkte).map((p) => (
                 <li key={p.nr}>
-                  <b>{p.punkt}.</b> {p.grund ?? ''}
+                  <b>{p.punkt}.</b>{' '}
+                  {p.erledigt ? (
+                    <>
+                      <Marker art="gemessen">entschieden am {datum(p.erledigt.am)}</Marker>{' '}
+                      {p.erledigt.text}
+                    </>
+                  ) : (
+                    p.grund ?? ''
+                  )}
+                  {istIntern && p.freigabe === 'intern' ? (
+                    <>
+                      {' '}
+                      <Marker art="intern">nur intern</Marker>
+                    </>
+                  ) : null}
                 </li>
               ))}
             </ol>
+            <p className="fussnote" style={{ marginTop: '1rem' }}>
+              Entschiedene Punkte bleiben mit ihrem Datum stehen, damit nachvollziehbar bleibt, was
+              wann offen war.
+            </p>
             <p className="fussnote" style={{ marginTop: '1rem' }}>
               Dazu kommt eine längere Liste fachlicher Einzelfragen aus den Prüfläufen. Die wird im
               Änderungsprotokoll geführt und gehört nicht hierher.
@@ -624,15 +711,16 @@ export default function Seite() {
               <Kopfzeile id="beobachtungen" />
               <div className="prosa">
                 <p>
-                  Beim Übertragen der Zahlen aus dem Übergabedokument und dem CI-Blatt sind drei Stellen
-                  aufgefallen, die nicht aufgehen. Sie stehen hier, statt beim Übertragen geglättet zu werden.
+                  Beim Übertragen der Zahlen aus den Quellen sind {inWorten(beobachtungen.length)}{' '}
+                  Stellen aufgefallen, die nicht aufgehen. Sie stehen hier, statt beim Übertragen
+                  geglättet zu werden.
                 </p>
               </div>
-              {nurSichtbare(d.beobachtungen).map((b) => (
-                <Block key={b.id} titel={b.titel}>
-                  <p>{b.text}</p>
+              {beobachtungen.map((o) => (
+                <Block key={o.id} titel={o.titel}>
+                  <p>{o.text}</p>
                   <p className="fussnote" style={{ marginTop: '0.6rem' }}>
-                    Quelle: {b.quelle}
+                    Quelle: {o.quelle}
                   </p>
                 </Block>
               ))}
@@ -676,7 +764,8 @@ export default function Seite() {
                 </table>
               </div>
               <p className="fussnote" style={{ marginTop: '1rem' }}>
-                {d.herkunft.verfahren}
+                Die ersten Zeilen nennen Orte aus der Zeit vor dem {datum(d.herkunft.getrenntAm)},
+                als die Ablage noch ein einziges Repository war. {d.herkunft.verfahren}
               </p>
             </section>
           ) : null}

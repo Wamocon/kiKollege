@@ -1,13 +1,13 @@
 import type { Metadata, Viewport } from 'next'
 import { daten } from '@/lib/daten'
-import { istIntern } from '@/lib/freigabe'
+import { zeigtInternes } from '@/lib/freigabe'
 import './globals.css'
 
 export const metadata: Metadata = {
   title: 'KI-Mitarbeiter bei WAMOCON',
   description:
     'Ein KI-Mitarbeiter bewertet, ein Mensch gibt frei. Konzept, Maßstab, Kennzahlen der Prüfläufe und die offene Messlücke.',
-  robots: istIntern ? { index: false, follow: false } : undefined,
+  robots: zeigtInternes ? { index: false, follow: false } : undefined,
 }
 
 export const viewport: Viewport = {

@@ -4,7 +4,90 @@ Diese Datei ist für die nächste Sitzung geschrieben, nicht für die Nachwelt. 
 sagt, wo das Vorhaben steht, was als Erstes zu tun ist und was dabei nicht
 verloren gehen darf.
 
-Stand dieser Übergabe: 17.09.2026.
+Stand dieser Übergabe: 17.09.2026, nachgetragen am selben Tag nach dem ersten
+Stand-Update.
+
+## Nachtrag 17.09.2026: nach dem ersten Stand-Update
+
+**Erledigt:** `main` ist auf GitHub, Pages steht auf GitHub Actions, und die
+öffentliche Fassung liegt unter <https://wamocon.github.io/kiKollege/>.
+Das Repository ist **öffentlich**, nicht privat, wie der Abschnitt unten annimmt.
+Damit ist der ganze Quelltext lesbar, auch was in den Daten als `intern` markiert
+ist. Das war eine bewusste Entscheidung beim ersten Push. Für jeden neuen Eintrag
+gilt deshalb: Was auch intern nicht öffentlich werden darf, kommt gar nicht in die
+Daten. Das betrifft Sicherheitsbefunde, Rechnernamen, Adressen, Ports, Versionen
+und Datenwege, und ebenso Einträge, die erst zusammen mit anderen Angaben einen
+Sicherheitshinweis ergeben. Einige Entscheidungen aus dem Logbuch fehlen deshalb
+mit Absicht, und nicht jeder entschiedene offene Punkt ist als entschieden
+markiert. Welche das sind, steht im Vault, nicht hier.
+
+**Der Zweig `stand/2026-09-17`** zieht die Seite auf den 17.09. nach, aus dem Vault
+unter `D:\WAMOCON`: Logbuch vom 11., 12., 16. und 17.09., Tagesprotokolle bis
+17.09., die Meilensteinpläne vom 11. und 17.09., Bestandsaufnahme vom 16.09.,
+Systemarchitektur, Akte des Reviewers, Laufnotizen, Quoten je Regel. Dazu kamen
+Dinge, die über das Nachtragen hinausgehen:
+
+- **Das Abbild der Ablage** auf der Landing Page, Abschnitt Wissen, gezählt von
+  `scripts/abbild-vault.mjs`.
+- **Die Systemlandschaft** als eigener Abschnitt, mit Ist und Soll. Nach Erwins
+  Entscheidung vom 17.09. stehen Claude Code, Hermes Agent und DGX Spark auch
+  öffentlich darin; die Eigennamenliste der Prüfung ist entsprechend gekürzt.
+  Der Stand der eigenen Hardware ist der vom 11.09., von Erwin am 17.09. als
+  unverändert bestätigt.
+- **Der Meilensteinplan** vom 17.09. als eigener Abschnitt „Meilensteine“: Ziel,
+  vier Meilensteine mit Abnahme, Zeitplan als Figur, Erwins Zeit je Woche,
+  Entscheidungen mit Frist, kritischer Pfad, was nicht passt, Risiken. Er ist als
+  Entwurf gekennzeichnet. Was Zugänge, Grenzen einzelner Profile, Dienste und
+  Datenwege betrifft, steht nur im Vault; die Seite sagt, dass es fehlt. Ändert
+  sich der Plan, wird `meilensteinplan` in den Daten nachgezogen.
+- **Ein Leck ist geschlossen.** `StandAlter` hat als Client-Komponente den ganzen
+  Datensatz ins JavaScript der öffentlichen Seite gezogen, das Interne
+  eingeschlossen. Die Freigabeprüfung liest jetzt auch JavaScript und
+  RSC-Dateien. Seit der nächsten Entscheidung ist das für Pages ohne Belang, für
+  die öffentliche Fassung bleibt es richtig.
+- **Pages zeigt alles.** Erwin hat am 17.09. entschieden, vorerst keinen
+  Unterschied zwischen intern und öffentlich zu machen. Pages baut deshalb
+  `FREIGABE=alles`: alle Inhalte, ohne „nur intern“-Markierung, mit `noindex`.
+  Die Felder `freigabe` und die öffentliche Fassung samt Prüfung bleiben, damit
+  die Trennung mit einer Zeile zurückkommt.
+- **Der Datumstest** hing an der Zeitzone des Rechners. Er rechnet jetzt in
+  Ortszeit und besteht überall.
+
+**Was ein Mensch entscheiden muss**, steht im Pull Request. Die wichtigsten Punkte:
+
+- Die Übergabe vom 11.09. und die Wahl 9.4 vom 17.09. sehen auf Pages nur einen
+  Auszug im Umfang dieser Übergabe vor. Mit „Pages zeigt alles“ steht dort jetzt
+  mehr, darunter Entscheidungen zu Datenwegen, Pfade, Termine und die Beobachtungen.
+  Das Logbuch sollte die neue Entscheidung nachziehen.
+- Aus der Wahl 9.4 folgt laut Logbuch, dass auf der Seite keine Personen
+  erscheinen (9.8). Die Seite nennt Erwin Moretz als Zuständigen für die Pflege,
+  die Geschäftsführung bei den Gesellschaften und Erwin in mehreren Einträgen.
+- Der Plan vom 17.09. sieht für die Seite „nur Rollen, die laufen“ vor. Die Seite
+  zeigt alle acht Rollen, die nicht gebauten als „entschieden“.
+
+- **Zwei Historien, ein Repository.** Das Repository `KFBM/reviewer` führt
+  `Wamocon/kiKollege` als `origin`. Sein `main` verfolgt `dgx`, passiert ist nichts.
+  Ein Push aus `reviewer/` nach `origin` würde aber interne Prüfdaten in dieses
+  öffentliche Repository schreiben. Der Remote gehört umbenannt oder entfernt,
+  bevor jemand dort pusht (Arbeitsplan vom 17.09., Punkt 2 und 35).
+- Der Arbeitsplan vom 17.09. sieht für diese Seite „vorher kein Push und kein
+  Pages, bis 14.10.“ vor. Die Seite ist seit dem 17.09. online; der Plan kennt das
+  noch nicht.
+
+Wer den Stand das nächste Mal nachzieht, gleicht das Logbuch gegen die Daten ab
+und prüft jede fehlende Entscheidung, bevor er sie nachträgt: Sie kann mit Absicht
+fehlen, siehe oben.
+
+**Der Export ist nicht einsatzbereit.** Die Laufnotizen liegen unter
+`D:\WAMOCON\KFBM\00_Vault\10_KI-Mitarbeiter\Prüfläufe\`, die Notizen schreiben
+`hinweis` statt `hinweise`, und der Export ersetzt die Liste der Läufe, statt sie
+zusammenzuführen. Einzelheiten in der README, Abschnitt „Woher die Zahlen
+kommen“. Bis das behoben ist, läuft `stand-aktualisieren.cmd` weiter gegen den
+alten Pfad und findet dort keine Läufe. Den Pfad bitte erst umstellen, wenn der
+Export zusammenführt.
+
+**Nicht mehr offen** aus der Liste unten: Punkt 4, die Vault-Pfade, ist geklärt,
+siehe oben.
 
 ## Die Lage
 

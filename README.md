@@ -154,6 +154,24 @@ das wäre die Beschriftung auf Handybreite unleserlich.
 - **Schichtenstapel** — die acht Schichten in vier Gruppen, mit der Dateizuordnung
   und der Markierung, welche Gruppen ein zweiter KI-Mitarbeiter erbt. Rot trägt
   hier die eine Gruppe, die neu zu bauen ist.
+- **Mannschaft** — das Organigramm. Durchgezogen ist, wer arbeitet oder eingerichtet
+  ist, gestrichelt, was entschieden und nicht gebaut ist. Die Kästen werden schmaler,
+  wenn mehr Rollen dazukommen.
+- **Landschaft** — die Systemlandschaft mit Ist und Soll: Werkbank, Ablage und
+  KI-Rechner im Haus nebeneinander, in jedem die Bausteine mit ihrem Zustand
+  (gefüllt läuft, leer vorhanden, gestrichelt entschieden). Rot trägt die eine
+  Verbindung, an der der Rest hängt: die Ablage über Git auf dem KI-Rechner.
+  Daneben steht dieselbe Aufzählung als Text, für Leser ohne Bild.
+- **Zeitplan** — der Meilensteinplan über seine vier Wochen: oben die
+  Entscheidungen mit Frist, darunter je Meilenstein die Arbeiten als Balken,
+  unten Erwins Zeit je Woche. Rot trägt der kritische Pfad, leere Balken sind
+  Bewertungszeit, grau hinterlegt sind die Wochenenden. Die gestrichelte Linie
+  ist der Stand des Plans, nicht der heutige Tag, weil die Seite statisch gebaut
+  ist.
+- **Ablage** — das Abbild des Vaults: jede Notiz ein Kästchen, gefärbt nach ihrem
+  Freigabestand, je Bereich eine Zeile, rechts der Bereich, auf den am häufigsten
+  verwiesen wird. Rot trägt das Verbindliche. Die Zahlen kommen aus
+  `scripts/abbild-vault.mjs`, siehe unten.
 - **Anatomie** — die Zeichnung im Hero, die einzige mit Scrollbindung.
 
 Dazu zwei Entscheidungen zur Darstellung:
@@ -163,10 +181,14 @@ ausgestattet. Die Zellen stehen in fester Reihenfolge, gefüllte zuerst. Eine ge
 Anordnung würde eine Verteilung über die Themenkomplexe behaupten, die nicht gemessen
 ist.
 
-**Die Null** im Abschnitt zur Messlücke ist die einzige Hero-Zahl der Seite. Ein Balken
-mit Nullfüllung wäre ein Ein-Balken-Diagramm; die Zahl ist hier die Figur.
+**Die Zahl der bewerteten Befunde** im Abschnitt zur Messung ist die einzige
+Hero-Zahl der Seite. Bis zum 09.09. stand dort eine Null. Seit es Bewertungen gibt,
+steht die Zahl nie allein: Daneben stehen, wie viele davon einzeln angesehen wurden,
+und die drei Gründe, warum das noch keine Abnahme ist. Die Übergabe vom 11.09.
+verlangt das ausdrücklich; die Zahl ohne ihre Einschränkungen wäre genau die Art
+Aussage, die das Projekt sich verbietet.
 
-## Zwei Fassungen aus einer Quelle
+## Drei Fassungen aus einer Quelle
 
 Jedes Datenelement in `data/projektstand.json` trägt ein Feld `freigabe`, das
 `intern` oder `oeffentlich` sein kann. Das setzt um, was das Übergabedokument
@@ -174,9 +196,20 @@ empfiehlt: Die Grenze zwischen internem und öffentlichem Inhalt ist eine Eigens
 der Notiz und keine Erinnerungsleistung.
 
 ```bash
-npm run build                    # interne Fassung, zeigt alles
-FREIGABE=oeffentlich npm run build   # öffentliche Fassung
+npm run build                        # interne Fassung: alles, Internes markiert
+FREIGABE=alles npm run build         # vollständige Fassung: alles, ohne Markierung
+FREIGABE=oeffentlich npm run build   # öffentliche Fassung: nur Freigegebenes
 ```
+
+**Auf GitHub Pages steht seit dem 17.09.2026 die vollständige Fassung.** Erwin
+Moretz hat entschieden, vorerst keinen Unterschied zwischen intern und öffentlich
+zu machen. Die Felder bleiben gepflegt, und `pruefen.yml` baut und prüft die
+öffentliche Fassung weiter. Wer die Trennung zurückwill, ändert in
+`veroeffentlichen.yml` eine Zeile und nimmt den Prüfschritt wieder auf; der
+Kommentar am Kopf des Workflows sagt, wie.
+
+Unabhängig davon gilt: Was auch intern nicht öffentlich lesbar sein darf, kommt
+gar nicht in die Daten. Das Repository ist öffentlich.
 
 Die öffentliche Fassung lässt auf der Landing Page die Abschnitte zum Betrieb und zum
 Abgleich weg, auf der Standseite zusätzlich die Quellen. Dazu entfallen auf beiden
@@ -185,7 +218,13 @@ Pfadangaben. Die Abschnittsnummern der Landing Page rücken nach, damit die Zäh
 keine Lücke zeigt. Was ohne Angabe bleibt, gilt als öffentlich, damit die Datenpflege
 nicht stillschweigend Inhalt verliert.
 
-Die interne Fassung setzt zusätzlich `robots: noindex`.
+Die interne und die vollständige Fassung setzen zusätzlich `robots: noindex`.
+
+Eigennamen hält eine Liste am Kopf von `scripts/pruefe-oeffentlich.mjs` aus der
+öffentlichen Fassung heraus, gleich in welchem Datenfeld sie stehen. Am 17.09.2026
+hat Erwin Moretz entschieden, dass Claude Code, Hermes Agent und DGX Spark
+öffentlich genannt werden dürfen; diese Namen sind aus der Liste gestrichen. Das
+Modell, sein Anbieter, der Messenger, die Ablagesoftware und Pfade bleiben darin.
 
 ## Woher die Zahlen kommen
 
@@ -224,6 +263,46 @@ Gefunden
 Fehlt eine Zeile, heißt die Datei im Vault anders. Weitere Namen trägt man in
 `ORTE` am Kopf des Skripts nach.
 
+**Was der erste Blick in den echten Vault am 17.09.2026 gezeigt hat.** Das Skript
+ist bisher nicht schreibend gelaufen, und das ist gut so:
+
+- Die Laufnotizen liegen nicht unter `D:\WAMOCON\KI-Mitarbeiter`, sondern unter
+  `D:\WAMOCON\KFBM\00_Vault\10_KI-Mitarbeiter\Prüfläufe\`. Mit
+  `--vault "D:\WAMOCON\KFBM"` findet der Probelauf 20 davon.
+- Die Notizen schreiben `hinweis`, das Skript liest `hinweise`. Die Hinweise gingen
+  beim Export verloren. `bewertet` liest es gar nicht.
+- Der Export ersetzt die Liste der Läufe vollständig, eine Zeile je Notiz. Die von
+  Hand gepflegten Einträge, etwa die zehn Fachreviews vom 03.09. als ein Eintrag,
+  verschwänden dabei, und `npm run pruefe:bestand` schlüge an.
+
+Bis das Skript zusammenführt statt ersetzt, werden neue Läufe von Hand nachgetragen.
+Der Standardpfad bleibt deshalb vorerst, wie er ist.
+
+## Das Abbild der Ablage
+
+`scripts/abbild-vault.mjs` zählt den Vault durch und schreibt das Ergebnis unter
+`ablage` in `data/projektstand.json`:
+
+```bash
+npm run abbild:vault -- --vault "D:\WAMOCON" --probelauf   # nur anzeigen
+npm run abbild:vault -- --vault "D:\WAMOCON"               # schreiben
+```
+
+`--vault` zeigt auf den Ordner, den Obsidian als Ganzes öffnet. Ausgelassen wird,
+was Obsidian selbst aus dem Index nimmt (`userIgnoreFilters` in
+`.obsidian/app.json`), und jeder Ordner mit Punkt am Anfang. Jede Notiz fällt in
+einen von zwölf Bereichen: die sieben Ebenen der Wissensschicht, die Prüfläufe als
+Gedächtnis und vier Bereiche der Werkstatt. Die Zuordnung steht in `bereichVon`,
+nach Ordner und bei Arbeitsständen nach `typ:`.
+
+Gezählt werden je Bereich die Notizen, ihr Freigabestand aus `verbindlichkeit:` und
+die Wikilinks in jeden anderen Bereich. Ein Verweis auf einen Namen, der zweimal
+vorkommt, zählt nicht, weil er mehrdeutig ist. Aus derselben Zählung kommt die
+Kennzahl der verbindlichen Notizen; sonst ändert das Skript nichts.
+
+Das Repository ist öffentlich. Ins Abbild gehen deshalb nur Zahlen je Bereich,
+keine Dateinamen und keine Pfade.
+
 ## Der Stand aktualisiert sich nicht von selbst
 
 Der Vault liegt auf einem Rechner im Haus, das Repository liegt bei GitHub. Der
@@ -232,10 +311,11 @@ weiter — Notizen, Testfälle und Ausbildungsunterlagen bleiben liegen. Ein Dur
 steht als Windows-Skript bereit:
 
 ```bat
-scripts\stand-aktualisieren.cmd "D:\WAMOCON\KI-Mitarbeiter"
+scripts\stand-aktualisieren.cmd "D:\WAMOCON\KI-Mitarbeiter" "D:\WAMOCON"
 ```
 
-Es exportiert, prüft ob sich etwas geändert hat, und committet und pusht nur dann.
+Es exportiert, zählt das Abbild der Ablage neu, prüft, ob sich etwas geändert hat,
+und committet und pusht nur dann.
 Für den regelmäßigen Teil hängt man es in die Aufgabenplanung, hier täglich um sieben:
 
 ```bat
@@ -259,24 +339,32 @@ stimmt. Die Formulierungen liegen in `lib/alter.ts`, geprüft in
 `.github/workflows/pruefen.yml` baut bei jedem Push beide Fassungen und lässt
 `npm run pruefe:oeffentlich` über die öffentliche laufen. Die Prüfung pflegt keine
 Wortliste, sondern zieht aus `data/projektstand.json` jeden Text aus einem Objekt
-mit `freigabe: "intern"` und sucht ihn in den erzeugten HTML-Dateien. Findet sie
-etwas, schlägt der Lauf fehl. Gegen die interne Fassung meldet sie 42 Stellen,
-gegen die öffentliche keine — damit belegt sie, dass die Grenze im Build
-tatsächlich greift und nicht nur im Datenmodell steht.
+mit `freigabe: "intern"` und sucht ihn in allem, was ausgeliefert wird: HTML, die
+RSC-Dateien daneben und JavaScript. Findet sie etwas, schlägt der Lauf fehl. Gegen
+die interne Fassung meldet sie Hunderte Stellen, gegen die öffentliche keine. Damit
+belegt sie, dass die Grenze im Build tatsächlich greift und nicht nur im Datenmodell
+steht.
 
-`.github/workflows/veroeffentlichen.yml` stellt die öffentliche Fassung auf GitHub
-Pages: bei jedem Push auf `main` und zusätzlich von Hand, jeweils erst nach
-derselben Prüfung. In den Repository-Einstellungen muss Pages dazu auf
-"GitHub Actions" stehen.
+Bis zum 17.09.2026 hat sie nur HTML gelesen, und genau dort lag eine Lücke:
+`StandAlter` ist eine Client-Komponente und importierte die Daten selbst. Damit stand
+der ganze Datensatz, das Interne eingeschlossen, im ausgelieferten JavaScript der
+öffentlichen Seite. Seitdem bekommt die Komponente nur die drei Werte, die sie
+braucht, als Props. Die Regel dahinter: **Eine Komponente mit `'use client'`
+importiert nie `lib/daten`**, höchstens dessen Typen mit `import type`.
 
-Was dort landet, ist immer die öffentliche Fassung. Pages ist bei einem privaten
-Repository ohne Enterprise-Tarif öffentlich lesbar, und die interne Fassung nennt
-Hersteller, Modelle, Pfade und Termine. Der Workflow baut deshalb ausdrücklich
-`FREIGABE=oeffentlich` und bricht ab, wenn die Prüfung etwas Internes findet.
+`.github/workflows/veroeffentlichen.yml` stellt die Seite auf GitHub Pages: bei
+jedem Push auf `main` und zusätzlich von Hand, jeweils erst nach den Tests. In den
+Repository-Einstellungen steht Pages dazu auf "GitHub Actions".
+
+Bis zum 17.09.2026 hat der Workflow ausdrücklich `FREIGABE=oeffentlich` gebaut und
+abgebrochen, wenn die Prüfung etwas Internes fand. Seitdem baut er
+`FREIGABE=alles`, siehe „Drei Fassungen aus einer Quelle“. Die Organisation hat
+den Tarif GitHub Free, dort ist eine Pages-Seite immer öffentlich lesbar.
 
 Die Auswertung des Vaults ist durch `scripts/export-vault.test.mjs` gegen drei
-Fixture-Vaults abgedeckt, die Prüfung durch `scripts/pruefe-oeffentlich.test.mjs`.
-`npm test` läuft über beide.
+Fixture-Vaults abgedeckt, das Abbild durch `scripts/abbild-vault.test.mjs` gegen
+einen vierten, die Prüfung durch `scripts/pruefe-oeffentlich.test.mjs`. `npm test`
+läuft über alle.
 
 ## Der Standwächter
 
@@ -364,23 +452,20 @@ damit die Seite ohne Netzzugriff läuft; wo Inter installiert ist, greift sie, s
 Helvetica oder Arial. Soll Inter mitgeliefert werden, gehören die Dateien nach
 `public/` und ein `@font-face` in `globals.css`.
 
-## Später öffentlich stellen
+## Auf GitHub Pages
 
-Die Seite ist als statischer Export gebaut und läuft ohne Umbau auf GitHub Pages.
-Liegt sie nicht in der Wurzel, ist `BASE_PATH` zu setzen:
+Die Seite ist als statischer Export gebaut und läuft ohne Umbau auf GitHub Pages,
+seit dem 17.09.2026 unter <https://wamocon.github.io/kiKollege/>. Weil sie dort
+nicht in der Wurzel liegt, ist `BASE_PATH` gesetzt:
 
 ```bash
-FREIGABE=oeffentlich BASE_PATH=/kiKollege npm run build
-npm run pruefe:oeffentlich
+FREIGABE=alles BASE_PATH=/kiKollege npm run build
 ```
 
-Genau das tut `.github/workflows/veroeffentlichen.yml`, siehe oben. Vor einem
-öffentlichen Auftritt fehlen noch Impressum und Datenschutzerklärung. Beides ist
-hier nicht angelegt, weil die Seite zunächst intern bleibt.
-
-Zu bedenken: Pages ist bei einem privaten Repository ohne Enterprise-Tarif immer
-öffentlich. Wer den Workflow auslöst, stellt die Seite ins offene Netz. Deshalb
-läuft er nur von Hand und erst nach der Prüfung.
+Genau das tut `.github/workflows/veroeffentlichen.yml`, siehe oben. Impressum und
+Datenschutzerklärung fehlen noch. Jeder Push auf `main` stellt die Seite ins offene
+Netz; Änderungen kommen deshalb über einen Pull Request, den ein Mensch
+zusammenführt.
 
 ## Aufbau
 
@@ -392,17 +477,18 @@ app/
   icon.svg          Favicon
 components/
   landing/          Kopfleiste, Navigation, Hero, Sektion, Fußleiste
-  figuren/          sechs gezeichnete Diagramme, alle aus den Daten
+  figuren/          zehn gezeichnete Diagramme, alle aus den Daten
   ThemaSchalter     Hell, Dunkel, System
   Kopf, Nav, Fuss, bausteine   Bausteine der Standseite
 data/             projektstand.json, die einzige Zahlenquelle beider Seiten
 lib/              Typen, Datumsformat, Freigabelogik, Abschnittslisten
 scripts/
   export-vault.mjs         schreibt die Daten aus dem Vault fort
+  abbild-vault.mjs         zählt die Ablage für das Abbild
   pruefe-oeffentlich.mjs   sucht Internes in einer öffentlichen Ausgabe
   pruefe-bestand.mjs       schlägt an, wenn ein Stand weniger enthält als der alte
   stand-aktualisieren.cmd  ein Durchgang für die Aufgabenplanung
-  __fixtures__/            drei Vaults mit verschiedenem Aufbau
+  __fixtures__/            Vaults mit verschiedenem Aufbau für die Tests
 .claude/skills/
   standwaechter/SKILL.md   zieht den Stand nach und stellt ihn als Pull Request
 .github/workflows/
