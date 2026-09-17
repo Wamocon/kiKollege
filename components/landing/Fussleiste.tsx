@@ -32,7 +32,7 @@ export function Fussleiste() {
 
         {gesellschaften.map((g) => (
           <div key={g.name}>
-            <h4>{g.rolle}</h4>
+            <h2>{g.rolle}</h2>
             <p>
               <b>{g.name}</b>
             </p>
@@ -49,7 +49,7 @@ export function Fussleiste() {
         ))}
 
         <div>
-          <h4>Weiter</h4>
+          <h2>Weiter</h2>
           <p>
             <a href={pfad('/stand/')}>Ausführlicher Projektstand</a> mit allen Prüfläufen, Tabellen und
             offenen Punkten.

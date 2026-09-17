@@ -21,6 +21,8 @@ export const MUSTER = [
   {
     name: 'IPv4-Adresse',
     muster: /\b(?:25[0-5]|2[0-4]\d|1?\d?\d)(?:\.(?:25[0-5]|2[0-4]\d|1?\d?\d)){3}\b/g,
+    // Der eigene Rechner verraet nichts
+    ausser: (treffer) => treffer.startsWith('127.') || treffer === '0.0.0.0',
   },
   {
     name: 'Rechnername im Hausnetz',

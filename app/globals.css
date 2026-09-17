@@ -552,8 +552,11 @@ th.num { text-align: right; }
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 1.6rem 2.4rem;
 }
-.fuss h4 {
+/* Überschriften der Fußleiste sind h2, damit die Gliederung keine Ebene
+   überspringt; sie sehen aus wie Etiketten. */
+.fuss h2 {
   font-size: 0.68rem;
+  font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--wmc-ink);
@@ -1004,7 +1007,7 @@ th.num { text-align: right; }
   grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
   gap: 2.2rem clamp(1.5rem, 4vw, 3.5rem);
 }
-.lp-fuss h4 {
+.lp-fuss h2 {
   font-family: var(--schrift-mono);
   font-size: 0.66rem;
   font-weight: 700;

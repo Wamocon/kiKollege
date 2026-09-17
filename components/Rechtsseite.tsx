@@ -16,10 +16,10 @@ export function Rechtsseite({ titel, children }: { titel: string; children: Reac
         <main className="inhalt" id="inhalt">
           {r.geprueft ? null : (
             <section>
-              <Hinweis art="wichtig" wort="Entwurf" titel="Rechtlich nicht geprüft">
+              <Hinweis art="wichtig" wort="Entwurf">
                 <p>
-                  Dieser Text ist am {datum(r.entwurfVom)} aus den Firmenangaben dieser Seite
-                  entworfen worden. Er ersetzt keine rechtliche Prüfung. Was noch fehlt, steht am
+                  <b>Rechtlich nicht geprüft.</b> Dieser Text ist am {datum(r.entwurfVom)} aus den
+                  Firmenangaben dieser Seite entworfen worden. Er ersetzt keine rechtliche Prüfung. Was noch fehlt, steht am
                   Ende.
                 </p>
               </Hinweis>

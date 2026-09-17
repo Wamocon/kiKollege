@@ -16,6 +16,7 @@ const falsch = (anfang, laenge) => anfang + 'x'.repeat(laenge)
 test('findet eine IPv4-Adresse, aber kein Datum und keine Versionsnummer', () => {
   assert.deepEqual(muster('Der Rechner hat 10.1.2.3 im Netz.'), ['IPv4-Adresse'])
   assert.deepEqual(muster('Stand 17.09.2026, Next.js 16.3.4, CTFL 4.0'), [])
+  assert.deepEqual(muster('server.listen(0, "127.0.0.1")'), [])
 })
 
 test('findet Rechnernamen im Hausnetz', () => {

@@ -17,7 +17,8 @@ export function PlanAbschnitt() {
       <div className="prosa">
         <p>
           <b>{p.status}.</b> Er gilt vom {datum(p.von)} bis zum {datum(p.bis)} und ersetzt den{' '}
-          {p.ersetzt}. Das Ziel: „{p.ziel}“ {p.zielVon}. Der Rahmen: {p.rahmen}.
+          {p.ersetzt}
+          {/[.?!]$/.test(p.ersetzt) ? '' : '.'} Das Ziel: „{p.ziel}“ {p.zielVon}. Der Rahmen: {p.rahmen}.
         </p>
         <p>
           Die Landing Page zeigt den Zeitplan, die vier Meilensteine und die Entscheidungen mit

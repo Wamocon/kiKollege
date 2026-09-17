@@ -28,7 +28,7 @@ export function Fuss() {
 
         {gesellschaften.map((g) => (
           <div key={g.name}>
-            <h4>{g.rolle}</h4>
+            <h2>{g.rolle}</h2>
             <p>
               <b>{g.name}</b>
             </p>
@@ -45,7 +45,7 @@ export function Fuss() {
         ))}
 
         <div>
-          <h4>Diese Seite</h4>
+          <h2>Diese Seite</h2>
           <p>
             Stand <b>{datum(daten.stand)}</b>
           </p>
