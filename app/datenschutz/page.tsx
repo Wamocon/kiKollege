@@ -4,7 +4,7 @@ import { Fehlt, Rechtsseite, anbieterin } from '@/components/Rechtsseite'
 import { daten } from '@/lib/daten'
 
 export const metadata: Metadata = {
-  title: 'Datenschutz, Entwurf | KI-Mitarbeiter bei WAMOCON',
+  title: 'Datenschutz, Entwurf',
 }
 
 export default function Datenschutz() {

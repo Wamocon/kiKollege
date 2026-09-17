@@ -1,3 +1,5 @@
+import type { Metadata } from 'next'
+
 import { Kopf } from '@/components/Kopf'
 import { Nav } from '@/components/Nav'
 import { Fuss } from '@/components/Fuss'
@@ -8,6 +10,11 @@ import { abschnitt } from '@/lib/abschnitte'
 import { inWorten } from '@/lib/alter'
 import { daten, datum, harteRegel, zahl } from '@/lib/daten'
 import { istIntern, nurSichtbare, sichtbar } from '@/lib/freigabe'
+
+export const metadata: Metadata = {
+  title: 'Ausführlicher Stand',
+  description: 'Alle Prüfläufe, Tabellen, Stufen, Entscheidungen und offenen Punkte zum Vorhaben KI-Mitarbeiter.',
+}
 
 const zeigen = (id: string) => sichtbar(abschnitt(id))
 
