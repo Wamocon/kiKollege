@@ -7,6 +7,24 @@ verloren gehen darf.
 Stand dieser Übergabe: 17.09.2026, nachgetragen am selben Tag nach dem ersten
 Stand-Update und nach den acht Verbesserungen.
 
+## Nachtrag 17.09.2026, abends: Graph und Rubriken der Ablage
+
+Der Zweig `ablage/2026-09-17` baut auf `verbesserungen/2026-09-17` auf und
+bringt einen dreizehnten Abschnitt „Ablage“ auf die Landing Page. Das Abbild ist
+dorthin umgezogen, dazu kommen:
+
+- **Der Graph der Ablage**, der Vault-Graph in einfacher Form: Bereiche als Kreise,
+  Verbindungen ab zehn Verweisen als Linien, der meistverwiesene Bereich rot. Er
+  rechnet nur mit `ablage.bereiche`, es wird nichts Neues gezählt.
+- **Die Rubriken des Unternehmenswissens** mit einer kurzen Erklärung je Ordner,
+  gruppiert nach der Stufe, in der ein KI-Mitarbeiter sie liest. Die Texte stehen
+  unter `unternehmenswissen`, die Anzahlen zählt `abbild-vault.mjs` mit.
+- Die Zählung vom 17.09. abends ist eingetragen: 141 Notizen, 1.267 Verweise.
+
+Wer die Ordnertabelle im Einstieg von KI-Mitarbeiter ändert, zieht
+`unternehmenswissen.rubriken` von Hand nach. Das Skript meldet Ordner ohne
+Eintrag, legt aber keine an.
+
 ## Nachtrag 17.09.2026, nachmittags: acht Verbesserungen
 
 Der Zweig `stand/2026-09-17` steht als Pull Request #1 gegen `main`. Darauf
@@ -154,7 +172,7 @@ Internes findet.
 
 | Was | Wo |
 | --- | --- |
-| Landing Page, 12 Abschnitte, 11 in der öffentlichen Fassung | `app/page.tsx` |
+| Landing Page, 13 Abschnitte, 12 in der öffentlichen Fassung | `app/page.tsx` |
 | Dichte Zweitseite, 17 Abschnitte | `app/stand/page.tsx` |
 | Impressum und Datenschutz, Entwürfe | `app/impressum/`, `app/datenschutz/` |
 | Alle Zahlen, einzige Quelle | `data/projektstand.json` |
@@ -219,7 +237,8 @@ npm run pruefe:aktualitaet -- --ablage "D:\WAMOCON"
 2. **`/stand` nachziehen.** Am 17.09. nachgezogen, mit Stufen und dem
    Meilensteinplan im Einzelnen. Das Organigramm fehlt ihr weiter.
 3. **Kürzen.** Am 17.09. von neunzehn auf zwölf Abschnitte gekürzt, ohne Inhalt
-   zu verlieren: Was wegfiel, steht unter `/stand/`. Ob das so bleibt,
+   zu verlieren: Was wegfiel, steht unter `/stand/`. Am Abend kam die Ablage als
+   dreizehnter dazu. Ob das so bleibt,
    entscheidet ein Mensch.
 4. **Die Vault-Pfade.** Geklärt, siehe oben.
 5. **Ob die Sitzungen, die eine Routine startet, einen Pull Request öffnen
