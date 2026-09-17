@@ -11,6 +11,7 @@
     "abbild:vault": "node scripts/abbild-vault.mjs",
     "pruefe:oeffentlich": "node scripts/pruefe-oeffentlich.mjs",
     "pruefe:bestand": "node scripts/pruefe-bestand.mjs",
+    "pruefe:daten": "node scripts/pruefe-daten.mjs",
     "test:export": "node --test scripts/export-vault.test.mjs",
     "test": "node --test \"scripts/*.test.mjs\" \"lib/*.test.mjs\""
   },

@@ -29,6 +29,9 @@ Unabhängig davon kommt nichts in die Daten, was auch intern nicht öffentlich
 lesbar sein darf: Sicherheitsbefunde, Rechnernamen, Adressen, Ports, Versionen,
 Zugangsdaten, und Angaben, die erst zusammen mit anderen einen
 Sicherheitshinweis ergeben. Das Repository ist öffentlich.
+`npm run pruefe:daten` sucht mit allgemeinen Mustern nach Adressen,
+Rechnernamen, Ports, Schlüsseln und fremden E-Mail-Adressen. Was es nicht
+kennt, etwa eine Versionsnummer oder eine Kombination, bleibt Sache des Lesens.
 
 ## Was dieser Auftrag nie tut
 
@@ -82,6 +85,7 @@ npm run export:vault -- --vault "<Pfad>" --probelauf
 7. Prüfen, in dieser Reihenfolge:
 
    ```bash
+   npm run pruefe:daten
    npm test
    npm run build
    FREIGABE=oeffentlich npm run build && npm run pruefe:oeffentlich
@@ -89,8 +93,9 @@ npm run export:vault -- --vault "<Pfad>" --probelauf
    npm run pruefe:bestand -- --alt /tmp/alt.json
    ```
 
-   Schlägt eines an, wird nichts gestellt. Die beiden Prüfungen sind der Zaun
-   dieses Auftrags: die eine hält Internes zurück, die andere hält fest, dass
+   Schlägt eines an, wird nichts gestellt. Die drei Prüfungen sind der Zaun
+   dieses Auftrags: die erste hält heikle Angaben aus dem Repository, die
+   zweite Internes aus der öffentlichen Fassung, die dritte hält fest, dass
    nichts verloren geht.
 8. Pull Request gegen `main`, Titel `Stand vom TT.MM.JJJJ`, Körper nach der
    Vorlage unten, als Prüfer den Verantwortlichen der Seite eintragen
@@ -154,6 +159,7 @@ und wird nicht gekürzt, um eine Prüfung grün zu bekommen.
 
 ## Geprüft
 
+- `npm run pruefe:daten`: nichts gefunden
 - `npm test`: <Zahl> Tests
 - interne und öffentliche Fassung gebaut
 - `npm run pruefe:oeffentlich`: nichts Internes gefunden
