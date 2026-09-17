@@ -860,6 +860,11 @@ th.num { text-align: right; }
   color: var(--wmc-muted);
 }
 
+/* --- Auf einen Blick, unter dem Hero --- */
+.lp-blick { margin-top: clamp(2rem, 4vw, 3.4rem); }
+.lp-blick .lp-kpi { margin-top: 0.8rem; }
+.lp-blick .lp-kpi-wert { font-size: clamp(1.6rem, 2.6vw, 2.1rem); }
+
 /* --- Die eine Hero-Zahl der Seite --- */
 .lp-hero-zahl {
   display: flex;

@@ -2,6 +2,8 @@ import { Kopf } from '@/components/Kopf'
 import { Nav } from '@/components/Nav'
 import { Fuss } from '@/components/Fuss'
 import { Block, Hinweis, Kachelband, Kopfzeile, Marker } from '@/components/bausteine'
+import { PlanAbschnitt } from '@/components/stand/Plan'
+import { StufenAbschnitt } from '@/components/stand/Stufen'
 import { abschnitt } from '@/lib/abschnitte'
 import { inWorten } from '@/lib/alter'
 import { daten, datum, harteRegel, zahl } from '@/lib/daten'
@@ -581,6 +583,20 @@ export default function Seite() {
           </section>
 
           {/* 11 ------------------------------------------------------------ */}
+          <section id="stufen">
+            <Kopfzeile id="stufen" />
+            <StufenAbschnitt />
+          </section>
+
+          {/* 12 ------------------------------------------------------------ */}
+          {zeigen('plan') && sichtbar(d.meilensteinplan) ? (
+            <section id="plan">
+              <Kopfzeile id="plan" />
+              <PlanAbschnitt />
+            </section>
+          ) : null}
+
+          {/* 13 ------------------------------------------------------------ */}
           {zeigen('plattform') ? (
             <section id="plattform">
               <Kopfzeile id="plattform" />
@@ -631,7 +647,7 @@ export default function Seite() {
             </section>
           ) : null}
 
-          {/* 12 ------------------------------------------------------------ */}
+          {/* 14 ------------------------------------------------------------ */}
           <section id="entscheidungen">
             <Kopfzeile id="entscheidungen" />
             <div className="tabellenrahmen">
@@ -668,7 +684,7 @@ export default function Seite() {
             </div>
           </section>
 
-          {/* 13 ------------------------------------------------------------ */}
+          {/* 15 ------------------------------------------------------------ */}
           <section id="offen">
             <Kopfzeile id="offen" />
             <div className="prosa">
@@ -705,7 +721,7 @@ export default function Seite() {
             </p>
           </section>
 
-          {/* 14 ------------------------------------------------------------ */}
+          {/* 16 ------------------------------------------------------------ */}
           {zeigen('beobachtungen') ? (
             <section id="beobachtungen">
               <Kopfzeile id="beobachtungen" />
@@ -727,7 +743,7 @@ export default function Seite() {
             </section>
           ) : null}
 
-          {/* 15 ------------------------------------------------------------ */}
+          {/* 17 ------------------------------------------------------------ */}
           {zeigen('quellen') ? (
             <section id="quellen">
               <Kopfzeile id="quellen" />

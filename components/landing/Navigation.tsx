@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react'
 import type { LpAbschnitt } from '@/lib/lpAbschnitte'
 
-/** Navigation für eine Seite mit sechzehn Abschnitten: eine feste Leiste am
+/** Navigation für eine lange Seite: eine feste Leiste am
  *  linken Rand auf breiten Bildschirmen, ein aufklappbares Verzeichnis für alle
  *  Breiten und eine Fortschrittslinie. Der aktuelle Abschnitt wird über einen
  *  IntersectionObserver bestimmt, nicht über Scroll-Rechnerei. */

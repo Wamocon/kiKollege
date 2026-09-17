@@ -13,7 +13,15 @@ import { HeroAnatomie } from '@/components/landing/HeroAnatomie'
 import { Kopfleiste } from '@/components/landing/Kopfleiste'
 import { Sektion } from '@/components/landing/Sektion'
 import { daten, datum, dauer, harteRegel, spanne, tageZwischen, zahl } from '@/lib/daten'
-import { istIntern, nurSichtbare, sichtbar } from '@/lib/freigabe'
+import { inWorten } from '@/lib/alter'
+import { istIntern, nurSichtbare, sichtbar, zeigtInternes } from '@/lib/freigabe'
+import { pfad } from '@/lib/pfad'
+
+/** "P4", "P4 und P5", "P4, P5 und P6" */
+function aufzaehlen(teile: string[]): string {
+  if (teile.length < 2) return teile.join('')
+  return `${teile.slice(0, -1).join(', ')} und ${teile[teile.length - 1]}`
+}
 
 export default function Landing() {
   const d = daten
@@ -23,7 +31,6 @@ export default function Landing() {
   const wiederholung = d.prueflaeufe.laeufe.find((l) => l.art === 'wiederholung')
   const fehlalarmquote = d.messluecken.find((m) => m.id === 'fehlalarmquote')!
   const b = d.bewertungen
-  const stufen = nurSichtbare(d.stufen)
   const m = d.mannschaft
   const koepfe = nurSichtbare(m.koepfe)
   const l = d.landschaft
@@ -40,6 +47,15 @@ export default function Landing() {
   const bewertenGesamt = plan.zeit.reduce((s, z) => s + z.bewerten, 0)
   const fachlich = d.ablage.bereiche.filter((a) => a.id === 'normbasis' || a.id === 'massstab')
   const fachlichVerbindlich = fachlich.reduce((s, a) => s + a.verbindlich, 0)
+  const verbindlich = d.ablage.bereiche.reduce((s, a) => s + a.verbindlich, 0)
+
+  // Auf einen Blick: was als Nächstes ansteht, gerechnet am Stand der Daten
+  const offeneFristen = plan.entscheidungen
+    .filter((e) => !e.erledigtAm)
+    .sort((x, y) => x.bis.localeCompare(y.bis))
+  const naechsteFrist = offeneFristen[0]?.bis
+  const naechsterMeilenstein = plan.meilensteine.find((ms) => ms.datum >= d.stand)
+  const imZustand = (z: string) => koepfe.filter((k) => k.zustand === z).length
 
   return (
     <>
@@ -100,6 +116,78 @@ export default function Landing() {
               </dd>
             </div>
           </dl>
+
+          <div className="lp-blick" role="group" aria-labelledby="blick-titel">
+            <h2 className="lp-klein" id="blick-titel">
+              Auf einen Blick, Stand {datum(d.stand)}
+            </h2>
+            <div className="lp-kpi">
+              {sichtbar(plan) && naechsterMeilenstein ? (
+                <div className="lp-kpi-kachel">
+                  <p className="lp-kpi-wert">{datum(naechsterMeilenstein.datum).slice(0, 6)}</p>
+                  <p className="lp-kpi-label">
+                    Abnahme {naechsterMeilenstein.id}: {naechsterMeilenstein.titel}. Erledigt sind{' '}
+                    {inWorten(naechsterMeilenstein.erledigt?.length ?? 0)} von{' '}
+                    {inWorten(naechsterMeilenstein.inhalt.length)} Arbeiten.
+                  </p>
+                </div>
+              ) : null}
+              {sichtbar(plan) && naechsteFrist ? (
+                <div className="lp-kpi-kachel">
+                  <p className="lp-kpi-wert">{datum(naechsteFrist).slice(0, 6)}</p>
+                  <p className="lp-kpi-label">
+                    Frist für{' '}
+                    {aufzaehlen(offeneFristen.filter((e) => e.bis === naechsteFrist).map((e) => e.nr))}. Offen
+                    sind {inWorten(offeneFristen.length)} von {inWorten(plan.entscheidungen.length)}{' '}
+                    Entscheidungen mit Frist.
+                  </p>
+                </div>
+              ) : null}
+              {sichtbar(b) ? (
+                <div className="lp-kpi-kachel">
+                  <p className="lp-kpi-wert">{zahl(b.bewertet)}</p>
+                  <p className="lp-kpi-label">
+                    Befunde von einem Menschen bewertet, Fehlalarme darunter: {zahl(b.fehlalarme)}.
+                    Belastbar ist die Quote{' '}
+                    {b.regelnAmZiel === 0 ? 'bei keiner Regel' : `bei ${zahl(b.regelnAmZiel)} von ${zahl(b.regeln)} Regeln`}.
+                  </p>
+                </div>
+              ) : null}
+              <div className="lp-kpi-kachel">
+                <p className="lp-kpi-wert">
+                  {imZustand('arbeitet')} von {koepfe.length}
+                </p>
+                <p className="lp-kpi-label">
+                  Rollen arbeiten. Eingerichtet: {imZustand('eingerichtet')}. Entschieden, noch
+                  nicht gebaut: {imZustand('entschieden')}.
+                </p>
+              </div>
+              {sichtbar(d.ablage) ? (
+                <div className="lp-kpi-kachel">
+                  <p className="lp-kpi-wert">
+                    {zahl(verbindlich)} von {zahl(d.ablage.notizen)}
+                  </p>
+                  <p className="lp-kpi-label">
+                    Notizen der Ablage sind verbindlich.{' '}
+                    {fachlichVerbindlich === 0
+                      ? 'Normbasis und Prüfmaßstab hat noch niemand freigegeben.'
+                      : `Aus Normbasis und Prüfmaßstab: ${zahl(fachlichVerbindlich)}.`}
+                  </p>
+                </div>
+              ) : null}
+            </div>
+            <p className="lp-text lp-luft-oben-klein">
+              {sichtbar(plan) ? (
+                <>
+                  Zeitplan und Fristen stehen unter <a href="#plan">Meilensteine</a>, alles
+                  Weitere{' '}
+                </>
+              ) : (
+                'Alles Weitere steht '
+              )}
+              im <a href={pfad('/stand/')}>ausführlichen Stand</a>.
+            </p>
+          </div>
         </Sektion>
 
         {/* 02 Kein Chatbot -------------------------------------------------- */}
@@ -174,11 +262,8 @@ export default function Landing() {
               und nicht aus einer KI-Strategie.
             </p>
           </div>
-        </Sektion>
 
-        {/* 04 Ertrag -------------------------------------------------------- */}
-        <Sektion id="ertrag">
-          <p className="lp-aussage breit">
+          <p className="lp-aussage breit lp-luft-oben">
             Was dabei herauskommt, das anders nicht zu haben ist.
           </p>
           <div className="lp-text lp-luft-oben-klein">
@@ -193,9 +278,25 @@ export default function Landing() {
               </div>
             ))}
           </div>
+
+          <p className="lp-aussage lp-luft-oben">{d.arbeitsschwerpunkt.satz}</p>
+          <div className="lp-zellen lp-luft-oben">
+            <div className="lp-zelle">
+              <span className="kopf">Was es braucht</span>
+              <p className="stark">{d.arbeitsschwerpunkt.brauchtEs}</p>
+            </div>
+            <div className="lp-zelle traegt">
+              <span className="kopf">Was für die Auswahl folgt</span>
+              <p className="stark">{d.arbeitsschwerpunkt.auswahl}</p>
+            </div>
+          </div>
+          <div className="lp-text lp-luft-oben">
+            <p>{d.arbeitsschwerpunkt.schluss}</p>
+            <p>{d.uebertragbarkeit.auswahlregel}</p>
+          </div>
         </Sektion>
 
-        {/* 05 Aufbau -------------------------------------------------------- */}
+        {/* 04 Aufbau -------------------------------------------------------- */}
         <Sektion id="aufbau">
           <p className="lp-aussage breit">
             Acht Fragen, die auch ein neuer Kollege beantwortet bekommt.
@@ -242,7 +343,7 @@ export default function Landing() {
           </div>
         </Sektion>
 
-        {/* 06 Wissen -------------------------------------------------------- */}
+        {/* 05 Wissen -------------------------------------------------------- */}
         <Sektion id="wissen">
           <p className="lp-aussage breit">
             Zwei Wissensablagen, nicht eine.
@@ -322,7 +423,7 @@ export default function Landing() {
           ) : null}
         </Sektion>
 
-        {/* 07 Durchlauf ------------------------------------------------------ */}
+        {/* 06 Arbeitsweise --------------------------------------------------- */}
         <Sektion id="durchlauf">
           <p className="lp-aussage breit">
             Zwei Stufen, weil sie Verschiedenes finden.
@@ -337,9 +438,30 @@ export default function Landing() {
           </div>
 
           <Pruefpunkte />
+
+          <p className="lp-aussage breit lp-luft-oben">
+            Wie er gesteuert wird, und was er selbst steuert.
+          </p>
+
+          <Steuerung />
+
+          <div className="lp-zellen lp-luft-oben">
+            <div className="lp-zelle">
+              <span className="kopf">Beauftragt werden</span>
+              <p>{d.steuerung.warumSkript}</p>
+            </div>
+            <div className="lp-zelle">
+              <span className="kopf">Selbst abgeben</span>
+              <p>{d.steuerung.helfer}</p>
+            </div>
+            <div className="lp-zelle">
+              <span className="kopf">An einen zweiten übergeben</span>
+              <p>{d.steuerung.uebergabe}</p>
+            </div>
+          </div>
         </Sektion>
 
-        {/* 08 Messung -------------------------------------------------------- */}
+        {/* 07 Messung -------------------------------------------------------- */}
         <Sektion id="messung">
           <p className="lp-aussage">
             Ein KI-Mitarbeiter, dem man nicht glauben kann, ist schlimmer als keiner.
@@ -495,7 +617,7 @@ export default function Landing() {
           </dl>
         </Sektion>
 
-        {/* 09 Der erste ------------------------------------------------------ */}
+        {/* 08 Der erste ------------------------------------------------------ */}
         <Sektion id="erster">
           <p className="lp-klein">
             Seit Ende August im Einsatz
@@ -558,7 +680,7 @@ export default function Landing() {
           </div>
         </Sektion>
 
-        {/* 10 Mannschaft ----------------------------------------------------- */}
+        {/* 09 Mannschaft ----------------------------------------------------- */}
         <Sektion id="mannschaft">
           <p className="lp-aussage breit">{m.satz}</p>
           <div className="lp-text lp-luft-oben-klein">
@@ -604,7 +726,7 @@ export default function Landing() {
           ) : null}
         </Sektion>
 
-        {/* Landschaft ------------------------------------------------------- */}
+        {/* 10 Landschaft ------------------------------------------------------- */}
         {sichtbar(l) ? (
           <Sektion id="landschaft">
             <p className="lp-aussage breit">{l.satz}</p>
@@ -639,31 +761,7 @@ export default function Landing() {
           </Sektion>
         ) : null}
 
-        {/* 11 Steuerung ------------------------------------------------------ */}
-        <Sektion id="steuerung">
-          <p className="lp-aussage breit">
-            Wie er gesteuert wird, und was er selbst steuert.
-          </p>
-
-          <Steuerung />
-
-          <div className="lp-zellen lp-luft-oben">
-            <div className="lp-zelle">
-              <span className="kopf">Beauftragt werden</span>
-              <p>{d.steuerung.warumSkript}</p>
-            </div>
-            <div className="lp-zelle">
-              <span className="kopf">Selbst abgeben</span>
-              <p>{d.steuerung.helfer}</p>
-            </div>
-            <div className="lp-zelle">
-              <span className="kopf">An einen zweiten übergeben</span>
-              <p>{d.steuerung.uebergabe}</p>
-            </div>
-          </div>
-        </Sektion>
-
-        {/* 12 Stand ---------------------------------------------------------- */}
+        {/* 11 Stand ---------------------------------------------------------- */}
         <Sektion id="stand">
           <p className="lp-aussage breit">
             {tageZwischen(d.arbeitstage.beginn, d.stand)} Tage, mit Datum.
@@ -700,46 +798,23 @@ export default function Landing() {
           </div>
           <div className="lp-text lp-luft-oben">
             <p>{d.hemmnisse.satz}</p>
-          </div>
-        </Sektion>
-
-        {/* 13 Stufen --------------------------------------------------------- */}
-        <Sektion id="stufen">
-          <p className="lp-aussage breit">
-            {stufen.length} Stufen, jede mit einer Abnahme.
-          </p>
-          <div className="lp-text lp-luft-oben-klein">
             <p>
-              Ohne Abnahme beginnt die nächste Stufe nicht.{' '}
-              {stufen[0]?.bedingungsart === 'termin'
-                ? 'Die erste hängt an einem Termin, die übrigen an einem Ergebnis.'
-                : 'Jede hängt an einem Ergebnis, nicht an einem Wunschdatum.'}{' '}
-              Die Fehlalarmquote steht in keiner Stufe: sie ist kein Bauschritt, sondern
-              Bewertungsarbeit.
+              Im ausführlichen Stand stehen die{' '}
+              <a href={pfad('/stand/#stufen')}>Stufen bis zum Dauerbetrieb</a>, alle{' '}
+              <a href={pfad('/stand/#entscheidungen')}>Entscheidungen mit Datum</a> und die{' '}
+              <a href={pfad('/stand/#offen')}>offenen Punkte</a>
+              {zeigtInternes ? (
+                <>
+                  , dazu der <a href={pfad('/stand/#plattform')}>Betrieb im Haus</a> und die{' '}
+                  <a href={pfad('/stand/#beobachtungen')}>Beobachtungen aus dem Abgleich</a>
+                </>
+              ) : null}
+              .
             </p>
           </div>
-          <div className="lp-luft-oben">
-            {stufen.map((s) => (
-              <div className="lp-stufe" key={s.titel}>
-                <span className="wann">{s.wann}</span>
-                <div>
-                  <h3>{s.titel}</h3>
-                  <p>{s.text}</p>
-                  <p className="bedingung">{s.bedingung}</p>
-                  {s.stand ? <p className="bedingung">{s.stand}</p> : null}
-                </div>
-              </div>
-            ))}
-          </div>
-          {sichtbar(d.stufenPlan) ? (
-            <div className="lp-text lp-luft-oben">
-              {istIntern ? <p className="lp-intern">nur intern</p> : null}
-              <p>{d.stufenPlan.text}</p>
-            </div>
-          ) : null}
         </Sektion>
 
-        {/* Meilensteine ------------------------------------------------------ */}
+        {/* 12 Meilensteine ------------------------------------------------------ */}
         {sichtbar(plan) ? (
           <Sektion id="plan">
             {istIntern ? <p className="lp-intern">nur intern</p> : null}
@@ -794,52 +869,10 @@ export default function Landing() {
               })}
             </div>
 
-            <div className="lp-gegen-rahmen">
-              <table className="lp-gegen">
-                <thead>
-                  <tr>
-                    <th>Teil des Ziels</th>
-                    <th>Am {datum(plan.bis)} erfüllt, wenn</th>
-                    <th className="stark">Was davon übrig bleibt</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {plan.zielteile.map((z) => (
-                    <tr key={z.teil}>
-                      <td className="merkmal">{z.teil}</td>
-                      <td className="leise">{z.erfuellt}</td>
-                      <td>{z.uebrig}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-
-            <div className="lp-kpi">
-              <div className="lp-kpi-kachel">
-                <p className="lp-kpi-wert">{dauer(minutenGesamt)}</p>
-                <p className="lp-kpi-label">
-                  Erwins Zeit über alle Wochen, davon {dauer(bewertenGesamt)} Bewerten. Rahmen:
-                  unter {dauer(plan.budgetMinutenJeWoche)} je Woche
-                </p>
-              </div>
-              {plan.zeit.map((z) => {
-                const w = woche.get(z.woche)
-                return (
-                  <div className="lp-kpi-kachel" key={z.woche}>
-                    <p className="lp-kpi-wert">{dauer(minuten.get(z.woche) ?? 0)}</p>
-                    <p className="lp-kpi-label">
-                      {z.woche}
-                      {w ? `, ${spanne(w.von, w.bis)}` : ''}: entscheiden {dauer(z.entscheiden)}, lesen{' '}
-                      {dauer(z.lesen)}, {z.bewerten ? `bewerten ${dauer(z.bewerten)}` : 'keine Bewertung'}
-                    </p>
-                  </div>
-                )
-              })}
-            </div>
             <div className="lp-text lp-luft-oben">
               <p>
-                {plan.zeitVorher} {plan.zeitPreis}
+                Erwins Zeit über alle vier Wochen: {dauer(minutenGesamt)}, davon {dauer(bewertenGesamt)}{' '}
+                Bewerten. Der Rahmen liegt unter {dauer(plan.budgetMinutenJeWoche)} je Woche.
               </p>
               {plan.zeitArbeitsplan ? (
                 <p>
@@ -847,6 +880,10 @@ export default function Landing() {
                   {dauer(minutenGesamt)}, bis zur Abnahme von M1 auf {dauer(plan.zeitArbeitsplan.bisM1)}.
                 </p>
               ) : null}
+              <p>
+                <b>Der kritische Pfad:</b> {plan.pfad.join(' → ')}.
+              </p>
+              <p>{plan.pfadSatz}</p>
             </div>
 
             <p className="lp-aussage lp-luft-oben">Entscheidungen mit Frist.</p>
@@ -880,174 +917,15 @@ export default function Landing() {
 
             <div className="lp-text lp-luft-oben">
               <p>
-                <b>Der kritische Pfad:</b> {plan.pfad.join(' → ')}.
+                Das Ziel in seinen Teilen, Erwins Zeit je Woche, was in diesen Wochen nicht passt,
+                und die Risiken mit ihren Gegenmaßnahmen stehen im{' '}
+                <a href={pfad('/stand/#plan')}>ausführlichen Stand</a>.
               </p>
-              <p>{plan.pfadSatz}</p>
-              <p>{plan.daneben}</p>
-            </div>
-
-            <div className="lp-zellen lp-luft-oben">
-              <div className="lp-zelle">
-                <span className="kopf">Was in diesen Wochen nicht passt</span>
-                <ul className="liste" style={{ marginTop: '0.2rem' }}>
-                  {plan.nichtDrin.map((t) => (
-                    <li key={t} style={{ fontSize: '0.86rem' }}>
-                      {t}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-
-            <p className="lp-aussage lp-luft-oben">Risiken nach Eintritt und Auswirkung.</p>
-            <div className="lp-gegen-rahmen">
-              <table className="lp-gegen">
-                <thead>
-                  <tr>
-                    <th>Nr.</th>
-                    <th>Risiko</th>
-                    <th>Stufe</th>
-                    <th className="stark">Was dagegen hilft</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {plan.risiken.map((r) => (
-                    <tr key={r.nr}>
-                      <td className="merkmal">{r.nr}</td>
-                      <td>
-                        <b>{r.titel}.</b> {r.text}
-                      </td>
-                      <td className="leise">
-                        {r.erledigt ? (
-                          <b>aufgelöst am {datum(r.erledigt.am).slice(0, 6)}</b>
-                        ) : r.stufe === 'kritisch' ? (
-                          <b>kritisch</b>
-                        ) : (
-                          r.stufe
-                        )}
-                        <br />
-                        {r.erledigt
-                          ? 'war ' + r.stufe
-                          : 'Eintritt ' + r.eintritt + ', Auswirkung ' + r.auswirkung}
-                      </td>
-                      <td>
-                        {r.erledigt ? <b>{r.erledigt.text} </b> : null}
-                        {r.gegenmassnahme}
-                        {/[.?!]$/.test(r.gegenmassnahme) ? '' : '.'} Frühwarnzeichen: {r.warnzeichen}.
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-            <div className="lp-text lp-luft-oben">
-              <p>{plan.risikenKern}</p>
-              <p>{plan.risikenHinweis}</p>
               <p className="lp-klein">Quelle: {plan.quelle}</p>
             </div>
           </Sektion>
         ) : null}
 
-        {/* 14 Aufwand -------------------------------------------------------- */}
-        <Sektion id="arbeit">
-          <p className="lp-aussage">
-            {d.arbeitsschwerpunkt.satz}
-          </p>
-          <div className="lp-zellen lp-luft-oben">
-            <div className="lp-zelle">
-              <span className="kopf">Was es braucht</span>
-              <p className="stark">{d.arbeitsschwerpunkt.brauchtEs}</p>
-            </div>
-            <div className="lp-zelle traegt">
-              <span className="kopf">Was für die Auswahl folgt</span>
-              <p className="stark">{d.arbeitsschwerpunkt.auswahl}</p>
-            </div>
-          </div>
-          <div className="lp-text lp-luft-oben">
-            <p>{d.arbeitsschwerpunkt.schluss}</p>
-            <p>{d.uebertragbarkeit.auswahlregel}</p>
-          </div>
-        </Sektion>
-
-        {/* 15 Betrieb, nur intern -------------------------------------------- */}
-        <Sektion id="plattform">
-          {istIntern ? <p className="lp-intern">nur intern</p> : null}
-          <p className="lp-aussage lp-luft-oben-klein">
-            Der Dauerbetrieb läuft im Haus, die Werkbank bleibt außen.
-          </p>
-          <div className="lp-text lp-luft-oben">
-            <p>
-              Gebaut und gemessen wird auf {d.plattform.werkbank}. Für den Dauerbetrieb ist am{' '}
-              {datum(d.plattform.entschiedenAm)} entschieden: {d.plattform.dauerbetrieb}.
-            </p>
-            <p>{d.plattform.ablageregel}</p>
-          </div>
-
-          <p className="lp-klein lp-luft-oben">
-            Fünf Schritte bis zum {datum(d.plattform.termin)}
-          </p>
-          <ol className="lp-punkte">
-            {d.plattform.schritte.map((s, i) => (
-              <li key={s}>
-                <span className="nr">{String(i + 1).padStart(2, '0')}</span>
-                <span>
-                  <span className="punkt">{s}</span>
-                  <p className="grund">{d.plattform.schritteStand[i] ?? 'offen'}</p>
-                  {i === 3 ? <p className="grund">{d.plattform.warumAbschaltung}</p> : null}
-                </span>
-              </li>
-            ))}
-          </ol>
-          <div className="lp-text lp-luft-oben">
-            <p>{d.plattform.amTermin}</p>
-            <p>{d.plattform.nichtBeantwortet}</p>
-          </div>
-        </Sektion>
-
-        {/* 16 Entscheidungen -------------------------------------------------- */}
-        <Sektion id="entscheidungen">
-          <p className="lp-aussage breit">
-            Jede Entscheidung mit Datum, damit dieselbe Frage nicht alle zwei Wochen neu entschieden
-            wird.
-          </p>
-          <div className="lp-log">
-            {nurSichtbare(d.entscheidungen).map((e) => (
-              <div className="lp-log-zeile" key={e.datum + e.entscheidung}>
-                <span className="wann">{datum(e.datum)}</span>
-                <span className="was">{e.entscheidung}</span>
-                {istIntern && e.freigabe === 'intern' ? (
-                  <span className="zusatz">nur intern</span>
-                ) : (
-                  <span className="zusatz" />
-                )}
-              </div>
-            ))}
-          </div>
-        </Sektion>
-
-        {/* 17 Abgleich, nur intern -------------------------------------------- */}
-        <Sektion id="beobachtungen">
-          {istIntern ? <p className="lp-intern">nur intern</p> : null}
-          <p className="lp-aussage lp-luft-oben-klein">
-            Stellen, die nicht aufgehen.
-          </p>
-          <div className="lp-text lp-luft-oben-klein">
-            <p>
-              Beim Übertragen der Zahlen aus den Quellen sind sie aufgefallen. Sie stehen hier,
-              statt beim Übertragen geglättet zu werden.
-            </p>
-          </div>
-          <div className="lp-zellen">
-            {nurSichtbare(d.beobachtungen).map((b) => (
-              <div className="lp-zelle" key={b.id}>
-                <span className="kopf">ungeklärt</span>
-                <h3>{b.titel}</h3>
-                <p>{b.text}</p>
-                <p className="kopf">{b.quelle}</p>
-              </div>
-            ))}
-          </div>
-        </Sektion>
       </main>
 
       <Fussleiste />
