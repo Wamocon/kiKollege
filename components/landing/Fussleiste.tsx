@@ -1,6 +1,7 @@
 import { daten, datum } from '@/lib/daten'
 import { nurSichtbare, zeigtInternes } from '@/lib/freigabe'
 import { logoPfad } from '@/lib/logo'
+import { pfad } from '@/lib/pfad'
 import { StandAlter } from '@/components/StandAlter'
 
 export function Fussleiste() {
@@ -50,7 +51,7 @@ export function Fussleiste() {
         <div>
           <h4>Weiter</h4>
           <p>
-            <a href="/stand/">Ausführlicher Projektstand</a> mit allen Prüfläufen, Tabellen und
+            <a href={pfad('/stand/')}>Ausführlicher Projektstand</a> mit allen Prüfläufen, Tabellen und
             offenen Punkten.
           </p>
           {zeigtInternes ? (

@@ -1,5 +1,6 @@
 import { daten, datum } from '@/lib/daten'
 import { fassung, istIntern } from '@/lib/freigabe'
+import { pfad } from '@/lib/pfad'
 import { StandAlter } from '@/components/StandAlter'
 
 export function Kopf() {
@@ -10,7 +11,7 @@ export function Kopf() {
         <div className="kopf-innen">
           <div>
             <p className="claim">
-              <a href="/" style={{ color: 'inherit', textDecoration: 'none' }}>
+              <a href={pfad('/')} style={{ color: 'inherit', textDecoration: 'none' }}>
                 WAMOCON / KI-Mitarbeiter
               </a>
             </p>
