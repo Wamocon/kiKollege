@@ -249,6 +249,8 @@ export interface LandschaftBaustein extends MitFreigabe {
   ort: LandschaftOrt['id']
   name: string
   zustand: LandschaftZustand
+  /** Der Baustein, an dem der Rest hängt. Er trägt das Rot. */
+  traegt?: boolean
 }
 
 export interface LandschaftVerbindung extends MitFreigabe {
@@ -289,6 +291,8 @@ export interface PlanMeilenstein {
   abnahme: string
   /** Erwins Anteil in Worten; die Minuten stehen in `zeit`. */
   erwin: string
+  /** Punkte aus `inhalt`, die schon erledigt sind, im selben Wortlaut. */
+  erledigt?: string[]
 }
 
 export interface PlanBalken {
@@ -300,6 +304,7 @@ export interface PlanBalken {
   kritisch: boolean
   /** bauen: Werkbank oder eigene Hardware. bewerten: Erwins Zeit. */
   art: 'bauen' | 'bewerten'
+  erledigt?: boolean
 }
 
 export interface PlanEntscheidung {
@@ -308,6 +313,7 @@ export interface PlanEntscheidung {
   /** Mehrere Fristen, wenn die Entscheidung gestaffelt fällt. */
   termine?: string[]
   ueberfaelligSeit?: string
+  erledigtAm?: string
   text: string
   blockiert: string
   empfehlung: string
@@ -323,12 +329,15 @@ export interface PlanRisiko {
   stufe: 'kritisch' | 'hoch' | 'mittel' | 'niedrig'
   gegenmassnahme: string
   warnzeichen: string
+  erledigt?: { am: string; text: string }
 }
 
 /** Der Meilensteinplan, wie er im Vault steht, ohne Zugänge und Datenwege. */
 export interface Meilensteinplan extends MitFreigabe {
   stand: string
   status: string
+  /** Was sich nach dem Entwurf getan hat, mit Uhrzeit im Satz. */
+  standNachtrag?: string
   von: string
   bis: string
   ersetzt: string
@@ -346,6 +355,8 @@ export interface Meilensteinplan extends MitFreigabe {
   zeit: { woche: string; entscheiden: number; lesen: number; bewerten: number }[]
   zeitVorher: string
   zeitPreis: string
+  /** Erwins Zeit laut Arbeitsplan, der alle Punkte mitrechnet. */
+  zeitArbeitsplan?: { minuten: number; bisM1: number; text: string }
   entscheidungen: PlanEntscheidung[]
   entscheidungenHinweis: string
   pfad: string[]

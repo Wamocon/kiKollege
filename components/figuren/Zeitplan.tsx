@@ -88,7 +88,7 @@ export function ZeitplanFigur() {
     for (const t of e.termine ?? [e.bis]) {
       if (index(t) < 0 || index(t) >= tage) continue
       const liste = jeTag.get(t) ?? []
-      liste.push({ nr: e.nr, rot: Boolean(e.kritisch) })
+      liste.push({ nr: e.nr, rot: Boolean(e.kritisch) && !e.erledigtAm })
       jeTag.set(t, liste)
     }
   }
@@ -105,14 +105,21 @@ export function ZeitplanFigur() {
       </g>,
     )
   }
-  const ueberfaellig = p.entscheidungen.find((e) => e.ueberfaelligSeit)
-  if (ueberfaellig) {
-    teile.push(
-      <text key="ueberfaellig" x={mitte(ueberfaellig.bis) + 8} y={y + 14} fontSize="9"
-            fill="var(--wmc-primary-text)">
-        {ueberfaellig.nr} überfällig seit {datum(ueberfaellig.ueberfaelligSeit!).slice(0, 6)}
-      </text>,
-    )
+  for (const e of p.entscheidungen) {
+    if (e.erledigtAm) {
+      teile.push(
+        <text key={'erledigt-' + e.nr} x={mitte(e.bis) + 8} y={y + 14} fontSize="9" fill="var(--wmc-muted)">
+          {e.nr} erledigt am {datum(e.erledigtAm).slice(0, 6)}
+        </text>,
+      )
+    } else if (e.ueberfaelligSeit) {
+      teile.push(
+        <text key={'ueberfaellig-' + e.nr} x={mitte(e.bis) + 8} y={y + 14} fontSize="9"
+              fill="var(--wmc-primary-text)">
+          {e.nr} überfällig seit {datum(e.ueberfaelligSeit).slice(0, 6)}
+        </text>,
+      )
+    }
   }
   y += 26
 
@@ -144,12 +151,15 @@ export function ZeitplanFigur() {
       const w = b.tage * tag - 2
       teile.push(
         <g key={`${m.id}-${b.text}`}>
-          <text x={12} y={y + 12} fontSize="10.5" fill="var(--wmc-ink)">{b.text}</text>
+          <text x={12} y={y + 12} fontSize="10.5" fill="var(--wmc-ink)" opacity={b.erledigt ? 0.45 : 1}>
+            {b.text}
+            {b.erledigt ? ', erledigt' : ''}
+          </text>
           {b.art === 'bewerten' ? (
             <rect x={x + 0.5} y={y + 4.5} width={w - 1} height={9} fill="none"
                   stroke="var(--wmc-ink)" strokeWidth="1" />
           ) : (
-            <rect x={x} y={y + 4} width={w} height={10}
+            <rect x={x} y={y + 4} width={w} height={10} opacity={b.erledigt ? 0.35 : 1}
                   fill={b.kritisch ? 'var(--signal)' : 'var(--wmc-ink)'} />
           )}
         </g>,
@@ -231,7 +241,7 @@ export function ZeitplanFigur() {
     <Figur
       titel={`Zeitplan des Meilensteinplans vom ${spanne(p.von, p.bis)}: Entscheidungen, vier Meilensteine mit ihren Arbeiten, Erwins Zeit je Woche`}
       beschriftung={
-        `${p.status}. Rot ist der kritische Pfad, leer ist Erwins Bewertungszeit. ` +
+        `${p.status}. Rot ist der kritische Pfad, leer ist Erwins Bewertungszeit, blass ist Erledigtes. ` +
         `Die gestrichelte Linie zeigt den Stand des Plans am ${datum(p.stand)}. Grau hinterlegt sind die Wochenenden.`
       }
       viewBox={`0 0 ${BREITE} ${hoehe}`}

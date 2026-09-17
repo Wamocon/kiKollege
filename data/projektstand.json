@@ -26,7 +26,9 @@
       "Logbuch: Entscheidungen vom 17.09.2026, noch ungeprüft",
       "Meilensteinplan 17.09. bis 16.10.2026, Entwurf",
       "Systemarchitektur Orchestrator vom 09.09.2026, nachgezogen am 11.09.",
-      "Auskunft Erwin Moretz vom 17.09.2026: eigene Hardware seit dem 11.09. unverändert"
+      "Auskunft Erwin Moretz vom 17.09.2026: eigene Hardware seit dem 11.09. unverändert",
+      "Tagesprotokolle vom 17.09.2026, Stand 11:14 Uhr",
+      "Arbeitsplan vom 17.09.2026"
     ],
     "getrenntAm": "2026-09-09"
   },
@@ -698,6 +700,11 @@
       "datum": "2026-09-17",
       "entscheidung": "Vorerst kein Unterschied zwischen interner und öffentlicher Fassung: Die Seite auf GitHub Pages zeigt alles",
       "freigabe": "intern"
+    },
+    {
+      "datum": "2026-09-17",
+      "entscheidung": "P1 freigegeben: Der offene Stand wird eingecheckt, und die Ablage kommt über Git auf die eigene Hardware",
+      "freigabe": "intern"
     }
   ],
   "entscheidungenNachtrag": "Die Entscheidung vom 04.09. dreht bewusst eine zuvor festgelegte Reihenfolge um: Ursprünglich sollte die Fehlalarmquote vor dem Plattformwechsel gemessen werden. Die Technik wurde vorgezogen. Das ist kein Widerspruch, sondern eine andere Reihenfolge mit einer benannten Folge, und die Folge steht im Abschnitt zur Messlücke.",
@@ -780,7 +787,11 @@
       "nr": 10,
       "punkt": "Den Übergabeweg für die Ablage entscheiden",
       "grund": "Angenommen ist er, entschieden nicht.",
-      "freigabe": "intern"
+      "freigabe": "intern",
+      "erledigt": {
+        "am": "2026-09-17",
+        "text": "Git mit den Repositories im Haus, so wie angenommen. Eingerichtet am 17.09."
+      }
     },
     {
       "nr": 11,
@@ -815,7 +826,7 @@
     {
       "nr": 16,
       "punkt": "Den aktuellen Stand auf die eigene Hardware bringen, die Grenze dort aktivieren und den Referenzlauf fahren",
-      "grund": "Erst der Vergleich am selben Aufgabensatz zeigt, ob das lokale Modell so gut prüft wie das Cloud-Modell. Bis dahin ist es ein Pilotbetrieb.",
+      "grund": "Der erste Teil ist am 17.09. erledigt: Die Ablage kommt über Git auf die eigene Hardware. Es fehlen der Referenzsatz und die Grenze am Profil. Erst der Vergleich am selben Aufgabensatz zeigt, ob das lokale Modell so gut prüft wie das Cloud-Modell. Bis dahin ist es ein Pilotbetrieb.",
       "freigabe": "oeffentlich"
     },
     {
@@ -934,6 +945,20 @@
       "titel": "22, 23 oder 25 offene Fragen zum Unternehmenswissen",
       "text": "Die Seite nennt 22 offene Fragen im Fragenkatalog. Die Systemarchitektur vom 09.09. spricht von 25 leeren Antwortfeldern, die Bestandsaufnahme vom 16.09. zählt 23 Fragen mit leerem Antwortfeld. Eine davon, wer Wissen freigibt, ist seit dem 11.09. im Logbuch beantwortet, im Katalog aber nicht.",
       "quelle": "Wissensablagen dieser Seite gegen Systemarchitektur Orchestrator vom 09.09., Abschnitt 6, und Bestandsaufnahme vom 16.09., Abschnitt 7",
+      "freigabe": "intern"
+    },
+    {
+      "id": "erwin-zeit-6-8",
+      "titel": "Erwins Zeit: 6 h 40 oder 8 h 10",
+      "text": "Der Meilensteinplan vom 17.09. setzt über vier Wochen 6 h 40 an, für die erste Woche 1 h 45. Der Arbeitsplan desselben Tages zählt alle Punkte und kommt auf 8 h 10, bis zum 25.09. auf 3 Stunden. Der Unterschied sind Block 2, der Umbau des Profils und die Abnahme von M1, die der Plan in der ersten Woche nicht rechnet. Die Seite zeigt beide Zahlen.",
+      "quelle": "Meilensteinplan 17.09. bis 16.10., Abschnitt „Erwins Zeit je Woche“, gegen Arbeitsplan vom 17.09., Abschnitt „Erwins Zeit“",
+      "freigabe": "intern"
+    },
+    {
+      "id": "seite-frueher-online",
+      "titel": "Die Seite ist früher online als geplant",
+      "text": "Der Arbeitsplan vom 17.09. sieht für die Seite vor: vorher kein Push und kein Pages, bis 14.10. Erwin hat am 17.09. in einer anderen Sitzung den Push erlaubt; die Seite steht seitdem auf GitHub Pages. Der Arbeitsplan und P12 kennen das noch nicht.",
+      "quelle": "Arbeitsplan vom 17.09., Punkt 35, gegen den Stand von GitHub am 17.09.",
       "freigabe": "intern"
     }
   ],
@@ -1273,6 +1298,10 @@
         "datum": "2026-09-17",
         "text": "Meilensteinplan neu geschnitten: sechs lauffähige Rollen bis zum 16.10., Sprachbedienung zuerst nur für Erwin",
         "freigabe": "intern"
+      },
+      {
+        "datum": "2026-09-17",
+        "text": "Der Stand aller Repositories ist eingecheckt und liegt über Git auf der eigenen Hardware, zum ersten Mal mit der Akte des Reviewers und seinen Prüfprofilen"
       }
     ],
     "freigabe": "oeffentlich"
@@ -1313,7 +1342,7 @@
       },
       {
         "titel": "Technisch ungeprüft",
-        "zusatz": "Belege fehlen auch nach dem 11.09.",
+        "zusatz": "Belege fehlen auch nach dem 17.09.",
         "punkte": [
           "Ob die vorgesehene Laufzeit die Beschreibungsdatei eines Mitarbeiters überhaupt liest",
           "Ob beide Laufzeiten denselben Zaun mit derselben Eingabe aufrufen können",
@@ -1333,7 +1362,7 @@
       "bedingung": "Abnahme: Fritz läuft das Prüfskript über den Referenzsatz, und ein Schreibversuch außerhalb seiner Ordner wird abgewiesen.",
       "freigabe": "intern",
       "bedingungsart": "termin",
-      "stand": "Stand 16.09.: Akte und Grenzprogramm mit Testfällen liegen seit dem 11.09. vor. Am Profil auf der eigenen Hardware hängt das Programm noch nicht, und der Referenzsatz fehlt dort. Der Meilensteinplan setzt die Abnahme auf den 18.09."
+      "stand": "Stand 17.09.: Akte, Grenzprogramm und Prüfprofile liegen auf der eigenen Hardware. Am Profil hängt das Programm noch nicht, und der Referenzsatz fehlt dort. Der Meilensteinplan setzt die Abnahme auf den 25.09."
     },
     {
       "wann": "Woche danach",
@@ -1360,7 +1389,7 @@
       "bedingung": "Abnahme: das Änderungsprotokoll zeigt drei Handschriften ohne Konflikt, und eine Laufnotiz entsteht ohne offene Sitzung.",
       "freigabe": "intern",
       "bedingungsart": "zahl",
-      "stand": "Stand 16.09.: Die Ablage wird noch nicht zwischen den Laufzeiten abgeglichen. Der Archivar ist beschrieben, nicht gebaut."
+      "stand": "Stand 17.09.: Die Ablage kommt seit heute über Git auf die eigene Hardware. Der Archivar ist beschrieben, nicht gebaut."
     },
     {
       "wann": "danach",
@@ -1393,7 +1422,7 @@
     "stand": "Entwurf",
     "kopf": "Sieben kurze Angaben, die die Maschine liest. tools ist eine Positivliste, disallowedTools die Gegenprobe. memory sagt, wo seine Fälle liegen; skills, welche Anleitungen beim Start mitkommen.",
     "rumpf": "Ganze Sätze, an einen neuen Kollegen gerichtet. Hier steht die Haltung, der Ablauf und was er nie tut. Diesen Teil kann kein Werkzeug erzeugen.",
-    "grenze": "Die wichtigste Zeile ist „darf nie\". Eine Fähigkeit, die nicht eingetragen ist, hat er nicht: Er kann nichts versenden, nichts löschen und nichts freigeben, weil ihm die Werkzeuge dafür fehlen. Das ist keine Vereinbarung, sondern eine technische Grenze.",
+    "grenze": "Die wichtigste Zeile ist „darf nie\". Eine Fähigkeit, die nicht eingetragen ist, soll er nicht haben: Er soll nichts versenden, nichts löschen und nichts freigeben können. Das wird als technische Grenze gebaut, nicht als Vereinbarung. Das Programm dafür steht und ist getestet; am Profil auf der eigenen Hardware ist es noch nicht aktiv.",
     "einzigeQuelle": "Wer diese Datei ändert, ändert den Mitarbeiter. Es gibt nichts daneben, das ihn heimlich anders steuert.",
     "auszug": "---\nname: fritz\ndescription: Prüft eine Schulungsunterlage gegen den Maßstab und\n  schreibt einen Bericht. Beauftragen, bevor eine Unterlage\n  in den Unterricht geht.\ntools: Lesen, Suchen, Nachrechnen, Prüfskripte ausführen\ndisallowedTools: Schreiben, Löschen, Versenden\nskills: kfbm-review\nmemory: project\n---\nDu prüfst Schulungsunterlagen für die Ausbildung Kaufleute\nfür Büromanagement. Du bewertest. Du erstellst keine\nUnterlagen, und du erteilst keine Freigabe.\n\n## Bevor du anfängst\n\nOhne Angabe des Jahrgangs prüfst du nicht. Bis 2028 gelten\nzwei Ausbildungsordnungen nebeneinander. Material für einen\nAlt-Jahrgang gegen die neue Ordnung zu prüfen, erzeugt nur\nFehlalarme. Fehlt die Angabe, frag nach.\n\n## Im Zweifel\n\nMelde nichts. Ein Prüfer, der Unfug meldet, wird nach dem\ndritten Mal übergangen. Dann nützt auch das nichts mehr,\nwas du richtig gefunden hast.\n\n## Jeder Befund nennt drei Dinge\n\nDie Fundstelle, das Kriterium und den Schweregrad. Ein\nBefund ohne Fundstelle ist für den Autor wertlos.\n\n… weiter mit dem Ablauf und den Prüfregeln",
     "freigabe": "oeffentlich"
@@ -1416,7 +1445,7 @@
         "id": "auftrag",
         "titel": "Auftrag und Grenze",
         "kurz": "was er tut, was nie",
-        "text": "Eine Aufgabe, die immer dieselbe ist, und eine Liste dessen, was er nie tut. Eine Fähigkeit, die nicht eingetragen ist, hat er nicht: Ihm fehlen die Werkzeuge dafür."
+        "text": "Eine Aufgabe, die immer dieselbe ist, und eine Liste dessen, was er nie tut. Was nicht in seiner Akte steht, soll er nicht können: Ein Programm lehnt den Aufruf ab, bevor er ausgeführt wird."
       },
       {
         "id": "massstab",
@@ -1434,7 +1463,7 @@
         "id": "aufsicht",
         "titel": "Aufsicht",
         "kurz": "wer entscheidet",
-        "text": "Jedes Ergebnis geht an einen Menschen. Die Freigabe steht in keiner seiner Regeln, und das ist keine Vereinbarung, sondern eine technische Grenze."
+        "text": "Jedes Ergebnis geht an einen Menschen. Die Freigabe steht in keiner seiner Regeln. Gebaut ist das als technische Grenze, nicht als Vereinbarung; auf der eigenen Hardware ist sie noch nicht aktiv."
       }
     ],
     "freigabe": "oeffentlich"
@@ -1616,8 +1645,8 @@
   "ablage": {
     "freigabe": "oeffentlich",
     "gezaehltAm": "2026-09-17",
-    "notizen": 139,
-    "verweise": 1205,
+    "notizen": 141,
+    "verweise": 1233,
     "unaufgeloest": 6,
     "regelnotizen": 0,
     "bereiche": [
@@ -1640,7 +1669,7 @@
           "quellen": 0,
           "prueflaeufe": 33,
           "arbeitsstand": 22,
-          "protokoll": 6,
+          "protokoll": 8,
           "einstiege": 3,
           "archiv": 4
         }
@@ -1663,7 +1692,7 @@
           "massstab": 3,
           "quellen": 0,
           "prueflaeufe": 0,
-          "arbeitsstand": 16,
+          "arbeitsstand": 17,
           "protokoll": 1,
           "einstiege": 7,
           "archiv": 0
@@ -1711,7 +1740,7 @@
           "massstab": 16,
           "quellen": 0,
           "prueflaeufe": 9,
-          "arbeitsstand": 25,
+          "arbeitsstand": 26,
           "protokoll": 0,
           "einstiege": 1,
           "archiv": 2
@@ -1818,21 +1847,21 @@
         "gruppe": "werkstatt",
         "name": "Pläne, Berichte, Übergaben",
         "kurz": "Arbeitsstände",
-        "notizen": 20,
+        "notizen": 21,
         "verbindlich": 0,
-        "informativ": 3,
+        "informativ": 4,
         "ungeprueft": 7,
         "ohneFeld": 10,
         "verweiseNach": {
-          "konventionen": 10,
-          "entscheidungen": 7,
+          "konventionen": 11,
+          "entscheidungen": 8,
           "unternehmen": 5,
-          "bauplan": 50,
+          "bauplan": 52,
           "normbasis": 1,
           "massstab": 19,
           "quellen": 0,
           "prueflaeufe": 4,
-          "protokoll": 3,
+          "protokoll": 5,
           "einstiege": 3,
           "archiv": 4
         }
@@ -1842,21 +1871,21 @@
         "gruppe": "werkstatt",
         "name": "Tagesprotokolle",
         "kurz": "Protokolle",
-        "notizen": 6,
+        "notizen": 7,
         "verbindlich": 0,
         "informativ": 0,
         "ungeprueft": 0,
-        "ohneFeld": 6,
+        "ohneFeld": 7,
         "verweiseNach": {
-          "konventionen": 10,
-          "entscheidungen": 11,
+          "konventionen": 12,
+          "entscheidungen": 12,
           "unternehmen": 0,
-          "bauplan": 15,
+          "bauplan": 16,
           "normbasis": 0,
           "massstab": 2,
           "quellen": 0,
           "prueflaeufe": 0,
-          "arbeitsstand": 20,
+          "arbeitsstand": 26,
           "einstiege": 0,
           "archiv": 0
         }
@@ -1914,11 +1943,11 @@
   },
   "landschaft": {
     "stand": "2026-09-17",
-    "rechnerAufgenommen": "2026-09-11",
+    "rechnerAufgenommen": "2026-09-17",
     "rechnerBestaetigt": "2026-09-17",
     "satz": "Zwei Orte führen dieselbe Mannschaft aus. Verbunden sind sie nur über die Ablage.",
     "erklaerung": "Gebaut und gemessen wird auf der Werkbank mit Claude Code. Der Dauerbetrieb läuft im Haus, mit Hermes Agent auf einer DGX Spark und einem offenen Modell. Beide lesen und schreiben dieselbe Ablage, und nur die sehen beide. Was ein KI-Mitarbeiter zum Arbeiten braucht, steht in seiner Akte und nicht in einem der beiden Werkzeuge. So zieht er beim Wechsel mit.",
-    "rechnerStand": "Auf der eigenen Hardware laufen Harness und Modell, und Reviewer und Orchestrator sind dort als eigene Profile eingerichtet. Geprüft wird dort noch nicht: Wissen, Prüfprofile und Akte liegen noch nicht auf der Maschine, und die Grenze ist am Profil nicht aktiv.",
+    "rechnerStand": "Auf der eigenen Hardware laufen Harness und Modell, und Reviewer und Orchestrator sind dort als eigene Profile eingerichtet. Seit dem 17.09. kommt die Ablage über Git dorthin, mit der Akte des Reviewers und den Prüfprofilen. Geprüft wird dort noch nicht: Der Referenzsatz fehlt, und die Grenze ist am Profil nicht aktiv.",
     "vergleich": "Ob das offene Modell so gut prüft wie das Cloud-Modell, zeigt erst ein Vergleichslauf am selben Aufgabensatz. Bis dahin ist der Betrieb im Haus ein Pilot.",
     "mensch": {
       "name": "Der Mensch",
@@ -2040,14 +2069,15 @@
       {
         "id": "stand-rechner",
         "ort": "rechner",
-        "name": "Aktueller Stand von Wissen und Akte",
-        "zustand": "geplant"
+        "name": "Akte und Prüfprofile, über Git",
+        "zustand": "vorhanden"
       },
       {
         "id": "grenze-profil",
         "ort": "rechner",
         "name": "Grenze am Profil",
-        "zustand": "geplant"
+        "zustand": "geplant",
+        "traegt": true
       },
       {
         "id": "verteilen",
@@ -2098,10 +2128,10 @@
         "nach": "ablage",
         "zeilen": [
           "über Git,",
-          "steht noch nicht"
+          "seit 17.09."
         ],
-        "zustand": "geplant",
-        "traegt": true
+        "zustand": "laeuft",
+        "traegt": false
       },
       {
         "id": "vergleich",
@@ -2127,7 +2157,7 @@
       "produkt": "GitHub Pages, öffentlich",
       "seit": "2026-09-17"
     },
-    "quelle": "Systemarchitektur Orchestrator vom 09.09., nachgezogen am 11.09.; Bestandsaufnahme vom 16.09.; Meilensteinplan vom 17.09., Entwurf; Stand der eigenen Hardware vom 11.09., am 17.09. als unverändert bestätigt",
+    "quelle": "Systemarchitektur Orchestrator vom 09.09., nachgezogen am 11.09.; Bestandsaufnahme vom 16.09.; Meilensteinplan vom 17.09., Entwurf; Stand der eigenen Hardware vom 11.09., am 17.09. als unverändert bestätigt; Protokolle vom 17.09.: Commit-Runde in allen Repositories, Ablage über Git auf der eigenen Hardware, Hardware am 17.09. aufgenommen",
     "freigabe": "oeffentlich"
   },
   "meilensteinplan": {
@@ -2211,7 +2241,11 @@
           "Berichte weisen ungemessene Regeln getrennt aus und nennen ihre Grundlage"
         ],
         "abnahme": "Der Reviewer prüft den Referenzsatz auf der eigenen Hardware. Die Grenze lehnt einen Schreibversuch außerhalb seiner Bereiche ab und lässt alle fünf Prüfarten zu, beides mit Testfall. Regel E13 hat 30 einzeln angesehene Fälle.",
-        "erwin": "Entscheidungen, 25 Minuten. Akte des Reviewers, 15 Minuten. Referenzsatz bestätigen, 5 Minuten. Regel E13 bewerten, 30 Fälle einzeln, 60 Minuten."
+        "erwin": "Entscheidungen, 25 Minuten. Akte des Reviewers, 15 Minuten. Referenzsatz bestätigen, 5 Minuten. Regel E13 bewerten, 30 Fälle einzeln, 60 Minuten.",
+        "erledigt": [
+          "den Stand der eigenen Hardware lesend aufnehmen, bevor etwas geändert wird",
+          "nach P1 den offenen Stand je Repository einchecken und die Ablage über Git auf die eigene Hardware bringen"
+        ]
       },
       {
         "id": "M2",
@@ -2268,7 +2302,8 @@
         "von": "2026-09-17",
         "tage": 2,
         "kritisch": true,
-        "art": "bauen"
+        "art": "bauen",
+        "erledigt": true
       },
       {
         "meilenstein": "M1",
@@ -2427,7 +2462,8 @@
         "text": "Den offenen Stand je Repository einchecken und die Ablage über Git auf die eigene Hardware bringen",
         "blockiert": "alles auf der eigenen Hardware",
         "empfehlung": "ja",
-        "kritisch": true
+        "kritisch": true,
+        "erledigtAm": "2026-09-17"
       },
       {
         "nr": "P4",
@@ -2549,7 +2585,11 @@
         "auswirkung": "hoch",
         "stufe": "kritisch",
         "gegenmassnahme": "P1 am 18.09.; erster Punkt von M1",
-        "warnzeichen": "P1 am 18.09. offen"
+        "warnzeichen": "P1 am 18.09. offen",
+        "erledigt": {
+          "am": "2026-09-17",
+          "text": "Aufgelöst: Die Ablage liegt über Git auf der eigenen Hardware."
+        }
       },
       {
         "nr": "R4",
@@ -2629,7 +2669,11 @@
         "auswirkung": "mittel",
         "stufe": "hoch",
         "gegenmassnahme": "Commit-Runde je Repository als erster Teil von P1, mit Erwins Ja",
-        "warnzeichen": "nach P1 noch Einträge ohne Zuordnung"
+        "warnzeichen": "nach P1 noch Einträge ohne Zuordnung",
+        "erledigt": {
+          "am": "2026-09-17",
+          "text": "Aufgelöst: Commit-Runde in allen Repositories."
+        }
       },
       {
         "nr": "R10",
@@ -2669,7 +2713,11 @@
         "auswirkung": "mittel",
         "stufe": "mittel",
         "gegenmassnahme": "lesende Aufnahme am Anfang von M1",
-        "warnzeichen": "die Aufnahme weicht vom 11.09. ab"
+        "warnzeichen": "die Aufnahme weicht vom 11.09. ab",
+        "erledigt": {
+          "am": "2026-09-17",
+          "text": "Aufgenommen am 17.09."
+        }
       },
       {
         "nr": "R13",
@@ -2684,7 +2732,13 @@
     ],
     "risikenHinweis": "Der Plan bewertet zwanzig Risiken nach Eintritt und Auswirkung. Fünf davon betreffen Zugänge, Grenzen einzelner Profile, Dienste und Datenwege; sie stehen nur im Vault.",
     "risikenKern": "R1 ist das Risiko des Plans: Die Wahl vom 17.09. hat die Zahl der Rollen erhöht und die Bewertung verkleinert. Die eine Maßnahme dagegen liegt schon auf dem Tisch, eine zweite bewertende Person aus der Academy. R6 und R16 löst eine einzige Entscheidung, P1 mit der Commit-Runde davor.",
-    "quelle": "Meilensteinplan 17.09. bis 16.10.2026, Entwurf, Kurzfassung im Vault und Blatt im CI vom 17.09.",
-    "freigabe": "intern"
+    "quelle": "Meilensteinplan 17.09. bis 16.10.2026, Entwurf, Kurzfassung im Vault und Blatt im CI vom 17.09.; Arbeitsplan vom 17.09.",
+    "freigabe": "intern",
+    "standNachtrag": "Nachgetragen am 17.09., 11 Uhr: Der offene Stand ist in allen Repositories eingecheckt, und die Ablage liegt über Git auf der eigenen Hardware, mit Akte und Prüfprofilen. Damit sind P1 und die ersten beiden Punkte von M1 erledigt, und R6 und R16 sind aufgelöst. Der Referenzsatz und die Grenze am Profil stehen noch aus.",
+    "zeitArbeitsplan": {
+      "minuten": 490,
+      "bisM1": 180,
+      "text": "Der Arbeitsplan vom 17.09. rechnet mit allen Punkten und kommt auf mehr, als der Plan ansetzt. Für die erste Woche zählt er Block 2, den Umbau des Profils und die Abnahme von M1 mit."
+    }
   }
 }

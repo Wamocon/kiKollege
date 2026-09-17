@@ -7,8 +7,8 @@ import { Figur, Kasten } from './gemeinsam'
 /** Die Systemlandschaft mit Ist und Soll. Drei Orte nebeneinander: Werkbank,
  *  Ablage, KI-Rechner. In jedem stehen seine Bausteine mit ihrem Zustand.
  *  Gefüllt heißt läuft, leer heißt vorhanden und noch nicht im Einsatz,
- *  gestrichelt heißt entschieden und nicht gebaut. Rot trägt nur die eine
- *  Verbindung, an der der Rest hängt. Alles kommt aus data/projektstand.json. */
+ *  gestrichelt heißt entschieden und nicht gebaut. Rot trägt nur das eine,
+ *  woran der Rest hängt: eine Verbindung oder ein Baustein. Alles kommt aus data/projektstand.json. */
 
 const BREITE = 900
 const SPALTE = 246
@@ -25,12 +25,12 @@ const KOPF = 62
 const ZEILE = 20
 const MENSCH = { y: 6, hoehe: 40 }
 
-function Marke({ x, y, zustand }: { x: number; y: number; zustand: LandschaftZustand }) {
-  if (zustand === 'laeuft') return <rect x={x} y={y} width={9} height={9} fill="var(--wmc-ink)" />
+function Marke({ x, y, zustand, rot = false }: { x: number; y: number; zustand: LandschaftZustand; rot?: boolean }) {
+  if (zustand === 'laeuft') return <rect x={x} y={y} width={9} height={9} fill={rot ? 'var(--signal)' : 'var(--wmc-ink)'} />
   return (
     <rect
       x={x + 0.5} y={y + 0.5} width={8} height={8} fill="none"
-      stroke={zustand === 'geplant' ? 'var(--wmc-muted)' : 'var(--wmc-ink)'}
+      stroke={rot ? 'var(--signal)' : zustand === 'geplant' ? 'var(--wmc-muted)' : 'var(--wmc-ink)'}
       strokeWidth="1"
       strokeDasharray={zustand === 'geplant' ? '2 1.5' : undefined}
     />
@@ -121,9 +121,9 @@ export function LandschaftFigur() {
           const y = OBEN + KOPF + 22 + i * ZEILE
           return (
             <g key={b.id}>
-              <Marke x={x + 12} y={y - 8} zustand={b.zustand} />
-              <text x={x + 28} y={y} fontSize="11"
-                    fill={b.zustand === 'geplant' ? 'var(--wmc-muted)' : 'var(--wmc-ink)'}>
+              <Marke x={x + 12} y={y - 8} zustand={b.zustand} rot={b.traegt} />
+              <text x={x + 28} y={y} fontSize="11" fontWeight={b.traegt ? 700 : 400}
+                    fill={b.traegt ? 'var(--wmc-primary-text)' : b.zustand === 'geplant' ? 'var(--wmc-muted)' : 'var(--wmc-ink)'}>
                 {b.name}
               </text>
             </g>
@@ -204,6 +204,15 @@ export function LandschaftFigur() {
               stroke="var(--signal)" strokeWidth="1.5" strokeDasharray="5 4" />
         <text x={538} y={legendeY} fontSize="11" fill="var(--wmc-muted)">
           die Verbindung, an der der Rest hängt
+        </text>
+      </g>,
+    )
+  } else if (bausteine.some((b) => b.traegt)) {
+    teile.push(
+      <g key="legende-traegt">
+        <Marke x={500} y={legendeY - 8} zustand="geplant" rot />
+        <text x={515} y={legendeY} fontSize="11" fill="var(--wmc-muted)">
+          der Baustein, an dem der Rest hängt
         </text>
       </g>,
     )

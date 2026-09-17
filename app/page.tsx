@@ -747,6 +747,13 @@ export default function Landing() {
               {plan.status}. Ersetzt den {plan.ersetzt}
             </p>
             <p className="lp-aussage breit lp-luft-oben-klein">{plan.satz}</p>
+            {plan.standNachtrag ? (
+              <div className="lp-text lp-luft-oben-klein">
+                <p>
+                  <b>{plan.standNachtrag}</b>
+                </p>
+              </div>
+            ) : null}
             <div className="lp-text lp-luft-oben">
               <p>
                 <b>„{plan.ziel}“</b> {plan.zielVon}. Der Rahmen: {plan.rahmen}.
@@ -771,6 +778,7 @@ export default function Landing() {
                       <ul className="liste" style={{ marginTop: '0.2rem', marginBottom: '0.6rem' }}>
                         {ms.inhalt.map((t) => (
                           <li key={t} style={{ fontSize: '0.9rem' }}>
+                            {ms.erledigt?.includes(t) ? <b>erledigt: </b> : null}
                             {t}
                           </li>
                         ))}
@@ -833,6 +841,12 @@ export default function Landing() {
               <p>
                 {plan.zeitVorher} {plan.zeitPreis}
               </p>
+              {plan.zeitArbeitsplan ? (
+                <p>
+                  {plan.zeitArbeitsplan.text} Er kommt auf {dauer(plan.zeitArbeitsplan.minuten)} statt{' '}
+                  {dauer(minutenGesamt)}, bis zur Abnahme von M1 auf {dauer(plan.zeitArbeitsplan.bisM1)}.
+                </p>
+              ) : null}
             </div>
 
             <p className="lp-aussage lp-luft-oben">Entscheidungen mit Frist.</p>
@@ -849,7 +863,9 @@ export default function Landing() {
                     {/[.?!]$/.test(e.empfehlung) ? '' : '.'}
                   </span>
                   <span className="zusatz">
-                    {e.ueberfaelligSeit
+                    {e.erledigtAm
+                      ? 'erledigt am ' + datum(e.erledigtAm).slice(0, 6)
+                      : e.ueberfaelligSeit
                       ? `überfällig seit ${datum(e.ueberfaelligSeit).slice(0, 6)}`
                       : e.kritisch
                         ? 'kritischer Pfad'
@@ -902,11 +918,20 @@ export default function Landing() {
                         <b>{r.titel}.</b> {r.text}
                       </td>
                       <td className="leise">
-                        {r.stufe === 'kritisch' ? <b>kritisch</b> : r.stufe}
+                        {r.erledigt ? (
+                          <b>aufgelöst am {datum(r.erledigt.am).slice(0, 6)}</b>
+                        ) : r.stufe === 'kritisch' ? (
+                          <b>kritisch</b>
+                        ) : (
+                          r.stufe
+                        )}
                         <br />
-                        Eintritt {r.eintritt}, Auswirkung {r.auswirkung}
+                        {r.erledigt
+                          ? 'war ' + r.stufe
+                          : 'Eintritt ' + r.eintritt + ', Auswirkung ' + r.auswirkung}
                       </td>
                       <td>
+                        {r.erledigt ? <b>{r.erledigt.text} </b> : null}
                         {r.gegenmassnahme}
                         {/[.?!]$/.test(r.gegenmassnahme) ? '' : '.'} Frühwarnzeichen: {r.warnzeichen}.
                       </td>
@@ -1008,7 +1033,7 @@ export default function Landing() {
           </p>
           <div className="lp-text lp-luft-oben-klein">
             <p>
-              Beim Übertragen der Zahlen aus den drei Quellen sind sie aufgefallen. Sie stehen hier,
+              Beim Übertragen der Zahlen aus den Quellen sind sie aufgefallen. Sie stehen hier,
               statt beim Übertragen geglättet zu werden.
             </p>
           </div>

@@ -65,6 +65,15 @@ Dinge, die über das Nachtragen hinausgehen:
 - Der Plan vom 17.09. sieht für die Seite „nur Rollen, die laufen“ vor. Die Seite
   zeigt alle acht Rollen, die nicht gebauten als „entschieden“.
 
+- **Zwei Historien, ein Repository.** Das Repository `KFBM/reviewer` führt
+  `Wamocon/kiKollege` als `origin`. Sein `main` verfolgt `dgx`, passiert ist nichts.
+  Ein Push aus `reviewer/` nach `origin` würde aber interne Prüfdaten in dieses
+  öffentliche Repository schreiben. Der Remote gehört umbenannt oder entfernt,
+  bevor jemand dort pusht (Arbeitsplan vom 17.09., Punkt 2 und 35).
+- Der Arbeitsplan vom 17.09. sieht für diese Seite „vorher kein Push und kein
+  Pages, bis 14.10.“ vor. Die Seite ist seit dem 17.09. online; der Plan kennt das
+  noch nicht.
+
 Wer den Stand das nächste Mal nachzieht, gleicht das Logbuch gegen die Daten ab
 und prüft jede fehlende Entscheidung, bevor er sie nachträgt: Sie kann mit Absicht
 fehlen, siehe oben.
