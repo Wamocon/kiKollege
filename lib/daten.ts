@@ -50,11 +50,13 @@ export interface Stufe extends MitFreigabe {
   titel: string
   text: string
   bedingung: string
+  /** Was von der Stufe erreicht ist, mit Datum im Satz. */
+  stand?: string
   /** Haengt die Stufe an einem festen Datum oder an einer Messung? */
   bedingungsart: 'termin' | 'zahl'
 }
 
-export interface Arbeitstag {
+export interface Arbeitstag extends MitFreigabe {
   datum: string
   text: string
 }
@@ -109,6 +111,8 @@ export interface Prueflauf extends MitFreigabe {
   themenkomplexe?: number
   bestaetigt?: number
   neuGefunden?: number
+  /** Befunde dieses Laufs, die ein Mensch bewertet hat, laut Laufnotiz. */
+  bewertet?: number
   laufzeit?: string | null
   zusatz?: { gleichungen: number; gleichungenFalsch: number }
   notiz?: string
@@ -144,6 +148,8 @@ export interface OffenerPunkt extends MitFreigabe {
   nr: number
   punkt: string
   grund: string | null
+  /** Gesetzt, sobald der Punkt entschieden ist. Der Punkt bleibt stehen. */
+  erledigt?: { am: string; text: string }
 }
 
 export interface Beobachtung extends MitFreigabe {
@@ -181,7 +187,9 @@ export interface Kopf extends MitFreigabe {
   kern: string
   tut: string
   tutNie: string
-  zustand: 'arbeitet' | 'entschieden'
+  /** arbeitet: tut seine Aufgabe. eingerichtet: läuft, aber ohne Akte.
+   *  entschieden: beschrieben, nicht gebaut. */
+  zustand: 'arbeitet' | 'eingerichtet' | 'entschieden'
   seit: string | null
   hinweis: string
 }
@@ -192,7 +200,102 @@ export interface Mannschaft extends MitFreigabe {
   trennung: string
   engpass: string
   akte: string
+  /** Warum die Grenze in einem Programm steht und nicht nur im Text. */
+  grenzeWarum: string
+  verlauf: { text: string; freigabe: Freigabe }
   koepfe: Kopf[]
+}
+
+export interface AblageBereich {
+  id: string
+  gruppe: 'wissen' | 'gedaechtnis' | 'werkstatt'
+  name: string
+  /** Kurzform für die Spalte der Verweise. */
+  kurz: string
+  notizen: number
+  verbindlich: number
+  informativ: number
+  ungeprueft: number
+  ohneFeld: number
+  /** Verweise aus diesem Bereich in jeden anderen, auch wenn es null sind. */
+  verweiseNach: Record<string, number>
+}
+
+/** Abbild der Ablage, gezählt von scripts/abbild-vault.mjs. Nur Zahlen je
+ *  Bereich, keine Dateinamen und keine Pfade. */
+export interface Ablage extends MitFreigabe {
+  gezaehltAm: string
+  notizen: number
+  verweise: number
+  unaufgeloest: number
+  regelnotizen: number
+  bereiche: AblageBereich[]
+  verfahren: string
+}
+
+/** läuft: in Betrieb. vorhanden: gebaut oder eingerichtet, noch nicht im
+ *  Einsatz. geplant: entschieden, nicht gebaut. */
+export type LandschaftZustand = 'laeuft' | 'vorhanden' | 'geplant'
+
+export interface LandschaftOrt {
+  id: 'werkbank' | 'ablage' | 'rechner'
+  name: string
+  produkt: string
+  rolle: string
+}
+
+export interface LandschaftBaustein extends MitFreigabe {
+  id: string
+  ort: LandschaftOrt['id']
+  name: string
+  zustand: LandschaftZustand
+}
+
+export interface LandschaftVerbindung extends MitFreigabe {
+  id: string
+  von: string
+  nach: string
+  /** Beschriftung, eine Zeile je Eintrag. */
+  zeilen: string[]
+  zustand: LandschaftZustand
+  /** Die eine Verbindung, an der der Rest hängt. Sie trägt das Rot. */
+  traegt?: boolean
+}
+
+/** Systemlandschaft mit Ist und Soll. */
+export interface Landschaft extends MitFreigabe {
+  stand: string
+  rechnerAufgenommen: string
+  rechnerBestaetigt: string
+  satz: string
+  erklaerung: string
+  rechnerStand: string
+  vergleich: string
+  mensch: { name: string; zusatz: string }
+  orte: LandschaftOrt[]
+  bausteine: LandschaftBaustein[]
+  verbindungen: LandschaftVerbindung[]
+  seite: { name: string; produkt: string; seit: string }
+  quelle: string
+}
+
+/** Die ersten Bewertungen durch einen Menschen, aus den Quoten je Regel. */
+export interface Bewertungen extends MitFreigabe {
+  erstmalsAm: string
+  stand: string
+  regeln: number
+  bewertet: number
+  gesehen: number
+  fehlalarme: number
+  zielGesehenJeRegel: number
+  hoechstesGesehen: number
+  regelnAmZiel: number
+  gruppen: string
+  ungemessen: string
+  umgewichtet: string
+  rueckweg: string
+  beispiel: { satz: string; text: string }
+  quelle: string
 }
 
 export interface Projektstand {
@@ -202,6 +305,8 @@ export interface Projektstand {
     /** Vom Export gesetzt: der Ordner mit den Laufnotizen, relativ zum Arbeitsordner. */
     notizordner?: string
     einstieg: string
+    /** Tag, an dem die Ablage in zwei Repositories geteilt wurde. Ältere Ortsangaben stammen von davor. */
+    getrenntAm: string
     erzeugt: string
     /** Ab wie vielen Tagen der Stand auf der Seite als alt ausgewiesen wird. */
     fristTage: number
@@ -211,6 +316,9 @@ export interface Projektstand {
   }
   kennzahlen: Kennzahl[]
   mannschaft: Mannschaft
+  ablage: Ablage
+  bewertungen: Bewertungen
+  landschaft: Landschaft
   schichten: Schicht[]
   schichtenEntschieden: string
   schichtenErklaerung: string
@@ -273,6 +381,7 @@ export interface Projektstand {
   arbeitstage: { beginn: string; eintraege: Arbeitstag[]; freigabe: Freigabe }
   hemmnisse: { satz: string; gruppen: HemmnisGruppe[]; freigabe: Freigabe }
   stufen: Stufe[]
+  stufenPlan: { text: string; freigabe: Freigabe }
   arbeitsschwerpunkt: {
     satz: string
     brauchtEs: string
@@ -309,6 +418,10 @@ export interface Projektstand {
   auftrag: {
     pflichtangaben: string[]
     ablauf: string[]
+    /** Der Ablauf, wie ihn die Akte des Reviewers beschreibt. */
+    ablaufAkte: string[]
+    ablaufAkteStand: string
+    anweisungImDokument: { satz: string; seit: string; grund: string }
     harteRegeln: HarteRegel[]
   }
   massstab: {
@@ -372,6 +485,7 @@ export interface Projektstand {
     zweiterMitarbeiter: string
     uebergabe: string
     auswahlregel: string
+    beleg: string
   }
   plattform: {
     werkbank: string
@@ -381,6 +495,10 @@ export interface Projektstand {
     terminEntschiedenAm: string
     freigabe: Freigabe
     schritte: string[]
+    /** Je Schritt, in derselben Reihenfolge: erreicht oder offen. */
+    schritteStand: ('erreicht' | 'offen')[]
+    /** Was am Termin tatsächlich erreicht war. */
+    amTermin: string
     warumAbschaltung: string
     erreichbar: string
     nichtBeantwortet: string
@@ -388,6 +506,7 @@ export interface Projektstand {
   }
   entscheidungen: Entscheidung[]
   entscheidungenNachtrag: string
+  entscheidungenNachtragIntern: { text: string; freigabe: Freigabe }
   offenePunkte: OffenerPunkt[]
   beobachtungen: Beobachtung[]
   gesellschaften: Gesellschaft[]

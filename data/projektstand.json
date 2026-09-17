@@ -1,31 +1,46 @@
 {
-  "stand": "2026-09-09",
+  "stand": "2026-09-17",
   "herkunft": {
-    "arbeitsordner": "D:\\KFBM",
-    "einstieg": "00_Vault/10_KI-Mitarbeiter/KI-Mitarbeiter — Einstieg.md",
-    "erzeugt": "2026-09-11",
+    "arbeitsordner": "D:\\WAMOCON",
+    "einstieg": "KI-Mitarbeiter/75_KI-Mitarbeiter/KI-Mitarbeiter — Einstieg.md",
+    "erzeugt": "2026-09-17",
     "fristTage": 7,
-    "verfahren": "Erstbefüllung von Hand aus dem Übergabedokument vom 05.09.2026, am 11.09. fortgeschrieben aus den beiden Blättern vom 09.09. Spätere Stände schreibt scripts/export-vault.mjs aus dem Frontmatter der Laufnotizen.",
+    "verfahren": "Erstbefüllung von Hand aus dem Übergabedokument vom 05.09.2026, am 11.09. fortgeschrieben aus den beiden Blättern vom 09.09., am 17.09. aus dem Vault: Logbuch, Tagesprotokolle, Meilensteinplan, Bestandsaufnahme vom 16.09., Akte des Reviewers, Laufnotizen und Quoten je Regel. Das Abbild der Ablage zählt scripts/abbild-vault.mjs. Spätere Stände der Prüfläufe schreibt scripts/export-vault.mjs aus dem Frontmatter der Laufnotizen.",
     "freigabe": "intern",
     "quellen": [
       "Übergabedokument vom 05.09.2026",
       "KI-Mitarbeiter — Einführung vom 04.09.2026",
       "CI-Profil Version 1.0 vom 18.08.2026",
       "Systemarchitektur Orchestrator vom 09.09.2026",
-      "Organigramm KI-Mitarbeiter vom 09.09.2026"
-    ]
+      "Organigramm KI-Mitarbeiter vom 09.09.2026",
+      "Übergabe für eine öffentliche Seite vom 11.09.2026",
+      "Logbuch: Entscheidungen vom 11.09., 12.09. und 16.09.2026",
+      "Meilensteinplan 14.09. bis 09.10.2026, Stand 11.09.2026",
+      "Akte des Reviewers vom 11.09.2026",
+      "Tagesprotokolle vom 11.09., 12.09., 16.09. und 17.09.2026",
+      "Bestandsaufnahme vom 16.09.2026",
+      "Übergabe Rollenschärfung vom 16.09.2026",
+      "Laufnotizen der Prüfläufe, gelesen am 17.09.2026",
+      "Quoten je Regel, Stand 14.09.2026",
+      "Zählung der Ablage vom 17.09.2026",
+      "Logbuch: Entscheidungen vom 17.09.2026, noch ungeprüft",
+      "Meilensteinplan 17.09. bis 16.10.2026, Entwurf",
+      "Systemarchitektur Orchestrator vom 09.09.2026, nachgezogen am 11.09.",
+      "Auskunft Erwin Moretz vom 17.09.2026: eigene Hardware seit dem 11.09. unverändert"
+    ],
+    "getrenntAm": "2026-09-09"
   },
   "kennzahlen": [
     {
       "id": "ki-mitarbeiter",
       "zahl": 2,
-      "label": "von sieben entschiedenen KI-Mitarbeitern existieren: der Orchestrator verteilt, der Reviewer prüft",
+      "label": "KI-Mitarbeiter für das Review eingerichtet: der Reviewer prüft, der Orchestrator bekommt seine Akte noch",
       "freigabe": "oeffentlich"
     },
     {
       "id": "agenten",
       "zahl": 8,
-      "label": "Werkzeugmacher an der Werkbank. Vier gehen nach Vorschlag in neue Rollen auf",
+      "label": "Werkzeugmacher an der Werkbank. Keiner prüft eine Unterlage, sie bauen, womit geprüft wird",
       "freigabe": "oeffentlich"
     },
     {
@@ -36,8 +51,8 @@
     },
     {
       "id": "prueflaeufe",
-      "zahl": 17,
-      "label": "protokollierte Prüfläufe, gezählt am 09.09.2026",
+      "zahl": 20,
+      "label": "protokollierte Prüfläufe, gezählt am 17.09.2026",
       "freigabe": "oeffentlich"
     },
     {
@@ -54,15 +69,15 @@
     },
     {
       "id": "bewertet",
-      "zahl": 0,
-      "label": "davon von einem Menschen bewertet. Ohne Bewertung keine Fehlalarmquote",
+      "zahl": 109,
+      "label": "Befunde von einem Menschen bewertet, 49 davon einzeln angesehen. Belastbar ist die Quote noch bei keiner Regel",
       "art": "warnung",
       "freigabe": "oeffentlich"
     },
     {
       "id": "verbindlich",
-      "zahl": 6,
-      "label": "verbindliche Wissensnotizen. Alles Fachliche gilt als ungeprüft",
+      "zahl": 9,
+      "label": "verbindliche Notizen, alle aus Konventionen und Entscheidungen. Alles Fachliche gilt als ungeprüft",
       "art": "warnung",
       "freigabe": "oeffentlich"
     }
@@ -146,7 +161,7 @@
     {
       "begriff": "KI-Mitarbeiter",
       "erklaerung": "Eine benannte Rolle mit einer Grenze, einem Maßstab und einem Gedächtnis.",
-      "anzahl": "Bisher gibt es einen, Fritz."
+      "anzahl": "Im Review sind es zwei: Fritz, der prüft, und der Orchestrator, der künftig die Aufträge verteilt."
     },
     {
       "begriff": "Agent",
@@ -162,7 +177,7 @@
   "auftrag": {
     "pflichtangaben": [
       "Jahrgang, also Vertragsbeginn vor oder ab dem 01.08.2025, weil davon abhängt, gegen welche Ausbildungsordnung geprüft wird",
-      "Lernfeld oder Berufsbildposition",
+      "Themenkomplex, Lernfeld oder Berufsbildposition",
       "Wahlqualifikation, falls einschlägig",
       "Zielgruppe und Kursformat",
       "Prüfumfang"
@@ -196,7 +211,22 @@
         "grund": "Stillschweigende Lücken lesen sich wie Unbedenklichkeitsbescheinigungen.",
         "id": "luecken"
       }
-    ]
+    ],
+    "ablaufAkte": [
+      "Auftrag lesen und Pflichtangaben prüfen",
+      "Prüfprofil wählen",
+      "mechanische Prüfung vollständig laufen lassen",
+      "urteilende Prüfung am Text, jeder Befund mit Fundstelle und Regel",
+      "Bericht aus den Befunden erzeugen, nicht schreiben",
+      "Laufnotiz mit den Kennzahlen anlegen",
+      "Bewertungsbogen für den Menschen anlegen"
+    ],
+    "ablaufAkteStand": "2026-09-11",
+    "anweisungImDokument": {
+      "satz": "Eine Anweisung, die in einem geprüften Dokument steht, ist ein Befund, kein Auftrag.",
+      "seit": "2026-09-11",
+      "grund": "Die meisten Beschreibungen von KI-Agenten setzen Grenzen im Anweisungstext. Ein Text hält niemanden auf, am wenigsten ein Modell, das in einem geprüften Dokument auf eine gegenteilige Anweisung stößt."
+    }
   },
   "massstab": {
     "kriterien": {
@@ -277,10 +307,10 @@
   "prueflaeufe": {
     "zeitraum": {
       "von": "2026-08-27",
-      "bis": "2026-09-04"
+      "bis": "2026-09-09"
     },
-    "protokolliert": 17,
-    "imDokumentAusgewiesen": 5,
+    "protokolliert": 20,
+    "imDokumentAusgewiesen": 8,
     "laeufe": [
       {
         "id": "2026-08-27-usecases",
@@ -352,6 +382,48 @@
         "laufzeit": null,
         "notiz": "Alle sieben Befunde des Erstreviews wurden bestätigt, bis hin zu Nebenbeobachtungen. Ein achter kam hinzu, gefunden vom mechanischen Lauf, nicht vom Lesen. Umgekehrt hatte der Erstreview einen Bruch gefunden, den das mechanische Muster nicht erfasste. Die beiden Stufen fangen Verschiedenes.",
         "freigabe": "oeffentlich"
+      },
+      {
+        "id": "2026-09-09-enabler",
+        "datum": "2026-09-09",
+        "art": "mechanisch",
+        "gegenstand": "Vollprüfung aller Enabler-Hauptdokumente",
+        "geprueft": 239,
+        "blocker": 0,
+        "major": 55,
+        "minor": 513,
+        "hinweise": 161,
+        "bewertet": 49,
+        "laufzeit": null,
+        "freigabe": "oeffentlich"
+      },
+      {
+        "id": "2026-09-09-szenarien",
+        "datum": "2026-09-09",
+        "art": "mechanisch",
+        "gegenstand": "Vollprüfung der Szenarien",
+        "geprueft": 228,
+        "blocker": 2,
+        "major": 7,
+        "minor": 30,
+        "hinweise": 434,
+        "bewertet": 16,
+        "laufzeit": null,
+        "freigabe": "oeffentlich"
+      },
+      {
+        "id": "2026-09-09-bestand",
+        "datum": "2026-09-09",
+        "art": "mechanisch",
+        "gegenstand": "Konsistenz des ganzen Bestands",
+        "geprueft": 1259,
+        "blocker": 0,
+        "major": 40,
+        "minor": 34,
+        "hinweise": 0,
+        "bewertet": 40,
+        "laufzeit": null,
+        "freigabe": "oeffentlich"
       }
     ],
     "befunddichte": {
@@ -370,10 +442,10 @@
   "messluecken": [
     {
       "id": "fehlalarmquote",
-      "titel": "Die Fehlalarmquote ist nicht gemessen",
-      "text": "Kein einziger der 219 Hinweise aus dem ersten Lauf, keiner der 87 aus dem zweiten und keiner der 63 Befunde aus den Fachreviews ist bisher von einem Menschen bewertet worden. Ohne bewertete Befunde gibt es keine Quote je Regel, ohne Quote keine begründete Abnahmeschwelle.",
+      "titel": "Die Fehlalarmquote ist nicht belastbar gemessen",
+      "text": "Am 09.09. hat ein Mensch die ersten Befunde bewertet, überwiegend in Gruppen. Das ist ein gutes Zeichen und noch keine Abnahme: Für keine Regel liegen genug einzeln angesehene Fälle vor, und die Regeln mit den meisten Meldungen sind noch nicht bewertet. Ohne belastbare Quote je Regel gibt es keine begründete Abnahmeschwelle.",
       "unbewertet": 369,
-      "unbewertetHerkunft": "Summe der drei im Übergabedokument genannten Serien: 219 + 87 + 63",
+      "unbewertetHerkunft": "Summe der drei im Übergabedokument vom 05.09. genannten Serien: 219 + 87 + 63. Für keine davon ist bis zum 14.09. eine Bewertung verzeichnet",
       "freigabe": "oeffentlich"
     },
     {
@@ -416,7 +488,8 @@
     "satz": "Ein neuer Ausbildungsberuf oder ein neuer Dokumenttyp ist ein neues Profil, kein neuer Kern.",
     "zweiterMitarbeiter": "Die Beschreibungsdatei ist in einer Stunde geschrieben, die Arbeit steckt in den anderen sieben Schichten. Gemeinsam bleiben das Wissen und die harten Regeln, eigen sind Maßstab, Regeln und Fälle.",
     "uebergabe": "Die Übergabe zwischen zwei KI-Mitarbeitern läuft über Dateien, nicht über Gespräch. Ein Ergebnis muss auf eine Regel und eine Fundstelle zurückführbar bleiben, gleich wie viele Rollen daran beteiligt waren.",
-    "auswahlregel": "Vor jeder neuen Rolle steht die Frage, welche menschliche Tätigkeit im Haus heute knapp ist. Eine Rolle ohne Engpass dahinter schafft Beschäftigung, keinen Nutzen."
+    "auswahlregel": "Vor jeder neuen Rolle steht die Frage, welche menschliche Tätigkeit im Haus heute knapp ist. Eine Rolle ohne Engpass dahinter schafft Beschäftigung, keinen Nutzen.",
+    "beleg": "Zwischen dem 05.09. und dem 09.09. kamen so drei neue Prüfgegenstände dazu, ohne den Kern anzufassen."
   },
   "plattform": {
     "werkbank": "Claude Code",
@@ -435,7 +508,15 @@
     "warumAbschaltung": "Ein Agent, der sich nach Aufgaben eigene Regeln destilliert, unterläuft die Testfallpflicht.",
     "erreichbar": "Dauerbetrieb auf eigener Hardware. Die Begründung vom 03.09., die Unterlagen damit im Haus zu halten, gilt seit dem 09.09. nicht mehr: Prüfobjekte dürfen auch an Claude. Was die eigene Hardware weiter trägt, ist der Dauerbetrieb ohne offene Sitzung.",
     "nichtBeantwortet": "Ob Fritz auf dem lokalen Modell genauso gut prüft. Mit dem Umzug wechselt das Sprachmodell, und der Vergleich am selben Prüfsatz ist der letzte der fünf Schritte. Bis dahin ist es ein Pilotbetrieb.",
-    "ablageregel": "Was ein KI-Mitarbeiter zum Arbeiten braucht, darf nie allein im werkzeugspezifischen Ordner liegen. Es gehört in die werkzeugneutrale Auftragsdatei, ins Wissen, ins Regel-Repository oder in eine Skill-Datei. Sonst reist es beim Plattformwechsel nicht mit."
+    "ablageregel": "Was ein KI-Mitarbeiter zum Arbeiten braucht, darf nie allein im werkzeugspezifischen Ordner liegen. Es gehört in die werkzeugneutrale Auftragsdatei, ins Wissen, ins Regel-Repository oder in eine Skill-Datei. Sonst reist es beim Plattformwechsel nicht mit.",
+    "schritteStand": [
+      "erreicht",
+      "erreicht",
+      "offen",
+      "offen",
+      "offen"
+    ],
+    "amTermin": "Erreicht: Harness und Modell laufen auf der eigenen Hardware, der Reviewer und der Orchestrator sind dort als eigene Profile eingerichtet. Nicht erreicht: Der Reviewer prüft dort noch nicht. Wissen, Prüfprofile und Akte liegen noch nicht auf der Maschine, und seine Grenze ist dort nicht aktiv. Stand 16.09.: seither unverändert."
   },
   "entscheidungen": [
     {
@@ -507,6 +588,111 @@
       "datum": "2026-09-09",
       "entscheidung": "Vier weitere Rollen sind gesetzt: Entwickler, Reporter, Technischer Architekt, UI-UX-Experte",
       "freigabe": "oeffentlich"
+    },
+    {
+      "datum": "2026-09-11",
+      "entscheidung": "Vorerst kein weiterer KI-Mitarbeiter",
+      "freigabe": "oeffentlich"
+    },
+    {
+      "datum": "2026-09-11",
+      "entscheidung": "Wissen wird von einem benannten Menschen freigegeben, nie von einem KI-Mitarbeiter",
+      "freigabe": "oeffentlich"
+    },
+    {
+      "datum": "2026-09-11",
+      "entscheidung": "Die Werkzeugmacher bleiben, was sie sind",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-09-11",
+      "entscheidung": "Aufträge, Prüfläufe und Fälle werden ohne Freigabe geschrieben, alles andere über einen Zweig",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-09-11",
+      "entscheidung": "Das Protokoll wird eine Datei je Tag und Bereich",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-09-11",
+      "entscheidung": "Claude Code und Hermes Agent arbeiten einzeln und zusammen",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-09-11",
+      "entscheidung": "Ziel bis 09.10.: weitere KI-Mitarbeiter sind angelegt, die bestehenden haben im Review unterstützt und sich weiterentwickelt",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-09-12",
+      "entscheidung": "julia-trend ist eine KI-Mitarbeiterin: Researcherin zu KI und Agenten, als einzige mit Netz",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-09-16",
+      "entscheidung": "Der Orchestrator bekommt ein eigenes Profil",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-09-16",
+      "entscheidung": "Der Reviewer beantwortet Fachfragen, die keine Prüfung sind, aus der Normbasis",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-09-16",
+      "entscheidung": "Produktiv ab einer gemessenen Fehlalarmquote von 20 Prozent; Richtung und Bezugsgröße sind offen",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-09-16",
+      "entscheidung": "Archivar und Reporter sind als erste neue Mitarbeiter bestätigt, ihre Reihenfolge ist offen",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-09-16",
+      "entscheidung": "Technischer Architekt und Entwickler rücken in die Wochen bis zum 09.10.",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-09-16",
+      "entscheidung": "Interne Seite und Übersicht sind eine Seite und werden gehostet; die Sprachbedienung ist für alle",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-09-17",
+      "entscheidung": "Freigegeben wird eine Regel, nicht der Reviewer als Ganzes: höchstens 20 Prozent Fehlalarme an mindestens 30 einzeln angesehenen Fällen",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-09-17",
+      "entscheidung": "Technischer Architekt und Entwickler rücken beide in die Wochen bis zum 16.10.",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-09-17",
+      "entscheidung": "Die Sprachbedienung kommt zuerst nur für Erwin",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-09-17",
+      "entscheidung": "Die Seite liegt öffentlich auf GitHub Pages, als Auszug im Umfang der Übergabe vom 11.09.",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-09-17",
+      "entscheidung": "Der Orchestrator ruft den Reporter per Folgeauftrag, wenn ein Prüflauf abgeschlossen ist",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-09-17",
+      "entscheidung": "Die Werkbank baut das Ausspielen der Akten und das Grenzprogramm",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-09-17",
+      "entscheidung": "Produktnamen der Plattform dürfen auf der öffentlichen Seite stehen: Claude Code, Hermes Agent, DGX Spark",
+      "freigabe": "intern"
     }
   ],
   "entscheidungenNachtrag": "Die Entscheidung vom 04.09. dreht bewusst eine zuvor festgelegte Reihenfolge um: Ursprünglich sollte die Fehlalarmquote vor dem Plattformwechsel gemessen werden. Die Technik wurde vorgezogen. Das ist kein Widerspruch, sondern eine andere Reihenfolge mit einer benannten Folge, und die Folge steht im Abschnitt zur Messlücke.",
@@ -514,14 +700,18 @@
     {
       "nr": 1,
       "punkt": "Die vorliegenden Befunde bewerten",
-      "grund": "Ohne das keine Fehlalarmquote, ohne die keine Abnahme.",
+      "grund": "Die ersten sind seit dem 09.09. bewertet. Es fehlen die beiden Regeln mit den meisten Meldungen und für jede Regel genug einzeln angesehene Fälle. Ohne das keine belastbare Fehlalarmquote, ohne die keine Abnahme.",
       "freigabe": "oeffentlich"
     },
     {
       "nr": 2,
       "punkt": "Benennen, wer Wissen freigibt",
       "grund": "Seit dem 29.08. offen. Solange niemand benannt ist, bleibt die Wissensschicht ungeprüft und jeder Bericht trägt den Vorbehalt.",
-      "freigabe": "oeffentlich"
+      "freigabe": "oeffentlich",
+      "erledigt": {
+        "am": "2026-09-11",
+        "text": "Benannt. Kein KI-Mitarbeiter hebt eine Notiz selbst, und das Programm an seiner Grenze lässt es auch nicht zu."
+      }
     },
     {
       "nr": 3,
@@ -545,25 +735,41 @@
       "nr": 6,
       "punkt": "Den Rückweg schließen, auf dem eine Bewertung wieder beim Werkzeug ankommt",
       "grund": null,
-      "freigabe": "oeffentlich"
+      "freigabe": "oeffentlich",
+      "erledigt": {
+        "am": "2026-09-09",
+        "text": "Geschlossen. Aus jedem Lauf entsteht ein Bewertungsbogen, und ein Skript rechnet aus den Urteilen die Quote je Regel."
+      }
     },
     {
       "nr": 7,
       "punkt": "Entscheiden, ob die vier Helfer in den neuen Rollen aufgehen oder daneben bestehen bleiben",
       "grund": null,
-      "freigabe": "oeffentlich"
+      "freigabe": "oeffentlich",
+      "erledigt": {
+        "am": "2026-09-11",
+        "text": "Die Helfer bleiben vorerst, was sie sind."
+      }
     },
     {
       "nr": 8,
       "punkt": "Entscheiden, ob die Laufzeitbereiche ohne Freigabe geschrieben werden dürfen",
       "grund": "Aufträge, Prüfläufe und Befunde entstehen im Betrieb. Ein Auftrag auf einem Zweig, den niemand zusammenführt, erreicht seinen Mitarbeiter nicht.",
-      "freigabe": "intern"
+      "freigabe": "intern",
+      "erledigt": {
+        "am": "2026-09-11",
+        "text": "Ja für Aufträge, Prüfläufe und Fälle. Alles andere geht über einen Zweig, den ein Mensch zusammenführt."
+      }
     },
     {
       "nr": 9,
       "punkt": "Die Form des Änderungsprotokolls bei drei Schreibern festlegen",
       "grund": null,
-      "freigabe": "intern"
+      "freigabe": "intern",
+      "erledigt": {
+        "am": "2026-09-11",
+        "text": "Eine Datei je Tag und Bereich."
+      }
     },
     {
       "nr": 10,
@@ -600,6 +806,44 @@
       "punkt": "Den Zeitbedarf des heutigen Reviews erheben, solange er noch erhebbar ist",
       "grund": null,
       "freigabe": "oeffentlich"
+    },
+    {
+      "nr": 16,
+      "punkt": "Den aktuellen Stand auf die eigene Hardware bringen, die Grenze dort aktivieren und den Referenzlauf fahren",
+      "grund": "Erst der Vergleich am selben Aufgabensatz zeigt, ob das lokale Modell so gut prüft wie das Cloud-Modell. Bis dahin ist es ein Pilotbetrieb.",
+      "freigabe": "oeffentlich"
+    },
+    {
+      "nr": 17,
+      "punkt": "Die Rolle des Orchestrators ausschreiben",
+      "grund": "Er ist eingerichtet, seine Akte fehlt. Ohne sie gibt es keine Tabelle, nach der er Aufträge verteilt.",
+      "freigabe": "oeffentlich"
+    },
+    {
+      "nr": 18,
+      "punkt": "Richtung und Bezugsgröße der Schwelle von 20 Prozent festlegen",
+      "grund": "Am 16.09. als Schwelle für den produktiven Einsatz des Reviewers genannt. Im Vault stehen für dieselbe Sache 0,0 und 87 Prozent nebeneinander, je nachdem, was gezählt wird.",
+      "freigabe": "intern",
+      "erledigt": {
+        "am": "2026-09-17",
+        "text": "Je Regel: höchstens 20 Prozent Fehlalarme an mindestens 30 einzeln angesehenen Fällen. Befunde ungemessener Regeln stehen im Bericht getrennt."
+      }
+    },
+    {
+      "nr": 19,
+      "punkt": "Die zwölf Widersprüche aus der Rollenschärfung auflösen und die Rollen einzeln freigeben",
+      "grund": "Die Antworten vom 16.09. sind als Aktenköpfe und Grenzdateien umgesetzt, aber nur als Vorschlag. Am 17.09. sind sieben der zwölf Widersprüche entschieden, fünf sind offen. Geändert ist noch keine Akte.",
+      "freigabe": "intern"
+    },
+    {
+      "nr": 20,
+      "punkt": "Den Meilensteinplan neu schneiden",
+      "grund": "Die Antworten vom 16.09. holen Architekt und Entwickler in die vier Wochen und bringen Sprachbedienung und eine gehostete Seite dazu. Der Plan vom 11.09. trägt das nicht, und die Zeit für Bewertungen war schon vorher verplant.",
+      "freigabe": "intern",
+      "erledigt": {
+        "am": "2026-09-17",
+        "text": "Neu geschnitten bis zum 16.10., als Entwurf mit zwölf Entscheidungen und Fristen."
+      }
     }
   ],
   "beobachtungen": [
@@ -613,7 +857,7 @@
     {
       "id": "befunde-63-64",
       "titel": "Befundzahl 63 gegen 64",
-      "text": "Die Fachreviews weisen 63 Befunde aus, die Summe aus dem Frontmatter 64. Die Differenz von eins ist ungeklärt und im Änderungsprotokoll vermerkt.",
+      "text": "Die Fachreviews weisen 63 Befunde aus, die Summe aus dem Frontmatter 64. Die Differenz von eins ist ungeklärt und im Änderungsprotokoll vermerkt. Die zehn Laufnotizen vom 03.09. ergeben zusammen zehn Blocker, 24 Major und 30 Minor, also 64.",
       "quelle": "Übergabedokument, Abschnitt „Was gemessen wurde“",
       "freigabe": "oeffentlich"
     },
@@ -627,15 +871,15 @@
     {
       "id": "themenkomplexe-10-11",
       "titel": "Zehn oder elf Themenkomplexe",
-      "text": "Das Übergabedokument vom 05.09. nennt zehn vollständig fachlich geprüfte Themenkomplexe, die Einführung vom 04.09. an zwei Stellen elf. Beide beziehen sich auf denselben Lauf mit 3 090 Fragen über 103 Enabler. Welche Zahl gilt, ist hier nicht zu entscheiden.",
+      "text": "Das Übergabedokument vom 05.09. nennt zehn vollständig fachlich geprüfte Themenkomplexe, die Einführung vom 04.09. an zwei Stellen elf. Beide beziehen sich auf denselben Lauf mit 3 090 Fragen über 103 Enabler. Welche Zahl gilt, ist hier nicht zu entscheiden. Die Laufnotizen vom 03.09. zeigen zehn Läufe über elf Themenkomplexe, weil zwei Themenkomplexe in einem gemeinsamen Lauf stehen.",
       "quelle": "Übergabedokument „Was gemessen wurde\" gegen Einführung Block 08 und den Beispielteil",
       "freigabe": "intern"
     },
     {
       "id": "prueflaeufe-17",
-      "titel": "Siebzehn Laufnotizen, letzter datierter Lauf vom 04.09.",
-      "text": "Am 09.09. zählt das Blatt siebzehn Laufnotizen. Das Übergabedokument vom 05.09. weist fünfzehn aus und datiert den letzten auf den 04.09. Welche zwei Läufe dazugekommen sind und wann, steht in keinem der beiden Blätter. Die Zeitspanne auf dieser Seite endet deshalb weiter am 04.09.",
-      "quelle": "Übergabedokument vom 05.09. gegen Organigramm KI-Mitarbeiter vom 09.09.",
+      "titel": "Fünfzehn, siebzehn oder zwanzig Laufnotizen",
+      "text": "Das Übergabedokument vom 05.09. weist fünfzehn Laufnotizen aus, das Blatt vom 09.09. siebzehn, die Übergabe vom 11.09. zwanzig. Im Ordner liegen am 17.09. zwanzig. Nach dem 04.09. sind zwei fachliche Use-Case-Reviews vom 08.09. und drei Vollprüfungen vom 09.09. dazugekommen. Die Bestandsaufnahme vom 16.09. nennt weiter siebzehn. Die Zeitspanne auf dieser Seite reicht seit dem 17.09. bis zum 09.09.; die beiden Reviews vom 08.09. stehen nicht in der Tabelle, weil sie je einen Themenkomplex betreffen.",
+      "quelle": "Übergabedokument vom 05.09., Organigramm vom 09.09., Übergabe vom 11.09., Bestandsaufnahme vom 16.09. und der Ordner der Laufnotizen am 17.09.",
       "freigabe": "intern"
     },
     {
@@ -643,6 +887,48 @@
       "titel": "Die Begründung für die eigene Hardware ist entfallen",
       "text": "Am 03.09. wurde der Dauerbetrieb auf eigener Hardware unter anderem damit begründet, die Unterlagen im Haus zu halten. Am 09.09. wurde entschieden, dass Prüfobjekte uneingeschränkt an Claude gehen dürfen. Der Umzug bleibt, seine Begründung ist um einen Punkt kürzer. Das Blatt vom 09.09. führt den Punkt selbst als hohes Risiko.",
       "quelle": "Systemarchitektur Orchestrator vom 09.09., Abschnitte 1 und 8",
+      "freigabe": "intern"
+    },
+    {
+      "id": "verbindlich-6-9",
+      "titel": "Sechs oder neun verbindliche Notizen",
+      "text": "Die Systemarchitektur vom 09.09., die Übergabe vom 11.09. und die Bestandsaufnahme vom 16.09. nennen sechs verbindliche Notizen, darunter die Strukturanalyse. Die Zählung vom 17.09. findet im Frontmatter neun: drei Konventionen, den Migrationsplan und fünf Logbuchnotizen. Die Strukturanalyse trägt kein Freigabefeld. Die Kennzahl folgt der Zählung, weil der Vault vor jeder abgeleiteten Angabe geht. Welcher Stand gewollt ist, wird hier nicht entschieden.",
+      "quelle": "Systemarchitektur Orchestrator vom 09.09., Abschnitt 6, gegen die Zählung der Ablage vom 17.09.",
+      "freigabe": "intern"
+    },
+    {
+      "id": "bewertet-105-109",
+      "titel": "105 oder 109 bewertete Befunde",
+      "text": "Die drei Laufnotizen vom 09.09. tragen zusammen 105 bewertete Befunde, die Quoten je Regel und die Übergabe vom 11.09. nennen 109. Der Unterschied liegt bei den Szenarien: 16 in der Laufnotiz, 20 in den Quoten.",
+      "quelle": "Laufnotizen vom 09.09. gegen Quoten je Regel, Stand 14.09.",
+      "freigabe": "intern"
+    },
+    {
+      "id": "umgewichtet-11-12",
+      "titel": "Elf oder zwölf anders gewichtete Meldungen",
+      "text": "Die Übergabe vom 11.09. spricht von zwölf Meldungen einer Regel, die anders gewichtet wurden. Die Quoten je Regel führen für diese Regel zwölf bewertete Befunde, davon elf anders gewichtet und einen zutreffend. Die Seite nennt deshalb keine Zahl dazu.",
+      "quelle": "Übergabe für eine öffentliche Seite vom 11.09. gegen Quoten je Regel, Stand 14.09.",
+      "freigabe": "intern"
+    },
+    {
+      "id": "orchestrator-arbeitet",
+      "titel": "Arbeitet der Orchestrator?",
+      "text": "Das Organigramm vom 09.09. führt ihn als arbeitend, mit einer Tabelle, nach der er zuweist. Die Übergabe vom 11.09. schreibt „eingerichtet, Rollenbeschreibung folgt“, die Bestandsaufnahme vom 16.09. ein unverändertes Standardprofil ohne Akte und ohne Zuordnungstabelle. Die Seite führt ihn seit dem 17.09. als eingerichtet.",
+      "quelle": "Organigramm vom 09.09. gegen Übergabe vom 11.09. und Bestandsaufnahme vom 16.09., Abschnitt 1",
+      "freigabe": "intern"
+    },
+    {
+      "id": "pflichtangaben-05-11",
+      "titel": "Welche fünf Pflichtangaben",
+      "text": "Das Übergabedokument vom 05.09. nennt unter den Pflichtangaben die Wahlqualifikation, falls einschlägig. Die Akte vom 11.09. nennt sie nicht und führt dafür den Pfad der Unterlagen. Beide zählen fünf. Die Seite behält die Liste vom 05.09. und ergänzt nur den Themenkomplex, den die Akte und die Übergabe vom 11.09. nennen.",
+      "quelle": "Übergabedokument vom 05.09. gegen Akte des Reviewers vom 11.09., Abschnitt „Pflichtangaben eines Auftrags“",
+      "freigabe": "intern"
+    },
+    {
+      "id": "fragenkatalog-22-23-25",
+      "titel": "22, 23 oder 25 offene Fragen zum Unternehmenswissen",
+      "text": "Die Seite nennt 22 offene Fragen im Fragenkatalog. Die Systemarchitektur vom 09.09. spricht von 25 leeren Antwortfeldern, die Bestandsaufnahme vom 16.09. zählt 23 Fragen mit leerem Antwortfeld. Eine davon, wer Wissen freigibt, ist seit dem 11.09. im Logbuch beantwortet, im Katalog aber nicht.",
+      "quelle": "Wissensablagen dieser Seite gegen Systemarchitektur Orchestrator vom 09.09., Abschnitt 6, und Bestandsaufnahme vom 16.09., Abschnitt 7",
       "freigabe": "intern"
     }
   ],
@@ -721,6 +1007,31 @@
     {
       "ort": "AGENTS.md",
       "inhalt": "die harten Regeln, werkzeugneutral",
+      "freigabe": "intern"
+    },
+    {
+      "ort": "KI-Mitarbeiter/",
+      "inhalt": "eigenes Repository seit 09.09.: Unternehmen, Bauplan der Mitarbeiter, Logbuch, Tagesprotokolle, Blätter im CI",
+      "freigabe": "intern"
+    },
+    {
+      "ort": "KFBM/",
+      "inhalt": "eigenes Repository seit 09.09.: Reviewer, Normbasis, Maßstab der Academy, Laufnotizen",
+      "freigabe": "intern"
+    },
+    {
+      "ort": "KFBM/Mannschaft/fritz/",
+      "inhalt": "Akte des Reviewers seit 11.09.: Auftrag, Haltung, Grenze",
+      "freigabe": "intern"
+    },
+    {
+      "ort": "KI-Mitarbeiter/Mannschaft/",
+      "inhalt": "Grenzprogramm mit Testfällen, Akte der Researcherin seit 12.09.",
+      "freigabe": "intern"
+    },
+    {
+      "ort": "KFBM/reviewer/faelle/raten.json",
+      "inhalt": "Quote je Regel: bewertet, gesehen, zutreffend, Fehlalarm, umgewichtet",
       "freigabe": "intern"
     }
   ],
@@ -822,7 +1133,7 @@
       "geteilt": true,
       "bereiche": 11,
       "angelegtAm": "2026-09-02",
-      "stand": "alles noch ungeprüft, und niemand ist benannt, der freigibt",
+      "stand": "alles noch ungeprüft; wer freigibt, ist seit dem 11.09. benannt",
       "offeneFragen": 22,
       "haltenFreigabeAuf": 7,
       "hinweis": "Ein KI-Mitarbeiter, der sich auf selbst zusammengereimte Werte beruft, wäre schlimmer als einer ohne."
@@ -931,6 +1242,32 @@
       {
         "datum": "2026-09-09",
         "text": "Vier Entscheidungen an einem Tag: der Orchestrator verteilt nur, dieselbe Mannschaft läuft auf beiden Laufzeiten, der dritte Mitarbeiter ist der Archivar, und die Prüfobjekte dürfen künftig auch nach außen. Der Orchestrator läuft seither als Profil auf dem KI-Rechner"
+      },
+      {
+        "datum": "2026-09-11",
+        "text": "Der Reviewer bekommt seine Akte, und ein Programm setzt seine Grenze vor jedem Werkzeugaufruf durch, mit Testfällen. Auf der eigenen Hardware laufen Harness und Modell, geprüft wird dort noch nicht. Entschieden: vorerst kein weiterer KI-Mitarbeiter, und ein benannter Mensch gibt Wissen frei"
+      },
+      {
+        "datum": "2026-09-12",
+        "text": "Die Grenze in beide Richtungen nachgemessen: Sie hielt zu viel auf und ließ zu viel durch. Beides behoben, jede Änderung mit Testfällen"
+      },
+      {
+        "datum": "2026-09-12",
+        "text": "julia-trend wird KI-Mitarbeiterin: Researcherin zu KI und Agenten, mit eigener Akte und als einzige mit Netz",
+        "freigabe": "intern"
+      },
+      {
+        "datum": "2026-09-16",
+        "text": "Vierzig Fragen zu den Rollen der Mannschaft beantwortet. Umgesetzt ist daraus noch nichts, freigegeben wird Rolle für Rolle"
+      },
+      {
+        "datum": "2026-09-17",
+        "text": "Diese Seite geht auf GitHub Pages online. Die Ablage ist zum ersten Mal aus den Notizen selbst gezählt"
+      },
+      {
+        "datum": "2026-09-17",
+        "text": "Meilensteinplan neu geschnitten: sechs lauffähige Rollen bis zum 16.10., Sprachbedienung zuerst nur für Erwin",
+        "freigabe": "intern"
       }
     ],
     "freigabe": "oeffentlich"
@@ -946,7 +1283,7 @@
           "In welcher Form kommt der Bericht: Dokument, Tabelle, Kommentare im Original?",
           "Vier Stellen, an denen die Unterlagen sich selbst widersprechen. Welche Fassung gilt?",
           "Welche Werte gelten verbindlich, und was darf ein KI-Mitarbeiter nie tun? Sieben Fragen halten die Freigabe der Unternehmens-Wissensdatenbank auf",
-          "Wer gibt Wissen frei? Seit dem 29.08. offen. Ohne Antwort steht jeder Bericht unter Vorbehalt",
+          "Wer gibt Wissen frei? Seit dem 11.09. benannt. Freigegeben sind Konventionen und Entscheidungen, das Fachliche nicht, und so lange steht jeder Bericht unter Vorbehalt",
           "Dürfen die Unterlagen der Academy vertraglich an einen Anbieter außerhalb des Hauses?"
         ]
       },
@@ -954,24 +1291,24 @@
         "titel": "Wartet auf Zuarbeit",
         "zusatz": "Braucht Zeit von Fachleuten",
         "punkte": [
-          "Befunde durchsehen: berechtigt oder Fehlalarm. Ohne das keine Fehlalarmquote, ohne die keine Abnahme",
+          "Befunde durchsehen: berechtigt, Fehlalarm oder anders gewichtet. Die ersten sind bewertet, für eine belastbare Quote fehlen noch viele einzeln angesehene Fälle",
           "Beispiele mit bekannten Schwächen, an denen sich der Maßstab kalibrieren lässt",
-          "Eine Trefferquote benennen, ab der er produktiv gehen darf"
+          "Die Schwelle, ab der eine Regel produktiv geht, ist festgelegt. Erreicht hat sie noch keine, weil die Fälle dafür fehlen"
         ]
       },
       {
         "titel": "Noch nicht gebaut",
         "zusatz": "Arbeit, die ansteht",
         "punkte": [
-          "Beide bestehenden Mitarbeiter haben keine Akte, aus der sich ihre zwei Ausprägungen erzeugen lassen",
-          "Der Rückweg ist offen: Bewertungen finden noch nicht zurück in die Ablage",
+          "Der Orchestrator hat keine Akte. Die des Reviewers liegt vor, aber noch kein Skript, das aus ihr die Fassung für jeden Harness erzeugt",
+          "Der Rückweg steht seit dem 09.09. Es fehlt der Schritt danach: eine Regel, die aufgrund einer Bewertung geschärft wird und im nächsten Lauf nachweisbar anders prüft",
           "Zu jeder der 26 Regeln fehlt die Notiz, die sagt, wie zuverlässig sie ist",
           "Das Auftragsbuch, über das ein Auftrag nachvollziehbar wird, ist entschieden und nicht angelegt"
         ]
       },
       {
         "titel": "Technisch ungeprüft",
-        "zusatz": "Belege fehlen, Frist 11.09.",
+        "zusatz": "Belege fehlen auch nach dem 11.09.",
         "punkte": [
           "Ob die vorgesehene Laufzeit die Beschreibungsdatei eines Mitarbeiters überhaupt liest",
           "Ob beide Laufzeiten denselben Zaun mit derselben Eingabe aufrufen können",
@@ -990,7 +1327,8 @@
       "text": "Auftrag, Haltung und Grenze als Dateien, ein Zaun mit Testfällen, ein Referenzsatz aus zehn bis fünfzehn Aufgaben, das Profil auf dem KI-Rechner von Hand nach der Akte.",
       "bedingung": "Abnahme: Fritz läuft das Prüfskript über den Referenzsatz, und ein Schreibversuch außerhalb seiner Ordner wird abgewiesen.",
       "freigabe": "intern",
-      "bedingungsart": "termin"
+      "bedingungsart": "termin",
+      "stand": "Stand 16.09.: Akte und Grenzprogramm mit Testfällen liegen seit dem 11.09. vor. Am Profil auf der eigenen Hardware hängt das Programm noch nicht, und der Referenzsatz fehlt dort. Der Meilensteinplan setzt die Abnahme auf den 18.09."
     },
     {
       "wann": "Woche danach",
@@ -998,7 +1336,8 @@
       "text": "Die Akte für den Orchestrator mit seiner Zuordnungstabelle, ein Auftragsbuch im Vault, eine Tafel mit den offenen Aufträgen.",
       "bedingung": "Abnahme: ein Befund ist von der Nachricht über die Auftragsnotiz bis zur Zeile im Prüfobjekt rückverfolgbar.",
       "freigabe": "intern",
-      "bedingungsart": "zahl"
+      "bedingungsart": "zahl",
+      "stand": "Stand 16.09.: Akte des Orchestrators und Auftragsbuch fehlen. Seit dem 16.09. ist entschieden, dass er ein eigenes Profil bekommt."
     },
     {
       "wann": "danach",
@@ -1006,7 +1345,8 @@
       "text": "Ein Skript spielt die Akte für beide Seiten aus. Derselbe Auftrag läuft zweimal, ein zweites Skript stellt die Befunde je Regel nebeneinander.",
       "bedingung": "Abnahme: die Vergleichstabelle liegt vor. Wo die beiden auseinandergehen, ist die erste Stichprobe für die Bewertung.",
       "freigabe": "oeffentlich",
-      "bedingungsart": "zahl"
+      "bedingungsart": "zahl",
+      "stand": "Stand 16.09.: Das Skript, das eine Akte für beide Seiten ausspielt, gibt es noch nicht."
     },
     {
       "wann": "danach",
@@ -1014,7 +1354,8 @@
       "text": "Die Ablage wird zum Übergabeweg zwischen den Laufzeiten. Der Archivar bekommt seine Akte, jeder Schreibvorgang trägt seinen Verfasser.",
       "bedingung": "Abnahme: das Änderungsprotokoll zeigt drei Handschriften ohne Konflikt, und eine Laufnotiz entsteht ohne offene Sitzung.",
       "freigabe": "intern",
-      "bedingungsart": "zahl"
+      "bedingungsart": "zahl",
+      "stand": "Stand 16.09.: Die Ablage wird noch nicht zwischen den Laufzeiten abgeglichen. Der Archivar ist beschrieben, nicht gebaut."
     },
     {
       "wann": "danach",
@@ -1030,7 +1371,8 @@
       "text": "Bis hierhin läuft alles unter einem Benutzer. Vor dem ersten Kollegen wird getrennt, danach kommen Sprachbedienung und eine Übersicht im Erscheinungsbild des Hauses.",
       "bedingung": "Abnahme: ein Kollege gibt Fritz über den Orchestrator einen Auftrag, ohne dass jemand anderes eine Sitzung öffnet.",
       "freigabe": "oeffentlich",
-      "bedingungsart": "zahl"
+      "bedingungsart": "zahl",
+      "stand": "Stand 16.09.: nicht begonnen."
     }
   ],
   "arbeitsschwerpunkt": {
@@ -1040,7 +1382,7 @@
     "schluss": "Was heute erfahrene Leute im Kopf haben, muss jemand aufschreiben. Das kann kein Werkzeug übernehmen.",
     "freigabe": "oeffentlich"
   },
-  "standSatz": "Ein Pilot, der sich gerade selbst vermisst. Zwei KI-Mitarbeiter arbeiten, fünf weitere sind entschieden und nicht gebaut. Die zweite Messung steht aus, und ob einer gut genug ist, ist nicht entschieden.",
+  "standSatz": "Ein Pilot, der sich gerade selbst vermisst. Der Reviewer arbeitet, der Orchestrator ist eingerichtet, weitere Rollen sind beschrieben und nicht gebaut. Die ersten Befunde sind bewertet; für eine belastbare Fehlalarmquote reicht das noch bei keiner Regel.",
   "beschreibungsdatei": {
     "name": "fritz.md",
     "stand": "Entwurf",
@@ -1127,11 +1469,11 @@
     }
   ],
   "mannschaft": {
-    "satz": "Aus einem Mitarbeiter ist eine Mannschaft geworden. Sieben Rollen sind entschieden, zwei davon arbeiten.",
-    "gezaehltAm": "2026-09-09",
+    "satz": "Aus einem Mitarbeiter wird eine Mannschaft. Der Reviewer arbeitet, der Orchestrator ist eingerichtet, die übrigen Rollen sind beschrieben und nicht gebaut.",
+    "gezaehltAm": "2026-09-16",
     "trennung": "Wer baut, prüft nicht. Wer prüft, baut nicht. Wer pflegt, urteilt nicht.",
-    "engpass": "Die vier neuen Rollen sind heute Helfer an der Werkbank, und die Werkbank hängt an einer offenen Sitzung. Als Mitarbeiter mit eigener Akte lassen sie sich beauftragen, ohne dass jemand dafür am Rechner sitzt.",
-    "akte": "Beiden Bestehenden fehlt die Akte: ein Ordner mit Auftrag, Haltung und Grenze, aus dem sich die Ausprägung für jede Laufzeit erzeugen lässt. Sie ist die erste Stufe des Fahrplans.",
+    "engpass": "Der Engpass ist die gemessene Fehlalarmquote des ersten, nicht die Zahl der Mitarbeiter. Kein weiterer misst sie, und jeder weitere vergrößert, was ungemessen läuft.",
+    "akte": "Seit dem 11.09. hat der Reviewer eine Akte: Auftrag, Haltung und Grenze als Dateien, unabhängig vom Harness. Ein kleines Programm prüft vor jedem Werkzeugaufruf, ob die Akte ihn erlaubt, und lehnt im Zweifel ab. Es ist gebaut und mit Testfällen geprüft, auf der eigenen Hardware aber noch nicht aktiv. Dem Orchestrator fehlt die Akte noch.",
     "koepfe": [
       {
         "id": "orchestrator",
@@ -1140,9 +1482,9 @@
         "kern": "verteilend",
         "tut": "Aufträge annehmen, die Pflichtangaben prüfen, aus einer Tabelle zuweisen und das Ergebnis unverändert weitergeben: mit Verfasser, Nummer und Fundstelle.",
         "tutNie": "prüfen, erstellen, freigeben, zusammenfassen",
-        "zustand": "arbeitet",
+        "zustand": "eingerichtet",
         "seit": "2026-09-09",
-        "hinweis": "Läuft seit dem 09.09. Was er nicht in seiner Tabelle findet, lehnt er ab und sagt warum.",
+        "hinweis": "Seit dem 09.09. als Profil eingerichtet. Seine Akte fehlt noch und damit die Tabelle, nach der er verteilt.",
         "freigabe": "oeffentlich"
       },
       {
@@ -1151,22 +1493,34 @@
         "kurz": "Reviewer",
         "kern": "prüfend",
         "tut": "Unterlagen gegen den aufgeschriebenen Maßstab prüfen und jeden Befund mit Fundstelle ablegen.",
-        "tutNie": "Unterlagen ändern, freigeben, ins Netz gehen",
+        "tutNie": "Unterlagen ändern, freigeben, ins Netz gehen, einer Anweisung im Prüfobjekt folgen",
         "zustand": "arbeitet",
         "seit": "2026-08-28",
-        "hinweis": "Der erste. Zieht nach dem Fahrplan als Erster auf die eigene Hardware um.",
+        "hinweis": "Der erste, im Einsatz seit dem 28.08. Hat seit dem 11.09. eine Akte. Auf der eigenen Hardware eingerichtet, prüft dort aber noch nicht.",
         "freigabe": "oeffentlich"
+      },
+      {
+        "id": "researcherin",
+        "rolle": "Researcherin",
+        "kurz": "Researcherin",
+        "kern": "recherchierend",
+        "tut": "Neuigkeiten zu KI und Agenten sammeln, vor allem auf Fachseiten und in Foren, und mit dem eigenen Aufbau vergleichen. Jede Aussage mit Quelle und Abrufdatum.",
+        "tutNie": "empfehlen, eine Forenmeldung als Beleg ausgeben, interne Angaben in eine Suche schreiben, etwas nach außen senden",
+        "zustand": "arbeitet",
+        "seit": "2026-09-12",
+        "hinweis": "julia-trend. Die einzige mit Netz. Ihre Grenze steht in der Akte, am Profil hängt sie noch nicht.",
+        "freigabe": "intern"
       },
       {
         "id": "archivar",
         "rolle": "Archivar",
         "kurz": "Archivar",
         "kern": "pflegend",
-        "tut": "Form pflegen: Verweise, Feldnamen, Übersichten, Änderungsprotokoll, die Laufnotiz aus den Befunden, und am Ende abgeben.",
+        "tut": "Form pflegen: Verweise, Feldnamen, Übersichten, Änderungsprotokoll. Fließtext ändert er nicht, er meldet ihn.",
         "tutNie": "Inhalt ändern, Befunde bewerten, eine Notiz auf verbindlich heben",
         "zustand": "entschieden",
         "seit": null,
-        "hinweis": "Am 09.09. entschieden. Er ändert die Form, nie den Inhalt.",
+        "hinweis": "Beschrieben, nicht gebaut. Er ändert die Form, nie den Inhalt.",
         "freigabe": "oeffentlich"
       },
       {
@@ -1174,11 +1528,11 @@
         "rolle": "Entwickler",
         "kurz": "Entwickler",
         "kern": "bauend",
-        "tut": "Skripte, Prüfregeln, Zäune und Testfälle bauen und laufen lassen.",
-        "tutNie": "eine Regel ohne Testfall produktiv setzen, Unterlagen prüfen",
+        "tut": "Testfälle schreiben, an denen Prüfregeln und Grenzen gemessen werden.",
+        "tutNie": "eine Regel ohne Testfall produktiv setzen, Unterlagen prüfen, Regeln, Skripte oder Akten selbst ändern",
         "zustand": "entschieden",
         "seit": null,
-        "hinweis": "Der erste der vier neuen. Er baut, was die ersten Stufen brauchen.",
+        "hinweis": "Beschrieben, nicht gebaut. Was er schreibt, führt ein Mensch zusammen.",
         "freigabe": "oeffentlich"
       },
       {
@@ -1186,11 +1540,11 @@
         "rolle": "Reporter",
         "kurz": "Reporter",
         "kern": "erstellend",
-        "tut": "Aus Befunden und Laufnotizen Berichte und Blätter im Erscheinungsbild des Hauses erzeugen.",
+        "tut": "Aus Befunden und Laufnotizen Berichte im Erscheinungsbild des Hauses erzeugen. Kürzen und umstellen darf er, solange jede Fundstelle stehen bleibt.",
         "tutNie": "eine Zahl erfinden, einen Befund bewerten oder umschreiben",
         "zustand": "entschieden",
         "seit": null,
-        "hinweis": "Macht die Ergebnisse lesbar, ohne dass jemand eine Sitzung öffnet.",
+        "hinweis": "Beschrieben, nicht gebaut. Jeder Bericht soll nennen, auf welchem Wissen er ruht.",
         "freigabe": "oeffentlich"
       },
       {
@@ -1198,11 +1552,11 @@
         "rolle": "Technischer Architekt",
         "kurz": "Architekt",
         "kern": "entwerfend",
-        "tut": "Notizen, Vorlagen, Risikoliste und Fahrplan pflegen und Widersprüche zwischen Notizen finden.",
-        "tutNie": "entscheiden, bauen, prüfen",
+        "tut": "Entscheidungen vorbereiten und Widersprüche zwischen Notizen finden. Er antwortet im Gespräch, mit genau einer Empfehlung und dem Punkt, an dem sie kippt.",
+        "tutNie": "entscheiden, bauen, prüfen, in die Ablage schreiben",
         "zustand": "entschieden",
         "seit": null,
-        "hinweis": "Kommt, wenn genug entstanden ist, das er ordnen kann.",
+        "hinweis": "Beschrieben, nicht gebaut.",
         "freigabe": "oeffentlich"
       },
       {
@@ -1214,10 +1568,561 @@
         "tutNie": "Inhalt ändern, das Erscheinungsbild ändern, Befunde bewerten",
         "zustand": "entschieden",
         "seit": null,
-        "hinweis": "Kommt zuletzt, nach dem Vergleichslauf.",
+        "hinweis": "Beschrieben, nicht gebaut.",
         "freigabe": "oeffentlich"
       }
     ],
+    "freigabe": "oeffentlich",
+    "grenzeWarum": "Die meisten Beschreibungen von KI-Agenten setzen Grenzen im Anweisungstext. Ein Text hält niemanden auf, am wenigsten ein Modell, das in einem geprüften Dokument auf eine gegenteilige Anweisung stößt.",
+    "verlauf": {
+      "text": "Am 09.09. waren sieben Rollen gesetzt. Am 11.09. ruhten alle außer Reviewer und Orchestrator, am 12.09. kam die Researcherin als achte dazu und arbeitet. Am 16.09. hat Erwin für alle acht Rollen vierzig Fragen beantwortet; umgesetzt ist das als Vorschlag, freigegeben wird Rolle für Rolle. Am 17.09. neu geschnitten: Bis zum 16.10. sollen Reviewer, Orchestrator, Reporter, Archivar, Architekt und Entwickler lauffähig sein, die Researcherin mit Grenze. Der Gestalter bleibt draußen.",
+      "freigabe": "intern"
+    }
+  },
+  "bewertungen": {
+    "erstmalsAm": "2026-09-09",
+    "stand": "2026-09-14",
+    "regeln": 9,
+    "bewertet": 109,
+    "gesehen": 49,
+    "fehlalarme": 0,
+    "zielGesehenJeRegel": 30,
+    "hoechstesGesehen": 14,
+    "regelnAmZiel": 0,
+    "gruppen": "Bewertet wurde überwiegend in Gruppen: Gleichartige Befunde bekamen ein gemeinsames Urteil, nachdem einige davon einzeln angesehen waren.",
+    "ungemessen": "Die beiden Regeln mit den meisten Meldungen sind noch nicht bewertet. Sie stellen den größten Teil der Minor-Befunde.",
+    "umgewichtet": "Oft hat eine Regel richtig gemessen, und nur die Stufe war falsch. Das als Fehlalarm zu zählen, würde die Quote verderben. Seit den ersten Bewertungen gibt es deshalb eine dritte Antwort: anders gewichtet.",
+    "rueckweg": "Aus jedem Lauf entsteht ein Bewertungsbogen. Der Mensch trägt je Befund „trifft zu“, „trifft nicht zu“ oder „anders gewichtet“ ein, und ein Skript liest den Bogen zurück und rechnet die Quote je Regel.",
+    "beispiel": {
+      "satz": "Eine Unterlage, die es nach Plan noch nicht gibt, ist kein Mangel der Unterlage.",
+      "text": "Fritz meldete für einen Themenkomplex fehlende Unterlagen als Blocker. Der Mensch stufte auf Hinweis herab, weil dieser Themenkomplex nach Plan noch gar nicht ausgearbeitet ist. Ein KI-Mitarbeiter kann das nicht wissen, es muss ihm gesagt werden. Seitdem steht es im Prüfprofil und nicht mehr im Kopf des Prüfers."
+    },
+    "quelle": "Quoten je Regel, Stand 14.09.2026, und Übergabe für eine öffentliche Seite vom 11.09.2026",
+    "freigabe": "oeffentlich"
+  },
+  "entscheidungenNachtragIntern": {
+    "text": "Am 11.09. wiederholte sich das Muster: Am Morgen fiel die Entscheidung, vorerst keinen weiteren KI-Mitarbeiter zu bauen, am Abend kam das Ziel dazu, bis zum 09.10. weitere anzulegen. Der Meilensteinplan löst das über die Auswahl, die ersten neuen urteilen nicht. Am 16.09. rückten mit Architekt und Entwickler zwei Rollen in diesen Zeitraum, die der Plan ausdrücklich ausschloss. Er wird deshalb neu geschnitten. Am 17.09. ist er neu geschnitten, bis zum 16.10. Erwins Auswahl dazu steht im Logbuch, noch als ungeprüft; der Plan selbst ist ein Entwurf.",
+    "freigabe": "intern"
+  },
+  "stufenPlan": {
+    "text": "Am 11.09. ist für die Wochen bis zum 09.10. ein Meilensteinplan mit vier Abnahmen entstanden. Am 17.09. ist er neu geschnitten worden, bis zum 16.10.: zuerst der Reviewer mit Grenze auf der eigenen Hardware, dann der Orchestrator mit Akte und Auftragsbuch, danach Reporter, Archivar und Architekt, zuletzt der Entwickler. Der neue Plan ist ein Entwurf und hat keinen Puffer.",
+    "freigabe": "intern"
+  },
+  "ablage": {
+    "freigabe": "oeffentlich",
+    "gezaehltAm": "2026-09-17",
+    "notizen": 139,
+    "verweise": 1205,
+    "unaufgeloest": 6,
+    "regelnotizen": 0,
+    "bereiche": [
+      {
+        "id": "konventionen",
+        "gruppe": "wissen",
+        "name": "Konventionen und Begriffe",
+        "kurz": "Konventionen",
+        "notizen": 6,
+        "verbindlich": 4,
+        "informativ": 0,
+        "ungeprueft": 0,
+        "ohneFeld": 2,
+        "verweiseNach": {
+          "entscheidungen": 6,
+          "unternehmen": 4,
+          "bauplan": 62,
+          "normbasis": 5,
+          "massstab": 12,
+          "quellen": 0,
+          "prueflaeufe": 33,
+          "arbeitsstand": 22,
+          "protokoll": 6,
+          "einstiege": 3,
+          "archiv": 4
+        }
+      },
+      {
+        "id": "entscheidungen",
+        "gruppe": "wissen",
+        "name": "Entscheidungen mit Datum",
+        "kurz": "Entscheidungen",
+        "notizen": 7,
+        "verbindlich": 5,
+        "informativ": 1,
+        "ungeprueft": 1,
+        "ohneFeld": 0,
+        "verweiseNach": {
+          "konventionen": 1,
+          "unternehmen": 0,
+          "bauplan": 13,
+          "normbasis": 0,
+          "massstab": 3,
+          "quellen": 0,
+          "prueflaeufe": 0,
+          "arbeitsstand": 16,
+          "protokoll": 1,
+          "einstiege": 7,
+          "archiv": 0
+        }
+      },
+      {
+        "id": "unternehmen",
+        "gruppe": "wissen",
+        "name": "Wissen über das Unternehmen",
+        "kurz": "Unternehmen",
+        "notizen": 11,
+        "verbindlich": 0,
+        "informativ": 0,
+        "ungeprueft": 11,
+        "ohneFeld": 0,
+        "verweiseNach": {
+          "konventionen": 0,
+          "entscheidungen": 0,
+          "bauplan": 3,
+          "normbasis": 0,
+          "massstab": 3,
+          "quellen": 1,
+          "prueflaeufe": 0,
+          "arbeitsstand": 0,
+          "protokoll": 0,
+          "einstiege": 11,
+          "archiv": 0
+        }
+      },
+      {
+        "id": "bauplan",
+        "gruppe": "wissen",
+        "name": "Bauplan der Mitarbeiter",
+        "kurz": "Bauplan",
+        "notizen": 9,
+        "verbindlich": 0,
+        "informativ": 0,
+        "ungeprueft": 1,
+        "ohneFeld": 8,
+        "verweiseNach": {
+          "konventionen": 13,
+          "entscheidungen": 11,
+          "unternehmen": 2,
+          "normbasis": 2,
+          "massstab": 16,
+          "quellen": 0,
+          "prueflaeufe": 9,
+          "arbeitsstand": 25,
+          "protokoll": 0,
+          "einstiege": 1,
+          "archiv": 2
+        }
+      },
+      {
+        "id": "normbasis",
+        "gruppe": "wissen",
+        "name": "Normbasis des Berufs",
+        "kurz": "Normbasis",
+        "notizen": 43,
+        "verbindlich": 0,
+        "informativ": 0,
+        "ungeprueft": 0,
+        "ohneFeld": 43,
+        "verweiseNach": {
+          "konventionen": 0,
+          "entscheidungen": 0,
+          "unternehmen": 0,
+          "bauplan": 0,
+          "massstab": 0,
+          "quellen": 10,
+          "prueflaeufe": 0,
+          "arbeitsstand": 0,
+          "protokoll": 0,
+          "einstiege": 0,
+          "archiv": 0
+        }
+      },
+      {
+        "id": "massstab",
+        "gruppe": "wissen",
+        "name": "Prüfmaßstab der Academy",
+        "kurz": "Prüfmaßstab",
+        "notizen": 8,
+        "verbindlich": 0,
+        "informativ": 0,
+        "ungeprueft": 0,
+        "ohneFeld": 8,
+        "verweiseNach": {
+          "konventionen": 1,
+          "entscheidungen": 0,
+          "unternehmen": 1,
+          "bauplan": 7,
+          "normbasis": 17,
+          "quellen": 0,
+          "prueflaeufe": 4,
+          "arbeitsstand": 1,
+          "protokoll": 0,
+          "einstiege": 1,
+          "archiv": 0
+        }
+      },
+      {
+        "id": "quellen",
+        "gruppe": "wissen",
+        "name": "Quellen",
+        "kurz": "Quellen",
+        "notizen": 3,
+        "verbindlich": 0,
+        "informativ": 0,
+        "ungeprueft": 1,
+        "ohneFeld": 2,
+        "verweiseNach": {
+          "konventionen": 0,
+          "entscheidungen": 0,
+          "unternehmen": 12,
+          "bauplan": 0,
+          "normbasis": 1,
+          "massstab": 0,
+          "prueflaeufe": 0,
+          "arbeitsstand": 0,
+          "protokoll": 0,
+          "einstiege": 3,
+          "archiv": 1
+        }
+      },
+      {
+        "id": "prueflaeufe",
+        "gruppe": "gedaechtnis",
+        "name": "Prüfläufe",
+        "kurz": "Prüfläufe",
+        "notizen": 20,
+        "verbindlich": 0,
+        "informativ": 0,
+        "ungeprueft": 3,
+        "ohneFeld": 17,
+        "verweiseNach": {
+          "konventionen": 1,
+          "entscheidungen": 0,
+          "unternehmen": 1,
+          "bauplan": 21,
+          "normbasis": 3,
+          "massstab": 41,
+          "quellen": 1,
+          "arbeitsstand": 0,
+          "protokoll": 0,
+          "einstiege": 0,
+          "archiv": 0
+        }
+      },
+      {
+        "id": "arbeitsstand",
+        "gruppe": "werkstatt",
+        "name": "Pläne, Berichte, Übergaben",
+        "kurz": "Arbeitsstände",
+        "notizen": 20,
+        "verbindlich": 0,
+        "informativ": 3,
+        "ungeprueft": 7,
+        "ohneFeld": 10,
+        "verweiseNach": {
+          "konventionen": 10,
+          "entscheidungen": 7,
+          "unternehmen": 5,
+          "bauplan": 50,
+          "normbasis": 1,
+          "massstab": 19,
+          "quellen": 0,
+          "prueflaeufe": 4,
+          "protokoll": 3,
+          "einstiege": 3,
+          "archiv": 4
+        }
+      },
+      {
+        "id": "protokoll",
+        "gruppe": "werkstatt",
+        "name": "Tagesprotokolle",
+        "kurz": "Protokolle",
+        "notizen": 6,
+        "verbindlich": 0,
+        "informativ": 0,
+        "ungeprueft": 0,
+        "ohneFeld": 6,
+        "verweiseNach": {
+          "konventionen": 10,
+          "entscheidungen": 11,
+          "unternehmen": 0,
+          "bauplan": 15,
+          "normbasis": 0,
+          "massstab": 2,
+          "quellen": 0,
+          "prueflaeufe": 0,
+          "arbeitsstand": 20,
+          "einstiege": 0,
+          "archiv": 0
+        }
+      },
+      {
+        "id": "einstiege",
+        "gruppe": "werkstatt",
+        "name": "Einstiege und Eingang",
+        "kurz": "Einstiege",
+        "notizen": 4,
+        "verbindlich": 0,
+        "informativ": 0,
+        "ungeprueft": 0,
+        "ohneFeld": 4,
+        "verweiseNach": {
+          "konventionen": 9,
+          "entscheidungen": 0,
+          "unternehmen": 0,
+          "bauplan": 2,
+          "normbasis": 1,
+          "massstab": 4,
+          "quellen": 2,
+          "prueflaeufe": 0,
+          "arbeitsstand": 3,
+          "protokoll": 0,
+          "archiv": 0
+        }
+      },
+      {
+        "id": "archiv",
+        "gruppe": "werkstatt",
+        "name": "Archiv",
+        "kurz": "Archiv",
+        "notizen": 2,
+        "verbindlich": 0,
+        "informativ": 0,
+        "ungeprueft": 0,
+        "ohneFeld": 2,
+        "verweiseNach": {
+          "konventionen": 0,
+          "entscheidungen": 0,
+          "unternehmen": 0,
+          "bauplan": 3,
+          "normbasis": 1,
+          "massstab": 0,
+          "quellen": 0,
+          "prueflaeufe": 0,
+          "arbeitsstand": 0,
+          "protokoll": 0,
+          "einstiege": 2
+        }
+      }
+    ],
+    "verfahren": "Gezählt von scripts/abbild-vault.mjs aus dem Frontmatter und den Verweisen der Notizen. Ausgelassen ist, was die Ablage selbst aus ihrem Index nimmt."
+  },
+  "landschaft": {
+    "stand": "2026-09-17",
+    "rechnerAufgenommen": "2026-09-11",
+    "rechnerBestaetigt": "2026-09-17",
+    "satz": "Zwei Orte führen dieselbe Mannschaft aus. Verbunden sind sie nur über die Ablage.",
+    "erklaerung": "Gebaut und gemessen wird auf der Werkbank mit Claude Code. Der Dauerbetrieb läuft im Haus, mit Hermes Agent auf einer DGX Spark und einem offenen Modell. Beide lesen und schreiben dieselbe Ablage, und nur die sehen beide. Was ein KI-Mitarbeiter zum Arbeiten braucht, steht in seiner Akte und nicht in einem der beiden Werkzeuge. So zieht er beim Wechsel mit.",
+    "rechnerStand": "Auf der eigenen Hardware laufen Harness und Modell, und Reviewer und Orchestrator sind dort als eigene Profile eingerichtet. Geprüft wird dort noch nicht: Wissen, Prüfprofile und Akte liegen noch nicht auf der Maschine, und die Grenze ist am Profil nicht aktiv.",
+    "vergleich": "Ob das offene Modell so gut prüft wie das Cloud-Modell, zeigt erst ein Vergleichslauf am selben Aufgabensatz. Bis dahin ist der Betrieb im Haus ein Pilot.",
+    "mensch": {
+      "name": "Der Mensch",
+      "zusatz": "beauftragt, bewertet, gibt frei"
+    },
+    "orte": [
+      {
+        "id": "werkbank",
+        "name": "Werkbank",
+        "produkt": "Claude Code",
+        "rolle": "baut, misst, prüft zum Vergleich"
+      },
+      {
+        "id": "ablage",
+        "name": "Ablage",
+        "produkt": "Git-Repositories",
+        "rolle": "Wissen, Akten, Aufträge, Gedächtnis"
+      },
+      {
+        "id": "rechner",
+        "name": "KI-Rechner im Haus",
+        "produkt": "Hermes Agent auf DGX Spark",
+        "rolle": "Dauerbetrieb mit offenem Modell"
+      }
+    ],
+    "bausteine": [
+      {
+        "id": "pruefskripte",
+        "ort": "werkbank",
+        "name": "Prüfskripte für fünf Prüfarten",
+        "zustand": "laeuft"
+      },
+      {
+        "id": "berichte",
+        "ort": "werkbank",
+        "name": "Berichte aus den Befunden",
+        "zustand": "laeuft"
+      },
+      {
+        "id": "rueckweg",
+        "ort": "werkbank",
+        "name": "Rückweg: Bogen und Quote je Regel",
+        "zustand": "laeuft"
+      },
+      {
+        "id": "werkzeugmacher",
+        "ort": "werkbank",
+        "name": "Acht Werkzeugmacher",
+        "zustand": "laeuft"
+      },
+      {
+        "id": "grenzprogramm",
+        "ort": "werkbank",
+        "name": "Grenzprogramm mit Testfällen",
+        "zustand": "vorhanden"
+      },
+      {
+        "id": "ausspielen",
+        "ort": "werkbank",
+        "name": "Akte in beide Werkzeuge ausspielen",
+        "zustand": "geplant"
+      },
+      {
+        "id": "wissen",
+        "ort": "ablage",
+        "name": "Wissen mit Freigabestand",
+        "zustand": "laeuft"
+      },
+      {
+        "id": "gedaechtnis",
+        "ort": "ablage",
+        "name": "Laufnotizen, Fälle, Quoten",
+        "zustand": "laeuft"
+      },
+      {
+        "id": "akten",
+        "ort": "ablage",
+        "name": "Akte des Reviewers",
+        "zustand": "vorhanden"
+      },
+      {
+        "id": "akte-researcherin",
+        "ort": "ablage",
+        "name": "Akte der Researcherin",
+        "zustand": "vorhanden",
+        "freigabe": "intern"
+      },
+      {
+        "id": "auftragsbuch",
+        "ort": "ablage",
+        "name": "Auftragsbuch, eine Notiz je Auftrag",
+        "zustand": "geplant"
+      },
+      {
+        "id": "regelnotizen",
+        "ort": "ablage",
+        "name": "Regelnotizen mit gemessener Quote",
+        "zustand": "geplant"
+      },
+      {
+        "id": "modell",
+        "ort": "rechner",
+        "name": "Offenes Sprachmodell, lokal",
+        "zustand": "laeuft"
+      },
+      {
+        "id": "profil-researcherin",
+        "ort": "rechner",
+        "name": "Profil der Researcherin",
+        "zustand": "laeuft",
+        "freigabe": "intern"
+      },
+      {
+        "id": "profile",
+        "ort": "rechner",
+        "name": "Profile: Reviewer, Orchestrator",
+        "zustand": "vorhanden"
+      },
+      {
+        "id": "stand-rechner",
+        "ort": "rechner",
+        "name": "Aktueller Stand von Wissen und Akte",
+        "zustand": "geplant"
+      },
+      {
+        "id": "grenze-profil",
+        "ort": "rechner",
+        "name": "Grenze am Profil",
+        "zustand": "geplant"
+      },
+      {
+        "id": "verteilen",
+        "ort": "rechner",
+        "name": "Aufträge verteilen nach Tabelle",
+        "zustand": "geplant"
+      },
+      {
+        "id": "sprache",
+        "ort": "rechner",
+        "name": "Sprachbedienung am Orchestrator",
+        "zustand": "geplant",
+        "freigabe": "intern"
+      }
+    ],
+    "verbindungen": [
+      {
+        "id": "sitzung",
+        "von": "mensch",
+        "nach": "werkbank",
+        "zeilen": [
+          "Sitzung"
+        ],
+        "zustand": "laeuft"
+      },
+      {
+        "id": "chat",
+        "von": "mensch",
+        "nach": "rechner",
+        "zeilen": [
+          "Auftrag per Chat"
+        ],
+        "zustand": "laeuft"
+      },
+      {
+        "id": "direkt",
+        "von": "werkbank",
+        "nach": "ablage",
+        "zeilen": [
+          "liest und",
+          "schreibt direkt"
+        ],
+        "zustand": "laeuft"
+      },
+      {
+        "id": "bus",
+        "von": "rechner",
+        "nach": "ablage",
+        "zeilen": [
+          "über Git,",
+          "steht noch nicht"
+        ],
+        "zustand": "geplant",
+        "traegt": true
+      },
+      {
+        "id": "vergleich",
+        "von": "werkbank",
+        "nach": "rechner",
+        "zeilen": [
+          "Vergleichslauf am selben Aufgabensatz, steht aus"
+        ],
+        "zustand": "geplant"
+      },
+      {
+        "id": "seite",
+        "von": "ablage",
+        "nach": "seite",
+        "zeilen": [
+          "Stand nachgezogen, geprüft, bei jedem Push gebaut"
+        ],
+        "zustand": "laeuft"
+      }
+    ],
+    "seite": {
+      "name": "Diese Seite",
+      "produkt": "GitHub Pages, öffentlich",
+      "seit": "2026-09-17"
+    },
+    "quelle": "Systemarchitektur Orchestrator vom 09.09., nachgezogen am 11.09.; Bestandsaufnahme vom 16.09.; Meilensteinplan vom 17.09., Entwurf; Stand der eigenen Hardware vom 11.09., am 17.09. als unverändert bestätigt",
     "freigabe": "oeffentlich"
   }
 }

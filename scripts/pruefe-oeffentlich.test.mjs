@@ -65,12 +65,12 @@ test('pruefen findet einen internen Satz auch im JavaScript und in der RSC-Datei
   const daten = join(ordner, 'stand.json')
   await writeFile(
     daten,
-    JSON.stringify({ a: { freigabe: 'intern', satz: 'Die Grenze hängt noch nicht am Profil.' } }),
+    JSON.stringify({ a: { freigabe: 'intern', satz: 'Das Wort Prüfung steht nur in der internen Fassung.' } }),
   )
   await writeFile(join(ordner, 'index.html'), '<p>Nichts zu sehen.</p>')
-  // Im JavaScript steht das ä als Unicode-Escape, so wie ein Bundler es schreiben kann.
-  await writeFile(join(ordner, 'chunk.js'), 'var a={satz:"Die Grenze h\\u00e4ngt noch nicht am Profil."};')
-  await writeFile(join(ordner, 'index.txt'), '1:["Die Grenze hängt noch nicht am Profil."]')
+  // Im JavaScript steht das ü als Unicode-Escape, so wie ein Bundler es schreiben kann.
+  await writeFile(join(ordner, 'chunk.js'), 'var a={satz:"Das Wort Pr\\u00fcfung steht nur in der internen Fassung."};')
+  await writeFile(join(ordner, 'index.txt'), '1:["Das Wort Prüfung steht nur in der internen Fassung."]')
 
   const funde = await pruefen({ ausgabe: ordner, daten, log: still })
   assert.deepEqual(

@@ -1,4 +1,6 @@
+import { AblageFigur } from '@/components/figuren/Ablage'
 import { EnablerRaster } from '@/components/figuren/EnablerRaster'
+import { LandschaftFigur } from '@/components/figuren/Landschaft'
 import { MannschaftFigur } from '@/components/figuren/Mannschaft'
 import { Schichtenstapel } from '@/components/figuren/Schichtenstapel'
 import { Durchlauf } from '@/components/figuren/Durchlauf'
@@ -10,7 +12,7 @@ import { HeroAnatomie } from '@/components/landing/HeroAnatomie'
 import { Kopfleiste } from '@/components/landing/Kopfleiste'
 import { Sektion } from '@/components/landing/Sektion'
 import { daten, datum, harteRegel, tageZwischen, zahl } from '@/lib/daten'
-import { istIntern, nurSichtbare } from '@/lib/freigabe'
+import { istIntern, nurSichtbare, sichtbar } from '@/lib/freigabe'
 
 export default function Landing() {
   const d = daten
@@ -19,9 +21,19 @@ export default function Landing() {
   const rechenlauf = d.prueflaeufe.laeufe.find((l) => l.zusatz != null)
   const wiederholung = d.prueflaeufe.laeufe.find((l) => l.art === 'wiederholung')
   const fehlalarmquote = d.messluecken.find((m) => m.id === 'fehlalarmquote')!
+  const b = d.bewertungen
   const stufen = nurSichtbare(d.stufen)
   const m = d.mannschaft
   const koepfe = nurSichtbare(m.koepfe)
+  const l = d.landschaft
+  const ortName = new Map(l.orte.map((o) => [o.id, o.name]))
+  const zustaende = [
+    { zustand: 'laeuft', kopf: 'Läuft' },
+    { zustand: 'vorhanden', kopf: 'Vorhanden, noch nicht im Einsatz' },
+    { zustand: 'geplant', kopf: 'Entschieden, nicht gebaut' },
+  ] as const
+  const fachlich = d.ablage.bereiche.filter((a) => a.id === 'normbasis' || a.id === 'massstab')
+  const fachlichVerbindlich = fachlich.reduce((s, a) => s + a.verbindlich, 0)
 
   return (
     <>
@@ -76,7 +88,7 @@ export default function Landing() {
               </dd>
             </div>
             <div className="lp-spec-zeile">
-              <dt>Nicht gemessen</dt>
+              <dt>Nicht belastbar</dt>
               <dd>
                 <b>die Fehlalarmquote.</b> {d.standSatz}
               </dd>
@@ -275,6 +287,33 @@ export default function Landing() {
               die still veraltet. Zu jeder Notiz gehört, woher sie stammt und ob sie bestätigt ist.
             </p>
           </div>
+
+          {sichtbar(d.ablage) ? (
+            <>
+              <p className="lp-aussage lp-luft-oben">So sieht die Ablage heute aus.</p>
+              <div className="lp-text lp-luft-oben-klein">
+                <p>
+                  Das Bild ist aus den Notizen selbst gezählt, nicht von Hand gezeichnet. Jedes
+                  Kästchen ist eine Notiz, gefärbt nach ihrem Freigabestand. Rechts steht, auf
+                  welchen anderen Bereich ein Bereich am häufigsten verweist. Dateinamen stehen
+                  nicht darin.
+                </p>
+              </div>
+
+              <AblageFigur />
+
+              {fachlichVerbindlich === 0 ? (
+                <div className="lp-text lp-luft-oben">
+                  <p>
+                    Verbindlich ist bisher nur, was Konventionen und Entscheidungen festhält. Die
+                    Normbasis und der Prüfmaßstab, gegen die der Reviewer prüft, hat noch niemand
+                    freigegeben. Er muss deshalb in jedem Ergebnis sagen, dass er sich auf
+                    Ungeprüftes stützt.
+                  </p>
+                </div>
+              ) : null}
+            </>
+          ) : null}
         </Sektion>
 
         {/* 07 Durchlauf ------------------------------------------------------ */}
@@ -336,17 +375,86 @@ export default function Landing() {
                 Die härtere Zahl. Sie lässt sich nur erheben, wenn Fachleute eine Stichprobe
                 durchsehen und Stück für Stück sagen: berechtigt oder Fehlalarm.
               </p>
-              <p className="stark">Bis heute nicht gemessen. Das ist der nächste Schritt.</p>
+              {sichtbar(b) ? (
+                <p className="stark">
+                  Erste Bewertungen seit dem {datum(b.erstmalsAm)}. Belastbar ist die Quote
+                  {b.regelnAmZiel === 0
+                    ? ' noch bei keiner Regel.'
+                    : ` bei ${zahl(b.regelnAmZiel)} von ${zahl(b.regeln)} Regeln.`}
+                </p>
+              ) : (
+                <p className="stark">Bis heute nicht gemessen. Das ist der nächste Schritt.</p>
+              )}
             </div>
           </div>
 
-          <div className="lp-hero-zahl lp-luft-oben">
-            <p className="wert">0</p>
-            <p className="beschriftung">
-              von {zahl(fehlalarmquote.unbewertet!)} Befunden und Hinweisen sind bisher von einem
-              Menschen bewertet worden.
-            </p>
-          </div>
+          {sichtbar(b) ? (
+            <>
+              <div className="lp-hero-zahl lp-luft-oben">
+                <p className="wert">{zahl(b.bewertet)}</p>
+                <p className="beschriftung">
+                  Befunde hat ein Mensch bisher bewertet, über {zahl(b.regeln)} Regeln.{' '}
+                  {zahl(b.gesehen)} davon hat er einzeln angesehen. Fehlalarme darunter:{' '}
+                  {zahl(b.fehlalarme)}.
+                </p>
+              </div>
+
+              <div className="lp-text lp-luft-oben">
+                <p>Das ist ein gutes Zeichen und noch keine Abnahme. Dafür gibt es drei Gründe.</p>
+              </div>
+              <div className="lp-zellen">
+                <div className="lp-zelle">
+                  <span className="kopf">In Gruppen bewertet</span>
+                  <p className="stark">{b.gruppen}</p>
+                  <p>
+                    Einzeln angesehen: {zahl(b.gesehen)} von {zahl(b.bewertet)}.
+                  </p>
+                </div>
+                <div className="lp-zelle traegt">
+                  <span className="kopf">Zu kleine Stichprobe</span>
+                  <p className="stark">
+                    Das eigene Ziel sind {zahl(b.zielGesehenJeRegel)} einzeln angesehene Fälle je
+                    Regel.
+                  </p>
+                  <p>
+                    {b.regelnAmZiel === 0
+                      ? 'Das erreicht bisher keine Regel.'
+                      : `Das erreichen ${zahl(b.regelnAmZiel)} von ${zahl(b.regeln)} Regeln.`}{' '}
+                    Am nächsten kommt ihm eine Regel mit {zahl(b.hoechstesGesehen)}.
+                  </p>
+                </div>
+                <div className="lp-zelle">
+                  <span className="kopf">Das Meiste fehlt</span>
+                  <p className="stark">{b.ungemessen}</p>
+                </div>
+              </div>
+
+              <div className="lp-text lp-luft-oben">
+                <p>{b.rueckweg}</p>
+                <p>{b.umgewichtet}</p>
+                <p>
+                  Aus den ersten Läufen sind {zahl(fehlalarmquote.unbewertet!)} Befunde und Hinweise
+                  weiter ohne Bewertung.
+                </p>
+              </div>
+
+              <div className="lp-zellen">
+                <div className="lp-zelle traegt">
+                  <span className="kopf">Was eine Bewertung lehrt</span>
+                  <p className="stark">{b.beispiel.satz}</p>
+                  <p>{b.beispiel.text}</p>
+                </div>
+              </div>
+            </>
+          ) : (
+            <div className="lp-hero-zahl lp-luft-oben">
+              <p className="wert">0</p>
+              <p className="beschriftung">
+                von {zahl(fehlalarmquote.unbewertet!)} Befunden und Hinweisen sind bisher von einem
+                Menschen bewertet worden.
+              </p>
+            </div>
+          )}
 
           <p className="lp-klein lp-luft-oben">
             Entschieden am {datum(d.massstab.kalibrierung.entschiedenAm)}
@@ -454,26 +562,76 @@ export default function Landing() {
           <div className="lp-luft-oben">
             {koepfe.map((k) => (
               <div className="lp-stufe" key={k.id}>
-                <span className="wann">{k.zustand === 'arbeitet' ? 'arbeitet' : 'entschieden'}</span>
+                <span className="wann">
+                  {k.zustand}
+                  {istIntern && k.freigabe === 'intern' ? ', nur intern' : ''}
+                </span>
                 <div>
                   <h3>{k.rolle}</h3>
                   <p>{k.tut}</p>
                   <p className="bedingung">Tut nie: {k.tutNie}</p>
+                  <p className="bedingung">{k.hinweis}</p>
                 </div>
               </div>
             ))}
           </div>
           <div className="lp-zellen lp-luft-oben">
             <div className="lp-zelle traegt">
-              <span className="kopf">Warum sie Rollen werden</span>
+              <span className="kopf">Warum nicht mehr auf einmal</span>
               <p className="stark">{m.engpass}</p>
             </div>
             <div className="lp-zelle">
-              <span className="kopf">Was beiden Bestehenden fehlt</span>
+              <span className="kopf">Die Akte</span>
               <p className="stark">{m.akte}</p>
             </div>
+            <div className="lp-zelle">
+              <span className="kopf">Warum ein Programm</span>
+              <p className="stark">{d.auftrag.anweisungImDokument.satz}</p>
+              <p>{m.grenzeWarum}</p>
+            </div>
           </div>
+          {sichtbar(m.verlauf) ? (
+            <div className="lp-text lp-luft-oben">
+              <p className="lp-intern">nur intern</p>
+              <p>{m.verlauf.text}</p>
+            </div>
+          ) : null}
         </Sektion>
+
+        {/* Landschaft ------------------------------------------------------- */}
+        {sichtbar(l) ? (
+          <Sektion id="landschaft">
+            <p className="lp-aussage breit">{l.satz}</p>
+            <div className="lp-text lp-luft-oben-klein">
+              <p>{l.erklaerung}</p>
+            </div>
+
+            <LandschaftFigur />
+
+            <div className="lp-zellen lp-luft-oben">
+              {zustaende.map((z) => (
+                <div className={z.zustand === 'geplant' ? 'lp-zelle traegt' : 'lp-zelle'} key={z.zustand}>
+                  <span className="kopf">{z.kopf}</span>
+                  <ul className="liste" style={{ marginTop: '0.2rem' }}>
+                    {nurSichtbare(l.bausteine)
+                      .filter((bs) => bs.zustand === z.zustand)
+                      .map((bs) => (
+                        <li key={bs.id} style={{ fontSize: '0.86rem' }}>
+                          {bs.name}, {ortName.get(bs.ort)}
+                          {istIntern && bs.freigabe === 'intern' ? ' (nur intern)' : ''}
+                        </li>
+                      ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+
+            <div className="lp-text lp-luft-oben">
+              <p>{l.rechnerStand}</p>
+              <p>{l.vergleich}</p>
+            </div>
+          </Sektion>
+        ) : null}
 
         {/* 11 Steuerung ------------------------------------------------------ */}
         <Sektion id="steuerung">
@@ -505,10 +663,13 @@ export default function Landing() {
             {tageZwischen(d.arbeitstage.beginn, d.stand)} Tage, mit Datum.
           </p>
           <div className="lp-zeit">
-            {d.arbeitstage.eintraege.map((e) => (
-              <div className="lp-zeit-zeile" key={e.datum}>
+            {nurSichtbare(d.arbeitstage.eintraege).map((e) => (
+              <div className="lp-zeit-zeile" key={e.datum + e.text}>
                 <span className="wann">{datum(e.datum)}</span>
-                <span className="was">{e.text}</span>
+                <span className="was">
+                  {e.text}
+                  {istIntern && e.freigabe === 'intern' ? ' (nur intern)' : ''}
+                </span>
               </div>
             ))}
           </div>
@@ -559,10 +720,17 @@ export default function Landing() {
                   <h3>{s.titel}</h3>
                   <p>{s.text}</p>
                   <p className="bedingung">{s.bedingung}</p>
+                  {s.stand ? <p className="bedingung">{s.stand}</p> : null}
                 </div>
               </div>
             ))}
           </div>
+          {sichtbar(d.stufenPlan) ? (
+            <div className="lp-text lp-luft-oben">
+              <p className="lp-intern">nur intern</p>
+              <p>{d.stufenPlan.text}</p>
+            </div>
+          ) : null}
         </Sektion>
 
         {/* 14 Aufwand -------------------------------------------------------- */}
@@ -611,12 +779,14 @@ export default function Landing() {
                 <span className="nr">{String(i + 1).padStart(2, '0')}</span>
                 <span>
                   <span className="punkt">{s}</span>
+                  <p className="grund">{d.plattform.schritteStand[i] ?? 'offen'}</p>
                   {i === 3 ? <p className="grund">{d.plattform.warumAbschaltung}</p> : null}
                 </span>
               </li>
             ))}
           </ol>
           <div className="lp-text lp-luft-oben">
+            <p>{d.plattform.amTermin}</p>
             <p>{d.plattform.nichtBeantwortet}</p>
           </div>
         </Sektion>

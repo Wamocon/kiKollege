@@ -29,14 +29,15 @@ const NICHT_PRUEFEN = new Set(['freigabe', 'id', 'datei', 'gruppe', 'ort'])
 /** Eigennamen, die in der oeffentlichen Fassung nichts zu suchen haben, egal in
  *  welchem Datenfeld sie auftauchen: Hersteller, Produkte, Laufzeiten, Pfade.
  *  Die Seite spricht nach aussen von der Werkbank und vom KI-Rechner. Wer einen
- *  dieser Namen oeffentlich zeigen will, entscheidet das und streicht ihn hier. */
+ *  dieser Namen oeffentlich zeigen will, entscheidet das und streicht ihn hier.
+ *
+ *  Gestrichen am 17.09.2026, entschieden von Erwin Moretz: Claude, Hermes, DGX
+ *  und Spark. Die Systemlandschaft nennt Claude Code, Hermes Agent und DGX
+ *  Spark auch oeffentlich. Das Modell, der Anbieter dahinter, der Messenger,
+ *  die Ablagesoftware und Pfade bleiben intern. */
 export const NUR_INTERN = [
-  'Hermes',
   'Qwen',
-  'DGX',
-  'Spark',
   'Anthropic',
-  'Claude',
   'Telegram',
   'Obsidian',
   'KFBM',

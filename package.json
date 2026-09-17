@@ -8,6 +8,7 @@
     "build": "next build",
     "start": "next start",
     "export:vault": "node scripts/export-vault.mjs",
+    "abbild:vault": "node scripts/abbild-vault.mjs",
     "pruefe:oeffentlich": "node scripts/pruefe-oeffentlich.mjs",
     "pruefe:bestand": "node scripts/pruefe-bestand.mjs",
     "test:export": "node --test scripts/export-vault.test.mjs",
