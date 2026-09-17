@@ -1,0 +1,41 @@
+{
+  "stand": "2026-08-30",
+  "herkunft": {
+    "erzeugt": "2026-08-30",
+    "fristTage": 7,
+    "verfahren": "Von Hand.",
+    "quellen": ["Übergabe vom 30.08."]
+  },
+  "prueflaeufe": {
+    "zeitraum": { "von": "2026-08-27", "bis": "2026-08-30" },
+    "protokolliert": 1,
+    "imDokumentAusgewiesen": 1,
+    "laeufe": [
+      {
+        "id": "2026-08-27-usecases",
+        "datum": "2026-08-27",
+        "art": "mechanisch",
+        "gegenstand": "von Hand beschrieben",
+        "geprueft": 238,
+        "hinweise": 219,
+        "freigabe": "oeffentlich"
+      }
+    ]
+  },
+  "entscheidungen": [
+    { "datum": "2026-08-20", "entscheidung": "Eine Entscheidung, die der Vault nicht mehr führt" },
+    { "datum": "2026-08-28", "entscheidung": "Der Reviewer heißt Fritz", "freigabe": "oeffentlich" }
+  ],
+  "offenePunkte": [
+    {
+      "nr": 1,
+      "punkt": "Alter Wortlaut",
+      "grund": "alter Grund",
+      "freigabe": "intern",
+      "erledigt": { "am": "2026-08-29", "text": "Erledigt von Hand." }
+    },
+    { "nr": 9, "punkt": "Ein Punkt, den der Vault nicht mehr führt", "grund": null }
+  ],
+  "begriffe": ["KI-Mitarbeiter", "Agent", "Skill"],
+  "gesellschaften": [{ "name": "Beispiel GmbH" }]
+}

@@ -6,6 +6,7 @@ import { dirname, join } from 'node:path'
 
 import {
   alsPrueflauf,
+  entscheidungenZusammenfuehren,
   exportieren,
   findeDatei,
   findeNotizordner,
@@ -13,7 +14,9 @@ import {
   leseEntscheidungen,
   leseFrontmatter,
   leseOffenePunkte,
+  laeufeZusammenfuehren,
   normDatum,
+  punkteZusammenfuehren,
 } from './export-vault.mjs'
 
 const hier = dirname(fileURLToPath(import.meta.url))
@@ -22,8 +25,10 @@ const vaultFlach = join(hier, '__fixtures__', 'vault-flach')
 const vaultOhneLaeufe = join(hier, '__fixtures__', 'vault-ohne-laeufe')
 const vaultLeer = join(hier, '__fixtures__', 'vault-leer')
 const ziel = join(hier, '..', 'data', 'projektstand.json')
+const standAlt = join(hier, '__fixtures__', 'stand-alt.json')
 const still = () => {}
 const bisher = JSON.parse(readFileSync(ziel, 'utf8'))
+const alt = JSON.parse(readFileSync(standAlt, 'utf8'))
 
 test('leseFrontmatter liest flache Felder und lässt den Rumpf stehen', () => {
   const { felder, rumpf } = leseFrontmatter(
@@ -102,40 +107,97 @@ test('freigabeUebernehmen behält eine früher gezogene Grenze', () => {
   ])
 })
 
-test('exportieren liest den Fixture-Vault und lässt Handgeschriebenes stehen', async () => {
-  const neu = await exportieren({ vault, ziel, probelauf: true, log: still })
+test('alsPrueflauf liest hinweis in der Einzahl und bewertet', () => {
+  const lauf = alsPrueflauf({ stand: '2026-09-09', geprueft: 239, hinweis: 161, bewertet: 49 }, 'Enabler.md')
+  assert.equal(lauf.hinweise, 161)
+  assert.equal(lauf.bewertet, 49)
+  assert.ok(alsPrueflauf({ stand: '2026-09-09', hinweis: 3 }, 'Nur Hinweise.md'), 'hinweis allein ist ein Ergebnis')
+})
+
+test('laeufeZusammenfuehren nimmt nur Neueres und nichts doppelt', () => {
+  const alt = {
+    zeitraum: { von: '2026-08-27', bis: '2026-09-01' },
+    laeufe: [{ id: 'a', datum: '2026-08-27', geprueft: 10 }],
+  }
+  const { laeufe, dazu } = laeufeZusammenfuehren(alt, [
+    { id: 'a-aus-dem-vault', datum: '2026-08-27', geprueft: 10 },
+    { id: 'aelter', datum: '2026-08-30', geprueft: 5 },
+    { id: 'neu', datum: '2026-09-02', geprueft: 7 },
+  ])
+  assert.deepEqual(dazu.map((l) => l.id), ['neu'])
+  assert.deepEqual(laeufe.map((l) => l.id), ['a', 'neu'])
+})
+
+test('entscheidungenZusammenfuehren ergänzt und entfernt nichts', () => {
+  const alt = [{ datum: '2026-08-28', entscheidung: 'B' }, { datum: '2026-08-20', entscheidung: 'A' }]
+  const neu = entscheidungenZusammenfuehren(alt, [
+    { datum: '2026-08-28', entscheidung: 'B' },
+    { datum: '2026-09-01', entscheidung: 'C' },
+  ])
+  assert.deepEqual(neu.map((e) => e.entscheidung), ['A', 'B', 'C'])
+})
+
+test('punkteZusammenfuehren ändert den Wortlaut und behält die übrigen Felder', () => {
+  const alt = [
+    { nr: 2, punkt: 'alt', grund: 'alt', erledigt: { am: '2026-09-01', text: 'x' } },
+    { nr: 7, punkt: 'bleibt', grund: null },
+  ]
+  const neu = punkteZusammenfuehren(alt, [
+    { nr: 2, punkt: 'neu', grund: 'neu' },
+    { nr: 3, punkt: 'dazu', grund: null },
+  ])
+  assert.deepEqual(neu, [
+    { nr: 2, punkt: 'neu', grund: 'neu', erledigt: { am: '2026-09-01', text: 'x' } },
+    { nr: 3, punkt: 'dazu', grund: null },
+    { nr: 7, punkt: 'bleibt', grund: null },
+  ])
+})
+
+test('exportieren führt den Fixture-Vault mit dem alten Stand zusammen', async () => {
+  const neu = await exportieren({ vault, ziel: standAlt, probelauf: true, heute: '2026-09-10', log: still })
 
   const ids = neu.prueflaeufe.laeufe.map((l) => l.id)
-  assert.deepEqual(ids, [
-    '2026-08-27-usecases',
-    '2026-08-31-quiz-voll',
-    '2026-09-04-wiederholung',
-  ])
-  assert.equal(neu.prueflaeufe.laeufe.length, 3, 'Konzeptnotiz darf nicht als Lauf zählen')
-  assert.deepEqual(neu.prueflaeufe.zeitraum, { von: '2026-08-27', bis: '2026-09-04' })
-  assert.equal(neu.stand, '2026-09-04')
-
+  assert.deepEqual(ids, ['2026-08-27-usecases', '2026-08-31-quiz-voll', '2026-09-04-wiederholung'])
+  assert.equal(neu.prueflaeufe.laeufe[0].gegenstand, 'von Hand beschrieben', 'Kuratiertes bleibt')
   assert.equal(neu.prueflaeufe.laeufe[1].freigabe, 'intern', 'Freigabe aus dem Frontmatter')
   assert.equal(neu.prueflaeufe.laeufe[0].freigabe, 'oeffentlich', 'Freigabe aus dem alten Stand')
+  assert.deepEqual(neu.prueflaeufe.zeitraum, { von: '2026-08-27', bis: '2026-09-04' })
+  assert.equal(neu.prueflaeufe.protokolliert, 3, 'Konzeptnotiz darf nicht als Lauf zählen')
+  assert.equal(neu.prueflaeufe.imDokumentAusgewiesen, 3)
+  assert.equal(neu.stand, '2026-09-04')
 
-  assert.equal(neu.entscheidungen.length, 2)
-  assert.equal(neu.offenePunkte.length, 3)
+  assert.deepEqual(neu.entscheidungen.map((e) => e.datum), ['2026-08-20', '2026-08-28', '2026-09-03'])
+  assert.equal(neu.entscheidungen[1].freigabe, 'oeffentlich')
+
+  assert.deepEqual(neu.offenePunkte.map((p) => p.nr), [1, 2, 3, 9])
+  assert.equal(neu.offenePunkte[0].punkt, 'Die vorliegenden Befunde bewerten')
+  assert.equal(neu.offenePunkte[0].freigabe, 'intern')
+  assert.equal(neu.offenePunkte[0].erledigt.am, '2026-08-29')
+
+  assert.equal(neu.herkunft.verfahren, 'Von Hand.')
+  assert.equal(neu.herkunft.erzeugt, '2026-09-10')
+  assert.deepEqual(neu.herkunft.quellen, [
+    'Übergabe vom 30.08.',
+    'Laufnotizen der Prüfläufe, exportiert am 10.09.2026',
+  ])
 
   // Handgeschriebenes bleibt unangetastet
-  assert.equal(neu.begriffe.length, 3)
-  assert.equal(neu.massstab.kriterien.gesamt, 11)
-  assert.equal(neu.auftrag.harteRegeln.length, 4)
-  assert.equal(neu.gesellschaften.length, 2)
+  assert.deepEqual(neu.begriffe, alt.begriffe)
+  assert.deepEqual(neu.gesellschaften, alt.gesellschaften)
 })
 
 test('exportieren behält den alten Stand, wenn der Vault keine Läufe hat', async () => {
-  const neu = await exportieren({ vault: vaultOhneLaeufe, ziel, probelauf: true, log: still })
-  assert.equal(
-    neu.prueflaeufe.laeufe.length,
-    bisher.prueflaeufe.laeufe.length,
-    'Fallback auf den bisherigen Stand',
-  )
-  assert.equal(neu.stand, bisher.stand)
+  const neu = await exportieren({ vault: vaultOhneLaeufe, ziel: standAlt, probelauf: true, log: still })
+  assert.deepEqual(neu.prueflaeufe.laeufe, alt.prueflaeufe.laeufe)
+  assert.equal(neu.stand, alt.stand)
+})
+
+test('exportieren lässt einen jüngeren Stand stehen und datiert nichts um', async () => {
+  const neu = await exportieren({ vault, ziel, probelauf: true, heute: '2099-01-01', log: still })
+  assert.equal(neu.stand, bisher.stand, 'kein Lauf ist jünger als der Stand der Daten')
+  assert.deepEqual(neu.prueflaeufe.laeufe, bisher.prueflaeufe.laeufe)
+  assert.equal(neu.herkunft.arbeitsordner, bisher.herkunft.arbeitsordner)
+  assert.equal(neu.herkunft.verfahren, bisher.herkunft.verfahren)
 })
 
 test('findeNotizordner findet den Ordner aus dem Übergabedokument', async () => {
@@ -165,19 +227,17 @@ test('findeDatei nimmt den ersten Treffer und achtet nicht auf Grossschreibung',
 })
 
 test('exportieren liest einen Vault mit abweichendem Aufbau', async () => {
-  const neu = await exportieren({ vault: vaultFlach, ziel, probelauf: true, log: still })
+  const neu = await exportieren({ vault: vaultFlach, ziel: standAlt, probelauf: true, log: still })
   assert.deepEqual(
     neu.prueflaeufe.laeufe.map((l) => l.id),
-    ['2026-09-08-stichprobe'],
+    ['2026-08-27-usecases', '2026-09-08-stichprobe'],
   )
   assert.equal(neu.stand, '2026-09-08')
-  assert.deepEqual(neu.entscheidungen, [
-    { datum: '2026-09-08', entscheidung: 'Der Notizordner liegt außerhalb von 00_Vault' },
+  assert.deepEqual(neu.entscheidungen.map((e) => e.entscheidung), [
+    'Eine Entscheidung, die der Vault nicht mehr führt',
+    'Der Reviewer heißt Fritz',
+    'Der Notizordner liegt außerhalb von 00_Vault',
   ])
-  assert.equal(neu.herkunft.notizordner, join('Notizen', 'KI-Mitarbeiter'))
-  assert.equal(
-    neu.offenePunkte.length,
-    bisher.offenePunkte.length,
-    'ohne Datei bleibt der bisherige Stand',
-  )
+  assert.equal(neu.herkunft.notizordner, 'Notizen/KI-Mitarbeiter')
+  assert.deepEqual(neu.offenePunkte, alt.offenePunkte, 'ohne Datei bleibt der bisherige Stand')
 })

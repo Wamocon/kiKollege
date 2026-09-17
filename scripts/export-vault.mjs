@@ -3,13 +3,25 @@
  * Liest Kennzahlen, Entscheidungen und offene Punkte aus dem Vault und schreibt
  * sie nach data/projektstand.json.
  *
- *   npm run export:vault -- --vault "D:\WAMOCON\KI-Mitarbeiter" --probelauf
- *   npm run export:vault -- --vault "D:\WAMOCON\KI-Mitarbeiter"
+ *   npm run export:vault -- --vault "D:\WAMOCON\KFBM" --probelauf
+ *   npm run export:vault -- --vault "D:\WAMOCON\KFBM"
  *
- * Das Skript ersetzt nur die Abschnitte, die es aus dem Vault ableiten kann.
- * Prosa, Begriffe, Massstab und alles andere von Hand Geschriebene bleibt stehen.
- * Ein bereits gesetztes Feld "freigabe" bleibt erhalten, damit die Grenze
- * zwischen intern und oeffentlich nicht bei jedem Export verloren geht.
+ * Das Skript ergaenzt nur, was es aus dem Vault ableiten kann, und entfernt
+ * nichts. Prosa, Begriffe, Massstab und alles andere von Hand Geschriebene
+ * bleibt stehen. Ein bereits gesetztes Feld "freigabe" bleibt erhalten, damit
+ * die Grenze zwischen intern und oeffentlich nicht bei jedem Export verloren
+ * geht.
+ *
+ * Zusammengefuehrt wird so:
+ * - Prueflaeufe: Die Liste in den Daten ist von Hand kuratiert. Dazu kommen nur
+ *   Laeufe, die neuer sind als das Ende des bisherigen Zeitraums und nicht
+ *   schon mit demselben Datum und derselben Zahl geprueft dastehen.
+ * - Entscheidungen: Neue kommen dazu, bestehende bleiben.
+ * - Offene Punkte: Ein Punkt mit bekannter Nummer bekommt den neuen Wortlaut,
+ *   seine uebrigen Felder bleiben. Neue Nummern kommen dazu, keine faellt weg.
+ * - stand ist das juengere von bisherigem Stand und juengstem Lauf.
+ * - herkunft.erzeugt wird nur gesetzt, wenn sich etwas geaendert hat.
+ *   Arbeitsordner und Verfahren bleiben, wie sie sind.
  *
  * Der Ordner mit den Laufnotizen wird gesucht, nicht vorausgesetzt: --vault
  * darf auf den Vault oder gleich auf den Notizordner zeigen. Der Probelauf
@@ -18,7 +30,7 @@
 
 import { readFile, readdir, writeFile } from 'node:fs/promises'
 import { existsSync } from 'node:fs'
-import { basename, join, relative, resolve } from 'node:path'
+import { basename, join, relative, resolve, sep } from 'node:path'
 
 export const ORTE = {
   /** Aus dem Uebergabedokument bekannte Lagen, in dieser Reihenfolge geprueft. */
@@ -143,6 +155,7 @@ const ZAHLFELDER = [
   'major',
   'minor',
   'hinweise',
+  'bewertet',
   'enabler',
   'fragen',
   'themenkomplexe',
@@ -157,7 +170,7 @@ const ZAHLFELDER = [
  *  uebergangen, damit Konzeptnotizen nicht als Lauf gezaehlt werden. */
 export function alsPrueflauf(felder, dateiname) {
   const stand = normDatum(felder.stand ?? felder.datum)
-  const hatErgebnis = ZAHLFELDER.some((f) => typeof felder[f] === 'number')
+  const hatErgebnis = [...ZAHLFELDER, 'hinweis'].some((f) => typeof felder[f] === 'number')
   if (!stand || !hatErgebnis) return null
 
   const lauf = {
@@ -169,6 +182,8 @@ export function alsPrueflauf(felder, dateiname) {
   for (const f of ZAHLFELDER) {
     if (typeof felder[f] === 'number') lauf[f] = felder[f]
   }
+  // Die Laufnotizen schreiben das Feld in der Einzahl
+  if (lauf.hinweise == null && typeof felder.hinweis === 'number') lauf.hinweise = felder.hinweis
   if (felder.laufzeit != null) lauf.laufzeit = String(felder.laufzeit)
   if (felder.notiz != null) lauf.notiz = String(felder.notiz)
   if (felder.freigabe != null) lauf.freigabe = String(felder.freigabe)
@@ -224,6 +239,40 @@ export function freigabeUebernehmen(neu, alt, schluessel) {
   })
 }
 
+const spaeter = (a, b) => (a && b ? (a > b ? a : b) : a ?? b)
+const deutsch = (iso) => iso.split('-').reverse().join('.')
+const laufSchluessel = (l) => `${l.datum}|${l.geprueft ?? ''}`
+const entscheidungSchluessel = (e) => `${e.datum}|${e.entscheidung}`
+
+/** Laeufe aus dem Vault, die in der kuratierten Liste noch fehlen. */
+export function laeufeZusammenfuehren(alt, gelesen) {
+  const bis = alt.zeitraum?.bis ?? ''
+  const schon = new Set(alt.laeufe.map(laufSchluessel))
+  const dazu = gelesen.filter((l) => l.datum > bis && !schon.has(laufSchluessel(l)))
+  return { laeufe: [...alt.laeufe, ...dazu], dazu }
+}
+
+/** Neue Entscheidungen kommen dazu, keine bestehende faellt weg. */
+export function entscheidungenZusammenfuehren(alt, gelesen) {
+  const bekannt = new Set(alt.map(entscheidungSchluessel))
+  const dazu = gelesen.filter((e) => !bekannt.has(entscheidungSchluessel(e)))
+  // sort ist stabil: gleiche Tage behalten ihre Reihenfolge
+  return [...alt, ...dazu].sort((a, b) => a.datum.localeCompare(b.datum))
+}
+
+/** Ein bekannter Punkt bekommt den neuen Wortlaut und behaelt seine uebrigen
+ *  Felder, etwa erledigt oder freigabe. Kein Punkt faellt weg. */
+export function punkteZusammenfuehren(alt, gelesen) {
+  const neu = new Map(gelesen.map((p) => [p.nr, p]))
+  const ergebnis = alt.map((p) => {
+    const n = neu.get(p.nr)
+    return n ? { ...p, punkt: n.punkt, grund: n.grund } : p
+  })
+  const bekannt = new Set(alt.map((p) => p.nr))
+  ergebnis.push(...gelesen.filter((p) => !bekannt.has(p.nr)))
+  return ergebnis.sort((a, b) => a.nr - b.nr)
+}
+
 async function sammleDateien(verzeichnis) {
   const gefunden = []
   async function lauf(pfad) {
@@ -251,63 +300,82 @@ function argument(name, ersatz = null) {
   return ersatz
 }
 
-export async function exportieren({ vault, ziel, probelauf = false, log = console.log }) {
+export async function exportieren({
+  vault,
+  ziel,
+  probelauf = false,
+  heute = new Date().toISOString().slice(0, 10),
+  log = console.log,
+}) {
   const alt = JSON.parse(await readFile(ziel, 'utf8'))
 
   // Prueflaeufe
   const notizordner = await findeNotizordner(vault)
   const notizen = notizordner ? await sammleDateien(notizordner) : []
-  const laeufe = []
+  const gelesen = []
   for (const datei of notizen) {
     const { felder } = leseFrontmatter(await readFile(datei, 'utf8'))
-    const lauf = alsPrueflauf(felder, relative(vault, datei).split(/[\\/]/).pop())
-    if (lauf) laeufe.push(lauf)
+    const lauf = alsPrueflauf(felder, basename(datei))
+    if (lauf) gelesen.push(lauf)
   }
-  laeufe.sort((a, b) => a.datum.localeCompare(b.datum) || a.id.localeCompare(b.id))
+  gelesen.sort((a, b) => a.datum.localeCompare(b.datum) || a.id.localeCompare(b.id))
+  const { laeufe, dazu } = laeufeZusammenfuehren(alt.prueflaeufe, gelesen)
 
   // Entscheidungen
   let entscheidungen = alt.entscheidungen
   const entscheidungsdatei = await findeDatei(ORTE.entscheidungen, [notizordner, vault])
   if (entscheidungsdatei) {
-    const gelesen = leseEntscheidungen(await readFile(entscheidungsdatei, 'utf8'))
-    if (gelesen.length) entscheidungen = gelesen
+    const gefunden = leseEntscheidungen(await readFile(entscheidungsdatei, 'utf8'))
+    entscheidungen = entscheidungenZusammenfuehren(alt.entscheidungen, gefunden)
   }
 
   // Offene Punkte
   let offenePunkte = alt.offenePunkte
   const punktedatei = await findeDatei(ORTE.offenePunkte, [notizordner, vault])
   if (punktedatei) {
-    const gelesen = leseOffenePunkte(await readFile(punktedatei, 'utf8'))
-    if (gelesen.length) offenePunkte = gelesen
+    const gefunden = leseOffenePunkte(await readFile(punktedatei, 'utf8'))
+    offenePunkte = punkteZusammenfuehren(alt.offenePunkte, gefunden)
   }
 
+  const juengster = gelesen.length ? gelesen[gelesen.length - 1].datum : null
+  const zeitraum = alt.prueflaeufe.zeitraum ?? {}
   const neu = {
     ...alt,
-    stand: laeufe.length ? laeufe[laeufe.length - 1].datum : alt.stand,
+    stand: spaeter(alt.stand, juengster),
     prueflaeufe: {
       ...alt.prueflaeufe,
-      zeitraum: laeufe.length
-        ? { von: laeufe[0].datum, bis: laeufe[laeufe.length - 1].datum }
+      zeitraum: dazu.length
+        ? { von: zeitraum.von ?? dazu[0].datum, bis: spaeter(zeitraum.bis, dazu[dazu.length - 1].datum) }
         : alt.prueflaeufe.zeitraum,
-      protokolliert: laeufe.length || alt.prueflaeufe.protokolliert,
-      imDokumentAusgewiesen: laeufe.length || alt.prueflaeufe.imDokumentAusgewiesen,
-      laeufe: laeufe.length
-        ? freigabeUebernehmen(laeufe, alt.prueflaeufe.laeufe, (l) => l.id)
-        : alt.prueflaeufe.laeufe,
+      protokolliert: Math.max(gelesen.length, alt.prueflaeufe.protokolliert ?? 0),
+      imDokumentAusgewiesen: dazu.length ? laeufe.length : alt.prueflaeufe.imDokumentAusgewiesen,
+      laeufe: freigabeUebernehmen(laeufe, alt.prueflaeufe.laeufe, (l) => l.id),
     },
-    entscheidungen: freigabeUebernehmen(
-      entscheidungen,
-      alt.entscheidungen,
-      (e) => `${e.datum}|${e.entscheidung}`,
-    ),
+    entscheidungen: freigabeUebernehmen(entscheidungen, alt.entscheidungen, entscheidungSchluessel),
     offenePunkte: freigabeUebernehmen(offenePunkte, alt.offenePunkte, (p) => String(p.nr)),
     herkunft: {
       ...alt.herkunft,
-      arbeitsordner: vault,
-      notizordner: notizordner ? relative(vault, notizordner) || '.' : alt.herkunft.notizordner,
-      erzeugt: new Date().toISOString().slice(0, 10),
-      verfahren: 'Erzeugt von scripts/export-vault.mjs aus dem Frontmatter der Laufnotizen.',
+      arbeitsordner: alt.herkunft.arbeitsordner ?? vault,
+      // relativ zum Arbeitsordner, weil /stand/ beide in einem Satz nennt
+      notizordner: notizordner
+        ? relative(alt.herkunft.arbeitsordner ?? vault, notizordner).split(sep).join('/') || '.'
+        : alt.herkunft.notizordner,
+      verfahren:
+        alt.herkunft.verfahren ??
+        'Erzeugt von scripts/export-vault.mjs aus dem Frontmatter der Laufnotizen.',
     },
+  }
+
+  // Nur ein Export, der etwas geaendert hat, traegt ein neues Datum
+  const geaendert = JSON.stringify(neu) !== JSON.stringify(alt)
+  if (geaendert) {
+    const quelle = `Laufnotizen der Prüfläufe, exportiert am ${deutsch(heute)}`
+    const quellen = alt.herkunft.quellen ?? []
+    neu.herkunft = {
+      ...neu.herkunft,
+      erzeugt: heute,
+      quellen: dazu.length && !quellen.includes(quelle) ? [...quellen, quelle] : quellen,
+    }
   }
 
   const fehlt = 'nicht gefunden, bisheriger Stand bleibt'
@@ -318,17 +386,20 @@ export async function exportieren({ vault, ziel, probelauf = false, log = consol
       `  Entscheidungen   ${entscheidungsdatei ?? fehlt}\n` +
       `  Offene Punkte    ${punktedatei ?? fehlt}\n` +
       `Gelesen\n` +
-      `  Laufnotizen      ${notizen.length}, davon als Prüflauf erkannt: ${laeufe.length}\n` +
+      `  Laufnotizen      ${notizen.length}, davon als Prüflauf erkannt: ${gelesen.length}\n` +
       `Übernommen\n` +
+      `  Neue Läufe       ${dazu.length}${dazu.length ? ': ' + dazu.map((l) => l.id).join(', ') : ''}\n` +
       `  Entscheidungen   ${neu.entscheidungen.length}\n` +
       `  Offene Punkte    ${neu.offenePunkte.length}\n` +
-      `  Stand            ${neu.stand}`,
+      `  Stand            ${neu.stand}` +
+      (geaendert ? '' : `\nNichts Neues, erzeugt bleibt ${alt.herkunft.erzeugt}`),
   )
 
   if (probelauf) {
     log('Probelauf, nichts geschrieben.')
     return neu
   }
+  if (!geaendert) return neu
   await writeFile(ziel, JSON.stringify(neu, null, 2) + '\n', 'utf8')
   log(`Geschrieben: ${ziel}`)
   return neu
@@ -336,14 +407,15 @@ export async function exportieren({ vault, ziel, probelauf = false, log = consol
 
 const direktAufgerufen = process.argv[1] && import.meta.url.endsWith(process.argv[1].split(/[\\/]/).pop())
 if (direktAufgerufen) {
-  const vault = argument('vault', process.env.VAULT ?? 'D:\\WAMOCON\\KI-Mitarbeiter')
+  // Die Laufnotizen liegen seit der Trennung vom 09.09. unter KFBM
+  const vault = argument('vault', process.env.VAULT ?? 'D:\\WAMOCON\\KFBM')
   const ziel = resolve(argument('ziel', 'data/projektstand.json'))
   const probelauf = process.argv.includes('--probelauf') || process.argv.includes('--dry-run')
 
   if (!existsSync(vault)) {
     console.error(
       `Ordner nicht gefunden: ${vault}\n` +
-        'Pfad mit --vault "D:\\WAMOCON\\KI-Mitarbeiter" angeben oder die Umgebungsvariable VAULT setzen.',
+        'Pfad mit --vault "D:\\WAMOCON\\KFBM" angeben oder die Umgebungsvariable VAULT setzen.',
     )
     process.exit(1)
   }
