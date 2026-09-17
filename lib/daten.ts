@@ -198,6 +198,8 @@ export interface Quelle extends MitFreigabe {
 export interface Kopf extends MitFreigabe {
   id: string
   rolle: string
+  /** Rufname, wenn die Rolle einen hat. Angezeigt wird "Rolle, Name". */
+  name?: string
   /** Kurzform für das Diagramm, wo eine Zeile 126 Einheiten breit ist. */
   kurz: string
   kern: string

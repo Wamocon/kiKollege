@@ -163,7 +163,12 @@ export default function Seite() {
                 <h3>Gedächtnis: drei Körnungen</h3>
                 <ul className="liste" style={{ marginTop: '0.6rem' }}>
                   <li>Der einzelne Befund, mehrere hundert je Lauf.</li>
-                  <li>Die Regel: {zahl(d.kennzahlen.find((k) => k.id === 'regeln')?.zahl ?? 0)} Stück, stabil, mit Zweck, Testfällen und gemessener Fehlalarmquote.</li>
+                  <li>
+                    Die Regel, stabil, mit Zweck, Testfällen und gemessener Fehlalarmquote.{' '}
+                    {d.ablage.regelnotizen
+                      ? `Abgelegt sind ${zahl(d.ablage.regelnotizen)}.`
+                      : 'Abgelegt ist noch keine.'}
+                  </li>
                   <li>Der Lauf, eine Notiz mit Kennzahlen.</li>
                 </ul>
                 <p style={{ marginTop: '0.7rem' }}>

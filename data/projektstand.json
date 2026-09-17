@@ -48,7 +48,7 @@
     {
       "id": "regeln",
       "zahl": 26,
-      "label": "Regeln mit Zweck und Testfällen",
+      "label": "Prüfpunkte in der Checkliste des Reviewers. Als Regel mit Zweck, Testfällen und gemessener Quote ist noch keiner abgelegt",
       "freigabe": "oeffentlich"
     },
     {
@@ -967,6 +967,13 @@
       "text": "Nach dem Logbuch vom 17.09. erscheinen auf einer öffentlichen Seite keine Personen (9.8). Pages zeigt seit demselben Tag die vollständige Fassung, und deren Fußleiste nennt schon den Geschäftsführer und die Person, die die Seite pflegt. Ein Impressum muss den Vertretungsberechtigten nennen. Der Entwurf unter /impressum/ tut das. Offen ist, ob 9.8 für Pflichtangaben eine Ausnahme vorsieht.",
       "quelle": "Logbuch „Entscheidungen Meilensteinplan“ vom 17.09., gegen § 5 DDG und die Fußleiste dieser Seite",
       "freigabe": "intern"
+    },
+    {
+      "id": "regeln-26",
+      "titel": "26 Regeln oder 26 Prüfpunkte",
+      "text": "Die Kennzahl hieß seit der Erstbefüllung „Regeln mit Zweck und Testfällen“ und trug die 26. Die 26 ist die Zahl der Prüfpunkte in der Checkliste. Regelnotizen mit gemessener Quote zählt die Ablage am 17.09. keine, und die Bewertungen verteilen sich auf 9 Regeln. Die Kennzahl heißt seit dem 17.09. nach dem, was sie zählt.",
+      "quelle": "Kennzahlen dieser Seite seit der Erstbefüllung, gegen die Checkliste im Maßstab und die Zählung der Ablage vom 17.09.",
+      "freigabe": "intern"
     }
   ],
   "gesellschaften": [
@@ -1542,6 +1549,7 @@
       {
         "id": "orchestrator",
         "rolle": "Orchestrator",
+        "name": "Hermes",
         "kurz": "Orchestrator",
         "kern": "verteilend",
         "tut": "Aufträge annehmen, die Pflichtangaben prüfen, aus einer Tabelle zuweisen und das Ergebnis unverändert weitergeben: mit Verfasser, Nummer und Fundstelle.",
@@ -1554,6 +1562,7 @@
       {
         "id": "reviewer",
         "rolle": "Reviewer",
+        "name": "Fritz",
         "kurz": "Reviewer",
         "kern": "prüfend",
         "tut": "Unterlagen gegen den aufgeschriebenen Maßstab prüfen und jeden Befund mit Fundstelle ablegen.",
@@ -1566,13 +1575,14 @@
       {
         "id": "researcherin",
         "rolle": "Researcherin",
+        "name": "julia-trend",
         "kurz": "Researcherin",
         "kern": "recherchierend",
         "tut": "Neuigkeiten zu KI und Agenten sammeln, vor allem auf Fachseiten und in Foren, und mit dem eigenen Aufbau vergleichen. Jede Aussage mit Quelle und Abrufdatum.",
         "tutNie": "empfehlen, eine Forenmeldung als Beleg ausgeben, interne Angaben in eine Suche schreiben, etwas nach außen senden",
         "zustand": "arbeitet",
         "seit": "2026-09-12",
-        "hinweis": "julia-trend. Die einzige mit Netz. Sie holt Material und verteilt keines.",
+        "hinweis": "Die einzige mit Netz. Sie holt Material und verteilt keines.",
         "freigabe": "intern"
       },
       {

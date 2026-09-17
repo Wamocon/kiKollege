@@ -696,7 +696,7 @@ export default function Landing() {
                   {istIntern && k.freigabe === 'intern' ? ', nur intern' : ''}
                 </span>
                 <div>
-                  <h3>{k.rolle}</h3>
+                  <h3>{k.name ? `${k.rolle}, ${k.name}` : k.rolle}</h3>
                   <p>{k.tut}</p>
                   <p className="bedingung">Tut nie: {k.tutNie}</p>
                   <p className="bedingung">{k.hinweis}</p>
