@@ -89,6 +89,7 @@ npm run export:vault -- --vault "<Pfad>" --probelauf
    npm test
    npm run build
    FREIGABE=oeffentlich npm run build && npm run pruefe:oeffentlich
+   npm run pruefe:ausgabe
    git show main:data/projektstand.json > /tmp/alt.json
    npm run pruefe:bestand -- --alt /tmp/alt.json
    ```
@@ -118,6 +119,8 @@ mit Datum im Namen.
 | Entscheidung mit Datum | `entscheidungen` |
 | Ein Tag in der Chronik | `arbeitstage.eintraege` |
 | Rolle, Kern, Tut, Tut nie | `mannschaft.koepfe` |
+| Rufname einer Rolle, wenn die Ablage ihn nennt | `mannschaft.koepfe[].name` |
+| Was Impressum und Datenschutz noch fehlt | `recht.impressumFehlt`, `recht.datenschutzFehlt` |
 | Stufe mit Abnahme | `stufen`, Abnahme in `bedingung` |
 | Meilensteinplan, Wochen, Fristen, Risiken | `meilensteinplan` |
 | Baustein oder Verbindung der Systemlandschaft | `landschaft` |
@@ -136,6 +139,8 @@ Ein Widerspruch wird zur Beobachtung, nicht zur Entscheidung:
   "freigabe": "intern"
 }
 ```
+
+`recht.geprueft` setzt nur ein Mensch, nach einer rechtlichen Prüfung.
 
 Eigennamen von Herstellern, Produkten, Laufzeiten und Pfaden bleiben in der
 internen Fassung. Die Liste steht am Kopf von `scripts/pruefe-oeffentlich.mjs`
@@ -163,6 +168,7 @@ und wird nicht gekürzt, um eine Prüfung grün zu bekommen.
 - `npm test`: <Zahl> Tests
 - interne und öffentliche Fassung gebaut
 - `npm run pruefe:oeffentlich`: nichts Internes gefunden
+- `npm run pruefe:ausgabe`: nichts gefunden
 
 ## Was ein Mensch entscheiden muss
 
@@ -172,5 +178,7 @@ und wird nicht gekürzt, um eine Prüfung grün zu bekommen.
 
 ## Wenn die Seite zu lang wird
 
-Siebzehn Abschnitte sind viel. Wächst die Seite weiter, ist das ein Punkt für
-einen Menschen, nicht für diesen Auftrag: kürzen heißt entscheiden, was wegfällt.
+Die Landing Page hat seit dem 17.09. zwölf Abschnitte, die Einzelheiten stehen
+unter `/stand/`. Neues gehört zuerst dorthin. Wächst die Landing Page wieder, ist
+das ein Punkt für einen Menschen, nicht für diesen Auftrag: kürzen heißt
+entscheiden, was wegfällt.

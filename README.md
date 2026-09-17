@@ -5,8 +5,17 @@ Datenquelle.
 
 | Route | Was sie ist |
 |---|---|
-| `/` | Landing Page. Erzählt das Vorhaben vom Hero bis zu den offenen Punkten. |
-| `/stand/` | Dichte Standseite mit Ankernavigation, allen Tabellen und Prüfläufen. |
+| `/` | Landing Page. Erzählt das Vorhaben in zwölf Abschnitten, vom Hero bis zum Meilensteinplan. |
+| `/stand/` | Dichte Standseite mit Ankernavigation, allen Tabellen, Prüfläufen, Stufen und dem Meilensteinplan im Einzelnen. |
+| `/impressum/`, `/datenschutz/` | Entwürfe, rechtlich nicht geprüft. Siehe „Impressum und Datenschutz“. |
+
+Bis zum 17.09.2026 hatte die Landing Page neunzehn Abschnitte und rund 9.500
+Wörter. Jetzt sind es zwölf und rund 6.300: Ertrag und Aufwand stehen unter
+Eignung, die Steuerung unter Arbeitsweise. Stufen, Betrieb, Entscheidungen und
+Abgleich stehen nur noch unter `/stand/`, ebenso Zieltabelle, Zeit je Woche und
+Risiken des Meilensteinplans. Unter dem Hero steht „Auf einen Blick“: nächste
+Abnahme, nächste Frist, Bewertungen, Rollen und verbindliche Notizen, alles aus
+den Daten gerechnet.
 
 Drei Quellen liegen zugrunde, alle aus dem Arbeitsordner `D:\KFBM`, den das
 Übergabedokument nennt:
@@ -86,7 +95,7 @@ npx serve out
 
 ## Navigation
 
-Sechzehn Abschnitte brauchen eine. Sie besteht aus drei Teilen, alle in
+Zwölf Abschnitte brauchen eine. Sie besteht aus drei Teilen, alle in
 `components/landing/Navigation.tsx`:
 
 - **Die Schiene** am linken Rand, ab 1240 px. Sie listet alle Abschnitte und
@@ -134,14 +143,20 @@ verborgen bleibt.
 
 ## Die Figuren
 
-Fünf Zeichnungen, alle aus `data/projektstand.json` gespeist und in
+Elf Zeichnungen, alle aus `data/projektstand.json` gespeist, zehn davon in
 `components/figuren/`. Sie sind eigene SVG in den CI-Farben, keine Kopien der
 Vorlagen aus der Einführung. Farben kommen aus den Tokens, damit sie in beiden Themen
 mitwandern; Rot trägt in jeder Figur genau ein Element, nämlich das, worum es geht.
 
 Weil die Beschriftungen eine feste Größe im `viewBox` haben, behalten die Zeichnungen
 eine Mindestbreite von 880 px und scrollen darunter waagerecht im eigenen Kasten. Ohne
-das wäre die Beschriftung auf Handybreite unleserlich.
+das wäre die Beschriftung auf Handybreite unleserlich. Unter 900 px steht darüber
+ein Hinweis, dass sich die Figur verschieben lässt, und der Kasten ist mit der
+Tastatur erreichbar. Keine Beschriftung ist kleiner als 10,5, ausgenommen die
+Tageszahlen im Zeitplan mit 10, weil ein Tag dort 22 Einheiten breit ist.
+
+Jede Aussage, die einen Abschnitt eröffnet, ist eine h2, jede weitere eine h3. Das
+Aussehen setzt die Klasse `lp-aussage`.
 
 - **Durchlauf** — die beiden Prüfstufen und der gestrichelte Rückweg, über den aus einer
   Bewertung eine schärfere Regel wird.
@@ -171,7 +186,8 @@ das wäre die Beschriftung auf Handybreite unleserlich.
 - **Ablage** — das Abbild des Vaults: jede Notiz ein Kästchen, gefärbt nach ihrem
   Freigabestand, je Bereich eine Zeile, rechts der Bereich, auf den am häufigsten
   verwiesen wird. Rot trägt das Verbindliche. Die Zahlen kommen aus
-  `scripts/abbild-vault.mjs`, siehe unten.
+  `scripts/abbild-vault.mjs`, siehe unten. Darunter stehen sie noch einmal als
+  aufklappbare Tabelle, für alle, die das Bild nicht sehen.
 - **Anatomie** — die Zeichnung im Hero, die einzige mit Scrollbindung.
 
 Dazu zwei Entscheidungen zur Darstellung:
@@ -211,14 +227,17 @@ Kommentar am Kopf des Workflows sagt, wie.
 Unabhängig davon gilt: Was auch intern nicht öffentlich lesbar sein darf, kommt
 gar nicht in die Daten. Das Repository ist öffentlich.
 
-Die öffentliche Fassung lässt auf der Landing Page die Abschnitte zum Betrieb und zum
-Abgleich weg, auf der Standseite zusätzlich die Quellen. Dazu entfallen auf beiden
+Die öffentliche Fassung lässt auf der Landing Page die Meilensteine weg, auf der
+Standseite den Meilensteinplan, den Betrieb, den Abgleich und die Quellen. Dazu entfallen auf beiden
 Seiten die internen Entscheidungen, die Befunddichte je Themenkomplex und alle
 Pfadangaben. Die Abschnittsnummern der Landing Page rücken nach, damit die Zählung
 keine Lücke zeigt. Was ohne Angabe bleibt, gilt als öffentlich, damit die Datenpflege
 nicht stillschweigend Inhalt verliert.
 
 Die interne und die vollständige Fassung setzen zusätzlich `robots: noindex`.
+Eine Seite mit internem Inhalt gehört in keinen Suchindex, und Pages zeigt die
+vollständige. Wer den Link teilt, bekommt trotzdem eine Vorschau, siehe „Vorschau
+für geteilte Links“.
 
 Eigennamen hält eine Liste am Kopf von `scripts/pruefe-oeffentlich.mjs` aus der
 öffentlichen Fassung heraus, gleich in welchem Datenfeld sie stehen. Am 17.09.2026
@@ -235,15 +254,27 @@ Seite altern kann, ohne falsch zu werden.
 `scripts/export-vault.mjs` schreibt diese Datei aus dem Vault fort:
 
 ```bash
-npm run export:vault -- --vault "D:\WAMOCON\KI-Mitarbeiter" --probelauf   # nur anzeigen
-npm run export:vault -- --vault "D:\WAMOCON\KI-Mitarbeiter"               # schreiben
+npm run export:vault -- --vault "D:\WAMOCON\KFBM" --probelauf   # nur anzeigen
+npm run export:vault -- --vault "D:\WAMOCON\KFBM"               # schreiben
 ```
 
 Das Skript liest das Frontmatter der Laufnotizen (`geprueft`, `blocker`, `major`,
-`minor`, `enabler`, `stand` und einige weitere), die Entscheidungstabelle und die
-Liste der offenen Punkte. Es ersetzt nur diese Abschnitte; Begriffe, Maßstab,
-Übertragbarkeit und alles andere von Hand Geschriebene bleibt stehen. Ein bereits
-gesetztes `freigabe` wird übernommen.
+`minor`, `hinweis`, `bewertet`, `enabler`, `stand` und einige weitere), die
+Entscheidungstabelle und die Liste der offenen Punkte. Es ergänzt und entfernt
+nichts:
+
+- **Läufe:** Die Liste in den Daten ist von Hand kuratiert, etwa die zehn
+  Fachreviews vom 03.09. als ein Eintrag. Dazu kommen nur Läufe, die neuer sind als
+  das Ende des bisherigen Zeitraums und nicht schon mit Datum und Zahl dastehen.
+- **Entscheidungen:** Neue kommen dazu, bestehende bleiben.
+- **Offene Punkte:** Ein Punkt mit bekannter Nummer bekommt den neuen Wortlaut und
+  behält `erledigt` und `freigabe`. Neue Nummern kommen dazu.
+- **`stand`** ist das jüngere von bisherigem Stand und jüngstem Lauf.
+- **`herkunft.erzeugt`** ändert sich nur, wenn sich etwas geändert hat.
+  Arbeitsordner und Verfahren bleiben.
+
+Begriffe, Maßstab, Übertragbarkeit und alles andere von Hand Geschriebene bleibt
+stehen. Ein bereits gesetztes `freigabe` wird übernommen.
 
 Den Ordner mit den Laufnotizen sucht das Skript, statt ihn vorauszusetzen: erst die
 aus dem Übergabedokument bekannten Lagen (`00_Vault/10_KI-Mitarbeiter` und
@@ -254,29 +285,28 @@ hat:
 
 ```
 Gefunden
-  Vault            D:\WAMOCON\KI-Mitarbeiter
-  Notizordner      D:\WAMOCON\KI-Mitarbeiter
-  Entscheidungen   D:\WAMOCON\KI-Mitarbeiter\Entscheidungen.md
+  Vault            D:\WAMOCON\KFBM
+  Notizordner      D:\WAMOCON\KFBM\00_Vault\10_KI-Mitarbeiter
+  Entscheidungen   nicht gefunden, bisheriger Stand bleibt
   Offene Punkte    nicht gefunden, bisheriger Stand bleibt
+Gelesen
+  Laufnotizen      27, davon als Prüflauf erkannt: 20
+Übernommen
+  Neue Läufe       0
 ```
 
 Fehlt eine Zeile, heißt die Datei im Vault anders. Weitere Namen trägt man in
 `ORTE` am Kopf des Skripts nach.
 
-**Was der erste Blick in den echten Vault am 17.09.2026 gezeigt hat.** Das Skript
-ist bisher nicht schreibend gelaufen, und das ist gut so:
-
-- Die Laufnotizen liegen nicht unter `D:\WAMOCON\KI-Mitarbeiter`, sondern unter
-  `D:\WAMOCON\KFBM\00_Vault\10_KI-Mitarbeiter\Prüfläufe\`. Mit
-  `--vault "D:\WAMOCON\KFBM"` findet der Probelauf 20 davon.
-- Die Notizen schreiben `hinweis`, das Skript liest `hinweise`. Die Hinweise gingen
-  beim Export verloren. `bewertet` liest es gar nicht.
-- Der Export ersetzt die Liste der Läufe vollständig, eine Zeile je Notiz. Die von
-  Hand gepflegten Einträge, etwa die zehn Fachreviews vom 03.09. als ein Eintrag,
-  verschwänden dabei, und `npm run pruefe:bestand` schlüge an.
-
-Bis das Skript zusammenführt statt ersetzt, werden neue Läufe von Hand nachgetragen.
-Der Standardpfad bleibt deshalb vorerst, wie er ist.
+**Was der erste Blick in den echten Vault am 17.09.2026 gezeigt hat, und was
+seitdem behoben ist.** Die Laufnotizen liegen unter `KFBM`, nicht unter
+`KI-Mitarbeiter`; das ist jetzt der Vorgabepfad. Die Notizen schreiben `hinweis`
+statt `hinweise`, und `bewertet` wurde nicht gelesen; beides liest das Skript
+jetzt. Die Liste der Läufe wurde ganz ersetzt, `stand` konnte rückwärts springen,
+Arbeitsordner und Verfahren wurden überschrieben; das Zusammenführen oben
+verhindert alle drei. Ein Probelauf gegen den Vault erkennt 20 Läufe, fügt keinen
+hinzu und lässt den Stand beim 17.09. Die Tests laufen gegen einen festen alten
+Stand in `scripts/__fixtures__/stand-alt.json`, nicht gegen die echten Daten.
 
 ## Das Abbild der Ablage
 
@@ -311,15 +341,30 @@ weiter — Notizen, Testfälle und Ausbildungsunterlagen bleiben liegen. Ein Dur
 steht als Windows-Skript bereit:
 
 ```bat
-scripts\stand-aktualisieren.cmd "D:\WAMOCON\KI-Mitarbeiter" "D:\WAMOCON"
+scripts\stand-aktualisieren.cmd "D:\WAMOCON\KFBM" "D:\WAMOCON"
 ```
 
-Es exportiert, zählt das Abbild der Ablage neu, prüft, ob sich etwas geändert hat,
-und committet und pusht nur dann.
+Es exportiert, zählt das Abbild der Ablage neu und sagt, ob die Ablage weiter ist
+als die Seite. Hat sich etwas geändert, prüft es, dass der neue Stand nichts
+verliert (`pruefe:bestand` gegen `HEAD`) und nichts Heikles enthält
+(`pruefe:daten`), und committet und pusht erst dann. Es pusht auf den Zweig, der
+gerade ausgecheckt ist; steht dort `main`, geht der Stand direkt auf Pages.
+
+Ob die Ablage weiter ist, sagt `scripts/pruefe-aktualitaet.mjs`:
+
+```bash
+npm run pruefe:aktualitaet -- --ablage "D:\WAMOCON"
+```
+
+Es zählt Notizen, deren Dateiname oder Frontmatter (`stand`, `datum`,
+`aktualisiert`) ein Datum nach `herkunft.erzeugt` trägt, je Ordner, und sagt, ob
+`herkunft.fristTage` überschritten ist. Dateinamen gibt es nicht aus. Was es
+findet, trägt kein Skript nach: Logbuch, Protokolle und Pläne liest der
+Standwächter oder ein Mensch.
 Für den regelmäßigen Teil hängt man es in die Aufgabenplanung, hier täglich um sieben:
 
 ```bat
-schtasks /create /tn "KI-Mitarbeiter Stand" /tr "\"C:\Pfad\zum\kiKollege\scripts\stand-aktualisieren.cmd\" \"D:\WAMOCON\KI-Mitarbeiter\"" /sc daily /st 07:00
+schtasks /create /tn "KI-Mitarbeiter Stand" /tr "\"C:\Pfad\zum\kiKollege\scripts\stand-aktualisieren.cmd\" \"D:\WAMOCON\KFBM\"" /sc daily /st 07:00
 ```
 
 Voraussetzungen: Node und Git auf dem Rechner, ein Klon des Repositories, eine
@@ -336,8 +381,23 @@ stimmt. Die Formulierungen liegen in `lib/alter.ts`, geprüft in
 
 ## Was der Build prüft
 
-`.github/workflows/pruefen.yml` baut bei jedem Push beide Fassungen und lässt
-`npm run pruefe:oeffentlich` über die öffentliche laufen. Die Prüfung pflegt keine
+`.github/workflows/pruefen.yml` prüft zuerst das Repository auf heikle Angaben,
+baut dann bei jedem Push alle drei Fassungen und prüft sie. Die vollständige baut
+es mit demselben `BASE_PATH` wie Pages.
+
+| Prüfung | Was sie findet |
+|---|---|
+| `pruefe:daten` | IPv4-Adressen, Rechnernamen im Hausnetz, Ports, Schlüssel und Tokens, private Schlüssel, Zugangsdateien und E-Mail-Adressen außer den beiden Kontaktadressen, in Daten, Code und Doku. Die Ausgabe zeigt von jedem Fund nur den Anfang. |
+| `pruefe:oeffentlich` | Internes in der öffentlichen Fassung, siehe unten. |
+| `pruefe:ausgabe` | Doppelte Satzzeichen im sichtbaren Text, interne Links ohne `basePath` oder ohne Ziel, fehlende Anker, `lang`, genau eine h1, übersprungene Überschriftenebenen, Grafiken ohne Beschriftung, Bilder ohne `alt`. |
+| `pruefe:figuren` | Im installierten Chrome oder Edge über `playwright-core`: Beschriftungen, die sich überdecken oder aus dem Bild ragen, Schrift unter 10, seitliches Scrollen bei 375 px, Skriptfehler. Es wird kein Browser heruntergeladen; `BROWSER_PFAD` zeigt auf einen anderen. |
+| `pruefe:bestand` | Bei einem Pull Request: ob der neue Stand weniger enthält als der Zielzweig. |
+
+`pruefe:ausgabe` hat beim ersten Lauf vier Fehler gefunden, die kein Compiler
+meldet: „Stand 11.09..“, Fußleisten mit h4 ohne h3 davor, eine h3 direkt unter der
+h1 der Rechtsseiten und eine englische 404-Seite ohne Sprungziel.
+
+Zu `pruefe:oeffentlich`: Die Prüfung pflegt keine
 Wortliste, sondern zieht aus `data/projektstand.json` jeden Text aus einem Objekt
 mit `freigabe: "intern"` und sucht ihn in allem, was ausgeliefert wird: HTML, die
 RSC-Dateien daneben und JavaScript. Findet sie etwas, schlägt der Lauf fehl. Gegen
@@ -361,10 +421,10 @@ abgebrochen, wenn die Prüfung etwas Internes fand. Seitdem baut er
 `FREIGABE=alles`, siehe „Drei Fassungen aus einer Quelle“. Die Organisation hat
 den Tarif GitHub Free, dort ist eine Pages-Seite immer öffentlich lesbar.
 
-Die Auswertung des Vaults ist durch `scripts/export-vault.test.mjs` gegen drei
-Fixture-Vaults abgedeckt, das Abbild durch `scripts/abbild-vault.test.mjs` gegen
-einen vierten, die Prüfung durch `scripts/pruefe-oeffentlich.test.mjs`. `npm test`
-läuft über alle.
+Jedes Skript unter `scripts/` hat seine Tests daneben, die Auswertung des Vaults
+gegen drei Fixture-Vaults und einen festen alten Stand, das Abbild gegen einen
+vierten. Der Test der Figurenprüfung braucht einen Browser und wird ohne ihn
+übersprungen. `npm test` läuft über alle, am 17.09.2026 sind es 77.
 
 ## Der Standwächter
 
@@ -377,9 +437,9 @@ nichts frei; das bleibt bei einem Menschen.
 Vier Regeln tragen ihn, und sie sind dieselben wie die des Vorhabens selbst:
 keine Zahl ohne Quelle, kein geglätteter Widerspruch, nichts wandert von selbst
 aus der internen in die öffentliche Fassung, und **ändern ist erlaubt, entfernen
-nicht**. Vor jedem Pull Request laufen `npm test`, beide Builds,
-`npm run pruefe:oeffentlich` und `npm run pruefe:bestand`; schlägt eines an, wird
-nichts gestellt.
+nicht**. Vor jedem Pull Request laufen `npm run pruefe:daten`, `npm test`,
+beide Builds, `npm run pruefe:oeffentlich` und `npm run pruefe:bestand`;
+schlägt eines an, wird nichts gestellt.
 
 Die letzte Regel hängt nicht an gutem Willen. `scripts/pruefe-bestand.mjs`
 vergleicht zwei Stände von `data/projektstand.json` und schlägt an, sobald ein
@@ -424,8 +484,9 @@ Anklang an das Enabler-Feld.
 ## Anrede
 
 Block 02 des CI-Profils setzt für die WAMOCON GmbH **Sie, sachlich und
-belegorientiert**. Die Seite spricht den Leser bisher nirgends an, verletzt die Regel
-also nicht. Sobald ein Abschluss dazukommt, der jemanden anspricht, gilt sie.
+belegorientiert**. Die Landing Page spricht den Leser nirgends an. Die
+Datenschutzseite tut es und siezt. Wen die Landing Page am Ende ansprechen soll und
+womit sie schließt, ist offen; das entscheidet ein Mensch, nicht die Seite.
 
 Für die Academy führt das CI-Blatt die Anrede in Block 05 ausdrücklich als offenen
 Widerspruch: Der Teaser duzt, test-it-academy.com siezt. Da die Landing Page eine Seite
@@ -462,10 +523,43 @@ nicht in der Wurzel liegt, ist `BASE_PATH` gesetzt:
 FREIGABE=alles BASE_PATH=/kiKollege npm run build
 ```
 
-Genau das tut `.github/workflows/veroeffentlichen.yml`, siehe oben. Impressum und
-Datenschutzerklärung fehlen noch. Jeder Push auf `main` stellt die Seite ins offene
-Netz; Änderungen kommen deshalb über einen Pull Request, den ein Mensch
-zusammenführt.
+Genau das tut `.github/workflows/veroeffentlichen.yml`, siehe oben. Jeder Push auf
+`main` stellt die Seite ins offene Netz; Änderungen kommen deshalb über einen Pull
+Request, den ein Mensch zusammenführt.
+
+Interne Links sind schlichte `<a href>`. Next.js setzt den `basePath` dort nicht
+davor, deshalb gehen alle über `pfad()` aus `lib/pfad.ts`. Bis zum 17.09.2026
+führten die Links auf `/stand/` auf Pages auf eine 404. `pruefe:ausgabe` fängt
+das jetzt ab.
+
+## Impressum und Datenschutz
+
+Beide Seiten sind **Entwürfe** und tragen oben den Hinweis „Rechtlich nicht
+geprüft“, solange `recht.geprueft` in den Daten `false` ist. Die Angaben kommen
+aus `gesellschaften`; welche Gesellschaft als Anbieterin gilt, steht in
+`recht.anbieter`. Erfunden ist nichts: Was fehlt, steht in
+`recht.impressumFehlt` und `recht.datenschutzFehlt` und auf den Seiten unten,
+unter anderem die Umsatzsteuer-Identifikationsnummer, die Frage nach einer
+verantwortlichen Person nach § 18 Abs. 2 MStV und die Rechtsgrundlagen.
+
+Die Angabe, dass GitHub Pages die IP-Adressen der Besucher protokolliert, ist
+gegen die Dokumentation von GitHub geprüft und dorthin verlinkt. Die Seite selbst
+setzt keine Cookies und lädt nichts von fremden Servern; im Browser liegt nur die
+Themenwahl unter `wmc-thema`.
+
+Vor einem Merge auf `main` gehören beide Texte in eine rechtliche Prüfung. Danach
+wird `recht.geprueft` auf `true` gesetzt, und der Hinweis verschwindet.
+
+## Vorschau für geteilte Links
+
+`app/layout.tsx` setzt Open-Graph- und Twitter-Angaben, `app/vorschau.png/route.tsx`
+baut das Bild dazu beim Export als PNG. Die Dateikonvention `opengraph-image`
+schreibt im statischen Export eine Datei ohne Endung, die GitHub Pages nicht als
+Bild ausliefert. Das Bild trägt keine Zahl und kein Datum.
+
+Für eine absolute Bildadresse braucht der Build die volle Adresse der Seite in
+`SEITE_URL`; `veroeffentlichen.yml` setzt sie. Lokal fehlt sie, dann bleibt die
+Adresse relativ.
 
 ## Aufbau
 
@@ -473,13 +567,18 @@ zusammenführt.
 app/
   page.tsx          Landing Page
   stand/page.tsx    dichte Standseite
+  impressum/, datenschutz/     Entwürfe, rechtlich nicht geprüft
+  not-found.tsx     die 404-Seite, auf Deutsch
+  vorschau.png/     Vorschaubild für geteilte Links
   globals.css       CI-Tokens, gemeinsame Bausteine, Landing-Layout (lp-)
   icon.svg          Favicon
 components/
   landing/          Kopfleiste, Navigation, Hero, Sektion, Fußleiste
   figuren/          zehn gezeichnete Diagramme, alle aus den Daten
+  stand/            Stufen und Meilensteinplan für die Standseite
   ThemaSchalter     Hell, Dunkel, System
   Kopf, Nav, Fuss, bausteine   Bausteine der Standseite
+  Rechtsseite       Rahmen für Impressum und Datenschutz
 data/             projektstand.json, die einzige Zahlenquelle beider Seiten
 lib/              Typen, Datumsformat, Freigabelogik, Abschnittslisten
 scripts/
@@ -487,11 +586,15 @@ scripts/
   abbild-vault.mjs         zählt die Ablage für das Abbild
   pruefe-oeffentlich.mjs   sucht Internes in einer öffentlichen Ausgabe
   pruefe-bestand.mjs       schlägt an, wenn ein Stand weniger enthält als der alte
+  pruefe-daten.mjs         sucht heikle Angaben im Repository
+  pruefe-aktualitaet.mjs   sagt, ob die Ablage weiter ist als die Seite
+  pruefe-ausgabe.mjs       prüft Links, Gliederung und Satzzeichen der gebauten Seite
+  pruefe-figuren.mjs       prüft die Figuren und die Handybreite im Browser
   stand-aktualisieren.cmd  ein Durchgang für die Aufgabenplanung
-  __fixtures__/            Vaults mit verschiedenem Aufbau für die Tests
+  __fixtures__/            Vaults und ein alter Stand für die Tests
 .claude/skills/
   standwaechter/SKILL.md   zieht den Stand nach und stellt ihn als Pull Request
 .github/workflows/
-  pruefen.yml              baut beide Fassungen, prüft die öffentliche
-  veroeffentlichen.yml     stellt die öffentliche Fassung auf Pages
+  pruefen.yml              prüft Daten, baut alle drei Fassungen und prüft sie
+  veroeffentlichen.yml     stellt die vollständige Fassung auf Pages
 ```
