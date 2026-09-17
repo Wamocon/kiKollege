@@ -54,6 +54,11 @@ export function Fussleiste() {
             <a href={pfad('/stand/')}>Ausführlicher Projektstand</a> mit allen Prüfläufen, Tabellen und
             offenen Punkten.
           </p>
+          <p className="rechtlinks">
+            <a href={pfad('/impressum/')}>Impressum</a>
+            <a href={pfad('/datenschutz/')}>Datenschutz</a>
+            {daten.recht.geprueft ? null : <> (Entwürfe)</>}
+          </p>
           {zeigtInternes ? (
             <p>
               Zahlen, Entscheidungen und offene Punkte stammen aus{' '}

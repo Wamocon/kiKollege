@@ -236,6 +236,10 @@ hr { border: 0; border-top: 1px solid var(--wmc-border); margin: 2rem 0; }
 @media (max-width: 900px) {
   .rumpf { grid-template-columns: minmax(0, 1fr); gap: 1.5rem; }
 }
+/* Impressum und Datenschutz: keine Navigation, eine Spalte */
+.rumpf.einspaltig { grid-template-columns: minmax(0, 1fr); }
+.rechtlinks { margin-top: 0.8rem; }
+.rechtlinks a + a { margin-left: 1rem; }
 
 /* ============================================================================
    Ankernavigation

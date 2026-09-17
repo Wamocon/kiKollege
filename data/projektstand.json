@@ -960,6 +960,13 @@
       "text": "Der Arbeitsplan vom 17.09. sieht für die Seite vor: vorher kein Push und kein Pages, bis 14.10. Erwin hat am 17.09. in einer anderen Sitzung den Push erlaubt; die Seite steht seitdem auf GitHub Pages. Der Arbeitsplan und P12 kennen das noch nicht.",
       "quelle": "Arbeitsplan vom 17.09., Punkt 35, gegen den Stand von GitHub am 17.09.",
       "freigabe": "intern"
+    },
+    {
+      "id": "impressum-personen",
+      "titel": "Ein Impressum nennt eine Person, die öffentliche Seite soll keine nennen",
+      "text": "Nach dem Logbuch vom 17.09. erscheinen auf einer öffentlichen Seite keine Personen (9.8). Pages zeigt seit demselben Tag die vollständige Fassung, und deren Fußleiste nennt schon den Geschäftsführer und die Person, die die Seite pflegt. Ein Impressum muss den Vertretungsberechtigten nennen. Der Entwurf unter /impressum/ tut das. Offen ist, ob 9.8 für Pflichtangaben eine Ausnahme vorsieht.",
+      "quelle": "Logbuch „Entscheidungen Meilensteinplan“ vom 17.09., gegen § 5 DDG und die Fußleiste dieser Seite",
+      "freigabe": "intern"
     }
   ],
   "gesellschaften": [
@@ -1002,6 +1009,29 @@
   "ansprechpartner": {
     "name": "Erwin Moretz",
     "rolle": "Pflege dieser Seite"
+  },
+  "recht": {
+    "entwurfVom": "2026-09-17",
+    "geprueft": false,
+    "anbieter": "WAMOCON GmbH",
+    "anbieterWarum": "Der Entwurf nimmt die WAMOCON GmbH als Anbieterin an, weil die Seite ihr Vorhaben beschreibt und unter ihrer Leistungsmarke steht.",
+    "impressumFehlt": [
+      "Die Umsatzsteuer-Identifikationsnummer nach § 27a UStG. Sie steht in keiner Quelle dieser Seite.",
+      "Ob die Seite eine für den Inhalt verantwortliche Person nach § 18 Abs. 2 MStV braucht. Das hängt davon ab, ob sie als journalistisch-redaktionell gilt, und ist nicht geprüft.",
+      "Wer Aussagen über WAMOCON auf dieser Seite nach außen freigibt. Das ist die offene Entscheidung P12.",
+      "Ob die Pflichtangabe des Geschäftsführers mit dem Grundsatz zusammengeht, dass auf einer öffentlichen Seite keine Personen erscheinen (Logbuch vom 17.09., Punkt 9.8)."
+    ],
+    "datenschutzFehlt": [
+      "Die Rechtsgrundlage für die Protokolle bei GitHub. Naheliegend ist ein berechtigtes Interesse nach Art. 6 Abs. 1 lit. f DSGVO. Geprüft ist das nicht.",
+      "Auf welcher Grundlage die Daten in die USA übermittelt werden.",
+      "Ob die WAMOCON GmbH eine Datenschutzbeauftragte oder einen Datenschutzbeauftragten benannt hat. Die Quellen dieser Seite nennen niemanden.",
+      "Die Rechtsgrundlage für den Eintrag im lokalen Speicher. In Frage kommt § 25 Abs. 2 Nr. 2 TDDDG, weil der Eintrag nur entsteht, wenn jemand ein Thema wählt."
+    ],
+    "hosting": "Beim Aufruf einer Seite auf GitHub Pages protokolliert GitHub nach eigener Dokumentation die IP-Adresse der Besucher und speichert sie aus Sicherheitsgründen, auch wenn sie nicht bei GitHub angemeldet sind.",
+    "hostingQuelle": "https://docs.github.com/de/pages/getting-started-with-github-pages/what-is-github-pages",
+    "datenschutzGithub": "https://docs.github.com/de/site-policy/privacy-policies/github-general-privacy-statement",
+    "aufsicht": "der Hessische Beauftragte für Datenschutz und Informationsfreiheit",
+    "freigabe": "oeffentlich"
   },
   "quellen": [
     {
