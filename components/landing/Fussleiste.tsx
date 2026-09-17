@@ -23,7 +23,7 @@ export function Fussleiste() {
           <p>
             Stand <b>{datum(daten.stand)}</b>
           </p>
-          <StandAlter satz />
+          <StandAlter satz stand={daten.stand} fristTage={daten.herkunft.fristTage} erzeugt={datum(daten.herkunft.erzeugt)} />
           <p>
             Pflege: <b>{daten.ansprechpartner.name}</b>
           </p>
