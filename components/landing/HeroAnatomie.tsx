@@ -64,7 +64,8 @@ export function HeroAnatomie({
     <div className="lp-bahn" ref={bahn}>
       <div className="lp-bahn-halt">
         <figure className="lp-anatomie">
-          <div className="lp-anatomie-bild">
+          {/* Auf schmalen Schirmen seitlich verschiebbar, auch mit der Tastatur */}
+          <div className="lp-anatomie-bild" tabIndex={0}>
           <svg
             viewBox={`0 0 ${B} ${H}`}
             role="img"

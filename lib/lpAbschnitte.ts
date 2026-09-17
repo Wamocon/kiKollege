@@ -9,29 +9,27 @@ export interface LpAbschnitt {
 
 /** Reihenfolge der Landing Page. Faellt ein interner Abschnitt in der
  *  oeffentlichen Fassung weg, ruecken die Nummern nach, damit die Zaehlung
- *  keine Luecke zeigt. */
+ *  keine Luecke zeigt.
+ *
+ *  Seit dem 17.09. hat die Seite zwoelf Abschnitte statt neunzehn. Ertrag und
+ *  Aufwand stehen unter Eignung, die Steuerung unter Arbeitsweise. Stufen,
+ *  Betrieb, Entscheidungen und Abgleich stehen nur noch unter /stand/, ebenso
+ *  die Einzelheiten des Meilensteinplans. */
 const alle: readonly LpAbschnitt[] = [
   { id: 'vorhaben', label: 'Vorhaben' },
   { id: 'chatbot', label: 'Abgrenzung' },
   { id: 'eignung', label: 'Eignung' },
-  { id: 'ertrag', label: 'Ertrag' },
   { id: 'aufbau', label: 'Aufbau' },
   { id: 'wissen', label: 'Wissen' },
-  { id: 'durchlauf', label: 'Durchlauf' },
+  { id: 'durchlauf', label: 'Arbeitsweise' },
   { id: 'messung', label: 'Messung' },
   { id: 'erster', label: 'Der erste' },
   { id: 'mannschaft', label: 'Mannschaft' },
   { id: 'landschaft', label: 'Landschaft' },
-  { id: 'steuerung', label: 'Steuerung' },
   { id: 'stand', label: 'Stand' },
-  { id: 'stufen', label: 'Stufen' },
   // Der Fahrplan gehört nach der Übergabe vom 11.09. nicht in die öffentliche
   // Fassung. Pages zeigt seit dem 17.09. ohnehin alles.
   { id: 'plan', label: 'Meilensteine', freigabe: 'intern' },
-  { id: 'arbeit', label: 'Aufwand' },
-  { id: 'plattform', label: 'Betrieb', freigabe: 'intern' },
-  { id: 'entscheidungen', label: 'Entscheidungen' },
-  { id: 'beobachtungen', label: 'Abgleich', freigabe: 'intern' },
 ]
 
 export const sichtbareAbschnitte = nurSichtbare(alle)

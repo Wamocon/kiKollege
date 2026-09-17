@@ -29,6 +29,9 @@ Unabhängig davon kommt nichts in die Daten, was auch intern nicht öffentlich
 lesbar sein darf: Sicherheitsbefunde, Rechnernamen, Adressen, Ports, Versionen,
 Zugangsdaten, und Angaben, die erst zusammen mit anderen einen
 Sicherheitshinweis ergeben. Das Repository ist öffentlich.
+`npm run pruefe:daten` sucht mit allgemeinen Mustern nach Adressen,
+Rechnernamen, Ports, Schlüsseln und fremden E-Mail-Adressen. Was es nicht
+kennt, etwa eine Versionsnummer oder eine Kombination, bleibt Sache des Lesens.
 
 ## Was dieser Auftrag nie tut
 
@@ -82,15 +85,18 @@ npm run export:vault -- --vault "<Pfad>" --probelauf
 7. Prüfen, in dieser Reihenfolge:
 
    ```bash
+   npm run pruefe:daten
    npm test
    npm run build
    FREIGABE=oeffentlich npm run build && npm run pruefe:oeffentlich
+   npm run pruefe:ausgabe
    git show main:data/projektstand.json > /tmp/alt.json
    npm run pruefe:bestand -- --alt /tmp/alt.json
    ```
 
-   Schlägt eines an, wird nichts gestellt. Die beiden Prüfungen sind der Zaun
-   dieses Auftrags: die eine hält Internes zurück, die andere hält fest, dass
+   Schlägt eines an, wird nichts gestellt. Die drei Prüfungen sind der Zaun
+   dieses Auftrags: die erste hält heikle Angaben aus dem Repository, die
+   zweite Internes aus der öffentlichen Fassung, die dritte hält fest, dass
    nichts verloren geht.
 8. Pull Request gegen `main`, Titel `Stand vom TT.MM.JJJJ`, Körper nach der
    Vorlage unten, als Prüfer den Verantwortlichen der Seite eintragen
@@ -113,6 +119,8 @@ mit Datum im Namen.
 | Entscheidung mit Datum | `entscheidungen` |
 | Ein Tag in der Chronik | `arbeitstage.eintraege` |
 | Rolle, Kern, Tut, Tut nie | `mannschaft.koepfe` |
+| Rufname einer Rolle, wenn die Ablage ihn nennt | `mannschaft.koepfe[].name` |
+| Was Impressum und Datenschutz noch fehlt | `recht.impressumFehlt`, `recht.datenschutzFehlt` |
 | Stufe mit Abnahme | `stufen`, Abnahme in `bedingung` |
 | Meilensteinplan, Wochen, Fristen, Risiken | `meilensteinplan` |
 | Baustein oder Verbindung der Systemlandschaft | `landschaft` |
@@ -131,6 +139,8 @@ Ein Widerspruch wird zur Beobachtung, nicht zur Entscheidung:
   "freigabe": "intern"
 }
 ```
+
+`recht.geprueft` setzt nur ein Mensch, nach einer rechtlichen Prüfung.
 
 Eigennamen von Herstellern, Produkten, Laufzeiten und Pfaden bleiben in der
 internen Fassung. Die Liste steht am Kopf von `scripts/pruefe-oeffentlich.mjs`
@@ -154,9 +164,11 @@ und wird nicht gekürzt, um eine Prüfung grün zu bekommen.
 
 ## Geprüft
 
+- `npm run pruefe:daten`: nichts gefunden
 - `npm test`: <Zahl> Tests
 - interne und öffentliche Fassung gebaut
 - `npm run pruefe:oeffentlich`: nichts Internes gefunden
+- `npm run pruefe:ausgabe`: nichts gefunden
 
 ## Was ein Mensch entscheiden muss
 
@@ -166,5 +178,7 @@ und wird nicht gekürzt, um eine Prüfung grün zu bekommen.
 
 ## Wenn die Seite zu lang wird
 
-Siebzehn Abschnitte sind viel. Wächst die Seite weiter, ist das ein Punkt für
-einen Menschen, nicht für diesen Auftrag: kürzen heißt entscheiden, was wegfällt.
+Die Landing Page hat seit dem 17.09. zwölf Abschnitte, die Einzelheiten stehen
+unter `/stand/`. Neues gehört zuerst dorthin. Wächst die Landing Page wieder, ist
+das ein Punkt für einen Menschen, nicht für diesen Auftrag: kürzen heißt
+entscheiden, was wegfällt.

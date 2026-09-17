@@ -57,7 +57,12 @@ export function Figur({
   titel: string; beschriftung: string; viewBox: string; children: ReactNode
 }) {
   return (
-    <figure className="lp-figur lp-diagramm">
+    // tabIndex: Auf schmalen Schirmen ist die Figur breiter als der Rahmen und
+    // wird seitlich verschoben. Das muss auch ohne Maus gehen.
+    <figure className="lp-figur lp-diagramm" tabIndex={0}>
+      <p className="lp-diagramm-hinweis" aria-hidden="true">
+        Breiter als der Bildschirm: seitlich verschieben.
+      </p>
       <svg viewBox={viewBox} role="img" aria-label={titel}>
         <Pfeilspitzen />
         {children}
@@ -71,7 +76,7 @@ export function Figur({
 export function Bereich({ x, y, breite, text }: { x: number; y: number; breite: number; text: string }) {
   return (
     <g>
-      <text x={x} y={y} fontSize="10" fontWeight="700" letterSpacing="1.4"
+      <text x={x} y={y} fontSize="10.5" fontWeight="700" letterSpacing="1.4"
             fill="var(--wmc-muted)">
         {text.toUpperCase()}
       </text>

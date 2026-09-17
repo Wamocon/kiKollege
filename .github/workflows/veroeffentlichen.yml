@@ -45,6 +45,8 @@ jobs:
         env:
           FREIGABE: alles
           BASE_PATH: /${{ github.event.repository.name }}
+          # Fuer die Vorschau geteilter Links braucht die Seite ihre volle Adresse
+          SEITE_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

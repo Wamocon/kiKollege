@@ -110,7 +110,7 @@ export function ausgelassen(pfad, filter) {
   return false
 }
 
-async function leseFilter(vault) {
+export async function leseFilter(vault) {
   try {
     const app = JSON.parse(await readFile(join(vault, '.obsidian', 'app.json'), 'utf8'))
     return Array.isArray(app.userIgnoreFilters) ? app.userIgnoreFilters.map(String) : []
@@ -119,7 +119,7 @@ async function leseFilter(vault) {
   }
 }
 
-async function sammleNotizen(vault, filter) {
+export async function sammleNotizen(vault, filter) {
   const gefunden = []
   async function lauf(pfad) {
     let eintraege

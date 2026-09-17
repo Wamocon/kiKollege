@@ -1,12 +1,37 @@
 import type { Metadata, Viewport } from 'next'
 import { daten } from '@/lib/daten'
 import { zeigtInternes } from '@/lib/freigabe'
+import { pfad } from '@/lib/pfad'
+import { VORSCHAU } from '@/lib/vorschau'
 import './globals.css'
 
+const titel = 'KI-Mitarbeiter bei WAMOCON'
+const beschreibung =
+  'Ein KI-Mitarbeiter bewertet, ein Mensch gibt frei. Konzept, Maßstab, Kennzahlen der Prüfläufe und die offene Messlücke.'
+
+/** Die volle Adresse der Seite, gesetzt im Workflow. Ohne sie kann Next.js die
+ *  Adresse des Vorschaubilds nicht absolut schreiben, und geteilte Links zeigen
+ *  kein Bild. Lokal bleibt sie leer. */
+const adresse = process.env.SEITE_URL
+
 export const metadata: Metadata = {
-  title: 'KI-Mitarbeiter bei WAMOCON',
-  description:
-    'Ein KI-Mitarbeiter bewertet, ein Mensch gibt frei. Konzept, Maßstab, Kennzahlen der Prüfläufe und die offene Messlücke.',
+  // Die Basis ist nur der Host. Den Pfad des Repositorys traegt die
+  // Bildadresse selbst, ueber pfad(), wie jeder andere interne Link.
+  metadataBase: adresse ? new URL(new URL(adresse).origin) : undefined,
+  title: { default: titel, template: `%s | ${titel}` },
+  description: beschreibung,
+  openGraph: {
+    type: 'website',
+    locale: 'de_DE',
+    siteName: 'WAMOCON',
+    title: titel,
+    description: beschreibung,
+    images: [{ url: pfad(VORSCHAU.pfad), width: VORSCHAU.breite, height: VORSCHAU.hoehe, alt: VORSCHAU.alt }],
+  },
+  // Eine Seite mit internem Inhalt gehört in keinen Suchindex. Pages zeigt seit
+  // dem 17.09. die vollständige Fassung, also bleibt sie draußen. Wer den Link
+  // teilt, bekommt trotzdem die Vorschau: Die lesen Dienste wie Teams oder
+  // Slack auch ohne Index.
   robots: zeigtInternes ? { index: false, follow: false } : undefined,
 }
 

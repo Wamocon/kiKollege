@@ -159,6 +159,22 @@ export interface Beobachtung extends MitFreigabe {
   quelle: string
 }
 
+/** Entwurf für Impressum und Datenschutz. Solange geprueft false ist, tragen
+ *  beide Seiten den Hinweis, dass sie rechtlich nicht geprüft sind. */
+export interface Recht extends MitFreigabe {
+  entwurfVom: string
+  geprueft: boolean
+  /** Name aus gesellschaften, dessen Angaben das Impressum zeigt. */
+  anbieter: string
+  anbieterWarum: string
+  impressumFehlt: string[]
+  datenschutzFehlt: string[]
+  hosting: string
+  hostingQuelle: string
+  datenschutzGithub: string
+  aufsicht: string
+}
+
 export interface Gesellschaft extends MitFreigabe {
   name: string
   rolle: string
@@ -182,6 +198,8 @@ export interface Quelle extends MitFreigabe {
 export interface Kopf extends MitFreigabe {
   id: string
   rolle: string
+  /** Rufname, wenn die Rolle einen hat. Angezeigt wird "Rolle, Name". */
+  name?: string
   /** Kurzform für das Diagramm, wo eine Zeile 126 Einheiten breit ist. */
   kurz: string
   kern: string
@@ -601,6 +619,7 @@ export interface Projektstand {
   offenePunkte: OffenerPunkt[]
   beobachtungen: Beobachtung[]
   gesellschaften: Gesellschaft[]
+  recht: Recht
   /** Regeln aus Block 09 des CI-Profils, die beim Einsetzen der Logodatei gelten. */
   auftreten: {
     logoMindestbreiteBildschirm: number

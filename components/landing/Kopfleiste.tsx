@@ -1,5 +1,6 @@
 import { daten, datum } from '@/lib/daten'
 import { istIntern } from '@/lib/freigabe'
+import { pfad } from '@/lib/pfad'
 import { StandAlter } from '@/components/StandAlter'
 import { ThemaSchalter } from '@/components/ThemaSchalter'
 import { Navigation } from '@/components/landing/Navigation'
@@ -27,7 +28,7 @@ export function Kopfleiste() {
               Fassung <b>intern</b>
             </span>
           ) : null}
-          <a href="/stand/" className="lp-weg-eng">
+          <a href={pfad('/stand/')} className="lp-weg-eng">
             <span className="lp-weg-schmal">Ausführlicher </span>Stand
           </a>
           <ThemaSchalter />
