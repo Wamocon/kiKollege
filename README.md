@@ -265,13 +265,35 @@ gegen die öffentliche keine — damit belegt sie, dass die Grenze im Build
 tatsächlich greift und nicht nur im Datenmodell steht.
 
 `.github/workflows/veroeffentlichen.yml` stellt die öffentliche Fassung auf GitHub
-Pages, läuft aber nur von Hand (`workflow_dispatch`) und erst nach derselben
-Prüfung. Solange niemand ihn auslöst, verlässt die Seite das Haus nicht. In den
-Repository-Einstellungen muss Pages dazu auf "GitHub Actions" stehen.
+Pages: bei jedem Push auf `main` und zusätzlich von Hand, jeweils erst nach
+derselben Prüfung. In den Repository-Einstellungen muss Pages dazu auf
+"GitHub Actions" stehen.
+
+Was dort landet, ist immer die öffentliche Fassung. Pages ist bei einem privaten
+Repository ohne Enterprise-Tarif öffentlich lesbar, und die interne Fassung nennt
+Hersteller, Modelle, Pfade und Termine. Der Workflow baut deshalb ausdrücklich
+`FREIGABE=oeffentlich` und bricht ab, wenn die Prüfung etwas Internes findet.
 
 Die Auswertung des Vaults ist durch `scripts/export-vault.test.mjs` gegen drei
 Fixture-Vaults abgedeckt, die Prüfung durch `scripts/pruefe-oeffentlich.test.mjs`.
 `npm test` läuft über beide.
+
+## Der Standwächter
+
+Die Seite zieht sich nicht selbst nach. Das tut ein Auftrag, der als Skill im
+Repository liegt: `.claude/skills/standwaechter/SKILL.md`. Er liest die Quellen
+zum Vorhaben, vergleicht sie mit `data/projektstand.json`, trägt ein, was neu
+ist, und stellt die Änderung als Pull Request. Er führt nichts zusammen und gibt
+nichts frei; das bleibt bei einem Menschen.
+
+Drei Regeln tragen ihn, und sie sind dieselben wie die des Vorhabens selbst:
+keine Zahl ohne Quelle, kein geglätteter Widerspruch, und nichts wandert von
+selbst aus der internen in die öffentliche Fassung. Vor jedem Pull Request laufen
+`npm test`, beide Builds und `npm run pruefe:oeffentlich`; schlägt eines an, wird
+nichts gestellt.
+
+Geweckt wird er von einer Routine. Ein leerer Lauf ist ein guter Lauf: Hat sich
+nichts geändert, gibt es keinen Pull Request und keine Nachricht.
 
 ## Logo
 
@@ -372,7 +394,9 @@ scripts/
   pruefe-oeffentlich.mjs   sucht Internes in einer öffentlichen Ausgabe
   stand-aktualisieren.cmd  ein Durchgang für die Aufgabenplanung
   __fixtures__/            drei Vaults mit verschiedenem Aufbau
+.claude/skills/
+  standwaechter/SKILL.md   zieht den Stand nach und stellt ihn als Pull Request
 .github/workflows/
   pruefen.yml              baut beide Fassungen, prüft die öffentliche
-  veroeffentlichen.yml     stellt die öffentliche Fassung auf Pages, von Hand
+  veroeffentlichen.yml     stellt die öffentliche Fassung auf Pages
 ```

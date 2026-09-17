@@ -1,10 +1,16 @@
-# Stellt die oeffentliche Fassung auf GitHub Pages. Laeuft nur von Hand, damit
-# kein Push die Seite ungefragt nach aussen traegt. Vor dem Hochladen wird
-# geprueft, dass nichts als intern Markiertes im Ergebnis steht; schlaegt die
-# Pruefung an, bricht der Lauf ab.
+# Stellt die oeffentliche Fassung auf GitHub Pages. Laeuft bei jedem Push auf
+# main und zusaetzlich von Hand. Vor dem Hochladen wird geprueft, dass nichts
+# als intern Markiertes im Ergebnis steht; schlaegt die Pruefung an, bricht der
+# Lauf ab und es wird nichts veroeffentlicht.
+#
+# ACHTUNG: Pages ist bei einem privaten Repository ohne Enterprise-Tarif
+# oeffentlich lesbar. Deshalb baut dieser Lauf ausdruecklich FREIGABE=oeffentlich
+# und nie die interne Fassung.
 name: Veröffentlichen
 
 on:
+  push:
+    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -29,6 +35,8 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+      - name: Skripte testen
+        run: npm test
       - name: Öffentliche Fassung bauen
         run: npm run build
         env:
