@@ -182,7 +182,7 @@ und die drei Gründe, warum das noch keine Abnahme ist. Die Übergabe vom 11.09.
 verlangt das ausdrücklich; die Zahl ohne ihre Einschränkungen wäre genau die Art
 Aussage, die das Projekt sich verbietet.
 
-## Zwei Fassungen aus einer Quelle
+## Drei Fassungen aus einer Quelle
 
 Jedes Datenelement in `data/projektstand.json` trägt ein Feld `freigabe`, das
 `intern` oder `oeffentlich` sein kann. Das setzt um, was das Übergabedokument
@@ -190,9 +190,20 @@ empfiehlt: Die Grenze zwischen internem und öffentlichem Inhalt ist eine Eigens
 der Notiz und keine Erinnerungsleistung.
 
 ```bash
-npm run build                    # interne Fassung, zeigt alles
-FREIGABE=oeffentlich npm run build   # öffentliche Fassung
+npm run build                        # interne Fassung: alles, Internes markiert
+FREIGABE=alles npm run build         # vollständige Fassung: alles, ohne Markierung
+FREIGABE=oeffentlich npm run build   # öffentliche Fassung: nur Freigegebenes
 ```
+
+**Auf GitHub Pages steht seit dem 17.09.2026 die vollständige Fassung.** Erwin
+Moretz hat entschieden, vorerst keinen Unterschied zwischen intern und öffentlich
+zu machen. Die Felder bleiben gepflegt, und `pruefen.yml` baut und prüft die
+öffentliche Fassung weiter. Wer die Trennung zurückwill, ändert in
+`veroeffentlichen.yml` eine Zeile und nimmt den Prüfschritt wieder auf; der
+Kommentar am Kopf des Workflows sagt, wie.
+
+Unabhängig davon gilt: Was auch intern nicht öffentlich lesbar sein darf, kommt
+gar nicht in die Daten. Das Repository ist öffentlich.
 
 Die öffentliche Fassung lässt auf der Landing Page die Abschnitte zum Betrieb und zum
 Abgleich weg, auf der Standseite zusätzlich die Quellen. Dazu entfallen auf beiden
@@ -201,7 +212,7 @@ Pfadangaben. Die Abschnittsnummern der Landing Page rücken nach, damit die Zäh
 keine Lücke zeigt. Was ohne Angabe bleibt, gilt als öffentlich, damit die Datenpflege
 nicht stillschweigend Inhalt verliert.
 
-Die interne Fassung setzt zusätzlich `robots: noindex`.
+Die interne und die vollständige Fassung setzen zusätzlich `robots: noindex`.
 
 Eigennamen hält eine Liste am Kopf von `scripts/pruefe-oeffentlich.mjs` aus der
 öffentlichen Fassung heraus, gleich in welchem Datenfeld sie stehen. Am 17.09.2026
@@ -335,15 +346,14 @@ der ganze Datensatz, das Interne eingeschlossen, im ausgelieferten JavaScript de
 braucht, als Props. Die Regel dahinter: **Eine Komponente mit `'use client'`
 importiert nie `lib/daten`**, höchstens dessen Typen mit `import type`.
 
-`.github/workflows/veroeffentlichen.yml` stellt die öffentliche Fassung auf GitHub
-Pages: bei jedem Push auf `main` und zusätzlich von Hand, jeweils erst nach
-derselben Prüfung. In den Repository-Einstellungen muss Pages dazu auf
-"GitHub Actions" stehen.
+`.github/workflows/veroeffentlichen.yml` stellt die Seite auf GitHub Pages: bei
+jedem Push auf `main` und zusätzlich von Hand, jeweils erst nach den Tests. In den
+Repository-Einstellungen steht Pages dazu auf "GitHub Actions".
 
-Was dort landet, ist immer die öffentliche Fassung. Pages ist bei einem privaten
-Repository ohne Enterprise-Tarif öffentlich lesbar, und die interne Fassung nennt
-Hersteller, Modelle, Pfade und Termine. Der Workflow baut deshalb ausdrücklich
-`FREIGABE=oeffentlich` und bricht ab, wenn die Prüfung etwas Internes findet.
+Bis zum 17.09.2026 hat der Workflow ausdrücklich `FREIGABE=oeffentlich` gebaut und
+abgebrochen, wenn die Prüfung etwas Internes fand. Seitdem baut er
+`FREIGABE=alles`, siehe „Drei Fassungen aus einer Quelle“. Die Organisation hat
+den Tarif GitHub Free, dort ist eine Pages-Seite immer öffentlich lesbar.
 
 Die Auswertung des Vaults ist durch `scripts/export-vault.test.mjs` gegen drei
 Fixture-Vaults abgedeckt, das Abbild durch `scripts/abbild-vault.test.mjs` gegen
@@ -436,23 +446,20 @@ damit die Seite ohne Netzzugriff läuft; wo Inter installiert ist, greift sie, s
 Helvetica oder Arial. Soll Inter mitgeliefert werden, gehören die Dateien nach
 `public/` und ein `@font-face` in `globals.css`.
 
-## Später öffentlich stellen
+## Auf GitHub Pages
 
-Die Seite ist als statischer Export gebaut und läuft ohne Umbau auf GitHub Pages.
-Liegt sie nicht in der Wurzel, ist `BASE_PATH` zu setzen:
+Die Seite ist als statischer Export gebaut und läuft ohne Umbau auf GitHub Pages,
+seit dem 17.09.2026 unter <https://wamocon.github.io/kiKollege/>. Weil sie dort
+nicht in der Wurzel liegt, ist `BASE_PATH` gesetzt:
 
 ```bash
-FREIGABE=oeffentlich BASE_PATH=/kiKollege npm run build
-npm run pruefe:oeffentlich
+FREIGABE=alles BASE_PATH=/kiKollege npm run build
 ```
 
-Genau das tut `.github/workflows/veroeffentlichen.yml`, siehe oben. Vor einem
-öffentlichen Auftritt fehlen noch Impressum und Datenschutzerklärung. Beides ist
-hier nicht angelegt, weil die Seite zunächst intern bleibt.
-
-Zu bedenken: Pages ist bei einem privaten Repository ohne Enterprise-Tarif immer
-öffentlich. Wer den Workflow auslöst, stellt die Seite ins offene Netz. Deshalb
-läuft er nur von Hand und erst nach der Prüfung.
+Genau das tut `.github/workflows/veroeffentlichen.yml`, siehe oben. Impressum und
+Datenschutzerklärung fehlen noch. Jeder Push auf `main` stellt die Seite ins offene
+Netz; Änderungen kommen deshalb über einen Pull Request, den ein Mensch
+zusammenführt.
 
 ## Aufbau
 

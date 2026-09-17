@@ -693,6 +693,11 @@
       "datum": "2026-09-17",
       "entscheidung": "Produktnamen der Plattform dürfen auf der öffentlichen Seite stehen: Claude Code, Hermes Agent, DGX Spark",
       "freigabe": "intern"
+    },
+    {
+      "datum": "2026-09-17",
+      "entscheidung": "Vorerst kein Unterschied zwischen interner und öffentlicher Fassung: Die Seite auf GitHub Pages zeigt alles",
+      "freigabe": "intern"
     }
   ],
   "entscheidungenNachtrag": "Die Entscheidung vom 04.09. dreht bewusst eine zuvor festgelegte Reihenfolge um: Ursprünglich sollte die Fehlalarmquote vor dem Plattformwechsel gemessen werden. Die Technik wurde vorgezogen. Das ist kein Widerspruch, sondern eine andere Reihenfolge mit einer benannten Folge, und die Folge steht im Abschnitt zur Messlücke.",
@@ -1508,7 +1513,7 @@
         "tutNie": "empfehlen, eine Forenmeldung als Beleg ausgeben, interne Angaben in eine Suche schreiben, etwas nach außen senden",
         "zustand": "arbeitet",
         "seit": "2026-09-12",
-        "hinweis": "julia-trend. Die einzige mit Netz. Ihre Grenze steht in der Akte, am Profil hängt sie noch nicht.",
+        "hinweis": "julia-trend. Die einzige mit Netz. Sie holt Material und verteilt keines.",
         "freigabe": "intern"
       },
       {
@@ -1575,7 +1580,7 @@
     "freigabe": "oeffentlich",
     "grenzeWarum": "Die meisten Beschreibungen von KI-Agenten setzen Grenzen im Anweisungstext. Ein Text hält niemanden auf, am wenigsten ein Modell, das in einem geprüften Dokument auf eine gegenteilige Anweisung stößt.",
     "verlauf": {
-      "text": "Am 09.09. waren sieben Rollen gesetzt. Am 11.09. ruhten alle außer Reviewer und Orchestrator, am 12.09. kam die Researcherin als achte dazu und arbeitet. Am 16.09. hat Erwin für alle acht Rollen vierzig Fragen beantwortet; umgesetzt ist das als Vorschlag, freigegeben wird Rolle für Rolle. Am 17.09. neu geschnitten: Bis zum 16.10. sollen Reviewer, Orchestrator, Reporter, Archivar, Architekt und Entwickler lauffähig sein, die Researcherin mit Grenze. Der Gestalter bleibt draußen.",
+      "text": "Am 09.09. waren sieben Rollen gesetzt. Am 11.09. ruhten alle außer Reviewer und Orchestrator, am 12.09. kam die Researcherin als achte dazu und arbeitet. Am 16.09. hat Erwin für alle acht Rollen vierzig Fragen beantwortet; umgesetzt ist das als Vorschlag, freigegeben wird Rolle für Rolle. Am 17.09. neu geschnitten: Bis zum 16.10. sollen Reviewer, Orchestrator, Reporter, Archivar, Architekt und Entwickler lauffähig sein. Der Gestalter bleibt draußen.",
       "freigabe": "intern"
     }
   },

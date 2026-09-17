@@ -1,5 +1,5 @@
 import { daten, datum } from '@/lib/daten'
-import { istIntern, nurSichtbare } from '@/lib/freigabe'
+import { nurSichtbare, zeigtInternes } from '@/lib/freigabe'
 import { logoPfad } from '@/lib/logo'
 import { StandAlter } from '@/components/StandAlter'
 
@@ -53,7 +53,7 @@ export function Fussleiste() {
             <a href="/stand/">Ausführlicher Projektstand</a> mit allen Prüfläufen, Tabellen und
             offenen Punkten.
           </p>
-          {istIntern ? (
+          {zeigtInternes ? (
             <p>
               Zahlen, Entscheidungen und offene Punkte stammen aus{' '}
               <span className="mono">data/projektstand.json</span>. Die Quelle der Wahrheit bleibt

@@ -661,7 +661,8 @@ export default function Seite() {
               <p>{d.entscheidungenNachtrag}</p>
               {sichtbar(d.entscheidungenNachtragIntern) ? (
                 <p>
-                  <Marker art="intern">nur intern</Marker> {d.entscheidungenNachtragIntern.text}
+                  {istIntern ? <Marker art="intern">nur intern</Marker> : null}{' '}
+                  {d.entscheidungenNachtragIntern.text}
                 </p>
               ) : null}
             </div>

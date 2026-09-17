@@ -1,5 +1,5 @@
 import { daten, datum } from '@/lib/daten'
-import { istIntern } from '@/lib/freigabe'
+import { fassung, istIntern } from '@/lib/freigabe'
 import { StandAlter } from '@/components/StandAlter'
 
 export function Kopf() {
@@ -19,7 +19,7 @@ export function Kopf() {
           <div className="kopf-meta">
             Stand <b>{datum(daten.stand)}</b> <StandAlter stand={daten.stand} fristTage={daten.herkunft.fristTage} />
             <br />
-            Fassung <b>{istIntern ? 'intern' : 'öffentlich'}</b>
+            Fassung <b>{{ intern: 'intern', oeffentlich: 'öffentlich', alles: 'vollständig' }[fassung]}</b>
             {istIntern ? (
               <>
                 <br />

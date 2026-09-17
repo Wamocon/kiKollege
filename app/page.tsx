@@ -592,7 +592,7 @@ export default function Landing() {
           </div>
           {sichtbar(m.verlauf) ? (
             <div className="lp-text lp-luft-oben">
-              <p className="lp-intern">nur intern</p>
+              {istIntern ? <p className="lp-intern">nur intern</p> : null}
               <p>{m.verlauf.text}</p>
             </div>
           ) : null}
@@ -727,7 +727,7 @@ export default function Landing() {
           </div>
           {sichtbar(d.stufenPlan) ? (
             <div className="lp-text lp-luft-oben">
-              <p className="lp-intern">nur intern</p>
+              {istIntern ? <p className="lp-intern">nur intern</p> : null}
               <p>{d.stufenPlan.text}</p>
             </div>
           ) : null}
@@ -756,9 +756,7 @@ export default function Landing() {
 
         {/* 15 Betrieb, nur intern -------------------------------------------- */}
         <Sektion id="plattform">
-          <p className="lp-intern">
-            nur intern
-          </p>
+          {istIntern ? <p className="lp-intern">nur intern</p> : null}
           <p className="lp-aussage lp-luft-oben-klein">
             Der Dauerbetrieb läuft im Haus, die Werkbank bleibt außen.
           </p>
@@ -814,9 +812,7 @@ export default function Landing() {
 
         {/* 17 Abgleich, nur intern -------------------------------------------- */}
         <Sektion id="beobachtungen">
-          <p className="lp-intern">
-            nur intern
-          </p>
+          {istIntern ? <p className="lp-intern">nur intern</p> : null}
           <p className="lp-aussage lp-luft-oben-klein">
             Stellen, die nicht aufgehen.
           </p>

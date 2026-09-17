@@ -1,11 +1,14 @@
-# Stellt die oeffentliche Fassung auf GitHub Pages. Laeuft bei jedem Push auf
-# main und zusaetzlich von Hand. Vor dem Hochladen wird geprueft, dass nichts
-# als intern Markiertes im Ergebnis steht; schlaegt die Pruefung an, bricht der
-# Lauf ab und es wird nichts veroeffentlicht.
+# Stellt die Seite auf GitHub Pages. Laeuft bei jedem Push auf main und
+# zusaetzlich von Hand.
 #
-# ACHTUNG: Pages ist bei einem privaten Repository ohne Enterprise-Tarif
-# oeffentlich lesbar. Deshalb baut dieser Lauf ausdruecklich FREIGABE=oeffentlich
-# und nie die interne Fassung.
+# Seit dem 17.09.2026 ist das die vollstaendige Fassung, FREIGABE=alles: Erwin
+# Moretz hat entschieden, vorerst keinen Unterschied zwischen intern und
+# oeffentlich zu machen. Pages ist bei diesem Tarif immer oeffentlich lesbar.
+# Wer die Trennung zurueckwill, setzt FREIGABE wieder auf oeffentlich und nimmt
+# den Pruefschritt unten wieder auf:
+#
+#   - name: Auf internen Inhalt pruefen
+#     run: npm run pruefe:oeffentlich
 name: Veröffentlichen
 
 on:
@@ -37,13 +40,11 @@ jobs:
       - run: npm ci
       - name: Skripte testen
         run: npm test
-      - name: Öffentliche Fassung bauen
+      - name: Vollständige Fassung bauen
         run: npm run build
         env:
-          FREIGABE: oeffentlich
+          FREIGABE: alles
           BASE_PATH: /${{ github.event.repository.name }}
-      - name: Auf internen Inhalt prüfen
-        run: npm run pruefe:oeffentlich
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

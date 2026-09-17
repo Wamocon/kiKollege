@@ -37,27 +37,27 @@ Dinge, die über das Nachtragen hinausgehen:
 - **Ein Leck ist geschlossen.** `StandAlter` hat als Client-Komponente den ganzen
   Datensatz ins JavaScript der öffentlichen Seite gezogen, das Interne
   eingeschlossen. Die Freigabeprüfung liest jetzt auch JavaScript und
-  RSC-Dateien. Bis der Zweig auf `main` ist, liefert die Live-Seite das Leck weiter aus.
+  RSC-Dateien. Seit der nächsten Entscheidung ist das für Pages ohne Belang, für
+  die öffentliche Fassung bleibt es richtig.
+- **Pages zeigt alles.** Erwin hat am 17.09. entschieden, vorerst keinen
+  Unterschied zwischen intern und öffentlich zu machen. Pages baut deshalb
+  `FREIGABE=alles`: alle Inhalte, ohne „nur intern“-Markierung, mit `noindex`.
+  Die Felder `freigabe` und die öffentliche Fassung samt Prüfung bleiben, damit
+  die Trennung mit einer Zeile zurückkommt.
 - **Der Datumstest** hing an der Zeitzone des Rechners. Er rechnet jetzt in
   Ortszeit und besteht überall.
 
 **Was ein Mensch entscheiden muss**, steht im Pull Request. Die wichtigsten Punkte:
 
-- Die Übergabe vom 11.09. empfiehlt, öffentlich nur den Reviewer und den
-  Orchestrator zu zeigen. Die Seite zeigt weiter alle sieben Rollen, die übrigen
-  als „entschieden“. Die Researcherin ist nur intern eingetragen.
-- Drei öffentliche Stellen stammen noch aus der Zeit vor dieser Übergabe und
-  berühren, was sie ausschließt: der Chroniktag 09.09. (Prüfobjekte dürfen nach
-  außen), die Stufe „Trennung der Zugänge“ (alles unter einem Benutzer) und das
-  Hemmnis zur vertraglichen Lage. Nichts davon ist geändert, weil die
-  Bestandsprüfung Texte als Kennung nimmt und ein Mensch entscheiden soll.
-- Das Abbild zeigt Zahlen zum Freigabestand öffentlich. Die Übergabe vom 11.09.
-  nennt die Zahl der freigegebenen Notizen einen Grenzfall für Erwin; die Seite
-  zeigte sie schon vorher öffentlich.
-- Aus der Wahl 9.4 vom 17.09. folgt laut Logbuch, dass auf der öffentlichen Seite
-  keine Personen erscheinen (9.8). Die Seite nennt weiter Erwin Moretz als
-  Zuständigen für die Pflege und die Geschäftsführung bei den Gesellschaften.
-- Der Plan vom 17.09. sieht für die öffentliche Seite „nur Rollen, die laufen“ vor.
+- Die Übergabe vom 11.09. und die Wahl 9.4 vom 17.09. sehen auf Pages nur einen
+  Auszug im Umfang dieser Übergabe vor. Mit „Pages zeigt alles“ steht dort jetzt
+  mehr, darunter Entscheidungen zu Datenwegen, Pfade, Termine und die Beobachtungen.
+  Das Logbuch sollte die neue Entscheidung nachziehen.
+- Aus der Wahl 9.4 folgt laut Logbuch, dass auf der Seite keine Personen
+  erscheinen (9.8). Die Seite nennt Erwin Moretz als Zuständigen für die Pflege,
+  die Geschäftsführung bei den Gesellschaften und Erwin in mehreren Einträgen.
+- Der Plan vom 17.09. sieht für die Seite „nur Rollen, die laufen“ vor. Die Seite
+  zeigt alle acht Rollen, die nicht gebauten als „entschieden“.
 
 Wer den Stand das nächste Mal nachzieht, gleicht das Logbuch gegen die Daten ab
 und prüft jede fehlende Entscheidung, bevor er sie nachträgt: Sie kann mit Absicht
