@@ -251,6 +251,30 @@ export interface Ablage extends MitFreigabe {
   verfahren: string
 }
 
+/** Eine Rubrik des Unternehmenswissens: ein Ordner direkt unter
+ *  KI-Mitarbeiter. Wofür er da ist, steht von Hand in den Daten; die Anzahlen
+ *  zählt scripts/abbild-vault.mjs. */
+export interface Rubrik {
+  ordner: string
+  stufe: string
+  /** notizen: Notizen der Ablage. dateien: Dateien, die keine Notizen sind. */
+  art: 'notizen' | 'dateien'
+  wofuer: string
+  hinweis?: string
+  notizen?: number
+  verbindlich?: number
+}
+
+export interface Unternehmenswissen extends MitFreigabe {
+  satz: string
+  erklaerung: string
+  stand: string
+  stufen: { id: string; name: string; wann: string }[]
+  rubriken: Rubrik[]
+  gezaehltAm: string
+  quelle: string
+}
+
 /** läuft: in Betrieb. vorhanden: gebaut oder eingerichtet, noch nicht im
  *  Einsatz. geplant: entschieden, nicht gebaut. */
 export type LandschaftZustand = 'laeuft' | 'vorhanden' | 'geplant'
@@ -425,6 +449,7 @@ export interface Projektstand {
   kennzahlen: Kennzahl[]
   mannschaft: Mannschaft
   ablage: Ablage
+  unternehmenswissen: Unternehmenswissen
   bewertungen: Bewertungen
   landschaft: Landschaft
   meilensteinplan: Meilensteinplan

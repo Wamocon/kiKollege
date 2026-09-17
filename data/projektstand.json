@@ -1686,7 +1686,7 @@
     "freigabe": "oeffentlich",
     "gezaehltAm": "2026-09-17",
     "notizen": 141,
-    "verweise": 1233,
+    "verweise": 1267,
     "unaufgeloest": 6,
     "regelnotizen": 0,
     "bereiche": [
@@ -1732,7 +1732,7 @@
           "massstab": 3,
           "quellen": 0,
           "prueflaeufe": 0,
-          "arbeitsstand": 17,
+          "arbeitsstand": 22,
           "protokoll": 1,
           "einstiege": 7,
           "archiv": 0
@@ -1894,14 +1894,14 @@
         "ohneFeld": 10,
         "verweiseNach": {
           "konventionen": 11,
-          "entscheidungen": 8,
+          "entscheidungen": 9,
           "unternehmen": 5,
           "bauplan": 52,
           "normbasis": 1,
           "massstab": 19,
           "quellen": 0,
           "prueflaeufe": 4,
-          "protokoll": 5,
+          "protokoll": 6,
           "einstiege": 3,
           "archiv": 4
         }
@@ -1917,15 +1917,15 @@
         "ungeprueft": 0,
         "ohneFeld": 7,
         "verweiseNach": {
-          "konventionen": 12,
-          "entscheidungen": 12,
+          "konventionen": 13,
+          "entscheidungen": 17,
           "unternehmen": 0,
-          "bauplan": 16,
-          "normbasis": 0,
+          "bauplan": 18,
+          "normbasis": 1,
           "massstab": 2,
           "quellen": 0,
-          "prueflaeufe": 0,
-          "arbeitsstand": 26,
+          "prueflaeufe": 3,
+          "arbeitsstand": 35,
           "einstiege": 0,
           "archiv": 0
         }
@@ -1980,6 +1980,174 @@
       }
     ],
     "verfahren": "Gezählt von scripts/abbild-vault.mjs aus dem Frontmatter und den Verweisen der Notizen. Ausgelassen ist, was die Ablage selbst aus ihrem Index nimmt."
+  },
+  "unternehmenswissen": {
+    "satz": "Das Unternehmenswissen liegt in Rubriken, und jede sagt, wann ein KI-Mitarbeiter sie liest.",
+    "erklaerung": "Allen KI-Mitarbeitern gemeinsam ist, wer das Unternehmen ist, was ihm wichtig ist, wo die Grenzen des Handelns liegen und wie ein KI-Mitarbeiter gebaut wird. Die Fachinhalte eines Berufs liegen daneben in einem eigenen Bereich. Kein Mitarbeiter lädt alles. Die Stufe einer Rubrik sagt, wann er sie liest.",
+    "stand": "Der Unternehmensteil ist eine Erstbefüllung, kein freigegebener Wissensstand. Werte und Leitplanken machen aus der Materialsammlung eine Steuerung und sind bewusst nur als Kandidaten und Entwurf befüllt, solange der Fragenkatalog offen ist.",
+    "stufen": [
+      {
+        "id": "kern",
+        "name": "Kern",
+        "wann": "immer geladen, sobald verbindlich"
+      },
+      {
+        "id": "nachschlagen",
+        "name": "Nachschlagen",
+        "wann": "gelesen, wenn eine Aufgabe es braucht"
+      },
+      {
+        "id": "verweis",
+        "name": "Verweis",
+        "wann": "verweist auf Primärquellen, statt sie zu kopieren"
+      },
+      {
+        "id": "ordnung",
+        "name": "Ordnung und Verlauf",
+        "wann": "hält die Ablage selbst zusammen"
+      },
+      {
+        "id": "dateien",
+        "name": "Neben dem Wissen",
+        "wann": "Dateien, keine Notizen der Ablage"
+      }
+    ],
+    "rubriken": [
+      {
+        "ordner": "30_Werte",
+        "stufe": "kern",
+        "art": "notizen",
+        "wofuer": "Werte als Entscheidungsregeln.",
+        "hinweis": "Bisher nur Kandidaten.",
+        "notizen": 1,
+        "verbindlich": 0
+      },
+      {
+        "ordner": "70_Leitplanken",
+        "stufe": "kern",
+        "art": "notizen",
+        "wofuer": "Verbote, Freigabepflichten, Eskalation.",
+        "hinweis": "Bisher nur Entwurf.",
+        "notizen": 1,
+        "verbindlich": 0
+      },
+      {
+        "ordner": "10_Unternehmen",
+        "stufe": "nachschlagen",
+        "art": "notizen",
+        "wofuer": "Stammdaten je Gesellschaft.",
+        "notizen": 2,
+        "verbindlich": 0
+      },
+      {
+        "ordner": "20_Menschen",
+        "stufe": "nachschlagen",
+        "art": "notizen",
+        "wofuer": "Personen, nur mit Name und öffentlicher Rolle.",
+        "notizen": 1,
+        "verbindlich": 0
+      },
+      {
+        "ordner": "40_Leistungen",
+        "stufe": "nachschlagen",
+        "art": "notizen",
+        "wofuer": "Leistungsbereiche und Kursformate.",
+        "notizen": 4,
+        "verbindlich": 0
+      },
+      {
+        "ordner": "50_Markt",
+        "stufe": "nachschlagen",
+        "art": "notizen",
+        "wofuer": "Branchen, Zielgruppen, Referenzen.",
+        "notizen": 1,
+        "verbindlich": 0
+      },
+      {
+        "ordner": "60_Auftreten",
+        "stufe": "nachschlagen",
+        "art": "notizen",
+        "wofuer": "Corporate Design und Sprache.",
+        "notizen": 1,
+        "verbindlich": 0
+      },
+      {
+        "ordner": "75_KI-Mitarbeiter",
+        "stufe": "nachschlagen",
+        "art": "notizen",
+        "wofuer": "Wie ein KI-Mitarbeiter gebaut ist: Anatomie, Harness, Orchestrator, Systemarchitektur, Zusammenarbeit, Fahrplan.",
+        "hinweis": "Gelesen, wenn an der Architektur gearbeitet wird, nicht bei jeder Aufgabe.",
+        "notizen": 21,
+        "verbindlich": 0
+      },
+      {
+        "ordner": "80_Quellen",
+        "stufe": "verweis",
+        "art": "notizen",
+        "wofuer": "Herkunft und Stand jeder Angabe.",
+        "notizen": 1,
+        "verbindlich": 0
+      },
+      {
+        "ordner": "00_Meta",
+        "stufe": "ordnung",
+        "art": "notizen",
+        "wofuer": "Konventionen, Änderungsprotokoll, Status-Übersicht und Tagesprotokolle.",
+        "notizen": 8,
+        "verbindlich": 3
+      },
+      {
+        "ordner": "01_Inbox",
+        "stufe": "ordnung",
+        "art": "notizen",
+        "wofuer": "Eingang für alles Neue, formlos.",
+        "notizen": 1,
+        "verbindlich": 0
+      },
+      {
+        "ordner": "85_Logbuch",
+        "stufe": "ordnung",
+        "art": "notizen",
+        "wofuer": "Entscheidungen und Ereignisse in zeitlicher Folge.",
+        "notizen": 7,
+        "verbindlich": 5
+      },
+      {
+        "ordner": "90_Archiv",
+        "stufe": "ordnung",
+        "art": "notizen",
+        "wofuer": "Überholtes, das auffindbar bleibt.",
+        "notizen": 1,
+        "verbindlich": 0
+      },
+      {
+        "ordner": "CI",
+        "stufe": "dateien",
+        "art": "dateien",
+        "wofuer": "Das CI-Profil, verbindlich für alle Ausgaben."
+      },
+      {
+        "ordner": "Praesentation",
+        "stufe": "dateien",
+        "art": "dateien",
+        "wofuer": "Erzeugte Präsentationen und OnePager."
+      },
+      {
+        "ordner": "Mannschaft",
+        "stufe": "dateien",
+        "art": "dateien",
+        "wofuer": "Die Akten der Mitarbeiter. Sie sind Verhalten, nicht Wissen, und stehen deshalb nicht im Index der Ablage."
+      },
+      {
+        "ordner": "_Rohmaterial",
+        "stufe": "dateien",
+        "art": "dateien",
+        "wofuer": "Website-Abzüge und Datenschicht, nicht im Repository und nicht im Index."
+      }
+    ],
+    "gezaehltAm": "2026-09-17",
+    "quelle": "Ordnertabelle und Kontextstrategie im Einstieg des Repositorys KI-Mitarbeiter, Akten nach den Vault-Konventionen, Anzahlen aus der Zählung der Ablage",
+    "freigabe": "oeffentlich"
   },
   "landschaft": {
     "stand": "2026-09-17",
