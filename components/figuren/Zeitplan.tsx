@@ -56,7 +56,7 @@ export function ZeitplanFigur() {
     teile.push(
       <g key={w.id}>
         <line x1={x} y1={4} x2={x + b} y2={4} stroke="var(--wmc-ink)" strokeWidth="2" />
-        <text x={x + 2} y={17} fontSize="10" fontWeight="700" fill="var(--wmc-ink)">
+        <text x={x + 2} y={17} fontSize="11" fontWeight="700" fill="var(--wmc-ink)">
           {w.id} · {spanne(w.von, w.bis)}
         </text>
       </g>,
@@ -69,7 +69,7 @@ export function ZeitplanFigur() {
     const frei = d.getUTCDay() === 0 || d.getUTCDay() === 6
     if (frei) wochenende.push({ x: X0 + i * tag })
     teile.push(
-      <text key={`t-${i}`} x={X0 + (i + 0.5) * tag} y={31} textAnchor="middle" fontSize="8.5"
+      <text key={`t-${i}`} x={X0 + (i + 0.5) * tag} y={31} textAnchor="middle" fontSize="10"
             fill={frei ? 'var(--rand-leise)' : 'var(--wmc-muted)'}>
         {String(d.getUTCDate()).padStart(2, '0')}
       </text>,
@@ -98,7 +98,7 @@ export function ZeitplanFigur() {
     teile.push(
       <g key={`e-${t}`}>
         <Raute x={x} y={y} r={4.5} rot={rot} />
-        <text x={x} y={y - 9} textAnchor="middle" fontSize="9.5" fontWeight="700"
+        <text x={x} y={y - 9} textAnchor="middle" fontSize="10.5" fontWeight="700"
               fill={rot ? 'var(--wmc-primary-text)' : 'var(--wmc-ink)'}>
           {liste.map((e) => e.nr).join(' ')}
         </text>
@@ -108,20 +108,20 @@ export function ZeitplanFigur() {
   for (const e of p.entscheidungen) {
     if (e.erledigtAm) {
       teile.push(
-        <text key={'erledigt-' + e.nr} x={mitte(e.bis) + 8} y={y + 14} fontSize="9" fill="var(--wmc-muted)">
+        <text key={'erledigt-' + e.nr} x={mitte(e.bis) + 8} y={y + 15} fontSize="10.5" fill="var(--wmc-muted)">
           {e.nr} erledigt am {datum(e.erledigtAm).slice(0, 6)}
         </text>,
       )
     } else if (e.ueberfaelligSeit) {
       teile.push(
-        <text key={'ueberfaellig-' + e.nr} x={mitte(e.bis) + 8} y={y + 14} fontSize="9"
+        <text key={'ueberfaellig-' + e.nr} x={mitte(e.bis) + 8} y={y + 15} fontSize="10.5"
               fill="var(--wmc-primary-text)">
           {e.nr} überfällig seit {datum(e.ueberfaelligSeit).slice(0, 6)}
         </text>,
       )
     }
   }
-  y += 26
+  y += 28
 
   // Meilensteine mit ihren Balken
   for (const m of p.meilensteine) {
@@ -139,7 +139,7 @@ export function ZeitplanFigur() {
           </text>
         ))}
         <Raute x={mitte(m.datum)} y={y + 12} r={6} rot />
-        <text x={mitte(m.datum) - 9} y={y + 16} textAnchor="end" fontSize="10" fontWeight="700"
+        <text x={mitte(m.datum) - 9} y={y + 16} textAnchor="end" fontSize="11" fontWeight="700"
               fill="var(--wmc-primary-text)">
           {m.id}
         </text>
@@ -191,8 +191,8 @@ export function ZeitplanFigur() {
     teile.push(
       <g key={`z-${w.id}`}>
         <text x={x} y={y + 12} fontSize="12" fontWeight="700" fill="var(--wmc-ink)">{dauer(summe)}</text>
-        <text x={x} y={y + 25} fontSize="9.5" fill="var(--wmc-muted)">
-          {z.bewerten ? `davon ${dauer(z.bewerten)} bewerten` : 'keine Bewertung'}
+        <text x={x} y={y + 26} fontSize="10.5" fill="var(--wmc-muted)">
+          {z.bewerten ? `${dauer(z.bewerten)} bewerten` : 'keine Bewertung'}
         </text>
       </g>,
     )

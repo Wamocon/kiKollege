@@ -55,10 +55,10 @@ function Beschriftung({
   x: number; y: number; zeilen: string[]; anker?: 'start' | 'middle'; rot?: boolean
 }) {
   return (
-    <text x={x} y={y} textAnchor={anker} fontSize="10"
+    <text x={x} y={y} textAnchor={anker} fontSize="10.5"
           fill={rot ? 'var(--wmc-primary-text)' : 'var(--wmc-muted)'}>
       {zeilen.map((z, i) => (
-        <tspan key={z} x={x} dy={i === 0 ? 0 : 12}>
+        <tspan key={z} x={x} dy={i === 0 ? 0 : 13}>
           {z}
         </tspan>
       ))}

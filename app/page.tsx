@@ -1,4 +1,4 @@
-import { AblageFigur } from '@/components/figuren/Ablage'
+import { AblageFigur, AblageTabelle } from '@/components/figuren/Ablage'
 import { EnablerRaster } from '@/components/figuren/EnablerRaster'
 import { LandschaftFigur } from '@/components/figuren/Landschaft'
 import { ZeitplanFigur } from '@/components/figuren/Zeitplan'
@@ -192,9 +192,9 @@ export default function Landing() {
 
         {/* 02 Kein Chatbot -------------------------------------------------- */}
         <Sektion id="chatbot">
-          <p className="lp-aussage">
+          <h2 className="lp-aussage">
             {d.abgrenzung.satz}
-          </p>
+          </h2>
           <div className="lp-text lp-luft-oben">
             <p>{d.abgrenzung.erklaerung}</p>
           </div>
@@ -223,9 +223,9 @@ export default function Landing() {
 
         {/* 03 Eignung ------------------------------------------------------- */}
         <Sektion id="eignung">
-          <p className="lp-aussage breit">
+          <h2 className="lp-aussage breit">
             Vier Merkmale entscheiden, ob eine Aufgabe in Frage kommt.
-          </p>
+          </h2>
 
           <div className="lp-paar">
             <div>
@@ -250,9 +250,9 @@ export default function Landing() {
             <p>{d.eignung.nachsatz}</p>
           </div>
 
-          <p className="lp-aussage lp-luft-oben">
+          <h3 className="lp-aussage lp-luft-oben">
             {harteRegel('rollengrenze').grund}
-          </p>
+          </h3>
           <div className="lp-text lp-luft-oben-klein">
             <p>
               Dass ein Testhaus seinen ersten KI-Mitarbeiter als Prüfer baut und nicht als
@@ -263,9 +263,9 @@ export default function Landing() {
             </p>
           </div>
 
-          <p className="lp-aussage breit lp-luft-oben">
+          <h3 className="lp-aussage breit lp-luft-oben">
             Was dabei herauskommt, das anders nicht zu haben ist.
-          </p>
+          </h3>
           <div className="lp-text lp-luft-oben-klein">
             <p>{d.ertrag.einleitung}</p>
           </div>
@@ -279,7 +279,7 @@ export default function Landing() {
             ))}
           </div>
 
-          <p className="lp-aussage lp-luft-oben">{d.arbeitsschwerpunkt.satz}</p>
+          <h3 className="lp-aussage lp-luft-oben">{d.arbeitsschwerpunkt.satz}</h3>
           <div className="lp-zellen lp-luft-oben">
             <div className="lp-zelle">
               <span className="kopf">Was es braucht</span>
@@ -298,9 +298,9 @@ export default function Landing() {
 
         {/* 04 Aufbau -------------------------------------------------------- */}
         <Sektion id="aufbau">
-          <p className="lp-aussage breit">
+          <h2 className="lp-aussage breit">
             Acht Fragen, die auch ein neuer Kollege beantwortet bekommt.
-          </p>
+          </h2>
           <div className="lp-text lp-luft-oben-klein">
             <p>{d.schichtenErklaerung}</p>
           </div>
@@ -345,9 +345,9 @@ export default function Landing() {
 
         {/* 05 Wissen -------------------------------------------------------- */}
         <Sektion id="wissen">
-          <p className="lp-aussage breit">
+          <h2 className="lp-aussage breit">
             Zwei Wissensablagen, nicht eine.
-          </p>
+          </h2>
           <div className="lp-text lp-luft-oben-klein">
             <p>{d.wissensablagen.satz}</p>
           </div>
@@ -397,7 +397,7 @@ export default function Landing() {
 
           {sichtbar(d.ablage) ? (
             <>
-              <p className="lp-aussage lp-luft-oben">So sieht die Ablage heute aus.</p>
+              <h3 className="lp-aussage lp-luft-oben">So sieht die Ablage heute aus.</h3>
               <div className="lp-text lp-luft-oben-klein">
                 <p>
                   Das Bild ist aus den Notizen selbst gezählt, nicht von Hand gezeichnet. Jedes
@@ -408,6 +408,7 @@ export default function Landing() {
               </div>
 
               <AblageFigur />
+              <AblageTabelle />
 
               {fachlichVerbindlich === 0 ? (
                 <div className="lp-text lp-luft-oben">
@@ -425,9 +426,9 @@ export default function Landing() {
 
         {/* 06 Arbeitsweise --------------------------------------------------- */}
         <Sektion id="durchlauf">
-          <p className="lp-aussage breit">
+          <h2 className="lp-aussage breit">
             Zwei Stufen, weil sie Verschiedenes finden.
-          </p>
+          </h2>
 
           <Durchlauf />
 
@@ -439,9 +440,9 @@ export default function Landing() {
 
           <Pruefpunkte />
 
-          <p className="lp-aussage breit lp-luft-oben">
+          <h3 className="lp-aussage breit lp-luft-oben">
             Wie er gesteuert wird, und was er selbst steuert.
-          </p>
+          </h3>
 
           <Steuerung />
 
@@ -463,9 +464,9 @@ export default function Landing() {
 
         {/* 07 Messung -------------------------------------------------------- */}
         <Sektion id="messung">
-          <p className="lp-aussage">
+          <h2 className="lp-aussage">
             Ein KI-Mitarbeiter, dem man nicht glauben kann, ist schlimmer als keiner.
-          </p>
+          </h2>
           <div className="lp-text lp-luft-oben">
             <p>
               Dann muss man seine Arbeit zusätzlich nachprüfen. Zwei Zahlen entscheiden, und beide
@@ -587,9 +588,9 @@ export default function Landing() {
           <p className="lp-klein lp-luft-oben">
             Entschieden am {datum(d.massstab.kalibrierung.entschiedenAm)}
           </p>
-          <p className="lp-aussage lp-luft-oben-klein">
+          <h3 className="lp-aussage lp-luft-oben-klein">
             {d.massstab.kalibrierung.satz}
-          </p>
+          </h3>
           <div className="lp-text lp-luft-oben">
             <p>
               Wer dreimal einen falschen Alarm bekommt, sieht beim vierten Mal nicht mehr hin. Dann
@@ -622,9 +623,9 @@ export default function Landing() {
           <p className="lp-klein">
             Seit Ende August im Einsatz
           </p>
-          <p className="lp-aussage breit lp-luft-oben-klein">
+          <h2 className="lp-aussage breit lp-luft-oben-klein">
             Fritz, Reviewer für Schulungsunterlagen.
-          </p>
+          </h2>
           <div className="lp-text lp-luft-oben">
             <p>
               Er prüft die Unterlagen der WAMOCON Academy für die Ausbildung zu Kaufleuten für
@@ -682,7 +683,7 @@ export default function Landing() {
 
         {/* 09 Mannschaft ----------------------------------------------------- */}
         <Sektion id="mannschaft">
-          <p className="lp-aussage breit">{m.satz}</p>
+          <h2 className="lp-aussage breit">{m.satz}</h2>
           <div className="lp-text lp-luft-oben-klein">
             <p>{m.trennung} Jede Rolle hat eine Grenze, und die Grenze steht als Datei neben ihr.</p>
           </div>
@@ -729,7 +730,7 @@ export default function Landing() {
         {/* 10 Landschaft ------------------------------------------------------- */}
         {sichtbar(l) ? (
           <Sektion id="landschaft">
-            <p className="lp-aussage breit">{l.satz}</p>
+            <h2 className="lp-aussage breit">{l.satz}</h2>
             <div className="lp-text lp-luft-oben-klein">
               <p>{l.erklaerung}</p>
             </div>
@@ -763,9 +764,9 @@ export default function Landing() {
 
         {/* 11 Stand ---------------------------------------------------------- */}
         <Sektion id="stand">
-          <p className="lp-aussage breit">
+          <h2 className="lp-aussage breit">
             {tageZwischen(d.arbeitstage.beginn, d.stand)} Tage, mit Datum.
-          </p>
+          </h2>
           <div className="lp-zeit">
             {nurSichtbare(d.arbeitstage.eintraege).map((e) => (
               <div className="lp-zeit-zeile" key={e.datum + e.text}>
@@ -778,9 +779,9 @@ export default function Landing() {
             ))}
           </div>
 
-          <p className="lp-aussage lp-luft-oben">
+          <h3 className="lp-aussage lp-luft-oben">
             Von vier Gruppen ist genau eine technisch.
-          </p>
+          </h3>
           <div className="lp-zellen vier">
             {d.hemmnisse.gruppen.map((g) => (
               <div className="lp-zelle" key={g.titel}>
@@ -821,7 +822,7 @@ export default function Landing() {
             <p className="lp-klein">
               {plan.status}. Ersetzt den {plan.ersetzt}
             </p>
-            <p className="lp-aussage breit lp-luft-oben-klein">{plan.satz}</p>
+            <h2 className="lp-aussage breit lp-luft-oben-klein">{plan.satz}</h2>
             {plan.standNachtrag ? (
               <div className="lp-text lp-luft-oben-klein">
                 <p>
@@ -886,7 +887,7 @@ export default function Landing() {
               <p>{plan.pfadSatz}</p>
             </div>
 
-            <p className="lp-aussage lp-luft-oben">Entscheidungen mit Frist.</p>
+            <h3 className="lp-aussage lp-luft-oben">Entscheidungen mit Frist.</h3>
             <div className="lp-log">
               {plan.entscheidungen.map((e) => (
                 <div className="lp-log-zeile" key={e.nr}>

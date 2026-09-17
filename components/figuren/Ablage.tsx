@@ -61,6 +61,51 @@ function staerksterVerweis(b: AblageBereich, alle: AblageBereich[]) {
   return bereich ? { name: bereich.kurz, anzahl } : null
 }
 
+/** Dieselben Zahlen wie die Figur, als Tabelle für alle, die das Bild nicht sehen. */
+export function AblageTabelle() {
+  const a = daten.ablage
+  return (
+    <details className="lp-details lp-luft-oben-klein">
+      <summary>Die Zahlen der Ablage als Tabelle</summary>
+      <div className="lp-gegen-rahmen">
+        <table className="lp-gegen">
+          <thead>
+            <tr>
+              <th>Bereich</th>
+              <th className="zahl">Notizen</th>
+              {STAENDE.map((s) => (
+                <th className="zahl" key={s.feld}>
+                  {s.feld === 'verbindlich' ? 'verbindlich' : s.text}
+                </th>
+              ))}
+              <th>verweist am häufigsten auf</th>
+            </tr>
+          </thead>
+          <tbody>
+            {a.bereiche.map((b) => {
+              const verweis = staerksterVerweis(b, a.bereiche)
+              return (
+                <tr key={b.id}>
+                  <td>{b.name}</td>
+                  <td className="zahl">{zahl(b.notizen)}</td>
+                  {STAENDE.map((s) => (
+                    <td className="zahl" key={s.feld}>
+                      {zahl(b[s.feld])}
+                    </td>
+                  ))}
+                  <td className="leise">
+                    {verweis ? `${verweis.name}, ${zahl(verweis.anzahl)}-mal` : 'auf keinen'}
+                  </td>
+                </tr>
+              )
+            })}
+          </tbody>
+        </table>
+      </div>
+    </details>
+  )
+}
+
 export function AblageFigur() {
   const a = daten.ablage
   const verbindlich = a.bereiche.reduce((s, b) => s + b.verbindlich, 0)
@@ -76,7 +121,7 @@ export function AblageFigur() {
     if (g.id === GRUPPEN[0].id) {
       // Steht auf der Höhe der Gruppenzeile, rechts, wo diese frei ist.
       teile.push(
-        <text key="kopf-verweis" x={SPALTE_VERWEIS} y={y} fontSize="10" fill="var(--wmc-muted)">
+        <text key="kopf-verweis" x={SPALTE_VERWEIS} y={y} fontSize="10.5" fill="var(--wmc-muted)">
           verweist am häufigsten auf
         </text>,
       )

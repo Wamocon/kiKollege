@@ -27,13 +27,13 @@ export function Schichtenstapel() {
       titel={`Acht Schichten in vier Gruppen. Ein zweiter KI-Mitarbeiter erbt ${gruppen.filter((g) => g.erbt).length} Gruppen fast unverändert; neu zu bauen ist ${gruppen.find((g) => !g.erbt)?.name}.`}
       beschriftung={daten.schichtenErbe}
     >
-      <text x={0} y={14} fontSize="10" fontWeight="700" letterSpacing="1.4" fill="var(--wmc-muted)">
+      <text x={0} y={14} fontSize="10.5" fontWeight="700" letterSpacing="1.4" fill="var(--wmc-muted)">
         GRUPPE
       </text>
-      <text x={INHALT} y={14} fontSize="10" fontWeight="700" letterSpacing="1.4" fill="var(--wmc-muted)">
+      <text x={INHALT} y={14} fontSize="10.5" fontWeight="700" letterSpacing="1.4" fill="var(--wmc-muted)">
         SCHICHT UND FRAGE
       </text>
-      <text x={RECHTS} y={14} textAnchor="end" fontSize="10" fontWeight="700" letterSpacing="1.4"
+      <text x={RECHTS} y={14} textAnchor="end" fontSize="10.5" fontWeight="700" letterSpacing="1.4"
             fill="var(--wmc-muted)">
         WO ES IN DER DATEI STEHT
       </text>
@@ -51,7 +51,7 @@ export function Schichtenstapel() {
                   fill="var(--wmc-ink)">
               {g.name}
             </text>
-            <text x={GRUPPE_BIS} y={oben + 31} textAnchor="end" fontSize="10"
+            <text x={GRUPPE_BIS} y={oben + 31} textAnchor="end" fontSize="10.5"
                   fontWeight={g.erbt ? 400 : 700}
                   fill={g.erbt ? 'var(--wmc-muted)' : 'var(--wmc-primary-text)'}>
               {g.erbt ? 'ein zweiter erbt sie' : 'neu zu bauen'}

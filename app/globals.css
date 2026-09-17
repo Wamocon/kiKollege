@@ -1053,6 +1053,22 @@ th.num { text-align: right; }
 .lp-diagramm { overflow-x: auto; margin: clamp(1.6rem, 3vw, 2.6rem) 0 0; }
 .lp-diagramm svg { min-width: 880px; width: 100%; height: auto; }
 .lp-diagramm figcaption { max-width: 68ch; }
+.lp-diagramm-hinweis { display: none; }
+@media (max-width: 900px) {
+  .lp-diagramm-hinweis {
+    display: block;
+    position: sticky;
+    left: 0;
+    margin: 0 0 0.5rem;
+    font-family: var(--schrift-mono);
+    font-size: 0.72rem;
+    color: var(--wmc-muted);
+  }
+}
+.lp-details { max-width: 100%; }
+.lp-details summary { cursor: pointer; font-weight: 700; font-size: 0.92rem; }
+.lp-details .lp-gegen { margin-top: 0.8rem; }
+.lp-gegen td.zahl, .lp-gegen th.zahl { text-align: right; font-variant-numeric: tabular-nums; }
 
 /* --- Gegenueberstellung ---------------------------------------------------- */
 .lp-gegen { width: 100%; border-collapse: collapse; margin-top: clamp(1.6rem, 3vw, 2.6rem); }
