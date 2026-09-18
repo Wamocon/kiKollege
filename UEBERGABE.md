@@ -4,8 +4,45 @@ Diese Datei ist für die nächste Sitzung geschrieben, nicht für die Nachwelt. 
 sagt, wo das Vorhaben steht, was als Erstes zu tun ist und was dabei nicht
 verloren gehen darf.
 
-Stand dieser Übergabe: 17.09.2026, nachgetragen am selben Tag nach dem ersten
-Stand-Update und nach den acht Verbesserungen.
+Stand dieser Übergabe: 18.09.2026.
+
+## Nachtrag 18.09.2026: der Plan hat Zieldaten
+
+Am 17.09. sind zwölf Punkte des Arbeitsplans erledigt worden. Der Meilensteinplan
+ist deshalb am 18.09. nachgezogen: Neben den Fristen stehen jetzt Zieldaten, M1 am
+19.09. statt am 25.09., M2 am 26.09., M3 am 03.10., M4 am 10.10. Die Fristen
+bleiben als äußere Grenze, die Reihenfolge ändert sich nicht.
+
+Der Grund steht in den Daten: Der Plan rechnet die Zeit der Werkbank nicht mit und
+nimmt an, dass Erwin selbst am KI-Rechner tippt. Nicht schneller werden die
+Bewertungen, die Freigaben der Akten und alles, was von außen kommt. Für die
+Abnahme von M1 fehlen die Probe über den Messenger, die Bewertung von Regel E13 an
+30 Fällen und die Abnahme selbst; alle drei brauchen Erwin.
+
+Ein Widerspruch steht als Beobachtung `m1-berichte-offen` in den Daten: Der
+Nachtrag nennt den technischen Teil von M1 fertig, führt die Berichtsgeneratoren
+aber unter dem, was noch vorzuziehen ist.
+
+Die Ablage ist am 18.09. neu gezählt: 143 Notizen, 1.280 Verweise. Neue Prüfläufe
+gibt es keine.
+
+## Nachtrag 17.09.2026, abends: Graph und Rubriken der Ablage
+
+Der Zweig `ablage/2026-09-17` baut auf `verbesserungen/2026-09-17` auf und
+bringt einen dreizehnten Abschnitt „Ablage“ auf die Landing Page. Das Abbild ist
+dorthin umgezogen, dazu kommen:
+
+- **Der Graph der Ablage**, der Vault-Graph in einfacher Form: Bereiche als Kreise,
+  Verbindungen ab zehn Verweisen als Linien, der meistverwiesene Bereich rot. Er
+  rechnet nur mit `ablage.bereiche`, es wird nichts Neues gezählt.
+- **Die Rubriken des Unternehmenswissens** mit einer kurzen Erklärung je Ordner,
+  gruppiert nach der Stufe, in der ein KI-Mitarbeiter sie liest. Die Texte stehen
+  unter `unternehmenswissen`, die Anzahlen zählt `abbild-vault.mjs` mit.
+- Die Zählung vom 17.09. abends ist eingetragen: 141 Notizen, 1.267 Verweise.
+
+Wer die Ordnertabelle im Einstieg von KI-Mitarbeiter ändert, zieht
+`unternehmenswissen.rubriken` von Hand nach. Das Skript meldet Ordner ohne
+Eintrag, legt aber keine an.
 
 ## Nachtrag 17.09.2026, nachmittags: acht Verbesserungen
 
@@ -154,7 +191,7 @@ Internes findet.
 
 | Was | Wo |
 | --- | --- |
-| Landing Page, 12 Abschnitte, 11 in der öffentlichen Fassung | `app/page.tsx` |
+| Landing Page, 13 Abschnitte, 12 in der öffentlichen Fassung | `app/page.tsx` |
 | Dichte Zweitseite, 17 Abschnitte | `app/stand/page.tsx` |
 | Impressum und Datenschutz, Entwürfe | `app/impressum/`, `app/datenschutz/` |
 | Alle Zahlen, einzige Quelle | `data/projektstand.json` |
@@ -219,7 +256,8 @@ npm run pruefe:aktualitaet -- --ablage "D:\WAMOCON"
 2. **`/stand` nachziehen.** Am 17.09. nachgezogen, mit Stufen und dem
    Meilensteinplan im Einzelnen. Das Organigramm fehlt ihr weiter.
 3. **Kürzen.** Am 17.09. von neunzehn auf zwölf Abschnitte gekürzt, ohne Inhalt
-   zu verlieren: Was wegfiel, steht unter `/stand/`. Ob das so bleibt,
+   zu verlieren: Was wegfiel, steht unter `/stand/`. Am Abend kam die Ablage als
+   dreizehnter dazu. Ob das so bleibt,
    entscheidet ein Mensch.
 4. **Die Vault-Pfade.** Geklärt, siehe oben.
 5. **Ob die Sitzungen, die eine Routine startet, einen Pull Request öffnen

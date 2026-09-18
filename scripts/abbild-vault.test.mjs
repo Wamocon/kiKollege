@@ -10,6 +10,7 @@ import {
   ausgelassen,
   bereichVon,
   freigabestand,
+  rubrikenZaehlen,
   verweise,
   zaehlen,
 } from './abbild-vault.mjs'
@@ -119,6 +120,27 @@ test('zaehlen zählt Freigabestand und Verweise je Bereich', async () => {
   assert.equal(abbild.regelnotizen, 0)
 })
 
+test('zaehlen zählt je Rubrik des Unternehmenswissens, nur die oberste Ebene', async () => {
+  const abbild = await zaehlen(ablage, '2026-09-17')
+  assert.deepEqual(abbild.rubriken, {
+    '30_Werte': { notizen: 1, verbindlich: 0 },
+    '85_Logbuch': { notizen: 1, verbindlich: 1 },
+  })
+})
+
+test('rubrikenZaehlen setzt nur Anzahlen und lässt Dateiordner in Ruhe', () => {
+  const bisher = [
+    { ordner: '30_Werte', art: 'notizen', wofuer: 'Werte', notizen: 9, verbindlich: 9 },
+    { ordner: '01_Inbox', art: 'notizen', wofuer: 'Eingang', notizen: 3, verbindlich: 0 },
+    { ordner: 'CI', art: 'dateien', wofuer: 'CI-Profil' },
+  ]
+  assert.deepEqual(rubrikenZaehlen(bisher, { '30_Werte': { notizen: 1, verbindlich: 0 }, 'Neu': { notizen: 2, verbindlich: 0 } }), [
+    { ordner: '30_Werte', art: 'notizen', wofuer: 'Werte', notizen: 1, verbindlich: 0 },
+    { ordner: '01_Inbox', art: 'notizen', wofuer: 'Eingang', notizen: 0, verbindlich: 0 },
+    { ordner: 'CI', art: 'dateien', wofuer: 'CI-Profil' },
+  ])
+})
+
 test('abbilden ersetzt nur das Abbild und die Kennzahl der verbindlichen Notizen', async () => {
   const bisher = JSON.parse(readFileSync(ziel, 'utf8'))
   const neu = await abbilden({ vault: ablage, ziel, probelauf: true, heute: '2026-09-17', log: still })
@@ -129,9 +151,14 @@ test('abbilden ersetzt nur das Abbild und die Kennzahl der verbindlichen Notizen
     bisher.kennzahlen.filter((k) => k.id !== 'verbindlich'),
   )
   for (const schluessel of Object.keys(bisher)) {
-    if (schluessel === 'kennzahlen' || schluessel === 'ablage') continue
+    if (['kennzahlen', 'ablage', 'unternehmenswissen'].includes(schluessel)) continue
     assert.deepEqual(neu[schluessel], bisher[schluessel], schluessel)
   }
+  const werte = neu.unternehmenswissen.rubriken.find((r) => r.ordner === '30_Werte')
+  assert.equal(werte.notizen, 1)
+  assert.equal(werte.wofuer, bisher.unternehmenswissen.rubriken.find((r) => r.ordner === '30_Werte').wofuer)
+  assert.equal(neu.unternehmenswissen.rubriken.length, bisher.unternehmenswissen.rubriken.length)
+  assert.equal(neu.ablage.rubriken, undefined, 'Ordnernamen gehören nicht ins Abbild')
   assert.equal(neu.ablage.notizen, 6)
   assert.equal(neu.ablage.freigabe, bisher.ablage?.freigabe ?? 'oeffentlich')
   assert.match(neu.ablage.verfahren, /abbild-vault\.mjs/)

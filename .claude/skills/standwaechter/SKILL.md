@@ -124,6 +124,7 @@ mit Datum im Namen.
 | Stufe mit Abnahme | `stufen`, Abnahme in `bedingung` |
 | Meilensteinplan, Wochen, Fristen, Risiken | `meilensteinplan` |
 | Baustein oder Verbindung der Systemlandschaft | `landschaft` |
+| Neue oder umbenannte Rubrik des Unternehmenswissens | `unternehmenswissen.rubriken`, die Anzahlen zählt `abbild:vault` |
 | Risiko | `hemmnisse.gruppen[].punkte` |
 | Offene Entscheidung | `offenePunkte` |
 | Zwei Quellen, zwei Zahlen | `beobachtungen` |
@@ -178,7 +179,7 @@ und wird nicht gekürzt, um eine Prüfung grün zu bekommen.
 
 ## Wenn die Seite zu lang wird
 
-Die Landing Page hat seit dem 17.09. zwölf Abschnitte, die Einzelheiten stehen
+Die Landing Page hat seit dem 17.09. dreizehn Abschnitte, die Einzelheiten stehen
 unter `/stand/`. Neues gehört zuerst dorthin. Wächst die Landing Page wieder, ist
 das ein Punkt für einen Menschen, nicht für diesen Auftrag: kürzen heißt
 entscheiden, was wegfällt.

@@ -5,17 +5,23 @@ Datenquelle.
 
 | Route | Was sie ist |
 |---|---|
-| `/` | Landing Page. Erzählt das Vorhaben in zwölf Abschnitten, vom Hero bis zum Meilensteinplan. |
+| `/` | Landing Page. Erzählt das Vorhaben in dreizehn Abschnitten, vom Hero bis zum Meilensteinplan. |
 | `/stand/` | Dichte Standseite mit Ankernavigation, allen Tabellen, Prüfläufen, Stufen und dem Meilensteinplan im Einzelnen. |
 | `/impressum/`, `/datenschutz/` | Entwürfe, rechtlich nicht geprüft. Siehe „Impressum und Datenschutz“. |
 
 Bis zum 17.09.2026 hatte die Landing Page neunzehn Abschnitte und rund 9.500
-Wörter. Jetzt sind es zwölf und rund 6.300: Ertrag und Aufwand stehen unter
+Wörter. Nach dem Kürzen waren es zwölf und rund 6.300, mit dem Abschnitt Ablage
+sind es dreizehn: Ertrag und Aufwand stehen unter
 Eignung, die Steuerung unter Arbeitsweise. Stufen, Betrieb, Entscheidungen und
 Abgleich stehen nur noch unter `/stand/`, ebenso Zieltabelle, Zeit je Woche und
 Risiken des Meilensteinplans. Unter dem Hero steht „Auf einen Blick“: nächste
 Abnahme, nächste Frist, Bewertungen, Rollen und verbindliche Notizen, alles aus
 den Daten gerechnet.
+
+Der Abschnitt **Ablage** zeigt, wie der Vault heute aussieht: das Abbild mit einem
+Kästchen je Notiz, den Graphen der Bereiche und die Rubriken des
+Unternehmenswissens mit einer kurzen Erklärung und der Stufe, in der ein
+KI-Mitarbeiter sie liest.
 
 Drei Quellen liegen zugrunde, alle aus dem Arbeitsordner `D:\KFBM`, den das
 Übergabedokument nennt:
@@ -95,7 +101,7 @@ npx serve out
 
 ## Navigation
 
-Zwölf Abschnitte brauchen eine. Sie besteht aus drei Teilen, alle in
+Dreizehn Abschnitte brauchen eine. Sie besteht aus drei Teilen, alle in
 `components/landing/Navigation.tsx`:
 
 - **Die Schiene** am linken Rand, ab 1240 px. Sie listet alle Abschnitte und
@@ -143,7 +149,7 @@ verborgen bleibt.
 
 ## Die Figuren
 
-Elf Zeichnungen, alle aus `data/projektstand.json` gespeist, zehn davon in
+Zwölf Zeichnungen, alle aus `data/projektstand.json` gespeist, elf davon in
 `components/figuren/`. Sie sind eigene SVG in den CI-Farben, keine Kopien der
 Vorlagen aus der Einführung. Farben kommen aus den Tokens, damit sie in beiden Themen
 mitwandern; Rot trägt in jeder Figur genau ein Element, nämlich das, worum es geht.
@@ -188,6 +194,13 @@ Aussehen setzt die Klasse `lp-aussage`.
   verwiesen wird. Rot trägt das Verbindliche. Die Zahlen kommen aus
   `scripts/abbild-vault.mjs`, siehe unten. Darunter stehen sie noch einmal als
   aufklappbare Tabelle, für alle, die das Bild nicht sehen.
+- **Graph der Ablage** — der Vault-Graph in einfacher Form: jeder Bereich ein Kreis,
+  der mit der Zahl seiner Notizen wächst, auf einer Ellipse in der Reihenfolge des
+  Abbilds. Linien verbinden Bereiche, die sich zusammen mindestens zehnmal
+  verweisen, je dicker, desto öfter. Rot ist der Bereich, auf den am meisten
+  verwiesen wird, am 17.09. der Bauplan. Einzelne Notizen zeigt er nicht: 141
+  Punkte und über 1.200 Linien wären ein Knäuel, und Dateinamen gehören nicht auf
+  die Seite. Alle Verbindungen stehen darunter als Liste.
 - **Anatomie** — die Zeichnung im Hero, die einzige mit Scrollbindung.
 
 Dazu zwei Entscheidungen zur Darstellung:
@@ -332,6 +345,15 @@ Kennzahl der verbindlichen Notizen; sonst ändert das Skript nichts.
 
 Das Repository ist öffentlich. Ins Abbild gehen deshalb nur Zahlen je Bereich,
 keine Dateinamen und keine Pfade.
+
+Dieselbe Zählung liefert die Anzahlen für die **Rubriken des
+Unternehmenswissens**, die Ordner direkt unter `KI-Mitarbeiter/`. Wofür eine
+Rubrik da ist und in welcher Stufe ein KI-Mitarbeiter sie liest, steht von Hand
+unter `unternehmenswissen` in den Daten, übertragen aus der Ordnertabelle und der
+Kontextstrategie im Einstieg jenes Repositorys. Das Skript setzt nur `notizen` und
+`verbindlich`. Eine Rubrik legt es nie selbst an und nimmt keine weg; findet es
+einen Ordner ohne Eintrag, meldet es ihn, damit ein Mensch die Beschreibung
+nachträgt. Tiefer als diese oberste Ebene gehen keine Ordnernamen in die Daten.
 
 ## Der Stand aktualisiert sich nicht von selbst
 
@@ -573,8 +595,8 @@ app/
   globals.css       CI-Tokens, gemeinsame Bausteine, Landing-Layout (lp-)
   icon.svg          Favicon
 components/
-  landing/          Kopfleiste, Navigation, Hero, Sektion, Fußleiste
-  figuren/          zehn gezeichnete Diagramme, alle aus den Daten
+  landing/          Kopfleiste, Navigation, Hero, Sektion, Rubriken, Fußleiste
+  figuren/          elf gezeichnete Diagramme, alle aus den Daten
   stand/            Stufen und Meilensteinplan für die Standseite
   ThemaSchalter     Hell, Dunkel, System
   Kopf, Nav, Fuss, bausteine   Bausteine der Standseite

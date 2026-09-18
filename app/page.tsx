@@ -1,4 +1,5 @@
 import { AblageFigur, AblageTabelle } from '@/components/figuren/Ablage'
+import { AblageGraphFigur, AblageGraphListe } from '@/components/figuren/AblageGraph'
 import { EnablerRaster } from '@/components/figuren/EnablerRaster'
 import { LandschaftFigur } from '@/components/figuren/Landschaft'
 import { ZeitplanFigur } from '@/components/figuren/Zeitplan'
@@ -11,6 +12,7 @@ import { Wissensablagen } from '@/components/figuren/Wissensablagen'
 import { Fussleiste } from '@/components/landing/Fussleiste'
 import { HeroAnatomie } from '@/components/landing/HeroAnatomie'
 import { Kopfleiste } from '@/components/landing/Kopfleiste'
+import { Rubriken } from '@/components/landing/Rubriken'
 import { Sektion } from '@/components/landing/Sektion'
 import { daten, datum, dauer, harteRegel, spanne, tageZwischen, zahl } from '@/lib/daten'
 import { inWorten } from '@/lib/alter'
@@ -48,6 +50,7 @@ export default function Landing() {
   const fachlich = d.ablage.bereiche.filter((a) => a.id === 'normbasis' || a.id === 'massstab')
   const fachlichVerbindlich = fachlich.reduce((s, a) => s + a.verbindlich, 0)
   const verbindlich = d.ablage.bereiche.reduce((s, a) => s + a.verbindlich, 0)
+  const u = d.unternehmenswissen
 
   // Auf einen Blick: was als Nächstes ansteht, gerechnet am Stand der Daten
   const offeneFristen = plan.entscheidungen
@@ -124,10 +127,14 @@ export default function Landing() {
             <div className="lp-kpi">
               {sichtbar(plan) && naechsterMeilenstein ? (
                 <div className="lp-kpi-kachel">
-                  <p className="lp-kpi-wert">{datum(naechsterMeilenstein.datum).slice(0, 6)}</p>
+                  <p className="lp-kpi-wert">
+                    {datum(naechsterMeilenstein.ziel ?? naechsterMeilenstein.datum).slice(0, 6)}
+                  </p>
                   <p className="lp-kpi-label">
-                    Abnahme {naechsterMeilenstein.id}: {naechsterMeilenstein.titel}. Erledigt sind{' '}
-                    {inWorten(naechsterMeilenstein.erledigt?.length ?? 0)} von{' '}
+                    {naechsterMeilenstein.ziel
+                      ? `Ziel für die Abnahme ${naechsterMeilenstein.id}, Frist ${datum(naechsterMeilenstein.datum).slice(0, 6)} `
+                      : `Abnahme ${naechsterMeilenstein.id}: ${naechsterMeilenstein.titel}. `}
+                    Erledigt sind {inWorten(naechsterMeilenstein.erledigt?.length ?? 0)} von{' '}
                     {inWorten(naechsterMeilenstein.inhalt.length)} Arbeiten.
                   </p>
                 </div>
@@ -395,36 +402,64 @@ export default function Landing() {
             </p>
           </div>
 
-          {sichtbar(d.ablage) ? (
-            <>
-              <h3 className="lp-aussage lp-luft-oben">So sieht die Ablage heute aus.</h3>
-              <div className="lp-text lp-luft-oben-klein">
-                <p>
-                  Das Bild ist aus den Notizen selbst gezählt, nicht von Hand gezeichnet. Jedes
-                  Kästchen ist eine Notiz, gefärbt nach ihrem Freigabestand. Rechts steht, auf
-                  welchen anderen Bereich ein Bereich am häufigsten verweist. Dateinamen stehen
-                  nicht darin.
-                </p>
-              </div>
-
-              <AblageFigur />
-              <AblageTabelle />
-
-              {fachlichVerbindlich === 0 ? (
-                <div className="lp-text lp-luft-oben">
-                  <p>
-                    Verbindlich ist bisher nur, was Konventionen und Entscheidungen festhält. Die
-                    Normbasis und der Prüfmaßstab, gegen die der Reviewer prüft, hat noch niemand
-                    freigegeben. Er muss deshalb in jedem Ergebnis sagen, dass er sich auf
-                    Ungeprüftes stützt.
-                  </p>
-                </div>
-              ) : null}
-            </>
-          ) : null}
         </Sektion>
 
-        {/* 06 Arbeitsweise --------------------------------------------------- */}
+        {/* 06 Ablage -------------------------------------------------------- */}
+        {sichtbar(d.ablage) ? (
+          <Sektion id="ablage">
+            <h2 className="lp-aussage breit">So sieht die Ablage heute aus.</h2>
+            <div className="lp-text lp-luft-oben-klein">
+              <p>
+                Das Bild ist aus den Notizen selbst gezählt, nicht von Hand gezeichnet. Jedes
+                Kästchen ist eine Notiz, gefärbt nach ihrem Freigabestand. Rechts steht, auf
+                welchen anderen Bereich ein Bereich am häufigsten verweist. Dateinamen stehen
+                nicht darin.
+              </p>
+            </div>
+
+            <AblageFigur />
+            <AblageTabelle />
+
+            {fachlichVerbindlich === 0 ? (
+              <div className="lp-text lp-luft-oben">
+                <p>
+                  Verbindlich ist bisher nur, was Konventionen und Entscheidungen festhält. Die
+                  Normbasis und der Prüfmaßstab, gegen die der Reviewer prüft, hat noch niemand
+                  freigegeben. Er muss deshalb in jedem Ergebnis sagen, dass er sich auf
+                  Ungeprüftes stützt.
+                </p>
+              </div>
+            ) : null}
+
+            <h3 className="lp-aussage lp-luft-oben">Welcher Bereich auf welchen verweist.</h3>
+            <div className="lp-text lp-luft-oben-klein">
+              <p>
+                Die Ablage kann jede Notiz als Punkt und jeden Verweis als Linie zeigen. Bei{' '}
+                {zahl(d.ablage.notizen)} Notizen und {zahl(d.ablage.verweise)} Verweisen wird daraus
+                ein Knäuel. Hier ist deshalb jeder Bereich ein Kreis, und gezeichnet sind nur die
+                Wege, die oft genommen werden.
+              </p>
+            </div>
+
+            <AblageGraphFigur />
+            <AblageGraphListe />
+
+            {sichtbar(u) ? (
+              <>
+                <h3 className="lp-aussage breit lp-luft-oben">{u.satz}</h3>
+                <div className="lp-text lp-luft-oben-klein">
+                  <p>{u.erklaerung}</p>
+                </div>
+                <Rubriken />
+                <div className="lp-text lp-luft-oben">
+                  <p>{u.stand}</p>
+                </div>
+              </>
+            ) : null}
+          </Sektion>
+        ) : null}
+
+        {/* 07 Arbeitsweise --------------------------------------------------- */}
         <Sektion id="durchlauf">
           <h2 className="lp-aussage breit">
             Zwei Stufen, weil sie Verschiedenes finden.
@@ -462,7 +497,7 @@ export default function Landing() {
           </div>
         </Sektion>
 
-        {/* 07 Messung -------------------------------------------------------- */}
+        {/* 08 Messung -------------------------------------------------------- */}
         <Sektion id="messung">
           <h2 className="lp-aussage">
             Ein KI-Mitarbeiter, dem man nicht glauben kann, ist schlimmer als keiner.
@@ -618,7 +653,7 @@ export default function Landing() {
           </dl>
         </Sektion>
 
-        {/* 08 Der erste ------------------------------------------------------ */}
+        {/* 09 Der erste ------------------------------------------------------ */}
         <Sektion id="erster">
           <p className="lp-klein">
             Seit Ende August im Einsatz
@@ -681,7 +716,7 @@ export default function Landing() {
           </div>
         </Sektion>
 
-        {/* 09 Mannschaft ----------------------------------------------------- */}
+        {/* 10 Mannschaft ----------------------------------------------------- */}
         <Sektion id="mannschaft">
           <h2 className="lp-aussage breit">{m.satz}</h2>
           <div className="lp-text lp-luft-oben-klein">
@@ -727,7 +762,7 @@ export default function Landing() {
           ) : null}
         </Sektion>
 
-        {/* 10 Landschaft ------------------------------------------------------- */}
+        {/* 11 Landschaft ------------------------------------------------------- */}
         {sichtbar(l) ? (
           <Sektion id="landschaft">
             <h2 className="lp-aussage breit">{l.satz}</h2>
@@ -762,7 +797,7 @@ export default function Landing() {
           </Sektion>
         ) : null}
 
-        {/* 11 Stand ---------------------------------------------------------- */}
+        {/* 12 Stand ---------------------------------------------------------- */}
         <Sektion id="stand">
           <h2 className="lp-aussage breit">
             {tageZwischen(d.arbeitstage.beginn, d.stand)} Tage, mit Datum.
@@ -815,7 +850,7 @@ export default function Landing() {
           </div>
         </Sektion>
 
-        {/* 12 Meilensteine ------------------------------------------------------ */}
+        {/* 13 Meilensteine ------------------------------------------------------ */}
         {sichtbar(plan) ? (
           <Sektion id="plan">
             {istIntern ? <p className="lp-intern">nur intern</p> : null}
@@ -827,6 +862,20 @@ export default function Landing() {
               <div className="lp-text lp-luft-oben-klein">
                 <p>
                   <b>{plan.standNachtrag}</b>
+                </p>
+              </div>
+            ) : null}
+            {plan.nachgezogen ? (
+              <div className="lp-text lp-luft-oben-klein">
+                <p>
+                  <b>
+                    Nachgezogen am {datum(plan.nachgezogen.am)}: {plan.nachgezogen.satz}
+                  </b>
+                </p>
+                <p>{plan.nachgezogen.fristen}</p>
+                <p>
+                  Für die Abnahme von M1 fehlen {plan.nachgezogen.m1Fehlt.join(', ')}.{' '}
+                  {plan.nachgezogen.m1FehltSatz}
                 </p>
               </div>
             ) : null}
@@ -848,6 +897,14 @@ export default function Landing() {
                     <span className="wann">
                       {ms.id}
                       {w ? ` · ${spanne(w.von, w.bis)}` : ''}
+                      {ms.ziel ? (
+                        <>
+                          <br />
+                          Ziel {datum(ms.ziel).slice(0, 6)}
+                          <br />
+                          Frist {datum(ms.datum).slice(0, 6)}
+                        </>
+                      ) : null}
                     </span>
                     <div>
                       <h3>{ms.titel}</h3>
@@ -859,6 +916,9 @@ export default function Landing() {
                           </li>
                         ))}
                       </ul>
+                      {ms.zielBedingung ? (
+                        <p className="bedingung">Das Ziel gilt, {ms.zielBedingung}.</p>
+                      ) : null}
                       <p className="bedingung">Abnahme: {ms.abnahme}</p>
                       <p className="bedingung">
                         Erwins Anteil

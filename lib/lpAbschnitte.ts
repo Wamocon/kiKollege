@@ -11,7 +11,8 @@ export interface LpAbschnitt {
  *  oeffentlichen Fassung weg, ruecken die Nummern nach, damit die Zaehlung
  *  keine Luecke zeigt.
  *
- *  Seit dem 17.09. hat die Seite zwoelf Abschnitte statt neunzehn. Ertrag und
+ *  Seit dem 17.09. hat die Seite dreizehn Abschnitte statt neunzehn; der
+ *  dreizehnte ist die Ablage mit Abbild, Graph und Rubriken. Ertrag und
  *  Aufwand stehen unter Eignung, die Steuerung unter Arbeitsweise. Stufen,
  *  Betrieb, Entscheidungen und Abgleich stehen nur noch unter /stand/, ebenso
  *  die Einzelheiten des Meilensteinplans. */
@@ -21,6 +22,7 @@ const alle: readonly LpAbschnitt[] = [
   { id: 'eignung', label: 'Eignung' },
   { id: 'aufbau', label: 'Aufbau' },
   { id: 'wissen', label: 'Wissen' },
+  { id: 'ablage', label: 'Ablage' },
   { id: 'durchlauf', label: 'Arbeitsweise' },
   { id: 'messung', label: 'Messung' },
   { id: 'erster', label: 'Der erste' },

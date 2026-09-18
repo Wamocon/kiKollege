@@ -1,9 +1,9 @@
 {
-  "stand": "2026-09-17",
+  "stand": "2026-09-18",
   "herkunft": {
     "arbeitsordner": "D:\\WAMOCON",
     "einstieg": "KI-Mitarbeiter/75_KI-Mitarbeiter/KI-Mitarbeiter — Einstieg.md",
-    "erzeugt": "2026-09-17",
+    "erzeugt": "2026-09-18",
     "fristTage": 7,
     "verfahren": "Erstbefüllung von Hand aus dem Übergabedokument vom 05.09.2026, am 11.09. fortgeschrieben aus den beiden Blättern vom 09.09., am 17.09. aus dem Vault: Logbuch, Tagesprotokolle, Meilensteinplan, Bestandsaufnahme vom 16.09., Akte des Reviewers, Laufnotizen und Quoten je Regel. Das Abbild der Ablage zählt scripts/abbild-vault.mjs. Spätere Stände der Prüfläufe schreibt scripts/export-vault.mjs aus dem Frontmatter der Laufnotizen.",
     "freigabe": "intern",
@@ -28,7 +28,9 @@
       "Systemarchitektur Orchestrator vom 09.09.2026, nachgezogen am 11.09.",
       "Auskunft Erwin Moretz vom 17.09.2026: eigene Hardware seit dem 11.09. unverändert",
       "Tagesprotokolle vom 17.09.2026, Stand 11:14 Uhr",
-      "Arbeitsplan vom 17.09.2026"
+      "Arbeitsplan vom 17.09.2026",
+      "Tagesprotokoll vom 18.09.2026",
+      "Meilensteinplan 17.09. bis 16.10.2026, nachgezogen am 18.09.2026"
     ],
     "getrenntAm": "2026-09-09"
   },
@@ -974,6 +976,13 @@
       "text": "Die Kennzahl hieß seit der Erstbefüllung „Regeln mit Zweck und Testfällen“ und trug die 26. Die 26 ist die Zahl der Prüfpunkte in der Checkliste. Regelnotizen mit gemessener Quote zählt die Ablage am 17.09. keine, und die Bewertungen verteilen sich auf 9 Regeln. Die Kennzahl heißt seit dem 17.09. nach dem, was sie zählt.",
       "quelle": "Kennzahlen dieser Seite seit der Erstbefüllung, gegen die Checkliste im Maßstab und die Zählung der Ablage vom 17.09.",
       "freigabe": "intern"
+    },
+    {
+      "id": "m1-berichte-offen",
+      "titel": "Der technische Teil von M1 steht, ein technischer Punkt fehlt noch",
+      "text": "Der Nachtrag vom 18.09. sagt, der technische Teil von M1 stehe acht Tage vor der Frist, und nennt als Fehlendes nur die Probe über den Messenger, die Bewertung von Regel E13 und die Abnahme. Im selben Nachtrag stehen die Berichtsgeneratoren unter dem, was ohne Freigabe noch vorgezogen werden kann; als Punkt von M1 heißt das: Berichte weisen ungemessene Regeln getrennt aus. Die Seite lässt diesen Punkt offen.",
+      "quelle": "Meilensteinplan 17.09. bis 16.10.2026, Abschnitte „Neue Zieldaten“ und „Vorgezogen“, gegen den Inhalt von M1",
+      "freigabe": "intern"
     }
   ],
   "gesellschaften": [
@@ -1339,6 +1348,11 @@
       {
         "datum": "2026-09-17",
         "text": "Der Stand aller Repositories ist eingecheckt und liegt über Git auf der eigenen Hardware, zum ersten Mal mit der Akte des Reviewers und seinen Prüfprofilen"
+      },
+      {
+        "datum": "2026-09-18",
+        "text": "Der Meilensteinplan bekommt Zieldaten neben den Fristen: M1 am 19.09. statt am 25.09. Die Fristen bleiben als äußere Grenze. Erwins Zeit wird ab heute mitgeschrieben.",
+        "freigabe": "oeffentlich"
       }
     ],
     "freigabe": "oeffentlich"
@@ -1684,9 +1698,9 @@
   },
   "ablage": {
     "freigabe": "oeffentlich",
-    "gezaehltAm": "2026-09-17",
-    "notizen": 141,
-    "verweise": 1233,
+    "gezaehltAm": "2026-09-18",
+    "notizen": 143,
+    "verweise": 1280,
     "unaufgeloest": 6,
     "regelnotizen": 0,
     "bereiche": [
@@ -1709,7 +1723,7 @@
           "quellen": 0,
           "prueflaeufe": 33,
           "arbeitsstand": 22,
-          "protokoll": 8,
+          "protokoll": 10,
           "einstiege": 3,
           "archiv": 4
         }
@@ -1732,7 +1746,7 @@
           "massstab": 3,
           "quellen": 0,
           "prueflaeufe": 0,
-          "arbeitsstand": 17,
+          "arbeitsstand": 22,
           "protokoll": 1,
           "einstiege": 7,
           "archiv": 0
@@ -1894,14 +1908,14 @@
         "ohneFeld": 10,
         "verweiseNach": {
           "konventionen": 11,
-          "entscheidungen": 8,
+          "entscheidungen": 9,
           "unternehmen": 5,
           "bauplan": 52,
           "normbasis": 1,
           "massstab": 19,
           "quellen": 0,
           "prueflaeufe": 4,
-          "protokoll": 5,
+          "protokoll": 6,
           "einstiege": 3,
           "archiv": 4
         }
@@ -1911,21 +1925,21 @@
         "gruppe": "werkstatt",
         "name": "Tagesprotokolle",
         "kurz": "Protokolle",
-        "notizen": 7,
+        "notizen": 9,
         "verbindlich": 0,
         "informativ": 0,
         "ungeprueft": 0,
-        "ohneFeld": 7,
+        "ohneFeld": 9,
         "verweiseNach": {
-          "konventionen": 12,
-          "entscheidungen": 12,
+          "konventionen": 15,
+          "entscheidungen": 17,
           "unternehmen": 0,
-          "bauplan": 16,
-          "normbasis": 0,
+          "bauplan": 19,
+          "normbasis": 1,
           "massstab": 2,
           "quellen": 0,
-          "prueflaeufe": 0,
-          "arbeitsstand": 26,
+          "prueflaeufe": 3,
+          "arbeitsstand": 39,
           "einstiege": 0,
           "archiv": 0
         }
@@ -1980,6 +1994,174 @@
       }
     ],
     "verfahren": "Gezählt von scripts/abbild-vault.mjs aus dem Frontmatter und den Verweisen der Notizen. Ausgelassen ist, was die Ablage selbst aus ihrem Index nimmt."
+  },
+  "unternehmenswissen": {
+    "satz": "Das Unternehmenswissen liegt in Rubriken, und jede sagt, wann ein KI-Mitarbeiter sie liest.",
+    "erklaerung": "Allen KI-Mitarbeitern gemeinsam ist, wer das Unternehmen ist, was ihm wichtig ist, wo die Grenzen des Handelns liegen und wie ein KI-Mitarbeiter gebaut wird. Die Fachinhalte eines Berufs liegen daneben in einem eigenen Bereich. Kein Mitarbeiter lädt alles. Die Stufe einer Rubrik sagt, wann er sie liest.",
+    "stand": "Der Unternehmensteil ist eine Erstbefüllung, kein freigegebener Wissensstand. Werte und Leitplanken machen aus der Materialsammlung eine Steuerung und sind bewusst nur als Kandidaten und Entwurf befüllt, solange der Fragenkatalog offen ist.",
+    "stufen": [
+      {
+        "id": "kern",
+        "name": "Kern",
+        "wann": "immer geladen, sobald verbindlich"
+      },
+      {
+        "id": "nachschlagen",
+        "name": "Nachschlagen",
+        "wann": "gelesen, wenn eine Aufgabe es braucht"
+      },
+      {
+        "id": "verweis",
+        "name": "Verweis",
+        "wann": "verweist auf Primärquellen, statt sie zu kopieren"
+      },
+      {
+        "id": "ordnung",
+        "name": "Ordnung und Verlauf",
+        "wann": "hält die Ablage selbst zusammen"
+      },
+      {
+        "id": "dateien",
+        "name": "Neben dem Wissen",
+        "wann": "Dateien, keine Notizen der Ablage"
+      }
+    ],
+    "rubriken": [
+      {
+        "ordner": "30_Werte",
+        "stufe": "kern",
+        "art": "notizen",
+        "wofuer": "Werte als Entscheidungsregeln.",
+        "hinweis": "Bisher nur Kandidaten.",
+        "notizen": 1,
+        "verbindlich": 0
+      },
+      {
+        "ordner": "70_Leitplanken",
+        "stufe": "kern",
+        "art": "notizen",
+        "wofuer": "Verbote, Freigabepflichten, Eskalation.",
+        "hinweis": "Bisher nur Entwurf.",
+        "notizen": 1,
+        "verbindlich": 0
+      },
+      {
+        "ordner": "10_Unternehmen",
+        "stufe": "nachschlagen",
+        "art": "notizen",
+        "wofuer": "Stammdaten je Gesellschaft.",
+        "notizen": 2,
+        "verbindlich": 0
+      },
+      {
+        "ordner": "20_Menschen",
+        "stufe": "nachschlagen",
+        "art": "notizen",
+        "wofuer": "Personen, nur mit Name und öffentlicher Rolle.",
+        "notizen": 1,
+        "verbindlich": 0
+      },
+      {
+        "ordner": "40_Leistungen",
+        "stufe": "nachschlagen",
+        "art": "notizen",
+        "wofuer": "Leistungsbereiche und Kursformate.",
+        "notizen": 4,
+        "verbindlich": 0
+      },
+      {
+        "ordner": "50_Markt",
+        "stufe": "nachschlagen",
+        "art": "notizen",
+        "wofuer": "Branchen, Zielgruppen, Referenzen.",
+        "notizen": 1,
+        "verbindlich": 0
+      },
+      {
+        "ordner": "60_Auftreten",
+        "stufe": "nachschlagen",
+        "art": "notizen",
+        "wofuer": "Corporate Design und Sprache.",
+        "notizen": 1,
+        "verbindlich": 0
+      },
+      {
+        "ordner": "75_KI-Mitarbeiter",
+        "stufe": "nachschlagen",
+        "art": "notizen",
+        "wofuer": "Wie ein KI-Mitarbeiter gebaut ist: Anatomie, Harness, Orchestrator, Systemarchitektur, Zusammenarbeit, Fahrplan.",
+        "hinweis": "Gelesen, wenn an der Architektur gearbeitet wird, nicht bei jeder Aufgabe.",
+        "notizen": 21,
+        "verbindlich": 0
+      },
+      {
+        "ordner": "80_Quellen",
+        "stufe": "verweis",
+        "art": "notizen",
+        "wofuer": "Herkunft und Stand jeder Angabe.",
+        "notizen": 1,
+        "verbindlich": 0
+      },
+      {
+        "ordner": "00_Meta",
+        "stufe": "ordnung",
+        "art": "notizen",
+        "wofuer": "Konventionen, Änderungsprotokoll, Status-Übersicht und Tagesprotokolle.",
+        "notizen": 9,
+        "verbindlich": 3
+      },
+      {
+        "ordner": "01_Inbox",
+        "stufe": "ordnung",
+        "art": "notizen",
+        "wofuer": "Eingang für alles Neue, formlos.",
+        "notizen": 1,
+        "verbindlich": 0
+      },
+      {
+        "ordner": "85_Logbuch",
+        "stufe": "ordnung",
+        "art": "notizen",
+        "wofuer": "Entscheidungen und Ereignisse in zeitlicher Folge.",
+        "notizen": 7,
+        "verbindlich": 5
+      },
+      {
+        "ordner": "90_Archiv",
+        "stufe": "ordnung",
+        "art": "notizen",
+        "wofuer": "Überholtes, das auffindbar bleibt.",
+        "notizen": 1,
+        "verbindlich": 0
+      },
+      {
+        "ordner": "CI",
+        "stufe": "dateien",
+        "art": "dateien",
+        "wofuer": "Das CI-Profil, verbindlich für alle Ausgaben."
+      },
+      {
+        "ordner": "Praesentation",
+        "stufe": "dateien",
+        "art": "dateien",
+        "wofuer": "Erzeugte Präsentationen und OnePager."
+      },
+      {
+        "ordner": "Mannschaft",
+        "stufe": "dateien",
+        "art": "dateien",
+        "wofuer": "Die Akten der Mitarbeiter. Sie sind Verhalten, nicht Wissen, und stehen deshalb nicht im Index der Ablage."
+      },
+      {
+        "ordner": "_Rohmaterial",
+        "stufe": "dateien",
+        "art": "dateien",
+        "wofuer": "Website-Abzüge und Datenschicht, nicht im Repository und nicht im Index."
+      }
+    ],
+    "gezaehltAm": "2026-09-18",
+    "quelle": "Ordnertabelle und Kontextstrategie im Einstieg des Repositorys KI-Mitarbeiter, Akten nach den Vault-Konventionen, Anzahlen aus der Zählung der Ablage",
+    "freigabe": "oeffentlich"
   },
   "landschaft": {
     "stand": "2026-09-17",
@@ -2284,8 +2466,12 @@
         "erwin": "Entscheidungen, 25 Minuten. Akte des Reviewers, 15 Minuten. Referenzsatz bestätigen, 5 Minuten. Regel E13 bewerten, 30 Fälle einzeln, 60 Minuten.",
         "erledigt": [
           "den Stand der eigenen Hardware lesend aufnehmen, bevor etwas geändert wird",
-          "nach P1 den offenen Stand je Repository einchecken und die Ablage über Git auf die eigene Hardware bringen"
-        ]
+          "nach P1 den offenen Stand je Repository einchecken und die Ablage über Git auf die eigene Hardware bringen",
+          "das Profil des Reviewers nach der freigegebenen Akte umbauen, mit Grenze am Profil und Mitschnitt",
+          "aus dem Mitschnitt die echten Werkzeugnamen ins Grenzprogramm übernehmen",
+          "einen Referenzsatz aus zehn bis fünfzehn Enablern auf die eigene Hardware legen"
+        ],
+        "ziel": "2026-09-19"
       },
       {
         "id": "M2",
@@ -2302,7 +2488,9 @@
           "Vergleichslauf mit dem Cloud-Modell, nur wenn P8 gefallen ist"
         ],
         "abnahme": "Ein Auftrag läuft vom Chat über den Orchestrator als Auftragsnotiz zum Reviewer und zurück, rückverfolgbar bis zur Fundstelle. Der Orchestrator lehnt ab, was nicht in seiner Tabelle steht, und sagt warum. Das Ausspielen und die vier neuen Grenzdateien haben grüne Testfälle.",
-        "erwin": "Entscheidungen, 30 Minuten. Akte des Orchestrators, 15 Minuten. Einen Auftrag zurückverfolgen, 15 Minuten. Stichprobe, dass der Orchestrator nicht zusammenfasst, 10 Minuten. Regel E5 bewerten, die ersten 15 Fälle, 30 Minuten."
+        "erwin": "Entscheidungen, 30 Minuten. Akte des Orchestrators, 15 Minuten. Einen Auftrag zurückverfolgen, 15 Minuten. Stichprobe, dass der Orchestrator nicht zusammenfasst, 10 Minuten. Regel E5 bewerten, die ersten 15 Fälle, 30 Minuten.",
+        "ziel": "2026-09-26",
+        "zielBedingung": "wenn die Akte des Orchestrators bis zum 22.09. freigegeben ist"
       },
       {
         "id": "M3",
@@ -2317,7 +2505,8 @@
           "Sprachbedienung für Erwin freigeben"
         ],
         "abnahme": "Der Reporter erzeugt einen Kapitelbericht ohne Werkbank-Sitzung. Der Archivar committet unter eigenem Namen, und eine Änderung am Freigabestand einer Notiz lehnt die Grenze ab. Der Architekt gibt zu einer Frage genau eine Empfehlung mit Kipppunkt aus und schreibt nichts. Ein gesprochener Auftrag von Erwin liegt als Notiz ab.",
-        "erwin": "Entscheidungen, 20 Minuten. Drei Akten, je 15 Minuten. Sprachprobe, 15 Minuten. Wochenstichprobe, 10 Minuten. Keine Bewertung in dieser Woche."
+        "erwin": "Entscheidungen, 20 Minuten. Drei Akten, je 15 Minuten. Sprachprobe, 15 Minuten. Wochenstichprobe, 10 Minuten. Keine Bewertung in dieser Woche.",
+        "ziel": "2026-10-03"
       },
       {
         "id": "M4",
@@ -2332,7 +2521,8 @@
           "Regelnotiz für Regel E5"
         ],
         "abnahme": "Die Testfälle des Entwicklers sind zusammengeführt und grün. Bei der Researcherin wird ein Schreibversuch außerhalb ihres Ordners abgelehnt. Die Seite ist erreichbar, und jede Zahl trägt ein Datum. Regel E5 hat 30 einzeln angesehene Fälle.",
-        "erwin": "Entscheidung und Seite lesen, 20 Minuten. Akte des Entwicklers, 15 Minuten. Grenzdatei der Researcherin, 10 Minuten. Zwei Merge Requests, 20 Minuten. Wochenstichprobe, 10 Minuten. Regel E5 bewerten, die übrigen 15 Fälle, 30 Minuten."
+        "erwin": "Entscheidung und Seite lesen, 20 Minuten. Akte des Entwicklers, 15 Minuten. Grenzdatei der Researcherin, 10 Minuten. Zwei Merge Requests, 20 Minuten. Wochenstichprobe, 10 Minuten. Regel E5 bewerten, die übrigen 15 Fälle, 30 Minuten.",
+        "ziel": "2026-10-10"
       }
     ],
     "balken": [
@@ -2351,7 +2541,8 @@
         "von": "2026-09-21",
         "tage": 5,
         "kritisch": true,
-        "art": "bauen"
+        "art": "bauen",
+        "erledigt": true
       },
       {
         "meilenstein": "M1",
@@ -2779,6 +2970,22 @@
       "minuten": 490,
       "bisM1": 180,
       "text": "Der Arbeitsplan vom 17.09. rechnet mit allen Punkten und kommt auf mehr, als der Plan ansetzt. Für die erste Woche zählt er Block 2, den Umbau des Profils und die Abnahme von M1 mit."
+    },
+    "nachgezogen": {
+      "am": "2026-09-18",
+      "satz": "Am 17.09. sind zwölf Punkte des Arbeitsplans erledigt worden, verteilt waren sie über acht Tage. Der technische Teil von M1 steht damit acht Tage vor der Frist.",
+      "warum": "Der Plan verteilt die Punkte nach Erwins Wochenzeit und nach den Abhängigkeiten. Die Zeit der Werkbank rechnet er nicht mit, und er nimmt an, dass Erwin selbst am KI-Rechner tippt. Am 17.09. hat die Werkbank den KI-Rechner nach seinem Ja bedient; von ihm kamen die Entscheidungen und drei Befehle von Hand.",
+      "fristen": "Die Fristen bleiben stehen. Sie sind ab jetzt die äußere Grenze, nicht der Takt, und die Reihenfolge ändert sich nicht: Jede Stufe hängt weiter an den Freigaben der Stufe davor.",
+      "nichtSchneller": "Nicht schneller werden die Bewertungen zu den Regeln E13 und E5, zusammen zwei Stunden, die Freigaben der Akten und alles, was von außen kommt: die Person aus der Academy, die vertragliche Lage und die Freigabe öffentlicher Aussagen.",
+      "vorgezogen": "Ohne Freigabe lässt sich vorziehen, was der Plan in den Wochen zwei und drei führt: der Auftragsordner, das Ausspielen der Akten, die vier Grenzdateien, die Berichtsgeneratoren und der Bewertungsbogen für Regel E13. Der Bogen liegt seit dem 18.09. bereit.",
+      "istZeit": "Erwins tatsächliche Zeit wird ab dem 18.09. mitgeschrieben. Für den 17.09. steht dort „nicht gemessen“: Belegt ist nur, was er selbst getan hat, und das waren Entscheidungen, drei Befehle und das Lesen einer Akte. Hält sich das, setzt der Plan die Zeit fürs Lesen und Prüfen zu hoch an, solange die Werkbank den KI-Rechner bedient.",
+      "m1Fehlt": [
+        "die Probe mit dem Reviewer über den Messenger",
+        "die Bewertung von Regel E13 an 30 Fällen",
+        "die Abnahme"
+      ],
+      "m1FehltSatz": "Alle drei brauchen Erwin.",
+      "quelle": "Meilensteinplan 17.09. bis 16.10.2026, Abschnitt „Nachgezogen am 18.09.2026“, und Tagesprotokoll vom 18.09.2026"
     }
   }
 }

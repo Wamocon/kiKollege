@@ -42,6 +42,11 @@ export const BEREICHE = [
   { id: 'archiv', gruppe: 'werkstatt', name: 'Archiv', kurz: 'Archiv' },
 ]
 
+/** In diesem Ordner der Ablage liegt das Unternehmenswissen. Gezaehlt wird je
+ *  Rubrik, also je Ordner direkt darunter. Tiefere Pfade gehen nicht in die
+ *  Daten. */
+export const UNTERNEHMEN = 'KI-Mitarbeiter'
+
 /** Notiztypen, die einen Arbeitsstand festhalten und kein Wissen sind. */
 const ARBEITSTYPEN = new Set([
   'arbeitsplan',
@@ -157,6 +162,7 @@ export async function zaehlen(vault, heute = new Date().toISOString().slice(0, 1
     const rel = relative(vault, datei).replace(/\\/g, '/')
     notizen.push({
       name: basename(datei, '.md').toLowerCase(),
+      pfad: rel.normalize('NFC'),
       bereich: bereichVon(rel, felder.typ),
       stand: freigabestand(felder),
       typ: typeof felder.typ === 'string' ? felder.typ.toLowerCase() : '',
@@ -179,11 +185,18 @@ export async function zaehlen(vault, heute = new Date().toISOString().slice(0, 1
   )
   let verweiseGesamt = 0
   let unaufgeloest = 0
+  const rubriken = {}
 
   for (const n of notizen) {
     const z = zaehler.get(n.bereich)
     z.notizen += 1
     z[n.stand] += 1
+    const [oben, rubrik, ...rest] = n.pfad.split('/')
+    if (oben === UNTERNEHMEN && rest.length) {
+      const r = (rubriken[rubrik] ??= { notizen: 0, verbindlich: 0 })
+      r.notizen += 1
+      if (n.stand === 'verbindlich') r.verbindlich += 1
+    }
     for (const ziel of n.ziele) {
       const schluessel = basename(ziel.replace(/\.md$/i, '')).toLowerCase()
       const treffer = doppelt.has(schluessel) ? null : nachName.get(schluessel)
@@ -203,7 +216,19 @@ export async function zaehlen(vault, heute = new Date().toISOString().slice(0, 1
     unaufgeloest,
     regelnotizen: notizen.filter((n) => n.typ === 'regel').length,
     bereiche: BEREICHE.map((b) => ({ ...b, ...zaehler.get(b.id), verweiseNach: matrix.get(b.id) })),
+    rubriken,
   }
+}
+
+/** Schreibt die Anzahlen in die Rubriken, die in den Daten stehen. Eine Rubrik
+ *  kommt nie von selbst dazu und faellt nie weg: Wofuer sie da ist, steht in
+ *  der Ablage und wird von Hand uebertragen. */
+export function rubrikenZaehlen(bisher, gezaehlt) {
+  return bisher.map((r) =>
+    r.art === 'notizen'
+      ? { ...r, notizen: gezaehlt[r.ordner]?.notizen ?? 0, verbindlich: gezaehlt[r.ordner]?.verbindlich ?? 0 }
+      : r,
+  )
 }
 
 function argument(name, ersatz = null) {
@@ -216,8 +241,11 @@ function argument(name, ersatz = null) {
 
 export async function abbilden({ vault, ziel, probelauf = false, heute, log = console.log }) {
   const alt = JSON.parse(await readFile(ziel, 'utf8'))
-  const abbild = await zaehlen(vault, heute)
+  const { rubriken, ...abbild } = await zaehlen(vault, heute)
   const verbindlich = abbild.bereiche.reduce((s, b) => s + b.verbindlich, 0)
+  const uw = alt.unternehmenswissen
+  const bekannt = new Set((uw?.rubriken ?? []).map((r) => r.ordner))
+  const fehlen = Object.keys(rubriken).filter((o) => !bekannt.has(o)).sort()
 
   const neu = {
     ...alt,
@@ -231,6 +259,9 @@ export async function abbilden({ vault, ziel, probelauf = false, heute, log = co
       freigabe: alt.ablage?.freigabe ?? 'oeffentlich',
     },
   }
+  if (uw) {
+    neu.unternehmenswissen = { ...uw, gezaehltAm: abbild.gezaehltAm, rubriken: rubrikenZaehlen(uw.rubriken, rubriken) }
+  }
 
   log(
     `Gezählt am ${abbild.gezaehltAm}: ${abbild.notizen} Notizen, ${verbindlich} verbindlich, ` +
@@ -239,6 +270,9 @@ export async function abbilden({ vault, ziel, probelauf = false, heute, log = co
         .map((b) => `  ${b.name.padEnd(30)} ${String(b.notizen).padStart(4)}   verbindlich ${b.verbindlich}`)
         .join('\n'),
   )
+  if (fehlen.length) {
+    log(`Rubriken ohne Eintrag in unternehmenswissen, bitte mit Beschreibung nachtragen: ${fehlen.join(', ')}`)
+  }
 
   if (probelauf) {
     log('Probelauf, nichts geschrieben.')
