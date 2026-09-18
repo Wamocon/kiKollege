@@ -26,6 +26,19 @@ export function PlanAbschnitt() {
         </p>
       </div>
 
+      {p.nachgezogen ? (
+        <Block titel={`Nachgezogen am ${datum(p.nachgezogen.am)}`}>
+          <p>{p.nachgezogen.satz}</p>
+          <p>{p.nachgezogen.warum}</p>
+          <p>{p.nachgezogen.nichtSchneller}</p>
+          <p>{p.nachgezogen.vorgezogen}</p>
+          <p>{p.nachgezogen.istZeit}</p>
+          <p className="fussnote" style={{ marginTop: '0.6rem' }}>
+            Quelle: {p.nachgezogen.quelle}
+          </p>
+        </Block>
+      ) : null}
+
       <h3 style={{ marginTop: '1.8rem' }}>Was am {datum(p.bis)} erfüllt sein soll</h3>
       <div className="tabellenrahmen">
         <table>

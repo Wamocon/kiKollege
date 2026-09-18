@@ -326,8 +326,12 @@ export interface Landschaft extends MitFreigabe {
 export interface PlanMeilenstein {
   id: string
   woche: string
-  /** Tag der Abnahme. */
+  /** Tag der Abnahme, die Frist aus dem Plan. */
   datum: string
+  /** Zieldatum nach dem Nachtrag vom 18.09., früher als die Frist. */
+  ziel?: string
+  /** Woran das Zieldatum hängt, wenn es an etwas hängt. */
+  zielBedingung?: string
   titel: string
   inhalt: string[]
   abnahme: string
@@ -380,6 +384,19 @@ export interface Meilensteinplan extends MitFreigabe {
   status: string
   /** Was sich nach dem Entwurf getan hat, mit Uhrzeit im Satz. */
   standNachtrag?: string
+  /** Der Nachtrag vom 18.09.: Zieldaten vor den Fristen, und warum. */
+  nachgezogen?: {
+    am: string
+    satz: string
+    warum: string
+    fristen: string
+    nichtSchneller: string
+    vorgezogen: string
+    istZeit: string
+    m1Fehlt: string[]
+    m1FehltSatz: string
+    quelle: string
+  }
   von: string
   bis: string
   ersetzt: string

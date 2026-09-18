@@ -127,10 +127,14 @@ export default function Landing() {
             <div className="lp-kpi">
               {sichtbar(plan) && naechsterMeilenstein ? (
                 <div className="lp-kpi-kachel">
-                  <p className="lp-kpi-wert">{datum(naechsterMeilenstein.datum).slice(0, 6)}</p>
+                  <p className="lp-kpi-wert">
+                    {datum(naechsterMeilenstein.ziel ?? naechsterMeilenstein.datum).slice(0, 6)}
+                  </p>
                   <p className="lp-kpi-label">
-                    Abnahme {naechsterMeilenstein.id}: {naechsterMeilenstein.titel}. Erledigt sind{' '}
-                    {inWorten(naechsterMeilenstein.erledigt?.length ?? 0)} von{' '}
+                    {naechsterMeilenstein.ziel
+                      ? `Ziel für die Abnahme ${naechsterMeilenstein.id}, Frist ${datum(naechsterMeilenstein.datum).slice(0, 6)} `
+                      : `Abnahme ${naechsterMeilenstein.id}: ${naechsterMeilenstein.titel}. `}
+                    Erledigt sind {inWorten(naechsterMeilenstein.erledigt?.length ?? 0)} von{' '}
                     {inWorten(naechsterMeilenstein.inhalt.length)} Arbeiten.
                   </p>
                 </div>
@@ -861,6 +865,20 @@ export default function Landing() {
                 </p>
               </div>
             ) : null}
+            {plan.nachgezogen ? (
+              <div className="lp-text lp-luft-oben-klein">
+                <p>
+                  <b>
+                    Nachgezogen am {datum(plan.nachgezogen.am)}: {plan.nachgezogen.satz}
+                  </b>
+                </p>
+                <p>{plan.nachgezogen.fristen}</p>
+                <p>
+                  Für die Abnahme von M1 fehlen {plan.nachgezogen.m1Fehlt.join(', ')}.{' '}
+                  {plan.nachgezogen.m1FehltSatz}
+                </p>
+              </div>
+            ) : null}
             <div className="lp-text lp-luft-oben">
               <p>
                 <b>„{plan.ziel}“</b> {plan.zielVon}. Der Rahmen: {plan.rahmen}.
@@ -879,6 +897,14 @@ export default function Landing() {
                     <span className="wann">
                       {ms.id}
                       {w ? ` · ${spanne(w.von, w.bis)}` : ''}
+                      {ms.ziel ? (
+                        <>
+                          <br />
+                          Ziel {datum(ms.ziel).slice(0, 6)}
+                          <br />
+                          Frist {datum(ms.datum).slice(0, 6)}
+                        </>
+                      ) : null}
                     </span>
                     <div>
                       <h3>{ms.titel}</h3>
@@ -890,6 +916,9 @@ export default function Landing() {
                           </li>
                         ))}
                       </ul>
+                      {ms.zielBedingung ? (
+                        <p className="bedingung">Das Ziel gilt, {ms.zielBedingung}.</p>
+                      ) : null}
                       <p className="bedingung">Abnahme: {ms.abnahme}</p>
                       <p className="bedingung">
                         Erwins Anteil

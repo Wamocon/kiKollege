@@ -31,13 +31,13 @@ function umbrechen(text: string, max: number): string[] {
   return zeilen
 }
 
-function Raute({ x, y, r = 5, rot = false }: { x: number; y: number; r?: number; rot?: boolean }) {
-  return (
-    <path
-      d={`M ${x} ${y - r} L ${x + r} ${y} L ${x} ${y + r} L ${x - r} ${y} Z`}
-      fill={rot ? 'var(--signal)' : 'var(--wmc-ink)'}
-    />
-  )
+function Raute({
+  x, y, r = 5, rot = false, offen = false,
+}: { x: number; y: number; r?: number; rot?: boolean; offen?: boolean }) {
+  const d = `M ${x} ${y - r} L ${x + r} ${y} L ${x} ${y + r} L ${x - r} ${y} Z`
+  const farbe = rot ? 'var(--signal)' : 'var(--wmc-ink)'
+  if (offen) return <path d={d} fill="none" stroke={farbe} strokeWidth="1.5" />
+  return <path d={d} fill={farbe} />
 }
 
 export function ZeitplanFigur() {
@@ -143,6 +143,14 @@ export function ZeitplanFigur() {
               fill="var(--wmc-primary-text)">
           {m.id}
         </text>
+        {m.ziel && index(m.ziel) >= 0 && index(m.ziel) < tage ? (
+          <>
+            <Raute x={mitte(m.ziel)} y={y + 12} r={6} rot offen />
+            <text x={mitte(m.ziel) + 10} y={y + 16} fontSize="10.5" fill="var(--wmc-primary-text)">
+              Ziel
+            </text>
+          </>
+        ) : null}
       </g>,
     )
     y += kopfHoehe
@@ -200,13 +208,14 @@ export function ZeitplanFigur() {
   y += 44
 
   // Legende
-  const legende: { art: 'rot' | 'bau' | 'bewerten' | 'abnahme' | 'frist' | 'stand'; text: string; x: number }[] = [
+  const legende: { art: 'rot' | 'bau' | 'bewerten' | 'abnahme' | 'frist' | 'stand' | 'ziel'; text: string; x: number }[] = [
     { art: 'rot', text: 'kritischer Pfad', x: 0 },
     { art: 'bau', text: 'bauen', x: 120 },
     { art: 'bewerten', text: 'Erwin bewertet', x: 200 },
     { art: 'abnahme', text: 'Abnahme', x: 320 },
     { art: 'frist', text: 'Entscheidung mit Frist', x: 410 },
     { art: 'stand', text: 'Stand des Plans', x: 580 },
+    { art: 'ziel', text: 'Ziel vor der Frist', x: 720 },
   ]
   for (const l of legende) {
     const marke =
@@ -215,6 +224,7 @@ export function ZeitplanFigur() {
       : l.art === 'bewerten' ? <rect x={l.x + 0.5} y={y - 7.5} width={17} height={8} fill="none" stroke="var(--wmc-ink)" />
       : l.art === 'abnahme' ? <Raute x={l.x + 6} y={y - 3.5} r={5} rot />
       : l.art === 'frist' ? <Raute x={l.x + 6} y={y - 3.5} r={4.5} />
+      : l.art === 'ziel' ? <Raute x={l.x + 6} y={y - 3.5} r={5} rot offen />
       : <line x1={l.x + 6} y1={y - 10} x2={l.x + 6} y2={y + 2} stroke="var(--wmc-muted)" strokeDasharray="3 2" />
     teile.push(
       <g key={`lg-${l.art}`}>
@@ -242,6 +252,9 @@ export function ZeitplanFigur() {
       titel={`Zeitplan des Meilensteinplans vom ${spanne(p.von, p.bis)}: Entscheidungen, vier Meilensteine mit ihren Arbeiten, Erwins Zeit je Woche`}
       beschriftung={
         `${p.status}. Rot ist der kritische Pfad, leer ist Erwins Bewertungszeit, blass ist Erledigtes. ` +
+        (p.nachgezogen
+          ? `Die offenen Rauten sind die Zieldaten vom ${datum(p.nachgezogen.am)}, die gefüllten die Fristen. `
+          : '') +
         `Die gestrichelte Linie zeigt den Stand des Plans am ${datum(p.stand)}. Grau hinterlegt sind die Wochenenden.`
       }
       viewBox={`0 0 ${BREITE} ${hoehe}`}

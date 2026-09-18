@@ -4,8 +4,27 @@ Diese Datei ist für die nächste Sitzung geschrieben, nicht für die Nachwelt. 
 sagt, wo das Vorhaben steht, was als Erstes zu tun ist und was dabei nicht
 verloren gehen darf.
 
-Stand dieser Übergabe: 17.09.2026, nachgetragen am selben Tag nach dem ersten
-Stand-Update und nach den acht Verbesserungen.
+Stand dieser Übergabe: 18.09.2026.
+
+## Nachtrag 18.09.2026: der Plan hat Zieldaten
+
+Am 17.09. sind zwölf Punkte des Arbeitsplans erledigt worden. Der Meilensteinplan
+ist deshalb am 18.09. nachgezogen: Neben den Fristen stehen jetzt Zieldaten, M1 am
+19.09. statt am 25.09., M2 am 26.09., M3 am 03.10., M4 am 10.10. Die Fristen
+bleiben als äußere Grenze, die Reihenfolge ändert sich nicht.
+
+Der Grund steht in den Daten: Der Plan rechnet die Zeit der Werkbank nicht mit und
+nimmt an, dass Erwin selbst am KI-Rechner tippt. Nicht schneller werden die
+Bewertungen, die Freigaben der Akten und alles, was von außen kommt. Für die
+Abnahme von M1 fehlen die Probe über den Messenger, die Bewertung von Regel E13 an
+30 Fällen und die Abnahme selbst; alle drei brauchen Erwin.
+
+Ein Widerspruch steht als Beobachtung `m1-berichte-offen` in den Daten: Der
+Nachtrag nennt den technischen Teil von M1 fertig, führt die Berichtsgeneratoren
+aber unter dem, was noch vorzuziehen ist.
+
+Die Ablage ist am 18.09. neu gezählt: 143 Notizen, 1.280 Verweise. Neue Prüfläufe
+gibt es keine.
 
 ## Nachtrag 17.09.2026, abends: Graph und Rubriken der Ablage
 
