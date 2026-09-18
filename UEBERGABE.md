@@ -6,6 +6,22 @@ verloren gehen darf.
 
 Stand dieser Übergabe: 18.09.2026.
 
+## Nachtrag 18.09.2026: der Durchgang ist harnessneutral
+
+Die Arbeit des taeglichen Durchgangs steht in `scripts/stand-nachtragen.mjs`,
+nicht mehr in der cmd-Datei. Aufruf: `npm run stand:nachtragen`, dazu
+`--probelauf` und `--ohne-pr`. Das Skript ruft nur node, git und die GitHub-CLI,
+laeuft also auch auf dem Rechner mit der Ablage und als Auftrag eines
+KI-Mitarbeiters. Die cmd-Datei ruft nur noch diesen Befehl.
+
+Acht Tests fahren den Ablauf gegen eine Werkbank, die Befehle nur aufschreibt.
+
+`AKTE-VORSCHLAG.md` ist der Entwurf einer Akte fuer eine Rolle, die den Nachtrag
+selbst uebernimmt: Auftrag, was sie nie tut, welche Werkzeuge ihre Grenze erlauben
+muss, sechs Testfaelle und die fuenf Fragen, die vorher ein Mensch entscheidet.
+Darunter die wichtigste: Der Nachtrag der Zahlen ist heute nicht knapp, das Lesen
+und Urteilen ist es.
+
 ## Nachtrag 18.09.2026: der Stand stellt sich selbst als Pull Request
 
 `scripts\stand-aktualisieren.cmd` pusht nicht mehr auf `main`. Es legt einen

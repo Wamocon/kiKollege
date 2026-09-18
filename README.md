@@ -359,8 +359,20 @@ nachträgt. Tiefer als diese oberste Ebene gehen keine Ordnernamen in die Daten.
 
 Der Vault liegt auf einem Rechner im Haus, das Repository liegt bei GitHub. Der
 Export läuft also dort, wo der Vault liegt, und schiebt nur `data/projektstand.json`
-weiter — Notizen, Testfälle und Ausbildungsunterlagen bleiben liegen. Ein Durchgang
-steht als Windows-Skript bereit:
+weiter — Notizen, Testfälle und Ausbildungsunterlagen bleiben liegen.
+
+Die Arbeit macht `scripts/stand-nachtragen.mjs`. Es kennt weder Windows noch eine
+bestimmte Sitzung, es ruft nur `node`, `git` und die GitHub-CLI:
+
+```bash
+npm run stand:nachtragen -- --vault "D:\WAMOCON\KFBM" --ablage "D:\WAMOCON"
+npm run stand:nachtragen -- --probelauf        # prüfen, ohne etwas zu stellen
+npm run stand:nachtragen -- --ohne-pr          # Zweig pushen, Pull Request von Hand
+```
+
+Damit läuft derselbe Durchgang in der Aufgabenplanung, auf dem Rechner mit der
+Ablage und als Auftrag eines KI-Mitarbeiters. Für Windows steht ein Einstieg
+daneben, der nur diesen Befehl ruft:
 
 ```bat
 scripts\stand-aktualisieren.cmd "D:\WAMOCON\KFBM" "D:\WAMOCON"
@@ -385,6 +397,17 @@ Der Durchgang in der Reihenfolge:
 **Nach `main` pusht das Skript nicht.** Was auf Pages steht, führt ein Mensch
 zusammen. Dafür braucht der Rechner die GitHub-CLI, einmal mit `gh auth login`
 angemeldet.
+
+Geprüft ist der Ablauf in `scripts/stand-nachtragen.test.mjs`: Der Durchgang
+bekommt dort eine Werkbank vorgesetzt, die Befehle nur aufschreibt. So lässt sich
+ohne Git, ohne Netz und ohne Vault nachweisen, dass er bei einem unsauberen
+Verzeichnis anhält, auf einem anderen Zweig nicht anfängt, eine Änderung
+zurücknimmt, sobald eine Prüfung anschlägt, und niemals auf `main` pusht.
+
+Was das Skript **nicht** kann: lesen und urteilen. Ein neuer Eintrag im Logbuch,
+ein geänderter Plan, ein Widerspruch zwischen zwei Blättern — das ist der Auftrag
+des Standwächters. `AKTE-VORSCHLAG.md` beschreibt, was eine Rolle bräuchte, die
+beides auf dem KI-Rechner tut, und was vorher zu entscheiden ist.
 
 Ob die Ablage weiter ist, sagt `scripts/pruefe-aktualitaet.mjs`:
 
@@ -631,8 +654,11 @@ scripts/
   pruefe-aktualitaet.mjs   sagt, ob die Ablage weiter ist als die Seite
   pruefe-ausgabe.mjs       prüft Links, Gliederung und Satzzeichen der gebauten Seite
   pruefe-figuren.mjs       prüft die Figuren und die Handybreite im Browser
-  stand-aktualisieren.cmd  ein Durchgang für die Aufgabenplanung
+  stand-nachtragen.mjs     ein ganzer Durchgang bis zum Pull Request
+  stand-aktualisieren.cmd  der Einstieg dafür unter Windows
+  heute.mjs                das heutige Datum in Ortszeit, für cmd und Zweignamen
   __fixtures__/            Vaults und ein alter Stand für die Tests
+AKTE-VORSCHLAG.md   Entwurf: was eine Rolle bräuchte, die das selbst tut
 .claude/skills/
   standwaechter/SKILL.md   zieht den Stand nach und stellt ihn als Pull Request
 .github/workflows/

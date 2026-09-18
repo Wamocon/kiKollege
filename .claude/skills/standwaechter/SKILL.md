@@ -57,10 +57,15 @@ Pull Request läuft dieselbe Prüfung gegen den Zielzweig.
 
 ## Was taeglich von selbst laeuft
 
-Auf dem Rechner mit dem Vault laeuft `scripts\stand-aktualisieren.cmd` in der
-Aufgabenplanung. Es exportiert die Laufnotizen, zaehlt die Ablage, prueft Bestand,
-Daten und Tests und stellt einen Pull Request `Stand vom TT.MM.JJJJ`. Zusammen
-gefuehrt wird er von einem Menschen.
+Auf dem Rechner mit dem Vault laeuft `npm run stand:nachtragen` in der
+Aufgabenplanung, unter Windows ueber `scripts\stand-aktualisieren.cmd`. Es
+exportiert die Laufnotizen, zaehlt die Ablage, prueft Bestand, Daten und Tests und
+stellt einen Pull Request `Stand vom TT.MM.JJJJ`. Zusammengefuehrt wird er von
+einem Menschen.
+
+Laeuft dieser Auftrag auf demselben Rechner, ist `npm run stand:nachtragen` auch
+sein erster Griff: Das Zaehlbare macht das Skript, und zwar besser, weil es
+nichts vergisst.
 
 Dieser Auftrag hier ist das, was das Skript nicht kann: Logbuch, Protokolle,
 Plaene und Blaetter lesen, vergleichen und die Widersprueche als Beobachtung
