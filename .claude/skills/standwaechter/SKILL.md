@@ -55,6 +55,19 @@ zwei Stände der Datei und schlägt an, sobald ein Schlüssel fehlt, eine Liste
 kürzer wird, ein Eintrag mit Kennung verschwindet oder ein Satz geleert wird. Im
 Pull Request läuft dieselbe Prüfung gegen den Zielzweig.
 
+## Was taeglich von selbst laeuft
+
+Auf dem Rechner mit dem Vault laeuft `scripts\stand-aktualisieren.cmd` in der
+Aufgabenplanung. Es exportiert die Laufnotizen, zaehlt die Ablage, prueft Bestand,
+Daten und Tests und stellt einen Pull Request `Stand vom TT.MM.JJJJ`. Zusammen
+gefuehrt wird er von einem Menschen.
+
+Dieser Auftrag hier ist das, was das Skript nicht kann: Logbuch, Protokolle,
+Plaene und Blaetter lesen, vergleichen und die Widersprueche als Beobachtung
+eintragen. Laeuft der Auftrag auf demselben Rechner, prueft er vorher mit
+`npm run pruefe:aktualitaet -- --ablage "<Ablage>"`, ob ueberhaupt etwas
+juenger ist als `herkunft.erzeugt`.
+
 ## Quellen
 
 1. **Veröffentlichte Artefakte.** `Artifact` mit `action: "list"` zeigt die

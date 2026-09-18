@@ -6,6 +6,18 @@ verloren gehen darf.
 
 Stand dieser Übergabe: 18.09.2026.
 
+## Nachtrag 18.09.2026: der Stand stellt sich selbst als Pull Request
+
+`scripts\stand-aktualisieren.cmd` pusht nicht mehr auf `main`. Es legt einen
+Zweig `stand/JJJJ-MM-TT` an, committet nur `data/projektstand.json`, stellt einen
+Pull Request und geht zurueck auf `main`. Vorher laufen `pruefe:bestand`,
+`pruefe:daten` und `npm test`; schlaegt eines an, wird die Aenderung verworfen.
+Der Durchgang laeuft nur auf `main` und nur bei sauberem Arbeitsverzeichnis.
+
+Damit traegt sich der Stand taeglich selbst nach, und das Zusammenfuehren bleibt
+bei einem Menschen. Eingerichtet wird das mit `schtasks`, siehe README. Gebraucht
+wird dafuer die GitHub-CLI, einmal mit `gh auth login` angemeldet.
+
 ## Nachtrag 18.09.2026: der Plan hat Zieldaten
 
 Am 17.09. sind zwölf Punkte des Arbeitsplans erledigt worden. Der Meilensteinplan
