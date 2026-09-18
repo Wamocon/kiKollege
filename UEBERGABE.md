@@ -4,8 +4,86 @@ Diese Datei ist für die nächste Sitzung geschrieben, nicht für die Nachwelt. 
 sagt, wo das Vorhaben steht, was als Erstes zu tun ist und was dabei nicht
 verloren gehen darf.
 
-Stand dieser Übergabe: 17.09.2026, nachgetragen am selben Tag nach dem ersten
-Stand-Update.
+Stand dieser Übergabe: 18.09.2026.
+
+## Nachtrag 18.09.2026: der Plan hat Zieldaten
+
+Am 17.09. sind zwölf Punkte des Arbeitsplans erledigt worden. Der Meilensteinplan
+ist deshalb am 18.09. nachgezogen: Neben den Fristen stehen jetzt Zieldaten, M1 am
+19.09. statt am 25.09., M2 am 26.09., M3 am 03.10., M4 am 10.10. Die Fristen
+bleiben als äußere Grenze, die Reihenfolge ändert sich nicht.
+
+Der Grund steht in den Daten: Der Plan rechnet die Zeit der Werkbank nicht mit und
+nimmt an, dass Erwin selbst am KI-Rechner tippt. Nicht schneller werden die
+Bewertungen, die Freigaben der Akten und alles, was von außen kommt. Für die
+Abnahme von M1 fehlen die Probe über den Messenger, die Bewertung von Regel E13 an
+30 Fällen und die Abnahme selbst; alle drei brauchen Erwin.
+
+Ein Widerspruch steht als Beobachtung `m1-berichte-offen` in den Daten: Der
+Nachtrag nennt den technischen Teil von M1 fertig, führt die Berichtsgeneratoren
+aber unter dem, was noch vorzuziehen ist.
+
+Die Ablage ist am 18.09. neu gezählt: 143 Notizen, 1.280 Verweise. Neue Prüfläufe
+gibt es keine.
+
+## Nachtrag 17.09.2026, abends: Graph und Rubriken der Ablage
+
+Der Zweig `ablage/2026-09-17` baut auf `verbesserungen/2026-09-17` auf und
+bringt einen dreizehnten Abschnitt „Ablage“ auf die Landing Page. Das Abbild ist
+dorthin umgezogen, dazu kommen:
+
+- **Der Graph der Ablage**, der Vault-Graph in einfacher Form: Bereiche als Kreise,
+  Verbindungen ab zehn Verweisen als Linien, der meistverwiesene Bereich rot. Er
+  rechnet nur mit `ablage.bereiche`, es wird nichts Neues gezählt.
+- **Die Rubriken des Unternehmenswissens** mit einer kurzen Erklärung je Ordner,
+  gruppiert nach der Stufe, in der ein KI-Mitarbeiter sie liest. Die Texte stehen
+  unter `unternehmenswissen`, die Anzahlen zählt `abbild-vault.mjs` mit.
+- Die Zählung vom 17.09. abends ist eingetragen: 141 Notizen, 1.267 Verweise.
+
+Wer die Ordnertabelle im Einstieg von KI-Mitarbeiter ändert, zieht
+`unternehmenswissen.rubriken` von Hand nach. Das Skript meldet Ordner ohne
+Eintrag, legt aber keine an.
+
+## Nachtrag 17.09.2026, nachmittags: acht Verbesserungen
+
+Der Zweig `stand/2026-09-17` steht als Pull Request #1 gegen `main`. Darauf
+baut der Zweig `verbesserungen/2026-09-17` auf, je Verbesserung ein Commit. Sein
+Pull Request zielt auf `stand/2026-09-17`, damit er nur die Verbesserungen zeigt.
+Wird #1 zusammengeführt, stellt GitHub ihn auf `main` um.
+
+- **Tote Links behoben.** `/stand/` und `/` in Kopf- und Fußleiste hatten keinen
+  `basePath` und führten auf Pages auf eine 404. Alle internen Links gehen jetzt
+  über `lib/pfad.ts`.
+- **Leser:** zwölf Abschnitte statt neunzehn, „Auf einen Blick“ unter dem Hero.
+  Stufen und die Einzelheiten des Meilensteinplans stehen unter `/stand/`.
+- **Barrierefreiheit:** Aussagen sind Überschriften, keine Figurenschrift unter
+  10,5 außer den Tageszahlen, breite Figuren sind mit der Tastatur verschiebbar,
+  das Abbild der Ablage gibt es auch als Tabelle.
+- **Recht:** `/impressum/` und `/datenschutz/` als gekennzeichnete Entwürfe,
+  gespeist aus `gesellschaften` und dem neuen Block `recht`.
+- **Sicherheit:** `pruefe:daten` sucht heikle Angaben im ganzen Repository, als
+  erster Schritt in der CI.
+- **Aktualität:** Der Export führt zusammen, statt zu ersetzen, und liest
+  `hinweis` und `bewertet`. `pruefe:aktualitaet` sagt, ob die Ablage weiter ist
+  als die Seite. `stand-aktualisieren.cmd` prüft vor dem Commit.
+- **Redaktion:** Die 26 heißt jetzt Prüfpunkte, nicht Regeln; die Rollen tragen
+  ihre Namen Fritz, Hermes und julia-trend.
+- **Zielgruppe:** Vorschau für geteilte Links mit eigenem Bild, Seitentitel je
+  Seite. `noindex` bleibt, der Grund steht im Code.
+- **Qualität:** `pruefe:ausgabe` und `pruefe:figuren` prüfen die gebaute Seite.
+  Die erste hat vier Fehler gefunden, die behoben sind. Die zweite braucht
+  `playwright-core` und einen installierten Chrome oder Edge.
+
+**Was ein Mensch entscheiden muss, bevor das auf `main` geht:**
+
+- Impressum und Datenschutz rechtlich prüfen lassen. Was fehlt, steht auf beiden
+  Seiten unten. Erst danach `recht.geprueft` auf `true` setzen.
+- Ob die Pflichtangabe des Geschäftsführers mit 9.8 zusammengeht. Als
+  Beobachtung `impressum-personen` eingetragen.
+- Adressat und Schluss der Landing Page bleiben offen. Die Seite spricht
+  niemanden an, nur die Datenschutzseite siezt.
+- `stand-aktualisieren.cmd` pusht auf den ausgecheckten Zweig. Steht dort
+  `main`, geht jeder neue Stand ohne Pull Request auf Pages.
 
 ## Nachtrag 17.09.2026: nach dem ersten Stand-Update
 
@@ -78,13 +156,11 @@ Wer den Stand das nächste Mal nachzieht, gleicht das Logbuch gegen die Daten ab
 und prüft jede fehlende Entscheidung, bevor er sie nachträgt: Sie kann mit Absicht
 fehlen, siehe oben.
 
-**Der Export ist nicht einsatzbereit.** Die Laufnotizen liegen unter
-`D:\WAMOCON\KFBM\00_Vault\10_KI-Mitarbeiter\Prüfläufe\`, die Notizen schreiben
-`hinweis` statt `hinweise`, und der Export ersetzt die Liste der Läufe, statt sie
-zusammenzuführen. Einzelheiten in der README, Abschnitt „Woher die Zahlen
-kommen“. Bis das behoben ist, läuft `stand-aktualisieren.cmd` weiter gegen den
-alten Pfad und findet dort keine Läufe. Den Pfad bitte erst umstellen, wenn der
-Export zusammenführt.
+**Der Export war nicht einsatzbereit** und ist es seit dem Zweig
+`verbesserungen/2026-09-17`: Er liest `hinweis`, führt zusammen und sucht die
+Laufnotizen unter `D:\WAMOCON\KFBM`. Einzelheiten in der README, Abschnitt
+„Woher die Zahlen kommen“. Eine Aufgabenplanung, die noch den alten Pfad
+übergibt, bitte auf `D:\WAMOCON\KFBM` umstellen.
 
 **Nicht mehr offen** aus der Liste unten: Punkt 4, die Vault-Pfade, ist geklärt,
 siehe oben.
@@ -115,12 +191,18 @@ Internes findet.
 
 | Was | Wo |
 | --- | --- |
-| Landing Page, 17 Abschnitte intern, 15 öffentlich | `app/page.tsx` |
-| Dichte Zweitseite | `app/stand/page.tsx` |
+| Landing Page, 13 Abschnitte, 12 in der öffentlichen Fassung | `app/page.tsx` |
+| Dichte Zweitseite, 17 Abschnitte | `app/stand/page.tsx` |
+| Impressum und Datenschutz, Entwürfe | `app/impressum/`, `app/datenschutz/` |
 | Alle Zahlen, einzige Quelle | `data/projektstand.json` |
 | Vault-Export | `scripts/export-vault.mjs` |
+| Abbild der Ablage | `scripts/abbild-vault.mjs` |
 | Freigabeprüfung | `scripts/pruefe-oeffentlich.mjs` |
 | Bestandsprüfung | `scripts/pruefe-bestand.mjs` |
+| Heikle Angaben im Repository | `scripts/pruefe-daten.mjs` |
+| Rückstand gegenüber der Ablage | `scripts/pruefe-aktualitaet.mjs` |
+| Links, Gliederung, Satzzeichen | `scripts/pruefe-ausgabe.mjs` |
+| Figuren und Handybreite im Browser | `scripts/pruefe-figuren.mjs` |
 | Ein Durchgang für die Aufgabenplanung | `scripts/stand-aktualisieren.cmd` |
 | Auftrag des Standwächters | `.claude/skills/standwaechter/SKILL.md` |
 | Bauen und prüfen | `.github/workflows/pruefen.yml` |
@@ -142,11 +224,11 @@ Standwächter gleichermaßen: **Ändern ist erlaubt, entfernen nicht.**
   Stand>` schlägt an, sobald ein Schlüssel fehlt, eine Liste kürzer wird, ein
   Eintrag mit Kennung verschwindet oder ein Satz geleert wird. Bei jedem Pull
   Request läuft diese Prüfung gegen den Zielzweig.
-- **Die Beobachtungen.** Sechs Einträge halten Widersprüche zwischen den Quellen
-  fest: die drei Zahlen für die Normbasis, 63 gegen 64 Befunde, zehn gegen elf
-  Themenkomplexe, der Widerspruch im CI-Blatt, siebzehn Laufnotizen gegen den
-  letzten datierten Lauf, und die entfallene Begründung für die eigene Hardware.
-  Sie werden nicht aufgelöst, solange die Quellen sich widersprechen.
+- **Die Beobachtungen.** Sie halten Widersprüche zwischen den Quellen fest, am
+  17.09. sind es sechzehn: angefangen mit den drei Zahlen für die Normbasis, 63
+  gegen 64 Befunde und zehn gegen elf Themenkomplexe, zuletzt die 26 als Regeln
+  oder Prüfpunkte und die Person im Impressum. Sie werden nicht aufgelöst,
+  solange die Quellen sich widersprechen.
 - **Die Freigaben.** Jedes Datenelement trägt `intern` oder `oeffentlich`. Nichts
   wandert von selbst nach öffentlich.
 - **Die Eigennamenliste** am Kopf von `scripts/pruefe-oeffentlich.mjs`. Sie wird
@@ -158,26 +240,31 @@ Fünf Quellen, alle in `herkunft.quellen` verzeichnet: das Übergabedokument vom
 05.09., die Einführung vom 04.09., das CI-Profil 1.0 vom 18.08. sowie die beiden
 Blätter vom 09.09. (Systemarchitektur Orchestrator, Organigramm KI-Mitarbeiter).
 
-Die laufende Quelle ist der Obsidian-Vault. Der Pfad, den Erwin genannt hat, ist
-`D:\WAMOCON\KI-Mitarbeiter`. **Er wurde nie gegen einen echten Vault geprüft.**
-Ein Probelauf zeigt in vier Zeilen, ob die Ordner und Dateinamen stimmen:
+Die laufende Quelle ist der Obsidian-Vault unter `D:\WAMOCON`. Die Laufnotizen
+liegen unter `D:\WAMOCON\KFBM`; ein Probelauf dort erkennt am 17.09. 20 Läufe und
+ändert keinen:
 
 ```bash
-npm run export:vault -- --vault "D:\WAMOCON\KI-Mitarbeiter" --probelauf
+npm run export:vault -- --vault "D:\WAMOCON\KFBM" --probelauf
+npm run pruefe:aktualitaet -- --ablage "D:\WAMOCON"
 ```
 
 ## Was offen ist
 
-1. **Adressat und Schluss der Seite.** Vertagt. Die Seite hat deshalb keinen
-   Schlussabschnitt und keine Anrede.
-2. **`/stand` nachziehen.** Die Zweitseite steht auf dem 05.09. und nennt Fritz,
-   wo inzwischen Rollen stehen. Das Organigramm fehlt ihr.
-3. **Kürzen.** Siebzehn Abschnitte sind viel. Kürzen heißt entscheiden, was
-   wegfällt, und das entscheidet ein Mensch.
-4. **Die Vault-Pfade** aus Punkt oben.
+1. **Adressat und Schluss der Seite.** Vertagt. Die Landing Page hat deshalb
+   keinen Schlussabschnitt und keine Anrede.
+2. **`/stand` nachziehen.** Am 17.09. nachgezogen, mit Stufen und dem
+   Meilensteinplan im Einzelnen. Das Organigramm fehlt ihr weiter.
+3. **Kürzen.** Am 17.09. von neunzehn auf zwölf Abschnitte gekürzt, ohne Inhalt
+   zu verlieren: Was wegfiel, steht unter `/stand/`. Am Abend kam die Ablage als
+   dreizehnter dazu. Ob das so bleibt,
+   entscheidet ein Mensch.
+4. **Die Vault-Pfade.** Geklärt, siehe oben.
 5. **Ob die Sitzungen, die eine Routine startet, einen Pull Request öffnen
    können.** Sie bekommen laut Warnung keine Connector-Werkzeuge. Zeigt sich beim
    ersten Lauf, der etwas zu melden hat.
+6. **Impressum und Datenschutz** rechtlich prüfen lassen, bevor sie auf `main`
+   gehen.
 
 ## Konventionen, die nicht verhandelbar sind
 

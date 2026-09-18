@@ -1,6 +1,7 @@
 import { daten, datum } from '@/lib/daten'
 import { nurSichtbare, zeigtInternes } from '@/lib/freigabe'
 import { logoPfad } from '@/lib/logo'
+import { pfad } from '@/lib/pfad'
 import { StandAlter } from '@/components/StandAlter'
 
 export function Fussleiste() {
@@ -31,7 +32,7 @@ export function Fussleiste() {
 
         {gesellschaften.map((g) => (
           <div key={g.name}>
-            <h4>{g.rolle}</h4>
+            <h2>{g.rolle}</h2>
             <p>
               <b>{g.name}</b>
             </p>
@@ -48,10 +49,15 @@ export function Fussleiste() {
         ))}
 
         <div>
-          <h4>Weiter</h4>
+          <h2>Weiter</h2>
           <p>
-            <a href="/stand/">Ausführlicher Projektstand</a> mit allen Prüfläufen, Tabellen und
+            <a href={pfad('/stand/')}>Ausführlicher Projektstand</a> mit allen Prüfläufen, Tabellen und
             offenen Punkten.
+          </p>
+          <p className="rechtlinks">
+            <a href={pfad('/impressum/')}>Impressum</a>
+            <a href={pfad('/datenschutz/')}>Datenschutz</a>
+            {daten.recht.geprueft ? null : <> (Entwürfe)</>}
           </p>
           {zeigtInternes ? (
             <p>

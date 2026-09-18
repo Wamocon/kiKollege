@@ -11,6 +11,10 @@
     "abbild:vault": "node scripts/abbild-vault.mjs",
     "pruefe:oeffentlich": "node scripts/pruefe-oeffentlich.mjs",
     "pruefe:bestand": "node scripts/pruefe-bestand.mjs",
+    "pruefe:daten": "node scripts/pruefe-daten.mjs",
+    "pruefe:aktualitaet": "node scripts/pruefe-aktualitaet.mjs",
+    "pruefe:ausgabe": "node scripts/pruefe-ausgabe.mjs",
+    "pruefe:figuren": "node scripts/pruefe-figuren.mjs",
     "test:export": "node --test scripts/export-vault.test.mjs",
     "test": "node --test \"scripts/*.test.mjs\" \"lib/*.test.mjs\""
   },
@@ -23,6 +27,7 @@
     "@types/node": "^22.15.0",
     "@types/react": "^19.1.9",
     "@types/react-dom": "^19.1.7",
+    "playwright-core": "1.63.0",
     "typescript": "^5.9.2"
   }
 }

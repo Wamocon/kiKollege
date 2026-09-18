@@ -236,6 +236,10 @@ hr { border: 0; border-top: 1px solid var(--wmc-border); margin: 2rem 0; }
 @media (max-width: 900px) {
   .rumpf { grid-template-columns: minmax(0, 1fr); gap: 1.5rem; }
 }
+/* Impressum und Datenschutz: keine Navigation, eine Spalte */
+.rumpf.einspaltig { grid-template-columns: minmax(0, 1fr); }
+.rechtlinks { margin-top: 0.8rem; }
+.rechtlinks a + a { margin-left: 1rem; }
 
 /* ============================================================================
    Ankernavigation
@@ -548,8 +552,11 @@ th.num { text-align: right; }
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 1.6rem 2.4rem;
 }
-.fuss h4 {
+/* Überschriften der Fußleiste sind h2, damit die Gliederung keine Ebene
+   überspringt; sie sehen aus wie Etiketten. */
+.fuss h2 {
   font-size: 0.68rem;
+  font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--wmc-ink);
@@ -860,6 +867,11 @@ th.num { text-align: right; }
   color: var(--wmc-muted);
 }
 
+/* --- Auf einen Blick, unter dem Hero --- */
+.lp-blick { margin-top: clamp(2rem, 4vw, 3.4rem); }
+.lp-blick .lp-kpi { margin-top: 0.8rem; }
+.lp-blick .lp-kpi-wert { font-size: clamp(1.6rem, 2.6vw, 2.1rem); }
+
 /* --- Die eine Hero-Zahl der Seite --- */
 .lp-hero-zahl {
   display: flex;
@@ -995,7 +1007,7 @@ th.num { text-align: right; }
   grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
   gap: 2.2rem clamp(1.5rem, 4vw, 3.5rem);
 }
-.lp-fuss h4 {
+.lp-fuss h2 {
   font-family: var(--schrift-mono);
   font-size: 0.66rem;
   font-weight: 700;
@@ -1048,6 +1060,53 @@ th.num { text-align: right; }
 .lp-diagramm { overflow-x: auto; margin: clamp(1.6rem, 3vw, 2.6rem) 0 0; }
 .lp-diagramm svg { min-width: 880px; width: 100%; height: auto; }
 .lp-diagramm figcaption { max-width: 68ch; }
+.lp-diagramm-hinweis { display: none; }
+@media (max-width: 900px) {
+  .lp-diagramm-hinweis {
+    display: block;
+    position: sticky;
+    left: 0;
+    margin: 0 0 0.5rem;
+    font-family: var(--schrift-mono);
+    font-size: 0.72rem;
+    color: var(--wmc-muted);
+  }
+}
+.lp-details { max-width: 100%; }
+
+/* --- Rubriken des Unternehmenswissens --- */
+.lp-rubriken { margin-top: clamp(1.4rem, 2.6vw, 2.2rem); border-top: 1px solid var(--wmc-border); }
+.lp-rubrik-gruppe { padding: 1.1rem 0 0.4rem; border-bottom: 1px solid var(--wmc-border); }
+.lp-rubrik-gruppe h4 {
+  font-family: var(--schrift-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--wmc-ink);
+  margin: 0 0 0.5rem;
+}
+.lp-rubrik-gruppe h4 .wann { font-weight: 400; color: var(--wmc-muted); }
+.lp-rubrik-gruppe dl { margin: 0; }
+.lp-rubrik {
+  display: grid;
+  grid-template-columns: 11.5rem minmax(0, 1fr) 11rem;
+  gap: 0.2rem 1.2rem;
+  padding: 0.55rem 0;
+  border-top: 1px solid var(--rand-leise);
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+.lp-rubrik dt { font-family: var(--schrift-mono); font-size: 0.8rem; padding-top: 0.12rem; }
+.lp-rubrik dd { margin: 0; }
+.lp-rubrik-hinweis { font-weight: 700; }
+.lp-rubrik .anzahl { color: var(--wmc-muted); text-align: right; font-size: 0.84rem; font-variant-numeric: tabular-nums; }
+@media (max-width: 720px) {
+  .lp-rubrik { grid-template-columns: minmax(0, 1fr); }
+  .lp-rubrik .anzahl { text-align: left; }
+}
+.lp-details summary { cursor: pointer; font-weight: 700; font-size: 0.92rem; }
+.lp-details .lp-gegen { margin-top: 0.8rem; }
+.lp-gegen td.zahl, .lp-gegen th.zahl { text-align: right; font-variant-numeric: tabular-nums; }
 
 /* --- Gegenueberstellung ---------------------------------------------------- */
 .lp-gegen { width: 100%; border-collapse: collapse; margin-top: clamp(1.6rem, 3vw, 2.6rem); }

@@ -20,11 +20,15 @@ export const abschnitte: readonly Abschnitt[] = [
   { id: 'gemessen', nr: '08', titel: 'Was gemessen wurde' },
   { id: 'luecke', nr: '09', titel: 'Was nicht gemessen ist' },
   { id: 'uebertragbarkeit', nr: '10', titel: 'Übertragbarkeit' },
-  { id: 'plattform', nr: '11', titel: 'Wo Fritz läuft', freigabe: 'intern' },
-  { id: 'entscheidungen', nr: '12', titel: 'Entscheidungen mit Datum' },
-  { id: 'offen', nr: '13', titel: 'Offene Punkte' },
-  { id: 'beobachtungen', nr: '14', titel: 'Beobachtungen aus dem Abgleich', freigabe: 'intern' },
-  { id: 'quellen', nr: '15', titel: 'Wo die Quellen liegen', freigabe: 'intern' },
+  { id: 'stufen', nr: '11', titel: 'Stufen bis zum Dauerbetrieb' },
+  // Der Fahrplan gehört nach der Übergabe vom 11.09. nicht in die öffentliche
+  // Fassung. Pages zeigt seit dem 17.09. ohnehin alles.
+  { id: 'plan', nr: '12', titel: 'Der Meilensteinplan im Einzelnen', freigabe: 'intern' },
+  { id: 'plattform', nr: '13', titel: 'Wo Fritz läuft', freigabe: 'intern' },
+  { id: 'entscheidungen', nr: '14', titel: 'Entscheidungen mit Datum' },
+  { id: 'offen', nr: '15', titel: 'Offene Punkte' },
+  { id: 'beobachtungen', nr: '16', titel: 'Beobachtungen aus dem Abgleich', freigabe: 'intern' },
+  { id: 'quellen', nr: '17', titel: 'Wo die Quellen liegen', freigabe: 'intern' },
 ]
 
 export function abschnitt(id: string): Abschnitt {

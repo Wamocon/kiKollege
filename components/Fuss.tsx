@@ -1,6 +1,7 @@
 import { daten, datum } from '@/lib/daten'
 import { nurSichtbare, zeigtInternes } from '@/lib/freigabe'
 import { logoPfad } from '@/lib/logo'
+import { pfad } from '@/lib/pfad'
 import { StandAlter } from '@/components/StandAlter'
 
 export function Fuss() {
@@ -27,7 +28,7 @@ export function Fuss() {
 
         {gesellschaften.map((g) => (
           <div key={g.name}>
-            <h4>{g.rolle}</h4>
+            <h2>{g.rolle}</h2>
             <p>
               <b>{g.name}</b>
             </p>
@@ -44,13 +45,21 @@ export function Fuss() {
         ))}
 
         <div>
-          <h4>Diese Seite</h4>
+          <h2>Diese Seite</h2>
           <p>
             Stand <b>{datum(daten.stand)}</b>
           </p>
           <StandAlter satz stand={daten.stand} fristTage={daten.herkunft.fristTage} erzeugt={datum(daten.herkunft.erzeugt)} />
           <p>
             Pflege: <b>{daten.ansprechpartner.name}</b>
+          </p>
+          <p>
+            <a href={pfad('/')}>Startseite</a> · <a href={pfad('/stand/')}>Ausführlicher Stand</a>
+          </p>
+          <p className="rechtlinks">
+            <a href={pfad('/impressum/')}>Impressum</a>
+            <a href={pfad('/datenschutz/')}>Datenschutz</a>
+            {daten.recht.geprueft ? null : <> (Entwürfe)</>}
           </p>
           {zeigtInternes ? (
             <p>

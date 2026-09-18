@@ -1,5 +1,7 @@
-# Baut alle drei Fassungen bei jedem Push, prueft die oeffentliche darauf, dass
-# nichts als intern Markiertes darin steht, und bei einem Pull Request
+# Prueft das Repository auf heikle Angaben, baut alle drei Fassungen bei jedem
+# Push, prueft die gebaute Seite auf Links, Gliederung und Figuren, die
+# oeffentliche darauf, dass nichts als intern Markiertes darin steht, und bei
+# einem Pull Request
 # zusaetzlich, dass der Bestand an Daten nicht kleiner geworden ist. Es wird
 # nichts veroeffentlicht.
 name: Prüfen
@@ -22,21 +24,35 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+      # Das Repository ist oeffentlich: keine Adressen, Rechnernamen, Ports,
+      # Schluessel oder fremden E-Mail-Adressen in Daten, Code und Doku.
+      - name: Repository auf heikle Angaben prüfen
+        run: npm run pruefe:daten
       - name: Skripte testen
         run: npm test
       - name: Interne Fassung bauen
         run: npm run build
-      # Diese Fassung stellt Pages seit dem 17.09.2026.
+      # Diese Fassung stellt Pages seit dem 17.09.2026, unter demselben Pfad.
       - name: Vollständige Fassung bauen
         run: npm run build
         env:
           FREIGABE: alles
+          BASE_PATH: /${{ github.event.repository.name }}
+      # Der Runner hat Chrome; playwright-core laedt keinen eigenen Browser.
+      - name: Vollständige Fassung prüfen
+        run: |
+          npm run pruefe:ausgabe
+          npm run pruefe:figuren -- --streng
+        env:
+          BASE_PATH: /${{ github.event.repository.name }}
       - name: Öffentliche Fassung bauen
         run: npm run build
         env:
           FREIGABE: oeffentlich
       - name: Öffentliche Fassung auf internen Inhalt prüfen
         run: npm run pruefe:oeffentlich
+      - name: Öffentliche Fassung auf Links und Gliederung prüfen
+        run: npm run pruefe:ausgabe
       # Ändern ist erlaubt, entfernen nicht: ein Pull Request darf keine Zahl,
       # keine Entscheidung und keinen offenen Punkt aus den Daten verlieren.
       - name: Bestand gegen den Zielzweig prüfen

@@ -20,7 +20,7 @@ export function Pruefpunkte() {
       titel={`Von ${p.gesamt} Prüfpunkten entscheidet ein Skript über ${p.skript}, ${p.mensch} bleiben bei Menschen.`}
       beschriftung={p.hinweisSkript}
     >
-      <text x={X} y={16} fontSize="10" fontWeight="700" letterSpacing="1.4" fill="var(--wmc-muted)">
+      <text x={X} y={16} fontSize="10.5" fontWeight="700" letterSpacing="1.4" fill="var(--wmc-muted)">
         DIE {zahl(p.gesamt)} PRÜFPUNKTE DER CHECKLISTE
       </text>
 

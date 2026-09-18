@@ -1,11 +1,20 @@
+import type { Metadata } from 'next'
+
 import { Kopf } from '@/components/Kopf'
 import { Nav } from '@/components/Nav'
 import { Fuss } from '@/components/Fuss'
 import { Block, Hinweis, Kachelband, Kopfzeile, Marker } from '@/components/bausteine'
+import { PlanAbschnitt } from '@/components/stand/Plan'
+import { StufenAbschnitt } from '@/components/stand/Stufen'
 import { abschnitt } from '@/lib/abschnitte'
 import { inWorten } from '@/lib/alter'
 import { daten, datum, harteRegel, zahl } from '@/lib/daten'
 import { istIntern, nurSichtbare, sichtbar } from '@/lib/freigabe'
+
+export const metadata: Metadata = {
+  title: 'Ausführlicher Stand',
+  description: 'Alle Prüfläufe, Tabellen, Stufen, Entscheidungen und offenen Punkte zum Vorhaben KI-Mitarbeiter.',
+}
 
 const zeigen = (id: string) => sichtbar(abschnitt(id))
 
@@ -161,7 +170,12 @@ export default function Seite() {
                 <h3>Gedächtnis: drei Körnungen</h3>
                 <ul className="liste" style={{ marginTop: '0.6rem' }}>
                   <li>Der einzelne Befund, mehrere hundert je Lauf.</li>
-                  <li>Die Regel: {zahl(d.kennzahlen.find((k) => k.id === 'regeln')?.zahl ?? 0)} Stück, stabil, mit Zweck, Testfällen und gemessener Fehlalarmquote.</li>
+                  <li>
+                    Die Regel, stabil, mit Zweck, Testfällen und gemessener Fehlalarmquote.{' '}
+                    {d.ablage.regelnotizen
+                      ? `Abgelegt sind ${zahl(d.ablage.regelnotizen)}.`
+                      : 'Abgelegt ist noch keine.'}
+                  </li>
                   <li>Der Lauf, eine Notiz mit Kennzahlen.</li>
                 </ul>
                 <p style={{ marginTop: '0.7rem' }}>
@@ -581,6 +595,20 @@ export default function Seite() {
           </section>
 
           {/* 11 ------------------------------------------------------------ */}
+          <section id="stufen">
+            <Kopfzeile id="stufen" />
+            <StufenAbschnitt />
+          </section>
+
+          {/* 12 ------------------------------------------------------------ */}
+          {zeigen('plan') && sichtbar(d.meilensteinplan) ? (
+            <section id="plan">
+              <Kopfzeile id="plan" />
+              <PlanAbschnitt />
+            </section>
+          ) : null}
+
+          {/* 13 ------------------------------------------------------------ */}
           {zeigen('plattform') ? (
             <section id="plattform">
               <Kopfzeile id="plattform" />
@@ -631,7 +659,7 @@ export default function Seite() {
             </section>
           ) : null}
 
-          {/* 12 ------------------------------------------------------------ */}
+          {/* 14 ------------------------------------------------------------ */}
           <section id="entscheidungen">
             <Kopfzeile id="entscheidungen" />
             <div className="tabellenrahmen">
@@ -668,7 +696,7 @@ export default function Seite() {
             </div>
           </section>
 
-          {/* 13 ------------------------------------------------------------ */}
+          {/* 15 ------------------------------------------------------------ */}
           <section id="offen">
             <Kopfzeile id="offen" />
             <div className="prosa">
@@ -705,7 +733,7 @@ export default function Seite() {
             </p>
           </section>
 
-          {/* 14 ------------------------------------------------------------ */}
+          {/* 16 ------------------------------------------------------------ */}
           {zeigen('beobachtungen') ? (
             <section id="beobachtungen">
               <Kopfzeile id="beobachtungen" />
@@ -727,7 +755,7 @@ export default function Seite() {
             </section>
           ) : null}
 
-          {/* 15 ------------------------------------------------------------ */}
+          {/* 17 ------------------------------------------------------------ */}
           {zeigen('quellen') ? (
             <section id="quellen">
               <Kopfzeile id="quellen" />
