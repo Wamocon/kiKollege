@@ -406,8 +406,13 @@ zurücknimmt, sobald eine Prüfung anschlägt, und niemals auf `main` pusht.
 
 Was das Skript **nicht** kann: lesen und urteilen. Ein neuer Eintrag im Logbuch,
 ein geänderter Plan, ein Widerspruch zwischen zwei Blättern — das ist der Auftrag
-des Standwächters. `AKTE-VORSCHLAG.md` beschreibt, was eine Rolle bräuchte, die
-beides auf dem KI-Rechner tut, und was vorher zu entscheiden ist.
+des Standwächters.
+
+Am 18.09.2026 ist dafür eine Rolle entschieden: **Gregor Dev**, Pfleger der
+Seiten, neunte in der Mannschaft. Er trägt den Stand nach und baut auf Auftrag
+weitere Seiten nach demselben Muster. `AKTE-VORSCHLAG.md` ist der Entwurf seiner
+Akte, `ZUGANG-GREGOR-DEV.md` der Arbeitsplan für sein Konto. Beides fehlt noch,
+und bis dahin läuft der Durchgang unter dem Konto eines Menschen.
 
 Ob die Ablage weiter ist, sagt `scripts/pruefe-aktualitaet.mjs`:
 
@@ -658,7 +663,8 @@ scripts/
   stand-aktualisieren.cmd  der Einstieg dafür unter Windows
   heute.mjs                das heutige Datum in Ortszeit, für cmd und Zweignamen
   __fixtures__/            Vaults und ein alter Stand für die Tests
-AKTE-VORSCHLAG.md   Entwurf: was eine Rolle bräuchte, die das selbst tut
+AKTE-VORSCHLAG.md   Entwurf der Akte für Gregor Dev, den Pfleger der Seiten
+ZUGANG-GREGOR-DEV.md  Arbeitsplan: eigenes Konto, Token, Riegel vor main
 .claude/skills/
   standwaechter/SKILL.md   zieht den Stand nach und stellt ihn als Pull Request
 .github/workflows/

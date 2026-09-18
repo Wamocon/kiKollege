@@ -6,6 +6,27 @@ verloren gehen darf.
 
 Stand dieser Übergabe: 18.09.2026.
 
+## Nachtrag 18.09.2026: Gregor Dev ist entschieden
+
+Erwin hat am 18.09. eine neunte Rolle entschieden: **Gregor Dev**, Pfleger der
+Seiten. Er traegt den Stand der oeffentlichen Seiten nach und baut auf Auftrag
+weitere, weil mehr Landing Pages entstehen sollen. Er darf als Zweiter ins Netz,
+begrenzt auf GitHub, bekommt ein eigenes Konto und stellt Pull Requests;
+zusammengefuehrt wird von Erwin.
+
+Eingetragen in den Daten: die Rolle, die Entscheidung mit Datum, ein Eintrag in
+der Chronik und der offene Punkt 21, Konto, Akte und Grenze anzulegen.
+
+- `ZUGANG-GREGOR-DEV.md`: Arbeitsplan fuer das Konto in acht Schritten, vom
+  Maschinenkonto ueber den feingranularen Token bis zur taeglichen Aufgabe. Er
+  enthaelt kein Geheimnis und soll auch keines aufnehmen.
+- `AKTE-VORSCHLAG.md`: der Entwurf seiner Akte, jetzt auf seinen Namen und mit
+  den Entscheidungen vom 18.09.
+
+Wichtig fuer die naechste Sitzung: Der Riegel vor `main` fehlt noch. Solange
+niemand ihn setzt, kann jedes Konto mit Schreibrecht direkt auf `main` pushen,
+und jeder Push dorthin stellt die Seite ins Netz.
+
 ## Nachtrag 18.09.2026: der Durchgang ist harnessneutral
 
 Die Arbeit des taeglichen Durchgangs steht in `scripts/stand-nachtragen.mjs`,

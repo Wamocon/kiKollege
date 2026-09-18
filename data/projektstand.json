@@ -707,6 +707,11 @@
       "datum": "2026-09-17",
       "entscheidung": "P1 freigegeben: Der offene Stand wird eingecheckt, und die Ablage kommt über Git auf die eigene Hardware",
       "freigabe": "intern"
+    },
+    {
+      "datum": "2026-09-18",
+      "entscheidung": "Gregor Dev wird KI-Mitarbeiter: Er pflegt die öffentlichen Seiten, trägt ihren Stand aus der Ablage nach und baut weitere. Er darf ins Netz, begrenzt auf GitHub, stellt Pull Requests und führt keinen zusammen",
+      "freigabe": "oeffentlich"
     }
   ],
   "entscheidungenNachtrag": "Die Entscheidung vom 04.09. dreht bewusst eine zuvor festgelegte Reihenfolge um: Ursprünglich sollte die Fehlalarmquote vor dem Plattformwechsel gemessen werden. Die Technik wurde vorgezogen. Das ist kein Widerspruch, sondern eine andere Reihenfolge mit einer benannten Folge, und die Folge steht im Abschnitt zur Messlücke.",
@@ -862,6 +867,12 @@
         "am": "2026-09-17",
         "text": "Neu geschnitten bis zum 16.10., als Entwurf mit zwölf Entscheidungen und Fristen."
       }
+    },
+    {
+      "nr": 21,
+      "punkt": "Konto, Akte und Grenze für Gregor Dev anlegen",
+      "grund": "Ohne eigenes Konto pusht er unter dem Konto eines Menschen, und ohne Grenze mit Testfällen kommt seine Akte an kein Profil. Der Arbeitsplan für das Konto steht in ZUGANG-GREGOR-DEV.md, der Entwurf der Akte in AKTE-VORSCHLAG.md.",
+      "freigabe": "oeffentlich"
     }
   ],
   "beobachtungen": [
@@ -1353,6 +1364,11 @@
         "datum": "2026-09-18",
         "text": "Der Meilensteinplan bekommt Zieldaten neben den Fristen: M1 am 19.09. statt am 25.09. Die Fristen bleiben als äußere Grenze. Erwins Zeit wird ab heute mitgeschrieben.",
         "freigabe": "oeffentlich"
+      },
+      {
+        "datum": "2026-09-18",
+        "text": "Gregor Dev wird als neunte Rolle entschieden: Er pflegt die öffentlichen Seiten und darf dafür als Zweiter ins Netz. Der tägliche Nachtrag läuft ab jetzt als Pull Request, nicht mehr als Push.",
+        "freigabe": "oeffentlich"
       }
     ],
     "freigabe": "oeffentlich"
@@ -1555,7 +1571,7 @@
   ],
   "mannschaft": {
     "satz": "Aus einem Mitarbeiter wird eine Mannschaft. Der Reviewer arbeitet, der Orchestrator ist eingerichtet, die übrigen Rollen sind beschrieben und nicht gebaut.",
-    "gezaehltAm": "2026-09-16",
+    "gezaehltAm": "2026-09-18",
     "trennung": "Wer baut, prüft nicht. Wer prüft, baut nicht. Wer pflegt, urteilt nicht.",
     "engpass": "Der Engpass ist die gemessene Fehlalarmquote des ersten, nicht die Zahl der Mitarbeiter. Kein weiterer misst sie, und jeder weitere vergrößert, was ungemessen läuft.",
     "akte": "Seit dem 11.09. hat der Reviewer eine Akte: Auftrag, Haltung und Grenze als Dateien, unabhängig vom Harness. Ein kleines Programm prüft vor jedem Werkzeugaufruf, ob die Akte ihn erlaubt, und lehnt im Zweifel ab. Es ist gebaut und mit Testfällen geprüft, auf der eigenen Hardware aber noch nicht aktiv. Dem Orchestrator fehlt die Akte noch.",
@@ -1658,12 +1674,25 @@
         "seit": null,
         "hinweis": "Beschrieben, nicht gebaut.",
         "freigabe": "oeffentlich"
+      },
+      {
+        "id": "seiten",
+        "rolle": "Pfleger der Seiten",
+        "name": "Gregor Dev",
+        "kurz": "Seiten",
+        "kern": "nachtragend",
+        "tut": "Den Stand der öffentlichen Seiten aus der Ablage nachtragen und weitere Seiten nach demselben Muster bauen. Jede Änderung als Pull Request, jede Zahl mit ihrer Quelle.",
+        "tutNie": "nach main pushen, einen Pull Request zusammenführen, etwas aus den Daten entfernen, ein Datenelement von intern auf öffentlich heben, eine Notiz in der Ablage ändern, eine Prüfung abschalten",
+        "zustand": "entschieden",
+        "seit": null,
+        "hinweis": "Am 18.09. entschieden, weil weitere Seiten entstehen sollen. Er darf als Zweiter ins Netz, und nur zu GitHub. Konto, Akte und Grenze mit Testfällen fehlen noch.",
+        "freigabe": "oeffentlich"
       }
     ],
     "freigabe": "oeffentlich",
     "grenzeWarum": "Die meisten Beschreibungen von KI-Agenten setzen Grenzen im Anweisungstext. Ein Text hält niemanden auf, am wenigsten ein Modell, das in einem geprüften Dokument auf eine gegenteilige Anweisung stößt.",
     "verlauf": {
-      "text": "Am 09.09. waren sieben Rollen gesetzt. Am 11.09. ruhten alle außer Reviewer und Orchestrator, am 12.09. kam die Researcherin als achte dazu und arbeitet. Am 16.09. hat Erwin für alle acht Rollen vierzig Fragen beantwortet; umgesetzt ist das als Vorschlag, freigegeben wird Rolle für Rolle. Am 17.09. neu geschnitten: Bis zum 16.10. sollen Reviewer, Orchestrator, Reporter, Archivar, Architekt und Entwickler lauffähig sein. Der Gestalter bleibt draußen.",
+      "text": "Am 09.09. waren sieben Rollen gesetzt. Am 11.09. ruhten alle außer Reviewer und Orchestrator, am 12.09. kam die Researcherin als achte dazu und arbeitet. Am 16.09. hat Erwin für alle acht Rollen vierzig Fragen beantwortet; umgesetzt ist das als Vorschlag, freigegeben wird Rolle für Rolle. Am 17.09. neu geschnitten: Bis zum 16.10. sollen Reviewer, Orchestrator, Reporter, Archivar, Architekt und Entwickler lauffähig sein. Der Gestalter bleibt draußen. Am 18.09. kommt Gregor Dev als neunte Rolle dazu: Er pflegt die öffentlichen Seiten und darf dafür als Zweiter ins Netz.",
       "freigabe": "intern"
     }
   },
