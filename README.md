@@ -355,22 +355,59 @@ Kontextstrategie im Einstieg jenes Repositorys. Das Skript setzt nur `notizen` u
 einen Ordner ohne Eintrag, meldet es ihn, damit ein Mensch die Beschreibung
 nachträgt. Tiefer als diese oberste Ebene gehen keine Ordnernamen in die Daten.
 
-## Der Stand aktualisiert sich nicht von selbst
+## Der Stand trägt sich selbst nach, entschieden wird von Hand
 
 Der Vault liegt auf einem Rechner im Haus, das Repository liegt bei GitHub. Der
 Export läuft also dort, wo der Vault liegt, und schiebt nur `data/projektstand.json`
-weiter — Notizen, Testfälle und Ausbildungsunterlagen bleiben liegen. Ein Durchgang
-steht als Windows-Skript bereit:
+weiter — Notizen, Testfälle und Ausbildungsunterlagen bleiben liegen.
+
+Die Arbeit macht `scripts/stand-nachtragen.mjs`. Es kennt weder Windows noch eine
+bestimmte Sitzung, es ruft nur `node`, `git` und die GitHub-CLI:
+
+```bash
+npm run stand:nachtragen -- --vault "D:\WAMOCON\KFBM" --ablage "D:\WAMOCON"
+npm run stand:nachtragen -- --probelauf        # prüfen, ohne etwas zu stellen
+npm run stand:nachtragen -- --ohne-pr          # Zweig pushen, Pull Request von Hand
+```
+
+Damit läuft derselbe Durchgang in der Aufgabenplanung, auf dem Rechner mit der
+Ablage und als Auftrag eines KI-Mitarbeiters. Für Windows steht ein Einstieg
+daneben, der nur diesen Befehl ruft:
 
 ```bat
 scripts\stand-aktualisieren.cmd "D:\WAMOCON\KFBM" "D:\WAMOCON"
 ```
 
-Es exportiert, zählt das Abbild der Ablage neu und sagt, ob die Ablage weiter ist
-als die Seite. Hat sich etwas geändert, prüft es, dass der neue Stand nichts
-verliert (`pruefe:bestand` gegen `HEAD`) und nichts Heikles enthält
-(`pruefe:daten`), und committet und pusht erst dann. Es pusht auf den Zweig, der
-gerade ausgecheckt ist; steht dort `main`, geht der Stand direkt auf Pages.
+Der Durchgang in der Reihenfolge:
+
+1. **Anhalten, wenn etwas offen ist.** Er läuft nur auf `main` und nur bei
+   sauberem Arbeitsverzeichnis, und er wechselt den Zweig nicht selbst, solange
+   er liest: cmd liest seine eigene Datei während des Laufs von der Platte.
+2. **`git pull --ff-only`**, damit der neue Stand auf dem aktuellen aufsetzt.
+3. **Exportieren und zählen**, also `export:vault` und `abbild:vault`.
+4. **`pruefe:aktualitaet`**, und die Antwort steht im Protokoll des Laufs.
+5. **Nichts geändert: Ende.** Ein leerer Lauf ist ein guter Lauf.
+6. **Geändert: prüfen.** `pruefe:bestand` gegen `HEAD`, `pruefe:daten` und
+   `npm test`. Schlägt eines an, wird die Änderung verworfen und nichts gestellt.
+7. **Zweig `stand/JJJJ-MM-TT`, Commit, Push, Pull Request** gegen `main`, mit dem
+   Verantwortlichen der Seite als Prüfer. Besteht der Pull Request des Tages
+   schon, hängt der neue Stand einfach daran.
+8. **Zurück auf `main`.**
+
+**Nach `main` pusht das Skript nicht.** Was auf Pages steht, führt ein Mensch
+zusammen. Dafür braucht der Rechner die GitHub-CLI, einmal mit `gh auth login`
+angemeldet.
+
+Geprüft ist der Ablauf in `scripts/stand-nachtragen.test.mjs`: Der Durchgang
+bekommt dort eine Werkbank vorgesetzt, die Befehle nur aufschreibt. So lässt sich
+ohne Git, ohne Netz und ohne Vault nachweisen, dass er bei einem unsauberen
+Verzeichnis anhält, auf einem anderen Zweig nicht anfängt, eine Änderung
+zurücknimmt, sobald eine Prüfung anschlägt, und niemals auf `main` pusht.
+
+Was das Skript **nicht** kann: lesen und urteilen. Ein neuer Eintrag im Logbuch,
+ein geänderter Plan, ein Widerspruch zwischen zwei Blättern — das ist der Auftrag
+des Standwächters. `AKTE-VORSCHLAG.md` beschreibt, was eine Rolle bräuchte, die
+beides auf dem KI-Rechner tut, und was vorher zu entscheiden ist.
 
 Ob die Ablage weiter ist, sagt `scripts/pruefe-aktualitaet.mjs`:
 
@@ -389,10 +426,15 @@ Für den regelmäßigen Teil hängt man es in die Aufgabenplanung, hier täglich
 schtasks /create /tn "KI-Mitarbeiter Stand" /tr "\"C:\Pfad\zum\kiKollege\scripts\stand-aktualisieren.cmd\" \"D:\WAMOCON\KFBM\"" /sc daily /st 07:00
 ```
 
-Voraussetzungen: Node und Git auf dem Rechner, ein Klon des Repositories, eine
-Push-Berechtigung für den angemeldeten Benutzer und ein Branch mit Upstream.
+Voraussetzungen: Node, Git und die GitHub-CLI auf dem Rechner, ein Klon des
+Repositories, der auf `main` steht, und eine Push-Berechtigung für den
+angemeldeten Benutzer.
 
-Solange das nicht läuft, altert die Seite still. Deshalb weist sie ihr eigenes
+Das Datum für den Zweignamen kommt aus `scripts/heute.mjs`, in Ortszeit: Ein Lauf
+am frühen Morgen gehört zum laufenden Tag, und cmd kennt kein Datum in dieser
+Form.
+
+Läuft die Aufgabe nicht, altert die Seite still. Deshalb weist sie ihr eigenes
 Alter aus: neben dem Stand steht, wie alt die Zahlen sind, und überschreiten sie
 `herkunft.fristTage`, wird die Angabe rot und der Fußbereich sagt, wann zuletzt
 fortgeschrieben wurde. Gerechnet wird das im Browser gegen die Uhr des Lesers,
@@ -612,8 +654,11 @@ scripts/
   pruefe-aktualitaet.mjs   sagt, ob die Ablage weiter ist als die Seite
   pruefe-ausgabe.mjs       prüft Links, Gliederung und Satzzeichen der gebauten Seite
   pruefe-figuren.mjs       prüft die Figuren und die Handybreite im Browser
-  stand-aktualisieren.cmd  ein Durchgang für die Aufgabenplanung
+  stand-nachtragen.mjs     ein ganzer Durchgang bis zum Pull Request
+  stand-aktualisieren.cmd  der Einstieg dafür unter Windows
+  heute.mjs                das heutige Datum in Ortszeit, für cmd und Zweignamen
   __fixtures__/            Vaults und ein alter Stand für die Tests
+AKTE-VORSCHLAG.md   Entwurf: was eine Rolle bräuchte, die das selbst tut
 .claude/skills/
   standwaechter/SKILL.md   zieht den Stand nach und stellt ihn als Pull Request
 .github/workflows/

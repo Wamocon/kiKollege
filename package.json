@@ -13,6 +13,7 @@
     "pruefe:bestand": "node scripts/pruefe-bestand.mjs",
     "pruefe:daten": "node scripts/pruefe-daten.mjs",
     "pruefe:aktualitaet": "node scripts/pruefe-aktualitaet.mjs",
+    "stand:nachtragen": "node scripts/stand-nachtragen.mjs",
     "pruefe:ausgabe": "node scripts/pruefe-ausgabe.mjs",
     "pruefe:figuren": "node scripts/pruefe-figuren.mjs",
     "test:export": "node --test scripts/export-vault.test.mjs",

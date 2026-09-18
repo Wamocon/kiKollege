@@ -24,6 +24,7 @@ import { readFile } from 'node:fs/promises'
 import { dirname, relative, resolve, sep } from 'node:path'
 
 import { leseFilter, sammleNotizen } from './abbild-vault.mjs'
+import { heute as heuteOrtszeit } from './heute.mjs'
 import { leseFrontmatter, normDatum } from './export-vault.mjs'
 
 const TAG_MS = 24 * 60 * 60 * 1000
@@ -95,10 +96,7 @@ const direktAufgerufen =
 if (direktAufgerufen) {
   const ablage = argument('ablage', process.env.ABLAGE ?? 'D:\\WAMOCON')
   const daten = resolve(argument('daten', 'data/projektstand.json'))
-  // Ortszeit: ein Lauf kurz nach Mitternacht zählt zum neuen Tag
-  const jetzt = new Date()
-  const ortsdatum = [jetzt.getFullYear(), jetzt.getMonth() + 1, jetzt.getDate()].map((z) => String(z).padStart(2, '0')).join('-')
-  const heute = argument('heute', ortsdatum)
+  const heute = argument('heute', heuteOrtszeit())
   if (!existsSync(ablage)) {
     console.error(`Ablage nicht gefunden: ${ablage}\nPfad mit --ablage angeben oder ABLAGE setzen.`)
     process.exit(1)
