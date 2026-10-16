@@ -818,6 +818,11 @@
       "datum": "2026-10-16",
       "entscheidung": "Neue Termine: Meilenstein 1 am 23.10., 2 am 30.10., 3 am 06.11., 4 am 13.11.; der Zuschnitt vom 29.09. bleibt",
       "freigabe": "oeffentlich"
+    },
+    {
+      "datum": "2026-10-16",
+      "entscheidung": "Die Seite auf GitHub Pages zeigt weiter alles, wie seit dem 17.09.",
+      "freigabe": "intern"
     }
   ],
   "entscheidungenNachtrag": "Die Entscheidung vom 04.09. dreht bewusst eine zuvor festgelegte Reihenfolge um: Ursprünglich sollte die Fehlalarmquote vor dem Plattformwechsel gemessen werden. Die Technik wurde vorgezogen. Das ist kein Widerspruch, sondern eine andere Reihenfolge mit einer benannten Folge, und die Folge steht im Abschnitt zur Messlücke.",
@@ -1119,8 +1124,8 @@
     {
       "id": "oeffentliche-seite-zurueckgestellt",
       "titel": "Die öffentliche Seite ist zurückgestellt und steht trotzdem im Netz",
-      "text": "Am 29.09. ist die Wahl 9.4 zurückgenommen: Die interne Seite liegt bei claude.ai, die öffentliche rückt hinter das Ende des Plans. Diese Seite steht dennoch öffentlich auf GitHub Pages und zeigt seit dem 17.09. die vollständige Fassung, auch was als intern markiert ist.",
-      "quelle": "Logbuch vom 29.09.2026, Abschnitt „Was damit umgekehrt ist“, gegen die Fassung auf GitHub Pages",
+      "text": "Am 29.09. ist die Wahl 9.4 zurückgenommen: Die interne Seite liegt bei claude.ai, die öffentliche rückt hinter das Ende des Plans. Diese Seite steht dennoch öffentlich auf GitHub Pages und zeigt seit dem 17.09. die vollständige Fassung, auch was als intern markiert ist. Am 16.10. hat Erwin entschieden, dass es dabei bleibt.",
+      "quelle": "Logbuch vom 29.09.2026, Abschnitt „Was damit umgekehrt ist“, gegen die Fassung auf GitHub Pages; Entscheidung vom 16.10.2026",
       "freigabe": "intern"
     },
     {

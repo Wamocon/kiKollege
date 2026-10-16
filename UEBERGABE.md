@@ -21,7 +21,8 @@ den Stand nach und nimmt #6 mit.
 - **Die öffentliche Seite ist zurückgestellt.** Am 29.09. ist die Wahl 9.4
   zurückgenommen: Die interne Seite liegt bei claude.ai, diese hier rückt hinter das
   Ende des Plans. Sie steht trotzdem öffentlich und zeigt alles. Eingetragen als
-  Beobachtung `oeffentliche-seite-zurueckgestellt`; entscheiden muss Erwin.
+  Beobachtung `oeffentliche-seite-zurueckgestellt`. Am 16.10. hat Erwin
+  entschieden: Pages zeigt weiter alles, `FREIGABE=alles` bleibt.
 - **Der Reviewer ist abgenommen**, am 15.10. mit Vorbehalt. Die Abnahme enthält
   einen Sicherheitsbefund, der nur in der Ablage steht. Die Seite sagt nur, dass
   zwei Bedingungen offen sind.
