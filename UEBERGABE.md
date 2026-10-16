@@ -39,7 +39,13 @@ den Stand nach und nimmt #6 mit.
   Reihenfolge der Köpfe ist die des Blatts. Der Gestalter steht als `passtNicht`
   darin, weil das Blatt ihn nicht vorsieht; entfernt ist er nicht. Angaben zum
   Betrieb des KI-Rechners, Profilnamen, Versionen und das Modell stehen nicht
-  darin. `/stand/` zeigt das Organigramm noch nicht.
+  darin.
+- **`/stand/` zeigt die Zeichnungen.** Bis zum 16.10. stand dort keine außer dem
+  eingeklappten Zeitplan. Jetzt hängt jede Zeichnung der Landing Page im passenden
+  Abschnitt: Schichten, Wissen und Ablage, Ablauf und Steuerung, Prüfpunkte,
+  Enabler, das Organigramm unter Übertragbarkeit, die Termine im Plan, die
+  Systemlandschaft bei der Plattform. Die Anatomie aus dem Kopf der Landing Page
+  fehlt, weil sie an das Scrollen gebunden ist.
 
 **Nicht übernommen, weil es nicht öffentlich werden darf:** Rechnernamen,
 Versionen, Dienste, Bots und Kennungen, die Werkzeuge der Researcherin, der

@@ -959,6 +959,9 @@ th.num { text-align: right; }
 
 /* --- Figur mit Unterschrift --- */
 .lp-figur { margin: 0; }
+/* Das Enabler-Raster ist für eine Zelle gezeichnet; im ausführlichen Stand
+   bekommt es dieselbe Breite statt der ganzen Spalte. */
+.schmale-figur { max-width: 34rem; margin-top: 1.6rem; }
 .lp-figur svg { display: block; width: 100%; height: auto; overflow: visible; }
 .lp-figur figcaption {
   margin-top: 1rem;
@@ -1068,17 +1071,25 @@ th.num { text-align: right; }
 .lp-diagramm { overflow-x: auto; margin: clamp(1.6rem, 3vw, 2.6rem) 0 0; }
 .lp-diagramm svg { min-width: 880px; width: 100%; height: auto; }
 .lp-diagramm figcaption { max-width: 68ch; }
-.lp-diagramm-hinweis { display: none; }
+.lp-diagramm-hinweis {
+  display: none;
+  position: sticky;
+  left: 0;
+  margin: 0 0 0.5rem;
+  font-family: var(--schrift-mono);
+  font-size: 0.72rem;
+  color: var(--wmc-muted);
+}
 @media (max-width: 900px) {
-  .lp-diagramm-hinweis {
-    display: block;
-    position: sticky;
-    left: 0;
-    margin: 0 0 0.5rem;
-    font-family: var(--schrift-mono);
-    font-size: 0.72rem;
-    color: var(--wmc-muted);
-  }
+  .lp-diagramm-hinweis { display: block; }
+}
+/* Im ausführlichen Stand ist die Spalte neben der Navigation höchstens 834
+   Pixel breit. Mit 880 als Mindestbreite liefe dort jede Zeichnung rechts
+   hinaus; 760 passt hinein und bleibt lesbar. Schmaler als die Spalte wird
+   sie unterhalb von gut 1100 Pixeln, dann gilt auch hier der Hinweis. */
+.inhalt .lp-diagramm svg { min-width: 760px; }
+@media (max-width: 1110px) {
+  .inhalt .lp-diagramm-hinweis { display: block; }
 }
 .lp-details { max-width: 100%; }
 

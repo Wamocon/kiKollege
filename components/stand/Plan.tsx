@@ -1,4 +1,5 @@
 import { Block } from '@/components/bausteine'
+import { TermineFigur } from '@/components/figuren/Termine'
 import { ZeitplanFigur } from '@/components/figuren/Zeitplan'
 import { daten, datum, dauer } from '@/lib/daten'
 
@@ -20,10 +21,12 @@ export function PlanAbschnitt() {
         </p>
         <p>{p.termineSatz}</p>
         <p>
-          Die Landing Page zeigt die Termine, die vier Meilensteine und die Entscheidungen mit Frist.
-          Hier steht der Rest.
+          Die Landing Page zeigt die vier Meilensteine mit dem, was erledigt ist, und die
+          Entscheidungen mit Frist. Hier stehen die Termine und der Rest.
         </p>
       </div>
+
+      <TermineFigur />
 
       <h3 style={{ marginTop: '1.8rem' }}>Was das Ziel bis zum {datum(p.bis)} heißt</h3>
       <div className="tabellenrahmen">

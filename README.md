@@ -6,7 +6,7 @@ Datenquelle.
 | Route | Was sie ist |
 |---|---|
 | `/` | Landing Page. Erzählt das Vorhaben in dreizehn Abschnitten, vom Hero bis zum Meilensteinplan. |
-| `/stand/` | Dichte Standseite mit Ankernavigation, allen Tabellen, Prüfläufen, Stufen und dem Meilensteinplan im Einzelnen. |
+| `/stand/` | Dichte Standseite mit Ankernavigation, allen Tabellen, Prüfläufen, Stufen und dem Meilensteinplan im Einzelnen, dazu die Zeichnungen der Landing Page im jeweils passenden Abschnitt. |
 | `/impressum/`, `/datenschutz/` | Entwürfe, rechtlich nicht geprüft. Siehe „Impressum und Datenschutz“. |
 
 Bis zum 17.09.2026 hatte die Landing Page neunzehn Abschnitte und rund 9.500
@@ -149,10 +149,16 @@ verborgen bleibt.
 
 ## Die Figuren
 
-Zwölf Zeichnungen, alle aus `data/projektstand.json` gespeist, elf davon in
+Dreizehn Zeichnungen, alle aus `data/projektstand.json` gespeist, zwölf davon in
 `components/figuren/`. Sie sind eigene SVG in den CI-Farben, keine Kopien der
 Vorlagen aus der Einführung. Farben kommen aus den Tokens, damit sie in beiden Themen
 mitwandern; Rot trägt in jeder Figur genau ein Element, nämlich das, worum es geht.
+Die Ausnahme ist das Organigramm, das der Farbregel des Blatts vom 16.10. folgt.
+
+`/stand/` zeigt dieselben Zeichnungen im jeweils passenden Abschnitt, bis auf die
+Anatomie im Kopf der Landing Page, die an das Scrollen gebunden ist. Die Spalte neben
+der Navigation ist dort höchstens 834 px breit, deshalb gilt dort eine Mindestbreite
+von 760 px statt 880 px.
 
 Weil die Beschriftungen eine feste Größe im `viewBox` haben, behalten die Zeichnungen
 eine Mindestbreite von 880 px und scrollen darunter waagerecht im eigenen Kasten. Ohne

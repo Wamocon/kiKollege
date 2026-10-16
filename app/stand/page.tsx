@@ -4,6 +4,16 @@ import { Kopf } from '@/components/Kopf'
 import { Nav } from '@/components/Nav'
 import { Fuss } from '@/components/Fuss'
 import { Block, Hinweis, Kachelband, Kopfzeile, Marker } from '@/components/bausteine'
+import { AblageFigur, AblageTabelle } from '@/components/figuren/Ablage'
+import { AblageGraphFigur, AblageGraphListe } from '@/components/figuren/AblageGraph'
+import { Durchlauf } from '@/components/figuren/Durchlauf'
+import { EnablerRaster } from '@/components/figuren/EnablerRaster'
+import { LandschaftFigur } from '@/components/figuren/Landschaft'
+import { MannschaftFigur } from '@/components/figuren/Mannschaft'
+import { Pruefpunkte } from '@/components/figuren/Pruefpunkte'
+import { Schichtenstapel } from '@/components/figuren/Schichtenstapel'
+import { Steuerung } from '@/components/figuren/Steuerung'
+import { Wissensablagen } from '@/components/figuren/Wissensablagen'
 import { PlanAbschnitt } from '@/components/stand/Plan'
 import { StufenAbschnitt } from '@/components/stand/Stufen'
 import { abschnitt } from '@/lib/abschnitte'
@@ -128,6 +138,8 @@ export default function Seite() {
               Die beiden mit „trägt“ markierten Schichten sind die, an denen der Rest hängt.
             </p>
 
+            <Schichtenstapel />
+
             <Hinweis art="wichtig" wort="Schwerpunkt">
               <p>
                 Zwei Schichten tragen den Rest, und es sind nicht die, die man erwartet: das Gedächtnis und
@@ -155,6 +167,8 @@ export default function Seite() {
                 werden die beiden regelmäßig, weil sie teilweise am selben Ort liegen.
               </p>
             </div>
+
+            <Wissensablagen />
 
             <div className="raster">
               <div className="karte">
@@ -205,6 +219,16 @@ export default function Seite() {
                 nicht passiert.
               </p>
             </div>
+
+            {sichtbar(d.ablage) ? (
+              <>
+                <h3 style={{ marginTop: '1.8rem' }}>Die Ablage am {datum(d.ablage.gezaehltAm)}</h3>
+                <AblageFigur />
+                <AblageTabelle />
+                <AblageGraphFigur />
+                <AblageGraphListe />
+              </>
+            ) : null}
           </section>
 
           {/* 05 ------------------------------------------------------------ */}
@@ -235,6 +259,8 @@ export default function Seite() {
               {inWorten(d.auftrag.ablauf.length)} Schritte: {d.auftrag.ablauf.join('; ')}.
             </p>
 
+            <Durchlauf />
+
             <Hinweis wort="Grenze" titel={d.auftrag.anweisungImDokument.satz}>
               <p>
                 In der Akte seit dem {datum(d.auftrag.anweisungImDokument.seit)}.{' '}
@@ -253,6 +279,9 @@ export default function Seite() {
                 </div>
               ))}
             </div>
+
+            <h3 style={{ marginTop: '1.8rem' }}>Wer ihn anstößt, und was er abgibt</h3>
+            <Steuerung />
           </section>
 
           {/* 06 ------------------------------------------------------------ */}
@@ -270,6 +299,8 @@ export default function Seite() {
                 <li key={k}>{k}</li>
               ))}
             </ul>
+
+            <Pruefpunkte />
 
             <Hinweis wort="offen">
               <p>
@@ -331,6 +362,10 @@ export default function Seite() {
                 {n.integrativeAbschnittC} integrative Positionen aus Abschnitt C, {n.lernfelder} Lernfelder,
                 dazu {n.weitere.join(', ')}. Primärquelle ist das {n.primaerquelle}.
               </p>
+            </div>
+
+            <div className="schmale-figur">
+              <EnablerRaster />
             </div>
 
             <Hinweis
@@ -590,6 +625,9 @@ export default function Seite() {
             <Hinweis wort="Auswahlregel">
               <p>{d.uebertragbarkeit.auswahlregel}</p>
             </Hinweis>
+
+            <h3 style={{ marginTop: '1.8rem' }}>Die Mannschaft am {datum(d.mannschaft.gezaehltAm)}</h3>
+            <MannschaftFigur />
           </section>
 
           {/* 11 ------------------------------------------------------------ */}
@@ -619,6 +657,8 @@ export default function Seite() {
                 </p>
                 <p>{d.plattform.ablageregel}</p>
               </div>
+
+              {sichtbar(d.landschaft) ? <LandschaftFigur /> : null}
 
               <h3 style={{ marginTop: '1.8rem' }}>
                 Fünf Schritte bis zum {datum(d.plattform.termin)}
