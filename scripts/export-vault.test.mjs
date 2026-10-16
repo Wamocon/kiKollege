@@ -61,6 +61,13 @@ test('alsPrueflauf übergeht Notizen ohne Ergebnisfeld', () => {
   assert.equal(alsPrueflauf({ geprueft: 12 }, 'Ohne Stand.md'), null)
 })
 
+test('alsPrueflauf übergeht einen Lauf, der nicht zustande kam', () => {
+  const felder = { stand: '2026-10-15', blocker: 0, major: 0, minor: 0, hinweis: 0 }
+  assert.equal(alsPrueflauf({ ...felder, status: 'blockiert — Abhängigkeit fehlt' }, 'Blockiert.md'), null)
+  assert.equal(alsPrueflauf({ ...felder, status: 'Abgebrochen' }, 'Abbruch.md'), null)
+  assert.ok(alsPrueflauf({ ...felder, status: 'fertig' }, 'Fertig.md'), 'ein anderer Status hält nichts auf')
+})
+
 test('alsPrueflauf übernimmt nur belegte Zahlen', () => {
   const lauf = alsPrueflauf(
     { stand: '2026-08-27', geprueft: 238, blocker: 2, minor: null, laufzeit: 'vier Minuten' },

@@ -35,7 +35,7 @@ export const BEREICHE = [
   { id: 'normbasis', gruppe: 'wissen', name: 'Normbasis des Berufs', kurz: 'Normbasis' },
   { id: 'massstab', gruppe: 'wissen', name: 'Prüfmaßstab der Academy', kurz: 'Prüfmaßstab' },
   { id: 'quellen', gruppe: 'wissen', name: 'Quellen', kurz: 'Quellen' },
-  { id: 'prueflaeufe', gruppe: 'gedaechtnis', name: 'Prüfläufe', kurz: 'Prüfläufe' },
+  { id: 'prueflaeufe', gruppe: 'gedaechtnis', name: 'Prüfläufe und Regeln', kurz: 'Prüfläufe' },
   { id: 'arbeitsstand', gruppe: 'werkstatt', name: 'Pläne, Berichte, Übergaben', kurz: 'Arbeitsstände' },
   { id: 'protokoll', gruppe: 'werkstatt', name: 'Tagesprotokolle', kurz: 'Protokolle' },
   { id: 'einstiege', gruppe: 'werkstatt', name: 'Einstiege und Eingang', kurz: 'Einstiege' },
@@ -46,6 +46,11 @@ export const BEREICHE = [
  *  Rubrik, also je Ordner direkt darunter. Tiefere Pfade gehen nicht in die
  *  Daten. */
 export const UNTERNEHMEN = 'KI-Mitarbeiter'
+
+/** Eine Regelnotiz: eine Prüfregel mit Zweck, Testfällen und gemessener Quote.
+ *  Erkannt am Ordner Regeln/, nicht am Typ: Den Typ pruefregel trägt auch der
+ *  Alt-Neu-Marker in der Normbasis, ein Vorfilter ohne gemessene Quote. */
+export const istRegelnotiz = (pfad) => /(^|\/)Regeln\//.test(pfad.replace(/\\/g, '/'))
 
 /** Notiztypen, die einen Arbeitsstand festhalten und kein Wissen sind. */
 const ARBEITSTYPEN = new Set([
@@ -58,6 +63,7 @@ const ARBEITSTYPEN = new Set([
   'analyse',
   'sichtung',
   'fragenkatalog',
+  'vorlage',
 ])
 
 /** Ordnet eine Notiz einem Bereich zu. Erste passende Zeile gewinnt. Der Pfad
@@ -66,12 +72,15 @@ export function bereichVon(pfad, typ) {
   const p = pfad.replace(/\\/g, '/').normalize('NFC')
   const t = typeof typ === 'string' ? typ.toLowerCase() : ''
   if (/(^|\/)00_Meta\/Protokoll\//.test(p)) return 'protokoll'
-  if (/(^|\/)Prüfläufe\//.test(p) || t === 'prueflauf') return 'prueflaeufe'
+  if (/(^|\/)Prüfläufe\//.test(p) || t === 'prueflauf' || istRegelnotiz(p)) return 'prueflaeufe'
   if (/(^|\/)85_Logbuch\//.test(p)) return 'entscheidungen'
   if (/(^|\/)00_Meta\//.test(p)) return 'konventionen'
   if (/(^|\/)20_Ausbildungsberufe\//.test(p)) return 'normbasis'
   if (/(^|\/)(30|80)_Quellen\//.test(p)) return 'quellen'
-  if (/(^|\/)15_Academy\//.test(p) || t === 'kriterium' || t === 'vorlage') return 'massstab'
+  // Eine Vorlage ist im Fachbereich Maßstab (Berichtsvorlage), im
+  // Unternehmensteil eine Entscheidungsvorlage, also ein Arbeitsstand
+  const vorlageImFach = t === 'vorlage' && !p.startsWith(`${UNTERNEHMEN}/`)
+  if (/(^|\/)15_Academy\//.test(p) || t === 'kriterium' || vorlageImFach) return 'massstab'
   if (/(^|\/)90_Archiv\//.test(p) || t === 'archiv') return 'archiv'
   if (/^KI-Mitarbeiter\/[1-7]0_/.test(p)) return 'unternehmen'
   if (ARBEITSTYPEN.has(t)) return 'arbeitsstand'
@@ -214,7 +223,7 @@ export async function zaehlen(vault, heute = new Date().toISOString().slice(0, 1
     notizen: notizen.length,
     verweise: verweiseGesamt,
     unaufgeloest,
-    regelnotizen: notizen.filter((n) => n.typ === 'regel').length,
+    regelnotizen: notizen.filter((n) => istRegelnotiz(n.pfad)).length,
     bereiche: BEREICHE.map((b) => ({ ...b, ...zaehler.get(b.id), verweiseNach: matrix.get(b.id) })),
     rubriken,
   }

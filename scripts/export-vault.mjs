@@ -172,6 +172,8 @@ export function alsPrueflauf(felder, dateiname) {
   const stand = normDatum(felder.stand ?? felder.datum)
   const hatErgebnis = [...ZAHLFELDER, 'hinweis'].some((f) => typeof felder[f] === 'number')
   if (!stand || !hatErgebnis) return null
+  // Ein Lauf, der nicht zustande kam, trägt Nullen, aber kein Ergebnis
+  if (typeof felder.status === 'string' && /^(blockiert|abgebrochen)/i.test(felder.status.trim())) return null
 
   const lauf = {
     id: String(felder.id ?? dateiname.replace(/\.md$/i, '')),

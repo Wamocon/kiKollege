@@ -10,6 +10,7 @@ import {
   ausgelassen,
   bereichVon,
   freigabestand,
+  istRegelnotiz,
   rubrikenZaehlen,
   verweise,
   zaehlen,
@@ -25,9 +26,13 @@ test('bereichVon ordnet nach Ordner, bei Arbeitsständen nach Typ', () => {
   assert.equal(bereichVon('KI-Mitarbeiter/00_Meta/Protokoll/Protokoll 2026-09-11.md', 'meta'), 'protokoll')
   assert.equal(bereichVon('KI-Mitarbeiter/00_Meta/Migrationsplan.md', 'arbeitsplan'), 'konventionen')
   assert.equal(bereichVon('KFBM/00_Vault/10_KI-Mitarbeiter/Prüfläufe/Lauf.md', null), 'prueflaeufe')
+  assert.equal(bereichVon('KFBM/00_Vault/10_KI-Mitarbeiter/Regeln/Regel E13.md', 'pruefregel'), 'prueflaeufe')
   assert.equal(bereichVon('KFBM/00_Vault/10_KI-Mitarbeiter/Severity-Definition.md', 'kriterium'), 'massstab')
   assert.equal(bereichVon('KFBM/00_Vault/10_KI-Mitarbeiter/Reviewer KFBM.md', 'ki-mitarbeiter'), 'bauplan')
   assert.equal(bereichVon('KFBM/00_Vault/15_Academy/Checklisten.md', 'academy'), 'massstab')
+  assert.equal(bereichVon('KFBM/00_Vault/10_KI-Mitarbeiter/Berichtsvorlage.md', 'vorlage'), 'massstab')
+  assert.equal(bereichVon('KI-Mitarbeiter/75_KI-Mitarbeiter/Vorlage Akte 2026-09-28.md', 'vorlage'), 'arbeitsstand')
+  assert.equal(bereichVon('KI-Mitarbeiter/76_Aufträge/Muster Auftragsnotiz.md', 'vorlage'), 'arbeitsstand')
   assert.equal(bereichVon('KFBM/00_Vault/20_Ausbildungsberufe/KFBM/Lernfelder/LF01.md', 'lernfeld'), 'normbasis')
   assert.equal(bereichVon('KI-Mitarbeiter/40_Leistungen/Apps.md', 'leistung'), 'unternehmen')
   assert.equal(bereichVon('KI-Mitarbeiter/75_KI-Mitarbeiter/Harness.md', 'architektur'), 'bauplan')
@@ -37,6 +42,14 @@ test('bereichVon ordnet nach Ordner, bei Arbeitsständen nach Typ', () => {
   assert.equal(bereichVon('KI-Mitarbeiter/90_Archiv/Alt.md', 'archiv'), 'archiv')
   assert.equal(bereichVon('KI-Mitarbeiter/KI-Mitarbeiter — Wegweiser.md', 'moc'), 'einstiege')
   assert.equal(bereichVon('KI-Mitarbeiter\\01_Inbox\\Neu.md', undefined), 'einstiege')
+})
+
+test('istRegelnotiz erkennt eine Regelnotiz am Ordner, nicht am Typ', () => {
+  assert.equal(istRegelnotiz('KFBM/00_Vault/10_KI-Mitarbeiter/Regeln/Regel E13.md'), true)
+  assert.equal(istRegelnotiz('KFBM\\00_Vault\\10_KI-Mitarbeiter\\Regeln\\Regel E13.md'), true)
+  assert.equal(istRegelnotiz('KFBM/00_Vault/20_Ausbildungsberufe/KFBM/Alt-Neu-Marker.md'), false)
+  // Der Alt-Neu-Marker trägt den Typ pruefregel und bleibt trotzdem Normbasis
+  assert.equal(bereichVon('KFBM/00_Vault/20_Ausbildungsberufe/KFBM/Alt-Neu-Marker.md', 'pruefregel'), 'normbasis')
 })
 
 test('bereichVon erkennt den Ordnernamen auch in zerlegter Unicode-Form', () => {
