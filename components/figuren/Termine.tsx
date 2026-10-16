@@ -93,7 +93,7 @@ export function TermineFigur() {
         <text x={0} y={y + 18} fontSize="11.5" fontWeight="700" fill="var(--wmc-ink)">
           {m.id}
         </text>
-        {zeilen.slice(0, 2).map((z, j) => (
+        {zeilen.slice(0, 3).map((z, j) => (
           <text key={z} x={30} y={y + 18 + j * 14} fontSize="11" fill="var(--wmc-ink)">
             {z}
           </text>
