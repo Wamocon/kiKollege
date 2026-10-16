@@ -1773,7 +1773,9 @@
         "zustand": "eingerichtet",
         "seit": "2026-09-09",
         "hinweis": "Seit dem 28.09. hat er eine freigegebene Akte, am 29.09. auf das Team und die Sprache angepasst. Sein Profil mit Grenze ist eingerichtet und wartet auf die Teamliste. Am 16.10. lief ein Testauftrag über das Board zum Reviewer.",
-        "freigabe": "oeffentlich"
+        "freigabe": "oeffentlich",
+        "betrieb": "mitGrenze",
+        "marke": "eigenes Profil mit Grenze, wartet auf das Team"
       },
       {
         "id": "reviewer",
@@ -1786,7 +1788,9 @@
         "zustand": "arbeitet",
         "seit": "2026-08-28",
         "hinweis": "Der erste, im Einsatz seit dem 28.08. Seit dem 17.09. arbeitet er auf der eigenen Hardware mit seiner Grenze. Am 15.10. hat Erwin ihn abgenommen, mit Vorbehalt: Zwei Bedingungen sind offen.",
-        "freigabe": "oeffentlich"
+        "freigabe": "oeffentlich",
+        "betrieb": "mitGrenze",
+        "marke": "mit Grenze, abgenommen 15.10."
       },
       {
         "id": "researcherin",
@@ -1799,31 +1803,9 @@
         "zustand": "arbeitet",
         "seit": "2026-09-12",
         "hinweis": "Bisher die einzige mit Netz. Seit dem 20.09. beobachtet sie den eigenen Betrieb statt des Marktes. Ihre Grenze am Profil kommt mit Meilenstein 4.",
-        "freigabe": "intern"
-      },
-      {
-        "id": "archivar",
-        "rolle": "Archivar",
-        "kurz": "Archivar",
-        "kern": "pflegend",
-        "tut": "Form pflegen: Verweise, Feldnamen, Übersichten, Änderungsprotokoll. Fließtext ändert er nicht, er meldet ihn.",
-        "tutNie": "Inhalt ändern, Befunde bewerten, eine Notiz auf verbindlich heben",
-        "zustand": "entschieden",
-        "seit": null,
-        "hinweis": "Beschrieben, nicht gebaut. Er ändert die Form, nie den Inhalt. Folgt nach dem Ende des Plans.",
-        "freigabe": "oeffentlich"
-      },
-      {
-        "id": "entwickler",
-        "rolle": "Entwickler",
-        "kurz": "Entwickler",
-        "kern": "bauend",
-        "tut": "Testfälle schreiben, an denen Prüfregeln und Grenzen gemessen werden.",
-        "tutNie": "eine Regel ohne Testfall produktiv setzen, Unterlagen prüfen, Regeln, Skripte oder Akten selbst ändern",
-        "zustand": "entschieden",
-        "seit": null,
-        "hinweis": "Beschrieben, nicht gebaut. Was er schreibt, führt ein Mensch zusammen. Folgt nach dem Ende des Plans.",
-        "freigabe": "oeffentlich"
+        "freigabe": "intern",
+        "betrieb": "ohneGrenze",
+        "marke": "läuft täglich, Grenze folgt"
       },
       {
         "id": "reporter",
@@ -1835,7 +1817,8 @@
         "zustand": "entschieden",
         "seit": null,
         "hinweis": "Grenzdatei mit Testfällen seit dem 28.09. Akte und Profil kommen mit Meilenstein 3.",
-        "freigabe": "oeffentlich"
+        "freigabe": "oeffentlich",
+        "marke": "kommt mit M3, 06.11."
       },
       {
         "id": "architekt",
@@ -1847,7 +1830,48 @@
         "zustand": "entschieden",
         "seit": null,
         "hinweis": "Grenzdatei mit Testfällen seit dem 28.09. Folgt nach dem Ende des Plans.",
-        "freigabe": "oeffentlich"
+        "freigabe": "oeffentlich",
+        "marke": "nach dem 13.11."
+      },
+      {
+        "id": "archivar",
+        "rolle": "Archivar",
+        "kurz": "Archivar",
+        "kern": "pflegend",
+        "tut": "Form pflegen: Verweise, Feldnamen, Übersichten, Änderungsprotokoll. Fließtext ändert er nicht, er meldet ihn.",
+        "tutNie": "Inhalt ändern, Befunde bewerten, eine Notiz auf verbindlich heben",
+        "zustand": "entschieden",
+        "seit": null,
+        "hinweis": "Beschrieben, nicht gebaut. Er ändert die Form, nie den Inhalt. Folgt nach dem Ende des Plans.",
+        "freigabe": "oeffentlich",
+        "marke": "nach dem 13.11."
+      },
+      {
+        "id": "entwickler",
+        "rolle": "Entwickler",
+        "kurz": "Entwickler",
+        "kern": "bauend",
+        "tut": "Testfälle schreiben, an denen Prüfregeln und Grenzen gemessen werden.",
+        "tutNie": "eine Regel ohne Testfall produktiv setzen, Unterlagen prüfen, Regeln, Skripte oder Akten selbst ändern",
+        "zustand": "entschieden",
+        "seit": null,
+        "hinweis": "Beschrieben, nicht gebaut. Was er schreibt, führt ein Mensch zusammen. Folgt nach dem Ende des Plans.",
+        "freigabe": "oeffentlich",
+        "marke": "nach dem 13.11."
+      },
+      {
+        "id": "seiten",
+        "rolle": "Pfleger der Seiten",
+        "name": "Gregor Dev",
+        "kurz": "Seitenpfleger",
+        "kern": "nachtragend",
+        "tut": "Den Stand der öffentlichen Seiten aus der Ablage nachtragen und weitere Seiten nach demselben Muster bauen. Jede Änderung als Pull Request, jede Zahl mit ihrer Quelle.",
+        "tutNie": "nach main pushen, einen Pull Request zusammenführen, etwas aus den Daten entfernen, ein Datenelement von intern auf öffentlich heben, eine Notiz in der Ablage ändern, eine Prüfung abschalten",
+        "zustand": "entschieden",
+        "seit": null,
+        "hinweis": "Am 18.09. entschieden, weil weitere Seiten entstehen sollen. Er darf als Zweiter ins Netz, und nur zu GitHub. Konto, Akte und Grenze mit Testfällen fehlen noch. In der Ablage steht er bisher nicht.",
+        "freigabe": "oeffentlich",
+        "marke": "entschieden 18.09."
       },
       {
         "id": "gestalter",
@@ -1859,20 +1883,9 @@
         "zustand": "entschieden",
         "seit": null,
         "hinweis": "Beschrieben, nicht gebaut. Das Organigramm vom 16.10. sieht ihn nicht vor.",
-        "freigabe": "oeffentlich"
-      },
-      {
-        "id": "seiten",
-        "rolle": "Pfleger der Seiten",
-        "name": "Gregor Dev",
-        "kurz": "Seiten",
-        "kern": "nachtragend",
-        "tut": "Den Stand der öffentlichen Seiten aus der Ablage nachtragen und weitere Seiten nach demselben Muster bauen. Jede Änderung als Pull Request, jede Zahl mit ihrer Quelle.",
-        "tutNie": "nach main pushen, einen Pull Request zusammenführen, etwas aus den Daten entfernen, ein Datenelement von intern auf öffentlich heben, eine Notiz in der Ablage ändern, eine Prüfung abschalten",
-        "zustand": "entschieden",
-        "seit": null,
-        "hinweis": "Am 18.09. entschieden, weil weitere Seiten entstehen sollen. Er darf als Zweiter ins Netz, und nur zu GitHub. Konto, Akte und Grenze mit Testfällen fehlen noch. In der Ablage steht er bisher nicht.",
-        "freigabe": "oeffentlich"
+        "freigabe": "oeffentlich",
+        "passtNicht": true,
+        "marke": "passt nicht, 29.09."
       }
     ],
     "freigabe": "oeffentlich",
@@ -1880,7 +1893,93 @@
     "verlauf": {
       "text": "Am 09.09. waren sieben Rollen gesetzt. Am 11.09. ruhten alle außer Reviewer und Orchestrator, am 12.09. kam die Researcherin als achte dazu und arbeitet. Am 16.09. hat Erwin für alle acht Rollen vierzig Fragen beantwortet; umgesetzt ist das als Vorschlag, freigegeben wird Rolle für Rolle. Am 17.09. neu geschnitten: Bis zum 16.10. sollen Reviewer, Orchestrator, Reporter, Archivar, Architekt und Entwickler lauffähig sein. Der Gestalter bleibt draußen. Am 18.09. kommt Gregor Dev als neunte Rolle dazu: Er pflegt die öffentlichen Seiten und darf dafür als Zweiter ins Netz. Am 29.09. neu geschnitten: Zuerst kommen Reviewer, Orchestrator, Reporter und Researcherin, Architekt, Entwickler und Archivar danach. Das Organigramm vom 16.10. führt sieben geplante KI-Mitarbeiter und sieht den Gestalter nicht vor.",
       "freigabe": "intern"
-    }
+    },
+    "mensch": {
+      "titel": "Erwin Moretz",
+      "zusatz": "Verantwortung, Freigabe, Bewertung der Befunde, Auftraggeber"
+    },
+    "team": {
+      "titel": "Team und Academy",
+      "zusatz": "Aufträge über den Orchestrator, ab 30.10."
+    },
+    "werkbank": {
+      "seit": "2026-08-26",
+      "satz": "Acht Werkzeugmacher in Claude Code. Sie bauen, womit geprüft wird, und prüfen selbst nichts; sie bleiben Helfer der Werkbank.",
+      "helfer": [
+        {
+          "name": "marker-ingenieur",
+          "aufgabe": "Prüfregeln als Skript"
+        },
+        {
+          "name": "korpus-aufbereiter",
+          "aufgabe": "Quellen maschinell aufbereiten"
+        },
+        {
+          "name": "praesentations-baumeister",
+          "aufgabe": "Präsentationen aus der Ablage"
+        },
+        {
+          "name": "projektleiter",
+          "aufgabe": "Stand, Plan, offene Fragen"
+        },
+        {
+          "name": "vault-architekt",
+          "aufgabe": "Struktur, Verweise, Felder"
+        },
+        {
+          "name": "reviewer-designer",
+          "aufgabe": "Kriterien und Schweregrade"
+        },
+        {
+          "name": "normbasis-kurator",
+          "aufgabe": "Normbasis im Wortlaut"
+        },
+        {
+          "name": "anforderungs-analyst",
+          "aufgabe": "erhebt die Seite der Academy"
+        }
+      ],
+      "quelle": "Agentendateien der Werkbank im Bereich KFBM, gelesen am 16.10.2026, und Organigramm vom 16.10.2026",
+      "freigabe": "oeffentlich"
+    },
+    "basis": [
+      {
+        "titel": "Die Ablage",
+        "zeilen": [
+          "vier Repositories, ein Wissensspeicher",
+          "Wissen, Entscheidungen, Konventionen",
+          "die Akten der Mannschaft mit dem Zaun",
+          "über Git auf beiden Rechnern"
+        ]
+      },
+      {
+        "titel": "Board und Auftragsbuch",
+        "zeilen": [
+          "die Karte trägt die Ausführung",
+          "die Notiz den Nachvollzug",
+          "erste Karte am 16.10.",
+          "eine Auftragsnotiz noch nicht"
+        ]
+      },
+      {
+        "titel": "Das Prüfwerkzeug",
+        "zeilen": [
+          "Regeln, Profile, Testfälle",
+          "Fälle als Gedächtnis des Reviewers",
+          "Berichte als Ergebnis"
+        ]
+      },
+      {
+        "titel": "Zwei Laufzeiten",
+        "zeilen": [
+          "Hermes Agent auf dem KI-Rechner",
+          "Claude Code auf der Werkbank",
+          "die Mannschaft läuft heute",
+          "nur auf dem KI-Rechner"
+        ]
+      }
+    ],
+    "organigrammQuelle": "Organigramm vom 16.10.2026, ohne Angaben zum Betrieb des KI-Rechners, ohne Profilnamen, Versionen und Modell"
   },
   "bewertungen": {
     "erstmalsAm": "2026-09-09",

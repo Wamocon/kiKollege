@@ -708,7 +708,7 @@ export default function Landing() {
         <Sektion id="mannschaft">
           <h2 className="lp-aussage breit">{m.satz}</h2>
           <div className="lp-text lp-luft-oben-klein">
-            <p>{m.trennung} Jede Rolle hat eine Grenze, und die Grenze steht als Datei neben ihr.</p>
+            <p>{m.trennung} Jede Rolle bekommt eine Grenze, und die Grenze steht als Datei neben ihr.</p>
           </div>
           <MannschaftFigur />
           <div className="lp-luft-oben">

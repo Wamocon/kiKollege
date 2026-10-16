@@ -69,6 +69,10 @@
      belegt das CI-Blatt nur Rot 300, deshalb wandert der Wert dort mit. */
   --signal:         var(--r600);
   --zahl-farbe:     var(--signal);
+  /* Das abgesetzte Band im Organigramm: auf hellem Grund Ink, auf dunklem
+     eine Stufe ueber dem Grund, damit es dort nicht als heller Block steht. */
+  --band:           var(--wmc-ink);
+  --band-text:      var(--wmc-bg);
 
   /* --- 08 Typografie --- */
   --schrift: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -100,6 +104,8 @@
     --rand-leise: var(--i800);
     --fokus: var(--r300);
     --signal: var(--r300);
+    --band: var(--i900);
+    --band-text: var(--i50);
     --wmc-success: #4FBF83;
     --wmc-warning: #D6A33C;
     --wmc-info:    #7FB2F0;
@@ -120,6 +126,8 @@
   --rand-leise: var(--i800);
   --fokus: var(--r300);
   --signal: var(--r300);
+  --band: var(--i900);
+  --band-text: var(--i50);
   --wmc-success: #4FBF83;
   --wmc-warning: #D6A33C;
   --wmc-info:    #7FB2F0;

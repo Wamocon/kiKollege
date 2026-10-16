@@ -210,6 +210,19 @@ export interface Kopf extends MitFreigabe {
   zustand: 'arbeitet' | 'eingerichtet' | 'entschieden'
   seit: string | null
   hinweis: string
+  /** Fürs Organigramm: läuft mit Grenze am Profil, oder läuft ohne. */
+  betrieb?: 'mitGrenze' | 'ohneGrenze'
+  /** Fürs Organigramm: eine kurze Marke mit Datum. */
+  marke?: string
+  /** Entschieden, aber nach dem Organigramm nicht in der Mannschaft. */
+  passtNicht?: boolean
+}
+
+export interface Werkbank extends MitFreigabe {
+  seit: string
+  satz: string
+  helfer: { name: string; aufgabe: string }[]
+  quelle: string
 }
 
 export interface Mannschaft extends MitFreigabe {
@@ -222,6 +235,13 @@ export interface Mannschaft extends MitFreigabe {
   grenzeWarum: string
   verlauf: { text: string; freigabe: Freigabe }
   koepfe: Kopf[]
+  /** Fürs Organigramm: der Mensch oben, das Team daneben, die Werkbank und
+   *  die gemeinsame Basis darunter. */
+  mensch: { titel: string; zusatz: string }
+  team: { titel: string; zusatz: string }
+  werkbank: Werkbank
+  basis: { titel: string; zeilen: string[] }[]
+  organigrammQuelle: string
 }
 
 export interface AblageBereich {

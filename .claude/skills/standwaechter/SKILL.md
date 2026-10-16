@@ -138,6 +138,8 @@ mit Datum im Namen.
 | Ein Tag in der Chronik | `arbeitstage.eintraege` |
 | Rolle, Kern, Tut, Tut nie | `mannschaft.koepfe` |
 | Rufname einer Rolle, wenn die Ablage ihn nennt | `mannschaft.koepfe[].name` |
+| Läuft eine Rolle, mit oder ohne Grenze; kurze Marke mit Datum fürs Organigramm | `mannschaft.koepfe[].betrieb`, `.marke`, `.passtNicht` |
+| Mensch, Team, Helfer der Werkbank und das gemeinsame Band im Organigramm | `mannschaft.mensch`, `.team`, `.werkbank`, `.basis` |
 | Was Impressum und Datenschutz noch fehlt | `recht.impressumFehlt`, `recht.datenschutzFehlt` |
 | Stufe mit Abnahme | `stufen`, Abnahme in `bedingung` |
 | Der Plan, der gilt: Termine, Meilensteine, Fristen, Risiken | `meilensteinplanAktuell` |

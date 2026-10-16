@@ -175,9 +175,14 @@ Aussehen setzt die Klasse `lp-aussage`.
 - **Schichtenstapel** — die acht Schichten in vier Gruppen, mit der Dateizuordnung
   und der Markierung, welche Gruppen ein zweiter KI-Mitarbeiter erbt. Rot trägt
   hier die eine Gruppe, die neu zu bauen ist.
-- **Mannschaft** — das Organigramm. Durchgezogen ist, wer arbeitet oder eingerichtet
-  ist, gestrichelt, was entschieden und nicht gebaut ist. Die Kästen werden schmaler,
-  wenn mehr Rollen dazukommen.
+- **Mannschaft** — das Organigramm im Stil des Blatts vom 16.10., in Schichten:
+  oben Erwin und das Team, darunter der Orchestrator, der an die Rollen verteilt,
+  dann die Werkbank mit ihren acht Helfern, die Wissensschicht und das Band mit dem,
+  was alle teilen. Eine Farbregel für alles: rot gefüllt läuft mit Grenze, rot
+  gestrichelt läuft und die Grenze folgt, grau gestrichelt ist entschieden und nicht
+  in Betrieb oder als Wissen ungeprüft. Die Felder der Wissensschicht zählt
+  `abbild:vault`, die Läufe im Gedächtnis kommen aus den Kennzahlen. Die Kästen
+  werden schmaler, wenn mehr Rollen dazukommen.
 - **Landschaft** — die Systemlandschaft mit Ist und Soll: Werkbank, Ablage und
   KI-Rechner im Haus nebeneinander, in jedem die Bausteine mit ihrem Zustand
   (gefüllt läuft, leer vorhanden, gestrichelt entschieden). Rot trägt die eine

@@ -34,6 +34,12 @@ den Stand nach und nimmt #6 mit.
 - **Sechs neue Beobachtungen**, darunter: Gregor Dev steht nicht in der Ablage,
   die Fristen im Plan sind nicht umgeschrieben, die Ablage war vom 29.09. bis
   15.10. still, 11 statt 12 verbindliche Notizen.
+- **Das Organigramm der Mannschaft** folgt dem Blatt vom 16.10.: Mensch und Team,
+  Orchestrator, acht Rollen, Werkbank, Wissensschicht, das gemeinsame Band. Die
+  Reihenfolge der Köpfe ist die des Blatts. Der Gestalter steht als `passtNicht`
+  darin, weil das Blatt ihn nicht vorsieht; entfernt ist er nicht. Angaben zum
+  Betrieb des KI-Rechners, Profilnamen, Versionen und das Modell stehen nicht
+  darin. `/stand/` zeigt das Organigramm noch nicht.
 
 **Nicht übernommen, weil es nicht öffentlich werden darf:** Rechnernamen,
 Versionen, Dienste, Bots und Kennungen, die Werkzeuge der Researcherin, der
