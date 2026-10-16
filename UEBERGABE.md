@@ -4,7 +4,41 @@ Diese Datei ist für die nächste Sitzung geschrieben, nicht für die Nachwelt. 
 sagt, wo das Vorhaben steht, was als Erstes zu tun ist und was dabei nicht
 verloren gehen darf.
 
-Stand dieser Übergabe: 18.09.2026.
+Stand dieser Übergabe: 16.10.2026.
+
+## Nachtrag 16.10.2026: vier Wochen nachgetragen
+
+Vom 18.09. bis zum 16.10. hat sich die Seite nicht bewegt: kein Lauf auf GitHub,
+keine tägliche Aufgabe, Pull Request #6 offen. Der Zweig `stand/2026-10-16` holt
+den Stand nach und nimmt #6 mit.
+
+- **Ein neuer Plan.** Am 29.09. hat Erwin das Ziel vom 17.09. wieder in Kraft
+  gesetzt, am 16.10. neue Termine freigegeben: Meilenstein 1 am 23.10., 4 am 13.11.
+  Er steht unter `meilensteinplanAktuell`. Der Plan vom 17.09. bleibt unter
+  `meilensteinplan` stehen, markiert mit `ueberholt`, weil aus den Daten nichts
+  verschwindet. Die Landing Page zeigt den neuen Plan mit der Grafik
+  `TermineFigur`, `/stand/` die Einzelheiten und den alten Zeitplan eingeklappt.
+- **Die öffentliche Seite ist zurückgestellt.** Am 29.09. ist die Wahl 9.4
+  zurückgenommen: Die interne Seite liegt bei claude.ai, diese hier rückt hinter das
+  Ende des Plans. Sie steht trotzdem öffentlich und zeigt alles. Eingetragen als
+  Beobachtung `oeffentliche-seite-zurueckgestellt`; entscheiden muss Erwin.
+- **Der Reviewer ist abgenommen**, am 15.10. mit Vorbehalt. Die Abnahme enthält
+  einen Sicherheitsbefund, der nur in der Ablage steht. Die Seite sagt nur, dass
+  zwei Bedingungen offen sind.
+- **Regel E13 ist die erste gemessene Regel**, 30 Fälle, kein Fehlalarm. Die
+  Bewertungen stehen auf 139, davon 79 einzeln angesehen.
+- **Drei Fehler im Zählen behoben:** Eine Laufnotiz mit Status „blockiert“ ist
+  kein Prüflauf; Regelnotizen werden am Ordner `Regeln/` erkannt, nicht am Typ
+  (den Typ `pruefregel` trägt auch der Alt-Neu-Marker); eine `vorlage` im
+  Unternehmensteil ist ein Arbeitsstand, kein Maßstab der Academy.
+- **Sechs neue Beobachtungen**, darunter: Gregor Dev steht nicht in der Ablage,
+  die Fristen im Plan sind nicht umgeschrieben, die Ablage war vom 29.09. bis
+  15.10. still, 11 statt 12 verbindliche Notizen.
+
+**Nicht übernommen, weil es nicht öffentlich werden darf:** Rechnernamen,
+Versionen, Dienste, Bots und Kennungen, die Werkzeuge der Researcherin, der
+Befund zur Liste der zugelassenen Nutzer, Risiken zur Sicherheit des KI-Rechners,
+die Entscheidungen zu Zugängen.
 
 ## Nachtrag 18.09.2026: Gregor Dev ist entschieden
 

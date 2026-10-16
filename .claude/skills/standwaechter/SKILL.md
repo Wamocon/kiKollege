@@ -140,7 +140,8 @@ mit Datum im Namen.
 | Rufname einer Rolle, wenn die Ablage ihn nennt | `mannschaft.koepfe[].name` |
 | Was Impressum und Datenschutz noch fehlt | `recht.impressumFehlt`, `recht.datenschutzFehlt` |
 | Stufe mit Abnahme | `stufen`, Abnahme in `bedingung` |
-| Meilensteinplan, Wochen, Fristen, Risiken | `meilensteinplan` |
+| Der Plan, der gilt: Termine, Meilensteine, Fristen, Risiken | `meilensteinplanAktuell` |
+| Ein Plan, der ersetzt wird | bleibt stehen; `ueberholtAm` und `ueberholt` setzen, den neuen unter `meilensteinplanAktuell` |
 | Baustein oder Verbindung der Systemlandschaft | `landschaft` |
 | Neue oder umbenannte Rubrik des Unternehmenswissens | `unternehmenswissen.rubriken`, die Anzahlen zählt `abbild:vault` |
 | Risiko | `hemmnisse.gruppen[].punkte` |

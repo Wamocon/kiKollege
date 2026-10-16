@@ -8,7 +8,7 @@ import { PlanAbschnitt } from '@/components/stand/Plan'
 import { StufenAbschnitt } from '@/components/stand/Stufen'
 import { abschnitt } from '@/lib/abschnitte'
 import { inWorten } from '@/lib/alter'
-import { daten, datum, harteRegel, zahl } from '@/lib/daten'
+import { daten, datum, harteRegel, zahl, zielErreicht } from '@/lib/daten'
 import { istIntern, nurSichtbare, sichtbar } from '@/lib/freigabe'
 
 export const metadata: Metadata = {
@@ -506,10 +506,8 @@ export default function Seite() {
                   <li>
                     Das eigene Ziel sind {zahl(b.zielGesehenJeRegel)} einzeln angesehene Fälle je
                     Regel.{' '}
-                    {b.regelnAmZiel === 0
-                      ? 'Das erreicht bisher keine Regel'
-                      : `Das erreichen ${zahl(b.regelnAmZiel)} von ${zahl(b.regeln)} Regeln`}
-                    , die weiteste steht bei {zahl(b.hoechstesGesehen)}.
+                    {zielErreicht(b)}{' '}
+                    {b.ersteRegel ? b.ersteRegel.satz : `Die weiteste steht bei ${zahl(b.hoechstesGesehen)}.`}
                   </li>
                   <li>{b.ungemessen}</li>
                 </ul>
@@ -601,7 +599,7 @@ export default function Seite() {
           </section>
 
           {/* 12 ------------------------------------------------------------ */}
-          {zeigen('plan') && sichtbar(d.meilensteinplan) ? (
+          {zeigen('plan') && sichtbar(d.meilensteinplanAktuell) ? (
             <section id="plan">
               <Kopfzeile id="plan" />
               <PlanAbschnitt />

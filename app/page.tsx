@@ -2,7 +2,7 @@ import { AblageFigur, AblageTabelle } from '@/components/figuren/Ablage'
 import { AblageGraphFigur, AblageGraphListe } from '@/components/figuren/AblageGraph'
 import { EnablerRaster } from '@/components/figuren/EnablerRaster'
 import { LandschaftFigur } from '@/components/figuren/Landschaft'
-import { ZeitplanFigur } from '@/components/figuren/Zeitplan'
+import { TermineFigur } from '@/components/figuren/Termine'
 import { MannschaftFigur } from '@/components/figuren/Mannschaft'
 import { Schichtenstapel } from '@/components/figuren/Schichtenstapel'
 import { Durchlauf } from '@/components/figuren/Durchlauf'
@@ -14,16 +14,10 @@ import { HeroAnatomie } from '@/components/landing/HeroAnatomie'
 import { Kopfleiste } from '@/components/landing/Kopfleiste'
 import { Rubriken } from '@/components/landing/Rubriken'
 import { Sektion } from '@/components/landing/Sektion'
-import { daten, datum, dauer, harteRegel, spanne, tageZwischen, zahl } from '@/lib/daten'
+import { belastbarBei, daten, datum, dauer, harteRegel, tageZwischen, zahl, zielErreicht } from '@/lib/daten'
 import { inWorten } from '@/lib/alter'
 import { istIntern, nurSichtbare, sichtbar, zeigtInternes } from '@/lib/freigabe'
 import { pfad } from '@/lib/pfad'
-
-/** "P4", "P4 und P5", "P4, P5 und P6" */
-function aufzaehlen(teile: string[]): string {
-  if (teile.length < 2) return teile.join('')
-  return `${teile.slice(0, -1).join(', ')} und ${teile[teile.length - 1]}`
-}
 
 export default function Landing() {
   const d = daten
@@ -42,22 +36,19 @@ export default function Landing() {
     { zustand: 'vorhanden', kopf: 'Vorhanden, noch nicht im Einsatz' },
     { zustand: 'geplant', kopf: 'Entschieden, nicht gebaut' },
   ] as const
-  const plan = d.meilensteinplan
-  const woche = new Map(plan.wochen.map((w) => [w.id, w]))
-  const minuten = new Map(plan.zeit.map((z) => [z.woche, z.entscheiden + z.lesen + z.bewerten]))
-  const minutenGesamt = [...minuten.values()].reduce((s, m) => s + m, 0)
-  const bewertenGesamt = plan.zeit.reduce((s, z) => s + z.bewerten, 0)
+  // Der Plan, der gilt. Der vom 17.09. steht als Verlauf unter /stand/.
+  const plan = d.meilensteinplanAktuell
   const fachlich = d.ablage.bereiche.filter((a) => a.id === 'normbasis' || a.id === 'massstab')
   const fachlichVerbindlich = fachlich.reduce((s, a) => s + a.verbindlich, 0)
   const verbindlich = d.ablage.bereiche.reduce((s, a) => s + a.verbindlich, 0)
   const u = d.unternehmenswissen
 
   // Auf einen Blick: was als Nächstes ansteht, gerechnet am Stand der Daten
-  const offeneFristen = plan.entscheidungen
-    .filter((e) => !e.erledigtAm)
-    .sort((x, y) => x.bis.localeCompare(y.bis))
-  const naechsteFrist = offeneFristen[0]?.bis
-  const naechsterMeilenstein = plan.meilensteine.find((ms) => ms.datum >= d.stand)
+  const offeneFristen = plan.fristen.filter((f) => f.stand === 'offen')
+  const verstrichen = offeneFristen.filter((f) => f.frist < d.stand).length
+  const kritisch = offeneFristen.find((f) => f.kritisch)
+  const naechsterMeilenstein = plan.meilensteine.find((ms) => ms.termin >= d.stand)
+  const erledigtIn = (ms: (typeof plan.meilensteine)[number]) => ms.inhalt.filter((i) => i.erledigt).length
   const imZustand = (z: string) => koepfe.filter((k) => k.zustand === z).length
 
   return (
@@ -127,26 +118,25 @@ export default function Landing() {
             <div className="lp-kpi">
               {sichtbar(plan) && naechsterMeilenstein ? (
                 <div className="lp-kpi-kachel">
-                  <p className="lp-kpi-wert">
-                    {datum(naechsterMeilenstein.ziel ?? naechsterMeilenstein.datum).slice(0, 6)}
-                  </p>
+                  <p className="lp-kpi-wert">{datum(naechsterMeilenstein.termin).slice(0, 6)}</p>
                   <p className="lp-kpi-label">
-                    {naechsterMeilenstein.ziel
-                      ? `Ziel für die Abnahme ${naechsterMeilenstein.id}, Frist ${datum(naechsterMeilenstein.datum).slice(0, 6)} `
-                      : `Abnahme ${naechsterMeilenstein.id}: ${naechsterMeilenstein.titel}. `}
-                    Erledigt sind {inWorten(naechsterMeilenstein.erledigt?.length ?? 0)} von{' '}
+                    Abnahme {naechsterMeilenstein.id}: {naechsterMeilenstein.titel}. Erledigt sind{' '}
+                    {inWorten(erledigtIn(naechsterMeilenstein))} von{' '}
                     {inWorten(naechsterMeilenstein.inhalt.length)} Arbeiten.
                   </p>
                 </div>
               ) : null}
-              {sichtbar(plan) && naechsteFrist ? (
+              {sichtbar(plan) && offeneFristen.length ? (
                 <div className="lp-kpi-kachel">
-                  <p className="lp-kpi-wert">{datum(naechsteFrist).slice(0, 6)}</p>
+                  <p className="lp-kpi-wert">
+                    {offeneFristen.length} von {plan.fristen.length}
+                  </p>
                   <p className="lp-kpi-label">
-                    Frist für{' '}
-                    {aufzaehlen(offeneFristen.filter((e) => e.bis === naechsteFrist).map((e) => e.nr))}. Offen
-                    sind {inWorten(offeneFristen.length)} von {inWorten(plan.entscheidungen.length)}{' '}
-                    Entscheidungen mit Frist.
+                    Entscheidungen mit Frist sind offen
+                    {verstrichen ? `, ${verstrichen === offeneFristen.length ? 'alle' : inWorten(verstrichen)} mit verstrichener Frist` : ''}.
+                    {kritisch
+                      ? ` Auf dem kritischen Pfad liegt ${kritisch.text.split(':')[0].replace(/^Die /, 'die ')}.`
+                      : ''}
                   </p>
                 </div>
               ) : null}
@@ -155,8 +145,7 @@ export default function Landing() {
                   <p className="lp-kpi-wert">{zahl(b.bewertet)}</p>
                   <p className="lp-kpi-label">
                     Befunde von einem Menschen bewertet, Fehlalarme darunter: {zahl(b.fehlalarme)}.
-                    Belastbar ist die Quote{' '}
-                    {b.regelnAmZiel === 0 ? 'bei keiner Regel' : `bei ${zahl(b.regelnAmZiel)} von ${zahl(b.regeln)} Regeln`}.
+                    Belastbar ist die Quote {belastbarBei(b)}.
                   </p>
                 </div>
               ) : null}
@@ -541,10 +530,9 @@ export default function Landing() {
               </p>
               {sichtbar(b) ? (
                 <p className="stark">
-                  Erste Bewertungen seit dem {datum(b.erstmalsAm)}. Belastbar ist die Quote
-                  {b.regelnAmZiel === 0
-                    ? ' noch bei keiner Regel.'
-                    : ` bei ${zahl(b.regelnAmZiel)} von ${zahl(b.regeln)} Regeln.`}
+                  Erste Bewertungen seit dem {datum(b.erstmalsAm)}. Belastbar ist die Quote{' '}
+                  {b.regelnAmZiel === 0 ? 'noch ' : ''}
+                  {belastbarBei(b)}.
                 </p>
               ) : (
                 <p className="stark">Bis heute nicht gemessen. Das ist der nächste Schritt.</p>
@@ -581,10 +569,10 @@ export default function Landing() {
                     Regel.
                   </p>
                   <p>
-                    {b.regelnAmZiel === 0
-                      ? 'Das erreicht bisher keine Regel.'
-                      : `Das erreichen ${zahl(b.regelnAmZiel)} von ${zahl(b.regeln)} Regeln.`}{' '}
-                    Am nächsten kommt ihm eine Regel mit {zahl(b.hoechstesGesehen)}.
+                    {zielErreicht(b)}{' '}
+                    {b.ersteRegel
+                      ? b.ersteRegel.satz
+                      : `Am nächsten kommt ihm eine Regel mit ${zahl(b.hoechstesGesehen)}.`}
                   </p>
                 </div>
                 <div className="lp-zelle">
@@ -855,132 +843,95 @@ export default function Landing() {
           <Sektion id="plan">
             {istIntern ? <p className="lp-intern">nur intern</p> : null}
             <p className="lp-klein">
-              {plan.status}. Ersetzt den {plan.ersetzt}
+              {plan.status}. Er ersetzt den {plan.ersetzt.join(' und den ')}.
             </p>
             <h2 className="lp-aussage breit lp-luft-oben-klein">{plan.satz}</h2>
-            {plan.standNachtrag ? (
-              <div className="lp-text lp-luft-oben-klein">
-                <p>
-                  <b>{plan.standNachtrag}</b>
-                </p>
-              </div>
-            ) : null}
-            {plan.nachgezogen ? (
-              <div className="lp-text lp-luft-oben-klein">
-                <p>
-                  <b>
-                    Nachgezogen am {datum(plan.nachgezogen.am)}: {plan.nachgezogen.satz}
-                  </b>
-                </p>
-                <p>{plan.nachgezogen.fristen}</p>
-                <p>
-                  Für die Abnahme von M1 fehlen {plan.nachgezogen.m1Fehlt.join(', ')}.{' '}
-                  {plan.nachgezogen.m1FehltSatz}
-                </p>
-              </div>
-            ) : null}
+            <div className="lp-text lp-luft-oben-klein">
+              <p>
+                <b>{plan.termineSatz}</b>
+              </p>
+            </div>
             <div className="lp-text lp-luft-oben">
               <p>
-                <b>„{plan.ziel}“</b> {plan.zielVon}. Der Rahmen: {plan.rahmen}.
+                <b>„{plan.ziel}“</b> {plan.zielVon}.
               </p>
-              <p>{plan.kurz}</p>
               <p>{plan.lauffaehig}</p>
             </div>
 
-            <ZeitplanFigur />
+            <TermineFigur />
 
             <div className="lp-luft-oben">
-              {plan.meilensteine.map((ms) => {
-                const w = woche.get(ms.woche)
-                return (
-                  <div className="lp-stufe" key={ms.id}>
-                    <span className="wann">
-                      {ms.id}
-                      {w ? ` · ${spanne(w.von, w.bis)}` : ''}
-                      {ms.ziel ? (
-                        <>
-                          <br />
-                          Ziel {datum(ms.ziel).slice(0, 6)}
-                          <br />
-                          Frist {datum(ms.datum).slice(0, 6)}
-                        </>
-                      ) : null}
-                    </span>
-                    <div>
-                      <h3>{ms.titel}</h3>
-                      <ul className="liste" style={{ marginTop: '0.2rem', marginBottom: '0.6rem' }}>
-                        {ms.inhalt.map((t) => (
-                          <li key={t} style={{ fontSize: '0.9rem' }}>
-                            {ms.erledigt?.includes(t) ? <b>erledigt: </b> : null}
-                            {t}
-                          </li>
-                        ))}
-                      </ul>
-                      {ms.zielBedingung ? (
-                        <p className="bedingung">Das Ziel gilt, {ms.zielBedingung}.</p>
-                      ) : null}
-                      <p className="bedingung">Abnahme: {ms.abnahme}</p>
-                      <p className="bedingung">
-                        Erwins Anteil
-                        {minuten.has(ms.woche) ? `, ${dauer(minuten.get(ms.woche)!)}` : ''}: {ms.erwin}
-                      </p>
-                    </div>
+              {plan.meilensteine.map((ms) => (
+                <div className="lp-stufe" key={ms.id}>
+                  <span className="wann">
+                    {ms.id} · {datum(ms.termin).slice(0, 6)}
+                    <br />
+                    vorher {datum(ms.fruehereFrist).slice(0, 6)}
+                  </span>
+                  <div>
+                    <h3>{ms.titel}</h3>
+                    <ul className="liste" style={{ marginTop: '0.2rem', marginBottom: '0.6rem' }}>
+                      {ms.inhalt.map((i) => (
+                        <li key={i.text} style={{ fontSize: '0.9rem' }}>
+                          {i.erledigt ? <b>erledigt {i.erledigt}: </b> : null}
+                          {i.text}
+                          {i.teilweise ? <>. {i.teilweise}</> : null}
+                        </li>
+                      ))}
+                    </ul>
+                    <p className="bedingung">Abnahme: {ms.abnahme}</p>
+                    <p className="bedingung">Erwins Anteil: {dauer(ms.erwinMinuten)}</p>
                   </div>
-                )
-              })}
+                </div>
+              ))}
             </div>
 
+            <h3 className="lp-aussage lp-luft-oben">Wo es heute steht.</h3>
+            <dl className="lp-spec">
+              {plan.heute.map((h) => (
+                <div className="lp-spec-zeile" key={h.wer}>
+                  <dt>{h.wer}</dt>
+                  <dd>{h.stand}</dd>
+                </div>
+              ))}
+            </dl>
+
             <div className="lp-text lp-luft-oben">
-              <p>
-                Erwins Zeit über alle vier Wochen: {dauer(minutenGesamt)}, davon {dauer(bewertenGesamt)}{' '}
-                Bewerten. Der Rahmen liegt unter {dauer(plan.budgetMinutenJeWoche)} je Woche.
-              </p>
-              {plan.zeitArbeitsplan ? (
-                <p>
-                  {plan.zeitArbeitsplan.text} Er kommt auf {dauer(plan.zeitArbeitsplan.minuten)} statt{' '}
-                  {dauer(minutenGesamt)}, bis zur Abnahme von M1 auf {dauer(plan.zeitArbeitsplan.bisM1)}.
-                </p>
-              ) : null}
               <p>
                 <b>Der kritische Pfad:</b> {plan.pfad.join(' → ')}.
               </p>
               <p>{plan.pfadSatz}</p>
+              <p>{plan.daneben}</p>
             </div>
 
             <h3 className="lp-aussage lp-luft-oben">Entscheidungen mit Frist.</h3>
             <div className="lp-log">
-              {plan.entscheidungen.map((e) => (
-                <div className="lp-log-zeile" key={e.nr}>
-                  <span className="wann">
-                    {e.termine ? `ab ${datum(e.termine[0]).slice(0, 6)}` : `bis ${datum(e.bis).slice(0, 6)}`}
-                  </span>
+              {plan.fristen.map((f) => (
+                <div className="lp-log-zeile" key={f.text}>
+                  <span className="wann">bis {datum(f.frist).slice(0, 6)}</span>
                   <span className="was">
-                    <b>{e.nr}</b> {e.text}
-                    {/[.?!]$/.test(e.text) ? '' : '.'} Blockiert sonst: {e.blockiert}. Empfehlung:{' '}
-                    {e.empfehlung}
-                    {/[.?!]$/.test(e.empfehlung) ? '' : '.'}
+                    {f.text}
+                    {f.notiz ? `, ${f.notiz}` : ''}.
                   </span>
                   <span className="zusatz">
-                    {e.erledigtAm
-                      ? 'erledigt am ' + datum(e.erledigtAm).slice(0, 6)
-                      : e.ueberfaelligSeit
-                      ? `überfällig seit ${datum(e.ueberfaelligSeit).slice(0, 6)}`
-                      : e.kritisch
-                        ? 'kritischer Pfad'
-                        : ''}
+                    {f.stand === 'erledigt'
+                      ? `erledigt am ${datum(f.am ?? f.frist).slice(0, 6)}`
+                      : [f.frist < d.stand ? 'Frist verstrichen' : '', f.kritisch ? 'kritischer Pfad' : '']
+                          .filter(Boolean)
+                          .join(', ')}
                   </span>
                 </div>
               ))}
             </div>
             <div className="lp-text lp-luft-oben-klein">
-              <p>{plan.entscheidungenHinweis}</p>
+              <p>{plan.fristenHinweis}</p>
             </div>
 
             <div className="lp-text lp-luft-oben">
               <p>
-                Das Ziel in seinen Teilen, Erwins Zeit je Woche, was in diesen Wochen nicht passt,
-                und die Risiken mit ihren Gegenmaßnahmen stehen im{' '}
-                <a href={pfad('/stand/#plan')}>ausführlichen Stand</a>.
+                Was in diesen Wochen nicht passt, die Risiken und Erwins Zeit stehen im{' '}
+                <a href={pfad('/stand/#plan')}>ausführlichen Stand</a>, dazu der Plan vom 17.09. als
+                Verlauf.
               </p>
               <p className="lp-klein">Quelle: {plan.quelle}</p>
             </div>

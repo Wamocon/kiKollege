@@ -1,52 +1,37 @@
 import { Block } from '@/components/bausteine'
-import { daten, datum, dauer, spanne } from '@/lib/daten'
+import { ZeitplanFigur } from '@/components/figuren/Zeitplan'
+import { daten, datum, dauer } from '@/lib/daten'
 
-/** Die Einzelheiten des Meilensteinplans: das Ziel in Teilen, Erwins Zeit je
- *  Woche, der kritische Pfad, was nicht hineinpasst, die Risiken. Die Landing
- *  Page zeigt den Zeitplan und die Fristen und verweist für den Rest hierher. */
+/** Die Einzelheiten des Plans, der gilt: das Ziel in Teilen, Erwins Zeit, der
+ *  kritische Pfad, was nicht hineinpasst, die Risiken. Die Landing Page zeigt
+ *  die Termine, die Meilensteine und die Fristen und verweist für den Rest
+ *  hierher. Darunter steht der Plan vom 17.09. als Verlauf, eingeklappt. */
 export function PlanAbschnitt() {
-  const p = daten.meilensteinplan
-  const woche = new Map(p.wochen.map((w) => [w.id, w]))
-  const summe = (z: (typeof p.zeit)[number]) => z.entscheiden + z.lesen + z.bewerten
-  const gesamt = p.zeit.reduce((s, z) => s + summe(z), 0)
-  const bewerten = p.zeit.reduce((s, z) => s + z.bewerten, 0)
-  const offen = p.entscheidungen.filter((e) => !e.erledigtAm)
+  const p = daten.meilensteinplanAktuell
+  const alt = daten.meilensteinplan
+  const gesamt = p.meilensteine.reduce((s, m) => s + m.erwinMinuten, 0)
 
   return (
     <>
       <div className="prosa">
         <p>
           <b>{p.status}.</b> Er gilt vom {datum(p.von)} bis zum {datum(p.bis)} und ersetzt den{' '}
-          {p.ersetzt}
-          {/[.?!]$/.test(p.ersetzt) ? '' : '.'} Das Ziel: „{p.ziel}“ {p.zielVon}. Der Rahmen: {p.rahmen}.
+          {p.ersetzt.join(' und den ')}. Das Ziel: „{p.ziel}“ {p.zielVon}.
         </p>
+        <p>{p.termineSatz}</p>
         <p>
-          Die Landing Page zeigt den Zeitplan, die vier Meilensteine und die Entscheidungen mit
-          Frist. Offen sind davon {offen.length} von {p.entscheidungen.length}. Hier steht der Rest.
+          Die Landing Page zeigt die Termine, die vier Meilensteine und die Entscheidungen mit Frist.
+          Hier steht der Rest.
         </p>
       </div>
 
-      {p.nachgezogen ? (
-        <Block titel={`Nachgezogen am ${datum(p.nachgezogen.am)}`}>
-          <p>{p.nachgezogen.satz}</p>
-          <p>{p.nachgezogen.warum}</p>
-          <p>{p.nachgezogen.nichtSchneller}</p>
-          <p>{p.nachgezogen.vorgezogen}</p>
-          <p>{p.nachgezogen.istZeit}</p>
-          <p className="fussnote" style={{ marginTop: '0.6rem' }}>
-            Quelle: {p.nachgezogen.quelle}
-          </p>
-        </Block>
-      ) : null}
-
-      <h3 style={{ marginTop: '1.8rem' }}>Was am {datum(p.bis)} erfüllt sein soll</h3>
+      <h3 style={{ marginTop: '1.8rem' }}>Was das Ziel bis zum {datum(p.bis)} heißt</h3>
       <div className="tabellenrahmen">
         <table>
           <thead>
             <tr>
-              <th style={{ width: '12rem' }}>Teil des Ziels</th>
-              <th>Erfüllt, wenn</th>
-              <th>Was davon übrig bleibt</th>
+              <th style={{ width: '14rem' }}>Teil des Ziels</th>
+              <th>Festgelegt am {datum(p.von).slice(0, 6)}</th>
             </tr>
           </thead>
           <tbody>
@@ -55,43 +40,31 @@ export function PlanAbschnitt() {
                 <td>
                   <b>{z.teil}</b>
                 </td>
-                <td>{z.erfuellt}</td>
-                <td>{z.uebrig}</td>
+                <td>{z.festgelegt}</td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
+      <div className="prosa" style={{ marginTop: '1.3rem' }}>
+        <p>{p.lauffaehig}</p>
+      </div>
 
-      <h3 style={{ marginTop: '1.8rem' }}>Erwins Zeit je Woche</h3>
+      <h3 style={{ marginTop: '1.8rem' }}>Erwins Zeit je Meilenstein</h3>
       <div className="raster">
-        {p.zeit.map((z) => {
-          const w = woche.get(z.woche)
-          return (
-            <div className="karte" key={z.woche}>
-              <h3>
-                {z.woche}
-                {w ? `, ${spanne(w.von, w.bis)}` : ''}: {dauer(summe(z))}
-              </h3>
-              <p>
-                entscheiden {dauer(z.entscheiden)}, lesen {dauer(z.lesen)},{' '}
-                {z.bewerten ? `bewerten ${dauer(z.bewerten)}` : 'keine Bewertung'}
-              </p>
-            </div>
-          )
-        })}
+        {p.meilensteine.map((m) => (
+          <div className="karte" key={m.id}>
+            <h3>
+              {m.id}, bis {datum(m.termin).slice(0, 6)}: {dauer(m.erwinMinuten)}
+            </h3>
+            <p>{m.titel}</p>
+          </div>
+        ))}
       </div>
       <div className="prosa" style={{ marginTop: '1.3rem' }}>
         <p>
-          Zusammen {dauer(gesamt)}, davon {dauer(bewerten)} Bewerten. Der Rahmen liegt unter{' '}
-          {dauer(p.budgetMinutenJeWoche)} je Woche. {p.zeitVorher} {p.zeitPreis}
+          Zusammen {dauer(gesamt)}. {p.zeitSatz}
         </p>
-        {p.zeitArbeitsplan ? (
-          <p>
-            {p.zeitArbeitsplan.text} Er kommt auf {dauer(p.zeitArbeitsplan.minuten)} statt{' '}
-            {dauer(gesamt)}, bis zur Abnahme von M1 auf {dauer(p.zeitArbeitsplan.bisM1)}.
-          </p>
-        ) : null}
       </div>
 
       <Block titel="Der kritische Pfad">
@@ -124,24 +97,14 @@ export function PlanAbschnitt() {
               <tr key={r.nr}>
                 <td>{r.nr}</td>
                 <td>
-                  <b>{r.titel}.</b> {r.text}
+                  <b>{r.titel}</b>
                 </td>
                 <td>
-                  {r.erledigt ? (
-                    <>
-                      <b>aufgelöst am {datum(r.erledigt.am).slice(0, 6)}</b>, war {r.stufe}
-                    </>
-                  ) : (
-                    <>
-                      {r.stufe === 'kritisch' ? <b>kritisch</b> : r.stufe}, Eintritt {r.eintritt},
-                      Auswirkung {r.auswirkung}
-                    </>
-                  )}
+                  {r.stufe}, Eintritt {r.eintritt}, Auswirkung {r.auswirkung}
                 </td>
                 <td>
-                  {r.erledigt ? <b>{r.erledigt.text} </b> : null}
                   {r.gegenmassnahme}
-                  {/[.?!]$/.test(r.gegenmassnahme) ? '' : '.'} Frühwarnzeichen: {r.warnzeichen}.
+                  {/[.?!]$/.test(r.gegenmassnahme) ? '' : '.'}
                 </td>
               </tr>
             ))}
@@ -149,12 +112,27 @@ export function PlanAbschnitt() {
         </table>
       </div>
       <div className="prosa" style={{ marginTop: '1.3rem' }}>
-        <p>{p.risikenKern}</p>
         <p>{p.risikenHinweis}</p>
       </div>
       <p className="fussnote" style={{ marginTop: '1rem' }}>
         Quelle: {p.quelle}
       </p>
+
+      <details className="verlauf" style={{ marginTop: '2rem' }}>
+        <summary>
+          <b>Der Plan vom {datum(alt.von).slice(0, 6)} als Verlauf</b>
+          {alt.ueberholtAm ? `, überholt seit dem ${datum(alt.ueberholtAm)}` : ''}
+        </summary>
+        <div className="prosa" style={{ marginTop: '0.8rem' }}>
+          <p>
+            {alt.status}. {alt.ueberholt}
+          </p>
+        </div>
+        <ZeitplanFigur />
+        <p className="fussnote" style={{ marginTop: '0.6rem' }}>
+          Quelle: {alt.quelle}
+        </p>
+      </details>
     </>
   )
 }

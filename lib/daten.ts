@@ -380,6 +380,9 @@ export interface PlanRisiko {
 
 /** Der Meilensteinplan, wie er im Vault steht, ohne Zugänge und Datenwege. */
 export interface Meilensteinplan extends MitFreigabe {
+  /** Seit wann ein neuerer Plan gilt, und in einem Satz, wie es dazu kam. */
+  ueberholtAm?: string
+  ueberholt?: string
   stand: string
   status: string
   /** Was sich nach dem Entwurf getan hat, mit Uhrzeit im Satz. */
@@ -445,6 +448,82 @@ export interface Bewertungen extends MitFreigabe {
   rueckweg: string
   beispiel: { satz: string; text: string }
   quelle: string
+  /** Die erste Regel, die die Schwelle erreicht hat. */
+  ersteRegel?: { regel: string; am: string; gesehen: number; fehlalarme: number; satz: string }
+}
+
+/** "bei keiner Regel", "bei einer von 10 Regeln", "bei 2 von 10 Regeln" */
+export function belastbarBei(b: Bewertungen): string {
+  if (b.regelnAmZiel === 0) return 'bei keiner Regel'
+  const wie = b.regelnAmZiel === 1 ? 'einer' : zahl(b.regelnAmZiel)
+  return `bei ${wie} von ${zahl(b.regeln)} Regeln`
+}
+
+/** "Das erreicht bisher keine Regel.", "Das erreicht eine von 10 Regeln." */
+export function zielErreicht(b: Bewertungen): string {
+  if (b.regelnAmZiel === 0) return 'Das erreicht bisher keine Regel.'
+  if (b.regelnAmZiel === 1) return `Das erreicht eine von ${zahl(b.regeln)} Regeln.`
+  return `Das erreichen ${zahl(b.regelnAmZiel)} von ${zahl(b.regeln)} Regeln.`
+}
+
+/** Ein Meilenstein des Plans vom 29.09.: Termin nach der Entscheidung vom
+ *  16.10., daneben die Frist, die der Plan vom 29.09. selbst gesetzt hatte. */
+export interface AktuellerMeilenstein {
+  id: string
+  termin: string
+  fruehereFrist: string
+  titel: string
+  /** erledigt: wann und wie; teilweise: was davon schon gelaufen ist. */
+  inhalt: { text: string; erledigt?: string; teilweise?: string }[]
+  abnahme: string
+  erwinMinuten: number
+}
+
+export interface PlanFrist {
+  text: string
+  frist: string
+  stand: 'offen' | 'erledigt'
+  am?: string
+  notiz?: string
+  kritisch?: boolean
+}
+
+export interface AktuellerRisiko {
+  nr: string
+  titel: string
+  eintritt: string
+  auswirkung: string
+  stufe: string
+  gegenmassnahme: string
+}
+
+/** Der Plan, der gerade gilt. Der vom 17.09. bleibt unter meilensteinplan
+ *  als Verlauf stehen, weil aus den Daten nichts verschwindet. */
+export interface AktuellerPlan extends MitFreigabe {
+  stand: string
+  status: string
+  von: string
+  bis: string
+  termineAm: string
+  ersetzt: string[]
+  satz: string
+  ziel: string
+  zielVon: string
+  zielteile: { teil: string; festgelegt: string }[]
+  lauffaehig: string
+  termineSatz: string
+  meilensteine: AktuellerMeilenstein[]
+  fristen: PlanFrist[]
+  fristenHinweis: string
+  pfad: string[]
+  pfadSatz: string
+  daneben: string
+  risiken: AktuellerRisiko[]
+  risikenHinweis: string
+  nichtDrin: string[]
+  zeitSatz: string
+  heute: { wer: string; stand: string }[]
+  quelle: string
 }
 
 export interface Projektstand {
@@ -470,6 +549,7 @@ export interface Projektstand {
   bewertungen: Bewertungen
   landschaft: Landschaft
   meilensteinplan: Meilensteinplan
+  meilensteinplanAktuell: AktuellerPlan
   schichten: Schicht[]
   schichtenEntschieden: string
   schichtenErklaerung: string

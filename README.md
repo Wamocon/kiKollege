@@ -183,7 +183,12 @@ Aussehen setzt die Klasse `lp-aussage`.
   (gefüllt läuft, leer vorhanden, gestrichelt entschieden). Rot trägt die eine
   Verbindung, an der der Rest hängt: die Ablage über Git auf dem KI-Rechner.
   Daneben steht dieselbe Aufzählung als Text, für Leser ohne Bild.
-- **Zeitplan** — der Meilensteinplan über seine vier Wochen: oben die
+- **Termine** — die vier Meilensteine des Plans vom 29.09. auf einer Zeitachse:
+  offen die Frist, die der Plan selbst gesetzt hatte, gefüllt der Termin nach der
+  Entscheidung vom 16.10. Ein Tageskalender passt hier nicht mehr, weil nach dem
+  16.10. nur die vier Termine festgelegt sind, nicht die Arbeiten dazwischen.
+- **Zeitplan** — der Plan vom 17.09. über seine vier Wochen, seit dem 16.10. nur
+  noch als Verlauf auf `/stand/`, eingeklappt: oben die
   Entscheidungen mit Frist, darunter je Meilenstein die Arbeiten als Balken,
   unten Erwins Zeit je Woche. Rot trägt der kritische Pfad, leere Balken sind
   Bewertungszeit, grau hinterlegt sind die Wochenenden. Die gestrichelte Linie
