@@ -1688,7 +1688,7 @@
     "stand": "Entwurf",
     "kopf": "Sieben kurze Angaben, die die Maschine liest. tools ist eine Positivliste, disallowedTools die Gegenprobe. memory sagt, wo seine Fälle liegen; skills, welche Anleitungen beim Start mitkommen.",
     "rumpf": "Ganze Sätze, an einen neuen Kollegen gerichtet. Hier steht die Haltung, der Ablauf und was er nie tut. Diesen Teil kann kein Werkzeug erzeugen.",
-    "grenze": "Die wichtigste Zeile ist „darf nie\". Eine Fähigkeit, die nicht eingetragen ist, soll er nicht haben: Er soll nichts versenden, nichts löschen und nichts freigeben können. Das wird als technische Grenze gebaut, nicht als Vereinbarung. Das Programm dafür steht und ist getestet; am Profil auf der eigenen Hardware ist es noch nicht aktiv.",
+    "grenze": "Die wichtigste Zeile ist „darf nie\". Eine Fähigkeit, die nicht eingetragen ist, soll er nicht haben: Er soll nichts versenden, nichts löschen und nichts freigeben können. Das ist als technische Grenze gebaut, nicht als Vereinbarung: Ein kleines Programm prüft vor jedem Schritt die Akte und lehnt im Zweifel ab.",
     "einzigeQuelle": "Wer diese Datei ändert, ändert den Mitarbeiter. Es gibt nichts daneben, das ihn heimlich anders steuert.",
     "auszug": "---\nname: fritz\ndescription: Prüft eine Schulungsunterlage gegen den Maßstab und\n  schreibt einen Bericht. Beauftragen, bevor eine Unterlage\n  in den Unterricht geht.\ntools: Lesen, Suchen, Nachrechnen, Prüfskripte ausführen\ndisallowedTools: Schreiben, Löschen, Versenden\nskills: kfbm-review\nmemory: project\n---\nDu prüfst Schulungsunterlagen für die Ausbildung Kaufleute\nfür Büromanagement. Du bewertest. Du erstellst keine\nUnterlagen, und du erteilst keine Freigabe.\n\n## Bevor du anfängst\n\nOhne Angabe des Jahrgangs prüfst du nicht. Bis 2028 gelten\nzwei Ausbildungsordnungen nebeneinander. Material für einen\nAlt-Jahrgang gegen die neue Ordnung zu prüfen, erzeugt nur\nFehlalarme. Fehlt die Angabe, frag nach.\n\n## Im Zweifel\n\nMelde nichts. Ein Prüfer, der Unfug meldet, wird nach dem\ndritten Mal übergangen. Dann nützt auch das nichts mehr,\nwas du richtig gefunden hast.\n\n## Jeder Befund nennt drei Dinge\n\nDie Fundstelle, das Kriterium und den Schweregrad. Ein\nBefund ohne Fundstelle ist für den Autor wertlos.\n\n… weiter mit dem Ablauf und den Prüfregeln",
     "freigabe": "oeffentlich"
@@ -1729,7 +1729,7 @@
         "id": "aufsicht",
         "titel": "Aufsicht",
         "kurz": "wer entscheidet",
-        "text": "Jedes Ergebnis geht an einen Menschen. Die Freigabe steht in keiner seiner Regeln. Gebaut ist das als technische Grenze, nicht als Vereinbarung; auf der eigenen Hardware ist sie noch nicht aktiv."
+        "text": "Jedes Ergebnis geht an einen Menschen. Die Freigabe steht in keiner seiner Regeln. Gebaut ist das als technische Grenze, nicht als Vereinbarung."
       }
     ],
     "freigabe": "oeffentlich"
@@ -1773,7 +1773,7 @@
     "gezaehltAm": "2026-10-16",
     "trennung": "Wer baut, prüft nicht. Wer prüft, baut nicht. Wer pflegt, urteilt nicht.",
     "engpass": "Der Engpass ist die gemessene Fehlalarmquote des ersten, nicht die Zahl der Mitarbeiter. Kein weiterer misst sie, und jeder weitere vergrößert, was ungemessen läuft.",
-    "akte": "Seit dem 11.09. hat der Reviewer eine Akte: Auftrag, Haltung und Grenze als Dateien, unabhängig vom Harness. Ein kleines Programm prüft vor jedem Werkzeugaufruf, ob die Akte ihn erlaubt, und lehnt im Zweifel ab. Es ist gebaut und mit Testfällen geprüft, auf der eigenen Hardware aber noch nicht aktiv. Dem Orchestrator fehlt die Akte noch.",
+    "akte": "Jeder KI-Mitarbeiter bekommt eine Akte: Auftrag, Haltung und Grenze als Dateien, unabhängig vom Harness. Ein kleines Programm prüft vor jedem Werkzeugaufruf, ob die Akte ihn erlaubt, und lehnt im Zweifel ab. Der Reviewer hat seine Akte seit dem 11.09., der Orchestrator seit dem 28.09.",
     "koepfe": [
       {
         "id": "orchestrator",
@@ -2512,7 +2512,7 @@
     "rechnerBestaetigt": "2026-09-17",
     "satz": "Zwei Orte führen dieselbe Mannschaft aus. Verbunden sind sie nur über die Ablage.",
     "erklaerung": "Gebaut und gemessen wird auf der Werkbank mit Claude Code. Der Dauerbetrieb läuft im Haus, mit Hermes Agent auf einer DGX Spark und einem offenen Modell. Beide lesen und schreiben dieselbe Ablage, und nur die sehen beide. Was ein KI-Mitarbeiter zum Arbeiten braucht, steht in seiner Akte und nicht in einem der beiden Werkzeuge. So zieht er beim Wechsel mit.",
-    "rechnerStand": "Auf der eigenen Hardware laufen Harness und Modell, und Reviewer und Orchestrator sind dort als eigene Profile eingerichtet. Seit dem 17.09. kommt die Ablage über Git dorthin, mit der Akte des Reviewers und den Prüfprofilen. Geprüft wird dort noch nicht: Der Referenzsatz fehlt, und die Grenze ist am Profil nicht aktiv.",
+    "rechnerStand": "Auf der eigenen Hardware laufen Harness und Modell; Reviewer und Orchestrator sind dort als eigene Profile mit ihrer Grenze eingerichtet. Seit dem 17.09. kommt die Ablage über Git dorthin, mit den Akten und den Prüfprofilen. Seinen Referenzlauf hat der Reviewer dort am 18.09. gefahren.",
     "vergleich": "Ob das offene Modell so gut prüft wie das Cloud-Modell, zeigt erst ein Vergleichslauf am selben Aufgabensatz. Bis dahin ist der Betrieb im Haus ein Pilot.",
     "mensch": {
       "name": "Der Mensch",
@@ -3770,6 +3770,180 @@
       }
     ],
     "quelle": "Akte des Orchestrators, freigegeben am 28.09.2026, Stand 17.10.2026; Akte des Reviewers vom 17.09.2026; Auskunft des Projektverantwortlichen vom 17.10.2026 zum Melden von Fehlalarmen",
+    "freigabe": "oeffentlich"
+  },
+  "glossar": {
+    "satz": "Die Wörter, die auf diesen Seiten immer wieder vorkommen.",
+    "eintraege": [
+      {
+        "id": "ablage",
+        "begriff": "Ablage",
+        "erklaerung": "Der gemeinsame Wissensspeicher: Notizen zu Wissen, Entscheidungen und Prüfläufen, jede mit Datum und Freigabestand, über Git auf allen Rechnern gleich.",
+        "quelle": "Vault-Konventionen, Abschnitt Begriffe"
+      },
+      {
+        "id": "agent",
+        "begriff": "Agent",
+        "erklaerung": "Ein Helfer an der Werkbank, der am Werkzeug baut, etwa an Prüfskripten. Keiner prüft eine Unterlage; hier heißen sie auch Werkzeugmacher.",
+        "quelle": "Vault-Konventionen, Abschnitt Begriffe"
+      },
+      {
+        "id": "akte",
+        "begriff": "Akte",
+        "erklaerung": "Der Ordner mit Auftrag, Haltung und Grenze eines KI-Mitarbeiters. Er ist die einzige Quelle für sein Verhalten, gleich in welchem Programm er läuft.",
+        "quelle": "Vault-Konventionen, Abschnitt Begriffe"
+      },
+      {
+        "id": "auftragsbuch",
+        "begriff": "Auftragsbuch",
+        "erklaerung": "Je Auftrag eine Notiz mit Nummer, Auftraggeber, zuständigem KI-Mitarbeiter, Angaben und Ergebnis. Die Nummer nennt der Orchestrator, wenn er einen Auftrag bestätigt.",
+        "quelle": "Akte des Orchestrators, Stand 17.10.2026"
+      },
+      {
+        "id": "befund",
+        "begriff": "Befund",
+        "erklaerung": "Eine einzelne Feststellung in einer Unterlage, immer mit Fundstelle, Kriterium und Schweregrad.",
+        "quelle": "Akte des Reviewers, Stand 17.09.2026"
+      },
+      {
+        "id": "bewertungsbogen",
+        "begriff": "Bewertungsbogen",
+        "erklaerung": "Je Prüflauf eine Tabelle, in die ein Mensch zu jedem Befund einträgt: trifft zu, trifft nicht zu oder anders gewichtet. Daraus rechnet ein Skript die Fehlalarmquote.",
+        "quelle": "Notiz Wissen und Gedächtnis, Stand 09.09.2026"
+      },
+      {
+        "id": "board",
+        "begriff": "Board",
+        "erklaerung": "Die gemeinsame Aufgabentafel der KI-Mitarbeiter, eine Karte je Auftrag. Die Karte zeigt, was gerade läuft; was war, hält die Notiz im Auftragsbuch fest.",
+        "quelle": "Muster der Auftragsnotiz, Stand 28.09.2026"
+      },
+      {
+        "id": "enabler",
+        "begriff": "Enabler",
+        "erklaerung": "Die kleinste Einheit der Unterlagen der Academy, je einem Buchstaben einer Berufsbildposition entsprechend. Zu jedem gehören ein Hauptdokument, drei Quizfassungen und ein Szenario.",
+        "quelle": "Unterlagensystematik der Academy, erhoben am 27.08.2026"
+      },
+      {
+        "id": "fehlalarm",
+        "begriff": "Fehlalarm",
+        "erklaerung": "Ein Befund, der nicht zutrifft. Er wiegt schwerer als ein übersehener Fehler: Wer dreimal einen falschen Alarm bekommt, sieht beim vierten Mal nicht mehr hin.",
+        "quelle": "Entscheidung vom 28.08.2026"
+      },
+      {
+        "id": "fehlalarmquote",
+        "begriff": "Fehlalarmquote",
+        "erklaerung": "Der Anteil der Fehlalarme an den bewerteten Befunden einer Regel. Belastbar ist sie erst, wenn ein Mensch genug Fälle einzeln angesehen hat; das eigene Ziel sind 30 je Regel.",
+        "quelle": "Akte des Reviewers, Stand 17.09.2026"
+      },
+      {
+        "id": "fundstelle",
+        "begriff": "Fundstelle",
+        "erklaerung": "Die genaue Stelle, an der ein Befund sitzt, etwa Quiz „mittel“, Frage 7, Option B. Ein Befund ohne Fundstelle ist für den Autor wertlos.",
+        "quelle": "Akte des Reviewers, Stand 17.09.2026"
+      },
+      {
+        "id": "grenze",
+        "begriff": "Grenze",
+        "erklaerung": "Was ein KI-Mitarbeiter nie tut, als Datei neben seiner Akte. Ein kleines Programm prüft vor jedem Schritt, ob die Akte ihn erlaubt, und lehnt im Zweifel ab.",
+        "quelle": "Übergabe vom 11.09.2026"
+      },
+      {
+        "id": "harness",
+        "begriff": "Harness",
+        "erklaerung": "Das Programm, in dem ein KI-Mitarbeiter läuft. Die Akte beschreibt ihn, der Harness führt ihn aus: Er lässt ihn Dateien lesen, Skripte starten und mit dem Ergebnis weitermachen.",
+        "quelle": "Notiz Harness, Stand 03.09.2026"
+      },
+      {
+        "id": "jahrgang",
+        "begriff": "Jahrgang",
+        "erklaerung": "Ob ein Ausbildungsvertrag vor oder ab dem 01.08.2025 begann. Davon hängt ab, welche Ausbildungsordnung gilt; bis etwa 2028 gelten zwei nebeneinander.",
+        "quelle": "Akte des Reviewers, Stand 17.09.2026"
+      },
+      {
+        "id": "ki-mitarbeiter",
+        "begriff": "KI-Mitarbeiter",
+        "erklaerung": "Eine benannte Rolle mit Grenze, Maßstab und Gedächtnis, die Arbeit erledigt. Technisch ein Sprachmodell mit einer festen Aufgabe.",
+        "quelle": "Vault-Konventionen, Abschnitt Begriffe"
+      },
+      {
+        "id": "ki-rechner",
+        "begriff": "KI-Rechner",
+        "erklaerung": "Der Rechner im Haus, auf dem die Mannschaft im Dauerbetrieb läuft, mit einem offenen Sprachmodell.",
+        "quelle": "Systemlandschaft, Stand 16.10.2026"
+      },
+      {
+        "id": "kriterium",
+        "begriff": "Kriterium",
+        "erklaerung": "Ein Merkmal, an dem eine Unterlage gemessen wird, etwa fachliche Richtigkeit oder Prüfungsrelevanz. Jeder Befund nennt das Kriterium, unter das er fällt.",
+        "quelle": "Kriterienkatalog, Entwurf"
+      },
+      {
+        "id": "massstab",
+        "begriff": "Maßstab",
+        "erklaerung": "Alles, wogegen geprüft wird: Kriterien, Checklisten, Vorlagen und Schweregrade, als Dateien aufgeschrieben.",
+        "quelle": "Vault-Konventionen, Abschnitt Begriffe"
+      },
+      {
+        "id": "meilenstein",
+        "begriff": "Meilenstein",
+        "erklaerung": "Ein Zwischenziel des Plans mit Termin und Abnahme. Bei der Abnahme prüft ein Mensch, ob das Vereinbarte erreicht ist.",
+        "quelle": "Meilensteinplan vom 29.09.2026"
+      },
+      {
+        "id": "normbasis",
+        "begriff": "Normbasis",
+        "erklaerung": "Die Ausbildungsordnung im amtlichen Wortlaut, als Notizen in der Ablage. Gegen sie prüft der Reviewer, ob eine Unterlage das Verlangte abdeckt.",
+        "quelle": "Akte des Reviewers, Stand 17.09.2026"
+      },
+      {
+        "id": "orchestrator",
+        "begriff": "Orchestrator",
+        "erklaerung": "Nimmt einen Auftrag an, wählt den zuständigen KI-Mitarbeiter und reicht dessen Ergebnis unverändert zurück. Mehr darf er nicht. Er heißt Hermes.",
+        "quelle": "Akte des Orchestrators, Stand 17.10.2026"
+      },
+      {
+        "id": "profil",
+        "begriff": "Profil",
+        "erklaerung": "Zweierlei: das Prüfprofil, das für einen Gegenstand festlegt, welches Wissen der Maßstab ist und welche Regeln gelten; und die Einrichtung eines KI-Mitarbeiters auf dem KI-Rechner, mit seiner Grenze.",
+        "quelle": "Systementwurf vom 28.08.2026; Systemlandschaft, Stand 16.10.2026"
+      },
+      {
+        "id": "pruefpunkt",
+        "begriff": "Prüfpunkt",
+        "erklaerung": "Ein einzelner Punkt der Checkliste des Reviewers. Einen Teil entscheidet ein Skript, den Rest ein Mensch.",
+        "quelle": "Checkliste des Reviewers"
+      },
+      {
+        "id": "regel",
+        "begriff": "Regel",
+        "erklaerung": "Ein Prüfpunkt, der als Skript läuft, mit Zweck, Testfällen und gemessener Fehlalarmquote. Regeln tragen Nummern wie E13.",
+        "quelle": "Notiz Wissen und Gedächtnis, Stand 09.09.2026"
+      },
+      {
+        "id": "schweregrad",
+        "begriff": "Schweregrad",
+        "erklaerung": "Wie schwer ein Befund wiegt: Blocker, Major, Minor oder Hinweis. Was jeder bedeutet, steht unter Beauftragen.",
+        "quelle": "Schweregrade des Reviewers, Entwurf"
+      },
+      {
+        "id": "sprachmodell",
+        "begriff": "Sprachmodell",
+        "erklaerung": "Die Technik hinter Chat-Programmen: Es bekommt Text und gibt Text zurück. Allein ist es noch kein Mitarbeiter.",
+        "quelle": "Einführung vom 04.09.2026"
+      },
+      {
+        "id": "verbindlich",
+        "begriff": "verbindlich, ungeprüft",
+        "erklaerung": "Jede Notiz der Ablage beginnt als ungeprüft. Verbindlich wird sie erst, wenn ein Mensch sie bestätigt; kein KI-Mitarbeiter hebt eine Notiz.",
+        "quelle": "Vault-Konventionen, Abschnitt Begriffe"
+      },
+      {
+        "id": "werkbank",
+        "begriff": "Werkbank",
+        "erklaerung": "Der Arbeitsplatz, an dem KI-Mitarbeiter gebaut und gemessen werden, mit Claude Code.",
+        "quelle": "Systemlandschaft, Stand 16.10.2026"
+      }
+    ],
     "freigabe": "oeffentlich"
   }
 }

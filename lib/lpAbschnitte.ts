@@ -35,6 +35,7 @@ const alle: readonly LpAbschnitt[] = [
   // Der Fahrplan gehört nach der Übergabe vom 11.09. nicht in die öffentliche
   // Fassung. Pages zeigt seit dem 17.09. ohnehin alles.
   { id: 'plan', label: 'Meilensteine', kapitel: 'Stand', freigabe: 'intern' },
+  { id: 'begriffe', label: 'Begriffe', kapitel: 'Nachschlagen' },
 ]
 
 export const sichtbareAbschnitte = nurSichtbare(alle)

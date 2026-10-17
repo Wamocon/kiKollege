@@ -703,6 +703,10 @@ th.num { text-align: right; }
 .lp-sektion { border-top: 1px solid var(--rand-leise); scroll-margin-top: 68px; }
 /* Anker innerhalb eines Abschnitts, etwa die alten #chatbot und #ablage */
 .lp-inhalt [id] { scroll-margin-top: 68px; }
+/* Ein Fachwort, das auf seine Erklärung unter „Begriffe“ zeigt */
+.lp-begriff { color: inherit; text-decoration: underline dotted; text-underline-offset: 3px; }
+.lp-begriff:hover { color: var(--wmc-primary-text); }
+.lp-spec-zeile:target { background: var(--wmc-surface-soft); }
 .lp-sektion:first-of-type { border-top: 0; }
 .lp-sektion-innen {
   max-width: var(--lp-spalte);

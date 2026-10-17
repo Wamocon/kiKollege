@@ -12,6 +12,7 @@ import { Wissensablagen } from '@/components/figuren/Wissensablagen'
 import { Fussleiste } from '@/components/landing/Fussleiste'
 import { HeroAnatomie } from '@/components/landing/HeroAnatomie'
 import { Kopfleiste } from '@/components/landing/Kopfleiste'
+import { Begriff } from '@/components/landing/Begriff'
 import { Sektion } from '@/components/landing/Sektion'
 import { belastbarBei, daten, datum, harteRegel, tageZwischen, zahl, zielErreicht, type AnleitungAb } from '@/lib/daten'
 import { inWorten } from '@/lib/alter'
@@ -73,10 +74,12 @@ export default function Landing() {
           </h1>
 
           <p className="lp-lead lp-luft-oben">
-            Ein KI-Mitarbeiter ist ein Sprachmodell, also die Technik hinter Chat-Programmen, mit
-            einer festen Aufgabe, einem aufgeschriebenen Maßstab und einer Grenze. Er prüft,
+            Ein KI-Mitarbeiter ist ein <Begriff id="sprachmodell">Sprachmodell</Begriff>, also die
+            Technik hinter Chat-Programmen, mit einer festen Aufgabe, einem aufgeschriebenen{' '}
+            <Begriff id="massstab">Maßstab</Begriff> und einer <Begriff id="grenze">Grenze</Begriff>. Er prüft,
             sortiert und bereitet vor; was daraus folgt, entscheidet ein Mensch. Die {gmbh.name}{' '}
-            baut solche Rollen seit dem {datum(d.arbeitstage.beginn)}.
+            baut solche Rollen seit dem {datum(d.arbeitstage.beginn)}. Fachwörter erklärt das
+            Verzeichnis der <a href="#begriffe">Begriffe</a> am Ende.
           </p>
 
           <HeroAnatomie
@@ -133,7 +136,8 @@ export default function Landing() {
             </div>
             <div className="lp-text lp-luft-oben">
               <p>
-                {d.eignung.nachsatz} {harteRegel('rollengrenze').grund}
+                Der letzte Punkt schließt nichts aus: Wo die Entscheidung schwer wiegt, arbeitet der
+                KI-Mitarbeiter zu, und ein Mensch entscheidet. {harteRegel('rollengrenze').grund}
               </p>
             </div>
           </div>
@@ -167,13 +171,16 @@ export default function Landing() {
             <div className="lp-spec-zeile">
               <dt>Maßstab</dt>
               <dd>
-                {d.massstab.kriterien.gesamt} Kriterien, {d.pruefpunkte.gesamt} Prüfpunkte,{' '}
-                {d.massstab.schweregrade.length} Schweregrade
+                {d.massstab.kriterien.gesamt} <Begriff id="kriterium">Kriterien</Begriff>,{' '}
+                {d.pruefpunkte.gesamt} <Begriff id="pruefpunkt">Prüfpunkte</Begriff>,{' '}
+                {d.massstab.schweregrade.length} <Begriff id="schweregrad">Schweregrade</Begriff>
               </dd>
             </div>
             {sichtbar(b) ? (
               <div className="lp-spec-zeile">
-                <dt>Fehlalarmquote</dt>
+                <dt>
+                  <Begriff id="fehlalarmquote">Fehlalarmquote</Begriff>
+                </dt>
                 <dd>
                   belastbar {belastbarBei(b)}, mehr dazu im <a href="#messung">nächsten Abschnitt</a>
                 </dd>
@@ -308,50 +315,18 @@ export default function Landing() {
               </div>
 
               <div className="lp-text lp-luft-oben">
-                <p>Das ist ein gutes Zeichen und noch keine Abnahme. Dafür gibt es drei Gründe.</p>
-              </div>
-              <div className="lp-zellen">
-                <div className="lp-zelle">
-                  <span className="kopf">In Gruppen bewertet</span>
-                  <p className="stark">{b.gruppen}</p>
-                  <p>
-                    Einzeln angesehen: {zahl(b.gesehen)} von {zahl(b.bewertet)}.
-                  </p>
-                </div>
-                <div className="lp-zelle traegt">
-                  <span className="kopf">Zu kleine Stichprobe</span>
-                  <p className="stark">
-                    Das eigene Ziel sind {zahl(b.zielGesehenJeRegel)} einzeln angesehene Fälle je
-                    Regel.
-                  </p>
-                  <p>
-                    {zielErreicht(b)}{' '}
-                    {b.ersteRegel
-                      ? b.ersteRegel.satz
-                      : `Am nächsten kommt ihm eine Regel mit ${zahl(b.hoechstesGesehen)}.`}
-                  </p>
-                </div>
-                <div className="lp-zelle">
-                  <span className="kopf">Das Meiste fehlt</span>
-                  <p className="stark">{b.ungemessen}</p>
-                </div>
-              </div>
-
-              <div className="lp-text lp-luft-oben">
-                <p>{b.rueckweg}</p>
-                <p>{b.umgewichtet}</p>
                 <p>
-                  Aus den ersten Läufen sind {zahl(fehlalarmquote.unbewertet!)} Befunde und Hinweise
-                  weiter ohne Bewertung.
+                  Das ist ein gutes Zeichen und noch keine Abnahme. Das eigene Ziel sind{' '}
+                  {zahl(b.zielGesehenJeRegel)} einzeln angesehene Fälle je Regel. {zielErreicht(b)}
                 </p>
               </div>
 
-              <div className="lp-zellen">
-                <div className="lp-zelle traegt">
-                  <span className="kopf">Was eine Bewertung lehrt</span>
-                  <p className="stark">{b.beispiel.satz}</p>
-                  <p>{b.beispiel.text}</p>
-                </div>
+              <div className="lp-text lp-luft-oben">
+                <p>
+                  Aus den ersten Läufen sind {zahl(fehlalarmquote.unbewertet!)} Befunde und Hinweise
+                  weiter ohne Bewertung. Ein Beispiel, was eine Bewertung lehrt, steht im{' '}
+                  <a href={pfad('/stand/#luecke')}>ausführlichen Stand</a>.
+                </p>
               </div>
             </>
           ) : (
@@ -379,22 +354,12 @@ export default function Landing() {
             </p>
           </div>
 
-          <dl className="lp-spec">
-            {nurSichtbare(d.fehlalarmBelege).map((f) => (
-              <div className="lp-spec-zeile" key={f.id}>
-                <dt>{f.titel}</dt>
-                <dd>
-                  <b>{zahl(f.fehlalarme)} Fehlalarme</b>
-                  {f.ausEinerRegel != null
-                    ? `, ${zahl(f.ausEinerRegel)} davon aus einer einzigen Regel`
-                    : ', kein einziger Treffer war echt'}
-                  {'. '}
-                  {f.ursache ?? ''} Heute liegen {zahl(f.testfaelle)} Testfälle daraus vor, jeder
-                  mit seiner Fundstelle.
-                </dd>
-              </div>
-            ))}
-          </dl>
+          <div className="lp-text">
+            <p>
+              Wie zwei frühe Regeln danebenlagen und was daraus wurde, steht im{' '}
+              <a href={pfad('/stand/#luecke')}>ausführlichen Stand</a>.
+            </p>
+          </div>
         </Sektion>
 
         {/* 04 So arbeitest du mit ihm ----------------------------------------- */}
@@ -473,6 +438,7 @@ export default function Landing() {
                 <p>{a.fehlalarm}</p>
               </div>
             </div>
+            <p className="lp-klein lp-luft-oben">Die vier Schweregrade</p>
             <dl className="lp-spec">
               {d.massstab.schweregrade.map((s) => (
                 <div className="lp-spec-zeile" key={s.stufe}>
@@ -516,7 +482,6 @@ export default function Landing() {
                   <h3>{k.name ? `${k.rolle}, ${k.name}` : k.rolle}</h3>
                   <p>{k.tut}</p>
                   <p className="bedingung">Tut nie: {k.tutNie}</p>
-                  <p className="bedingung">{k.hinweis}</p>
                 </div>
               </div>
             ))}
@@ -525,10 +490,6 @@ export default function Landing() {
             <div className="lp-zelle traegt">
               <span className="kopf">Warum nicht mehr auf einmal</span>
               <p className="stark">{m.engpass}</p>
-            </div>
-            <div className="lp-zelle">
-              <span className="kopf">Die Akte</span>
-              <p className="stark">{m.akte}</p>
             </div>
             <div className="lp-zelle">
               <span className="kopf">Warum ein Programm</span>
@@ -567,14 +528,6 @@ export default function Landing() {
           </div>
 
           <div className="lp-zellen lp-luft-oben">
-            <div className="lp-zelle">
-              <span className="kopf">Oben der Kopf</span>
-              <p>{d.beschreibungsdatei.kopf}</p>
-            </div>
-            <div className="lp-zelle">
-              <span className="kopf">Unten der Auftrag</span>
-              <p>{d.beschreibungsdatei.rumpf}</p>
-            </div>
             <div className="lp-zelle traegt">
               <span className="kopf">Die Grenze</span>
               <p className="stark">{d.beschreibungsdatei.grenze}</p>
@@ -630,11 +583,6 @@ export default function Landing() {
               dafür der Maßstab ist. Deshalb trägt jede Notiz ein Datum: Wissen ohne Stand lässt
               sich nicht einordnen, und falsch eingeordnete Vorschriften erzeugen Fehlalarme.
             </p>
-            <p>
-              Die Originale bleiben, wo sie sind. Amtliche Dokumente und die Unterlagen selbst
-              werden nicht kopiert, das Wissen verweist auf sie. So gibt es keine zweite Fassung,
-              die still veraltet. Zu jeder Notiz gehört, woher sie stammt und ob sie bestätigt ist.
-            </p>
           </div>
 
           {sichtbar(d.ablage) ? (
@@ -642,10 +590,8 @@ export default function Landing() {
             <h3 className="lp-aussage breit">So sieht die Ablage heute aus.</h3>
             <div className="lp-text lp-luft-oben-klein">
               <p>
-                Das Bild ist aus den Notizen selbst gezählt, nicht von Hand gezeichnet. Jedes
-                Kästchen ist eine Notiz, gefärbt nach ihrem Freigabestand. Rechts steht, auf
-                welchen anderen Bereich ein Bereich am häufigsten verweist. Dateinamen stehen
-                nicht darin.
+                Aus den Notizen selbst gezählt: Jedes Kästchen ist eine Notiz, gefärbt nach ihrem
+                Freigabestand.
               </p>
             </div>
 
@@ -665,10 +611,7 @@ export default function Landing() {
             <h3 className="lp-aussage lp-luft-oben">Welcher Bereich auf welchen verweist.</h3>
             <div className="lp-text lp-luft-oben-klein">
               <p>
-                Die Ablage kann jede Notiz als Punkt und jeden Verweis als Linie zeigen. Bei{' '}
-                {zahl(d.ablage.notizen)} Notizen und {zahl(d.ablage.verweise)} Verweisen wird daraus
-                ein Knäuel. Hier ist deshalb jeder Bereich ein Kreis, und gezeichnet sind nur die
-                Wege, die oft genommen werden.
+                Jeder Bereich ist ein Kreis; gezeichnet sind nur die Wege, die oft genommen werden.
               </p>
             </div>
 
@@ -693,7 +636,6 @@ export default function Landing() {
 
           <div className="lp-text lp-luft-oben">
             <p>{d.durchlauf.zweiStufen}</p>
-            <p>{d.durchlauf.rueckweg}</p>
             <p>{d.durchlauf.verdichtung}</p>
           </div>
 
@@ -845,23 +787,17 @@ export default function Landing() {
               <div className="lp-zelle" key={g.titel}>
                 <span className="kopf">{g.zusatz}</span>
                 <h3>{g.titel}</h3>
-                <ul className="liste" style={{ marginTop: '0.2rem' }}>
-                  {g.punkte.map((t) => (
-                    <li key={t} style={{ fontSize: '0.86rem' }}>
-                      {t}
-                    </li>
-                  ))}
-                </ul>
+                <p>{inWorten(g.punkte.length)} Punkte</p>
               </div>
             ))}
           </div>
           <div className="lp-text lp-luft-oben">
             <p>{d.hemmnisse.satz}</p>
             <p>
-              Im ausführlichen Stand stehen die{' '}
+              Die Punkte je Gruppe stehen bei den{' '}
+              <a href={pfad('/stand/#offen')}>offenen Punkten</a> im ausführlichen Stand, dazu die{' '}
               <a href={pfad('/stand/#stufen')}>Stufen bis zum Dauerbetrieb</a>, alle{' '}
-              <a href={pfad('/stand/#entscheidungen')}>Entscheidungen mit Datum</a> und die{' '}
-              <a href={pfad('/stand/#offen')}>offenen Punkte</a>
+              <a href={pfad('/stand/#entscheidungen')}>Entscheidungen mit Datum</a>
               {zeigtInternes ? (
                 <>
                   , dazu der <a href={pfad('/stand/#plattform')}>Betrieb im Haus</a> und die{' '}
@@ -878,14 +814,9 @@ export default function Landing() {
           <Sektion id="plan">
             {istIntern ? <p className="lp-intern">nur intern</p> : null}
             <p className="lp-klein">
-              {plan.status}. Er ersetzt den {plan.ersetzt.join(' und den ')}.
+              {plan.status}.
             </p>
             <h2 className="lp-aussage breit lp-luft-oben-klein">{plan.satz}</h2>
-            <div className="lp-text lp-luft-oben-klein">
-              <p>
-                <b>{plan.termineSatz}</b>
-              </p>
-            </div>
             <div className="lp-text lp-luft-oben">
               <p>
                 <b>„{plan.ziel}“</b> {plan.zielVon}.
@@ -900,20 +831,12 @@ export default function Landing() {
                 <div className="lp-stufe" key={ms.id}>
                   <span className="wann">
                     {ms.id} · {datum(ms.termin).slice(0, 6)}
-                    <br />
-                    vorher {datum(ms.fruehereFrist).slice(0, 6)}
                   </span>
                   <div>
                     <h3>{ms.titel}</h3>
-                    <ul className="liste" style={{ marginTop: '0.2rem', marginBottom: '0.6rem' }}>
-                      {ms.inhalt.map((i) => (
-                        <li key={i.text} style={{ fontSize: '0.9rem' }}>
-                          {i.erledigt ? <b>erledigt {i.erledigt}: </b> : null}
-                          {i.text}
-                          {i.teilweise ? <>. {i.teilweise}</> : null}
-                        </li>
-                      ))}
-                    </ul>
+                    <p>
+                      Erledigt sind {inWorten(erledigtIn(ms))} von {inWorten(ms.inhalt.length)} Arbeiten.
+                    </p>
                     <p className="bedingung">Abnahme: {ms.abnahme}</p>
                   </div>
                 </div>
@@ -932,13 +855,34 @@ export default function Landing() {
 
             <div className="lp-text lp-luft-oben">
               <p>
-                Der kritische Pfad, die Entscheidungen mit Frist, die Zeit des
-                Projektverantwortlichen, was in diesen Wochen nicht passt, und die Risiken stehen im{' '}
+                Die Arbeiten je Meilenstein, der kritische Pfad, die Entscheidungen mit Frist, die
+                Zeit des Projektverantwortlichen, was in diesen Wochen nicht passt, und die Risiken
+                stehen im{' '}
                 <a href={pfad('/stand/#plan')}>ausführlichen Stand</a>, dazu der Plan vom 17.09. als
                 Verlauf.
               </p>
               <p className="lp-klein">Quelle: {plan.quelle}</p>
             </div>
+          </Sektion>
+        ) : null}
+
+        {/* 12 Begriffe -------------------------------------------------------- */}
+        {sichtbar(d.glossar) ? (
+          <Sektion id="begriffe">
+            <h2 className="lp-aussage breit">{d.glossar.satz}</h2>
+            <dl className="lp-spec lp-luft-oben">
+              {[...d.glossar.eintraege]
+                .sort((x, y) => x.begriff.localeCompare(y.begriff, 'de'))
+                .map((e) => (
+                  <div className="lp-spec-zeile" key={e.id} id={`begriff-${e.id}`}>
+                    <dt>{e.begriff}</dt>
+                    <dd>{e.erklaerung}</dd>
+                  </div>
+                ))}
+            </dl>
+            <p className="lp-klein lp-luft-oben">
+              Quellen: {[...new Set(d.glossar.eintraege.map((e) => e.quelle))].join('; ')}
+            </p>
           </Sektion>
         ) : null}
 

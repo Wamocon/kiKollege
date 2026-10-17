@@ -576,6 +576,14 @@ export interface Anleitung extends MitFreigabe {
   quelle: string
 }
 
+/** Ein Fachwort der Seite, erklärt in ein bis zwei Sätzen. */
+export interface GlossarEintrag {
+  id: string
+  begriff: string
+  erklaerung: string
+  quelle: string
+}
+
 export interface Projektstand {
   stand: string
   herkunft: {
@@ -664,6 +672,7 @@ export interface Projektstand {
   stufen: Stufe[]
   stufenPlan: { text: string; freigabe: Freigabe }
   anleitung: Anleitung
+  glossar: { satz: string; eintraege: GlossarEintrag[]; freigabe: Freigabe }
   arbeitsschwerpunkt: {
     satz: string
     brauchtEs: string

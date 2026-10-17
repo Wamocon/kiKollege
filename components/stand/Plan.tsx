@@ -53,6 +53,27 @@ export function PlanAbschnitt() {
         <p>{p.lauffaehig}</p>
       </div>
 
+      <h3 style={{ marginTop: '1.8rem' }}>Die Arbeiten je Meilenstein</h3>
+      {p.meilensteine.map((m) => (
+        <Block key={m.id} titel={`${m.id}, ${datum(m.termin).slice(0, 6)}: ${m.titel}`}>
+          <ul>
+            {m.inhalt.map((i) => (
+              <li key={i.text}>
+                {i.erledigt ? <b>erledigt {i.erledigt}: </b> : null}
+                {i.text}
+                {i.teilweise ? <>. {i.teilweise}</> : null}
+              </li>
+            ))}
+          </ul>
+          <p style={{ marginTop: '0.6rem' }}>
+            <b>Abnahme:</b> {m.abnahme}
+          </p>
+          <p className="fussnote" style={{ marginTop: '0.4rem' }}>
+            Ursprüngliche Frist im Plan vom {datum(p.von).slice(0, 6)}: {datum(m.fruehereFrist).slice(0, 6)}
+          </p>
+        </Block>
+      ))}
+
       <h3 style={{ marginTop: '1.8rem' }}>Zeit des Projektverantwortlichen je Meilenstein</h3>
       <div className="raster">
         {p.meilensteine.map((m) => (
