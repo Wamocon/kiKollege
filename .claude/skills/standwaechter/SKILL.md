@@ -150,6 +150,8 @@ gebauten Seite, auch in Grafiken; ein Fund hält den Pull Request auf.
 | Was Impressum und Datenschutz noch fehlt | `recht.impressumFehlt`, `recht.datenschutzFehlt` |
 | Stufe mit Abnahme | `stufen`, Abnahme in `bedingung` |
 | Der Plan, der gilt: Termine, Meilensteine, Fristen, Risiken | `meilensteinplanAktuell` |
+| Wie man einen Auftrag gibt, was der Orchestrator annimmt und ablehnt; nur aus seiner freigegebenen Akte | `anleitung` |
+| Ein neues Fachwort auf der Seite | `glossar.eintraege`, mit `id`, Erklärung und Quelle |
 | Ein Plan, der ersetzt wird | bleibt stehen; `ueberholtAm` und `ueberholt` setzen, den neuen unter `meilensteinplanAktuell` |
 | Baustein oder Verbindung der Systemlandschaft | `landschaft` |
 | Neue oder umbenannte Rubrik des Unternehmenswissens | `unternehmenswissen.rubriken`, die Anzahlen zählt `abbild:vault` |
