@@ -601,9 +601,9 @@ Anklang an das Enabler-Feld.
 Block 02 des CI-Profils setzt für die WAMOCON GmbH **Sie, sachlich und
 belegorientiert**. Die erklärenden Abschnitte der Landing Page sprechen den Leser
 nicht an. Der Abschnitt Beauftragen duzt, seit dem 17.10.2026: Er richtet sich an
-das Team, und so hat es der Projektverantwortliche entschieden. Das weicht vom
-CI-Profil ab; die Texte stehen in `anleitung` und lassen sich in einem Zug auf Sie
-umstellen. Die Datenschutzseite siezt.
+das Team, und so hat es der Projektverantwortliche entschieden, am 17.10. noch einmal
+mit Blick auf das CI-Profil. Die Texte stehen in `anleitung` und ließen sich in
+einem Zug auf Sie umstellen. Die Datenschutzseite siezt.
 
 Für die Academy führt das CI-Blatt die Anrede in Block 05 ausdrücklich als offenen
 Widerspruch: Der Teaser duzt, test-it-academy.com siezt. Da die Landing Page eine Seite

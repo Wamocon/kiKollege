@@ -33,13 +33,17 @@ dem Zweig `landing/umbau-alle-leser`:
   umformulierter Tag der Chronik als gelöscht.
 
 Der Lesetest (ein Agent, nur der Text der Seite, sechs Fragen) fand Lücken. Die
-Seite hat behoben, was sie selbst lösen kann. Offen, weil es eine Entscheidung
-braucht:
+Seite hat behoben, was sie selbst lösen kann. Danach am 17.10. entschieden:
 
-- Wen spricht ein Teammitglied an? Die Seite nennt nur die Rolle.
-- Welcher Messenger? Die Seite sagt, man erfährt es beim Freischalten.
-- Beispiele für Zielgruppe und Kursformat gibt es in der Ablage nicht.
-- Der Abschnitt Beauftragen duzt, das CI-Profil setzt für die GmbH Sie.
+- **Kontakt:** Die Seite nennt nur die Rolle. Wer der Projektverantwortliche ist,
+  wie man ihn erreicht und welcher Messenger, steht in der Einladung zum
+  Freischalten und später auf der internen Seite.
+- **Anrede:** Beauftragen duzt und bleibt dabei, obwohl das CI-Profil für die GmbH
+  Sie setzt.
+
+Offen: Beispiele für Zielgruppe und Kursformat gibt es in der Ablage nicht. Sobald
+die Anleitung fürs Team freigegeben ist, gehören zwei echte Beispielaufträge in
+`anleitung`.
 
 ## Nachtrag 16.10.2026: vier Wochen nachgetragen
 
