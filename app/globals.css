@@ -1153,6 +1153,24 @@ th.num { text-align: right; }
 .lp-gegen td.merkmal { font-family: var(--schrift-mono); font-size: 0.72rem; letter-spacing: 0.02em; color: var(--wmc-muted); width: 9rem; }
 .lp-gegen td.leise { color: var(--wmc-muted); }
 .lp-gegen-rahmen { overflow-x: auto; }
+/* Eine Tabelle mit vier Textspalten stapelt sich am Handy: je Zeile ein Block,
+   jedes Feld mit seinem Spaltenkopf davor. */
+@media (max-width: 620px) {
+  .lp-stapel thead { display: none; }
+  .lp-stapel tr { display: block; padding: 0.7rem 0; border-bottom: 1px solid var(--rand-leise); }
+  .lp-stapel td { display: block; padding: 0.1rem 0; border-bottom: 0; }
+  .lp-stapel td::before {
+    content: attr(data-kopf);
+    display: block;
+    margin-top: 0.35rem;
+    font-family: var(--schrift-mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--wmc-muted);
+  }
+  .lp-stapel td:first-child::before { margin-top: 0; }
+}
 
 /* --- Zwei Listen nebeneinander --------------------------------------------- */
 .lp-paar {
@@ -1355,7 +1373,7 @@ th.num { text-align: right; }
   color: var(--wmc-primary-text);
 }
 .lp-verzeichnis a[aria-current] { font-weight: 700; }
-.lp-verzeichnis a[aria-current]::after { content: " ·"; color: var(--signal); }
+.lp-verzeichnis a[aria-current] span:last-child::after { content: " ·"; color: var(--signal); }
 
 /* --- Feste Leiste am linken Rand --- */
 .lp-schiene { display: none; }

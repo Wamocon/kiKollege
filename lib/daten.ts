@@ -568,6 +568,8 @@ export interface Anleitung extends MitFreigabe {
   spracheAb: string
   schritte: { titel: string; text: string }[]
   zeilen: AnleitungZeile[]
+  /** Was die Pflichtangaben eines Prüfauftrags bedeuten. */
+  angaben: { angabe: string; erklaerung: string }[]
   ablehnung: string[]
   bericht: string
   fehlalarm: string

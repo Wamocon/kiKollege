@@ -1723,7 +1723,7 @@
         "id": "gedaechtnis",
         "titel": "Gedächtnis",
         "kurz": "was hängen bleibt",
-        "text": "Ergebnisse bleiben, Regeln werden nachgeschärft. Was ein Mensch als Fehlalarm markiert, geht zurück in die Regel. Ein Chatbot vergisst mit dem Fenster."
+        "text": "Ergebnisse bleiben, Regeln werden nachgeschärft. Was ein Mensch als Fehlalarm markiert, geht zurück in die Regel. Ein Chatbot vergisst alles, sobald das Gespräch endet."
       },
       {
         "id": "aufsicht",
@@ -2566,7 +2566,7 @@
       {
         "id": "grenzprogramm",
         "ort": "werkbank",
-        "name": "Grenzprogramm mit Testfällen",
+        "name": "Grenze auch an der Werkbank, mit Testfällen",
         "zustand": "vorhanden"
       },
       {
@@ -3681,8 +3681,8 @@
   },
   "anleitung": {
     "stand": "2026-10-17",
-    "satz": "Einen Auftrag gibst du dem Orchestrator. Er sucht aus, wer ihn erledigt, und reicht dir das Ergebnis unverändert zurück.",
-    "wer": "Beauftragen darf jeder im Team, auch in der Academy, dessen Kennung im Messenger freigeschaltet ist. Dafür brauchst du ein Konto im Messenger und gibst dein Einverständnis; freischalten lässt dich der Projektverantwortliche.",
+    "satz": "Einen Auftrag gibst du dem Orchestrator Hermes. Er sucht aus, wer ihn erledigt, und reicht dir das Ergebnis unverändert zurück.",
+    "wer": "Beauftragen darf jeder im Team, auch in der Academy, dessen Kennung im Messenger freigeschaltet ist. Freischalten lässt dich der Projektverantwortliche: Du brauchst ein Konto im Messenger und gibst dein Einverständnis, auf der Teamliste zu stehen; jeder Auftrag hält fest, von wem er kam. Welchen Messenger und welchen Kontakt, erfährst du beim Freischalten.",
     "teamAb": "M2",
     "spracheAb": "M3",
     "schritte": [
@@ -3748,7 +3748,7 @@
     ],
     "ablehnung": [
       "Etwas bauen: eine Regel, ein Skript, die Normbasis, eine Präsentation. Das geschieht an der Werkbank.",
-      "Freigeben, einen Befund bewerten, eine Notiz für verbindlich erklären. Das tut der Projektverantwortliche.",
+      "Freigeben, einen Befund bewerten, eine Notiz für verbindlich erklären. Das tun Menschen, bisher der Projektverantwortliche.",
       "Einen Auftrag, der erst später möglich ist. Er sagt dir, ab wann.",
       "Alles, was nicht in seiner Tabelle steht. Er sagt dir, warum, und wer zuständig ist."
     ],
@@ -3758,11 +3758,11 @@
     "mitmachen": [
       {
         "titel": "Den Maßstab aufschreiben",
-        "text": "Kennst du die Regeln deines Bereichs, bring sie in Sätze: als Checkliste, Vorschrift oder Vorlage. Ein neuer KI-Mitarbeiter entsteht dort, wo der Maßstab schon halb geschrieben vorliegt."
+        "text": "Kennst du die Regeln deines Bereichs, bring sie in Sätze: als Checkliste, Vorschrift oder Vorlage, und gib sie dem Projektverantwortlichen. Ein neuer KI-Mitarbeiter entsteht dort, wo der Maßstab schon halb geschrieben vorliegt."
       },
       {
         "titel": "Befunde bewerten",
-        "text": "Je Befund sagt ein Mensch, der das Fach kennt: trifft zu, trifft nicht zu oder anders gewichtet. Erst daraus wird eine Fehlalarmquote, und erst sie sagt, ob man einem KI-Mitarbeiter glauben kann."
+        "text": "Je Befund sagt ein Mensch, der das Fach kennt: trifft zu, trifft nicht zu oder anders gewichtet. Erst daraus wird eine Fehlalarmquote, und erst sie sagt, ob man einem KI-Mitarbeiter glauben kann. Bisher hat nur der Projektverantwortliche bewertet; wer mitbewerten will, spricht ihn an."
       },
       {
         "titel": "Eine Rolle vorschlagen",
@@ -3770,7 +3770,29 @@
       }
     ],
     "quelle": "Akte des Orchestrators, freigegeben am 28.09.2026, Stand 17.10.2026; Akte des Reviewers vom 17.09.2026; Auskunft des Projektverantwortlichen vom 17.10.2026 zum Melden von Fehlalarmen",
-    "freigabe": "oeffentlich"
+    "freigabe": "oeffentlich",
+    "angaben": [
+      {
+        "angabe": "Jahrgang",
+        "erklaerung": "Begann der Ausbildungsvertrag vor oder ab dem 01.08.2025? Davon hängt ab, welche Ausbildungsordnung gilt."
+      },
+      {
+        "angabe": "Themenkomplex, Lernfeld oder Berufsbildposition",
+        "erklaerung": "Welcher Teil der Ausbildung gemeint ist, etwa ein Themenkomplex der Academy mit seiner Nummer."
+      },
+      {
+        "angabe": "Zielgruppe mit Kursformat",
+        "erklaerung": "Für wen die Unterlage gedacht ist und in welcher Form sie eingesetzt wird."
+      },
+      {
+        "angabe": "Prüfumfang",
+        "erklaerung": "Was genau geprüft werden soll: eine Datei, ein Enabler oder ein ganzer Themenkomplex."
+      },
+      {
+        "angabe": "Wo die Unterlagen liegen",
+        "erklaerung": "Der Ordner oder die Datei, die geprüft werden soll."
+      }
+    ]
   },
   "glossar": {
     "satz": "Die Wörter, die auf diesen Seiten immer wieder vorkommen.",
@@ -3868,7 +3890,7 @@
       {
         "id": "ki-rechner",
         "begriff": "KI-Rechner",
-        "erklaerung": "Der Rechner im Haus, auf dem die Mannschaft im Dauerbetrieb läuft, mit einem offenen Sprachmodell.",
+        "erklaerung": "Der Rechner im Haus, ein DGX Spark, auf dem die Mannschaft im Dauerbetrieb läuft, mit einem offenen Sprachmodell.",
         "quelle": "Systemlandschaft, Stand 16.10.2026"
       },
       {
@@ -3942,6 +3964,72 @@
         "begriff": "Werkbank",
         "erklaerung": "Der Arbeitsplatz, an dem KI-Mitarbeiter gebaut und gemessen werden, mit Claude Code.",
         "quelle": "Systemlandschaft, Stand 16.10.2026"
+      },
+      {
+        "id": "ausbildungsordnung",
+        "begriff": "Ausbildungsordnung",
+        "erklaerung": "Die Verordnung, die eine Ausbildung regelt, hier die für Kaufleute für Büromanagement. Ihr amtlicher Wortlaut ist die Normbasis.",
+        "quelle": "Normbasis, Bundesgesetzblatt"
+      },
+      {
+        "id": "berufsbildposition",
+        "begriff": "Berufsbildposition",
+        "erklaerung": "Ein Abschnitt des Ausbildungsrahmenplans; er legt fest, was der Betrieb vermitteln muss. Die Academy gliedert ihre Unterlagen danach.",
+        "quelle": "Unterlagensystematik der Academy, erhoben am 27.08.2026"
+      },
+      {
+        "id": "claude-hermes",
+        "begriff": "Claude Code, Hermes Agent",
+        "erklaerung": "Die beiden Programme, in denen die KI-Mitarbeiter laufen: Claude Code an der Werkbank, Hermes Agent auf dem KI-Rechner. Beide sind ein Harness.",
+        "quelle": "Systemlandschaft, Stand 16.10.2026"
+      },
+      {
+        "id": "git",
+        "begriff": "Git, Pull Request",
+        "erklaerung": "Git hält Dateien mit ihrem ganzen Verlauf auf mehreren Rechnern gleich. Ein Pull Request ist ein Änderungsvorschlag, den ein Mensch prüft, bevor er übernommen wird.",
+        "quelle": "Vault-Konventionen"
+      },
+      {
+        "id": "kritischer-pfad",
+        "begriff": "Kritischer Pfad",
+        "erklaerung": "Die Folge von Arbeiten, bei der jede auf die vorige wartet. Verzögert sich eine davon, verschiebt sich der ganze Plan.",
+        "quelle": "Meilensteinplan vom 29.09.2026"
+      },
+      {
+        "id": "lernfeld",
+        "begriff": "Lernfeld",
+        "erklaerung": "Eine Einheit des Lehrplans der Berufsschule. Die Unterlagen der Academy folgen nicht den Lernfeldern, sondern dem Ausbildungsrahmenplan.",
+        "quelle": "Unterlagensystematik der Academy, erhoben am 27.08.2026"
+      },
+      {
+        "id": "skript",
+        "begriff": "Skript",
+        "erklaerung": "Ein kleines Programm, das bei jedem Lauf genau gleich vorgeht. Was sich als feste Regel fassen lässt, prüft ein Skript statt des Sprachmodells.",
+        "quelle": "Einführung vom 04.09.2026"
+      },
+      {
+        "id": "themenkomplex",
+        "begriff": "Themenkomplex",
+        "erklaerung": "Ein Kapitel der Unterlagen der Academy, je einer Berufsbildposition entsprechend. Darin liegen die Enabler.",
+        "quelle": "Unterlagensystematik der Academy, erhoben am 27.08.2026"
+      },
+      {
+        "id": "training",
+        "begriff": "Training",
+        "erklaerung": "Das Lernen eines Sprachmodells aus großen Textmengen, bevor es eingesetzt wird. Daher stammt sein allgemeines Wissen, nicht das Wissen dieses Hauses.",
+        "quelle": "Einführung vom 04.09.2026"
+      },
+      {
+        "id": "use-case",
+        "begriff": "Use-Case, Szenario",
+        "erklaerung": "Zwei Arten von Unterlagen der Academy: Zu jedem Enabler gehört ein Szenario, Use-Cases gibt es je Themenkomplex.",
+        "quelle": "Unterlagensystematik der Academy, erhoben am 27.08.2026"
+      },
+      {
+        "id": "wissensschicht",
+        "begriff": "Wissensschicht",
+        "erklaerung": "Im Organigramm die Bereiche der Ablage, auf die sich ein KI-Mitarbeiter stützen darf, je mit ihrem Freigabestand.",
+        "quelle": "Organigramm vom 16.10.2026"
       }
     ],
     "freigabe": "oeffentlich"

@@ -59,7 +59,8 @@ export default function Landing() {
   const teamAb = termin(a.teamAb)
   const spracheAb = termin(a.spracheAb)
   const erledigtIn = (ms: (typeof plan.meilensteine)[number]) => ms.inhalt.filter((i) => i.erledigt).length
-  const imZustand = (z: string) => koepfe.filter((k) => k.zustand === z).length
+  const laufen = koepfe.filter((k) => k.betrieb).length
+  const mitGrenze = koepfe.filter((k) => k.betrieb === 'mitGrenze').length
 
   return (
     <>
@@ -154,7 +155,7 @@ export default function Landing() {
           <div className="lp-text lp-luft-oben">
             <p>
               Er prüft die Unterlagen der WAMOCON Academy für die Ausbildung zu Kaufleuten für
-              Büromanagement gegen die Checklisten des Hauses und die Ausbildungsverordnung, und
+              Büromanagement gegen die Checklisten des Hauses und die Ausbildungsordnung, und
               schreibt einen Bericht. {zahl(d.gegenstand.dateien)} Dateien liegen dort. Jede müsste
               vollständig und jedes Mal gleich geprüft werden. Die Aufgabe ist nicht schwer, sie ist
               zu viel.
@@ -397,7 +398,7 @@ export default function Landing() {
 
             <h3 className="lp-aussage lp-luft-oben">Was er annimmt.</h3>
             <div className="lp-gegen-rahmen">
-              <table className="lp-gegen">
+              <table className="lp-gegen lp-stapel">
                 <thead>
                   <tr>
                     <th>Auftrag</th>
@@ -409,15 +410,25 @@ export default function Landing() {
                 <tbody>
                   {nurSichtbare(a.zeilen).map((z) => (
                     <tr key={z.auftrag}>
-                      <td>{z.auftrag}</td>
-                      <td>{z.wer}</td>
-                      <td className="leise">{z.angaben}</td>
-                      <td>{abWann(z.ab)}</td>
+                      <td data-kopf="Auftrag">{z.auftrag}</td>
+                      <td data-kopf="Wer ihn erledigt">{z.wer}</td>
+                      <td data-kopf="Was du angibst" className="leise">{z.angaben}</td>
+                      <td data-kopf="Ab wann">{abWann(z.ab)}</td>
                     </tr>
                   ))}
                 </tbody>
               </table>
             </div>
+
+            <p className="lp-klein lp-luft-oben">Was die Angaben zu einer Prüfung bedeuten</p>
+            <dl className="lp-spec">
+              {a.angaben.map((g) => (
+                <div className="lp-spec-zeile" key={g.angabe}>
+                  <dt>{g.angabe}</dt>
+                  <dd>{g.erklaerung}</dd>
+                </div>
+              ))}
+            </dl>
 
             <h3 className="lp-aussage lp-luft-oben">Was er ablehnt, und dir sagt, warum.</h3>
             <div className="lp-text lp-luft-oben-klein">
@@ -717,11 +728,11 @@ export default function Landing() {
               ) : null}
               <div className="lp-kpi-kachel">
                 <p className="lp-kpi-wert">
-                  {imZustand('arbeitet')} von {koepfe.length}
+                  {laufen} von {koepfe.length}
                 </p>
                 <p className="lp-kpi-label">
-                  Rollen arbeiten. Eingerichtet: {imZustand('eingerichtet')}. Entschieden, noch
-                  nicht gebaut: {imZustand('entschieden')}.
+                  Rollen laufen, {inWorten(mitGrenze)} davon mit Grenze. Entschieden und noch nicht in
+                  Betrieb: {koepfe.length - laufen}.
                 </p>
               </div>
               {sichtbar(plan) && teamAb ? (
