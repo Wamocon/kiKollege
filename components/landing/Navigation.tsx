@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-import type { LpAbschnitt } from '@/lib/lpAbschnitte'
+import { nachKapiteln, type LpAbschnitt } from '@/lib/lpAbschnitte'
 
 /** Navigation für eine lange Seite: eine feste Leiste am
  *  linken Rand auf breiten Bildschirmen, ein aufklappbares Verzeichnis für alle
@@ -16,6 +16,7 @@ export function Navigation({
   const [offen, setOffen] = useState(false)
   const [amFuss, setAmFuss] = useState(false)
   const fortschritt = useRef<HTMLDivElement>(null)
+  const gruppen = nachKapiteln(abschnitte)
 
   // Aktiven Abschnitt bestimmen
   useEffect(() => {
@@ -112,34 +113,46 @@ export function Navigation({
       >
         <div className="lp-verzeichnis-innen">
           <p className="lp-verzeichnis-titel">Inhalt</p>
-          <ol>
-            {abschnitte.map((a) => (
-              <li key={a.id}>
-                <a
-                  href={`#${a.id}`}
-                  onClick={() => setOffen(false)}
-                  aria-current={a.id === aktiv ? 'true' : undefined}
-                >
-                  <span className="nr">{a.nr}</span>
-                  <span>{a.label}</span>
-                </a>
-              </li>
+          <div className="lp-kapitel-gruppen">
+            {gruppen.map((g) => (
+              <div key={g.kapitel}>
+                <p className="lp-kapitel">{g.kapitel}</p>
+                <ol>
+                  {g.abschnitte.map((a) => (
+                    <li key={a.id}>
+                      <a
+                        href={`#${a.id}`}
+                        onClick={() => setOffen(false)}
+                        aria-current={a.id === aktiv ? 'true' : undefined}
+                      >
+                        <span className="nr">{a.nr}</span>
+                        <span>{a.label}</span>
+                      </a>
+                    </li>
+                  ))}
+                </ol>
+              </div>
             ))}
-          </ol>
+          </div>
         </div>
       </div>
 
       <nav className={amFuss ? 'lp-schiene weg' : 'lp-schiene'} aria-label="Abschnitte">
-        <ol>
-          {abschnitte.map((a) => (
-            <li key={a.id}>
-              <a href={`#${a.id}`} aria-current={a.id === aktiv ? 'true' : undefined}>
-                <span className="nr">{a.nr}</span>
-                <span className="was">{a.label}</span>
-              </a>
-            </li>
-          ))}
-        </ol>
+        {gruppen.map((g) => (
+          <div key={g.kapitel}>
+            <p className="lp-kapitel">{g.kapitel}</p>
+            <ol>
+              {g.abschnitte.map((a) => (
+                <li key={a.id}>
+                  <a href={`#${a.id}`} aria-current={a.id === aktiv ? 'true' : undefined}>
+                    <span className="nr">{a.nr}</span>
+                    <span className="was">{a.label}</span>
+                  </a>
+                </li>
+              ))}
+            </ol>
+          </div>
+        ))}
       </nav>
     </>
   )

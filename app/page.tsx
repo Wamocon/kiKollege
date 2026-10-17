@@ -14,7 +14,7 @@ import { HeroAnatomie } from '@/components/landing/HeroAnatomie'
 import { Kopfleiste } from '@/components/landing/Kopfleiste'
 import { Rubriken } from '@/components/landing/Rubriken'
 import { Sektion } from '@/components/landing/Sektion'
-import { belastbarBei, daten, datum, dauer, harteRegel, tageZwischen, zahl, zielErreicht } from '@/lib/daten'
+import { belastbarBei, daten, datum, dauer, harteRegel, tageZwischen, zahl, zielErreicht, type AnleitungAb } from '@/lib/daten'
 import { inWorten } from '@/lib/alter'
 import { istIntern, nurSichtbare, sichtbar, zeigtInternes } from '@/lib/freigabe'
 import { pfad } from '@/lib/pfad'
@@ -44,10 +44,21 @@ export default function Landing() {
   const u = d.unternehmenswissen
 
   // Auf einen Blick: was als Nächstes ansteht, gerechnet am Stand der Daten
-  const offeneFristen = plan.fristen.filter((f) => f.stand === 'offen')
-  const verstrichen = offeneFristen.filter((f) => f.frist < d.stand).length
-  const kritisch = offeneFristen.find((f) => f.kritisch)
   const naechsterMeilenstein = plan.meilensteine.find((ms) => ms.termin >= d.stand)
+  const teamHeute = plan.heute.find((h) => h.wer === 'Team')
+
+  // Die Anleitung nennt Termine nur, wo der Plan sichtbar ist
+  const a = d.anleitung
+  const termin = (id: string) => plan.meilensteine.find((ms) => ms.id === id)?.termin
+  const kurz = (iso: string) => datum(iso).slice(0, 6)
+  const abWann = (ab: AnleitungAb) => {
+    if ('nur' in ab) return ab.nur
+    if ('nachPlan' in ab) return sichtbar(plan) ? `nach dem ${kurz(plan.bis)}` : 'später'
+    const t = termin(ab.meilenstein)
+    return sichtbar(plan) && t ? `ab ${kurz(t)}` : 'später'
+  }
+  const teamAb = termin(a.teamAb)
+  const spracheAb = termin(a.spracheAb)
   const erledigtIn = (ms: (typeof plan.meilensteine)[number]) => ms.inhalt.filter((i) => i.erledigt).length
   const imZustand = (z: string) => koepfe.filter((k) => k.zustand === z).length
 
@@ -56,18 +67,18 @@ export default function Landing() {
       <Kopfleiste />
 
       <main id="inhalt">
-        {/* 01 Vorhaben ------------------------------------------------------ */}
+        {/* 01 Was ein KI-Mitarbeiter ist ------------------------------------- */}
         <Sektion id="vorhaben" klasse="lp-hero">
           <h1 className="lp-display">
-            <span className="zeile">Der KI-Mitarbeiter bewertet.</span>
-            <span className="zeile">Ein Mensch gibt frei.</span>
+            <span className="zeile">Ein KI-Mitarbeiter arbeitet zu.</span>
+            <span className="zeile">Ein Mensch entscheidet.</span>
           </h1>
 
           <p className="lp-lead lp-luft-oben">
-            Ein KI-Mitarbeiter ist eine benannte Rolle mit einer Grenze, einem Maßstab und einem
-            Gedächtnis. Nicht jede Aufgabe eignet sich dafür, und ein Sprachmodell allein ist noch
-            kein Mitarbeiter. Diese Seite erklärt, worum es geht, woraus so einer besteht und wie
-            die {gmbh.name} vorgeht. Einen gibt es seit Ende August im Einsatz.
+            Ein KI-Mitarbeiter ist ein Sprachmodell, also die Technik hinter Chat-Programmen, mit
+            einer festen Aufgabe, einem aufgeschriebenen Maßstab und einer Grenze. Er prüft,
+            sortiert und bereitet vor; was daraus folgt, entscheidet ein Mensch. Die {gmbh.name}{' '}
+            baut solche Rollen seit dem {datum(d.arbeitstage.beginn)}.
           </p>
 
           <HeroAnatomie
@@ -76,13 +87,79 @@ export default function Landing() {
             teile={d.anatomie.teile}
           />
 
-          <dl className="lp-spec">
-            <div className="lp-spec-zeile">
-              <dt>Erste Rolle</dt>
-              <dd>
-                Reviewer für Schulungsunterlagen der IHK-Ausbildung Kaufleute für Büromanagement
-              </dd>
+          <div id="chatbot">
+            <h2 className="lp-aussage lp-luft-oben">{d.abgrenzung.satz}</h2>
+            <div className="lp-gegen-rahmen">
+              <table className="lp-gegen">
+                <thead>
+                  <tr>
+                    <th />
+                    <th>Ein Chatbot</th>
+                    <th className="stark">Ein KI-Mitarbeiter</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {d.abgrenzung.zeilen
+                    .filter((z) => ['Auftrag', 'Maßstab', 'Grenze'].includes(z.merkmal))
+                    .map((z) => (
+                      <tr key={z.merkmal}>
+                        <td className="merkmal">{z.merkmal}</td>
+                        <td className="leise">{z.chatbot}</td>
+                        <td>{z.mitarbeiter}</td>
+                      </tr>
+                    ))}
+                </tbody>
+              </table>
             </div>
+          </div>
+
+          <div id="eignung">
+            <h2 className="lp-aussage lp-luft-oben">Wofür er taugt, und wofür nicht.</h2>
+            <div className="lp-paar">
+              <div>
+                <h3>Geeignet, wenn</h3>
+                <ul>
+                  {d.eignung.geeignet.map((t) => (
+                    <li key={t}>{t}</li>
+                  ))}
+                </ul>
+              </div>
+              <div className="nein">
+                <h3>Ungeeignet, wenn</h3>
+                <ul>
+                  {d.eignung.ungeeignet.map((t) => (
+                    <li key={t}>{t}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+            <div className="lp-text lp-luft-oben">
+              <p>
+                {d.eignung.nachsatz} {harteRegel('rollengrenze').grund}
+              </p>
+            </div>
+          </div>
+        </Sektion>
+
+        {/* 02 Der erste: Fritz ------------------------------------------------ */}
+        <Sektion id="erster">
+          <p className="lp-klein">
+            Im Einsatz seit dem {datum(d.arbeitstage.beginn)}
+          </p>
+          <h2 className="lp-aussage breit lp-luft-oben-klein">
+            Fritz, Reviewer für Schulungsunterlagen.
+          </h2>
+          <div className="lp-text lp-luft-oben">
+            <p>
+              Er prüft die Unterlagen der WAMOCON Academy für die Ausbildung zu Kaufleuten für
+              Büromanagement gegen die Checklisten des Hauses und die Ausbildungsverordnung, und
+              schreibt einen Bericht. {zahl(d.gegenstand.dateien)} Dateien liegen dort. Jede müsste
+              vollständig und jedes Mal gleich geprüft werden. Die Aufgabe ist nicht schwer, sie ist
+              zu viel.
+            </p>
+          </div>
+
+          <dl className="lp-spec">
             <div className="lp-spec-zeile">
               <dt>Grenze</dt>
               <dd>
@@ -96,167 +173,44 @@ export default function Landing() {
                 {d.massstab.schweregrade.length} Schweregrade
               </dd>
             </div>
-            <div className="lp-spec-zeile">
-              <dt>Seit</dt>
-              <dd>
-                {datum(d.arbeitstage.beginn)}, also{' '}
-                {tageZwischen(d.arbeitstage.beginn, d.stand)} Tage
-              </dd>
-            </div>
-            <div className="lp-spec-zeile">
-              <dt>Nicht belastbar</dt>
-              <dd>
-                <b>die Fehlalarmquote.</b> {d.standSatz}
-              </dd>
-            </div>
+            {sichtbar(b) ? (
+              <div className="lp-spec-zeile">
+                <dt>Fehlalarmquote</dt>
+                <dd>
+                  belastbar {belastbarBei(b)}, mehr dazu im <a href="#messung">nächsten Abschnitt</a>
+                </dd>
+              </div>
+            ) : null}
           </dl>
 
-          <div className="lp-blick" role="group" aria-labelledby="blick-titel">
-            <h2 className="lp-klein" id="blick-titel">
-              Auf einen Blick, Stand {datum(d.stand)}
-            </h2>
-            <div className="lp-kpi">
-              {sichtbar(plan) && naechsterMeilenstein ? (
-                <div className="lp-kpi-kachel">
-                  <p className="lp-kpi-wert">{datum(naechsterMeilenstein.termin).slice(0, 6)}</p>
-                  <p className="lp-kpi-label">
-                    Abnahme {naechsterMeilenstein.id}: {naechsterMeilenstein.titel}. Erledigt sind{' '}
-                    {inWorten(erledigtIn(naechsterMeilenstein))} von{' '}
-                    {inWorten(naechsterMeilenstein.inhalt.length)} Arbeiten.
-                  </p>
-                </div>
-              ) : null}
-              {sichtbar(plan) && offeneFristen.length ? (
-                <div className="lp-kpi-kachel">
-                  <p className="lp-kpi-wert">
-                    {offeneFristen.length} von {plan.fristen.length}
-                  </p>
-                  <p className="lp-kpi-label">
-                    Entscheidungen mit Frist sind offen
-                    {verstrichen ? `, ${verstrichen === offeneFristen.length ? 'alle' : inWorten(verstrichen)} mit verstrichener Frist` : ''}.
-                    {kritisch
-                      ? ` Auf dem kritischen Pfad liegt ${kritisch.text.split(':')[0].replace(/^Die /, 'die ')}.`
-                      : ''}
-                  </p>
-                </div>
-              ) : null}
-              {sichtbar(b) ? (
-                <div className="lp-kpi-kachel">
-                  <p className="lp-kpi-wert">{zahl(b.bewertet)}</p>
-                  <p className="lp-kpi-label">
-                    Befunde von einem Menschen bewertet, Fehlalarme darunter: {zahl(b.fehlalarme)}.
-                    Belastbar ist die Quote {belastbarBei(b)}.
-                  </p>
-                </div>
-              ) : null}
+          <div className="lp-kpi">
+            <div className="lp-kpi-kachel">
+              <p className="lp-kpi-wert">{zahl(rechenlauf?.geprueft ?? 0)}</p>
+              <p className="lp-kpi-label">
+                Übungsfälle in einem Lauf geprüft, Dauer {rechenlauf?.laufzeit}
+              </p>
+            </div>
+            {rechenlauf?.zusatz ? (
               <div className="lp-kpi-kachel">
-                <p className="lp-kpi-wert">
-                  {imZustand('arbeitet')} von {koepfe.length}
-                </p>
+                <p className="lp-kpi-wert">{zahl(rechenlauf.zusatz.gleichungen)}</p>
                 <p className="lp-kpi-label">
-                  Rollen arbeiten. Eingerichtet: {imZustand('eingerichtet')}. Entschieden, noch
-                  nicht gebaut: {imZustand('entschieden')}.
+                  Rechnungen darin nachgerechnet, {zahl(rechenlauf.zusatz.gleichungenFalsch)} davon
+                  falsch
                 </p>
               </div>
-              {sichtbar(d.ablage) ? (
-                <div className="lp-kpi-kachel">
-                  <p className="lp-kpi-wert">
-                    {zahl(verbindlich)} von {zahl(d.ablage.notizen)}
-                  </p>
-                  <p className="lp-kpi-label">
-                    Notizen der Ablage sind verbindlich.{' '}
-                    {fachlichVerbindlich === 0
-                      ? 'Normbasis und Prüfmaßstab hat noch niemand freigegeben.'
-                      : `Aus Normbasis und Prüfmaßstab: ${zahl(fachlichVerbindlich)}.`}
-                  </p>
-                </div>
-              ) : null}
+            ) : null}
+            <div className="lp-kpi-kachel">
+              <p className="lp-kpi-wert">{zahl(fachreview.fragen!)}</p>
+              <p className="lp-kpi-label">
+                Quizfragen fachlich geprüft, über {zahl(fachreview.enabler!)} Enabler
+              </p>
             </div>
-            <p className="lp-text lp-luft-oben-klein">
-              {sichtbar(plan) ? (
-                <>
-                  Zeitplan und Fristen stehen unter <a href="#plan">Meilensteine</a>, alles
-                  Weitere{' '}
-                </>
-              ) : (
-                'Alles Weitere steht '
-              )}
-              im <a href={pfad('/stand/')}>ausführlichen Stand</a>.
-            </p>
-          </div>
-        </Sektion>
-
-        {/* 02 Kein Chatbot -------------------------------------------------- */}
-        <Sektion id="chatbot">
-          <h2 className="lp-aussage">
-            {d.abgrenzung.satz}
-          </h2>
-          <div className="lp-text lp-luft-oben">
-            <p>{d.abgrenzung.erklaerung}</p>
-          </div>
-
-          <div className="lp-gegen-rahmen">
-            <table className="lp-gegen">
-              <thead>
-                <tr>
-                  <th />
-                  <th>Ein Chatbot</th>
-                  <th className="stark">Ein KI-Mitarbeiter</th>
-                </tr>
-              </thead>
-              <tbody>
-                {d.abgrenzung.zeilen.map((z) => (
-                  <tr key={z.merkmal}>
-                    <td className="merkmal">{z.merkmal}</td>
-                    <td className="leise">{z.chatbot}</td>
-                    <td>{z.mitarbeiter}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </Sektion>
-
-        {/* 03 Eignung ------------------------------------------------------- */}
-        <Sektion id="eignung">
-          <h2 className="lp-aussage breit">
-            Vier Merkmale entscheiden, ob eine Aufgabe in Frage kommt.
-          </h2>
-
-          <div className="lp-paar">
-            <div>
-              <h3>Geeignet, wenn</h3>
-              <ul>
-                {d.eignung.geeignet.map((t) => (
-                  <li key={t}>{t}</li>
-                ))}
-              </ul>
+            <div className="lp-kpi-kachel">
+              <p className="lp-kpi-wert">{zahl(fachreview.blocker!)}</p>
+              <p className="lp-kpi-label">
+                schwerwiegende Befunde darunter: Antworten, die fachlich falsch sind
+              </p>
             </div>
-            <div className="nein">
-              <h3>Ungeeignet, wenn</h3>
-              <ul>
-                {d.eignung.ungeeignet.map((t) => (
-                  <li key={t}>{t}</li>
-                ))}
-              </ul>
-            </div>
-          </div>
-
-          <div className="lp-text lp-luft-oben">
-            <p>{d.eignung.nachsatz}</p>
-          </div>
-
-          <h3 className="lp-aussage lp-luft-oben">
-            {harteRegel('rollengrenze').grund}
-          </h3>
-          <div className="lp-text lp-luft-oben-klein">
-            <p>
-              Dass ein Testhaus seinen ersten KI-Mitarbeiter als Prüfer baut und nicht als
-              Ersteller, hat denselben Ursprung wie die Entscheidung zum Fehlalarm weiter unten. Das
-              Kerngeschäft der {gmbh.name} ist {gmbh.leistungen.slice(0, -1).join(', ')} und{' '}
-              {gmbh.leistungen[gmbh.leistungen.length - 1]}. Die Haltung zum Befund kommt von dort
-              und nicht aus einer KI-Strategie.
-            </p>
           </div>
 
           <h3 className="lp-aussage breit lp-luft-oben">
@@ -275,218 +229,22 @@ export default function Landing() {
             ))}
           </div>
 
-          <h3 className="lp-aussage lp-luft-oben">{d.arbeitsschwerpunkt.satz}</h3>
           <div className="lp-zellen lp-luft-oben">
-            <div className="lp-zelle">
-              <span className="kopf">Was es braucht</span>
-              <p className="stark">{d.arbeitsschwerpunkt.brauchtEs}</p>
-            </div>
             <div className="lp-zelle traegt">
-              <span className="kopf">Was für die Auswahl folgt</span>
-              <p className="stark">{d.arbeitsschwerpunkt.auswahl}</p>
-            </div>
-          </div>
-          <div className="lp-text lp-luft-oben">
-            <p>{d.arbeitsschwerpunkt.schluss}</p>
-            <p>{d.uebertragbarkeit.auswahlregel}</p>
-          </div>
-        </Sektion>
-
-        {/* 04 Aufbau -------------------------------------------------------- */}
-        <Sektion id="aufbau">
-          <h2 className="lp-aussage breit">
-            Acht Fragen, die auch ein neuer Kollege beantwortet bekommt.
-          </h2>
-          <div className="lp-text lp-luft-oben-klein">
-            <p>{d.schichtenErklaerung}</p>
-          </div>
-
-          <Schichtenstapel />
-
-          <div className="lp-text lp-luft-oben">
-            <p>{d.schichtenDatei}</p>
-            <p>
-              Die beiden mit einem Balken markierten Schichten tragen den Rest. Ohne bewertete
-              Ergebnisse gibt es keine Messung, und ohne Messung keinen Grund, dem Werkzeug zu
-              glauben.
-            </p>
-          </div>
-
-          <div className="lp-quelltext">
-            <p className="lp-quelltext-kopf">
-              <b>{d.beschreibungsdatei.name}</b>
-              <span>{d.beschreibungsdatei.stand}</span>
-            </p>
-            <pre>{d.beschreibungsdatei.auszug}</pre>
-          </div>
-
-          <div className="lp-zellen lp-luft-oben">
-            <div className="lp-zelle">
-              <span className="kopf">Oben der Kopf</span>
-              <p>{d.beschreibungsdatei.kopf}</p>
+              <span className="kopf">So sieht ein Befund aus</span>
+              <p className="lp-stufe-marke">{d.beispielbefund.stufe}</p>
+              <p className="stark">{d.beispielbefund.text}</p>
+              <p className="kopf">{d.beispielbefund.fundstelle}</p>
+              <p>{d.beispielbefund.nachsatz}</p>
             </div>
             <div className="lp-zelle">
-              <span className="kopf">Unten der Auftrag</span>
-              <p>{d.beschreibungsdatei.rumpf}</p>
-            </div>
-            <div className="lp-zelle traegt">
-              <span className="kopf">Die Grenze</span>
-              <p className="stark">{d.beschreibungsdatei.grenze}</p>
-            </div>
-          </div>
-          <div className="lp-text lp-luft-oben">
-            <p>{d.beschreibungsdatei.einzigeQuelle}</p>
-          </div>
-        </Sektion>
-
-        {/* 05 Wissen -------------------------------------------------------- */}
-        <Sektion id="wissen">
-          <h2 className="lp-aussage breit">
-            Zwei Wissensablagen, nicht eine.
-          </h2>
-          <div className="lp-text lp-luft-oben-klein">
-            <p>{d.wissensablagen.satz}</p>
-          </div>
-
-          <Wissensablagen />
-
-          <div className="lp-text lp-luft-oben">
-            <p>{d.wissensablagen.gemeinsam.hinweis}</p>
-          </div>
-
-          <div className="lp-paar">
-            <div>
-              <h3>Wissen</h3>
-              <p className="lp-untertitel">Was gilt. Schreiben Menschen, ändert sich selten und nie von allein.</p>
-              <ul>
-                <li>Norm von außen: Gesetze, Verordnungen, wörtlich abgeschrieben</li>
-                <li>Maßstab des Hauses: Checklisten, Vorlagen, Corporate Design</li>
-                <li>Begriffe: was ein Wort hier bedeutet</li>
-                <li>Entscheidungen: was einmal festgelegt wurde, mit Datum</li>
-              </ul>
-            </div>
-            <div>
-              <h3>Gedächtnis</h3>
-              <p className="lp-untertitel">Was herauskam. Fällt beim Arbeiten an und wächst mit jedem Auftrag.</p>
-              <ul>
-                <li>Einzelergebnis: hunderte je Lauf, maschinell geschrieben</li>
-                <li>
-                  Regel: wenige, langlebig. Zweck, Testfälle und die gemessene Fehlalarmquote
-                </li>
-                <li>Lauf: eine Notiz je Durchgang, mit Kennzahlen für den Vergleich über die Zeit</li>
-              </ul>
-            </div>
-          </div>
-
-          <div className="lp-text lp-luft-oben">
-            <p>
-              Er liest nicht alles. Zu jedem Auftrag gehört die Angabe, welcher Teil des Wissens
-              dafür der Maßstab ist. Deshalb trägt jede Notiz ein Datum: Wissen ohne Stand lässt
-              sich nicht einordnen, und falsch eingeordnete Vorschriften erzeugen Fehlalarme.
-            </p>
-            <p>
-              Die Originale bleiben, wo sie sind. Amtliche Dokumente und die Unterlagen selbst
-              werden nicht kopiert, das Wissen verweist auf sie. So gibt es keine zweite Fassung,
-              die still veraltet. Zu jeder Notiz gehört, woher sie stammt und ob sie bestätigt ist.
-            </p>
-          </div>
-
-        </Sektion>
-
-        {/* 06 Ablage -------------------------------------------------------- */}
-        {sichtbar(d.ablage) ? (
-          <Sektion id="ablage">
-            <h2 className="lp-aussage breit">So sieht die Ablage heute aus.</h2>
-            <div className="lp-text lp-luft-oben-klein">
-              <p>
-                Das Bild ist aus den Notizen selbst gezählt, nicht von Hand gezeichnet. Jedes
-                Kästchen ist eine Notiz, gefärbt nach ihrem Freigabestand. Rechts steht, auf
-                welchen anderen Bereich ein Bereich am häufigsten verweist. Dateinamen stehen
-                nicht darin.
-              </p>
-            </div>
-
-            <AblageFigur />
-            <AblageTabelle />
-
-            {fachlichVerbindlich === 0 ? (
-              <div className="lp-text lp-luft-oben">
-                <p>
-                  Verbindlich ist bisher nur, was Konventionen und Entscheidungen festhält. Die
-                  Normbasis und der Prüfmaßstab, gegen die der Reviewer prüft, hat noch niemand
-                  freigegeben. Er muss deshalb in jedem Ergebnis sagen, dass er sich auf
-                  Ungeprüftes stützt.
-                </p>
-              </div>
-            ) : null}
-
-            <h3 className="lp-aussage lp-luft-oben">Welcher Bereich auf welchen verweist.</h3>
-            <div className="lp-text lp-luft-oben-klein">
-              <p>
-                Die Ablage kann jede Notiz als Punkt und jeden Verweis als Linie zeigen. Bei{' '}
-                {zahl(d.ablage.notizen)} Notizen und {zahl(d.ablage.verweise)} Verweisen wird daraus
-                ein Knäuel. Hier ist deshalb jeder Bereich ein Kreis, und gezeichnet sind nur die
-                Wege, die oft genommen werden.
-              </p>
-            </div>
-
-            <AblageGraphFigur />
-            <AblageGraphListe />
-
-            {sichtbar(u) ? (
-              <>
-                <h3 className="lp-aussage breit lp-luft-oben">{u.satz}</h3>
-                <div className="lp-text lp-luft-oben-klein">
-                  <p>{u.erklaerung}</p>
-                </div>
-                <Rubriken />
-                <div className="lp-text lp-luft-oben">
-                  <p>{u.stand}</p>
-                </div>
-              </>
-            ) : null}
-          </Sektion>
-        ) : null}
-
-        {/* 07 Arbeitsweise --------------------------------------------------- */}
-        <Sektion id="durchlauf">
-          <h2 className="lp-aussage breit">
-            Zwei Stufen, weil sie Verschiedenes finden.
-          </h2>
-
-          <Durchlauf />
-
-          <div className="lp-text lp-luft-oben">
-            <p>{d.durchlauf.zweiStufen}</p>
-            <p>{d.durchlauf.rueckweg}</p>
-            <p>{d.durchlauf.verdichtung}</p>
-          </div>
-
-          <Pruefpunkte />
-
-          <h3 className="lp-aussage breit lp-luft-oben">
-            Wie er gesteuert wird, und was er selbst steuert.
-          </h3>
-
-          <Steuerung />
-
-          <div className="lp-zellen lp-luft-oben">
-            <div className="lp-zelle">
-              <span className="kopf">Beauftragt werden</span>
-              <p>{d.steuerung.warumSkript}</p>
-            </div>
-            <div className="lp-zelle">
-              <span className="kopf">Selbst abgeben</span>
-              <p>{d.steuerung.helfer}</p>
-            </div>
-            <div className="lp-zelle">
-              <span className="kopf">An einen zweiten übergeben</span>
-              <p>{d.steuerung.uebergabe}</p>
+              <span className="kopf">Der geprüfte Bestand</span>
+              <EnablerRaster />
             </div>
           </div>
         </Sektion>
 
-        {/* 08 Messung -------------------------------------------------------- */}
+        {/* 03 Verlässlich? ---------------------------------------------------- */}
         <Sektion id="messung">
           <h2 className="lp-aussage">
             Ein KI-Mitarbeiter, dem man nicht glauben kann, ist schlimmer als keiner.
@@ -641,70 +399,108 @@ export default function Landing() {
           </dl>
         </Sektion>
 
-        {/* 09 Der erste ------------------------------------------------------ */}
-        <Sektion id="erster">
-          <p className="lp-klein">
-            Seit Ende August im Einsatz
-          </p>
-          <h2 className="lp-aussage breit lp-luft-oben-klein">
-            Fritz, Reviewer für Schulungsunterlagen.
-          </h2>
-          <div className="lp-text lp-luft-oben">
-            <p>
-              Er prüft die Unterlagen der WAMOCON Academy für die Ausbildung zu Kaufleuten für
-              Büromanagement gegen die Checklisten des Hauses und die Ausbildungsverordnung, und
-              schreibt einen Bericht. {zahl(d.gegenstand.dateien)} Dateien liegen dort. Jede müsste
-              vollständig und jedes Mal gleich geprüft werden. Die Aufgabe ist nicht schwer, sie ist
-              zu viel.
-            </p>
-          </div>
-
-          <div className="lp-kpi">
-            <div className="lp-kpi-kachel">
-              <p className="lp-kpi-wert">{zahl(rechenlauf?.geprueft ?? 0)}</p>
-              <p className="lp-kpi-label">
-                Übungsfälle in einem Lauf geprüft, Dauer {rechenlauf?.laufzeit}
+        {/* 04 So arbeitest du mit ihm ----------------------------------------- */}
+        {sichtbar(a) ? (
+          <Sektion id="auftrag">
+            <h2 className="lp-aussage breit">{a.satz}</h2>
+            <div className="lp-text lp-luft-oben-klein">
+              <p>
+                {a.wer}
+                {sichtbar(plan) && teamAb ? (
+                  <>
+                    {' '}
+                    Fürs Team geht das ab dem {datum(teamAb)}
+                    {teamHeute ? `; heute gilt: ${teamHeute.stand.replace(/\.$/, '')}` : ''}.
+                  </>
+                ) : null}
               </p>
             </div>
-            {rechenlauf?.zusatz ? (
-              <div className="lp-kpi-kachel">
-                <p className="lp-kpi-wert">{zahl(rechenlauf.zusatz.gleichungen)}</p>
-                <p className="lp-kpi-label">
-                  Rechnungen darin nachgerechnet, {zahl(rechenlauf.zusatz.gleichungenFalsch)} davon
-                  falsch
-                </p>
+
+            <div className="lp-zellen">
+              {a.schritte.map((s, i) => (
+                <div className="lp-zelle" key={s.titel}>
+                  <span className="kopf">
+                    {i + 1}. {s.titel}
+                  </span>
+                  <p>{s.text}</p>
+                </div>
+              ))}
+            </div>
+            {sichtbar(plan) && spracheAb ? (
+              <div className="lp-text lp-luft-oben-klein">
+                <p>Ab dem {datum(spracheAb)} geht ein Auftrag auch als Sprachnachricht.</p>
               </div>
             ) : null}
-            <div className="lp-kpi-kachel">
-              <p className="lp-kpi-wert">{zahl(fachreview.fragen!)}</p>
-              <p className="lp-kpi-label">
-                Quizfragen fachlich geprüft, über {zahl(fachreview.enabler!)} Enabler
-              </p>
-            </div>
-            <div className="lp-kpi-kachel">
-              <p className="lp-kpi-wert">{zahl(fachreview.blocker!)}</p>
-              <p className="lp-kpi-label">
-                schwerwiegende Befunde darunter: Antworten, die fachlich falsch sind
-              </p>
-            </div>
-          </div>
 
-          <div className="lp-zellen lp-luft-oben">
-            <div className="lp-zelle traegt">
-              <span className="kopf">So sieht ein Befund aus</span>
-              <p className="lp-stufe-marke">{d.beispielbefund.stufe}</p>
-              <p className="stark">{d.beispielbefund.text}</p>
-              <p className="kopf">{d.beispielbefund.fundstelle}</p>
-              <p>{d.beispielbefund.nachsatz}</p>
+            <h3 className="lp-aussage lp-luft-oben">Was er annimmt.</h3>
+            <div className="lp-gegen-rahmen">
+              <table className="lp-gegen">
+                <thead>
+                  <tr>
+                    <th>Auftrag</th>
+                    <th>Wer ihn erledigt</th>
+                    <th>Was du angibst</th>
+                    <th>Ab wann</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {nurSichtbare(a.zeilen).map((z) => (
+                    <tr key={z.auftrag}>
+                      <td>{z.auftrag}</td>
+                      <td>{z.wer}</td>
+                      <td className="leise">{z.angaben}</td>
+                      <td>{abWann(z.ab)}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
-            <div className="lp-zelle">
-              <span className="kopf">Der geprüfte Bestand</span>
-              <EnablerRaster />
-            </div>
-          </div>
-        </Sektion>
 
-        {/* 10 Mannschaft ----------------------------------------------------- */}
+            <h3 className="lp-aussage lp-luft-oben">Was er ablehnt, und dir sagt, warum.</h3>
+            <div className="lp-text lp-luft-oben-klein">
+              <ul className="liste">
+                {a.ablehnung.map((t) => (
+                  <li key={t}>{t}</li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="lp-zellen lp-luft-oben">
+              <div className="lp-zelle">
+                <span className="kopf">So liest du einen Bericht</span>
+                <p>{a.bericht}</p>
+              </div>
+              <div className="lp-zelle traegt">
+                <span className="kopf">Wenn ein Befund falsch ist</span>
+                <p>{a.fehlalarm}</p>
+              </div>
+            </div>
+            <dl className="lp-spec">
+              {d.massstab.schweregrade.map((s) => (
+                <div className="lp-spec-zeile" key={s.stufe}>
+                  <dt>{s.stufe}</dt>
+                  <dd>{s.bedeutung}</dd>
+                </div>
+              ))}
+            </dl>
+
+            <h3 className="lp-aussage breit lp-luft-oben">{a.mitmachenSatz}</h3>
+            <div className="lp-zellen lp-luft-oben-klein">
+              {a.mitmachen.map((t) => (
+                <div className="lp-zelle" key={t.titel}>
+                  <span className="kopf">{t.titel}</span>
+                  <p>{t.text}</p>
+                </div>
+              ))}
+            </div>
+            <div className="lp-text lp-luft-oben">
+              <p>{d.uebertragbarkeit.auswahlregel}</p>
+              <p className="lp-klein">Quelle: {a.quelle}</p>
+            </div>
+          </Sektion>
+        ) : null}
+
+        {/* 05 Mannschaft ------------------------------------------------------ */}
         <Sektion id="mannschaft">
           <h2 className="lp-aussage breit">{m.satz}</h2>
           <div className="lp-text lp-luft-oben-klein">
@@ -750,7 +546,199 @@ export default function Landing() {
           ) : null}
         </Sektion>
 
-        {/* 11 Landschaft ------------------------------------------------------- */}
+        {/* 06 Aufbau ---------------------------------------------------------- */}
+        <Sektion id="aufbau">
+          <h2 className="lp-aussage breit">
+            Acht Fragen, die auch ein neuer Kollege beantwortet bekommt.
+          </h2>
+          <div className="lp-text lp-luft-oben-klein">
+            <p>{d.schichtenErklaerung}</p>
+          </div>
+
+          <Schichtenstapel />
+
+          <div className="lp-text lp-luft-oben">
+            <p>{d.schichtenDatei}</p>
+            <p>
+              Die beiden mit einem Balken markierten Schichten tragen den Rest. Ohne bewertete
+              Ergebnisse gibt es keine Messung, und ohne Messung keinen Grund, dem Werkzeug zu
+              glauben.
+            </p>
+          </div>
+
+          <div className="lp-quelltext">
+            <p className="lp-quelltext-kopf">
+              <b>{d.beschreibungsdatei.name}</b>
+              <span>{d.beschreibungsdatei.stand}</span>
+            </p>
+            <pre>{d.beschreibungsdatei.auszug}</pre>
+          </div>
+
+          <div className="lp-zellen lp-luft-oben">
+            <div className="lp-zelle">
+              <span className="kopf">Oben der Kopf</span>
+              <p>{d.beschreibungsdatei.kopf}</p>
+            </div>
+            <div className="lp-zelle">
+              <span className="kopf">Unten der Auftrag</span>
+              <p>{d.beschreibungsdatei.rumpf}</p>
+            </div>
+            <div className="lp-zelle traegt">
+              <span className="kopf">Die Grenze</span>
+              <p className="stark">{d.beschreibungsdatei.grenze}</p>
+            </div>
+          </div>
+          <div className="lp-text lp-luft-oben">
+            <p>{d.beschreibungsdatei.einzigeQuelle}</p>
+          </div>
+        </Sektion>
+
+        {/* 07 Wissen und Ablage ----------------------------------------------- */}
+        <Sektion id="wissen">
+          <h2 className="lp-aussage breit">
+            Zwei Wissensablagen, nicht eine.
+          </h2>
+          <div className="lp-text lp-luft-oben-klein">
+            <p>{d.wissensablagen.satz}</p>
+          </div>
+
+          <Wissensablagen />
+
+          <div className="lp-text lp-luft-oben">
+            <p>{d.wissensablagen.gemeinsam.hinweis}</p>
+          </div>
+
+          <div className="lp-paar">
+            <div>
+              <h3>Wissen</h3>
+              <p className="lp-untertitel">Was gilt. Schreiben Menschen, ändert sich selten und nie von allein.</p>
+              <ul>
+                <li>Norm von außen: Gesetze, Verordnungen, wörtlich abgeschrieben</li>
+                <li>Maßstab des Hauses: Checklisten, Vorlagen, Corporate Design</li>
+                <li>Begriffe: was ein Wort hier bedeutet</li>
+                <li>Entscheidungen: was einmal festgelegt wurde, mit Datum</li>
+              </ul>
+            </div>
+            <div>
+              <h3>Gedächtnis</h3>
+              <p className="lp-untertitel">Was herauskam. Fällt beim Arbeiten an und wächst mit jedem Auftrag.</p>
+              <ul>
+                <li>Einzelergebnis: hunderte je Lauf, maschinell geschrieben</li>
+                <li>
+                  Regel: wenige, langlebig. Zweck, Testfälle und die gemessene Fehlalarmquote
+                </li>
+                <li>Lauf: eine Notiz je Durchgang, mit Kennzahlen für den Vergleich über die Zeit</li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="lp-text lp-luft-oben">
+            <p>
+              Er liest nicht alles. Zu jedem Auftrag gehört die Angabe, welcher Teil des Wissens
+              dafür der Maßstab ist. Deshalb trägt jede Notiz ein Datum: Wissen ohne Stand lässt
+              sich nicht einordnen, und falsch eingeordnete Vorschriften erzeugen Fehlalarme.
+            </p>
+            <p>
+              Die Originale bleiben, wo sie sind. Amtliche Dokumente und die Unterlagen selbst
+              werden nicht kopiert, das Wissen verweist auf sie. So gibt es keine zweite Fassung,
+              die still veraltet. Zu jeder Notiz gehört, woher sie stammt und ob sie bestätigt ist.
+            </p>
+          </div>
+
+          {sichtbar(d.ablage) ? (
+            <div id="ablage" className="lp-luft-oben">
+            <h3 className="lp-aussage breit">So sieht die Ablage heute aus.</h3>
+            <div className="lp-text lp-luft-oben-klein">
+              <p>
+                Das Bild ist aus den Notizen selbst gezählt, nicht von Hand gezeichnet. Jedes
+                Kästchen ist eine Notiz, gefärbt nach ihrem Freigabestand. Rechts steht, auf
+                welchen anderen Bereich ein Bereich am häufigsten verweist. Dateinamen stehen
+                nicht darin.
+              </p>
+            </div>
+
+            <AblageFigur />
+            <AblageTabelle />
+
+            {fachlichVerbindlich === 0 ? (
+              <div className="lp-text lp-luft-oben">
+                <p>
+                  Verbindlich ist bisher nur, was Konventionen und Entscheidungen festhält. Die
+                  Normbasis und der Prüfmaßstab, gegen die der Reviewer prüft, hat noch niemand
+                  freigegeben. Er muss deshalb in jedem Ergebnis sagen, dass er sich auf
+                  Ungeprüftes stützt.
+                </p>
+              </div>
+            ) : null}
+
+            <h3 className="lp-aussage lp-luft-oben">Welcher Bereich auf welchen verweist.</h3>
+            <div className="lp-text lp-luft-oben-klein">
+              <p>
+                Die Ablage kann jede Notiz als Punkt und jeden Verweis als Linie zeigen. Bei{' '}
+                {zahl(d.ablage.notizen)} Notizen und {zahl(d.ablage.verweise)} Verweisen wird daraus
+                ein Knäuel. Hier ist deshalb jeder Bereich ein Kreis, und gezeichnet sind nur die
+                Wege, die oft genommen werden.
+              </p>
+            </div>
+
+            <AblageGraphFigur />
+            <AblageGraphListe />
+
+            {sichtbar(u) ? (
+              <>
+                <h3 className="lp-aussage breit lp-luft-oben">{u.satz}</h3>
+                <div className="lp-text lp-luft-oben-klein">
+                  <p>{u.erklaerung}</p>
+                </div>
+                <Rubriken />
+                <div className="lp-text lp-luft-oben">
+                  <p>{u.stand}</p>
+                </div>
+              </>
+            ) : null}
+            </div>
+          ) : null}
+        </Sektion>
+
+        {/* 08 Arbeitsweise ---------------------------------------------------- */}
+        <Sektion id="durchlauf">
+          <h2 className="lp-aussage breit">
+            Zwei Stufen, weil sie Verschiedenes finden.
+          </h2>
+
+          <Durchlauf />
+
+          <div className="lp-text lp-luft-oben">
+            <p>{d.durchlauf.zweiStufen}</p>
+            <p>{d.durchlauf.rueckweg}</p>
+            <p>{d.durchlauf.verdichtung}</p>
+          </div>
+
+          <Pruefpunkte />
+
+          <h3 className="lp-aussage breit lp-luft-oben">
+            Wie er gesteuert wird, und was er selbst steuert.
+          </h3>
+
+          <Steuerung />
+
+          <div className="lp-zellen lp-luft-oben">
+            <div className="lp-zelle">
+              <span className="kopf">Beauftragt werden</span>
+              <p>{d.steuerung.warumSkript}</p>
+            </div>
+            <div className="lp-zelle">
+              <span className="kopf">Selbst abgeben</span>
+              <p>{d.steuerung.helfer}</p>
+            </div>
+            <div className="lp-zelle">
+              <span className="kopf">An einen zweiten übergeben</span>
+              <p>{d.steuerung.uebergabe}</p>
+            </div>
+          </div>
+        </Sektion>
+
+        {/* 09 Landschaft ------------------------------------------------------ */}
         {sichtbar(l) ? (
           <Sektion id="landschaft">
             <h2 className="lp-aussage breit">{l.satz}</h2>
@@ -785,9 +773,67 @@ export default function Landing() {
           </Sektion>
         ) : null}
 
-        {/* 12 Stand ---------------------------------------------------------- */}
+        {/* 10 Stand ----------------------------------------------------------- */}
         <Sektion id="stand">
-          <h2 className="lp-aussage breit">
+          <div className="lp-blick" role="group" aria-labelledby="blick-titel">
+            <h2 className="lp-klein" id="blick-titel">
+              Auf einen Blick, Stand {datum(d.stand)}
+            </h2>
+            <div className="lp-kpi">
+              {sichtbar(plan) && naechsterMeilenstein ? (
+                <div className="lp-kpi-kachel">
+                  <p className="lp-kpi-wert">{kurz(naechsterMeilenstein.termin)}</p>
+                  <p className="lp-kpi-label">
+                    Nächste Abnahme, {naechsterMeilenstein.id}: {naechsterMeilenstein.titel}. Erledigt
+                    sind {inWorten(erledigtIn(naechsterMeilenstein))} von{' '}
+                    {inWorten(naechsterMeilenstein.inhalt.length)} Arbeiten.
+                  </p>
+                </div>
+              ) : null}
+              <div className="lp-kpi-kachel">
+                <p className="lp-kpi-wert">
+                  {imZustand('arbeitet')} von {koepfe.length}
+                </p>
+                <p className="lp-kpi-label">
+                  Rollen arbeiten. Eingerichtet: {imZustand('eingerichtet')}. Entschieden, noch
+                  nicht gebaut: {imZustand('entschieden')}.
+                </p>
+              </div>
+              {sichtbar(plan) && teamAb ? (
+                <div className="lp-kpi-kachel">
+                  <p className="lp-kpi-wert">{kurz(teamAb)}</p>
+                  <p className="lp-kpi-label">
+                    Ab dann gibt das Team Aufträge, so wie unter <a href="#auftrag">Beauftragen</a>{' '}
+                    beschrieben.{teamHeute ? ` ${teamHeute.stand}` : ''}
+                  </p>
+                </div>
+              ) : null}
+              {sichtbar(b) ? (
+                <div className="lp-kpi-kachel">
+                  <p className="lp-kpi-wert">{zahl(b.bewertet)}</p>
+                  <p className="lp-kpi-label">
+                    Befunde von einem Menschen bewertet, Fehlalarme darunter: {zahl(b.fehlalarme)}.
+                    Belastbar ist die Quote {belastbarBei(b)}.
+                  </p>
+                </div>
+              ) : null}
+              {sichtbar(d.ablage) ? (
+                <div className="lp-kpi-kachel">
+                  <p className="lp-kpi-wert">
+                    {zahl(verbindlich)} von {zahl(d.ablage.notizen)}
+                  </p>
+                  <p className="lp-kpi-label">
+                    Notizen der Ablage sind verbindlich.{' '}
+                    {fachlichVerbindlich === 0
+                      ? 'Normbasis und Prüfmaßstab hat noch niemand freigegeben.'
+                      : `Aus Normbasis und Prüfmaßstab: ${zahl(fachlichVerbindlich)}.`}
+                  </p>
+                </div>
+              ) : null}
+            </div>
+          </div>
+
+          <h2 className="lp-aussage breit lp-luft-oben">
             {tageZwischen(d.arbeitstage.beginn, d.stand)} Tage, mit Datum.
           </h2>
           <div className="lp-zeit">
@@ -838,7 +884,7 @@ export default function Landing() {
           </div>
         </Sektion>
 
-        {/* 13 Meilensteine ------------------------------------------------------ */}
+        {/* 11 Meilensteine ---------------------------------------------------- */}
         {sichtbar(plan) ? (
           <Sektion id="plan">
             {istIntern ? <p className="lp-intern">nur intern</p> : null}

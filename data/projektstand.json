@@ -38,7 +38,9 @@
       "Meilensteinplan 29.09. bis 23.10.2026, mit den Terminen vom 16.10.2026",
       "Abnahme M1 Fritz mit Grenze, Ergebnis vom 15.10.2026",
       "Übergabe vom 15.10.2026 und Tagesprotokoll vom 16.10.2026",
-      "Zählung der Ablage vom 16.10.2026"
+      "Zählung der Ablage vom 16.10.2026",
+      "Akte des Orchestrators, KI-Mitarbeiter/Mannschaft/hermes/AGENTS.md, freigegeben am 28.09.2026, Stand 17.10.2026",
+      "Auskunft des Projektverantwortlichen vom 17.10.2026: Fehlalarme gehen an ihn, ein eigener Weg ist offen"
     ],
     "getrenntAm": "2026-09-09",
     "notizordner": "KFBM/00_Vault/10_KI-Mitarbeiter"
@@ -991,6 +993,12 @@
       "nr": 21,
       "punkt": "Konto, Akte und Grenze für Gregor Dev anlegen",
       "grund": "Ohne eigenes Konto pusht er unter dem Konto eines Menschen, und ohne Grenze mit Testfällen kommt seine Akte an kein Profil. Der Arbeitsplan für das Konto steht in ZUGANG-GREGOR-DEV.md, der Entwurf der Akte in AKTE-VORSCHLAG.md.",
+      "freigabe": "oeffentlich"
+    },
+    {
+      "nr": 22,
+      "punkt": "Ein Weg, auf dem das Team einen Fehlalarm meldet",
+      "grund": "Sobald das Team Aufträge gibt, braucht es einen festen Weg für Befunde, die jemand für falsch hält. Heute geht die Meldung an den Projektverantwortlichen; der Orchestrator nimmt sie nicht an.",
       "freigabe": "oeffentlich"
     }
   ],
@@ -3670,5 +3678,98 @@
     ],
     "quelle": "Meilensteinplan 29.09. bis 23.10.2026 mit dem Hinweis auf die Termine vom 16.10.; Logbuch vom 25.09., 28.09., 29.09. und 16.10.2026; Abnahme M1 vom 15.10.2026; Übergabe vom 15.10. und Tagesprotokoll vom 16.10.2026",
     "freigabe": "intern"
+  },
+  "anleitung": {
+    "stand": "2026-10-17",
+    "satz": "Einen Auftrag gibst du dem Orchestrator. Er sucht aus, wer ihn erledigt, und reicht dir das Ergebnis unverändert zurück.",
+    "wer": "Beauftragen darf jeder im Team, auch in der Academy, dessen Kennung im Messenger freigeschaltet ist. Dafür brauchst du ein Konto im Messenger und gibst dein Einverständnis; freischalten lässt dich der Projektverantwortliche.",
+    "teamAb": "M2",
+    "spracheAb": "M3",
+    "schritte": [
+      {
+        "titel": "Du schreibst ihm",
+        "text": "In ganzen Sätzen: was getan werden soll und die Angaben, die der zuständige KI-Mitarbeiter braucht. Fehlt eine Angabe, fragt er nach, statt zu raten."
+      },
+      {
+        "titel": "Er bestätigt",
+        "text": "Sofort, mit einer Auftragsnummer, dem zuständigen KI-Mitarbeiter und deinen Angaben, so wie er sie verstanden hat. Der Auftrag liegt dann als Notiz im Auftragsbuch."
+      },
+      {
+        "titel": "Du bekommst das Ergebnis",
+        "text": "Wenn der KI-Mitarbeiter fertig ist: wo das Ergebnis liegt, wer es verfasst hat und die Auftragsnummer. Der Orchestrator fasst nichts zusammen und bewertet nichts."
+      }
+    ],
+    "zeilen": [
+      {
+        "auftrag": "Unterlagen prüfen: einen Use-Case, ein Quiz, ein Szenario, einen Enabler oder einen ganzen Bestand",
+        "wer": "Fritz",
+        "angaben": "Jahrgang, Themenkomplex oder Lernfeld oder Berufsbildposition, Zielgruppe mit Kursformat, Prüfumfang, wo die Unterlagen liegen",
+        "ab": {
+          "meilenstein": "M2"
+        },
+        "freigabe": "oeffentlich"
+      },
+      {
+        "auftrag": "Eine Fachfrage zur Ausbildungsordnung, die keine Prüfung ist",
+        "wer": "Fritz",
+        "angaben": "die Frage und der Jahrgang; die Antwort ist eine Auskunft, maßgeblich bleibt der amtliche Wortlaut",
+        "ab": {
+          "meilenstein": "M2"
+        },
+        "freigabe": "oeffentlich"
+      },
+      {
+        "auftrag": "Ein Bericht zu einem Prüflauf",
+        "wer": "der Reporter",
+        "angaben": "keine; den Auftrag legt der Orchestrator nach dem Lauf selbst an",
+        "ab": {
+          "meilenstein": "M3"
+        },
+        "freigabe": "oeffentlich"
+      },
+      {
+        "auftrag": "Protokolle und Verweise pflegen, eine Entscheidung vorbereiten, Testfälle schreiben",
+        "wer": "Archivar, Architekt, Entwickler",
+        "angaben": "wie in ihrer Akte festgelegt",
+        "ab": {
+          "nachPlan": true
+        },
+        "freigabe": "oeffentlich"
+      },
+      {
+        "auftrag": "Eine Recherche zu Änderungen am eigenen Aufbau",
+        "wer": "julia-trend",
+        "angaben": "Frage, Zeitraum, Art der Quellen",
+        "ab": {
+          "nur": "nur für den Projektverantwortlichen"
+        },
+        "freigabe": "intern"
+      }
+    ],
+    "ablehnung": [
+      "Etwas bauen: eine Regel, ein Skript, die Normbasis, eine Präsentation. Das geschieht an der Werkbank.",
+      "Freigeben, einen Befund bewerten, eine Notiz für verbindlich erklären. Das tut der Projektverantwortliche.",
+      "Einen Auftrag, der erst später möglich ist. Er sagt dir, ab wann.",
+      "Alles, was nicht in seiner Tabelle steht. Er sagt dir, warum, und wer zuständig ist."
+    ],
+    "bericht": "Jeder Befund nennt die Fundstelle, das Kriterium und den Schweregrad. Was nicht geprüft wurde, steht ausdrücklich im Bericht. Was du mit einem Befund machst, entscheidest du.",
+    "fehlalarm": "Hältst du einen Befund für falsch, melde ihn dem Projektverantwortlichen, mit Auftragsnummer und Fundstelle. Er bewertet die Befunde, und aus seinen Bewertungen entsteht die Fehlalarmquote. Der Orchestrator nimmt solche Meldungen nicht an, weil er nichts bewertet. Ein eigener Weg für diese Meldungen ist noch nicht festgelegt.",
+    "mitmachenSatz": "Die Technik ist der kleinere Teil. Was Wochen dauert, ist aufzuschreiben, was gilt, und das können nur Menschen.",
+    "mitmachen": [
+      {
+        "titel": "Den Maßstab aufschreiben",
+        "text": "Kennst du die Regeln deines Bereichs, bring sie in Sätze: als Checkliste, Vorschrift oder Vorlage. Ein neuer KI-Mitarbeiter entsteht dort, wo der Maßstab schon halb geschrieben vorliegt."
+      },
+      {
+        "titel": "Befunde bewerten",
+        "text": "Je Befund sagt ein Mensch, der das Fach kennt: trifft zu, trifft nicht zu oder anders gewichtet. Erst daraus wird eine Fehlalarmquote, und erst sie sagt, ob man einem KI-Mitarbeiter glauben kann."
+      },
+      {
+        "titel": "Eine Rolle vorschlagen",
+        "text": "Kehrt eine Aufgabe regelmäßig wieder, lässt sich ihr Maßstab aufschreiben und ist sie zu viel für Handarbeit, schlag sie dem Projektverantwortlichen vor."
+      }
+    ],
+    "quelle": "Akte des Orchestrators, freigegeben am 28.09.2026, Stand 17.10.2026; Akte des Reviewers vom 17.09.2026; Auskunft des Projektverantwortlichen vom 17.10.2026 zum Melden von Fehlalarmen",
+    "freigabe": "oeffentlich"
   }
 }

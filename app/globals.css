@@ -701,6 +701,8 @@ th.num { text-align: right; }
 /* Beim Sprung aus der Navigation darf die Kopfleiste die Ueberschrift des
    Ziels nicht verdecken. */
 .lp-sektion { border-top: 1px solid var(--rand-leise); scroll-margin-top: 68px; }
+/* Anker innerhalb eines Abschnitts, etwa die alten #chatbot und #ablage */
+.lp-inhalt [id] { scroll-margin-top: 68px; }
 .lp-sektion:first-of-type { border-top: 0; }
 .lp-sektion-innen {
   max-width: var(--lp-spalte);
@@ -1316,6 +1318,22 @@ th.num { text-align: right; }
   border-top: 1px solid var(--rand-leise);
 }
 .lp-verzeichnis li { border-bottom: 1px solid var(--rand-leise); }
+/* Kapitel: je eine Spalte, darin die Abschnitte untereinander */
+.lp-kapitel-gruppen {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 0.4rem 1.6rem;
+}
+.lp-kapitel-gruppen ol { display: block; }
+.lp-kapitel {
+  font-family: var(--schrift-mono);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--wmc-muted);
+  margin: 0 0 0.35rem;
+}
 .lp-verzeichnis a {
   display: grid;
   grid-template-columns: 2.2rem 1fr;
@@ -1351,6 +1369,8 @@ th.num { text-align: right; }
     z-index: 5;
   }
   .lp-schiene ol { list-style: none; margin: 0; padding: 0; }
+  .lp-schiene .lp-kapitel { font-size: 0.56rem; margin: 0.9rem 0 0.15rem; opacity: 0.8; }
+  .lp-schiene div:first-child .lp-kapitel { margin-top: 0; }
   .lp-schiene a {
     display: grid;
     grid-template-columns: 1.9rem 1fr;
