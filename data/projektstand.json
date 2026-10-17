@@ -1,9 +1,9 @@
 {
-  "stand": "2026-09-18",
+  "stand": "2026-10-16",
   "herkunft": {
     "arbeitsordner": "D:\\WAMOCON",
     "einstieg": "KI-Mitarbeiter/75_KI-Mitarbeiter/KI-Mitarbeiter — Einstieg.md",
-    "erzeugt": "2026-09-18",
+    "erzeugt": "2026-10-16",
     "fristTage": 7,
     "verfahren": "Erstbefüllung von Hand aus dem Übergabedokument vom 05.09.2026, am 11.09. fortgeschrieben aus den beiden Blättern vom 09.09., am 17.09. aus dem Vault: Logbuch, Tagesprotokolle, Meilensteinplan, Bestandsaufnahme vom 16.09., Akte des Reviewers, Laufnotizen und Quoten je Regel. Das Abbild der Ablage zählt scripts/abbild-vault.mjs. Spätere Stände der Prüfläufe schreibt scripts/export-vault.mjs aus dem Frontmatter der Laufnotizen.",
     "freigabe": "intern",
@@ -30,15 +30,24 @@
       "Tagesprotokolle vom 17.09.2026, Stand 11:14 Uhr",
       "Arbeitsplan vom 17.09.2026",
       "Tagesprotokoll vom 18.09.2026",
-      "Meilensteinplan 17.09. bis 16.10.2026, nachgezogen am 18.09.2026"
+      "Meilensteinplan 17.09. bis 16.10.2026, nachgezogen am 18.09.2026",
+      "Laufnotizen der Prüfläufe, exportiert am 16.10.2026",
+      "Auskunft Erwin Moretz vom 18.09.2026: Gregor Dev wird KI-Mitarbeiter",
+      "Regelnotiz E13 und Quoten je Regel, Stand 18.09.2026",
+      "Logbuch: Entscheidungen vom 18.09., 20.09., 25.09., 28.09., 29.09. und 16.10.2026",
+      "Meilensteinplan 29.09. bis 23.10.2026, mit den Terminen vom 16.10.2026",
+      "Abnahme M1 Fritz mit Grenze, Ergebnis vom 15.10.2026",
+      "Übergabe vom 15.10.2026 und Tagesprotokoll vom 16.10.2026",
+      "Zählung der Ablage vom 16.10.2026"
     ],
-    "getrenntAm": "2026-09-09"
+    "getrenntAm": "2026-09-09",
+    "notizordner": "KFBM/00_Vault/10_KI-Mitarbeiter"
   },
   "kennzahlen": [
     {
       "id": "ki-mitarbeiter",
       "zahl": 2,
-      "label": "KI-Mitarbeiter für das Review eingerichtet: der Reviewer prüft, der Orchestrator bekommt seine Akte noch",
+      "label": "KI-Mitarbeiter mit freigegebener Akte: der Reviewer prüft und ist abgenommen, der Orchestrator wartet auf das Team",
       "freigabe": "oeffentlich"
     },
     {
@@ -50,13 +59,13 @@
     {
       "id": "regeln",
       "zahl": 26,
-      "label": "Prüfpunkte in der Checkliste des Reviewers. Als Regel mit Zweck, Testfällen und gemessener Quote ist noch keiner abgelegt",
+      "label": "Prüfpunkte in der Checkliste des Reviewers. Als Regel mit gemessener Quote abgelegt ist einer, E13",
       "freigabe": "oeffentlich"
     },
     {
       "id": "prueflaeufe",
-      "zahl": 20,
-      "label": "protokollierte Prüfläufe, gezählt am 17.09.2026",
+      "zahl": 22,
+      "label": "protokollierte Prüfläufe, gezählt am 16.10.2026",
       "freigabe": "oeffentlich"
     },
     {
@@ -73,14 +82,14 @@
     },
     {
       "id": "bewertet",
-      "zahl": 109,
-      "label": "Befunde von einem Menschen bewertet, 49 davon einzeln angesehen. Belastbar ist die Quote noch bei keiner Regel",
+      "zahl": 139,
+      "label": "Befunde von einem Menschen bewertet, 79 davon einzeln angesehen. Belastbar ist die Quote bei einer Regel, E13",
       "art": "warnung",
       "freigabe": "oeffentlich"
     },
     {
       "id": "verbindlich",
-      "zahl": 9,
+      "zahl": 11,
       "label": "verbindliche Notizen, alle aus Konventionen und Entscheidungen. Alles Fachliche gilt als ungeprüft",
       "art": "warnung",
       "freigabe": "oeffentlich"
@@ -311,10 +320,10 @@
   "prueflaeufe": {
     "zeitraum": {
       "von": "2026-08-27",
-      "bis": "2026-09-09"
+      "bis": "2026-10-16"
     },
-    "protokolliert": 20,
-    "imDokumentAusgewiesen": 8,
+    "protokolliert": 22,
+    "imDokumentAusgewiesen": 10,
     "laeufe": [
       {
         "id": "2026-08-27-usecases",
@@ -428,6 +437,28 @@
         "bewertet": 40,
         "laufzeit": null,
         "freigabe": "oeffentlich"
+      },
+      {
+        "id": "2026-09-18 Referenzlauf Fritz auf der DGX",
+        "datum": "2026-09-18",
+        "art": "mechanisch",
+        "gegenstand": "Referenzsatz TK 20 und 21, zwölf Enabler",
+        "geprueft": 12,
+        "blocker": 0,
+        "major": 0,
+        "minor": 9,
+        "hinweise": 21
+      },
+      {
+        "id": "2026-10-16 Kanban-Test Use-Cases",
+        "datum": "2026-10-16",
+        "art": "mechanisch",
+        "gegenstand": "Referenzsatz TK 20 und 21, zwölf Use-Cases",
+        "geprueft": 12,
+        "blocker": 0,
+        "major": 1,
+        "minor": 0,
+        "hinweise": 8
       }
     ],
     "befunddichte": {
@@ -516,11 +547,11 @@
     "schritteStand": [
       "erreicht",
       "erreicht",
+      "erreicht",
       "offen",
-      "offen",
-      "offen"
+      "erreicht"
     ],
-    "amTermin": "Erreicht: Harness und Modell laufen auf der eigenen Hardware, der Reviewer und der Orchestrator sind dort als eigene Profile eingerichtet. Nicht erreicht: Der Reviewer prüft dort noch nicht. Wissen, Prüfprofile und Akte liegen noch nicht auf der Maschine, und seine Grenze ist dort nicht aktiv. Stand 16.09.: seither unverändert."
+    "amTermin": "Erreicht: Harness und Modell laufen auf der eigenen Hardware, der Reviewer und der Orchestrator sind dort als eigene Profile eingerichtet. Nicht erreicht: Der Reviewer prüft dort noch nicht. Wissen, Prüfprofile und Akte liegen noch nicht auf der Maschine, und seine Grenze ist dort nicht aktiv. Stand 16.09.: seither unverändert. Stand 16.10.: Wissen und Prüfprofile liegen seit dem 17.09. auf der Maschine, der Reviewer prüft dort mit seiner Grenze, der Referenzlauf ist am 18.09. gefahren, und am 15.10. hat Erwin ihn abgenommen."
   },
   "entscheidungen": [
     {
@@ -707,6 +738,91 @@
       "datum": "2026-09-17",
       "entscheidung": "P1 freigegeben: Der offene Stand wird eingecheckt, und die Ablage kommt über Git auf die eigene Hardware",
       "freigabe": "intern"
+    },
+    {
+      "datum": "2026-09-18",
+      "entscheidung": "Gregor Dev wird KI-Mitarbeiter: Er pflegt die öffentlichen Seiten, trägt ihren Stand aus der Ablage nach und baut weitere. Er darf ins Netz, begrenzt auf GitHub, stellt Pull Requests und führt keinen zusammen",
+      "freigabe": "oeffentlich"
+    },
+    {
+      "datum": "2026-09-18",
+      "entscheidung": "Regel E13 meldet einen kosmetischen Fehler und geht von Minor auf Hinweis; sie bleibt bestehen und misst weiter",
+      "freigabe": "oeffentlich"
+    },
+    {
+      "datum": "2026-09-18",
+      "entscheidung": "Die Berichte der Researcherin haben zwei Formen aus einem Datensatz, eine Seite und eine kurze Nachricht. Im eigenen Chat darf sie dem Auftraggeber antworten, Dritten schreibt sie nicht",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-09-20",
+      "entscheidung": "Die Researcherin beobachtet den eigenen Betrieb, nicht den Markt",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-09-25",
+      "entscheidung": "Der Meilensteinplan wird um eine Woche geschoben, Endtermin 23.10.; der Umfang bleibt",
+      "freigabe": "oeffentlich"
+    },
+    {
+      "datum": "2026-09-25",
+      "entscheidung": "Jede weitere Rolle bekommt Akte, Grenzdatei und ein eigenes Profil: Reporter, Archivar, Entwickler und Architekt",
+      "freigabe": "oeffentlich"
+    },
+    {
+      "datum": "2026-09-28",
+      "entscheidung": "Die Akte des Orchestrators ist freigegeben, mit Testfällen",
+      "freigabe": "oeffentlich"
+    },
+    {
+      "datum": "2026-09-28",
+      "entscheidung": "Aufträge laufen als Karten über ein Board. Eine Karte geht nur an den Reviewer und nur in seinen Ordner",
+      "freigabe": "oeffentlich"
+    },
+    {
+      "datum": "2026-09-28",
+      "entscheidung": "Die Grenzdateien von Reporter und Architekt sind freigegeben",
+      "freigabe": "oeffentlich"
+    },
+    {
+      "datum": "2026-09-28",
+      "entscheidung": "Jede Rolle, die committet, bekommt eine eigene Arbeitskopie und pusht nur ihren eigenen Zweig; zusammengeführt wird von einem Menschen",
+      "freigabe": "oeffentlich"
+    },
+    {
+      "datum": "2026-09-29",
+      "entscheidung": "Das Ziel vom 17.09. gilt wieder: KI-Mitarbeiter, die dem Team helfen, Sprache für alle und eine interne Seite",
+      "freigabe": "oeffentlich"
+    },
+    {
+      "datum": "2026-09-29",
+      "entscheidung": "Zuerst vier KI-Mitarbeiter: Reviewer, Orchestrator, Reporter, Researcherin. Architekt, Entwickler und Archivar folgen danach",
+      "freigabe": "oeffentlich"
+    },
+    {
+      "datum": "2026-09-29",
+      "entscheidung": "Alle im Team geben Aufträge über den Orchestrator. Gesprochen wird frei, und er antwortet nur gesprochen, ohne Textfassung",
+      "freigabe": "oeffentlich"
+    },
+    {
+      "datum": "2026-09-29",
+      "entscheidung": "Die interne Seite liegt bei claude.ai und wird im Team geteilt. Die öffentliche Seite rückt hinter das Ende des Plans",
+      "freigabe": "oeffentlich"
+    },
+    {
+      "datum": "2026-10-15",
+      "entscheidung": "Erwin nimmt den Reviewer mit Vorbehalt ab; zwei Bedingungen bleiben offen",
+      "freigabe": "oeffentlich"
+    },
+    {
+      "datum": "2026-10-16",
+      "entscheidung": "Neue Termine: Meilenstein 1 am 23.10., 2 am 30.10., 3 am 06.11., 4 am 13.11.; der Zuschnitt vom 29.09. bleibt",
+      "freigabe": "oeffentlich"
+    },
+    {
+      "datum": "2026-10-16",
+      "entscheidung": "Die Seite auf GitHub Pages zeigt weiter alles, wie seit dem 17.09.",
+      "freigabe": "intern"
     }
   ],
   "entscheidungenNachtrag": "Die Entscheidung vom 04.09. dreht bewusst eine zuvor festgelegte Reihenfolge um: Ursprünglich sollte die Fehlalarmquote vor dem Plattformwechsel gemessen werden. Die Technik wurde vorgezogen. Das ist kein Widerspruch, sondern eine andere Reihenfolge mit einer benannten Folge, und die Folge steht im Abschnitt zur Messlücke.",
@@ -829,13 +945,21 @@
       "nr": 16,
       "punkt": "Den aktuellen Stand auf die eigene Hardware bringen, die Grenze dort aktivieren und den Referenzlauf fahren",
       "grund": "Der erste Teil ist am 17.09. erledigt: Die Ablage kommt über Git auf die eigene Hardware. Es fehlen der Referenzsatz und die Grenze am Profil. Erst der Vergleich am selben Aufgabensatz zeigt, ob das lokale Modell so gut prüft wie das Cloud-Modell. Bis dahin ist es ein Pilotbetrieb.",
-      "freigabe": "oeffentlich"
+      "freigabe": "oeffentlich",
+      "erledigt": {
+        "am": "2026-09-18",
+        "text": "Stand und Grenze sind seit dem 17.09. auf der eigenen Hardware, der Referenzlauf ist am 18.09. gefahren."
+      }
     },
     {
       "nr": 17,
       "punkt": "Die Rolle des Orchestrators ausschreiben",
       "grund": "Er ist eingerichtet, seine Akte fehlt. Ohne sie gibt es keine Tabelle, nach der er Aufträge verteilt.",
-      "freigabe": "oeffentlich"
+      "freigabe": "oeffentlich",
+      "erledigt": {
+        "am": "2026-09-28",
+        "text": "Die Akte des Orchestrators ist freigegeben, mit Testfällen."
+      }
     },
     {
       "nr": 18,
@@ -862,6 +986,12 @@
         "am": "2026-09-17",
         "text": "Neu geschnitten bis zum 16.10., als Entwurf mit zwölf Entscheidungen und Fristen."
       }
+    },
+    {
+      "nr": 21,
+      "punkt": "Konto, Akte und Grenze für Gregor Dev anlegen",
+      "grund": "Ohne eigenes Konto pusht er unter dem Konto eines Menschen, und ohne Grenze mit Testfällen kommt seine Akte an kein Profil. Der Arbeitsplan für das Konto steht in ZUGANG-GREGOR-DEV.md, der Entwurf der Akte in AKTE-VORSCHLAG.md.",
+      "freigabe": "oeffentlich"
     }
   ],
   "beobachtungen": [
@@ -982,6 +1112,48 @@
       "titel": "Der technische Teil von M1 steht, ein technischer Punkt fehlt noch",
       "text": "Der Nachtrag vom 18.09. sagt, der technische Teil von M1 stehe acht Tage vor der Frist, und nennt als Fehlendes nur die Probe über den Messenger, die Bewertung von Regel E13 und die Abnahme. Im selben Nachtrag stehen die Berichtsgeneratoren unter dem, was ohne Freigabe noch vorgezogen werden kann; als Punkt von M1 heißt das: Berichte weisen ungemessene Regeln getrennt aus. Die Seite lässt diesen Punkt offen.",
       "quelle": "Meilensteinplan 17.09. bis 16.10.2026, Abschnitte „Neue Zieldaten“ und „Vorgezogen“, gegen den Inhalt von M1",
+      "freigabe": "intern"
+    },
+    {
+      "id": "gregor-nicht-in-ablage",
+      "titel": "Gregor Dev steht auf der Seite, nicht in der Ablage",
+      "text": "Erwin hat Gregor Dev am 18.09. im Gespräch über diese Seite zur neunten Rolle bestimmt. Das Logbuch, die Systemarchitektur und das Organigramm vom 16.10. kennen ihn nicht. Die Seite führt ihn, weil die Entscheidung von Erwin selbst kommt; in die Ablage gehört sie noch.",
+      "quelle": "Auskunft Erwin Moretz vom 18.09.2026 gegen Logbuch und Organigramm vom 16.10.2026",
+      "freigabe": "intern"
+    },
+    {
+      "id": "oeffentliche-seite-zurueckgestellt",
+      "titel": "Die öffentliche Seite ist zurückgestellt und steht trotzdem im Netz",
+      "text": "Am 29.09. ist die Wahl 9.4 zurückgenommen: Die interne Seite liegt bei claude.ai, die öffentliche rückt hinter das Ende des Plans. Diese Seite steht dennoch öffentlich auf GitHub Pages und zeigt seit dem 17.09. die vollständige Fassung, auch was als intern markiert ist. Am 16.10. hat Erwin entschieden, dass es dabei bleibt.",
+      "quelle": "Logbuch vom 29.09.2026, Abschnitt „Was damit umgekehrt ist“, gegen die Fassung auf GitHub Pages; Entscheidung vom 16.10.2026",
+      "freigabe": "intern"
+    },
+    {
+      "id": "fristen-nicht-umgeschrieben",
+      "titel": "Neue Termine, alte Fristen",
+      "text": "Am 16.10. sind die vier Meilensteine auf den 23.10. bis 13.11. verschoben worden. Die Fristen der einzelnen Entscheidungen im Plan vom 29.09. sind dabei nicht umgeschrieben; die offenen sind alle verstrichen. Die Seite zeigt sie mit ihrem alten Datum und sagt das dazu.",
+      "quelle": "Meilensteinplan 29.09. bis 23.10.2026, Hinweis vom 16.10., und Logbuch vom 16.10.2026",
+      "freigabe": "intern"
+    },
+    {
+      "id": "ablage-still-2909-1510",
+      "titel": "Gut zwei Wochen ohne Eintrag",
+      "text": "Zwischen dem 29.09. und dem 15.10. gibt es in der Ablage keinen Commit und kein Tagesprotokoll. Ob in dieser Zeit etwas geschehen ist, steht nirgends; die Übergabe vom 15.10. sagt das selbst.",
+      "quelle": "Übergabe vom 15.10.2026, Meilensteinplan",
+      "freigabe": "intern"
+    },
+    {
+      "id": "verbindlich-11-12",
+      "titel": "11 oder 12 verbindliche Notizen",
+      "text": "Die Systemarchitektur vom 16.10. zählt 12 verbindliche Notizen, darunter eine Strukturanalyse des Unternehmensvaults. Das Abbild dieser Seite findet am selben Tag 11: Die Strukturanalyse trägt im Frontmatter keinen verbindlichen Freigabestand.",
+      "quelle": "Systemarchitektur Orchestrator vom 16.10.2026 und Tagesprotokoll vom 16.10. gegen die Zählung der Ablage vom 16.10.2026",
+      "freigabe": "intern"
+    },
+    {
+      "id": "mannschaft-sieben-neun",
+      "titel": "Sieben geplante KI-Mitarbeiter oder neun Rollen",
+      "text": "Das Organigramm vom 16.10. nennt sieben geplante KI-Mitarbeiter: vier zuerst, Architekt, Archivar und Entwickler danach; den Gestalter sieht es nicht vor. Diese Seite führt neun Rollen, mit dem Gestalter und mit Gregor Dev. Entfernt wird keine, solange niemand das entscheidet.",
+      "quelle": "Organigramm und Tagesprotokoll vom 16.10.2026 gegen die Mannschaft dieser Seite",
       "freigabe": "intern"
     }
   ],
@@ -1353,6 +1525,41 @@
         "datum": "2026-09-18",
         "text": "Der Meilensteinplan bekommt Zieldaten neben den Fristen: M1 am 19.09. statt am 25.09. Die Fristen bleiben als äußere Grenze. Erwins Zeit wird ab heute mitgeschrieben.",
         "freigabe": "oeffentlich"
+      },
+      {
+        "datum": "2026-09-18",
+        "text": "Gregor Dev wird als neunte Rolle entschieden: Er pflegt die öffentlichen Seiten und darf dafür als Zweiter ins Netz. Der tägliche Nachtrag läuft ab jetzt als Pull Request, nicht mehr als Push.",
+        "freigabe": "oeffentlich"
+      },
+      {
+        "datum": "2026-09-18",
+        "text": "Regel E13 ist als erste gemessen: 30 Fälle einzeln angesehen, kein Fehlalarm. Am selben Tag fährt der Reviewer seinen Referenzlauf auf der eigenen Hardware.",
+        "freigabe": "oeffentlich"
+      },
+      {
+        "datum": "2026-09-25",
+        "text": "Der Meilensteinplan wird um eine Woche geschoben, Endtermin 23.10. Erwin hat Regel E5 bewertet; der Bogen ist noch nicht übernommen.",
+        "freigabe": "oeffentlich"
+      },
+      {
+        "datum": "2026-09-28",
+        "text": "Die Akte des Orchestrators ist freigegeben, die Grenzen von Reporter und Architekt auch. Das Auftragsbuch ist angelegt, Aufträge laufen künftig als Karten über ein Board.",
+        "freigabe": "oeffentlich"
+      },
+      {
+        "datum": "2026-09-29",
+        "text": "Das Ziel vom 17.09. gilt wieder: KI-Mitarbeiter, die dem Team helfen, Sprache für alle und eine interne Seite. Der Plan ist neu geschnitten, mit vier KI-Mitarbeitern zuerst.",
+        "freigabe": "oeffentlich"
+      },
+      {
+        "datum": "2026-10-15",
+        "text": "Erwin nimmt den Reviewer ab, mit Vorbehalt. Zwischen dem 29.09. und diesem Tag ist in der Ablage nichts festgehalten.",
+        "freigabe": "oeffentlich"
+      },
+      {
+        "datum": "2026-10-16",
+        "text": "Neue Termine: Meilenstein 1 am 23.10., der letzte am 13.11. Ein Testauftrag läuft über das Board zum Reviewer, und Systemarchitektur und Organigramm stehen auf dem Stand des Tages.",
+        "freigabe": "oeffentlich"
       }
     ],
     "freigabe": "oeffentlich"
@@ -1378,17 +1585,17 @@
         "punkte": [
           "Befunde durchsehen: berechtigt, Fehlalarm oder anders gewichtet. Die ersten sind bewertet, für eine belastbare Quote fehlen noch viele einzeln angesehene Fälle",
           "Beispiele mit bekannten Schwächen, an denen sich der Maßstab kalibrieren lässt",
-          "Die Schwelle, ab der eine Regel produktiv geht, ist festgelegt. Erreicht hat sie noch keine, weil die Fälle dafür fehlen"
+          "Die Schwelle, ab der eine Regel produktiv geht, ist festgelegt. Erreicht hat sie eine, E13 seit dem 18.09.; den übrigen fehlen die Fälle dafür"
         ]
       },
       {
         "titel": "Noch nicht gebaut",
         "zusatz": "Arbeit, die ansteht",
         "punkte": [
-          "Der Orchestrator hat keine Akte. Die des Reviewers liegt vor, aber noch kein Skript, das aus ihr die Fassung für jeden Harness erzeugt",
+          "Die Akte des Orchestrators ist seit dem 28.09. freigegeben. Es fehlt das Skript, das aus einer Akte die Fassung für jeden Harness erzeugt; es rückt hinter das Ende des Plans",
           "Der Rückweg steht seit dem 09.09. Es fehlt der Schritt danach: eine Regel, die aufgrund einer Bewertung geschärft wird und im nächsten Lauf nachweisbar anders prüft",
-          "Zu jeder der 26 Regeln fehlt die Notiz, die sagt, wie zuverlässig sie ist",
-          "Das Auftragsbuch, über das ein Auftrag nachvollziehbar wird, ist entschieden und nicht angelegt"
+          "Von den 26 Regeln hat eine ihre Notiz mit gemessener Quote, E13. Den übrigen 25 fehlt sie",
+          "Das Auftragsbuch ist seit dem 28.09. angelegt. Ein Auftrag steht darin noch nicht, nur die Vorlage"
         ]
       },
       {
@@ -1413,7 +1620,7 @@
       "bedingung": "Abnahme: Fritz läuft das Prüfskript über den Referenzsatz, und ein Schreibversuch außerhalb seiner Ordner wird abgewiesen.",
       "freigabe": "intern",
       "bedingungsart": "termin",
-      "stand": "Stand 17.09.: Akte, Grenzprogramm und Prüfprofile liegen auf der eigenen Hardware. Am Profil hängt das Programm noch nicht, und der Referenzsatz fehlt dort. Der Meilensteinplan setzt die Abnahme auf den 25.09."
+      "stand": "Stand 16.10.: erledigt. Die Grenze hängt am Profil, der Referenzlauf ist am 18.09. gefahren, und am 15.10. hat Erwin den Reviewer abgenommen, mit Vorbehalt."
     },
     {
       "wann": "Woche danach",
@@ -1422,7 +1629,7 @@
       "bedingung": "Abnahme: ein Befund ist von der Nachricht über die Auftragsnotiz bis zur Zeile im Prüfobjekt rückverfolgbar.",
       "freigabe": "intern",
       "bedingungsart": "zahl",
-      "stand": "Stand 16.09.: Akte des Orchestrators und Auftragsbuch fehlen. Seit dem 16.09. ist entschieden, dass er ein eigenes Profil bekommt."
+      "stand": "Stand 16.10.: Die Akte des Orchestrators ist seit dem 28.09. freigegeben, das Auftragsbuch ist angelegt, aber noch leer. Ein Testauftrag lief am 16.10. über das Board zum Reviewer; der Weg über den Orchestrator ist noch nicht abgenommen."
     },
     {
       "wann": "danach",
@@ -1431,7 +1638,7 @@
       "bedingung": "Abnahme: die Vergleichstabelle liegt vor. Wo die beiden auseinandergehen, ist die erste Stichprobe für die Bewertung.",
       "freigabe": "oeffentlich",
       "bedingungsart": "zahl",
-      "stand": "Stand 16.09.: Das Skript, das eine Akte für beide Seiten ausspielt, gibt es noch nicht."
+      "stand": "Stand 16.10.: Das Skript, das eine Akte für beide Seiten ausspielt, rückt nach dem Plan vom 29.09. hinter dessen Ende."
     },
     {
       "wann": "danach",
@@ -1440,7 +1647,7 @@
       "bedingung": "Abnahme: das Änderungsprotokoll zeigt drei Handschriften ohne Konflikt, und eine Laufnotiz entsteht ohne offene Sitzung.",
       "freigabe": "intern",
       "bedingungsart": "zahl",
-      "stand": "Stand 17.09.: Die Ablage kommt seit heute über Git auf die eigene Hardware. Der Archivar ist beschrieben, nicht gebaut."
+      "stand": "Stand 16.10.: Der Archivar folgt nach dem Ende des Plans. Für Rollen, die committen, ist am 28.09. das Verfahren entschieden: eine eigene Arbeitskopie, nur der eigene Zweig, ein Mensch führt zusammen."
     },
     {
       "wann": "danach",
@@ -1467,7 +1674,7 @@
     "schluss": "Was heute erfahrene Leute im Kopf haben, muss jemand aufschreiben. Das kann kein Werkzeug übernehmen.",
     "freigabe": "oeffentlich"
   },
-  "standSatz": "Ein Pilot, der sich gerade selbst vermisst. Der Reviewer arbeitet, der Orchestrator ist eingerichtet, weitere Rollen sind beschrieben und nicht gebaut. Die ersten Befunde sind bewertet; für eine belastbare Fehlalarmquote reicht das noch bei keiner Regel.",
+  "standSatz": "Der Reviewer arbeitet auf der eigenen Hardware und ist abgenommen, der Orchestrator hat seine Akte und wartet auf das Team. Eine Regel hat eine belastbare Fehlalarmquote, für die übrigen 25 reicht es noch nicht.",
   "beschreibungsdatei": {
     "name": "fritz.md",
     "stand": "Entwurf",
@@ -1554,8 +1761,8 @@
     }
   ],
   "mannschaft": {
-    "satz": "Aus einem Mitarbeiter wird eine Mannschaft. Der Reviewer arbeitet, der Orchestrator ist eingerichtet, die übrigen Rollen sind beschrieben und nicht gebaut.",
-    "gezaehltAm": "2026-09-16",
+    "satz": "Aus einem Mitarbeiter wird eine Mannschaft. Der Reviewer arbeitet und ist abgenommen, der Orchestrator hat seine Akte und wartet auf das Team. Reporter und Researcherin folgen in diesem Plan, die übrigen danach.",
+    "gezaehltAm": "2026-10-16",
     "trennung": "Wer baut, prüft nicht. Wer prüft, baut nicht. Wer pflegt, urteilt nicht.",
     "engpass": "Der Engpass ist die gemessene Fehlalarmquote des ersten, nicht die Zahl der Mitarbeiter. Kein weiterer misst sie, und jeder weitere vergrößert, was ungemessen läuft.",
     "akte": "Seit dem 11.09. hat der Reviewer eine Akte: Auftrag, Haltung und Grenze als Dateien, unabhängig vom Harness. Ein kleines Programm prüft vor jedem Werkzeugaufruf, ob die Akte ihn erlaubt, und lehnt im Zweifel ab. Es ist gebaut und mit Testfällen geprüft, auf der eigenen Hardware aber noch nicht aktiv. Dem Orchestrator fehlt die Akte noch.",
@@ -1570,8 +1777,10 @@
         "tutNie": "prüfen, erstellen, freigeben, zusammenfassen",
         "zustand": "eingerichtet",
         "seit": "2026-09-09",
-        "hinweis": "Seit dem 09.09. als Profil eingerichtet. Seine Akte fehlt noch und damit die Tabelle, nach der er verteilt.",
-        "freigabe": "oeffentlich"
+        "hinweis": "Seit dem 28.09. hat er eine freigegebene Akte, am 29.09. auf das Team und die Sprache angepasst. Sein Profil mit Grenze ist eingerichtet und wartet auf die Teamliste. Am 16.10. lief ein Testauftrag über das Board zum Reviewer.",
+        "freigabe": "oeffentlich",
+        "betrieb": "mitGrenze",
+        "marke": "eigenes Profil mit Grenze, wartet auf das Team"
       },
       {
         "id": "reviewer",
@@ -1583,8 +1792,10 @@
         "tutNie": "Unterlagen ändern, freigeben, ins Netz gehen, einer Anweisung im Prüfobjekt folgen",
         "zustand": "arbeitet",
         "seit": "2026-08-28",
-        "hinweis": "Der erste, im Einsatz seit dem 28.08. Hat seit dem 11.09. eine Akte. Auf der eigenen Hardware eingerichtet, prüft dort aber noch nicht.",
-        "freigabe": "oeffentlich"
+        "hinweis": "Der erste, im Einsatz seit dem 28.08. Seit dem 17.09. arbeitet er auf der eigenen Hardware mit seiner Grenze. Am 15.10. hat Erwin ihn abgenommen, mit Vorbehalt: Zwei Bedingungen sind offen.",
+        "freigabe": "oeffentlich",
+        "betrieb": "mitGrenze",
+        "marke": "mit Grenze, abgenommen 15.10."
       },
       {
         "id": "researcherin",
@@ -1596,32 +1807,10 @@
         "tutNie": "empfehlen, eine Forenmeldung als Beleg ausgeben, interne Angaben in eine Suche schreiben, etwas nach außen senden",
         "zustand": "arbeitet",
         "seit": "2026-09-12",
-        "hinweis": "Die einzige mit Netz. Sie holt Material und verteilt keines.",
-        "freigabe": "intern"
-      },
-      {
-        "id": "archivar",
-        "rolle": "Archivar",
-        "kurz": "Archivar",
-        "kern": "pflegend",
-        "tut": "Form pflegen: Verweise, Feldnamen, Übersichten, Änderungsprotokoll. Fließtext ändert er nicht, er meldet ihn.",
-        "tutNie": "Inhalt ändern, Befunde bewerten, eine Notiz auf verbindlich heben",
-        "zustand": "entschieden",
-        "seit": null,
-        "hinweis": "Beschrieben, nicht gebaut. Er ändert die Form, nie den Inhalt.",
-        "freigabe": "oeffentlich"
-      },
-      {
-        "id": "entwickler",
-        "rolle": "Entwickler",
-        "kurz": "Entwickler",
-        "kern": "bauend",
-        "tut": "Testfälle schreiben, an denen Prüfregeln und Grenzen gemessen werden.",
-        "tutNie": "eine Regel ohne Testfall produktiv setzen, Unterlagen prüfen, Regeln, Skripte oder Akten selbst ändern",
-        "zustand": "entschieden",
-        "seit": null,
-        "hinweis": "Beschrieben, nicht gebaut. Was er schreibt, führt ein Mensch zusammen.",
-        "freigabe": "oeffentlich"
+        "hinweis": "Bisher die einzige mit Netz. Seit dem 20.09. beobachtet sie den eigenen Betrieb statt des Marktes. Ihre Grenze am Profil kommt mit Meilenstein 4.",
+        "freigabe": "intern",
+        "betrieb": "ohneGrenze",
+        "marke": "läuft täglich, Grenze folgt"
       },
       {
         "id": "reporter",
@@ -1632,8 +1821,9 @@
         "tutNie": "eine Zahl erfinden, einen Befund bewerten oder umschreiben",
         "zustand": "entschieden",
         "seit": null,
-        "hinweis": "Beschrieben, nicht gebaut. Jeder Bericht soll nennen, auf welchem Wissen er ruht.",
-        "freigabe": "oeffentlich"
+        "hinweis": "Grenzdatei mit Testfällen seit dem 28.09. Akte und Profil kommen mit Meilenstein 3.",
+        "freigabe": "oeffentlich",
+        "marke": "kommt mit M3, 06.11."
       },
       {
         "id": "architekt",
@@ -1644,8 +1834,49 @@
         "tutNie": "entscheiden, bauen, prüfen, in die Ablage schreiben",
         "zustand": "entschieden",
         "seit": null,
-        "hinweis": "Beschrieben, nicht gebaut.",
-        "freigabe": "oeffentlich"
+        "hinweis": "Grenzdatei mit Testfällen seit dem 28.09. Folgt nach dem Ende des Plans.",
+        "freigabe": "oeffentlich",
+        "marke": "nach dem 13.11."
+      },
+      {
+        "id": "archivar",
+        "rolle": "Archivar",
+        "kurz": "Archivar",
+        "kern": "pflegend",
+        "tut": "Form pflegen: Verweise, Feldnamen, Übersichten, Änderungsprotokoll. Fließtext ändert er nicht, er meldet ihn.",
+        "tutNie": "Inhalt ändern, Befunde bewerten, eine Notiz auf verbindlich heben",
+        "zustand": "entschieden",
+        "seit": null,
+        "hinweis": "Beschrieben, nicht gebaut. Er ändert die Form, nie den Inhalt. Folgt nach dem Ende des Plans.",
+        "freigabe": "oeffentlich",
+        "marke": "nach dem 13.11."
+      },
+      {
+        "id": "entwickler",
+        "rolle": "Entwickler",
+        "kurz": "Entwickler",
+        "kern": "bauend",
+        "tut": "Testfälle schreiben, an denen Prüfregeln und Grenzen gemessen werden.",
+        "tutNie": "eine Regel ohne Testfall produktiv setzen, Unterlagen prüfen, Regeln, Skripte oder Akten selbst ändern",
+        "zustand": "entschieden",
+        "seit": null,
+        "hinweis": "Beschrieben, nicht gebaut. Was er schreibt, führt ein Mensch zusammen. Folgt nach dem Ende des Plans.",
+        "freigabe": "oeffentlich",
+        "marke": "nach dem 13.11."
+      },
+      {
+        "id": "seiten",
+        "rolle": "Pfleger der Seiten",
+        "name": "Gregor Dev",
+        "kurz": "Seitenpfleger",
+        "kern": "nachtragend",
+        "tut": "Den Stand der öffentlichen Seiten aus der Ablage nachtragen und weitere Seiten nach demselben Muster bauen. Jede Änderung als Pull Request, jede Zahl mit ihrer Quelle.",
+        "tutNie": "nach main pushen, einen Pull Request zusammenführen, etwas aus den Daten entfernen, ein Datenelement von intern auf öffentlich heben, eine Notiz in der Ablage ändern, eine Prüfung abschalten",
+        "zustand": "entschieden",
+        "seit": null,
+        "hinweis": "Am 18.09. entschieden, weil weitere Seiten entstehen sollen. Er darf als Zweiter ins Netz, und nur zu GitHub. Konto, Akte und Grenze mit Testfällen fehlen noch. In der Ablage steht er bisher nicht.",
+        "freigabe": "oeffentlich",
+        "marke": "entschieden 18.09."
       },
       {
         "id": "gestalter",
@@ -1656,53 +1887,148 @@
         "tutNie": "Inhalt ändern, das Erscheinungsbild ändern, Befunde bewerten",
         "zustand": "entschieden",
         "seit": null,
-        "hinweis": "Beschrieben, nicht gebaut.",
-        "freigabe": "oeffentlich"
+        "hinweis": "Beschrieben, nicht gebaut. Das Organigramm vom 16.10. sieht ihn nicht vor.",
+        "freigabe": "oeffentlich",
+        "passtNicht": true,
+        "marke": "passt nicht, 29.09."
       }
     ],
     "freigabe": "oeffentlich",
     "grenzeWarum": "Die meisten Beschreibungen von KI-Agenten setzen Grenzen im Anweisungstext. Ein Text hält niemanden auf, am wenigsten ein Modell, das in einem geprüften Dokument auf eine gegenteilige Anweisung stößt.",
     "verlauf": {
-      "text": "Am 09.09. waren sieben Rollen gesetzt. Am 11.09. ruhten alle außer Reviewer und Orchestrator, am 12.09. kam die Researcherin als achte dazu und arbeitet. Am 16.09. hat Erwin für alle acht Rollen vierzig Fragen beantwortet; umgesetzt ist das als Vorschlag, freigegeben wird Rolle für Rolle. Am 17.09. neu geschnitten: Bis zum 16.10. sollen Reviewer, Orchestrator, Reporter, Archivar, Architekt und Entwickler lauffähig sein. Der Gestalter bleibt draußen.",
+      "text": "Am 09.09. waren sieben Rollen gesetzt. Am 11.09. ruhten alle außer Reviewer und Orchestrator, am 12.09. kam die Researcherin als achte dazu und arbeitet. Am 16.09. hat Erwin für alle acht Rollen vierzig Fragen beantwortet; umgesetzt ist das als Vorschlag, freigegeben wird Rolle für Rolle. Am 17.09. neu geschnitten: Bis zum 16.10. sollen Reviewer, Orchestrator, Reporter, Archivar, Architekt und Entwickler lauffähig sein. Der Gestalter bleibt draußen. Am 18.09. kommt Gregor Dev als neunte Rolle dazu: Er pflegt die öffentlichen Seiten und darf dafür als Zweiter ins Netz. Am 29.09. neu geschnitten: Zuerst kommen Reviewer, Orchestrator, Reporter und Researcherin, Architekt, Entwickler und Archivar danach. Das Organigramm vom 16.10. führt sieben geplante KI-Mitarbeiter und sieht den Gestalter nicht vor.",
       "freigabe": "intern"
-    }
+    },
+    "mensch": {
+      "titel": "Erwin Moretz",
+      "zusatz": "Verantwortung, Freigabe, Bewertung der Befunde, Auftraggeber"
+    },
+    "team": {
+      "titel": "Team und Academy",
+      "zusatz": "Aufträge über den Orchestrator, ab 30.10."
+    },
+    "werkbank": {
+      "seit": "2026-08-26",
+      "satz": "Acht Werkzeugmacher in Claude Code. Sie bauen, womit geprüft wird, und prüfen selbst nichts; sie bleiben Helfer der Werkbank.",
+      "helfer": [
+        {
+          "name": "marker-ingenieur",
+          "aufgabe": "Prüfregeln als Skript"
+        },
+        {
+          "name": "korpus-aufbereiter",
+          "aufgabe": "Quellen maschinell aufbereiten"
+        },
+        {
+          "name": "praesentations-baumeister",
+          "aufgabe": "Präsentationen aus der Ablage"
+        },
+        {
+          "name": "projektleiter",
+          "aufgabe": "Stand, Plan, offene Fragen"
+        },
+        {
+          "name": "vault-architekt",
+          "aufgabe": "Struktur, Verweise, Felder"
+        },
+        {
+          "name": "reviewer-designer",
+          "aufgabe": "Kriterien und Schweregrade"
+        },
+        {
+          "name": "normbasis-kurator",
+          "aufgabe": "Normbasis im Wortlaut"
+        },
+        {
+          "name": "anforderungs-analyst",
+          "aufgabe": "erhebt die Seite der Academy"
+        }
+      ],
+      "quelle": "Agentendateien der Werkbank im Bereich KFBM, gelesen am 16.10.2026, und Organigramm vom 16.10.2026",
+      "freigabe": "oeffentlich"
+    },
+    "basis": [
+      {
+        "titel": "Die Ablage",
+        "zeilen": [
+          "vier Repositories, ein Wissensspeicher",
+          "Wissen, Entscheidungen, Konventionen",
+          "die Akten der Mannschaft mit dem Zaun",
+          "über Git auf beiden Rechnern"
+        ]
+      },
+      {
+        "titel": "Board und Auftragsbuch",
+        "zeilen": [
+          "die Karte trägt die Ausführung",
+          "die Notiz den Nachvollzug",
+          "erste Karte am 16.10.",
+          "eine Auftragsnotiz noch nicht"
+        ]
+      },
+      {
+        "titel": "Das Prüfwerkzeug",
+        "zeilen": [
+          "Regeln, Profile, Testfälle",
+          "Fälle als Gedächtnis des Reviewers",
+          "Berichte als Ergebnis"
+        ]
+      },
+      {
+        "titel": "Zwei Laufzeiten",
+        "zeilen": [
+          "Hermes Agent auf dem KI-Rechner",
+          "Claude Code auf der Werkbank",
+          "die Mannschaft läuft heute",
+          "nur auf dem KI-Rechner"
+        ]
+      }
+    ],
+    "organigrammQuelle": "Organigramm vom 16.10.2026, ohne Angaben zum Betrieb des KI-Rechners, ohne Profilnamen, Versionen und Modell"
   },
   "bewertungen": {
     "erstmalsAm": "2026-09-09",
-    "stand": "2026-09-14",
-    "regeln": 9,
-    "bewertet": 109,
-    "gesehen": 49,
+    "stand": "2026-09-18",
+    "regeln": 10,
+    "bewertet": 139,
+    "gesehen": 79,
     "fehlalarme": 0,
     "zielGesehenJeRegel": 30,
-    "hoechstesGesehen": 14,
-    "regelnAmZiel": 0,
+    "hoechstesGesehen": 30,
+    "regelnAmZiel": 1,
     "gruppen": "Bewertet wurde überwiegend in Gruppen: Gleichartige Befunde bekamen ein gemeinsames Urteil, nachdem einige davon einzeln angesehen waren.",
-    "ungemessen": "Die beiden Regeln mit den meisten Meldungen sind noch nicht bewertet. Sie stellen den größten Teil der Minor-Befunde.",
+    "ungemessen": "Die Regel mit den meisten Meldungen im Lauf über die Enabler, E13, ist seit dem 18.09. gemessen. Regel E5 hat Erwin bewertet; bis der Bogen übernommen und gezählt ist, gilt sie als nicht gemessen.",
     "umgewichtet": "Oft hat eine Regel richtig gemessen, und nur die Stufe war falsch. Das als Fehlalarm zu zählen, würde die Quote verderben. Seit den ersten Bewertungen gibt es deshalb eine dritte Antwort: anders gewichtet.",
     "rueckweg": "Aus jedem Lauf entsteht ein Bewertungsbogen. Der Mensch trägt je Befund „trifft zu“, „trifft nicht zu“ oder „anders gewichtet“ ein, und ein Skript liest den Bogen zurück und rechnet die Quote je Regel.",
     "beispiel": {
       "satz": "Eine Unterlage, die es nach Plan noch nicht gibt, ist kein Mangel der Unterlage.",
       "text": "Fritz meldete für einen Themenkomplex fehlende Unterlagen als Blocker. Der Mensch stufte auf Hinweis herab, weil dieser Themenkomplex nach Plan noch gar nicht ausgearbeitet ist. Ein KI-Mitarbeiter kann das nicht wissen, es muss ihm gesagt werden. Seitdem steht es im Prüfprofil und nicht mehr im Kopf des Prüfers."
     },
-    "quelle": "Quoten je Regel, Stand 14.09.2026, und Übergabe für eine öffentliche Seite vom 11.09.2026",
-    "freigabe": "oeffentlich"
+    "quelle": "Quoten je Regel, Stand 18.09.2026, und Regelnotiz E13 vom 18.09.2026",
+    "freigabe": "oeffentlich",
+    "ersteRegel": {
+      "regel": "E13",
+      "am": "2026-09-18",
+      "gesehen": 30,
+      "fehlalarme": 0,
+      "satz": "Regel E13 hat als erste die Schwelle erreicht: 30 Fälle einzeln angesehen, kein Fehlalarm. Sie misst richtig und hatte nur zu hoch gewichtet; Erwin hat sie als kosmetisch von Minor auf Hinweis gesetzt."
+    }
   },
   "entscheidungenNachtragIntern": {
     "text": "Am 11.09. wiederholte sich das Muster: Am Morgen fiel die Entscheidung, vorerst keinen weiteren KI-Mitarbeiter zu bauen, am Abend kam das Ziel dazu, bis zum 09.10. weitere anzulegen. Der Meilensteinplan löst das über die Auswahl, die ersten neuen urteilen nicht. Am 16.09. rückten mit Architekt und Entwickler zwei Rollen in diesen Zeitraum, die der Plan ausdrücklich ausschloss. Er wird deshalb neu geschnitten. Am 17.09. ist er neu geschnitten, bis zum 16.10. Erwins Auswahl dazu steht im Logbuch, noch als ungeprüft; der Plan selbst ist ein Entwurf.",
     "freigabe": "intern"
   },
   "stufenPlan": {
-    "text": "Am 11.09. ist für die Wochen bis zum 09.10. ein Meilensteinplan mit vier Abnahmen entstanden. Am 17.09. ist er neu geschnitten worden, bis zum 16.10.: zuerst der Reviewer mit Grenze auf der eigenen Hardware, dann der Orchestrator mit Akte und Auftragsbuch, danach Reporter, Archivar und Architekt, zuletzt der Entwickler. Der neue Plan ist ein Entwurf und hat keinen Puffer.",
+    "text": "Am 11.09. ist für die Wochen bis zum 09.10. ein Meilensteinplan mit vier Abnahmen entstanden. Am 17.09. ist er neu geschnitten worden, bis zum 16.10.: zuerst der Reviewer mit Grenze auf der eigenen Hardware, dann der Orchestrator mit Akte und Auftragsbuch, danach Reporter, Archivar und Architekt, zuletzt der Entwickler. Der neue Plan ist ein Entwurf und hat keinen Puffer. Am 25.09. ist der Endtermin auf den 23.10. gerückt, am 29.09. ist der Plan auf ein neues Ziel geschnitten worden, und am 16.10. hat Erwin neue Termine freigegeben, Ende am 13.11.",
     "freigabe": "intern"
   },
   "ablage": {
     "freigabe": "oeffentlich",
-    "gezaehltAm": "2026-09-18",
-    "notizen": 143,
-    "verweise": 1280,
+    "gezaehltAm": "2026-10-16",
+    "notizen": 175,
+    "verweise": 1628,
     "unaufgeloest": 6,
-    "regelnotizen": 0,
+    "regelnotizen": 1,
     "bereiche": [
       {
         "id": "konventionen",
@@ -1723,7 +2049,7 @@
           "quellen": 0,
           "prueflaeufe": 33,
           "arbeitsstand": 22,
-          "protokoll": 10,
+          "protokoll": 19,
           "einstiege": 3,
           "archiv": 4
         }
@@ -1733,22 +2059,22 @@
         "gruppe": "wissen",
         "name": "Entscheidungen mit Datum",
         "kurz": "Entscheidungen",
-        "notizen": 7,
-        "verbindlich": 5,
+        "notizen": 13,
+        "verbindlich": 7,
         "informativ": 1,
-        "ungeprueft": 1,
+        "ungeprueft": 5,
         "ohneFeld": 0,
         "verweiseNach": {
           "konventionen": 1,
           "unternehmen": 0,
-          "bauplan": 13,
+          "bauplan": 18,
           "normbasis": 0,
           "massstab": 3,
           "quellen": 0,
           "prueflaeufe": 0,
-          "arbeitsstand": 22,
-          "protokoll": 1,
-          "einstiege": 7,
+          "arbeitsstand": 33,
+          "protokoll": 4,
+          "einstiege": 10,
           "archiv": 0
         }
       },
@@ -1781,21 +2107,21 @@
         "gruppe": "wissen",
         "name": "Bauplan der Mitarbeiter",
         "kurz": "Bauplan",
-        "notizen": 9,
+        "notizen": 10,
         "verbindlich": 0,
-        "informativ": 0,
+        "informativ": 1,
         "ungeprueft": 1,
         "ohneFeld": 8,
         "verweiseNach": {
-          "konventionen": 13,
-          "entscheidungen": 11,
-          "unternehmen": 2,
+          "konventionen": 7,
+          "entscheidungen": 29,
+          "unternehmen": 3,
           "normbasis": 2,
-          "massstab": 16,
+          "massstab": 10,
           "quellen": 0,
-          "prueflaeufe": 9,
-          "arbeitsstand": 26,
-          "protokoll": 0,
+          "prueflaeufe": 12,
+          "arbeitsstand": 43,
+          "protokoll": 3,
           "einstiege": 1,
           "archiv": 2
         }
@@ -1875,20 +2201,20 @@
       {
         "id": "prueflaeufe",
         "gruppe": "gedaechtnis",
-        "name": "Prüfläufe",
+        "name": "Prüfläufe und Regeln",
         "kurz": "Prüfläufe",
-        "notizen": 20,
+        "notizen": 24,
         "verbindlich": 0,
         "informativ": 0,
-        "ungeprueft": 3,
+        "ungeprueft": 7,
         "ohneFeld": 17,
         "verweiseNach": {
           "konventionen": 1,
           "entscheidungen": 0,
           "unternehmen": 1,
-          "bauplan": 21,
+          "bauplan": 25,
           "normbasis": 3,
-          "massstab": 41,
+          "massstab": 42,
           "quellen": 1,
           "arbeitsstand": 0,
           "protokoll": 0,
@@ -1901,21 +2227,21 @@
         "gruppe": "werkstatt",
         "name": "Pläne, Berichte, Übergaben",
         "kurz": "Arbeitsstände",
-        "notizen": 21,
+        "notizen": 33,
         "verbindlich": 0,
-        "informativ": 4,
-        "ungeprueft": 7,
+        "informativ": 6,
+        "ungeprueft": 17,
         "ohneFeld": 10,
         "verweiseNach": {
-          "konventionen": 11,
-          "entscheidungen": 9,
+          "konventionen": 15,
+          "entscheidungen": 33,
           "unternehmen": 5,
-          "bauplan": 52,
+          "bauplan": 68,
           "normbasis": 1,
-          "massstab": 19,
+          "massstab": 20,
           "quellen": 0,
-          "prueflaeufe": 4,
-          "protokoll": 6,
+          "prueflaeufe": 5,
+          "protokoll": 12,
           "einstiege": 3,
           "archiv": 4
         }
@@ -1925,21 +2251,21 @@
         "gruppe": "werkstatt",
         "name": "Tagesprotokolle",
         "kurz": "Protokolle",
-        "notizen": 9,
+        "notizen": 18,
         "verbindlich": 0,
         "informativ": 0,
         "ungeprueft": 0,
-        "ohneFeld": 9,
+        "ohneFeld": 18,
         "verweiseNach": {
-          "konventionen": 15,
-          "entscheidungen": 17,
+          "konventionen": 32,
+          "entscheidungen": 36,
           "unternehmen": 0,
-          "bauplan": 19,
+          "bauplan": 41,
           "normbasis": 1,
-          "massstab": 2,
+          "massstab": 5,
           "quellen": 0,
-          "prueflaeufe": 3,
-          "arbeitsstand": 39,
+          "prueflaeufe": 9,
+          "arbeitsstand": 99,
           "einstiege": 0,
           "archiv": 0
         }
@@ -2091,7 +2417,7 @@
         "art": "notizen",
         "wofuer": "Wie ein KI-Mitarbeiter gebaut ist: Anatomie, Harness, Orchestrator, Systemarchitektur, Zusammenarbeit, Fahrplan.",
         "hinweis": "Gelesen, wenn an der Architektur gearbeitet wird, nicht bei jeder Aufgabe.",
-        "notizen": 21,
+        "notizen": 33,
         "verbindlich": 0
       },
       {
@@ -2107,7 +2433,7 @@
         "stufe": "ordnung",
         "art": "notizen",
         "wofuer": "Konventionen, Änderungsprotokoll, Status-Übersicht und Tagesprotokolle.",
-        "notizen": 9,
+        "notizen": 16,
         "verbindlich": 3
       },
       {
@@ -2119,12 +2445,21 @@
         "verbindlich": 0
       },
       {
+        "ordner": "76_Aufträge",
+        "stufe": "ordnung",
+        "art": "notizen",
+        "wofuer": "Aufträge an die Mannschaft, eine Notiz je Auftrag, mit Übersicht.",
+        "hinweis": "Seit dem 28.09. angelegt, bisher nur mit der Vorlage.",
+        "notizen": 1,
+        "verbindlich": 0
+      },
+      {
         "ordner": "85_Logbuch",
         "stufe": "ordnung",
         "art": "notizen",
         "wofuer": "Entscheidungen und Ereignisse in zeitlicher Folge.",
-        "notizen": 7,
-        "verbindlich": 5
+        "notizen": 13,
+        "verbindlich": 7
       },
       {
         "ordner": "90_Archiv",
@@ -2159,12 +2494,12 @@
         "wofuer": "Website-Abzüge und Datenschicht, nicht im Repository und nicht im Index."
       }
     ],
-    "gezaehltAm": "2026-09-18",
+    "gezaehltAm": "2026-10-16",
     "quelle": "Ordnertabelle und Kontextstrategie im Einstieg des Repositorys KI-Mitarbeiter, Akten nach den Vault-Konventionen, Anzahlen aus der Zählung der Ablage",
     "freigabe": "oeffentlich"
   },
   "landschaft": {
-    "stand": "2026-09-17",
+    "stand": "2026-10-16",
     "rechnerAufgenommen": "2026-09-17",
     "rechnerBestaetigt": "2026-09-17",
     "satz": "Zwei Orte führen dieselbe Mannschaft aus. Verbunden sind sie nur über die Ablage.",
@@ -2247,8 +2582,8 @@
       {
         "id": "akten",
         "ort": "ablage",
-        "name": "Akte des Reviewers",
-        "zustand": "vorhanden"
+        "name": "Akten von Reviewer und Orchestrator",
+        "zustand": "laeuft"
       },
       {
         "id": "akte-researcherin",
@@ -2261,13 +2596,13 @@
         "id": "auftragsbuch",
         "ort": "ablage",
         "name": "Auftragsbuch, eine Notiz je Auftrag",
-        "zustand": "geplant"
+        "zustand": "vorhanden"
       },
       {
         "id": "regelnotizen",
         "ort": "ablage",
         "name": "Regelnotizen mit gemessener Quote",
-        "zustand": "geplant"
+        "zustand": "vorhanden"
       },
       {
         "id": "modell",
@@ -2286,7 +2621,7 @@
         "id": "profile",
         "ort": "rechner",
         "name": "Profile: Reviewer, Orchestrator",
-        "zustand": "vorhanden"
+        "zustand": "laeuft"
       },
       {
         "id": "stand-rechner",
@@ -2298,20 +2633,21 @@
         "id": "grenze-profil",
         "ort": "rechner",
         "name": "Grenze am Profil",
-        "zustand": "geplant",
-        "traegt": true
+        "zustand": "laeuft",
+        "traegt": false
       },
       {
         "id": "verteilen",
         "ort": "rechner",
-        "name": "Aufträge verteilen nach Tabelle",
-        "zustand": "geplant"
+        "name": "Aufträge verteilen über das Board",
+        "zustand": "vorhanden",
+        "traegt": true
       },
       {
         "id": "sprache",
         "ort": "rechner",
         "name": "Sprachbedienung am Orchestrator",
-        "zustand": "geplant",
+        "zustand": "vorhanden",
         "freigabe": "intern"
       }
     ],
@@ -2986,6 +3322,353 @@
       ],
       "m1FehltSatz": "Alle drei brauchen Erwin.",
       "quelle": "Meilensteinplan 17.09. bis 16.10.2026, Abschnitt „Nachgezogen am 18.09.2026“, und Tagesprotokoll vom 18.09.2026"
-    }
+    },
+    "ueberholtAm": "2026-09-25",
+    "ueberholt": "Am 25.09. um eine Woche geschoben, am 29.09. auf ein neues Ziel geschnitten. Er bleibt hier als Verlauf stehen."
+  },
+  "meilensteinplanAktuell": {
+    "stand": "2026-10-16",
+    "status": "Plan vom 29.09.2026, Termine am 16.10.2026 von Erwin freigegeben",
+    "von": "2026-09-29",
+    "bis": "2026-11-13",
+    "termineAm": "2026-10-16",
+    "ersetzt": [
+      "Meilensteinplan 17.09. bis 16.10.2026, nachgezogen am 18.09.",
+      "Meilensteinplan 25.09. bis 23.10.2026"
+    ],
+    "satz": "Vier KI-Mitarbeiter, die dem Team helfen, Sprache für alle und eine interne Seite. Neuer Endtermin ist der 13.11.",
+    "ziel": "In höchstens vier Wochen mehrere lauffähige KI-Mitarbeiter, die einzelnen Teammitgliedern helfen, dazu Sprachbedienung und eine gehostete interne Seite.",
+    "zielVon": "Erwins Wortlaut vom 17.09., am 29.09. bestätigt",
+    "zielteile": [
+      {
+        "teil": "mehrere lauffähige KI-Mitarbeiter",
+        "festgelegt": "Reviewer, Orchestrator, Reporter und Researcherin. Architekt, Entwickler und Archivar folgen danach."
+      },
+      {
+        "teil": "die einzelnen Teammitgliedern helfen",
+        "festgelegt": "Alle im Team, über den Orchestrator. Wer eine zugelassene Kennung hat, gibt ihm Aufträge; er reicht sie an den Reviewer weiter oder lehnt ab."
+      },
+      {
+        "teil": "Sprachbedienung",
+        "festgelegt": "Freies Gespräch mit dem Orchestrator, für alle, als Sprachnachricht hin und zurück."
+      },
+      {
+        "teil": "gehostete interne Seite",
+        "festgelegt": "Bei claude.ai, im Team geteilt, aus der Ablage erzeugt."
+      },
+      {
+        "teil": "in höchstens vier Wochen",
+        "festgelegt": "Am 29.09. bis zum 23.10. geplant, am 16.10. auf den 13.11. verschoben."
+      }
+    ],
+    "lauffaehig": "Lauffähig heißt: Die Akte ist freigegeben, die Grenzdatei hat Testfälle, der KI-Mitarbeiter läuft als eigenes Profil mit seiner Grenze und hat mindestens einen echten Auftrag erledigt. Einem Teammitglied hilft er, wenn dieser Auftrag von jemand anderem kam als Erwin.",
+    "termineSatz": "Am 16.10. hat Erwin neue Termine freigegeben: Meilenstein 1 am 23.10., 2 am 30.10., 3 am 06.11., 4 am 13.11. Der Zuschnitt vom 29.09. bleibt.",
+    "meilensteine": [
+      {
+        "id": "M1",
+        "termin": "2026-10-23",
+        "fruehereFrist": "2026-10-02",
+        "titel": "Der Reviewer ist abgenommen, der Orchestrator läuft als eigenes Profil",
+        "inhalt": [
+          {
+            "text": "Die Abnahme des Reviewers",
+            "erledigt": "am 15.10., mit Vorbehalt"
+          },
+          {
+            "text": "Die Akte des Orchestrators auf das Team und die Sprache angleichen",
+            "erledigt": "am 29.09."
+          },
+          {
+            "text": "Ein eigenes Profil für den Orchestrator, mit seiner Grenze",
+            "erledigt": "laut Prüfung vom 16.10."
+          },
+          {
+            "text": "Ein eigener Zugang im Messenger für den Orchestrator"
+          },
+          {
+            "text": "Der erste Auftrag über das Board: von Erwin an den Orchestrator, als Karte zum Reviewer und zurück",
+            "teilweise": "Ein Testauftrag lief am 16.10. über das Board zum Reviewer."
+          },
+          {
+            "text": "Jira an den Plan angleichen"
+          },
+          {
+            "text": "Die Teamliste beginnen: wer mitmacht, mit Einverständnis und Kennung"
+          }
+        ],
+        "abnahme": "Erwin gibt dem Orchestrator einen Auftrag, der über Auftragsnotiz und Karte zum Reviewer und unverändert zurück läuft. Einen Auftrag, der nicht in seiner Tabelle steht, lehnt der Orchestrator ab und sagt warum.",
+        "erwinMinuten": 85
+      },
+      {
+        "id": "M2",
+        "termin": "2026-10-30",
+        "fruehereFrist": "2026-10-09",
+        "titel": "Das Team ist angebunden",
+        "inhalt": [
+          {
+            "text": "Die Kennungen der Teamliste beim Orchestrator freischalten"
+          },
+          {
+            "text": "Eine Anleitung fürs Team auf einer Seite: was der Orchestrator annimmt, was er ablehnt, was mit dem Ergebnis passiert"
+          },
+          {
+            "text": "Den Bewertungsbogen von Regel E5 übernehmen und zählen"
+          },
+          {
+            "text": "Die interne Seite in erster Fassung bei claude.ai, noch nicht geteilt"
+          },
+          {
+            "text": "Die Wochenstichprobe, dass der Orchestrator nicht zusammenfasst"
+          },
+          {
+            "text": "Eine Textfassung der gesprochenen Antworten",
+            "erledigt": "am 29.09. entschieden: keine"
+          }
+        ],
+        "abnahme": "Zwei Teammitglieder außer Erwin haben je einen Auftrag über den Orchestrator gegeben und ein Ergebnis bekommen. Beide Aufträge liegen mit Ergebnis im Auftragsbuch.",
+        "erwinMinuten": 50
+      },
+      {
+        "id": "M3",
+        "termin": "2026-11-06",
+        "fruehereFrist": "2026-10-16",
+        "titel": "Sprache für alle, der Reporter liefert",
+        "inhalt": [
+          {
+            "text": "Die Sprache am Orchestrator anschließen: Erkennung im Haus, Antwort mit einer deutschen Stimme, als Sprachnachricht"
+          },
+          {
+            "text": "Die Sprachprobe: zehn deutsche Sätze, gesprochen von Erwin und einem Teammitglied"
+          },
+          {
+            "text": "Die Akte des Reporters freigeben"
+          },
+          {
+            "text": "Ein Profil für den Reporter; nach einem Lauf des Reviewers legt der Orchestrator den Folgeauftrag an"
+          },
+          {
+            "text": "Den Leserkreis der internen Seite festlegen"
+          },
+          {
+            "text": "Die Wochenstichprobe"
+          }
+        ],
+        "abnahme": "Ein Teammitglied spricht dem Orchestrator einen Auftrag, und er antwortet gesprochen, mit Auftragsnummer und zuständigem Mitarbeiter. Von zehn Probesätzen sind mindestens neun ohne sinnentstellenden Fehler erkannt. Nach einem Lauf des Reviewers liefert der Reporter den Bericht ohne Sitzung an der Werkbank.",
+        "erwinMinuten": 65
+      },
+      {
+        "id": "M4",
+        "termin": "2026-11-13",
+        "fruehereFrist": "2026-10-23",
+        "titel": "Die interne Seite steht, die Researcherin hat ihre Grenze",
+        "inhalt": [
+          {
+            "text": "Die interne Seite vollständig: Aufträge je Mitarbeiter, Berichte, Fehlalarmquote je Regel, Meilensteine, jede Zahl mit Datum, täglich neu erzeugt"
+          },
+          {
+            "text": "Die Seite lesen und im Team teilen"
+          },
+          {
+            "text": "Die Researcherin: Akte nachziehen, Schreibweg festlegen, Grenze am Profil"
+          },
+          {
+            "text": "Die Wochenstichprobe"
+          }
+        ],
+        "abnahme": "Die Seite ist im Team geteilt, am Morgen der Abnahme neu erzeugt, jede Zahl trägt ein Datum, und Menschen erscheinen nur als Auftraggeber. Zwei Teammitglieder haben sie geöffnet. Die Researcherin läuft mit ihrer Grenze, und ein Schreibversuch außerhalb ihres Ordners wird abgelehnt.",
+        "erwinMinuten": 75
+      }
+    ],
+    "fristen": [
+      {
+        "text": "Ein eigener Zugang im Messenger für den Orchestrator",
+        "frist": "2026-10-01",
+        "stand": "offen"
+      },
+      {
+        "text": "Die Akte des Orchestrators: alle im Team als Auftraggeber, freies Gespräch",
+        "frist": "2026-10-02",
+        "stand": "erledigt",
+        "am": "2026-09-29"
+      },
+      {
+        "text": "Jira an den Plan angleichen",
+        "frist": "2026-10-02",
+        "stand": "offen"
+      },
+      {
+        "text": "Die Teamliste: wer mitmacht, mit Einverständnis und Kennung",
+        "frist": "2026-10-05",
+        "stand": "offen",
+        "kritisch": true
+      },
+      {
+        "text": "Eine Textfassung der gesprochenen Antworten",
+        "frist": "2026-10-09",
+        "stand": "erledigt",
+        "am": "2026-09-29",
+        "notiz": "entschieden: keine, nur Sprache"
+      },
+      {
+        "text": "Die Researcherin: Schreibweg und Pflichtangaben",
+        "frist": "2026-10-09",
+        "stand": "offen"
+      },
+      {
+        "text": "Die Akte des Reporters",
+        "frist": "2026-10-12",
+        "stand": "offen"
+      },
+      {
+        "text": "Der Leserkreis der internen Seite",
+        "frist": "2026-10-12",
+        "stand": "offen"
+      },
+      {
+        "text": "Die interne Seite im Team teilen",
+        "frist": "2026-10-22",
+        "stand": "offen"
+      }
+    ],
+    "fristenHinweis": "Die Fristen stammen aus dem Plan vom 29.09. Mit den neuen Terminen vom 16.10. sind sie nicht umgeschrieben worden, die offenen sind alle verstrichen. Entscheidungen zu Zugängen und zur Sicherheit des KI-Rechners stehen nur in der Ablage.",
+    "pfad": [
+      "Abnahme des Reviewers",
+      "eigener Zugang und Akte des Orchestrators",
+      "Profil des Orchestrators",
+      "erster Auftrag über das Board",
+      "Teamliste",
+      "zwei Aufträge aus dem Team (M2)",
+      "Sprache am Orchestrator (M3)",
+      "interne Seite mit den Aufträgen des Teams (M4)"
+    ],
+    "pfadSatz": "Die empfindlichste Stelle ist die Teamliste. Sie hängt an Menschen außerhalb von Erwins Kalender: Stehen keine zwei Namen mit Kennung fest, hält Meilenstein 2 nicht, in Meilenstein 3 fehlt der Sprecher außer Erwin, und die Seite zeigt in Meilenstein 4 keine Aufträge aus dem Team.",
+    "daneben": "Daneben, ohne den Pfad aufzuhalten: der Reporter, die Researcherin und die Übernahme von Regel E5.",
+    "risiken": [
+      {
+        "nr": "R23",
+        "titel": "Das Team nutzt die KI-Mitarbeiter nicht",
+        "eintritt": "mittel",
+        "auswirkung": "hoch",
+        "stufe": "hoch",
+        "gegenmassnahme": "Zwei benannte Personen mit einer echten Aufgabe, etwa dem Review von Szenarien; eine Anleitung auf einer Seite; den ersten Auftrag gemeinsam geben"
+      },
+      {
+        "nr": "R26",
+        "titel": "Der Orchestrator fasst im freien Gespräch zusammen oder erfindet",
+        "eintritt": "hoch",
+        "auswirkung": "mittel",
+        "stufe": "hoch",
+        "gegenmassnahme": "Eine Textfassung der Antworten gibt es nicht (Erwin, 29.09.). Die Wochenstichprobe liest, wenn möglich, den Text, aus dem die Sprachnachricht entsteht; die Auftragsnotiz hält Auftrag und Ergebnis fest"
+      },
+      {
+        "nr": "R30",
+        "titel": "Das Board trägt nicht",
+        "eintritt": "mittel",
+        "auswirkung": "hoch",
+        "stufe": "hoch",
+        "gegenmassnahme": "Der erste Auftrag früh; bis ein Fehler behoben ist, gibt Erwin Aufträge direkt an den Reviewer"
+      },
+      {
+        "nr": "R21",
+        "titel": "Lange Werkzeugschleifen brechen ab",
+        "eintritt": "hoch",
+        "auswirkung": "mittel",
+        "stufe": "hoch",
+        "gegenmassnahme": "Aufträge klein schneiden, Abbrüche zählen, den Fehler beim Hersteller melden"
+      },
+      {
+        "nr": "R1",
+        "titel": "Erwins Zeit reicht nicht",
+        "eintritt": "mittel",
+        "auswirkung": "hoch",
+        "stufe": "hoch",
+        "gegenmassnahme": "Rund 1 h 10 je Woche geplant; die Ist-Zeit führen; die Gespräche im Team früh beginnen"
+      },
+      {
+        "nr": "R27",
+        "titel": "Die deutsche Spracherkennung reicht nicht",
+        "eintritt": "mittel",
+        "auswirkung": "mittel",
+        "stufe": "mittel",
+        "gegenmassnahme": "Probe mit zehn Sätzen; Rückfall auf Text"
+      },
+      {
+        "nr": "R28",
+        "titel": "Die interne Seite erreicht ihre Leser nicht",
+        "eintritt": "mittel",
+        "auswirkung": "mittel",
+        "stufe": "mittel",
+        "gegenmassnahme": "Leserkreis festlegen; nur innerhalb der Organisation teilen; Rückfall als Datei im Teamkanal"
+      },
+      {
+        "nr": "R29",
+        "titel": "Die tägliche Erzeugung hängt an Erwins Rechner",
+        "eintritt": "hoch",
+        "auswirkung": "niedrig",
+        "stufe": "mittel",
+        "gegenmassnahme": "Das Datum auf der Seite zeigt den Stand; später auf den KI-Rechner verlegen"
+      },
+      {
+        "nr": "R22",
+        "titel": "Plan und Jira laufen auseinander",
+        "eintritt": "mittel",
+        "auswirkung": "mittel",
+        "stufe": "mittel",
+        "gegenmassnahme": "Angleichen in Meilenstein 1"
+      },
+      {
+        "nr": "R16",
+        "titel": "Arbeit liegt nicht in der Ablage",
+        "eintritt": "niedrig",
+        "auswirkung": "mittel",
+        "stufe": "niedrig",
+        "gegenmassnahme": "Seit dem 28.09. eingecheckt und auf dem KI-Rechner"
+      }
+    ],
+    "risikenHinweis": "Neu bewertet für das Ziel vom 29.09. Risiken zur Sicherheit und zu den Zugängen des KI-Rechners stehen nur in der Ablage.",
+    "nichtDrin": [
+      "Architekt, Entwickler und Archivar. Die Grenzen von Architekt und Reporter liegen seit dem 28.09.",
+      "Ein Live-Gespräch mit dem Orchestrator. Gesprochen wird in Sprachnachrichten.",
+      "Die öffentliche Seite und die Frage, wer öffentliche Aussagen über WAMOCON freigibt.",
+      "Das Ausspielen der Akten in beide Werkzeuge.",
+      "Die Researcherin für andere als Erwin.",
+      "Menschen auf der Seite über die Rolle als Auftraggeber hinaus.",
+      "Der Reviewer als Ganzes produktiv. Gemessen ist eine von 26 Regeln, mit E5 höchstens zwei.",
+      "Der Vergleichslauf mit einem Cloud-Modell, die Gewichtung des Kriterienkatalogs und weitere Fachbereiche.",
+      "Ein Puffer. Rutscht die Teamliste, rutschen Meilenstein 2 und 3 mit."
+    ],
+    "zeitSatz": "Erwins Zeit nach Plan: 1 h 25, 50 min, 1 h 05 und 1 h 15, zusammen 4 h 35, im Schnitt rund 1 h 10 je Woche. Die Last verschiebt sich zu den Menschen im Team: Ihr Einverständnis, ihre Kennungen und ihre ersten Aufträge hängen an ihrem Kalender, nicht an seinem.",
+    "heute": [
+      {
+        "wer": "Reviewer",
+        "stand": "Läuft auf dem KI-Rechner mit seiner Grenze. Am 15.10. von Erwin abgenommen, mit Vorbehalt."
+      },
+      {
+        "wer": "Orchestrator",
+        "stand": "Akte freigegeben, Profil mit Grenze eingerichtet. Fürs Team wartet er auf die Teamliste. Am 16.10. lief ein Testauftrag über das Board zum Reviewer."
+      },
+      {
+        "wer": "Reporter",
+        "stand": "Grenzdatei mit Testfällen seit dem 28.09., noch keine Akte und kein Profil."
+      },
+      {
+        "wer": "Researcherin",
+        "stand": "Läuft täglich. Ihre Grenze am Profil kommt mit Meilenstein 4."
+      },
+      {
+        "wer": "Sprache",
+        "stand": "Stand 29.09.: Erkennung und Ausgabe laufen als Dienste auf dem KI-Rechner, angeschlossen ist nichts."
+      },
+      {
+        "wer": "Interne Seite",
+        "stand": "Ein erster Baustein liegt privat bei claude.ai. Geteilt ist sie nicht."
+      },
+      {
+        "wer": "Team",
+        "stand": "Außer Erwin ist niemand freigeschaltet."
+      }
+    ],
+    "quelle": "Meilensteinplan 29.09. bis 23.10.2026 mit dem Hinweis auf die Termine vom 16.10.; Logbuch vom 25.09., 28.09., 29.09. und 16.10.2026; Abnahme M1 vom 15.10.2026; Übergabe vom 15.10. und Tagesprotokoll vom 16.10.2026",
+    "freigabe": "intern"
   }
 }

@@ -6,7 +6,7 @@ Datenquelle.
 | Route | Was sie ist |
 |---|---|
 | `/` | Landing Page. Erzählt das Vorhaben in dreizehn Abschnitten, vom Hero bis zum Meilensteinplan. |
-| `/stand/` | Dichte Standseite mit Ankernavigation, allen Tabellen, Prüfläufen, Stufen und dem Meilensteinplan im Einzelnen. |
+| `/stand/` | Dichte Standseite mit Ankernavigation, allen Tabellen, Prüfläufen, Stufen und dem Meilensteinplan im Einzelnen, dazu die Zeichnungen der Landing Page im jeweils passenden Abschnitt. |
 | `/impressum/`, `/datenschutz/` | Entwürfe, rechtlich nicht geprüft. Siehe „Impressum und Datenschutz“. |
 
 Bis zum 17.09.2026 hatte die Landing Page neunzehn Abschnitte und rund 9.500
@@ -149,10 +149,16 @@ verborgen bleibt.
 
 ## Die Figuren
 
-Zwölf Zeichnungen, alle aus `data/projektstand.json` gespeist, elf davon in
+Dreizehn Zeichnungen, alle aus `data/projektstand.json` gespeist, zwölf davon in
 `components/figuren/`. Sie sind eigene SVG in den CI-Farben, keine Kopien der
 Vorlagen aus der Einführung. Farben kommen aus den Tokens, damit sie in beiden Themen
 mitwandern; Rot trägt in jeder Figur genau ein Element, nämlich das, worum es geht.
+Die Ausnahme ist das Organigramm, das der Farbregel des Blatts vom 16.10. folgt.
+
+`/stand/` zeigt dieselben Zeichnungen im jeweils passenden Abschnitt, bis auf die
+Anatomie im Kopf der Landing Page, die an das Scrollen gebunden ist. Die Spalte neben
+der Navigation ist dort höchstens 834 px breit, deshalb gilt dort eine Mindestbreite
+von 760 px statt 880 px.
 
 Weil die Beschriftungen eine feste Größe im `viewBox` haben, behalten die Zeichnungen
 eine Mindestbreite von 880 px und scrollen darunter waagerecht im eigenen Kasten. Ohne
@@ -175,15 +181,25 @@ Aussehen setzt die Klasse `lp-aussage`.
 - **Schichtenstapel** — die acht Schichten in vier Gruppen, mit der Dateizuordnung
   und der Markierung, welche Gruppen ein zweiter KI-Mitarbeiter erbt. Rot trägt
   hier die eine Gruppe, die neu zu bauen ist.
-- **Mannschaft** — das Organigramm. Durchgezogen ist, wer arbeitet oder eingerichtet
-  ist, gestrichelt, was entschieden und nicht gebaut ist. Die Kästen werden schmaler,
-  wenn mehr Rollen dazukommen.
+- **Mannschaft** — das Organigramm im Stil des Blatts vom 16.10., in Schichten:
+  oben Erwin und das Team, darunter der Orchestrator, der an die Rollen verteilt,
+  dann die Werkbank mit ihren acht Helfern, die Wissensschicht und das Band mit dem,
+  was alle teilen. Eine Farbregel für alles: rot gefüllt läuft mit Grenze, rot
+  gestrichelt läuft und die Grenze folgt, grau gestrichelt ist entschieden und nicht
+  in Betrieb oder als Wissen ungeprüft. Die Felder der Wissensschicht zählt
+  `abbild:vault`, die Läufe im Gedächtnis kommen aus den Kennzahlen. Die Kästen
+  werden schmaler, wenn mehr Rollen dazukommen.
 - **Landschaft** — die Systemlandschaft mit Ist und Soll: Werkbank, Ablage und
   KI-Rechner im Haus nebeneinander, in jedem die Bausteine mit ihrem Zustand
   (gefüllt läuft, leer vorhanden, gestrichelt entschieden). Rot trägt die eine
   Verbindung, an der der Rest hängt: die Ablage über Git auf dem KI-Rechner.
   Daneben steht dieselbe Aufzählung als Text, für Leser ohne Bild.
-- **Zeitplan** — der Meilensteinplan über seine vier Wochen: oben die
+- **Termine** — die vier Meilensteine des Plans vom 29.09. auf einer Zeitachse:
+  offen die Frist, die der Plan selbst gesetzt hatte, gefüllt der Termin nach der
+  Entscheidung vom 16.10. Ein Tageskalender passt hier nicht mehr, weil nach dem
+  16.10. nur die vier Termine festgelegt sind, nicht die Arbeiten dazwischen.
+- **Zeitplan** — der Plan vom 17.09. über seine vier Wochen, seit dem 16.10. nur
+  noch als Verlauf auf `/stand/`, eingeklappt: oben die
   Entscheidungen mit Frist, darunter je Meilenstein die Arbeiten als Balken,
   unten Erwins Zeit je Woche. Rot trägt der kritische Pfad, leere Balken sind
   Bewertungszeit, grau hinterlegt sind die Wochenenden. Die gestrichelte Linie
@@ -406,8 +422,13 @@ zurücknimmt, sobald eine Prüfung anschlägt, und niemals auf `main` pusht.
 
 Was das Skript **nicht** kann: lesen und urteilen. Ein neuer Eintrag im Logbuch,
 ein geänderter Plan, ein Widerspruch zwischen zwei Blättern — das ist der Auftrag
-des Standwächters. `AKTE-VORSCHLAG.md` beschreibt, was eine Rolle bräuchte, die
-beides auf dem KI-Rechner tut, und was vorher zu entscheiden ist.
+des Standwächters.
+
+Am 18.09.2026 ist dafür eine Rolle entschieden: **Gregor Dev**, Pfleger der
+Seiten, neunte in der Mannschaft. Er trägt den Stand nach und baut auf Auftrag
+weitere Seiten nach demselben Muster. `AKTE-VORSCHLAG.md` ist der Entwurf seiner
+Akte, `ZUGANG-GREGOR-DEV.md` der Arbeitsplan für sein Konto. Beides fehlt noch,
+und bis dahin läuft der Durchgang unter dem Konto eines Menschen.
 
 Ob die Ablage weiter ist, sagt `scripts/pruefe-aktualitaet.mjs`:
 
@@ -658,7 +679,8 @@ scripts/
   stand-aktualisieren.cmd  der Einstieg dafür unter Windows
   heute.mjs                das heutige Datum in Ortszeit, für cmd und Zweignamen
   __fixtures__/            Vaults und ein alter Stand für die Tests
-AKTE-VORSCHLAG.md   Entwurf: was eine Rolle bräuchte, die das selbst tut
+AKTE-VORSCHLAG.md   Entwurf der Akte für Gregor Dev, den Pfleger der Seiten
+ZUGANG-GREGOR-DEV.md  Arbeitsplan: eigenes Konto, Token, Riegel vor main
 .claude/skills/
   standwaechter/SKILL.md   zieht den Stand nach und stellt ihn als Pull Request
 .github/workflows/

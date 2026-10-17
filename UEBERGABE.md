@@ -4,7 +4,75 @@ Diese Datei ist für die nächste Sitzung geschrieben, nicht für die Nachwelt. 
 sagt, wo das Vorhaben steht, was als Erstes zu tun ist und was dabei nicht
 verloren gehen darf.
 
-Stand dieser Übergabe: 18.09.2026.
+Stand dieser Übergabe: 16.10.2026.
+
+## Nachtrag 16.10.2026: vier Wochen nachgetragen
+
+Vom 18.09. bis zum 16.10. hat sich die Seite nicht bewegt: kein Lauf auf GitHub,
+keine tägliche Aufgabe, Pull Request #6 offen. Der Zweig `stand/2026-10-16` holt
+den Stand nach und nimmt #6 mit.
+
+- **Ein neuer Plan.** Am 29.09. hat Erwin das Ziel vom 17.09. wieder in Kraft
+  gesetzt, am 16.10. neue Termine freigegeben: Meilenstein 1 am 23.10., 4 am 13.11.
+  Er steht unter `meilensteinplanAktuell`. Der Plan vom 17.09. bleibt unter
+  `meilensteinplan` stehen, markiert mit `ueberholt`, weil aus den Daten nichts
+  verschwindet. Die Landing Page zeigt den neuen Plan mit der Grafik
+  `TermineFigur`, `/stand/` die Einzelheiten und den alten Zeitplan eingeklappt.
+- **Die öffentliche Seite ist zurückgestellt.** Am 29.09. ist die Wahl 9.4
+  zurückgenommen: Die interne Seite liegt bei claude.ai, diese hier rückt hinter das
+  Ende des Plans. Sie steht trotzdem öffentlich und zeigt alles. Eingetragen als
+  Beobachtung `oeffentliche-seite-zurueckgestellt`. Am 16.10. hat Erwin
+  entschieden: Pages zeigt weiter alles, `FREIGABE=alles` bleibt.
+- **Der Reviewer ist abgenommen**, am 15.10. mit Vorbehalt. Die Abnahme enthält
+  einen Sicherheitsbefund, der nur in der Ablage steht. Die Seite sagt nur, dass
+  zwei Bedingungen offen sind.
+- **Regel E13 ist die erste gemessene Regel**, 30 Fälle, kein Fehlalarm. Die
+  Bewertungen stehen auf 139, davon 79 einzeln angesehen.
+- **Drei Fehler im Zählen behoben:** Eine Laufnotiz mit Status „blockiert“ ist
+  kein Prüflauf; Regelnotizen werden am Ordner `Regeln/` erkannt, nicht am Typ
+  (den Typ `pruefregel` trägt auch der Alt-Neu-Marker); eine `vorlage` im
+  Unternehmensteil ist ein Arbeitsstand, kein Maßstab der Academy.
+- **Sechs neue Beobachtungen**, darunter: Gregor Dev steht nicht in der Ablage,
+  die Fristen im Plan sind nicht umgeschrieben, die Ablage war vom 29.09. bis
+  15.10. still, 11 statt 12 verbindliche Notizen.
+- **Das Organigramm der Mannschaft** folgt dem Blatt vom 16.10.: Mensch und Team,
+  Orchestrator, acht Rollen, Werkbank, Wissensschicht, das gemeinsame Band. Die
+  Reihenfolge der Köpfe ist die des Blatts. Der Gestalter steht als `passtNicht`
+  darin, weil das Blatt ihn nicht vorsieht; entfernt ist er nicht. Angaben zum
+  Betrieb des KI-Rechners, Profilnamen, Versionen und das Modell stehen nicht
+  darin.
+- **`/stand/` zeigt die Zeichnungen.** Bis zum 16.10. stand dort keine außer dem
+  eingeklappten Zeitplan. Jetzt hängt jede Zeichnung der Landing Page im passenden
+  Abschnitt: Schichten, Wissen und Ablage, Ablauf und Steuerung, Prüfpunkte,
+  Enabler, das Organigramm unter Übertragbarkeit, die Termine im Plan, die
+  Systemlandschaft bei der Plattform. Die Anatomie aus dem Kopf der Landing Page
+  fehlt, weil sie an das Scrollen gebunden ist.
+
+**Nicht übernommen, weil es nicht öffentlich werden darf:** Rechnernamen,
+Versionen, Dienste, Bots und Kennungen, die Werkzeuge der Researcherin, der
+Befund zur Liste der zugelassenen Nutzer, Risiken zur Sicherheit des KI-Rechners,
+die Entscheidungen zu Zugängen.
+
+## Nachtrag 18.09.2026: Gregor Dev ist entschieden
+
+Erwin hat am 18.09. eine neunte Rolle entschieden: **Gregor Dev**, Pfleger der
+Seiten. Er traegt den Stand der oeffentlichen Seiten nach und baut auf Auftrag
+weitere, weil mehr Landing Pages entstehen sollen. Er darf als Zweiter ins Netz,
+begrenzt auf GitHub, bekommt ein eigenes Konto und stellt Pull Requests;
+zusammengefuehrt wird von Erwin.
+
+Eingetragen in den Daten: die Rolle, die Entscheidung mit Datum, ein Eintrag in
+der Chronik und der offene Punkt 21, Konto, Akte und Grenze anzulegen.
+
+- `ZUGANG-GREGOR-DEV.md`: Arbeitsplan fuer das Konto in acht Schritten, vom
+  Maschinenkonto ueber den feingranularen Token bis zur taeglichen Aufgabe. Er
+  enthaelt kein Geheimnis und soll auch keines aufnehmen.
+- `AKTE-VORSCHLAG.md`: der Entwurf seiner Akte, jetzt auf seinen Namen und mit
+  den Entscheidungen vom 18.09.
+
+Wichtig fuer die naechste Sitzung: Der Riegel vor `main` fehlt noch. Solange
+niemand ihn setzt, kann jedes Konto mit Schreibrecht direkt auf `main` pushen,
+und jeder Push dorthin stellt die Seite ins Netz.
 
 ## Nachtrag 18.09.2026: der Durchgang ist harnessneutral
 
