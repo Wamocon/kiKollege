@@ -11,6 +11,7 @@ import { EnablerRaster } from '@/components/figuren/EnablerRaster'
 import { LandschaftFigur } from '@/components/figuren/Landschaft'
 import { MannschaftFigur } from '@/components/figuren/Mannschaft'
 import { Pruefpunkte } from '@/components/figuren/Pruefpunkte'
+import { Rubriken } from '@/components/landing/Rubriken'
 import { Schichtenstapel } from '@/components/figuren/Schichtenstapel'
 import { Steuerung } from '@/components/figuren/Steuerung'
 import { Wissensablagen } from '@/components/figuren/Wissensablagen'
@@ -227,6 +228,19 @@ export default function Seite() {
                 <AblageTabelle />
                 <AblageGraphFigur />
                 <AblageGraphListe />
+              </>
+            ) : null}
+
+            {sichtbar(d.unternehmenswissen) ? (
+              <>
+                <h3 style={{ marginTop: '1.8rem' }}>{d.unternehmenswissen.satz}</h3>
+                <div className="prosa">
+                  <p>{d.unternehmenswissen.erklaerung}</p>
+                </div>
+                <Rubriken />
+                <p className="fussnote" style={{ marginTop: '1rem' }}>
+                  {d.unternehmenswissen.stand}
+                </p>
               </>
             ) : null}
           </section>
@@ -628,6 +642,13 @@ export default function Seite() {
 
             <h3 style={{ marginTop: '1.8rem' }}>Die Mannschaft am {datum(d.mannschaft.gezaehltAm)}</h3>
             <MannschaftFigur />
+            {sichtbar(d.mannschaft.verlauf) ? (
+              <div className="prosa" style={{ marginTop: '1.3rem' }}>
+                <p>
+                  {istIntern ? <Marker art="intern">nur intern</Marker> : null} {d.mannschaft.verlauf.text}
+                </p>
+              </div>
+            ) : null}
           </section>
 
           {/* 11 ------------------------------------------------------------ */}
@@ -735,6 +756,38 @@ export default function Seite() {
           </section>
 
           {/* 15 ------------------------------------------------------------ */}
+          <section id="chronik">
+            <Kopfzeile id="chronik" />
+            <div className="prosa">
+              <p>
+                Jeder Arbeitstag seit dem {datum(d.arbeitstage.beginn)}, an dem etwas festgehalten
+                ist. Die Landing Page zeigt davon die letzten fünf.
+              </p>
+            </div>
+            <div className="tabellenrahmen">
+              <table>
+                <thead>
+                  <tr>
+                    <th style={{ width: '7rem' }}>Datum</th>
+                    <th>Was geschah</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {nurSichtbare(d.arbeitstage.eintraege).map((e) => (
+                    <tr key={e.datum + e.text}>
+                      <td className="datum">{datum(e.datum)}</td>
+                      <td>
+                        {e.text}{' '}
+                        {istIntern && e.freigabe === 'intern' ? <Marker art="intern">nur intern</Marker> : null}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          {/* 16 ------------------------------------------------------------ */}
           <section id="offen">
             <Kopfzeile id="offen" />
             <div className="prosa">
@@ -771,7 +824,7 @@ export default function Seite() {
             </p>
           </section>
 
-          {/* 16 ------------------------------------------------------------ */}
+          {/* 17 ------------------------------------------------------------ */}
           {zeigen('beobachtungen') ? (
             <section id="beobachtungen">
               <Kopfzeile id="beobachtungen" />
@@ -793,7 +846,7 @@ export default function Seite() {
             </section>
           ) : null}
 
-          {/* 17 ------------------------------------------------------------ */}
+          {/* 18 ------------------------------------------------------------ */}
           {zeigen('quellen') ? (
             <section id="quellen">
               <Kopfzeile id="quellen" />

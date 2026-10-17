@@ -76,6 +76,40 @@ export function PlanAbschnitt() {
         <p>{p.daneben}</p>
       </Block>
 
+      <h3 style={{ marginTop: '1.8rem' }}>Entscheidungen mit Frist</h3>
+      <div className="tabellenrahmen">
+        <table>
+          <thead>
+            <tr>
+              <th style={{ width: '6rem' }}>Frist</th>
+              <th>Entscheidung</th>
+              <th style={{ width: '12rem' }}>Stand</th>
+            </tr>
+          </thead>
+          <tbody>
+            {p.fristen.map((f) => (
+              <tr key={f.text}>
+                <td className="datum">{datum(f.frist).slice(0, 6)}</td>
+                <td>
+                  {f.text}
+                  {f.notiz ? `, ${f.notiz}` : ''}
+                </td>
+                <td>
+                  {f.stand === 'erledigt'
+                    ? `erledigt am ${datum(f.am ?? f.frist).slice(0, 6)}`
+                    : [f.frist < daten.stand ? 'Frist verstrichen' : 'offen', f.kritisch ? 'kritischer Pfad' : '']
+                        .filter(Boolean)
+                        .join(', ')}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <div className="prosa" style={{ marginTop: '1.3rem' }}>
+        <p>{p.fristenHinweis}</p>
+      </div>
+
       <Block titel="Was in diesen Wochen nicht passt">
         <ul>
           {p.nichtDrin.map((t) => (

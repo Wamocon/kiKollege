@@ -1,5 +1,5 @@
-import { AblageFigur, AblageTabelle } from '@/components/figuren/Ablage'
-import { AblageGraphFigur, AblageGraphListe } from '@/components/figuren/AblageGraph'
+import { AblageFigur } from '@/components/figuren/Ablage'
+import { AblageGraphFigur } from '@/components/figuren/AblageGraph'
 import { EnablerRaster } from '@/components/figuren/EnablerRaster'
 import { LandschaftFigur } from '@/components/figuren/Landschaft'
 import { TermineFigur } from '@/components/figuren/Termine'
@@ -12,9 +12,8 @@ import { Wissensablagen } from '@/components/figuren/Wissensablagen'
 import { Fussleiste } from '@/components/landing/Fussleiste'
 import { HeroAnatomie } from '@/components/landing/HeroAnatomie'
 import { Kopfleiste } from '@/components/landing/Kopfleiste'
-import { Rubriken } from '@/components/landing/Rubriken'
 import { Sektion } from '@/components/landing/Sektion'
-import { belastbarBei, daten, datum, dauer, harteRegel, tageZwischen, zahl, zielErreicht, type AnleitungAb } from '@/lib/daten'
+import { belastbarBei, daten, datum, harteRegel, tageZwischen, zahl, zielErreicht, type AnleitungAb } from '@/lib/daten'
 import { inWorten } from '@/lib/alter'
 import { istIntern, nurSichtbare, sichtbar, zeigtInternes } from '@/lib/freigabe'
 import { pfad } from '@/lib/pfad'
@@ -41,7 +40,6 @@ export default function Landing() {
   const fachlich = d.ablage.bereiche.filter((a) => a.id === 'normbasis' || a.id === 'massstab')
   const fachlichVerbindlich = fachlich.reduce((s, a) => s + a.verbindlich, 0)
   const verbindlich = d.ablage.bereiche.reduce((s, a) => s + a.verbindlich, 0)
-  const u = d.unternehmenswissen
 
   // Auf einen Blick: was als Nächstes ansteht, gerechnet am Stand der Daten
   const naechsterMeilenstein = plan.meilensteine.find((ms) => ms.termin >= d.stand)
@@ -538,12 +536,6 @@ export default function Landing() {
               <p>{m.grenzeWarum}</p>
             </div>
           </div>
-          {sichtbar(m.verlauf) ? (
-            <div className="lp-text lp-luft-oben">
-              {istIntern ? <p className="lp-intern">nur intern</p> : null}
-              <p>{m.verlauf.text}</p>
-            </div>
-          ) : null}
         </Sektion>
 
         {/* 06 Aufbau ---------------------------------------------------------- */}
@@ -658,7 +650,6 @@ export default function Landing() {
             </div>
 
             <AblageFigur />
-            <AblageTabelle />
 
             {fachlichVerbindlich === 0 ? (
               <div className="lp-text lp-luft-oben">
@@ -682,20 +673,12 @@ export default function Landing() {
             </div>
 
             <AblageGraphFigur />
-            <AblageGraphListe />
-
-            {sichtbar(u) ? (
-              <>
-                <h3 className="lp-aussage breit lp-luft-oben">{u.satz}</h3>
-                <div className="lp-text lp-luft-oben-klein">
-                  <p>{u.erklaerung}</p>
-                </div>
-                <Rubriken />
-                <div className="lp-text lp-luft-oben">
-                  <p>{u.stand}</p>
-                </div>
-              </>
-            ) : null}
+            <div className="lp-text lp-luft-oben">
+              <p>
+                Die Zahlen als Tabelle, alle Verbindungen und die Rubriken des Unternehmenswissens
+                stehen im <a href={pfad('/stand/#gedaechtnis')}>ausführlichen Stand</a>.
+              </p>
+            </div>
             </div>
           ) : null}
         </Sektion>
@@ -833,11 +816,9 @@ export default function Landing() {
             </div>
           </div>
 
-          <h2 className="lp-aussage breit lp-luft-oben">
-            {tageZwischen(d.arbeitstage.beginn, d.stand)} Tage, mit Datum.
-          </h2>
+          <h2 className="lp-aussage breit lp-luft-oben">Die letzten Tage, mit Datum.</h2>
           <div className="lp-zeit">
-            {nurSichtbare(d.arbeitstage.eintraege).map((e) => (
+            {nurSichtbare(d.arbeitstage.eintraege).slice(-5).map((e) => (
               <div className="lp-zeit-zeile" key={e.datum + e.text}>
                 <span className="wann">{datum(e.datum)}</span>
                 <span className="was">
@@ -846,6 +827,14 @@ export default function Landing() {
                 </span>
               </div>
             ))}
+          </div>
+
+          <div className="lp-text lp-luft-oben-klein">
+            <p>
+              Alle {zahl(nurSichtbare(d.arbeitstage.eintraege).length)} Einträge der{' '}
+              {tageZwischen(d.arbeitstage.beginn, d.stand)} Tage seit dem {datum(d.arbeitstage.beginn)}{' '}
+              stehen in der <a href={pfad('/stand/#chronik')}>Chronik</a>.
+            </p>
           </div>
 
           <h3 className="lp-aussage lp-luft-oben">
@@ -926,7 +915,6 @@ export default function Landing() {
                       ))}
                     </ul>
                     <p className="bedingung">Abnahme: {ms.abnahme}</p>
-                    <p className="bedingung">Anteil des Projektverantwortlichen: {dauer(ms.erwinMinuten)}</p>
                   </div>
                 </div>
               ))}
@@ -944,38 +932,8 @@ export default function Landing() {
 
             <div className="lp-text lp-luft-oben">
               <p>
-                <b>Der kritische Pfad:</b> {plan.pfad.join(' → ')}.
-              </p>
-              <p>{plan.pfadSatz}</p>
-              <p>{plan.daneben}</p>
-            </div>
-
-            <h3 className="lp-aussage lp-luft-oben">Entscheidungen mit Frist.</h3>
-            <div className="lp-log">
-              {plan.fristen.map((f) => (
-                <div className="lp-log-zeile" key={f.text}>
-                  <span className="wann">bis {datum(f.frist).slice(0, 6)}</span>
-                  <span className="was">
-                    {f.text}
-                    {f.notiz ? `, ${f.notiz}` : ''}.
-                  </span>
-                  <span className="zusatz">
-                    {f.stand === 'erledigt'
-                      ? `erledigt am ${datum(f.am ?? f.frist).slice(0, 6)}`
-                      : [f.frist < d.stand ? 'Frist verstrichen' : '', f.kritisch ? 'kritischer Pfad' : '']
-                          .filter(Boolean)
-                          .join(', ')}
-                  </span>
-                </div>
-              ))}
-            </div>
-            <div className="lp-text lp-luft-oben-klein">
-              <p>{plan.fristenHinweis}</p>
-            </div>
-
-            <div className="lp-text lp-luft-oben">
-              <p>
-                Was in diesen Wochen nicht passt, die Risiken und die Zeit des Projektverantwortlichen stehen im{' '}
+                Der kritische Pfad, die Entscheidungen mit Frist, die Zeit des
+                Projektverantwortlichen, was in diesen Wochen nicht passt, und die Risiken stehen im{' '}
                 <a href={pfad('/stand/#plan')}>ausführlichen Stand</a>, dazu der Plan vom 17.09. als
                 Verlauf.
               </p>
