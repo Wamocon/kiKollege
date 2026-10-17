@@ -3,7 +3,7 @@ import { TermineFigur } from '@/components/figuren/Termine'
 import { ZeitplanFigur } from '@/components/figuren/Zeitplan'
 import { daten, datum, dauer } from '@/lib/daten'
 
-/** Die Einzelheiten des Plans, der gilt: das Ziel in Teilen, Erwins Zeit, der
+/** Die Einzelheiten des Plans, der gilt: das Ziel in Teilen, die Zeit des Projektverantwortlichen, der
  *  kritische Pfad, was nicht hineinpasst, die Risiken. Die Landing Page zeigt
  *  die Termine, die Meilensteine und die Fristen und verweist für den Rest
  *  hierher. Darunter steht der Plan vom 17.09. als Verlauf, eingeklappt. */
@@ -53,7 +53,7 @@ export function PlanAbschnitt() {
         <p>{p.lauffaehig}</p>
       </div>
 
-      <h3 style={{ marginTop: '1.8rem' }}>Erwins Zeit je Meilenstein</h3>
+      <h3 style={{ marginTop: '1.8rem' }}>Zeit des Projektverantwortlichen je Meilenstein</h3>
       <div className="raster">
         {p.meilensteine.map((m) => (
           <div className="karte" key={m.id}>

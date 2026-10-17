@@ -20,7 +20,7 @@ Seite.
 ## Welche Fassung auf Pages steht
 
 Seit dem 17.09.2026 stellt GitHub Pages die vollständige Fassung
-(`FREIGABE=alles`). Erwin hat entschieden, vorerst keinen Unterschied zwischen
+(`FREIGABE=alles`). Der Projektverantwortliche hat entschieden, vorerst keinen Unterschied zwischen
 intern und öffentlich zu machen. Die Felder `freigabe` werden trotzdem weiter
 gepflegt, und die Prüfung der öffentlichen Fassung läuft weiter, damit die
 Trennung mit einer Zeile im Workflow zurückkommen kann.
@@ -128,6 +128,13 @@ npm run export:vault -- --vault "<Pfad>" --probelauf
 
 Jede Zahl braucht eine Quelle. Die Quelle wird in `herkunft.quellen` ergänzt,
 mit Datum im Namen.
+
+Menschen stehen nur mit ihrer Rolle in den Daten, seit dem 17.10.2026. Wo die
+Ablage „Erwin“ schreibt, steht hier „der Projektverantwortliche“, in der Form,
+die der Satz verlangt: „hat der Projektverantwortliche freigegeben“, „die Zeit
+des Projektverantwortlichen“, „außer dem Projektverantwortlichen“. Die
+KI-Mitarbeiter behalten ihre Namen. `pruefe:ausgabe` findet den Namen in jeder
+gebauten Seite, auch in Grafiken; ein Fund hält den Pull Request auf.
 
 | Was | Wohin |
 | --- | --- |

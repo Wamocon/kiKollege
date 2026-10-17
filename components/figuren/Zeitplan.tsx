@@ -4,7 +4,7 @@ import { daten, datum, dauer, spanne } from '@/lib/daten'
 import { Figur } from './gemeinsam'
 
 /** Der Meilensteinplan als Zeitplan: oben die Entscheidungen mit Frist, darunter
- *  je Meilenstein seine Arbeiten als Balken, unten Erwins Zeit je Woche. Rot
+ *  je Meilenstein seine Arbeiten als Balken, unten die Zeit des Projektverantwortlichen je Woche. Rot
  *  trägt der kritische Pfad. Die senkrechte Linie ist der Stand des Plans,
  *  nicht der heutige Tag: Die Seite ist statisch gebaut. */
 
@@ -178,16 +178,16 @@ export function ZeitplanFigur() {
   }
   balkenEnde = y
 
-  // Erwins Zeit je Woche
+  // Zeit des Projektverantwortlichen je Woche
   y += 10
   teile.push(
     <g key="zeit">
       <line x1={0} y1={y - 4} x2={BREITE} y2={y - 4} stroke="var(--wmc-border)" strokeWidth="1" />
       <text x={0} y={y + 12} fontSize="11" fontWeight="700" fill="var(--wmc-ink)">
-        Erwins Zeit je Woche
+        Zeit des Projektverantwortlichen
       </text>
       <text x={0} y={y + 25} fontSize="10.5" fill="var(--wmc-muted)">
-        Rahmen: unter {dauer(p.budgetMinutenJeWoche)}
+        je Woche, Rahmen: unter {dauer(p.budgetMinutenJeWoche)}
       </text>
     </g>,
   )
@@ -211,7 +211,7 @@ export function ZeitplanFigur() {
   const legende: { art: 'rot' | 'bau' | 'bewerten' | 'abnahme' | 'frist' | 'stand' | 'ziel'; text: string; x: number }[] = [
     { art: 'rot', text: 'kritischer Pfad', x: 0 },
     { art: 'bau', text: 'bauen', x: 120 },
-    { art: 'bewerten', text: 'Erwin bewertet', x: 200 },
+    { art: 'bewerten', text: 'Bewertung', x: 200 },
     { art: 'abnahme', text: 'Abnahme', x: 320 },
     { art: 'frist', text: 'Entscheidung mit Frist', x: 410 },
     { art: 'stand', text: 'Stand des Plans', x: 580 },
@@ -249,9 +249,9 @@ export function ZeitplanFigur() {
 
   return (
     <Figur
-      titel={`Zeitplan des Meilensteinplans vom ${spanne(p.von, p.bis)}: Entscheidungen, vier Meilensteine mit ihren Arbeiten, Erwins Zeit je Woche`}
+      titel={`Zeitplan des Meilensteinplans vom ${spanne(p.von, p.bis)}: Entscheidungen, vier Meilensteine mit ihren Arbeiten, die Zeit des Projektverantwortlichen je Woche`}
       beschriftung={
-        `${p.status}. Rot ist der kritische Pfad, leer ist Erwins Bewertungszeit, blass ist Erledigtes. ` +
+        `${p.status}. Rot ist der kritische Pfad, leer ist die Bewertungszeit des Projektverantwortlichen, blass ist Erledigtes. ` +
         (p.nachgezogen
           ? `Die offenen Rauten sind die Zieldaten vom ${datum(p.nachgezogen.am)}, die gefüllten die Fristen. `
           : '') +

@@ -15,8 +15,8 @@ export interface MitFreigabe {
  *  - oeffentlich: nur, was nach aussen tragfaehig ist.
  *  - alles: alles, ohne Markierung.
  *
- *  Seit dem 17.09.2026 stellt GitHub Pages die Fassung "alles". Erwin Moretz
- *  hat entschieden, vorerst keinen Unterschied zwischen intern und oeffentlich
+ *  Seit dem 17.09.2026 stellt GitHub Pages die Fassung "alles". Der
+ *  Projektverantwortliche hat entschieden, vorerst keinen Unterschied zwischen intern und oeffentlich
  *  zu machen. Die Felder werden weiter gepflegt, damit die Trennung mit einer
  *  Zeile im Workflow zurueckkommt. */
 export type Fassung = Freigabe | 'alles'

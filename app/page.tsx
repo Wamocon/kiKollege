@@ -880,7 +880,7 @@ export default function Landing() {
                       ))}
                     </ul>
                     <p className="bedingung">Abnahme: {ms.abnahme}</p>
-                    <p className="bedingung">Erwins Anteil: {dauer(ms.erwinMinuten)}</p>
+                    <p className="bedingung">Anteil des Projektverantwortlichen: {dauer(ms.erwinMinuten)}</p>
                   </div>
                 </div>
               ))}
@@ -929,7 +929,7 @@ export default function Landing() {
 
             <div className="lp-text lp-luft-oben">
               <p>
-                Was in diesen Wochen nicht passt, die Risiken und Erwins Zeit stehen im{' '}
+                Was in diesen Wochen nicht passt, die Risiken und die Zeit des Projektverantwortlichen stehen im{' '}
                 <a href={pfad('/stand/#plan')}>ausführlichen Stand</a>, dazu der Plan vom 17.09. als
                 Verlauf.
               </p>

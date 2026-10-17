@@ -4,7 +4,7 @@ import { mkdir, mkdtemp, writeFile } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 
-import { linkZiel, pruefeAufbau, pruefeSatzzeichen, pruefen, sichtbarerText } from './pruefe-ausgabe.mjs'
+import { linkZiel, pruefeAufbau, pruefeNamen, pruefeSatzzeichen, pruefen, sichtbarerText } from './pruefe-ausgabe.mjs'
 
 const still = () => {}
 const seite = (rumpf, lang = 'de') => `<!DOCTYPE html><html lang="${lang}"><body>${rumpf}</body></html>`
@@ -20,6 +20,14 @@ test('pruefeSatzzeichen findet doppelte Zeichen, nicht aber Datum mit Komma oder
   assert.equal(pruefeSatzzeichen('Stand,. Weiter').length, 1)
   assert.equal(pruefeSatzzeichen('Moretz . Weiter').length, 1)
   assert.deepEqual(pruefeSatzzeichen('am 17.09., danach … und so weiter...'), [])
+})
+
+test('pruefeNamen findet den Namen auch in Grafik und Seitendaten, auch in Ableitungen, nicht aber den Geschäftsführer', () => {
+  assert.equal(pruefeNamen('<p>Der Projektverantwortliche gibt frei.</p>').length, 0)
+  assert.equal(pruefeNamen('<p>Geschäftsführer: Dipl.-Ing. Waleri Moretz</p>').length, 0)
+  assert.equal(pruefeNamen('<svg><text>Erwin Moretz</text></svg>').length, 1)
+  assert.equal(pruefeNamen('<script>self.__next_f.push([1,"Erwins Zeit"])</script>').length, 1)
+  assert.equal(pruefeNamen('<script>self.__next_f.push([1,"von Erwin"])</script>').length, 1)
 })
 
 test('pruefeAufbau verlangt lang, eine h1, lückenlose Ebenen und beschriftete Grafiken', () => {
