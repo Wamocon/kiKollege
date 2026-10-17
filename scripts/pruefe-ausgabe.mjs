@@ -15,6 +15,9 @@
  * - Genau eine h1, und keine Ueberschrift ueberspringt eine Ebene.
  * - Jede Grafik hat role="img" und eine Beschriftung oder ist aria-hidden.
  * - Jedes Bild hat ein alt.
+ * - Namen: Seit dem 17.10. nennt die Seite den Projektverantwortlichen nur bei seiner Rolle.
+ *   Gesucht wird im ganzen HTML, auch in Grafiken, Beschriftungen und den
+ *   Seitendaten, die Next.js mitliefert.
  */
 
 import { existsSync } from 'node:fs'
@@ -119,6 +122,21 @@ export function linkZiel(href, basis) {
   return { seite: datei.replace(/^\//, ''), anker }
 }
 
+/** Namen, die keine gebaute Seite tragen darf. Der Geschäftsführer im Fuß ist
+ *  Pflichtangabe und bleibt; die KI-Mitarbeiter behalten ihre Namen. */
+export const VERBOTENE_NAMEN = ['Erwin']
+
+export function pruefeNamen(html) {
+  const funde = []
+  for (const name of VERBOTENE_NAMEN) {
+    for (const m of html.matchAll(new RegExp(`\\b${name}`, 'g'))) {
+      const von = Math.max(0, m.index - 30)
+      funde.push(`Name ${name}: „…${html.slice(von, m.index + name.length + 20).replace(/\s+/g, ' ')}…“`)
+    }
+  }
+  return funde
+}
+
 export async function pruefen({ ausgabe, basis = '', log = console.log }) {
   const seiten = await seitenUnter(ausgabe)
   const html = new Map()
@@ -126,7 +144,7 @@ export async function pruefen({ ausgabe, basis = '', log = console.log }) {
 
   let anzahl = 0
   for (const [seite, inhalt] of html) {
-    const funde = [...pruefeSatzzeichen(sichtbarerText(inhalt)), ...pruefeAufbau(inhalt)]
+    const funde = [...pruefeSatzzeichen(sichtbarerText(inhalt)), ...pruefeAufbau(inhalt), ...pruefeNamen(inhalt)]
     const eigene = ids(inhalt)
 
     for (const m of inhalt.matchAll(/<a\b[^>]*\shref="([^"]*)"/g)) {

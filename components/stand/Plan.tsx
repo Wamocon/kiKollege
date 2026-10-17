@@ -3,7 +3,7 @@ import { TermineFigur } from '@/components/figuren/Termine'
 import { ZeitplanFigur } from '@/components/figuren/Zeitplan'
 import { daten, datum, dauer } from '@/lib/daten'
 
-/** Die Einzelheiten des Plans, der gilt: das Ziel in Teilen, Erwins Zeit, der
+/** Die Einzelheiten des Plans, der gilt: das Ziel in Teilen, die Zeit des Projektverantwortlichen, der
  *  kritische Pfad, was nicht hineinpasst, die Risiken. Die Landing Page zeigt
  *  die Termine, die Meilensteine und die Fristen und verweist für den Rest
  *  hierher. Darunter steht der Plan vom 17.09. als Verlauf, eingeklappt. */
@@ -53,7 +53,28 @@ export function PlanAbschnitt() {
         <p>{p.lauffaehig}</p>
       </div>
 
-      <h3 style={{ marginTop: '1.8rem' }}>Erwins Zeit je Meilenstein</h3>
+      <h3 style={{ marginTop: '1.8rem' }}>Die Arbeiten je Meilenstein</h3>
+      {p.meilensteine.map((m) => (
+        <Block key={m.id} titel={`${m.id}, ${datum(m.termin).slice(0, 6)}: ${m.titel}`}>
+          <ul>
+            {m.inhalt.map((i) => (
+              <li key={i.text}>
+                {i.erledigt ? <b>erledigt {i.erledigt}: </b> : null}
+                {i.text}
+                {i.teilweise ? <>. {i.teilweise}</> : null}
+              </li>
+            ))}
+          </ul>
+          <p style={{ marginTop: '0.6rem' }}>
+            <b>Abnahme:</b> {m.abnahme}
+          </p>
+          <p className="fussnote" style={{ marginTop: '0.4rem' }}>
+            Ursprüngliche Frist im Plan vom {datum(p.von).slice(0, 6)}: {datum(m.fruehereFrist).slice(0, 6)}
+          </p>
+        </Block>
+      ))}
+
+      <h3 style={{ marginTop: '1.8rem' }}>Zeit des Projektverantwortlichen je Meilenstein</h3>
       <div className="raster">
         {p.meilensteine.map((m) => (
           <div className="karte" key={m.id}>
@@ -75,6 +96,40 @@ export function PlanAbschnitt() {
         <p>{p.pfadSatz}</p>
         <p>{p.daneben}</p>
       </Block>
+
+      <h3 style={{ marginTop: '1.8rem' }}>Entscheidungen mit Frist</h3>
+      <div className="tabellenrahmen">
+        <table>
+          <thead>
+            <tr>
+              <th style={{ width: '6rem' }}>Frist</th>
+              <th>Entscheidung</th>
+              <th style={{ width: '12rem' }}>Stand</th>
+            </tr>
+          </thead>
+          <tbody>
+            {p.fristen.map((f) => (
+              <tr key={f.text}>
+                <td className="datum">{datum(f.frist).slice(0, 6)}</td>
+                <td>
+                  {f.text}
+                  {f.notiz ? `, ${f.notiz}` : ''}
+                </td>
+                <td>
+                  {f.stand === 'erledigt'
+                    ? `erledigt am ${datum(f.am ?? f.frist).slice(0, 6)}`
+                    : [f.frist < daten.stand ? 'Frist verstrichen' : 'offen', f.kritisch ? 'kritischer Pfad' : '']
+                        .filter(Boolean)
+                        .join(', ')}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <div className="prosa" style={{ marginTop: '1.3rem' }}>
+        <p>{p.fristenHinweis}</p>
+      </div>
 
       <Block titel="Was in diesen Wochen nicht passt">
         <ul>

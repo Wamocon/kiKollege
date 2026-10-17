@@ -701,6 +701,12 @@ th.num { text-align: right; }
 /* Beim Sprung aus der Navigation darf die Kopfleiste die Ueberschrift des
    Ziels nicht verdecken. */
 .lp-sektion { border-top: 1px solid var(--rand-leise); scroll-margin-top: 68px; }
+/* Anker innerhalb eines Abschnitts, etwa die alten #chatbot und #ablage */
+.lp-inhalt [id] { scroll-margin-top: 68px; }
+/* Ein Fachwort, das auf seine Erklärung unter „Begriffe“ zeigt */
+.lp-begriff { color: inherit; text-decoration: underline dotted; text-underline-offset: 3px; }
+.lp-begriff:hover { color: var(--wmc-primary-text); }
+.lp-spec-zeile:target { background: var(--wmc-surface-soft); }
 .lp-sektion:first-of-type { border-top: 0; }
 .lp-sektion-innen {
   max-width: var(--lp-spalte);
@@ -1147,6 +1153,24 @@ th.num { text-align: right; }
 .lp-gegen td.merkmal { font-family: var(--schrift-mono); font-size: 0.72rem; letter-spacing: 0.02em; color: var(--wmc-muted); width: 9rem; }
 .lp-gegen td.leise { color: var(--wmc-muted); }
 .lp-gegen-rahmen { overflow-x: auto; }
+/* Eine Tabelle mit vier Textspalten stapelt sich am Handy: je Zeile ein Block,
+   jedes Feld mit seinem Spaltenkopf davor. */
+@media (max-width: 620px) {
+  .lp-stapel thead { display: none; }
+  .lp-stapel tr { display: block; padding: 0.7rem 0; border-bottom: 1px solid var(--rand-leise); }
+  .lp-stapel td { display: block; padding: 0.1rem 0; border-bottom: 0; }
+  .lp-stapel td::before {
+    content: attr(data-kopf);
+    display: block;
+    margin-top: 0.35rem;
+    font-family: var(--schrift-mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--wmc-muted);
+  }
+  .lp-stapel td:first-child::before { margin-top: 0; }
+}
 
 /* --- Zwei Listen nebeneinander --------------------------------------------- */
 .lp-paar {
@@ -1316,6 +1340,22 @@ th.num { text-align: right; }
   border-top: 1px solid var(--rand-leise);
 }
 .lp-verzeichnis li { border-bottom: 1px solid var(--rand-leise); }
+/* Kapitel: je eine Spalte, darin die Abschnitte untereinander */
+.lp-kapitel-gruppen {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 0.4rem 1.6rem;
+}
+.lp-kapitel-gruppen ol { display: block; }
+.lp-kapitel {
+  font-family: var(--schrift-mono);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--wmc-muted);
+  margin: 0 0 0.35rem;
+}
 .lp-verzeichnis a {
   display: grid;
   grid-template-columns: 2.2rem 1fr;
@@ -1333,7 +1373,7 @@ th.num { text-align: right; }
   color: var(--wmc-primary-text);
 }
 .lp-verzeichnis a[aria-current] { font-weight: 700; }
-.lp-verzeichnis a[aria-current]::after { content: " ·"; color: var(--signal); }
+.lp-verzeichnis a[aria-current] span:last-child::after { content: " ·"; color: var(--signal); }
 
 /* --- Feste Leiste am linken Rand --- */
 .lp-schiene { display: none; }
@@ -1351,6 +1391,8 @@ th.num { text-align: right; }
     z-index: 5;
   }
   .lp-schiene ol { list-style: none; margin: 0; padding: 0; }
+  .lp-schiene .lp-kapitel { font-size: 0.56rem; margin: 0.9rem 0 0.15rem; opacity: 0.8; }
+  .lp-schiene div:first-child .lp-kapitel { margin-top: 0; }
   .lp-schiene a {
     display: grid;
     grid-template-columns: 1.9rem 1fr;

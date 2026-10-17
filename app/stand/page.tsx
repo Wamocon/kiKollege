@@ -11,6 +11,7 @@ import { EnablerRaster } from '@/components/figuren/EnablerRaster'
 import { LandschaftFigur } from '@/components/figuren/Landschaft'
 import { MannschaftFigur } from '@/components/figuren/Mannschaft'
 import { Pruefpunkte } from '@/components/figuren/Pruefpunkte'
+import { Rubriken } from '@/components/landing/Rubriken'
 import { Schichtenstapel } from '@/components/figuren/Schichtenstapel'
 import { Steuerung } from '@/components/figuren/Steuerung'
 import { Wissensablagen } from '@/components/figuren/Wissensablagen'
@@ -20,6 +21,7 @@ import { abschnitt } from '@/lib/abschnitte'
 import { inWorten } from '@/lib/alter'
 import { daten, datum, harteRegel, zahl, zielErreicht } from '@/lib/daten'
 import { istIntern, nurSichtbare, sichtbar } from '@/lib/freigabe'
+import { pfad } from '@/lib/pfad'
 
 export const metadata: Metadata = {
   title: 'Ausführlicher Stand',
@@ -84,6 +86,10 @@ export default function Seite() {
               <p>
                 Die drei Begriffe gehen im Gespräch leicht durcheinander. Wer sie nicht auseinanderhält, hält
                 den Chat-Verlauf für Wissen und das Sprachmodell für den Mitarbeiter.
+              </p>
+              <p>
+                Alle Fachwörter dieser Seiten erklärt die Landing Page unter{' '}
+                <a href={pfad('/#begriffe')}>Begriffe</a>.
               </p>
             </div>
             <div className="raster">
@@ -227,6 +233,19 @@ export default function Seite() {
                 <AblageTabelle />
                 <AblageGraphFigur />
                 <AblageGraphListe />
+              </>
+            ) : null}
+
+            {sichtbar(d.unternehmenswissen) ? (
+              <>
+                <h3 style={{ marginTop: '1.8rem' }}>{d.unternehmenswissen.satz}</h3>
+                <div className="prosa">
+                  <p>{d.unternehmenswissen.erklaerung}</p>
+                </div>
+                <Rubriken />
+                <p className="fussnote" style={{ marginTop: '1rem' }}>
+                  {d.unternehmenswissen.stand}
+                </p>
               </>
             ) : null}
           </section>
@@ -546,6 +565,7 @@ export default function Seite() {
                   </li>
                   <li>{b.ungemessen}</li>
                 </ul>
+                <p style={{ marginTop: '0.7rem' }}>{b.rueckweg}</p>
                 <p style={{ marginTop: '0.7rem' }}>{b.umgewichtet}</p>
                 <p style={{ marginTop: '0.7rem' }}>
                   <b>{b.beispiel.satz}</b> {b.beispiel.text}
@@ -628,6 +648,35 @@ export default function Seite() {
 
             <h3 style={{ marginTop: '1.8rem' }}>Die Mannschaft am {datum(d.mannschaft.gezaehltAm)}</h3>
             <MannschaftFigur />
+            <div className="tabellenrahmen" style={{ marginTop: '1.3rem' }}>
+              <table>
+                <thead>
+                  <tr>
+                    <th style={{ width: '14rem' }}>Rolle</th>
+                    <th style={{ width: '7rem' }}>Zustand</th>
+                    <th>Was dazu festgehalten ist</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {nurSichtbare(d.mannschaft.koepfe).map((k) => (
+                    <tr key={k.id}>
+                      <td>
+                        <b>{k.name ? `${k.rolle}, ${k.name}` : k.rolle}</b>
+                      </td>
+                      <td>{k.zustand}</td>
+                      <td>{k.hinweis}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            {sichtbar(d.mannschaft.verlauf) ? (
+              <div className="prosa" style={{ marginTop: '1.3rem' }}>
+                <p>
+                  {istIntern ? <Marker art="intern">nur intern</Marker> : null} {d.mannschaft.verlauf.text}
+                </p>
+              </div>
+            ) : null}
           </section>
 
           {/* 11 ------------------------------------------------------------ */}
@@ -735,8 +784,56 @@ export default function Seite() {
           </section>
 
           {/* 15 ------------------------------------------------------------ */}
+          <section id="chronik">
+            <Kopfzeile id="chronik" />
+            <div className="prosa">
+              <p>
+                Jeder Arbeitstag seit dem {datum(d.arbeitstage.beginn)}, an dem etwas festgehalten
+                ist. Die Landing Page zeigt davon die letzten fünf.
+              </p>
+            </div>
+            <div className="tabellenrahmen">
+              <table>
+                <thead>
+                  <tr>
+                    <th style={{ width: '7rem' }}>Datum</th>
+                    <th>Was geschah</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {nurSichtbare(d.arbeitstage.eintraege).map((e) => (
+                    <tr key={e.datum + e.text}>
+                      <td className="datum">{datum(e.datum)}</td>
+                      <td>
+                        {e.text}{' '}
+                        {istIntern && e.freigabe === 'intern' ? <Marker art="intern">nur intern</Marker> : null}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          {/* 16 ------------------------------------------------------------ */}
           <section id="offen">
             <Kopfzeile id="offen" />
+            <div className="raster">
+              {d.hemmnisse.gruppen.map((g) => (
+                <div className="karte" key={g.titel}>
+                  <h3>{g.titel}</h3>
+                  <p className="fussnote">{g.zusatz}</p>
+                  <ul className="liste" style={{ marginTop: '0.5rem' }}>
+                    {g.punkte.map((t) => (
+                      <li key={t}>{t}</li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+            <div className="prosa" style={{ marginTop: '1.3rem' }}>
+              <p>{d.hemmnisse.satz}</p>
+            </div>
             <div className="prosa">
               <p>Nach Priorität, mit dem Grund für die Reihenfolge.</p>
             </div>
@@ -771,7 +868,7 @@ export default function Seite() {
             </p>
           </section>
 
-          {/* 16 ------------------------------------------------------------ */}
+          {/* 17 ------------------------------------------------------------ */}
           {zeigen('beobachtungen') ? (
             <section id="beobachtungen">
               <Kopfzeile id="beobachtungen" />
@@ -793,7 +890,7 @@ export default function Seite() {
             </section>
           ) : null}
 
-          {/* 17 ------------------------------------------------------------ */}
+          {/* 18 ------------------------------------------------------------ */}
           {zeigen('quellen') ? (
             <section id="quellen">
               <Kopfzeile id="quellen" />

@@ -4,7 +4,46 @@ Diese Datei ist für die nächste Sitzung geschrieben, nicht für die Nachwelt. 
 sagt, wo das Vorhaben steht, was als Erstes zu tun ist und was dabei nicht
 verloren gehen darf.
 
-Stand dieser Übergabe: 16.10.2026.
+Stand dieser Übergabe: 17.10.2026.
+
+## Nachtrag 17.10.2026: Umbau für alle Leser
+
+Der Projektverantwortliche hat die Seite neu bewerten lassen. Maßstab: Jeder
+Mitarbeiter versteht sie ohne ihn. Entschieden in fünf Fragerunden, umgesetzt auf
+dem Zweig `landing/umbau-alle-leser`:
+
+- **Für alle Leser**, in Kapiteln: Verstehen, Arbeiten, Bauen, Stand, Begriffe.
+  Abgrenzung und Eignung sind im ersten Abschnitt aufgegangen.
+- **Beauftragen** ist neu und zugleich die „Anleitung fürs Team“ aus Meilenstein 2.
+  Grundlage ist die freigegebene Akte des Orchestrators, nicht der Entwurf der
+  Anleitung vom 16.10.; der nennt Kanäle, Rechner und Bots und ist ungeprüft.
+  Einen Weg, auf dem das Team einen Fehlalarm meldet, gibt es nicht; das steht als
+  offener Punkt 22. Bis dahin gehen solche Meldungen an den Projektverantwortlichen.
+- **Begriffe**: 39 Fachwörter, Daten unter `glossar`. „Prüfpunkt“ war in der
+  Ablage nirgends definiert; die Seite trennt Kriterium, Prüfpunkt und Regel.
+- **Ohne Namen**: Statt „Erwin“ steht „der Projektverantwortliche“, auf beiden
+  Seiten und in den Daten. Die KI-Mitarbeiter behalten ihre Namen.
+  `pruefe:ausgabe` hält das, der Standwächter hat die Regel.
+- **Kürzer**: Einzelheiten stehen unter `/stand/`, auf der Landing Page je ein Satz
+  mit Sprung. Ohne die Begriffe 4.266 Wörter statt 6.896.
+- **Widersprüche behoben**: Vier Sätze behaupteten, die Grenze sei auf der eigenen
+  Hardware nicht aktiv, und einer, dem Orchestrator fehle die Akte. Sie sagen jetzt,
+  was gilt, oder tragen ein Datum.
+- `pruefe:bestand` zählt Einträge ohne Kennung je Tag. Vorher galt ein
+  umformulierter Tag der Chronik als gelöscht.
+
+Der Lesetest (ein Agent, nur der Text der Seite, sechs Fragen) fand Lücken. Die
+Seite hat behoben, was sie selbst lösen kann. Danach am 17.10. entschieden:
+
+- **Kontakt:** Die Seite nennt nur die Rolle. Wer der Projektverantwortliche ist,
+  wie man ihn erreicht und welcher Messenger, steht in der Einladung zum
+  Freischalten und später auf der internen Seite.
+- **Anrede:** Beauftragen duzt und bleibt dabei, obwohl das CI-Profil für die GmbH
+  Sie setzt.
+
+Offen: Beispiele für Zielgruppe und Kursformat gibt es in der Ablage nicht. Sobald
+die Anleitung fürs Team freigegeben ist, gehören zwei echte Beispielaufträge in
+`anleitung`.
 
 ## Nachtrag 16.10.2026: vier Wochen nachgetragen
 

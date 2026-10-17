@@ -39,6 +39,14 @@ test('fehlendes findet einen ausgetauschten Eintrag trotz gleicher Länge', () =
   assert.deepEqual(funde, [{ pfad: 'liste[id=y]', art: 'entfallen' }])
 })
 
+test('fehlendes erlaubt einen umformulierten Eintrag mit Datum, aber keinen verlorenen', () => {
+  const alt = { tage: [{ datum: '2026-09-17', text: 'Erwin entscheidet' }, { datum: '2026-09-18', text: 'B' }] }
+  const umformuliert = { tage: [{ datum: '2026-09-17', text: 'Der Projektverantwortliche entscheidet' }, { datum: '2026-09-18', text: 'B' }] }
+  assert.deepEqual(fehlendes(alt, umformuliert), [])
+  const verloren = { tage: [{ datum: '2026-09-18', text: 'B' }, { datum: '2026-09-18', text: 'C' }] }
+  assert.deepEqual(fehlendes(alt, verloren), [{ pfad: 'tage[datum=2026-09-17]', art: 'entfallen', alt: 1, neu: 0 }])
+})
+
 test('fehlendes findet einen geleerten Satz', () => {
   assert.deepEqual(fehlendes({ satz: 'Steht da.' }, { satz: '' }), [{ pfad: 'satz', art: 'geleert' }])
   assert.deepEqual(fehlendes({ satz: 'Steht da.' }, { satz: null }), [{ pfad: 'satz', art: 'geleert' }])

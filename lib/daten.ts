@@ -355,7 +355,7 @@ export interface PlanMeilenstein {
   titel: string
   inhalt: string[]
   abnahme: string
-  /** Erwins Anteil in Worten; die Minuten stehen in `zeit`. */
+  /** Anteil des Projektverantwortlichen in Worten; die Minuten stehen in `zeit`. */
   erwin: string
   /** Punkte aus `inhalt`, die schon erledigt sind, im selben Wortlaut. */
   erledigt?: string[]
@@ -368,7 +368,7 @@ export interface PlanBalken {
   tage: number
   /** Liegt auf dem kritischen Pfad. */
   kritisch: boolean
-  /** bauen: Werkbank oder eigene Hardware. bewerten: Erwins Zeit. */
+  /** bauen: Werkbank oder eigene Hardware. bewerten: Zeit des Projektverantwortlichen. */
   art: 'bauen' | 'bewerten'
   erledigt?: boolean
 }
@@ -437,7 +437,7 @@ export interface Meilensteinplan extends MitFreigabe {
   zeit: { woche: string; entscheiden: number; lesen: number; bewerten: number }[]
   zeitVorher: string
   zeitPreis: string
-  /** Erwins Zeit laut Arbeitsplan, der alle Punkte mitrechnet. */
+  /** Zeit des Projektverantwortlichen laut Arbeitsplan, der alle Punkte mitrechnet. */
   zeitArbeitsplan?: { minuten: number; bisM1: number; text: string }
   entscheidungen: PlanEntscheidung[]
   entscheidungenHinweis: string
@@ -546,6 +546,46 @@ export interface AktuellerPlan extends MitFreigabe {
   quelle: string
 }
 
+/** Ab wann ein Auftrag geht: mit einem Meilenstein, nach dem Ende des Plans
+ *  oder nur für bestimmte Auftraggeber. */
+export type AnleitungAb = { meilenstein: string } | { nachPlan: true } | { nur: string }
+
+export interface AnleitungZeile extends MitFreigabe {
+  auftrag: string
+  wer: string
+  angaben: string
+  ab: AnleitungAb
+}
+
+/** Wie man einem KI-Mitarbeiter einen Auftrag gibt, aus der Akte des Orchestrators. */
+export interface Anleitung extends MitFreigabe {
+  stand: string
+  satz: string
+  wer: string
+  /** Meilenstein, ab dem das Team beauftragen kann. */
+  teamAb: string
+  /** Meilenstein, ab dem Sprachnachrichten gehen. */
+  spracheAb: string
+  schritte: { titel: string; text: string }[]
+  zeilen: AnleitungZeile[]
+  /** Was die Pflichtangaben eines Prüfauftrags bedeuten. */
+  angaben: { angabe: string; erklaerung: string }[]
+  ablehnung: string[]
+  bericht: string
+  fehlalarm: string
+  mitmachenSatz: string
+  mitmachen: { titel: string; text: string }[]
+  quelle: string
+}
+
+/** Ein Fachwort der Seite, erklärt in ein bis zwei Sätzen. */
+export interface GlossarEintrag {
+  id: string
+  begriff: string
+  erklaerung: string
+  quelle: string
+}
+
 export interface Projektstand {
   stand: string
   herkunft: {
@@ -633,6 +673,8 @@ export interface Projektstand {
   hemmnisse: { satz: string; gruppen: HemmnisGruppe[]; freigabe: Freigabe }
   stufen: Stufe[]
   stufenPlan: { text: string; freigabe: Freigabe }
+  anleitung: Anleitung
+  glossar: { satz: string; eintraege: GlossarEintrag[]; freigabe: Freigabe }
   arbeitsschwerpunkt: {
     satz: string
     brauchtEs: string

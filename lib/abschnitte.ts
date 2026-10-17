@@ -26,9 +26,10 @@ export const abschnitte: readonly Abschnitt[] = [
   { id: 'plan', nr: '12', titel: 'Der Meilensteinplan im Einzelnen', freigabe: 'intern' },
   { id: 'plattform', nr: '13', titel: 'Wo Fritz läuft', freigabe: 'intern' },
   { id: 'entscheidungen', nr: '14', titel: 'Entscheidungen mit Datum' },
-  { id: 'offen', nr: '15', titel: 'Offene Punkte' },
-  { id: 'beobachtungen', nr: '16', titel: 'Beobachtungen aus dem Abgleich', freigabe: 'intern' },
-  { id: 'quellen', nr: '17', titel: 'Wo die Quellen liegen', freigabe: 'intern' },
+  { id: 'chronik', nr: '15', titel: 'Chronik' },
+  { id: 'offen', nr: '16', titel: 'Offene Punkte' },
+  { id: 'beobachtungen', nr: '17', titel: 'Beobachtungen aus dem Abgleich', freigabe: 'intern' },
+  { id: 'quellen', nr: '18', titel: 'Wo die Quellen liegen', freigabe: 'intern' },
 ]
 
 export function abschnitt(id: string): Abschnitt {

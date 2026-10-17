@@ -29,6 +29,17 @@ export function kennung(eintrag) {
   return null
 }
 
+/** Ein Eintrag, den nur sein Datum und sein Wortlaut tragen, etwa ein Tag der
+ *  Chronik oder eine Entscheidung. */
+const nurDatum = (eintrag) => kennung(eintrag)?.startsWith('datum=') ?? false
+
+/** Solche Eintraege je Tag gezaehlt. */
+function jeTag(liste) {
+  const tage = new Map()
+  for (const e of liste) if (nurDatum(e)) tage.set(e.datum, (tage.get(e.datum) ?? 0) + 1)
+  return tage
+}
+
 /** Alles, was im neuen Stand fehlt. Leere Liste heisst: nichts verloren. */
 export function fehlendes(alt, neu, pfad = '') {
   const funde = []
@@ -41,8 +52,17 @@ export function fehlendes(alt, neu, pfad = '') {
     if (neu.length < alt.length) {
       funde.push({ pfad, art: 'kürzer', alt: alt.length, neu: neu.length })
     }
+    // Eintraege ohne eigene Kennung zaehlen je Tag. Den Wortlaut darf ein Lauf
+    // aendern, seit dem 17.10. etwa ein Name, der einer Rolle weicht; einen Tag
+    // mit weniger Eintraegen als vorher nicht.
+    const tageNeu = jeTag(neu)
+    for (const [tag, anzahl] of jeTag(alt)) {
+      const jetzt = tageNeu.get(tag) ?? 0
+      if (jetzt < anzahl) funde.push({ pfad: `${pfad}[datum=${tag}]`, art: 'entfallen', alt: anzahl, neu: jetzt })
+    }
     const vorhanden = new Set(neu.map(kennung).filter(Boolean))
     for (const eintrag of alt) {
+      if (nurDatum(eintrag)) continue
       const k = kennung(eintrag)
       if (k && !vorhanden.has(k)) funde.push({ pfad: `${pfad}[${k}]`, art: 'entfallen' })
     }

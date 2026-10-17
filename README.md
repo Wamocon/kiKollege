@@ -5,7 +5,7 @@ Datenquelle.
 
 | Route | Was sie ist |
 |---|---|
-| `/` | Landing Page. Erzählt das Vorhaben in dreizehn Abschnitten, vom Hero bis zum Meilensteinplan. |
+| `/` | Landing Page für alle Leser, in vier Kapiteln: verstehen, damit arbeiten, wie es gebaut ist, wo es steht. Elf Abschnitte und die Begriffe. |
 | `/stand/` | Dichte Standseite mit Ankernavigation, allen Tabellen, Prüfläufen, Stufen und dem Meilensteinplan im Einzelnen, dazu die Zeichnungen der Landing Page im jeweils passenden Abschnitt. |
 | `/impressum/`, `/datenschutz/` | Entwürfe, rechtlich nicht geprüft. Siehe „Impressum und Datenschutz“. |
 
@@ -14,14 +14,43 @@ Wörter. Nach dem Kürzen waren es zwölf und rund 6.300, mit dem Abschnitt Abla
 sind es dreizehn: Ertrag und Aufwand stehen unter
 Eignung, die Steuerung unter Arbeitsweise. Stufen, Betrieb, Entscheidungen und
 Abgleich stehen nur noch unter `/stand/`, ebenso Zieltabelle, Zeit je Woche und
-Risiken des Meilensteinplans. Unter dem Hero steht „Auf einen Blick“: nächste
-Abnahme, nächste Frist, Bewertungen, Rollen und verbindliche Notizen, alles aus
-den Daten gerechnet.
+Risiken des Meilensteinplans.
 
-Der Abschnitt **Ablage** zeigt, wie der Vault heute aussieht: das Abbild mit einem
-Kästchen je Notiz, den Graphen der Bereiche und die Rubriken des
-Unternehmenswissens mit einer kurzen Erklärung und der Stufe, in der ein
-KI-Mitarbeiter sie liest.
+Am 17.10.2026 ist die Seite für alle Leser umgebaut worden, mit dem Maßstab, dass
+jeder Mitarbeiter sie ohne den Projektverantwortlichen versteht:
+
+- **Kapitel statt Reihe.** Verstehen (01 Was ein KI-Mitarbeiter ist, 02 Der erste,
+  03 Verlässlich?), Arbeiten (04 Beauftragen, 05 Mannschaft), Bauen (06 Aufbau,
+  07 Wissen und Ablage, 08 Arbeitsweise, 09 Landschaft), Stand (10 Stand,
+  11 Meilensteine), Nachschlagen (12 Begriffe). Die Kapitel stehen als Feld
+  `kapitel` in `lib/lpAbschnitte.ts`.
+- **Ein Einstieg statt drei.** Vorhaben, Abgrenzung und Eignung sind Abschnitt 01,
+  mit dem Kernsatz „Ein KI-Mitarbeiter arbeitet zu. Ein Mensch entscheidet.“ Die
+  alten Anker `chatbot`, `eignung` und `ablage` gibt es weiter.
+- **Beauftragen**, neu: wer einen Auftrag geben darf, wie er läuft, was der
+  Orchestrator annimmt und ablehnt, wie man einen Bericht liest, was bei einem
+  falschen Befund zu tun ist, wie man mitmacht. Grundlage ist die freigegebene Akte
+  des Orchestrators, Daten unter `anleitung`. Termine erscheinen nur, wo der Plan
+  sichtbar ist.
+- **Begriffe**, neu: 39 Fachwörter mit Erklärung und Quelle, Daten unter
+  `glossar`. `components/landing/Begriff.tsx` verlinkt ein Wort auf seine
+  Erklärung.
+- **Ohne Namen.** Der Projektverantwortliche steht nur mit seiner Rolle auf beiden
+  Seiten und in den Daten; `pruefe:ausgabe` findet seinen Namen in jeder Seite.
+- **Kürzer.** Was nur Fachleute brauchen, steht unter `/stand/`: Tabelle und
+  Verbindungen der Ablage, Rubriken, die ganze Chronik, die Arbeiten je Meilenstein,
+  Fristen, kritischer Pfad, Zeitanteile, Hinweise je Rolle und die Punkte der
+  Hemmnisse. Die Landing Page hat danach 4.266 Wörter ohne die Begriffe, 62 % von
+  vorher (6.896), mit den Begriffen 5.189. Vor dem Lesetest waren es 60 %; die
+  Erklärungen, die er vermisst hat, sind wichtiger als die Marke.
+- **Lesetest.** Ein Agent liest nur den Text der gebauten Seite, als neue Kollegin
+  ohne Vorwissen, und beantwortet sechs Fragen: Was ist ein KI-Mitarbeiter, wie
+  gebe ich einen Auftrag, was bekomme ich zurück, was tue ich bei einem falschen
+  Befund, wie mache ich mit, was läuft heute. Jede Antwort muss sich aus der Seite
+  belegen lassen. Das lohnt sich nach jedem größeren Umbau.
+
+„Auf einen Blick“ steht unter Stand: nächste Abnahme, Rollen, ab wann das Team
+beauftragt, Bewertungen und verbindliche Notizen, alles aus den Daten gerechnet.
 
 Drei Quellen liegen zugrunde, alle aus dem Arbeitsordner `D:\KFBM`, den das
 Übergabedokument nennt:
@@ -101,8 +130,9 @@ npx serve out
 
 ## Navigation
 
-Dreizehn Abschnitte brauchen eine. Sie besteht aus drei Teilen, alle in
-`components/landing/Navigation.tsx`:
+Zwölf Abschnitte in fünf Kapiteln brauchen eine. Sie besteht aus drei Teilen, alle
+in `components/landing/Navigation.tsx`, und gruppiert die Abschnitte nach dem Feld
+`kapitel` aus `lib/lpAbschnitte.ts`:
 
 - **Die Schiene** am linken Rand, ab 1240 px. Sie listet alle Abschnitte und
   markiert den aktuellen. Auf breiten Bildschirmen übernimmt sie die Rolle des
@@ -474,9 +504,9 @@ es mit demselben `BASE_PATH` wie Pages.
 |---|---|
 | `pruefe:daten` | IPv4-Adressen, Rechnernamen im Hausnetz, Ports, Schlüssel und Tokens, private Schlüssel, Zugangsdateien und E-Mail-Adressen außer den beiden Kontaktadressen, in Daten, Code und Doku. Die Ausgabe zeigt von jedem Fund nur den Anfang. |
 | `pruefe:oeffentlich` | Internes in der öffentlichen Fassung, siehe unten. |
-| `pruefe:ausgabe` | Doppelte Satzzeichen im sichtbaren Text, interne Links ohne `basePath` oder ohne Ziel, fehlende Anker, `lang`, genau eine h1, übersprungene Überschriftenebenen, Grafiken ohne Beschriftung, Bilder ohne `alt`. |
+| `pruefe:ausgabe` | Doppelte Satzzeichen im sichtbaren Text, interne Links ohne `basePath` oder ohne Ziel, fehlende Anker, `lang`, genau eine h1, übersprungene Überschriftenebenen, Grafiken ohne Beschriftung, Bilder ohne `alt`. Seit dem 17.10. auch den Namen des Projektverantwortlichen, im ganzen HTML samt Grafiken und Seitendaten. |
 | `pruefe:figuren` | Im installierten Chrome oder Edge über `playwright-core`: Beschriftungen, die sich überdecken oder aus dem Bild ragen, Schrift unter 10, seitliches Scrollen bei 375 px, Skriptfehler. Es wird kein Browser heruntergeladen; `BROWSER_PFAD` zeigt auf einen anderen. |
-| `pruefe:bestand` | Bei einem Pull Request: ob der neue Stand weniger enthält als der Zielzweig. |
+| `pruefe:bestand` | Bei einem Pull Request: ob der neue Stand weniger enthält als der Zielzweig. Einträge ohne eigene Kennung, etwa Tage der Chronik, zählen je Datum; ihren Wortlaut darf ein Lauf ändern. |
 
 `pruefe:ausgabe` hat beim ersten Lauf vier Fehler gefunden, die kein Compiler
 meldet: „Stand 11.09..“, Fußleisten mit h4 ohne h3 davor, eine h3 direkt unter der
@@ -569,9 +599,11 @@ Anklang an das Enabler-Feld.
 ## Anrede
 
 Block 02 des CI-Profils setzt für die WAMOCON GmbH **Sie, sachlich und
-belegorientiert**. Die Landing Page spricht den Leser nirgends an. Die
-Datenschutzseite tut es und siezt. Wen die Landing Page am Ende ansprechen soll und
-womit sie schließt, ist offen; das entscheidet ein Mensch, nicht die Seite.
+belegorientiert**. Die erklärenden Abschnitte der Landing Page sprechen den Leser
+nicht an. Der Abschnitt Beauftragen duzt, seit dem 17.10.2026: Er richtet sich an
+das Team, und so hat es der Projektverantwortliche entschieden, am 17.10. noch einmal
+mit Blick auf das CI-Profil. Die Texte stehen in `anleitung` und ließen sich in
+einem Zug auf Sie umstellen. Die Datenschutzseite siezt.
 
 Für die Academy führt das CI-Blatt die Anrede in Block 05 ausdrücklich als offenen
 Widerspruch: Der Teaser duzt, test-it-academy.com siezt. Da die Landing Page eine Seite

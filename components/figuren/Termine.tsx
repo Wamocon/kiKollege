@@ -141,7 +141,7 @@ export function TermineFigur() {
       titel={`Die vier Meilensteine des Plans vom ${datum(p.von)}: Termine vom ${kurz(p.termineAm)} gegen die ursprünglichen Fristen`}
       beschriftung={
         `Jeder Meilenstein ist um rund ${wochen} Wochen gerückt: offen die Frist, die der Plan vom ` +
-        `${kurz(p.von)} gesetzt hatte, gefüllt der Termin, den Erwin am ${datum(p.termineAm)} ` +
+        `${kurz(p.von)} gesetzt hatte, gefüllt der Termin, den der Projektverantwortliche am ${datum(p.termineAm)} ` +
         `freigegeben hat. Die gestrichelte Linie zeigt den Stand dieser Daten.`
       }
       viewBox={`0 0 ${BREITE} ${ly + 10}`}
