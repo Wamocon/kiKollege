@@ -1877,7 +1877,7 @@
     }
   ],
   "mannschaft": {
-    "satz": "Aus einem Mitarbeiter wird eine Mannschaft. Heute arbeiten der Reviewer, der Orchestrator, der Architekt, die Researcherin und der Pfleger der Seiten. Der Reporter folgt als Nächstes, Archivar und Entwickler danach.",
+    "satz": "Aus einem Mitarbeiter wird eine Mannschaft. Es arbeiten der Reviewer, der Orchestrator, der Architekt, die Researcherin und der Pfleger der Seiten. Der Reporter folgt als Nächstes, Archivar und Entwickler danach.",
     "gezaehltAm": "2026-10-19",
     "trennung": "Wer baut, prüft nicht. Wer prüft, baut nicht. Wer pflegt, urteilt nicht.",
     "engpass": "Der Engpass ist die gemessene Fehlalarmquote des ersten, nicht die Zahl der Mitarbeiter. Kein weiterer misst sie, und jeder weitere vergrößert, was ungemessen läuft.",
@@ -1893,7 +1893,7 @@
         "tutNie": "prüfen, erstellen, freigeben, zusammenfassen",
         "zustand": "arbeitet",
         "seit": "2026-09-09",
-        "hinweis": "Seit dem 28.09. hat er eine freigegebene Akte, am 29.09. auf das Team und die Sprache angepasst. Seit dem 17.10. gilt: Hook und Akte hängen am Standardprofil, statt den Bot umzuziehen. Am 18.10. hat der Projektverantwortliche das Standardprofil mit Hook und Akte hinter seinen Bot genommen; das alte Profil ruht. Das Team bekommt seine Aufträge ab dem 30.10. über diesen Bot.",
+        "hinweis": "Seit dem 28.09. hat er eine freigegebene Akte, am 29.09. auf das Team und die Sprache angepasst. Am 17.10. hat der Projektverantwortliche entschieden, Hook und Akte an das Profil hinter seinem Bot zu hängen, statt den Bot umzuziehen. Seit dem 18.10. läuft es so, das alte Profil ruht. Das Team bekommt seine Aufträge ab dem 30.10. über diesen Bot.",
         "freigabe": "oeffentlich",
         "betrieb": "mitGrenze",
         "marke": "mit Grenze, Team ab 30.10."
@@ -1991,7 +1991,7 @@
         "tutNie": "nach main pushen, einen Pull Request zusammenführen, etwas aus den Daten entfernen, ein Datenelement von intern auf öffentlich heben, eine Notiz in der Ablage ändern, eine Prüfung abschalten",
         "zustand": "arbeitet",
         "seit": "2026-10-19",
-        "hinweis": "Am 18.09. entschieden, weil weitere Seiten entstehen sollen. Am 19.10. hat der Projektverantwortliche die Akte und die Grenze freigegeben. Am selben Tag hat er seinen ersten Pflegelauf als Pull Request gestellt und seinen ersten Bauauftrag übernommen. Ein eigenes Konto fehlt noch; bis dahin stellt die Werkbank die Pull Requests unter dem Konto des Projektverantwortlichen.",
+        "hinweis": "Am 18.09. entschieden, weil weitere Seiten entstehen sollen. Am 18.10. hat der Projektverantwortliche Akte und Grenze freigegeben. Am 19.10. liefen sein erster Pflegelauf und sein erster Bauauftrag, beide sind als Pull Request zusammengeführt. Ein eigenes Konto fehlt noch; bis dahin stellt die Werkbank seine Pull Requests unter dem Konto des Projektverantwortlichen.",
         "freigabe": "oeffentlich",
         "betrieb": "mitGrenze",
         "marke": "mit Grenze seit 19.10."
