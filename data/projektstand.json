@@ -3,7 +3,7 @@
   "herkunft": {
     "arbeitsordner": "D:\\WAMOCON",
     "einstieg": "KI-Mitarbeiter/75_KI-Mitarbeiter/KI-Mitarbeiter — Einstieg.md",
-    "erzeugt": "2026-10-16",
+    "erzeugt": "2026-10-19",
     "fristTage": 7,
     "verfahren": "Erstbefüllung von Hand aus dem Übergabedokument vom 05.09.2026, am 11.09. fortgeschrieben aus den beiden Blättern vom 09.09., am 17.09. aus dem Vault: Logbuch, Tagesprotokolle, Meilensteinplan, Bestandsaufnahme vom 16.09., Akte des Reviewers, Laufnotizen und Quoten je Regel. Das Abbild der Ablage zählt scripts/abbild-vault.mjs. Spätere Stände der Prüfläufe schreibt scripts/export-vault.mjs aus dem Frontmatter der Laufnotizen.",
     "freigabe": "intern",
@@ -40,7 +40,15 @@
       "Übergabe vom 15.10.2026 und Tagesprotokoll vom 16.10.2026",
       "Zählung der Ablage vom 16.10.2026",
       "Akte des Orchestrators, KI-Mitarbeiter/Mannschaft/hermes/AGENTS.md, freigegeben am 28.09.2026, Stand 17.10.2026",
-      "Auskunft des Projektverantwortlichen vom 17.10.2026: Fehlalarme gehen an ihn, ein eigener Weg ist offen"
+      "Auskunft des Projektverantwortlichen vom 17.10.2026: Fehlalarme gehen an ihn, ein eigener Weg ist offen",
+      "Logbuch, 2026-10-17 Entscheidungen Hermes im Standardprofil und julia-trend",
+      "Logbuch, 2026-10-18 Abnahme Arnold",
+      "Logbuch, 2026-10-18 Entscheidungen Arnold und Gregor Dev",
+      "Logbuch, 2026-10-18 Entscheidungen Training",
+      "Logbuch, 2026-10-19 Entscheidung Arbeitsordner des Reporters",
+      "Logbuch, 2026-10-19 Entscheidung Remote von reviewer",
+      "Logbuch, 2026-10-19 Entscheidungen Testläufe und Weitergabe",
+      "Logbuch, 2026-10-19 Wochenziel fünf KI-Mitarbeiter"
     ],
     "getrenntAm": "2026-09-09",
     "notizordner": "KFBM/00_Vault/10_KI-Mitarbeiter"
@@ -91,7 +99,7 @@
     },
     {
       "id": "verbindlich",
-      "zahl": 11,
+      "zahl": 14,
       "label": "verbindliche Notizen, alle aus Konventionen und Entscheidungen. Alles Fachliche gilt als ungeprüft",
       "art": "warnung",
       "freigabe": "oeffentlich"
@@ -824,6 +832,106 @@
     {
       "datum": "2026-10-16",
       "entscheidung": "Die Seite auf GitHub Pages zeigt weiter alles, wie seit dem 17.09.",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-17",
+      "entscheidung": "Hermes läuft im Standardprofil, mit Hook und Akte, und alle Aufträge an KI-Mitarbeiter laufen über ihn",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-17",
+      "entscheidung": "Das Profil hermes-chef ruht und wird bei Meilenstein 2 entfernt; das Team schreibt demselben Bot wie der Projektverantwortliche",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-17",
+      "entscheidung": "julia-trend arbeitet bis zum Hook am 13.11. nur mit dem Web-Werkzeug",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-17",
+      "entscheidung": "Die Auftragsnotizen von Hermes committet die Werkbank auf der DGX, mit Hermes als Verfasser",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-18",
+      "entscheidung": "Der Technische Architekt heißt Arnold",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-18",
+      "entscheidung": "Arnold und Gregor Dev sind vor dem 13.11. in Betrieb, Akten zuerst, Betrieb nach der Freigabe",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-18",
+      "entscheidung": "Gregor Dev ist eine eigene Rolle für die Seite kiKollege; der Entwickler bleibt hinter dem 13.11.",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-18",
+      "entscheidung": "Gregor Dev läuft als Profil auf der DGX, mit Hook und ohne Bot, Aufträge als Karte",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-18",
+      "entscheidung": "Arnold bekommt kein Gedächtnis, jeder Auftrag fängt beim Vault an",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-18",
+      "entscheidung": "Die Pflege der Seite übernimmt Gregor Dev mit einem festen Lauf, die Routine Standwächter ruht danach",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-18",
+      "entscheidung": "Training heißt Lernkreis mit Prüfstand: feste Übungsaufträge je KI-Mitarbeiter, Bewertung durch den Projektverantwortlichen, Modelltraining erst bei einer Schwäche, die sich so nicht beheben lässt",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-18",
+      "entscheidung": "Der Lernkreis beginnt bei Hermes und kommt vor dem 30.10. in den Arbeitsplan",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-19",
+      "entscheidung": "Der Reporter arbeitet in KFBM/reviewer/, mit einer eigenen Aktenverweisung",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-19",
+      "entscheidung": "Der Remote origin von KFBM/reviewer/ wird entfernt, der Reviewer pflegt nichts auf kiKollege",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-19",
+      "entscheidung": "Die Pflege der Seite kiKollege bleibt bei Gregor Dev, ein Reviewer prüft und dokumentiert Abweichungen",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-19",
+      "entscheidung": "Die Werkbank darf Hermes Testaufträge auch über die Kommandozeile geben: ankündigen, das Ja des Projektverantwortlichen, dann Start",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-19",
+      "entscheidung": "Eine Weitergabe für Telegram ist erlaubt, solange kein Wort und keine Zahl geändert und nichts weggelassen wird",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-19",
+      "entscheidung": "Ziel ist es, diese Woche fünf KI-Mitarbeiter lauffähig zu haben und mit echten Aufgaben zu versehen",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-18",
+      "entscheidung": "Der Projektverantwortliche hat Arnold, den Technischen Architekten, abgenommen",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-19",
+      "entscheidung": "Die Ergebnisse der Testläufe stehen im Chat, in einer Laufnotiz je Testlauf und als Tag an jeder Auftragsnotiz aus einem Test",
       "freigabe": "intern"
     }
   ],
@@ -2032,10 +2140,10 @@
   },
   "ablage": {
     "freigabe": "oeffentlich",
-    "gezaehltAm": "2026-10-16",
-    "notizen": 175,
-    "verweise": 1628,
-    "unaufgeloest": 6,
+    "gezaehltAm": "2026-10-19",
+    "notizen": 224,
+    "verweise": 1850,
+    "unaufgeloest": 38,
     "regelnotizen": 1,
     "bereiche": [
       {
@@ -2043,21 +2151,21 @@
         "gruppe": "wissen",
         "name": "Konventionen und Begriffe",
         "kurz": "Konventionen",
-        "notizen": 6,
-        "verbindlich": 4,
+        "notizen": 7,
+        "verbindlich": 5,
         "informativ": 0,
         "ungeprueft": 0,
         "ohneFeld": 2,
         "verweiseNach": {
-          "entscheidungen": 6,
+          "entscheidungen": 8,
           "unternehmen": 4,
-          "bauplan": 62,
+          "bauplan": 63,
           "normbasis": 5,
           "massstab": 12,
           "quellen": 0,
           "prueflaeufe": 33,
           "arbeitsstand": 22,
-          "protokoll": 19,
+          "protokoll": 24,
           "einstiege": 3,
           "archiv": 4
         }
@@ -2067,21 +2175,21 @@
         "gruppe": "wissen",
         "name": "Entscheidungen mit Datum",
         "kurz": "Entscheidungen",
-        "notizen": 13,
-        "verbindlich": 7,
+        "notizen": 23,
+        "verbindlich": 8,
         "informativ": 1,
-        "ungeprueft": 5,
+        "ungeprueft": 14,
         "ohneFeld": 0,
         "verweiseNach": {
-          "konventionen": 1,
+          "konventionen": 2,
           "unternehmen": 0,
-          "bauplan": 18,
+          "bauplan": 30,
           "normbasis": 0,
           "massstab": 3,
           "quellen": 0,
           "prueflaeufe": 0,
-          "arbeitsstand": 33,
-          "protokoll": 4,
+          "arbeitsstand": 53,
+          "protokoll": 8,
           "einstiege": 10,
           "archiv": 0
         }
@@ -2099,7 +2207,7 @@
         "verweiseNach": {
           "konventionen": 0,
           "entscheidungen": 0,
-          "bauplan": 3,
+          "bauplan": 2,
           "normbasis": 0,
           "massstab": 3,
           "quellen": 1,
@@ -2115,21 +2223,21 @@
         "gruppe": "wissen",
         "name": "Bauplan der Mitarbeiter",
         "kurz": "Bauplan",
-        "notizen": 10,
+        "notizen": 20,
         "verbindlich": 0,
         "informativ": 1,
-        "ungeprueft": 1,
-        "ohneFeld": 8,
+        "ungeprueft": 4,
+        "ohneFeld": 15,
         "verweiseNach": {
           "konventionen": 7,
-          "entscheidungen": 29,
+          "entscheidungen": 47,
           "unternehmen": 3,
           "normbasis": 2,
           "massstab": 10,
           "quellen": 0,
-          "prueflaeufe": 12,
-          "arbeitsstand": 43,
-          "protokoll": 3,
+          "prueflaeufe": 13,
+          "arbeitsstand": 59,
+          "protokoll": 6,
           "einstiege": 1,
           "archiv": 2
         }
@@ -2163,9 +2271,9 @@
         "gruppe": "wissen",
         "name": "Prüfmaßstab der Academy",
         "kurz": "Prüfmaßstab",
-        "notizen": 8,
+        "notizen": 9,
         "verbindlich": 0,
-        "informativ": 0,
+        "informativ": 1,
         "ungeprueft": 0,
         "ohneFeld": 8,
         "verweiseNach": {
@@ -2173,7 +2281,7 @@
           "entscheidungen": 0,
           "unternehmen": 1,
           "bauplan": 7,
-          "normbasis": 17,
+          "normbasis": 14,
           "quellen": 0,
           "prueflaeufe": 4,
           "arbeitsstand": 1,
@@ -2211,18 +2319,18 @@
         "gruppe": "gedaechtnis",
         "name": "Prüfläufe und Regeln",
         "kurz": "Prüfläufe",
-        "notizen": 24,
+        "notizen": 25,
         "verbindlich": 0,
         "informativ": 0,
         "ungeprueft": 7,
-        "ohneFeld": 17,
+        "ohneFeld": 18,
         "verweiseNach": {
           "konventionen": 1,
           "entscheidungen": 0,
           "unternehmen": 1,
           "bauplan": 25,
           "normbasis": 3,
-          "massstab": 42,
+          "massstab": 45,
           "quellen": 1,
           "arbeitsstand": 0,
           "protokoll": 0,
@@ -2235,21 +2343,21 @@
         "gruppe": "werkstatt",
         "name": "Pläne, Berichte, Übergaben",
         "kurz": "Arbeitsstände",
-        "notizen": 33,
+        "notizen": 42,
         "verbindlich": 0,
         "informativ": 6,
-        "ungeprueft": 17,
-        "ohneFeld": 10,
+        "ungeprueft": 21,
+        "ohneFeld": 15,
         "verweiseNach": {
           "konventionen": 15,
-          "entscheidungen": 33,
+          "entscheidungen": 45,
           "unternehmen": 5,
-          "bauplan": 68,
+          "bauplan": 79,
           "normbasis": 1,
-          "massstab": 20,
+          "massstab": 22,
           "quellen": 0,
-          "prueflaeufe": 5,
-          "protokoll": 12,
+          "prueflaeufe": 6,
+          "protokoll": 17,
           "einstiege": 3,
           "archiv": 4
         }
@@ -2259,21 +2367,21 @@
         "gruppe": "werkstatt",
         "name": "Tagesprotokolle",
         "kurz": "Protokolle",
-        "notizen": 18,
+        "notizen": 25,
         "verbindlich": 0,
         "informativ": 0,
         "ungeprueft": 0,
-        "ohneFeld": 18,
+        "ohneFeld": 25,
         "verweiseNach": {
-          "konventionen": 32,
-          "entscheidungen": 36,
+          "konventionen": 41,
+          "entscheidungen": 53,
           "unternehmen": 0,
-          "bauplan": 41,
+          "bauplan": 64,
           "normbasis": 1,
           "massstab": 5,
           "quellen": 0,
-          "prueflaeufe": 9,
-          "arbeitsstand": 99,
+          "prueflaeufe": 13,
+          "arbeitsstand": 121,
           "einstiege": 0,
           "archiv": 0
         }
@@ -2283,13 +2391,13 @@
         "gruppe": "werkstatt",
         "name": "Einstiege und Eingang",
         "kurz": "Einstiege",
-        "notizen": 4,
-        "verbindlich": 0,
+        "notizen": 14,
+        "verbindlich": 1,
         "informativ": 0,
-        "ungeprueft": 0,
-        "ohneFeld": 4,
+        "ungeprueft": 1,
+        "ohneFeld": 12,
         "verweiseNach": {
-          "konventionen": 9,
+          "konventionen": 10,
           "entscheidungen": 0,
           "unternehmen": 0,
           "bauplan": 2,
@@ -2425,7 +2533,7 @@
         "art": "notizen",
         "wofuer": "Wie ein KI-Mitarbeiter gebaut ist: Anatomie, Harness, Orchestrator, Systemarchitektur, Zusammenarbeit, Fahrplan.",
         "hinweis": "Gelesen, wenn an der Architektur gearbeitet wird, nicht bei jeder Aufgabe.",
-        "notizen": 33,
+        "notizen": 40,
         "verbindlich": 0
       },
       {
@@ -2441,7 +2549,7 @@
         "stufe": "ordnung",
         "art": "notizen",
         "wofuer": "Konventionen, Änderungsprotokoll, Status-Übersicht und Tagesprotokolle.",
-        "notizen": 16,
+        "notizen": 19,
         "verbindlich": 3
       },
       {
@@ -2458,7 +2566,7 @@
         "art": "notizen",
         "wofuer": "Aufträge an die Mannschaft, eine Notiz je Auftrag, mit Übersicht.",
         "hinweis": "Seit dem 28.09. angelegt, bisher nur mit der Vorlage.",
-        "notizen": 1,
+        "notizen": 6,
         "verbindlich": 0
       },
       {
@@ -2466,7 +2574,7 @@
         "stufe": "ordnung",
         "art": "notizen",
         "wofuer": "Entscheidungen und Ereignisse in zeitlicher Folge.",
-        "notizen": 13,
+        "notizen": 22,
         "verbindlich": 7
       },
       {
@@ -2502,7 +2610,7 @@
         "wofuer": "Website-Abzüge und Datenschicht, nicht im Repository und nicht im Index."
       }
     ],
-    "gezaehltAm": "2026-10-16",
+    "gezaehltAm": "2026-10-19",
     "quelle": "Ordnertabelle und Kontextstrategie im Einstieg des Repositorys KI-Mitarbeiter, Akten nach den Vault-Konventionen, Anzahlen aus der Zählung der Ablage",
     "freigabe": "oeffentlich"
   },
