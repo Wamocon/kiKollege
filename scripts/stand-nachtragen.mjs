@@ -12,11 +12,15 @@
  * KI-Mitarbeiters. Der Weg nach draussen bleibt schmal: Es aendert genau eine
  * Datei, pusht nur auf einen eigenen Zweig und fuehrt nichts zusammen.
  *
+ * Ein Durchgang, der die Datei geaendert hat, hebt stand und herkunft.erzeugt
+ * auf den Tag des Laufs; stand geht dabei nie zurueck. Ein leerer Lauf laesst
+ * beide stehen.
+ *
  * Endet mit 0, wenn nichts zu tun war oder ein Pull Request steht, sonst mit 1.
  */
 
 import { spawnSync } from 'node:child_process'
-import { writeFileSync } from 'node:fs'
+import { readFileSync, writeFileSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join, resolve } from 'node:path'
 
@@ -50,6 +54,7 @@ export async function nachtragen({
   pruefer = 'erwinmoretz',
   lauf = wirklichLaufen,
   schreibe = writeFileSync,
+  lies = (pfad) => readFileSync(pfad, 'utf8'),
   log = console.log,
 }) {
   const fuehre = (befehl, ...args) => lauf(befehl, args, { wurzel })
@@ -97,6 +102,20 @@ export async function nachtragen({
 
   const geaendert = fuehre('git', 'diff', '--quiet', '--', DATEI)
   if (geaendert.status === 0) return ende('nichts', 'Kein neuer Stand, nichts zu tun.')
+
+  // Der Stand zieht mit: Ein Nachtrag, der die Datei geaendert hat, hebt stand
+  // und herkunft.erzeugt auf den Tag des Laufs. stand geht nie zurueck.
+  const pfad = join(wurzel, DATEI)
+  let daten
+  try {
+    daten = JSON.parse(lies(pfad))
+  } catch {
+    verwerfen()
+    return abbruch('Der neue Stand lässt sich nicht lesen. Nichts gestellt.')
+  }
+  daten.stand = daten.stand && daten.stand > heute ? daten.stand : heute
+  daten.herkunft = { ...daten.herkunft, erzeugt: heute }
+  schreibe(pfad, JSON.stringify(daten, null, 2) + '\n', 'utf8')
 
   // Ändern ist erlaubt, entfernen nicht
   const alt = join(tmpdir(), 'projektstand-vorher.json')

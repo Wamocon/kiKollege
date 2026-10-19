@@ -20,6 +20,8 @@
  * - Offene Punkte: Ein Punkt mit bekannter Nummer bekommt den neuen Wortlaut,
  *   seine uebrigen Felder bleiben. Neue Nummern kommen dazu, keine faellt weg.
  * - stand ist das juengere von bisherigem Stand und juengstem Lauf.
+ *   stand:nachtragen hebt stand zusätzlich auf den Tag jedes Nachtrags, der die
+ *   Datei ändert; die Regel hier bleibt die Untergrenze.
  * - herkunft.erzeugt wird nur gesetzt, wenn sich etwas geaendert hat.
  *   Arbeitsordner und Verfahren bleiben, wie sie sind.
  *
