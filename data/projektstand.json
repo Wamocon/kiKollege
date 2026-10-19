@@ -40,7 +40,15 @@
       "Übergabe vom 15.10.2026 und Tagesprotokoll vom 16.10.2026",
       "Zählung der Ablage vom 16.10.2026",
       "Akte des Orchestrators, KI-Mitarbeiter/Mannschaft/hermes/AGENTS.md, freigegeben am 28.09.2026, Stand 17.10.2026",
-      "Auskunft des Projektverantwortlichen vom 17.10.2026: Fehlalarme gehen an ihn, ein eigener Weg ist offen"
+      "Auskunft des Projektverantwortlichen vom 17.10.2026: Fehlalarme gehen an ihn, ein eigener Weg ist offen",
+      "Logbuch, 2026-10-17 Entscheidungen Hermes im Standardprofil und julia-trend",
+      "Logbuch, 2026-10-18 Abnahme Arnold",
+      "Logbuch, 2026-10-18 Entscheidungen Arnold und Gregor Dev",
+      "Logbuch, 2026-10-18 Entscheidungen Training",
+      "Logbuch, 2026-10-19 Entscheidung Arbeitsordner des Reporters",
+      "Logbuch, 2026-10-19 Entscheidung Remote von reviewer",
+      "Logbuch, 2026-10-19 Entscheidungen Testläufe und Weitergabe",
+      "Logbuch, 2026-10-19 Wochenziel fünf KI-Mitarbeiter"
     ],
     "getrenntAm": "2026-09-09",
     "notizordner": "../../KFBM/00_Vault/10_KI-Mitarbeiter"
@@ -824,6 +832,106 @@
     {
       "datum": "2026-10-16",
       "entscheidung": "Die Seite auf GitHub Pages zeigt weiter alles, wie seit dem 17.09.",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-17",
+      "entscheidung": "Hermes läuft im Standardprofil, mit Hook und Akte, und alle Aufträge an KI-Mitarbeiter laufen über ihn",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-17",
+      "entscheidung": "Das Profil hermes-chef ruht und wird bei Meilenstein 2 entfernt; das Team schreibt demselben Bot wie der Projektverantwortliche",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-17",
+      "entscheidung": "julia-trend arbeitet bis zum Hook am 13.11. nur mit dem Web-Werkzeug",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-17",
+      "entscheidung": "Die Auftragsnotizen von Hermes committet die Werkbank auf der DGX, mit Hermes als Verfasser",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-18",
+      "entscheidung": "Der Technische Architekt heißt Arnold",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-18",
+      "entscheidung": "Arnold und Gregor Dev sind vor dem 13.11. in Betrieb, Akten zuerst, Betrieb nach der Freigabe",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-18",
+      "entscheidung": "Gregor Dev ist eine eigene Rolle für die Seite kiKollege; der Entwickler bleibt hinter dem 13.11.",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-18",
+      "entscheidung": "Gregor Dev läuft als Profil auf der DGX, mit Hook und ohne Bot, Aufträge als Karte",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-18",
+      "entscheidung": "Arnold bekommt kein Gedächtnis, jeder Auftrag fängt beim Vault an",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-18",
+      "entscheidung": "Die Pflege der Seite übernimmt Gregor Dev mit einem festen Lauf, die Routine Standwächter ruht danach",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-18",
+      "entscheidung": "Training heißt Lernkreis mit Prüfstand: feste Übungsaufträge je KI-Mitarbeiter, Bewertung durch den Projektverantwortlichen, Modelltraining erst bei einer Schwäche, die sich so nicht beheben lässt",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-18",
+      "entscheidung": "Der Lernkreis beginnt bei Hermes und kommt vor dem 30.10. in den Arbeitsplan",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-19",
+      "entscheidung": "Der Reporter arbeitet in KFBM/reviewer/, mit einer eigenen Aktenverweisung",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-19",
+      "entscheidung": "Der Remote origin von KFBM/reviewer/ wird entfernt, der Reviewer pflegt nichts auf kiKollege",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-19",
+      "entscheidung": "Die Pflege der Seite kiKollege bleibt bei Gregor Dev, ein Reviewer prüft und dokumentiert Abweichungen",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-19",
+      "entscheidung": "Die Werkbank darf Hermes Testaufträge auch über die Kommandozeile geben: ankündigen, das Ja des Projektverantwortlichen, dann Start",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-19",
+      "entscheidung": "Eine Weitergabe für Telegram ist erlaubt, solange kein Wort und keine Zahl geändert und nichts weggelassen wird",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-19",
+      "entscheidung": "Ziel ist es, diese Woche fünf KI-Mitarbeiter lauffähig zu haben und mit echten Aufgaben zu versehen",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-18",
+      "entscheidung": "Der Projektverantwortliche hat Arnold, den Technischen Architekten, abgenommen",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-19",
+      "entscheidung": "Die Ergebnisse der Testläufe stehen im Chat, in einer Laufnotiz je Testlauf und als Tag an jeder Auftragsnotiz aus einem Test",
       "freigabe": "intern"
     }
   ],
