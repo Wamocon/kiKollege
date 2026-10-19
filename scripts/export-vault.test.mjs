@@ -16,6 +16,7 @@ import {
   leseOffenePunkte,
   laeufeZusammenfuehren,
   normDatum,
+  notizordnerRelativ,
   punkteZusammenfuehren,
 } from './export-vault.mjs'
 
@@ -247,4 +248,25 @@ test('exportieren liest einen Vault mit abweichendem Aufbau', async () => {
   ])
   assert.equal(neu.herkunft.notizordner, 'Notizen/KI-Mitarbeiter')
   assert.deepEqual(neu.offenePunkte, alt.offenePunkte, 'ohne Datei bleibt der bisherige Stand')
+})
+
+test('notizordnerRelativ nimmt ohne arbeitsordner den Vault als Basis', { skip: process.platform === 'win32' }, () => {
+  assert.equal(
+    notizordnerRelativ(undefined, '/home/w/WAMOCON/KFBM', '/home/w/WAMOCON/KFBM/00_Vault/10_KI-Mitarbeiter'),
+    '00_Vault/10_KI-Mitarbeiter',
+  )
+})
+
+test('notizordnerRelativ nimmt einen Windows-Pfad unter Linux über den Vault', { skip: process.platform === 'win32' }, () => {
+  assert.equal(
+    notizordnerRelativ('D:\\WAMOCON', '/home/w/WAMOCON/KFBM', '/home/w/WAMOCON/KFBM/00_Vault/10_KI-Mitarbeiter'),
+    'KFBM/00_Vault/10_KI-Mitarbeiter',
+  )
+})
+
+test('notizordnerRelativ nimmt einen absoluten arbeitsordner als Basis', { skip: process.platform === 'win32' }, () => {
+  assert.equal(
+    notizordnerRelativ('/home/w/WAMOCON', '/home/w/WAMOCON/KFBM', '/home/w/WAMOCON/KFBM/00_Vault/10_KI-Mitarbeiter'),
+    'KFBM/00_Vault/10_KI-Mitarbeiter',
+  )
 })
