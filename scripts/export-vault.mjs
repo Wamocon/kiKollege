@@ -30,7 +30,7 @@
 
 import { readFile, readdir, writeFile } from 'node:fs/promises'
 import { existsSync } from 'node:fs'
-import { basename, join, relative, resolve, sep } from 'node:path'
+import { basename, dirname, isAbsolute, join, relative, resolve, sep } from 'node:path'
 
 export const ORTE = {
   /** Aus dem Uebergabedokument bekannte Lagen, in dieser Reihenfolge geprueft. */
@@ -262,6 +262,18 @@ export function entscheidungenZusammenfuehren(alt, gelesen) {
   return [...alt, ...dazu].sort((a, b) => a.datum.localeCompare(b.datum))
 }
 
+/** Der Notizordner relativ zum Arbeitsordner, wie /stand/ ihn nennt. Steht als
+ *  Arbeitsordner ein Pfad, der auf diesem Rechner nicht absolut ist (ein
+ *  Windows-Pfad unter Linux), gilt der Ordner über dem Vault. */
+export function notizordnerRelativ(arbeitsordner, vault, notizordner) {
+  const basis = arbeitsordner
+    ? isAbsolute(arbeitsordner)
+      ? arbeitsordner
+      : dirname(resolve(vault))
+    : vault
+  return relative(basis, notizordner).split(sep).join('/') || '.'
+}
+
 /** Ein bekannter Punkt bekommt den neuen Wortlaut und behaelt seine uebrigen
  *  Felder, etwa erledigt oder freigabe. Kein Punkt faellt weg. */
 export function punkteZusammenfuehren(alt, gelesen) {
@@ -360,7 +372,7 @@ export async function exportieren({
       arbeitsordner: alt.herkunft.arbeitsordner ?? vault,
       // relativ zum Arbeitsordner, weil /stand/ beide in einem Satz nennt
       notizordner: notizordner
-        ? relative(alt.herkunft.arbeitsordner ?? vault, notizordner).split(sep).join('/') || '.'
+        ? notizordnerRelativ(alt.herkunft.arbeitsordner, vault, notizordner)
         : alt.herkunft.notizordner,
       verfahren:
         alt.herkunft.verfahren ??
