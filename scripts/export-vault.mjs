@@ -262,8 +262,9 @@ export function entscheidungenZusammenfuehren(alt, gelesen) {
   return [...alt, ...dazu].sort((a, b) => a.datum.localeCompare(b.datum))
 }
 
-/** Ein bekannter Punkt bekommt den neuen Wortlaut und behaelt seine uebrigen
- *  Felder, etwa erledigt oder freigabe. Kein Punkt faellt weg. */
+/** Der Notizordner relativ zum Arbeitsordner, wie /stand/ ihn nennt. Steht als
+ *  Arbeitsordner ein Pfad, der auf diesem Rechner nicht absolut ist (ein
+ *  Windows-Pfad unter Linux), gilt der Ordner über dem Vault. */
 export function notizordnerRelativ(arbeitsordner, vault, notizordner) {
   const basis = arbeitsordner
     ? isAbsolute(arbeitsordner)
@@ -273,6 +274,8 @@ export function notizordnerRelativ(arbeitsordner, vault, notizordner) {
   return relative(basis, notizordner).split(sep).join('/') || '.'
 }
 
+/** Ein bekannter Punkt bekommt den neuen Wortlaut und behaelt seine uebrigen
+ *  Felder, etwa erledigt oder freigabe. Kein Punkt faellt weg. */
 export function punkteZusammenfuehren(alt, gelesen) {
   const neu = new Map(gelesen.map((p) => [p.nr, p]))
   const ergebnis = alt.map((p) => {
