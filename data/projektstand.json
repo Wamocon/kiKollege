@@ -1877,8 +1877,8 @@
     }
   ],
   "mannschaft": {
-    "satz": "Aus einem Mitarbeiter wird eine Mannschaft. Der Reviewer arbeitet und ist abgenommen, der Orchestrator hat seine Akte und wartet auf das Team. Reporter und Researcherin folgen in diesem Plan, die übrigen danach.",
-    "gezaehltAm": "2026-10-16",
+    "satz": "Aus einem Mitarbeiter wird eine Mannschaft. Heute arbeiten der Reviewer, der Orchestrator, der Architekt, die Researcherin und der Pfleger der Seiten. Der Reporter folgt als Nächstes, Archivar und Entwickler danach.",
+    "gezaehltAm": "2026-10-19",
     "trennung": "Wer baut, prüft nicht. Wer prüft, baut nicht. Wer pflegt, urteilt nicht.",
     "engpass": "Der Engpass ist die gemessene Fehlalarmquote des ersten, nicht die Zahl der Mitarbeiter. Kein weiterer misst sie, und jeder weitere vergrößert, was ungemessen läuft.",
     "akte": "Jeder KI-Mitarbeiter bekommt eine Akte: Auftrag, Haltung und Grenze als Dateien, unabhängig vom Harness. Ein kleines Programm prüft vor jedem Werkzeugaufruf, ob die Akte ihn erlaubt, und lehnt im Zweifel ab. Der Reviewer hat seine Akte seit dem 11.09., der Orchestrator seit dem 28.09.",
@@ -1891,12 +1891,12 @@
         "kern": "verteilend",
         "tut": "Aufträge annehmen, die Pflichtangaben prüfen, aus einer Tabelle zuweisen und das Ergebnis unverändert weitergeben: mit Verfasser, Nummer und Fundstelle.",
         "tutNie": "prüfen, erstellen, freigeben, zusammenfassen",
-        "zustand": "eingerichtet",
+        "zustand": "arbeitet",
         "seit": "2026-09-09",
-        "hinweis": "Seit dem 28.09. hat er eine freigegebene Akte, am 29.09. auf das Team und die Sprache angepasst. Sein Profil mit Grenze ist eingerichtet und wartet auf die Teamliste. Am 16.10. lief ein Testauftrag über das Board zum Reviewer.",
+        "hinweis": "Seit dem 28.09. hat er eine freigegebene Akte, am 29.09. auf das Team und die Sprache angepasst. Seit dem 17.10. gilt: Hook und Akte hängen am Standardprofil, statt den Bot umzuziehen. Am 18.10. hat der Projektverantwortliche das Standardprofil mit Hook und Akte hinter seinen Bot genommen; das alte Profil ruht. Das Team bekommt seine Aufträge ab dem 30.10. über diesen Bot.",
         "freigabe": "oeffentlich",
         "betrieb": "mitGrenze",
-        "marke": "eigenes Profil mit Grenze, wartet auf das Team"
+        "marke": "mit Grenze, Team ab 30.10."
       },
       {
         "id": "reviewer",
@@ -1946,13 +1946,14 @@
         "rolle": "Technischer Architekt",
         "kurz": "Architekt",
         "kern": "entwerfend",
-        "tut": "Entscheidungen vorbereiten und Widersprüche zwischen Notizen finden. Er antwortet im Gespräch, mit genau einer Empfehlung und dem Punkt, an dem sie kippt.",
+        "tut": "Entscheidungen vorbereiten und Widersprüche zwischen Notizen finden. Er meldet über seine Karte, mit genau einer Empfehlung und dem Punkt, an dem sie kippt.",
         "tutNie": "entscheiden, bauen, prüfen, in die Ablage schreiben",
-        "zustand": "entschieden",
-        "seit": null,
-        "hinweis": "Grenzdatei mit Testfällen seit dem 28.09. Folgt nach dem Ende des Plans.",
+        "zustand": "arbeitet",
+        "seit": "2026-10-18",
+        "hinweis": "Grenzdatei mit Testfällen seit dem 28.09. Am 18.10. hat der Projektverantwortliche die Akte und die Grenze freigegeben und ihn abgenommen. Sein Auftrag: zu einer offenen Frage eine Empfehlung mit Kipppunkt vorschlagen. Er schreibt nichts, seine Vorlage steht auf der Karte.",
         "freigabe": "oeffentlich",
-        "marke": "nach dem 13.11."
+        "betrieb": "mitGrenze",
+        "marke": "mit Grenze, abgenommen 18.10."
       },
       {
         "id": "archivar",
@@ -1988,11 +1989,12 @@
         "kern": "nachtragend",
         "tut": "Den Stand der öffentlichen Seiten aus der Ablage nachtragen und weitere Seiten nach demselben Muster bauen. Jede Änderung als Pull Request, jede Zahl mit ihrer Quelle.",
         "tutNie": "nach main pushen, einen Pull Request zusammenführen, etwas aus den Daten entfernen, ein Datenelement von intern auf öffentlich heben, eine Notiz in der Ablage ändern, eine Prüfung abschalten",
-        "zustand": "entschieden",
-        "seit": null,
-        "hinweis": "Am 18.09. entschieden, weil weitere Seiten entstehen sollen. Er darf als Zweiter ins Netz, und nur zu GitHub. Konto, Akte und Grenze mit Testfällen fehlen noch. In der Ablage steht er bisher nicht.",
+        "zustand": "arbeitet",
+        "seit": "2026-10-19",
+        "hinweis": "Am 18.09. entschieden, weil weitere Seiten entstehen sollen. Am 19.10. hat der Projektverantwortliche die Akte und die Grenze freigegeben. Am selben Tag hat er seinen ersten Pflegelauf als Pull Request gestellt und seinen ersten Bauauftrag übernommen. Ein eigenes Konto fehlt noch; bis dahin stellt die Werkbank die Pull Requests unter dem Konto des Projektverantwortlichen.",
         "freigabe": "oeffentlich",
-        "marke": "entschieden 18.09."
+        "betrieb": "mitGrenze",
+        "marke": "mit Grenze seit 19.10."
       },
       {
         "id": "gestalter",
@@ -2100,7 +2102,7 @@
         ]
       }
     ],
-    "organigrammQuelle": "Organigramm vom 16.10.2026, ohne Angaben zum Betrieb des KI-Rechners, ohne Profilnamen, Versionen und Modell"
+    "organigrammQuelle": "Organigramm vom 19.10.2026, ohne Angaben zum Betrieb des KI-Rechners, ohne Profilnamen, Versionen und Modell"
   },
   "bewertungen": {
     "erstmalsAm": "2026-09-09",
