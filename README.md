@@ -329,6 +329,8 @@ nichts:
 - **Offene Punkte:** Ein Punkt mit bekannter Nummer bekommt den neuen Wortlaut und
   behält `erledigt` und `freigabe`. Neue Nummern kommen dazu.
 - **`stand`** ist das jüngere von bisherigem Stand und jüngstem Lauf.
+  `stand:nachtragen` hebt ihn zusätzlich auf den Tag jedes Nachtrags, der die
+  Datei ändert; die Regel hier bleibt die Untergrenze.
 - **`herkunft.erzeugt`** ändert sich nur, wenn sich etwas geändert hat.
   Arbeitsordner und Verfahren bleiben.
 

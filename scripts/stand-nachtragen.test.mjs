@@ -25,6 +25,11 @@ const sauberAufMain = {
 }
 /** git diff --quiet endet mit 1, wenn es einen Unterschied gibt. */
 const geaendert = { 'git diff --quiet': { status: 1 } }
+/** Ein lesbares Minimum von data/projektstand.json für die Stand-Tests. */
+const stehendeDaten = () => ({
+  stand: '2026-09-10',
+  herkunft: { erzeugt: '2026-09-12' },
+})
 const lauf = (w, mehr = {}) =>
   nachtragen({ vault: 'V', ablage: 'A', heute: '2026-09-18', lauf: w.lauf, schreibe: () => {}, log: () => {}, ...mehr })
 
@@ -48,6 +53,76 @@ test('tut nichts, wenn sich der Stand nicht geändert hat', async () => {
   assert.equal(e.ende, 'nichts')
   assert.ok(!w.rufe.some((r) => r.startsWith('git commit')), 'kein Commit')
   assert.ok(w.rufe.some((r) => r.startsWith('node scripts/abbild-vault.mjs --vault A')), 'Ablage gezählt')
+})
+
+test('ein Lauf mit Änderung setzt stand und herkunft.erzeugt auf den Tag des Laufs', async () => {
+  const w = werkbank({
+    ...sauberAufMain,
+    ...geaendert,
+    'git rev-parse --verify stand/2026-09-18': { status: 1 },
+    'gh pr view': { status: 1 },
+    'gh pr create': { aus: 'https://github.com/Wamocon/kiKollege/pull/9' },
+  })
+  const daten = stehendeDaten()
+  const geschrieben = []
+  const e = await lauf(w, {
+    lies: () => JSON.stringify(daten),
+    schreibe: (pfad, text) => {
+      if (typeof text === 'string' && text.trim() && pfad.endsWith('data/projektstand.json')) {
+        geschrieben.push({ pfad, daten: JSON.parse(text) })
+      }
+    },
+  })
+  assert.equal(e.ende, 'gestellt')
+  assert.ok(geschrieben.length >= 1, 'die Datei wurde geschrieben')
+  const neu = geschrieben.at(-1).daten
+  assert.ok(geschrieben.at(-1).pfad.endsWith('data/projektstand.json'))
+  assert.equal(neu.stand, '2026-09-18')
+  assert.equal(neu.herkunft.erzeugt, '2026-09-18')
+})
+
+test('ein Lauf ohne Änderung lässt stand und erzeugt stehen und schreibt die Datei nicht', async () => {
+  const w = werkbank(sauberAufMain)
+  const daten = stehendeDaten()
+  let gelesen = 0
+  let geschrieben = 0
+  await lauf(w, {
+    lies: () => {
+      gelesen += 1
+      return JSON.stringify(daten)
+    },
+    schreibe: () => (geschrieben += 1),
+  })
+  assert.equal(gelesen, 0, 'liest die Datei nicht')
+  assert.equal(geschrieben, 0, 'schreibt die Datei nicht')
+  assert.equal(daten.stand, '2026-09-10', 'stand bleibt')
+  assert.equal(daten.herkunft.erzeugt, '2026-09-12', 'erzeugt bleibt')
+})
+
+test('ein jüngerer stand bleibt stehen, erzeugt zieht mit', async () => {
+  const w = werkbank({
+    ...sauberAufMain,
+    ...geaendert,
+    'git rev-parse --verify stand/2026-09-18': { status: 1 },
+    'gh pr view': { status: 1 },
+    'gh pr create': { aus: 'https://github.com/Wamocon/kiKollege/pull/9' },
+  })
+  const daten = stehendeDaten()
+  daten.stand = '2026-09-25'
+  const geschrieben = []
+  const e = await lauf(w, {
+    lies: () => JSON.stringify(daten),
+    schreibe: (pfad, text) => {
+      if (typeof text === 'string' && text.trim() && pfad.endsWith('data/projektstand.json')) {
+        geschrieben.push(JSON.parse(text))
+      }
+    },
+  })
+  assert.equal(e.ende, 'gestellt')
+  assert.ok(geschrieben.length >= 1, 'die Datei wurde geschrieben')
+  const neu = geschrieben.at(-1)
+  assert.equal(neu.stand, '2026-09-25', 'stand geht nicht zurück')
+  assert.equal(neu.herkunft.erzeugt, '2026-09-18')
 })
 
 test('verwirft die Änderung, wenn der Bestand kleiner würde', async () => {
