@@ -4158,7 +4158,7 @@
           { "was": "Use-Cases, Quizze, Szenarien, Enabler, den Bestand und den Maßstab selbst, jeweils über ein eigenes Prüfskript.", "beispiel": "Der erste vollständige Lauf über 238 Use-Cases ergab 229 freigebbar, 7 mit Nacharbeit und 2 nicht freigebbar.", "titel": "Unterlagen prüfen" },
           { "was": "Fachfragen zur Normbasis beantworten, wenn keine Prüfung verlangt ist, immer mit Vorbehalt.", "beispiel": "Was die Verordnung 2025 zu einer Wahlqualifikation sagt, mit der Fundstelle im Bundesgesetzblatt.", "titel": "Fachfragen beantworten" },
           { "was": "Je Lauf seine Befundordner, dazu eine Laufnotiz und ein Bewertungsbogen.", "beispiel": "Der Bogen geht an den Projektverantwortlichen, der jeden Befund als richtig oder Fehlalarm einstuft.", "titel": "Befunde festhalten" },
-          { "was": "Über die vorhandenen Generatoren, bis der Reporter das übernimmt.", "beispiel": "Ein Kapitelbericht zu einem Themenkomplex als HTML.", "titel": "Berichte erzeugen" }
+          { "was": "Berichte erzeugen über die vorhandenen Generatoren, bis der Reporter das übernimmt.", "beispiel": "Ein Kapitelbericht zu einem Themenkomplex als HTML.", "titel": "Berichte erzeugen" }
         ],
         "ziele": [
           { "was": "Meilenstein 1: abgenommen. Offen ist nur noch der Test mit einer fremden Kennung, der mit Meilenstein 2 läuft.", "bis": "2026-10-23", "erreicht": true },
@@ -4169,14 +4169,14 @@
           { "was": "Freigabe je Regel: höchstens 20 Prozent Fehlalarme an mindestens 30 einzeln angesehenen Fällen. Gemessen ist bisher eine von 26 Regeln.", "bis": null, "erreicht": false }
         ],
         "werkzeuge": [
-          { "was": "liest Normbasis, Maßstab, Profile und Prüfobjekte. Er schreibt nur seine Befundordner, seine Berichte und seine Prüfläufe.", "titel": "Dateien", "art": "dateien" },
-          { "was": "nur zwölf Skripte: sechs Prüfskripte, das Skript für den Bewertungsbogen und fünf Berichtserzeuger.", "beispiel": "Sein Prüfskript für Use-Cases über die Fälle eines Kapitels.", "titel": "Kommandozeile", "art": "kommandozeile" },
-          { "was": "liest, kommentiert und meldet die Karte, die Hermes ihm gibt.", "titel": "Board", "art": "board" },
-          { "was": "fragt beim Auftraggeber nach.", "beispiel": "Welcher Jahrgang gemeint ist, weil Verträge ab dem 01.08.2025 der neuen Verordnung folgen.", "titel": "Rückfrage", "art": "rueckfrage" },
-          { "was": "plant einen langen Lauf in Schritten.", "titel": "Aufgabenliste", "art": "aufgabenliste" },
-          { "was": "des Profils: behält, was über einen Lauf hinaus gilt. Die Ablage bleibt die Quelle.", "titel": "Gedächtnis", "art": "gedaechtnis" },
-          { "was": "laden; anlegen nur mit Freigabe eines Menschen.", "titel": "Skills", "art": "skills" },
-          { "was": "im Messenger; Aufträge darüber gibt allein der Projektverantwortliche.", "titel": "Eigener Bot", "art": "bot" }
+          { "was": "Liest Normbasis, Maßstab, Profile und Prüfobjekte. Er schreibt nur seine Befundordner, seine Berichte und seine Prüfläufe.", "titel": "Dateien", "art": "dateien" },
+          { "was": "Nur zwölf Skripte: sechs Prüfskripte, das Skript für den Bewertungsbogen und fünf Berichtserzeuger.", "beispiel": "Sein Prüfskript für Use-Cases über die Fälle eines Kapitels.", "titel": "Kommandozeile", "art": "kommandozeile" },
+          { "was": "Karten: liest, kommentiert und meldet die Karte, die Hermes ihm gibt.", "titel": "Board", "art": "board" },
+          { "was": "Fragt beim Auftraggeber nach.", "beispiel": "Welcher Jahrgang gemeint ist, weil Verträge ab dem 01.08.2025 der neuen Verordnung folgen.", "titel": "Rückfrage", "art": "rueckfrage" },
+          { "was": "Plant einen langen Lauf in Schritten.", "titel": "Aufgabenliste", "art": "aufgabenliste" },
+          { "was": "Gedächtnis des Profils: behält, was über einen Lauf hinaus gilt. Die Ablage bleibt die Quelle.", "titel": "Gedächtnis", "art": "gedaechtnis" },
+          { "was": "Laden; anlegen nur mit Freigabe eines Menschen.", "titel": "Skills", "art": "skills" },
+          { "was": "Eigener Bot im Messenger; Aufträge darüber gibt allein der Projektverantwortliche.", "titel": "Eigener Bot", "art": "bot" }
         ],
         "tutNie": "Ins Netz gehen, freigeben, bewerten, Unterlagen ändern, Aufträge weitergeben, committen.",
         "freigabe": "oeffentlich"
@@ -4185,10 +4185,10 @@
         "kopf": "orchestrator",
         "satz": "Nimmt Aufträge an, wählt den zuständigen Mitarbeiter aus einer festen Tabelle, legt erst die Auftragsnotiz und dann die Karte an und reicht das Ergebnis unverändert weiter. Er fasst nicht zusammen, urteilt nicht und gibt nichts frei.",
         "aufgaben": [
-          { "was": "über den Bot im Messenger, die App und die Kommandozeile.", "beispiel": "Der Projektverantwortliche schreibt: Prüf die Use-Cases von Themenkomplex 14.", "titel": "Aufträge annehmen" },
-          { "was": "nachfragen, bevor er zuweist.", "beispiel": "Für den Reviewer fehlen Jahrgang und Zielgruppe, also fragt er zurück, statt zu raten.", "titel": "Pflichtangaben nachfragen" },
-          { "was": "aus der Zuordnungstabelle, nie aus dem Gefühl. Was nicht in der Tabelle steht, lehnt er mit Begründung ab.", "beispiel": "Bau mir ein Skript geht an die Werkbank, nicht an einen Mitarbeiter.", "titel": "Zuweisen" },
-          { "was": "die Auftragsnotiz mit eigener Nummer, danach die Karte.", "beispiel": "Die Nummer A-0013 mit Notiz und Karte für den Pfleger der Seiten.", "titel": "Erst Notiz, dann Karte" },
+          { "was": "Aufträge annehmen über den Bot im Messenger, die App und die Kommandozeile.", "beispiel": "Der Projektverantwortliche schreibt: Prüf die Use-Cases von Themenkomplex 14.", "titel": "Aufträge annehmen" },
+          { "was": "Bevor er zuweist.", "beispiel": "Für den Reviewer fehlen Jahrgang und Zielgruppe, also fragt er zurück, statt zu raten.", "titel": "Pflichtangaben nachfragen" },
+          { "was": "Zuweisen aus der Zuordnungstabelle, nie aus dem Gefühl. Was nicht in der Tabelle steht, lehnt er mit Begründung ab.", "beispiel": "Bau mir ein Skript geht an die Werkbank, nicht an einen Mitarbeiter.", "titel": "Zuweisen" },
+          { "was": "Erst die Auftragsnotiz mit eigener Nummer, danach die Karte.", "beispiel": "Die Nummer A-0013 mit Notiz und Karte für den Pfleger der Seiten.", "titel": "Erst Notiz, dann Karte" },
           { "was": "Das Ergebnis weiterreichen, ohne eigenen Satz, mit Verfasser, Nummer und Fundstelle.", "titel": "Ergebnis weiterreichen" },
           { "was": "Ab Meilenstein 3: nach einem Lauf des Reviewers den Folgeauftrag an den Reporter geben.", "titel": "Folgeauftrag an den Reporter" }
         ],
@@ -4200,12 +4200,12 @@
           { "was": "Meilenstein 3: Aufträge auch per Sprache, Folgeauftrag an den Reporter.", "bis": "2026-11-06", "erreicht": false }
         ],
         "werkzeuge": [
-          { "was": "liest Konventionen, Leitplanken und die Akten aller Mitarbeiter, um die Pflichtangaben zu kennen. Er schreibt nur seine Auftragsnotizen.", "titel": "Dateien", "art": "dateien" },
-          { "was": "an den Reviewer, den Architekten, den Pfleger der Seiten und die Researcherin, jeweils nur mit Nummer, passender Notiz und dem Arbeitsordner des Mitarbeiters. Eine Karte mit eigenem Modell oder eigenen Skills lehnt der Zaun ab.", "titel": "Karten anlegen", "art": "board" },
-          { "was": "lesen und kommentieren: Ergebnis einsammeln, Rückfragen beantworten.", "titel": "Karten lesen", "art": "board" },
-          { "was": "senden: die Antwort an den Auftraggeber.", "titel": "Messenger", "art": "bot" },
-          { "was": "jeder Eintrag braucht eine Freigabe.", "titel": "Gedächtnis", "art": "gedaechtnis" },
-          { "was": "schlägt nach, welche Werkzeuge es gibt; den inneren Aufruf prüft der Zaun.", "titel": "Werkzeugverzeichnis", "art": "verzeichnis" }
+          { "was": "Liest Konventionen, Leitplanken und die Akten aller Mitarbeiter, um die Pflichtangaben zu kennen. Er schreibt nur seine Auftragsnotizen.", "titel": "Dateien", "art": "dateien" },
+          { "was": "An den Reviewer, den Architekten, den Pfleger der Seiten und die Researcherin, jeweils nur mit Nummer, passender Notiz und dem Arbeitsordner des Mitarbeiters. Eine Karte mit eigenem Modell oder eigenen Skills lehnt der Zaun ab.", "titel": "Karten anlegen", "art": "board" },
+          { "was": "Karten lesen und kommentieren: Ergebnis einsammeln, Rückfragen beantworten.", "titel": "Karten lesen", "art": "board" },
+          { "was": "Messenger senden: die Antwort an den Auftraggeber.", "titel": "Messenger", "art": "bot" },
+          { "was": "Jeder Eintrag braucht eine Freigabe.", "titel": "Gedächtnis", "art": "gedaechtnis" },
+          { "was": "Schlägt nach, welche Werkzeuge es gibt; den inneren Aufruf prüft der Zaun.", "titel": "Werkzeugverzeichnis", "art": "verzeichnis" }
         ],
         "tutNie": "Terminal, Netz, selbst prüfen, zusammenfassen, eine Karte für einen anderen abschließen, eine Blockade lösen.",
         "freigabe": "oeffentlich"
@@ -4214,9 +4214,9 @@
         "kopf": "researcherin",
         "satz": "Beobachtet Neuigkeiten zu KI und Agenten und stellt jede in Bezug zu unserem eigenen Aufbau. Eine Nachricht ohne Bezug ist für sie nur ein Link.",
         "aufgaben": [
-          { "was": "um 9 Uhr als fester Lauf, zugestellt über ihren Bot im Messenger an den Projektverantwortlichen.", "beispiel": "Eine neue Fassung von Hermes Agent, mit dem Satz, was sie für unseren Zaun bedeutet.", "titel": "Täglicher Bericht" },
-          { "was": "über Hermes, als Karte, mit Frage und Zeitraum als Pflicht.", "beispiel": "Was hat sich in den letzten zwei Wochen bei Claude Code geändert?", "titel": "Aufträge über Hermes" },
-          { "was": "nach Rang trennen: Release-Notiz und Dokumentation sind Beleg, Fachpresse ist Beleg mit Absender, Foren sind nur Hinweis.", "beispiel": "Ein Forenbeitrag zeigt ihr, wonach sie in der Release-Notiz suchen soll.", "titel": "Quellen nach Rang" }
+          { "was": "Täglicher Bericht um 9 Uhr als fester Lauf, zugestellt über ihren Bot im Messenger an den Projektverantwortlichen.", "beispiel": "Eine neue Fassung von Hermes Agent, mit dem Satz, was sie für unseren Zaun bedeutet.", "titel": "Täglicher Bericht" },
+          { "was": "Als Karte, mit Frage und Zeitraum als Pflicht.", "beispiel": "Was hat sich in den letzten zwei Wochen bei Claude Code geändert?", "titel": "Aufträge über Hermes" },
+          { "was": "Quellen nach Rang trennen: Release-Notiz und Dokumentation sind Beleg, Fachpresse ist Beleg mit Absender, Foren sind nur Hinweis.", "beispiel": "Ein Forenbeitrag zeigt ihr, wonach sie in der Release-Notiz suchen soll.", "titel": "Quellen nach Rang" }
         ],
         "ziele": [
           { "was": "Ihr täglicher Lauf läuft unter dem Zaun durch, und der Projektverantwortliche bekommt den Bericht, jeden Morgen mit höchstens acht Aufrufen im Netz.", "bis": "2026-10-23", "erreicht": false },
@@ -4224,10 +4224,10 @@
           { "was": "Abnahme: Ein Kriterium vom Projektverantwortlichen gibt es noch nicht.", "bis": null, "erreicht": false }
         ],
         "werkzeuge": [
-          { "was": "und Seitenabruf: höchstens acht Aufrufe, dazu drei zum Nachprüfen.", "beispiel": "Sie sucht nach neuen Fassungen von Hermes Agent und liest die Seite der Freigaben.", "titel": "Websuche", "art": "websuche" },
-          { "was": "nur lesen, im Bereich KI-Mitarbeiter, um den Bezug zu einer Notiz herzustellen. Sie schreibt nirgends hin.", "titel": "Dateien, nur lesen", "art": "dateien" },
-          { "was": "lesen, kommentieren, melden, mit einer Rückfrage blockieren. Anlegen darf sie keine.", "titel": "Board", "art": "board" },
-          { "was": "im Messenger für den täglichen Bericht.", "titel": "Eigener Bot", "art": "bot" }
+          { "was": "Websuche und Seitenabruf: höchstens acht Aufrufe, dazu drei zum Nachprüfen.", "beispiel": "Sie sucht nach neuen Fassungen von Hermes Agent und liest die Seite der Freigaben.", "titel": "Websuche", "art": "websuche" },
+          { "was": "Im Bereich KI-Mitarbeiter, um den Bezug zu einer Notiz herzustellen. Sie schreibt nirgends hin.", "titel": "Dateien, nur lesen", "art": "dateien" },
+          { "was": "Karten: lesen, kommentieren, melden, mit einer Rückfrage blockieren. Anlegen darf sie keine.", "titel": "Board", "art": "board" },
+          { "was": "Eigener Bot im Messenger für den täglichen Bericht.", "titel": "Eigener Bot", "art": "bot" }
         ],
         "tutNie": "Empfehlen, entscheiden, an Dritte senden, Terminal, Browser, in die Ablage schreiben.",
         "freigabe": "intern"
@@ -4236,8 +4236,8 @@
         "kopf": "reporter",
         "satz": "Erzeugt aus einem Lauf des Reviewers Kapitelbericht und OnePager, nur über die vorhandenen Generatoren. Er schreibt keine Zahl selbst und bewertet keinen Befund. Er hat eine Grenzdatei und eine Akte als Vorlage, aber noch kein Profil.",
         "aufgaben": [
-          { "was": "zu einem Lauf des Reviewers, als Folgeauftrag von Hermes.", "beispiel": "Nach einem Lauf über Themenkomplex 14 der Kapitelbericht zu diesem Themenkomplex als HTML.", "titel": "Bericht zu einem Lauf" },
-          { "was": "für Use-Cases, Quizze und Enabler, im CI der WAMOCON.", "titel": "OnePager" }
+          { "was": "Bericht zu einem Lauf des Reviewers, als Folgeauftrag von Hermes.", "beispiel": "Nach einem Lauf über Themenkomplex 14 der Kapitelbericht zu diesem Themenkomplex als HTML.", "titel": "Bericht zu einem Lauf" },
+          { "was": "OnePager für Use-Cases, Quizze und Enabler, im CI der WAMOCON.", "titel": "OnePager" }
         ],
         "ziele": [
           { "was": "Akte freigeben; die erste Frist ist verstrichen.", "bis": "2026-11-02", "erreicht": false },
@@ -4245,9 +4245,9 @@
           { "was": "Meilenstein 3: liefert nach einem Lauf des Reviewers den Bericht ohne Sitzung der Werkbank; ein Schreibversuch außerhalb seiner Ordner wird abgelehnt.", "bis": "2026-11-06", "erreicht": false }
         ],
         "werkzeuge": [
-          { "was": "nur seine sieben Berichtsgeneratoren. Er arbeitet in den Ordnern des Reviewers.", "beispiel": "Sein Berichtsgenerator für Enabler über die Befunde eines Laufs.", "titel": "Kommandozeile", "art": "kommandozeile" },
-          { "was": "liest Befunde, Profile, CI und Auftreten. Er schreibt nur seine Berichte und die Präsentation.", "titel": "Dateien", "art": "dateien" },
-          { "was": "liest, kommentiert und meldet die eigene.", "titel": "Board", "art": "board" }
+          { "was": "Nur seine sieben Berichtsgeneratoren. Er arbeitet in den Ordnern des Reviewers.", "beispiel": "Sein Berichtsgenerator für Enabler über die Befunde eines Laufs.", "titel": "Kommandozeile", "art": "kommandozeile" },
+          { "was": "Liest Befunde, Profile, CI und Auftreten. Er schreibt nur seine Berichte und die Präsentation.", "titel": "Dateien", "art": "dateien" },
+          { "was": "Karten: liest, kommentiert und meldet die eigene.", "titel": "Board", "art": "board" }
         ],
         "tutNie": "Prüfen, einen Befund ändern, das CI ändern, Git, Netz, Aufträge geben.",
         "freigabe": "oeffentlich"
@@ -4256,20 +4256,20 @@
         "kopf": "architekt",
         "satz": "Bereitet Entscheidungen über unseren eigenen Aufbau vor. Er ordnet, was in den Notizen steht, findet Widersprüche, legt Wege mit ihren Folgen nebeneinander und schließt mit genau einer Empfehlung und ihrem Kipppunkt. Entscheiden tut der Projektverantwortliche.",
         "aufgaben": [
-          { "was": "zu einer offenen Frage, immer in derselben Gliederung: Frage, Bestand mit Fundstellen, Widersprüche, Wege, eine Empfehlung, Kipppunkt, nicht Belegtes.", "beispiel": "Ob der Ordner mit den Prüfregeln des Reviewers seine Verbindung zum Repository der Seite auf GitHub behält. Daraus wurde die Entscheidung des Projektverantwortlichen, sie zu entfernen.", "titel": "Entscheidungsvorlage" },
-          { "was": "ob schon entschieden ist: Steht eine Frage im Logbuch als entschieden, legt er sie nicht neu vor, sondern nennt die Entscheidung.", "beispiel": "Der Arbeitsordner des Reporters.", "titel": "Prüfen, ob entschieden ist" },
-          { "was": "zwischen Notizen festhalten, mit beiden Fundstellen, ohne sie aufzulösen.", "titel": "Widersprüche festhalten" }
+          { "was": "Entscheidungsvorlage zu einer offenen Frage, immer in derselben Gliederung: Frage, Bestand mit Fundstellen, Widersprüche, Wege, eine Empfehlung, Kipppunkt, nicht Belegtes.", "beispiel": "Ob der Ordner mit den Prüfregeln des Reviewers seine Verbindung zum Repository der Seite auf GitHub behält. Daraus wurde die Entscheidung des Projektverantwortlichen, sie zu entfernen.", "titel": "Entscheidungsvorlage" },
+          { "was": "Prüfen, ob schon entschieden ist: Steht eine Frage im Logbuch als entschieden, legt er sie nicht neu vor, sondern nennt die Entscheidung.", "beispiel": "Der Arbeitsordner des Reporters.", "titel": "Prüfen, ob entschieden ist" },
+          { "was": "Widersprüche zwischen Notizen festhalten, mit beiden Fundstellen, ohne sie aufzulösen.", "titel": "Widersprüche festhalten" }
         ],
         "ziele": [
           { "was": "Ein echter Auftrag.", "bis": "2026-10-23", "erreicht": true },
           { "was": "Die erste Vorlage als Datei in seinen Ordner für Entscheidungsvorlagen. Bisher liegt dort nur die Übersicht.", "bis": null, "erreicht": false }
         ],
         "werkzeuge": [
-          { "was": "den ganzen Bereich KI-Mitarbeiter, die Akten beider Bereiche, den Code des Reviewers und der Seite kiKollege und den Quelltext von Hermes Agent.", "beispiel": "Er liest im Quelltext nach, wann Hermes Agent den Zaun aufruft, statt es zu vermuten.", "titel": "Dateien lesen", "art": "dateien" },
-          { "was": "nur seine Vorlagen.", "beispiel": "Eine Vorlage mit einem Datum und einem Thema, als ungeprüft angelegt.", "titel": "Dateien schreiben", "art": "dateien" },
-          { "was": "und Seitenabruf, nur für Dokumentation dessen, was wir einsetzen.", "beispiel": "Was eine neue Fassung von Hermes Agent an der Stelle ändert, an der der Zaun aufgerufen wird.", "titel": "Websuche", "art": "websuche" },
-          { "was": "einen, der für jede Angabe eine nachprüfbare Quelle verlangt, und einen für ein Schaubild neben der Vorlage.", "titel": "Skills", "art": "skills" },
-          { "was": "liest, kommentiert und meldet die eigene. Die Meldung nennt den Ort der Vorlage und die Empfehlung in einem Satz.", "titel": "Board", "art": "board" }
+          { "was": "Den ganzen Bereich KI-Mitarbeiter, die Akten beider Bereiche, den Code des Reviewers und der Seite kiKollege und den Quelltext von Hermes Agent.", "beispiel": "Er liest im Quelltext nach, wann Hermes Agent den Zaun aufruft, statt es zu vermuten.", "titel": "Dateien lesen", "art": "dateien" },
+          { "was": "Nur seine Vorlagen.", "beispiel": "Eine Vorlage mit einem Datum und einem Thema, als ungeprüft angelegt.", "titel": "Dateien schreiben", "art": "dateien" },
+          { "was": "Websuche und Seitenabruf, nur für Dokumentation dessen, was wir einsetzen.", "beispiel": "Was eine neue Fassung von Hermes Agent an der Stelle ändert, an der der Zaun aufgerufen wird.", "titel": "Websuche", "art": "websuche" },
+          { "was": "Einen, der für jede Angabe eine nachprüfbare Quelle verlangt, und einen für ein Schaubild neben der Vorlage.", "titel": "Skills", "art": "skills" },
+          { "was": "Karten: liest, kommentiert und meldet die eigene. Die Meldung nennt den Ort der Vorlage und die Empfehlung in einem Satz.", "titel": "Board", "art": "board" }
         ],
         "tutNie": "Entscheiden, bauen, prüfen, eine Akte ändern, Terminal, Browser, Gedächtnis.",
         "freigabe": "oeffentlich"
@@ -4278,7 +4278,7 @@
         "kopf": "seiten",
         "satz": "Hält die Seite kiKollege auf dem Stand der Ablage und baut an ihr, wenn eine Karte es verlangt. Jede Änderung geht als Pull Request an den Projektverantwortlichen; zusammenführen tut ein Mensch.",
         "aufgaben": [
-          { "was": "den Stand der Seite nachziehen. Das Gezählte kommt über den Pflegelauf, das Gelesene trägt er aus Logbuch und Protokollen von Hand nach, jede Angabe mit Quelle.", "beispiel": "Pull Request 9 am 19.10., die Ablage von 175 auf 224 Notizen.", "titel": "Pflege" },
+          { "was": "Den Stand der Seite nachziehen. Das Gezählte kommt über den Pflegelauf, das Gelesene trägt er aus Logbuch und Protokollen von Hand nach, jede Angabe mit Quelle.", "beispiel": "Pull Request 9 am 19.10., die Ablage von 175 auf 224 Notizen.", "titel": "Pflege" },
           { "was": "Code, Gestaltung und Texte, nur mit Auftrag.", "beispiel": "Ein Pfadfehler im Export mit drei Testfällen; das Organigramm auf der Unterseite stand; der Stand zieht bei jedem Nachtrag mit.", "titel": "Bau auf Karte" },
           { "was": "Tests, Build und die Prüfungen der Seite, darunter die, dass nichts Internes in die öffentliche Fassung gerät.", "titel": "Prüfen, bevor er stellt" }
         ],
@@ -4289,13 +4289,13 @@
         ],
         "werkzeuge": [
           { "was": "33 Befehlsmuster: Git nur für die eigenen Zweige, Pull Requests stellen und lesen, Tests, Build, die Prüfungen und den Pflegelauf.", "beispiel": "Einen Push seines eigenen Zweigs. Abgelehnt: ein Push auf den Hauptzweig, das Zusammenführen, das Installieren neuer Pakete.", "titel": "Kommandozeile", "art": "kommandozeile" },
-          { "was": "liest einen Ausschnitt der Ablage, etwa Logbuch und Protokolle. Er schreibt nur im Klon der Seite, nie an den Abläufen auf GitHub und nie an den Prüfskripten.", "titel": "Dateien", "art": "dateien" },
-          { "was": "seit dem 20.10.: nur die gebaute Seite und die veröffentlichte.", "beispiel": "Er öffnet die Unterseite stand und prüft, ob das Organigramm alle Köpfe zeigt.", "titel": "Browser", "art": "browser" },
-          { "was": "seit dem 20.10.: ein Bildschirmfoto aus dem Browser lesen.", "beispiel": "Ist ein Text im dunklen Modus lesbar?", "titel": "Bilder ansehen", "art": "bilder" },
-          { "was": "und Seitenabruf, für Dokumentation.", "beispiel": "Wie Next.js eine Seite statisch exportiert.", "titel": "Websuche", "art": "websuche" },
-          { "was": "für einen Bau mit Testfall, wenn eine Prüfung scheitert, für einen neuen Abschnitt, für Aufbau und Raster, nie für Farben und Schriften, und um die Seite im Browser durchzugehen.", "titel": "Skills", "art": "skills" },
-          { "was": "liest, kommentiert und meldet die eigene.", "titel": "Board", "art": "board" },
-          { "was": "baut mit dem Modell auf dem KI-Rechner. Scheitert ein Bau daran, wird er mit einem anderen Sprachmodell wiederholt.", "titel": "Modell", "art": "modell" }
+          { "was": "Liest einen Ausschnitt der Ablage, etwa Logbuch und Protokolle. Er schreibt nur im Klon der Seite, nie an den Abläufen auf GitHub und nie an den Prüfskripten.", "titel": "Dateien", "art": "dateien" },
+          { "was": "Seit dem 20.10.: nur die gebaute Seite und die veröffentlichte.", "beispiel": "Er öffnet die Unterseite stand und prüft, ob das Organigramm alle Köpfe zeigt.", "titel": "Browser", "art": "browser" },
+          { "was": "Seit dem 20.10.: ein Bildschirmfoto aus dem Browser lesen.", "beispiel": "Ist ein Text im dunklen Modus lesbar?", "titel": "Bilder ansehen", "art": "bilder" },
+          { "was": "Websuche und Seitenabruf, für Dokumentation.", "beispiel": "Wie Next.js eine Seite statisch exportiert.", "titel": "Websuche", "art": "websuche" },
+          { "was": "Für einen Bau mit Testfall, wenn eine Prüfung scheitert, für einen neuen Abschnitt, für Aufbau und Raster, nie für Farben und Schriften, und um die Seite im Browser durchzugehen.", "titel": "Skills", "art": "skills" },
+          { "was": "Karten: liest, kommentiert und meldet die eigene.", "titel": "Board", "art": "board" },
+          { "was": "Baut mit dem Modell auf dem KI-Rechner. Scheitert ein Bau daran, wird er mit einem anderen Sprachmodell wiederholt.", "titel": "Modell", "art": "modell" }
         ],
         "tutNie": "Auf den Hauptzweig pushen, zusammenführen, ein Paket installieren, etwas von intern nach öffentlich heben, einen Eintrag aus den Daten entfernen, eine Notiz in der Ablage ändern.",
         "freigabe": "oeffentlich"
