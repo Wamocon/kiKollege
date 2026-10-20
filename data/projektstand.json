@@ -1944,6 +1944,7 @@
       {
         "id": "architekt",
         "rolle": "Technischer Architekt",
+        "name": "Arnold",
         "kurz": "Architekt",
         "kern": "entwerfend",
         "tut": "Entscheidungen vorbereiten und Widersprüche zwischen Notizen finden. Er meldet über seine Karte, mit genau einer Empfehlung und dem Punkt, an dem sie kippt.",

@@ -38,9 +38,34 @@ export default function Seite() {
 
   return (
     <>
-      <Kopf />
+      <Kopf titel="Die KI-Mitarbeiter im Steckbrief" />
 
       <div className="rumpf">
+        <nav className="nav" aria-label="Abschnitte dieser Seite">
+          <p className="nav-titel">Inhalt</p>
+          <ol>
+            <li>
+              <a href="#ueberblick">
+                <span className="nr">01</span>
+                <span>Überblick</span>
+              </a>
+            </li>
+            {sichtbareMitarbeiter.map((m, i) => (
+              <li key={m.kopf}>
+                <a href={`#${m.kopf}`}>
+                  <span className="nr">{String(i + 2).padStart(2, '0')}</span>
+                  <span>{titel(m.kopf)}</span>
+                </a>
+              </li>
+            ))}
+            <li>
+              <a href="#werkzeuge">
+                <span className="nr">{String(sichtbareMitarbeiter.length + 2).padStart(2, '0')}</span>
+                <span>Alle Werkzeuge von Hermes</span>
+              </a>
+            </li>
+          </ol>
+        </nav>
         <main className="inhalt" id="inhalt">
           {/* 01 ------------------------------------------------------------ */}
           <section id="ueberblick">
