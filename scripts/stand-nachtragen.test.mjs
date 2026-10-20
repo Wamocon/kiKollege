@@ -1,5 +1,6 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
+import { join } from 'node:path'
 
 import { nachtragen } from './stand-nachtragen.mjs'
 
@@ -68,7 +69,7 @@ test('ein Lauf mit Änderung setzt stand und herkunft.erzeugt auf den Tag des La
   const e = await lauf(w, {
     lies: () => JSON.stringify(daten),
     schreibe: (pfad, text) => {
-      if (typeof text === 'string' && text.trim() && pfad.endsWith('data/projektstand.json')) {
+      if (typeof text === 'string' && text.trim() && pfad.endsWith(join('data', 'projektstand.json'))) {
         geschrieben.push({ pfad, daten: JSON.parse(text) })
       }
     },
@@ -76,7 +77,7 @@ test('ein Lauf mit Änderung setzt stand und herkunft.erzeugt auf den Tag des La
   assert.equal(e.ende, 'gestellt')
   assert.ok(geschrieben.length >= 1, 'die Datei wurde geschrieben')
   const neu = geschrieben.at(-1).daten
-  assert.ok(geschrieben.at(-1).pfad.endsWith('data/projektstand.json'))
+  assert.ok(geschrieben.at(-1).pfad.endsWith(join('data', 'projektstand.json')))
   assert.equal(neu.stand, '2026-09-18')
   assert.equal(neu.herkunft.erzeugt, '2026-09-18')
 })
@@ -113,7 +114,7 @@ test('ein jüngerer stand bleibt stehen, erzeugt zieht mit', async () => {
   const e = await lauf(w, {
     lies: () => JSON.stringify(daten),
     schreibe: (pfad, text) => {
-      if (typeof text === 'string' && text.trim() && pfad.endsWith('data/projektstand.json')) {
+      if (typeof text === 'string' && text.trim() && pfad.endsWith(join('data', 'projektstand.json'))) {
         geschrieben.push(JSON.parse(text))
       }
     },

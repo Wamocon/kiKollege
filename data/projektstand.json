@@ -55,7 +55,9 @@
       "Logbuch, 2026-10-20 Entscheidung offene Punkte aus den Sitzungen",
       "Protokoll 2026-10-20 KI-Mitarbeiter, Abschnitte Laufzeit, Eingabe, Steckbriefe, /mannschaft, Folgeänderungen und Stand der Arbeitspakete",
       "Protokoll 2026-10-19 KFBM, Abschnitt reviewer ohne Remote",
-      "Steckbriefe KI-Mitarbeiter 2026-10-20, Abschnitt Überblick und Werkzeuge"
+      "Steckbriefe KI-Mitarbeiter 2026-10-20, Abschnitt Überblick und Werkzeuge",
+      "Tagesprotokoll vom 19.10.2026",
+      "Tagesprotokoll vom 20.10.2026"
     ],
     "getrenntAm": "2026-09-09",
     "notizordner": "KFBM/00_Vault/10_KI-Mitarbeiter"
@@ -2025,10 +2027,10 @@
         "tutNie": "empfehlen, eine Forenmeldung als Beleg ausgeben, interne Angaben in eine Suche schreiben, etwas nach außen senden",
         "zustand": "arbeitet",
         "seit": "2026-09-12",
-        "hinweis": "Bisher die einzige mit Netz. Seit dem 20.09. beobachtet sie den eigenen Betrieb statt des Marktes. Ihre Grenze am Profil kommt mit Meilenstein 4.",
+        "hinweis": "Seit dem 20.09. beobachtet sie den eigenen Betrieb statt des Marktes. Ihre Grenze hängt seit dem 19.10. am Profil, vorgezogen aus Meilenstein 4.",
         "freigabe": "intern",
-        "betrieb": "ohneGrenze",
-        "marke": "läuft täglich, Grenze folgt"
+        "betrieb": "mitGrenze",
+        "marke": "täglich, mit Grenze seit 19.10."
       },
       {
         "id": "reporter",
@@ -3874,7 +3876,7 @@
       },
       {
         "wer": "Researcherin",
-        "stand": "Läuft täglich. Ihre Grenze am Profil kommt mit Meilenstein 4."
+        "stand": "Läuft täglich, seit dem 19.10. mit ihrer Grenze am Profil."
       },
       {
         "wer": "Sprache",
@@ -4662,9 +4664,9 @@
             "erreicht": false
           },
           {
-            "was": "Der feste Pflegelauf am Montag und Donnerstag. Eingerichtet ist er noch nicht.",
-            "bis": null,
-            "erreicht": false
+            "was": "Der feste Pflegelauf am Montag und Donnerstag um 7 Uhr. Eingerichtet am 20.10.",
+            "bis": "2026-10-20",
+            "erreicht": true
           }
         ],
         "werkzeuge": [
