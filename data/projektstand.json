@@ -48,7 +48,14 @@
       "Logbuch, 2026-10-19 Entscheidung Arbeitsordner des Reporters",
       "Logbuch, 2026-10-19 Entscheidung Remote von reviewer",
       "Logbuch, 2026-10-19 Entscheidungen Testläufe und Weitergabe",
-      "Logbuch, 2026-10-19 Wochenziel fünf KI-Mitarbeiter"
+      "Logbuch, 2026-10-19 Wochenziel fünf KI-Mitarbeiter",
+      "Logbuch, 2026-10-20 Entscheidungen Laufzeit Hermes und Modell",
+      "Logbuch, 2026-10-20 Entscheidungen Eingabe effizienter",
+      "Logbuch, 2026-10-20 Entscheidungen Folgeänderungen Prüfstand",
+      "Logbuch, 2026-10-20 Entscheidung offene Punkte aus den Sitzungen",
+      "Protokoll 2026-10-20 KI-Mitarbeiter, Abschnitte Laufzeit, Eingabe, Steckbriefe, /mannschaft, Folgeänderungen und Stand der Arbeitspakete",
+      "Protokoll 2026-10-19 KFBM, Abschnitt reviewer ohne Remote",
+      "Steckbriefe KI-Mitarbeiter 2026-10-20, Abschnitt Überblick und Werkzeuge"
     ],
     "getrenntAm": "2026-09-09",
     "notizordner": "KFBM/00_Vault/10_KI-Mitarbeiter"
@@ -1270,6 +1277,27 @@
       "titel": "Sieben geplante KI-Mitarbeiter oder neun Rollen",
       "text": "Das Organigramm vom 16.10. nennt sieben geplante KI-Mitarbeiter: vier zuerst, Architekt, Archivar und Entwickler danach; den Gestalter sieht es nicht vor. Diese Seite führt neun Rollen, mit dem Gestalter und mit Gregor Dev. Entfernt wird keine, solange niemand das entscheidet.",
       "quelle": "Organigramm und Tagesprotokoll vom 16.10.2026 gegen die Mannschaft dieser Seite",
+      "freigabe": "intern"
+    },
+    {
+      "id": "steckbriefe-vier-widersprueche",
+      "titel": "Vier Widersprüche zwischen den Notizen der Steckbriefe",
+      "text": "Die Notiz der Steckbriefe vom 20.10. führt vier Widersprüche zwischen Notizen an: Fritz kann alle 54 Skills laden, julia-trend hat eigene Skills aber keinen Werkzeugsatz Skills, das Skill hermes-agent lässt sich nicht sperren und der feste Lauf von Gregor Dev fehlt in der Zählung. Die Notiz hält beides nebeneinander, ohne eine Seite zu wählen. Die Unterseite /mannschaft zeigt die Steckbriefe ohne diese vier Punkte, weil sie intern sind.",
+      "quelle": "Steckbriefe KI-Mitarbeiter 2026-10-20, Abschnitt „Befunde dabei“ im Protokoll 2026-10-20 KI-Mitarbeiter",
+      "freigabe": "intern"
+    },
+    {
+      "id": "laufziel-2-minuten",
+      "titel": "Zwei Minuten bis zur Karte: Ziel und Messung",
+      "text": "Am 20.10. hat der Projektverantwortliche ein Ziel festgelegt: von der Nachricht bis zur Karte höchstens zwei Minuten. Drei Prüfstandläufe am selben Tag haben 78 Sekunden, 50 Sekunden und 52 Sekunden ergeben. Das Ziel gilt, die nächste Messung ist erst nach dem Ja des Projektverantwortlichen geplant.",
+      "quelle": "Logbuch 2026-10-20 Entscheidungen Laufzeit Hermes und Modell und Protokoll 2026-10-20 KI-Mitarbeiter, Abschnitt Eingabe effizienter",
+      "freigabe": "intern"
+    },
+    {
+      "id": "arbeitspakete-12-von-53",
+      "titel": "12 von 53 Arbeitspaketen erledigt",
+      "text": "Stand 20.10.: 12 von 53 nummerierten Punkten im Arbeitsplan sind erledigt, 41 offen. Punkt 10 ist erledigt und nicht abgehakt. Vom Wochenziel fünf KI-Mitarbeiter erfüllen Gregor Dev und Arnold das Kriterium, Fritz hat nur Testaufträge.",
+      "quelle": "Protokoll 2026-10-20 KI-Mitarbeiter, Abschnitt Stand der Arbeitspakete",
       "freigabe": "intern"
     }
   ],
