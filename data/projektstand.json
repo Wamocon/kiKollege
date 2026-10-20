@@ -940,6 +940,101 @@
       "datum": "2026-10-19",
       "entscheidung": "Die Ergebnisse der Testläufe stehen im Chat, in einer Laufnotiz je Testlauf und als Tag an jeder Auftragsnotiz aus einem Test",
       "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-20",
+      "entscheidung": "Der Puffer für Gesprächsstände wächst auf 32 GiB, statt 8",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-20",
+      "entscheidung": "Das Board lässt eine Karte zur Zeit laufen",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-20",
+      "entscheidung": "Die Eingabe wird effizienter, das Gespräch wird nicht gekürzt",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-20",
+      "entscheidung": "Parallelität: erst messen, wieder aufnehmen, wenn das Team Aufträge gibt",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-20",
+      "entscheidung": "Von der Nachricht bis zur Karte höchstens zwei Minuten",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-20",
+      "entscheidung": "Die Auftragsliste entsteht bei jeder Änderung im Ordner der Aufträge, über eine Pfadüberwachung",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-20",
+      "entscheidung": "Der Zaun setzt die Webgrenzen von julia-trend durch: höchstens fünf Treffer je Suche, zwei Seiten je Abruf, 6 000 Zeichen je Seite",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-20",
+      "entscheidung": "Der Wortlaut der Vorlage ist freigegeben, ohne Änderung",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-20",
+      "entscheidung": "Die Umsetzung auf der DGX umfasst Akten, Profilgrenzen und Pfadüberwachung, alles wird umgesetzt",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-20",
+      "entscheidung": "Hermes liest die Grenzdateien nicht mehr nach, zwei Sätze in der Akte sind umgeschrieben",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-20",
+      "entscheidung": "Der Zaun lehnt eine Auftragsnotiz ohne Pflichtangabe ab, für Fritz und julia-trend, Platzhalter zählen nicht",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-20",
+      "entscheidung": "julia-trend schreibt erst die Meldung als Kommentar und schließt dann die Karte",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-20",
+      "entscheidung": "Hermes schreibt nur das Datum und den Kanal nur bei Kenntnis",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-20",
+      "entscheidung": "Hermes schreibt keinen Kanal, der trägt die Werkbank bei Bedarf nach",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-20",
+      "entscheidung": "Hermes nennt in einer Rückfrage keine Auftragsnummer, eine gibt es erst mit der Notiz",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-20",
+      "entscheidung": "Auf der DGX ziehen und prüfen, mit beiden Fällen",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-20",
+      "entscheidung": "Erkenntnisse und Aufgaben aus dem Chat landen im Arbeitsplan, Abschnitt noch nicht eingeplant, je Punkt eine Zeile",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-20",
+      "entscheidung": "Jede Sitzung trägt ein, bevor sie endet, als Regel in der CLAUDE.md im Wurzelordner",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-20",
+      "entscheidung": "Jira bekommt beides: der Wächter schlägt Stories vor und stimmt den Tagesstatus ab, angelegt wird nur was einzeln freigegeben ist",
+      "freigabe": "intern"
     }
   ],
   "entscheidungenNachtrag": "Die Entscheidung vom 04.09. dreht bewusst eine zuvor festgelegte Reihenfolge um: Ursprünglich sollte die Fehlalarmquote vor dem Plattformwechsel gemessen werden. Die Technik wurde vorgezogen. Das ist kein Widerspruch, sondern eine andere Reihenfolge mit einer benannten Folge, und die Folge steht im Abschnitt zur Messlücke.",
@@ -1277,27 +1372,6 @@
       "titel": "Sieben geplante KI-Mitarbeiter oder neun Rollen",
       "text": "Das Organigramm vom 16.10. nennt sieben geplante KI-Mitarbeiter: vier zuerst, Architekt, Archivar und Entwickler danach; den Gestalter sieht es nicht vor. Diese Seite führt neun Rollen, mit dem Gestalter und mit Gregor Dev. Entfernt wird keine, solange niemand das entscheidet.",
       "quelle": "Organigramm und Tagesprotokoll vom 16.10.2026 gegen die Mannschaft dieser Seite",
-      "freigabe": "intern"
-    },
-    {
-      "id": "steckbriefe-vier-widersprueche",
-      "titel": "Vier Widersprüche zwischen den Notizen der Steckbriefe",
-      "text": "Die Notiz der Steckbriefe vom 20.10. führt vier Widersprüche zwischen Notizen an: Fritz kann alle 54 Skills laden, julia-trend hat eigene Skills aber keinen Werkzeugsatz Skills, das Skill hermes-agent lässt sich nicht sperren und der feste Lauf von Gregor Dev fehlt in der Zählung. Die Notiz hält beides nebeneinander, ohne eine Seite zu wählen. Die Unterseite /mannschaft zeigt die Steckbriefe ohne diese vier Punkte, weil sie intern sind.",
-      "quelle": "Steckbriefe KI-Mitarbeiter 2026-10-20, Abschnitt „Befunde dabei“ im Protokoll 2026-10-20 KI-Mitarbeiter",
-      "freigabe": "intern"
-    },
-    {
-      "id": "laufziel-2-minuten",
-      "titel": "Zwei Minuten bis zur Karte: Ziel und Messung",
-      "text": "Am 20.10. hat der Projektverantwortliche ein Ziel festgelegt: von der Nachricht bis zur Karte höchstens zwei Minuten. Drei Prüfstandläufe am selben Tag haben 78 Sekunden, 50 Sekunden und 52 Sekunden ergeben. Das Ziel gilt, die nächste Messung ist erst nach dem Ja des Projektverantwortlichen geplant.",
-      "quelle": "Logbuch 2026-10-20 Entscheidungen Laufzeit Hermes und Modell und Protokoll 2026-10-20 KI-Mitarbeiter, Abschnitt Eingabe effizienter",
-      "freigabe": "intern"
-    },
-    {
-      "id": "arbeitspakete-12-von-53",
-      "titel": "12 von 53 Arbeitspaketen erledigt",
-      "text": "Stand 20.10.: 12 von 53 nummerierten Punkten im Arbeitsplan sind erledigt, 41 offen. Punkt 10 ist erledigt und nicht abgehakt. Vom Wochenziel fünf KI-Mitarbeiter erfüllen Gregor Dev und Arnold das Kriterium, Fritz hat nur Testaufträge.",
-      "quelle": "Protokoll 2026-10-20 KI-Mitarbeiter, Abschnitt Stand der Arbeitspakete",
       "freigabe": "intern"
     }
   ],
