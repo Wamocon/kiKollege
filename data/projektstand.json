@@ -4145,7 +4145,7 @@
   "steckbriefe": {
     "stand": "2026-10-20",
     "quelle": "Steckbriefe der KI-Mitarbeiter vom 20.10.2026, ohne Profilnamen, Pfade, Versionen und Modell",
-    "satz": "Zu jedem Mitarbeiter steht eine Steckbrief mit seinen Aufgaben, Zielen und Werkzeugen; jede Aufzählung trägt ein Beispiel oder eine Erklärung. Am 20.10. entschied der Projektverantwortliche: erst diese Notiz, dann baut der Pfleger der Seiten daraus die Unterseite der Seite kiKollege.",
+    "satz": "Zu jedem KI-Mitarbeiter steht hier ein Steckbrief mit Aufgaben, Zielen und Werkzeugen, jede Angabe mit einem Beispiel oder einer Erklärung. Grundlage ist eine Notiz in der Ablage, die der Projektverantwortliche gelesen und freigegeben hat.",
     "lesehilfe": "Hermes Agent bündelt Werkzeuge in Sätzen, und ein Profil schaltet ganze Sätze ein. Danach prüft der Zaun vor jedem einzelnen Aufruf, ob die Grenzdatei ihn erlaubt. Ein Werkzeug ist nur dann nutzbar, wenn beide es durchlassen. Beispiel: Gregor hat den Satz Terminal, aber der Zaun lässt nur seine 33 Befehlsmuster durch und lehnt einen Push auf den Hauptzweig ab.",
     "mitarbeiter": [
       {
@@ -4167,7 +4167,7 @@
         ],
         "werkzeuge": [
           { "was": "Dateien: liest Normbasis, Maßstab, Profile und Prüfobjekte. Er schreibt nur seine Befundordner, seine Berichte und seine Prüfläufe." },
-          { "was": "Terminal, nur seine zwölf Prüfskripte, sein Bogen und seine fünf Berichtserzeuger.", "beispiel": "Sein Prüfskript für Use-Cases über die Fälle eines Kapitels." },
+          { "was": "Kommandozeile, nur zwölf Skripte: sechs Prüfskripte, das Skript für den Bewertungsbogen und fünf Berichtserzeuger.", "beispiel": "Sein Prüfskript für Use-Cases über die Fälle eines Kapitels." },
           { "was": "Karten: liest, kommentiert und meldet die Karte, die Hermes ihm gibt." },
           { "was": "Rückfrage: fragt beim Auftraggeber nach.", "beispiel": "Welcher Jahrgang gemeint ist, weil Verträge ab dem 01.08.2025 der neuen Verordnung folgen." },
           { "was": "Aufgabenliste: plant einen langen Lauf in Schritten." },
@@ -4237,7 +4237,7 @@
           { "was": "OnePager für Use-Cases, Quizze und Enabler, im CI der WAMOCON." }
         ],
         "ziele": [
-          { "was": "Akte freigeben. Die erste Frist war der 12.10.", "bis": "2026-11-02", "erreicht": false },
+          { "was": "Akte freigeben; die erste Frist ist verstrichen.", "bis": "2026-11-02", "erreicht": false },
           { "was": "Profil mit Zaun, eingetragen in die Tabelle von Hermes.", "bis": "2026-11-04", "erreicht": false },
           { "was": "Meilenstein 3: liefert nach einem Lauf des Reviewers den Bericht ohne Sitzung der Werkbank; ein Schreibversuch außerhalb seiner Ordner wird abgelehnt.", "bis": "2026-11-06", "erreicht": false }
         ],
@@ -4253,7 +4253,7 @@
         "kopf": "architekt",
         "satz": "Bereitet Entscheidungen über unseren eigenen Aufbau vor. Er ordnet, was in den Notizen steht, findet Widersprüche, legt Wege mit ihren Folgen nebeneinander und schließt mit genau einer Empfehlung und ihrem Kipppunkt. Entscheiden tut der Projektverantwortliche.",
         "aufgaben": [
-          { "was": "Entscheidungsvorlage zu einer offenen Frage, immer in derselben Gliederung: Frage, Bestand mit Fundstellen, Widersprüche, Wege, eine Empfehlung, Kipppunkt, nicht Belegtes.", "beispiel": "Ob sein Ordner den Anschluss an den Hauptzweig behält. Daraus wurde eine Entscheidung des Projektverantwortlichen vom 19.10., ihn zu entfernen." },
+          { "was": "Entscheidungsvorlage zu einer offenen Frage, immer in derselben Gliederung: Frage, Bestand mit Fundstellen, Widersprüche, Wege, eine Empfehlung, Kipppunkt, nicht Belegtes.", "beispiel": "Ob der Ordner mit den Prüfregeln des Reviewers seine Verbindung zum Repository der Seite auf GitHub behält. Daraus wurde die Entscheidung des Projektverantwortlichen, sie zu entfernen." },
           { "was": "Prüfen, ob schon entschieden ist: Steht eine Frage im Logbuch als entschieden, legt er sie nicht neu vor, sondern nennt die Entscheidung.", "beispiel": "Der Arbeitsordner des Reporters." },
           { "was": "Widersprüche zwischen Notizen festhalten, mit beiden Fundstellen, ohne sie aufzulösen." }
         ],
@@ -4262,9 +4262,9 @@
           { "was": "Die erste Vorlage als Datei in seinen Ordner für Entscheidungsvorlagen. Bisher liegt dort nur die Übersicht.", "bis": null, "erreicht": false }
         ],
         "werkzeuge": [
-          { "was": "Dateien lesen: den ganzen Bereich KI-Mitarbeiter, die Akten beider Bereiche, den Code des Reviewers und der Seite kiKollege und den Quelltext von Hermes Agent.", "beispiel": "Er liest nach, wann Hermes einen Zaun aufruft, statt es zu vermuten." },
+          { "was": "Dateien lesen: den ganzen Bereich KI-Mitarbeiter, die Akten beider Bereiche, den Code des Reviewers und der Seite kiKollege und den Quelltext von Hermes Agent.", "beispiel": "Er liest im Quelltext nach, wann Hermes Agent den Zaun aufruft, statt es zu vermuten." },
           { "was": "Dateien schreiben, nur seine Vorlagen.", "beispiel": "Eine Vorlage mit einem Datum und einem Thema, als ungeprüft angelegt." },
-          { "was": "Websuche und Seitenabruf, nur für Dokumentation dessen, was wir einsetzen.", "beispiel": "Was eine neue Fassung von Hermes Agent an seinem Zaun aufruft." },
+          { "was": "Websuche und Seitenabruf, nur für Dokumentation dessen, was wir einsetzen.", "beispiel": "Was eine neue Fassung von Hermes Agent an der Stelle ändert, an der der Zaun aufgerufen wird." },
           { "was": "Skills: einen, der für jede Angabe eine nachprüfbare Quelle verlangt, und einen für ein Schaubild neben der Vorlage." },
           { "was": "Karten: liest, kommentiert und meldet die eigene. Die Meldung nennt den Ort der Vorlage und die Empfehlung in einem Satz." }
         ],
@@ -4307,7 +4307,7 @@
           { "was": "Die Abnahme ist nur vorgeschlagen, nicht entschieden.", "bis": null, "erreicht": false }
         ],
         "werkzeuge": [],
-        "tutNie": "Niemals den Inhalt der Ablage ändern, nur ihre Form.",
+        "tutNie": "Den Inhalt der Ablage ändern.",
         "freigabe": "oeffentlich"
       },
       {
@@ -4320,15 +4320,15 @@
           { "was": "Die Abnahme ist nur vorgeschlagen, nicht entschieden.", "bis": null, "erreicht": false }
         ],
         "werkzeuge": [],
-        "tutNie": "Die Regel selbst ändern, nur Testfälle dazu schreiben.",
+        "tutNie": "Eine Regel selbst ändern.",
         "freigabe": "oeffentlich"
       }
     ],
     "werkzeuge": {
       "satz": "Hermes Agent kennt die folgenden Werkzeugsätze.",
       "inBetrieb": [
-        { "name": "Dateien", "was": "Dateien lesen, anlegen, gezielt ändern und durchsuchen. Wohin geschrieben werden darf, sagt die Grenzdatei.", "beispiel": "Gregor ändert in den Daten das Feld stand, Hermes legt eine Auftragsnotiz an.", "wer": [] },
-        { "name": "Board für Aufträge", "was": "Das Board, über das Aufträge laufen. Karten anlegen darf nur Hermes.", "beispiel": "Hermes legt für Gregor die Karte zu A-0015 an, Gregor liest sie und meldet sie mit dem Commit ab.", "wer": [] },
+        { "name": "Dateien", "was": "Dateien lesen, anlegen, gezielt ändern und durchsuchen. Wohin geschrieben werden darf, sagt die Grenzdatei.", "beispiel": "Gregor ändert in den Daten das Feld stand, Hermes legt eine Auftragsnotiz an.", "wer": ["reviewer", "orchestrator", "researcherin", "architekt", "seiten"] },
+        { "name": "Board für Aufträge", "was": "Das Board, über das Aufträge laufen. Karten anlegen darf nur Hermes.", "beispiel": "Hermes legt für Gregor die Karte zu A-0015 an, Gregor liest sie und meldet sie mit dem Commit ab.", "wer": ["reviewer", "orchestrator", "researcherin", "architekt", "seiten"] },
         { "name": "Kommandozeile", "was": "Einen Befehl ausführen. Nur Befehle, die als Muster in der Grenzdatei stehen; Ketten aus mehreren Befehlen lehnt der Zaun ab.", "beispiel": "Fritz startet sein Prüfskript, Gregor die Tests.", "wer": ["reviewer", "seiten"] },
         { "name": "Websuche und Seitenabruf", "was": "Im Netz suchen und eine Seite als Text holen. Gesucht wird ohne interne Namen.", "beispiel": "Die Researcherin sucht jeden Morgen neue Fassungen von Hermes Agent und liest die Release-Notiz.", "wer": ["researcherin", "architekt", "seiten"] },
         { "name": "Browser", "was": "Eine Seite in einem echten Browser öffnen, klicken, scrollen, die Konsole lesen, ein Bildschirmfoto ansehen.", "beispiel": "Gregor öffnet die gebaute Seite stand.", "wer": ["seiten"] },
