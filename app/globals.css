@@ -1527,3 +1527,49 @@ p.stand-hinweis {
 @media (prefers-reduced-motion: reduce) {
   .lp-schiene { transition: none; }
 }
+
+/* Steckbriefe auf /mannschaft (A-0017) */
+.steckbrief { border: 1px solid var(--wmc-border); border-radius: 2px; padding: 1.4rem 1.5rem; margin-top: 1rem; background: var(--wmc-bg); }
+.sb-kopf { display: flex; align-items: center; gap: 0.9rem; }
+.sb-kopf h2 { margin: 0; }
+.sb-initiale { width: 2.6rem; height: 2.6rem; border-radius: 50%; display: grid; place-items: center; flex: none; background: var(--wmc-surface-soft); color: var(--wmc-primary-text); font-weight: 800; font-size: 1.1rem; }
+.sb-rolle { margin: 0.1rem 0 0; color: var(--wmc-muted); font-size: 0.92rem; }
+.sb-marke { margin-left: auto; font-size: 0.8rem; font-weight: 700; padding: 0.2rem 0.6rem; border: 1px solid var(--wmc-border); border-radius: 2px; color: var(--wmc-muted); white-space: nowrap; }
+.sb-marke.arbeitet { color: var(--wmc-success); border-color: var(--wmc-success); }
+.sb-satz { max-width: var(--lesebreite); margin: 0.9rem 0 1.3rem; }
+.sb-spalten { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 1.6rem; margin-bottom: 0.6rem; }
+.steckbrief h3 { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--wmc-muted); margin: 0 0 0.6rem; }
+.sb-aufgaben { list-style: none; margin: 0; padding: 0; }
+.sb-aufgaben li { margin-bottom: 0.9rem; }
+.sb-aufgaben b { display: block; }
+.sb-beispiel { margin: 0.35rem 0 0; padding-left: 0.7rem; border-left: 2px solid var(--signal); color: var(--wmc-muted); font-size: 0.92rem; }
+.sb-beispiel span { font-weight: 700; color: var(--wmc-ink); margin-right: 0.35rem; }
+.sb-ziele { list-style: none; margin: 0; padding: 0 0 0 1.1rem; border-left: 1px solid var(--wmc-border); }
+.sb-ziele li { position: relative; margin-bottom: 0.9rem; }
+.sb-ziele li::before { content: ''; position: absolute; left: calc(-1.1rem - 6px); top: 0.3rem; width: 11px; height: 11px; border-radius: 50%; border: 2px solid var(--wmc-muted); background: var(--wmc-bg); }
+.sb-ziele li.erreicht::before { border-color: var(--wmc-success); background: var(--wmc-success); }
+.sb-wann { display: block; font-size: 0.8rem; color: var(--wmc-muted); }
+.sb-abzeichen { list-style: none; margin: 0 0 1.1rem; padding: 0; display: flex; flex-wrap: wrap; gap: 0.45rem; }
+.sb-abzeichen summary, .sb-nie li { display: inline-flex; align-items: center; gap: 0.35rem; font-size: 0.88rem; padding: 0.25rem 0.6rem; border: 1px solid var(--wmc-border); border-radius: 2px; background: var(--flaeche); cursor: pointer; list-style: none; }
+.sb-abzeichen summary::-webkit-details-marker { display: none; }
+.sb-abzeichen details[open] summary { border-color: var(--wmc-ink); }
+.sb-abzeichen details p, .sb-matrix details p { margin: 0.4rem 0 0; max-width: 34rem; font-size: 0.9rem; color: var(--wmc-muted); }
+.sb-nie li { cursor: default; color: var(--wmc-danger); border-color: var(--wmc-danger); background: transparent; }
+.sb-matrix th[scope='row'] { text-align: left; font-weight: 400; }
+.sb-matrix summary { cursor: pointer; display: inline-flex; align-items: center; gap: 0.35rem; }
+.sb-matrix td { text-align: center; }
+.sb-ja { color: var(--wmc-success); font-size: 1.05rem; }
+.sb-nein { color: var(--wmc-muted); }
+.sb-gesperrt { display: grid; grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr)); gap: 0.8rem 1.4rem; margin: 0.6rem 0 0; }
+.sb-gesperrt dt { font-weight: 700; }
+.sb-gesperrt dd { margin: 0.15rem 0 0; color: var(--wmc-muted); font-size: 0.92rem; }
+@media (max-width: 760px) {
+  .sb-spalten { grid-template-columns: minmax(0, 1fr); }
+  .sb-kopf { flex-wrap: wrap; }
+  .sb-marke { margin-left: 0; }
+}
+
+/* Anklickbare Kästen im Organigramm (A-0017) */
+.figur-verweis { cursor: pointer; }
+.figur-verweis:hover rect, .figur-verweis:focus-visible rect { stroke: var(--wmc-ink); stroke-width: 2.5; }
+.figur-verweis:focus { outline: none; }
