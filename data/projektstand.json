@@ -1,9 +1,9 @@
 {
-  "stand": "2026-10-19",
+  "stand": "2026-10-20",
   "herkunft": {
     "arbeitsordner": "D:\\WAMOCON",
     "einstieg": "KI-Mitarbeiter/75_KI-Mitarbeiter/KI-Mitarbeiter — Einstieg.md",
-    "erzeugt": "2026-10-19",
+    "erzeugt": "2026-10-20",
     "fristTage": 7,
     "verfahren": "Erstbefüllung von Hand aus dem Übergabedokument vom 05.09.2026, am 11.09. fortgeschrieben aus den beiden Blättern vom 09.09., am 17.09. aus dem Vault: Logbuch, Tagesprotokolle, Meilensteinplan, Bestandsaufnahme vom 16.09., Akte des Reviewers, Laufnotizen und Quoten je Regel. Das Abbild der Ablage zählt scripts/abbild-vault.mjs. Spätere Stände der Prüfläufe schreibt scripts/export-vault.mjs aus dem Frontmatter der Laufnotizen.",
     "freigabe": "intern",
@@ -49,6 +49,13 @@
       "Logbuch, 2026-10-19 Entscheidung Remote von reviewer",
       "Logbuch, 2026-10-19 Entscheidungen Testläufe und Weitergabe",
       "Logbuch, 2026-10-19 Wochenziel fünf KI-Mitarbeiter",
+      "Logbuch, 2026-10-20 Entscheidungen Laufzeit Hermes und Modell",
+      "Logbuch, 2026-10-20 Entscheidungen Eingabe effizienter",
+      "Logbuch, 2026-10-20 Entscheidungen Folgeänderungen Prüfstand",
+      "Logbuch, 2026-10-20 Entscheidung offene Punkte aus den Sitzungen",
+      "Protokoll 2026-10-20 KI-Mitarbeiter, Abschnitte Laufzeit, Eingabe, Steckbriefe, /mannschaft, Folgeänderungen und Stand der Arbeitspakete",
+      "Protokoll 2026-10-19 KFBM, Abschnitt reviewer ohne Remote",
+      "Steckbriefe KI-Mitarbeiter 2026-10-20, Abschnitt Überblick und Werkzeuge",
       "Tagesprotokoll vom 19.10.2026",
       "Tagesprotokoll vom 20.10.2026"
     ],
@@ -934,6 +941,101 @@
     {
       "datum": "2026-10-19",
       "entscheidung": "Die Ergebnisse der Testläufe stehen im Chat, in einer Laufnotiz je Testlauf und als Tag an jeder Auftragsnotiz aus einem Test",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-20",
+      "entscheidung": "Der Puffer für Gesprächsstände wächst auf 32 GiB, statt 8",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-20",
+      "entscheidung": "Das Board lässt eine Karte zur Zeit laufen",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-20",
+      "entscheidung": "Die Eingabe wird effizienter, das Gespräch wird nicht gekürzt",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-20",
+      "entscheidung": "Parallelität: erst messen, wieder aufnehmen, wenn das Team Aufträge gibt",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-20",
+      "entscheidung": "Von der Nachricht bis zur Karte höchstens zwei Minuten",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-20",
+      "entscheidung": "Die Auftragsliste entsteht bei jeder Änderung im Ordner der Aufträge, über eine Pfadüberwachung",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-20",
+      "entscheidung": "Der Zaun setzt die Webgrenzen von julia-trend durch: höchstens fünf Treffer je Suche, zwei Seiten je Abruf, 6 000 Zeichen je Seite",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-20",
+      "entscheidung": "Der Wortlaut der Vorlage für die effizientere Eingabe ist ohne Änderung freigegeben",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-20",
+      "entscheidung": "Auf der DGX wird alles umgesetzt: die Akten, 6 000 Zeichen je Seite für julia-trend und die Pfadüberwachung für die Auftragsliste",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-20",
+      "entscheidung": "Hermes liest die Grenzdateien nicht mehr nach, zwei Sätze in der Akte sind umgeschrieben",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-20",
+      "entscheidung": "Der Zaun lehnt eine Auftragsnotiz ohne Pflichtangabe ab, für Fritz und julia-trend, Platzhalter zählen nicht",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-20",
+      "entscheidung": "julia-trend schreibt erst die Meldung als Kommentar und schließt dann die Karte",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-20",
+      "entscheidung": "Hermes schreibt nur das Datum und den Kanal nur bei Kenntnis",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-20",
+      "entscheidung": "Hermes schreibt keinen Kanal, der trägt die Werkbank bei Bedarf nach",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-20",
+      "entscheidung": "Hermes nennt in einer Rückfrage keine Auftragsnummer, eine gibt es erst mit der Notiz",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-20",
+      "entscheidung": "Die Folgeänderungen aus dem Prüfstand werden auf der DGX gezogen und mit beiden Fällen geprüft",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-20",
+      "entscheidung": "Erkenntnisse und Aufgaben aus dem Chat landen im Arbeitsplan, Abschnitt noch nicht eingeplant, je Punkt eine Zeile",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-20",
+      "entscheidung": "Jede Sitzung trägt ein, bevor sie endet, als Regel in der CLAUDE.md im Wurzelordner",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-20",
+      "entscheidung": "Jira bekommt beides: der Wächter schlägt Stories vor und stimmt den Tagesstatus ab, angelegt wird nur was einzeln freigegeben ist",
       "freigabe": "intern"
     }
   ],
@@ -2145,9 +2247,9 @@
   },
   "ablage": {
     "freigabe": "oeffentlich",
-    "gezaehltAm": "2026-10-19",
-    "notizen": 224,
-    "verweise": 1850,
+    "gezaehltAm": "2026-10-20",
+    "notizen": 265,
+    "verweise": 2089,
     "unaufgeloest": 38,
     "regelnotizen": 1,
     "bereiche": [
@@ -2162,7 +2264,7 @@
         "ungeprueft": 0,
         "ohneFeld": 2,
         "verweiseNach": {
-          "entscheidungen": 8,
+          "entscheidungen": 9,
           "unternehmen": 4,
           "bauplan": 63,
           "normbasis": 5,
@@ -2170,7 +2272,7 @@
           "quellen": 0,
           "prueflaeufe": 33,
           "arbeitsstand": 22,
-          "protokoll": 24,
+          "protokoll": 26,
           "einstiege": 3,
           "archiv": 4
         }
@@ -2180,20 +2282,20 @@
         "gruppe": "wissen",
         "name": "Entscheidungen mit Datum",
         "kurz": "Entscheidungen",
-        "notizen": 23,
+        "notizen": 32,
         "verbindlich": 8,
         "informativ": 1,
-        "ungeprueft": 14,
+        "ungeprueft": 23,
         "ohneFeld": 0,
         "verweiseNach": {
-          "konventionen": 2,
+          "konventionen": 3,
           "unternehmen": 0,
-          "bauplan": 30,
+          "bauplan": 40,
           "normbasis": 0,
           "massstab": 3,
           "quellen": 0,
           "prueflaeufe": 0,
-          "arbeitsstand": 53,
+          "arbeitsstand": 75,
           "protokoll": 8,
           "einstiege": 10,
           "archiv": 0
@@ -2228,20 +2330,20 @@
         "gruppe": "wissen",
         "name": "Bauplan der Mitarbeiter",
         "kurz": "Bauplan",
-        "notizen": 20,
+        "notizen": 27,
         "verbindlich": 0,
         "informativ": 1,
-        "ungeprueft": 4,
+        "ungeprueft": 11,
         "ohneFeld": 15,
         "verweiseNach": {
           "konventionen": 7,
-          "entscheidungen": 47,
+          "entscheidungen": 62,
           "unternehmen": 3,
           "normbasis": 2,
           "massstab": 10,
           "quellen": 0,
-          "prueflaeufe": 13,
-          "arbeitsstand": 59,
+          "prueflaeufe": 14,
+          "arbeitsstand": 82,
           "protokoll": 6,
           "einstiege": 1,
           "archiv": 2
@@ -2348,21 +2450,21 @@
         "gruppe": "werkstatt",
         "name": "Pläne, Berichte, Übergaben",
         "kurz": "Arbeitsstände",
-        "notizen": 42,
+        "notizen": 64,
         "verbindlich": 0,
         "informativ": 6,
-        "ungeprueft": 21,
-        "ohneFeld": 15,
+        "ungeprueft": 26,
+        "ohneFeld": 32,
         "verweiseNach": {
           "konventionen": 15,
-          "entscheidungen": 45,
+          "entscheidungen": 67,
           "unternehmen": 5,
-          "bauplan": 79,
+          "bauplan": 106,
           "normbasis": 1,
           "massstab": 22,
           "quellen": 0,
           "prueflaeufe": 6,
-          "protokoll": 17,
+          "protokoll": 20,
           "einstiege": 3,
           "archiv": 4
         }
@@ -2372,22 +2474,22 @@
         "gruppe": "werkstatt",
         "name": "Tagesprotokolle",
         "kurz": "Protokolle",
-        "notizen": 25,
+        "notizen": 26,
         "verbindlich": 0,
         "informativ": 0,
         "ungeprueft": 0,
-        "ohneFeld": 25,
+        "ohneFeld": 26,
         "verweiseNach": {
-          "konventionen": 41,
-          "entscheidungen": 53,
+          "konventionen": 45,
+          "entscheidungen": 74,
           "unternehmen": 0,
-          "bauplan": 64,
+          "bauplan": 81,
           "normbasis": 1,
           "massstab": 5,
           "quellen": 0,
           "prueflaeufe": 13,
-          "arbeitsstand": 121,
-          "einstiege": 0,
+          "arbeitsstand": 138,
+          "einstiege": 1,
           "archiv": 0
         }
       },
@@ -2396,14 +2498,14 @@
         "gruppe": "werkstatt",
         "name": "Einstiege und Eingang",
         "kurz": "Einstiege",
-        "notizen": 14,
+        "notizen": 16,
         "verbindlich": 1,
-        "informativ": 0,
+        "informativ": 1,
         "ungeprueft": 1,
-        "ohneFeld": 12,
+        "ohneFeld": 13,
         "verweiseNach": {
-          "konventionen": 10,
-          "entscheidungen": 0,
+          "konventionen": 11,
+          "entscheidungen": 1,
           "unternehmen": 0,
           "bauplan": 2,
           "normbasis": 1,
@@ -2538,7 +2640,7 @@
         "art": "notizen",
         "wofuer": "Wie ein KI-Mitarbeiter gebaut ist: Anatomie, Harness, Orchestrator, Systemarchitektur, Zusammenarbeit, Fahrplan.",
         "hinweis": "Gelesen, wenn an der Architektur gearbeitet wird, nicht bei jeder Aufgabe.",
-        "notizen": 40,
+        "notizen": 52,
         "verbindlich": 0
       },
       {
@@ -2554,7 +2656,7 @@
         "stufe": "ordnung",
         "art": "notizen",
         "wofuer": "Konventionen, Änderungsprotokoll, Status-Übersicht und Tagesprotokolle.",
-        "notizen": 19,
+        "notizen": 20,
         "verbindlich": 3
       },
       {
@@ -2571,7 +2673,7 @@
         "art": "notizen",
         "wofuer": "Aufträge an die Mannschaft, eine Notiz je Auftrag, mit Übersicht.",
         "hinweis": "Seit dem 28.09. angelegt, bisher nur mit der Vorlage.",
-        "notizen": 6,
+        "notizen": 24,
         "verbindlich": 0
       },
       {
@@ -2579,7 +2681,7 @@
         "stufe": "ordnung",
         "art": "notizen",
         "wofuer": "Entscheidungen und Ereignisse in zeitlicher Folge.",
-        "notizen": 22,
+        "notizen": 31,
         "verbindlich": 7
       },
       {
@@ -2615,7 +2717,7 @@
         "wofuer": "Website-Abzüge und Datenschicht, nicht im Repository und nicht im Index."
       }
     ],
-    "gezaehltAm": "2026-10-19",
+    "gezaehltAm": "2026-10-20",
     "quelle": "Ordnertabelle und Kontextstrategie im Einstieg des Repositorys KI-Mitarbeiter, Akten nach den Vault-Konventionen, Anzahlen aus der Zählung der Ablage",
     "freigabe": "oeffentlich"
   },
@@ -4157,28 +4259,102 @@
         "kopf": "reviewer",
         "satz": "Prüft Schulungsunterlagen der WAMOCON Academy für die Ausbildung Kaufleute für Büromanagement gegen einen festen Maßstab und liefert Befunde mit Fundstelle. Er bewertet, er erstellt keine Unterlagen und gibt nichts frei.",
         "aufgaben": [
-          { "was": "Use-Cases, Quizze, Szenarien, Enabler, den Bestand und den Maßstab selbst, jeweils über ein eigenes Prüfskript.", "beispiel": "Der erste vollständige Lauf über 238 Use-Cases ergab 229 freigebbar, 7 mit Nacharbeit und 2 nicht freigebbar.", "titel": "Unterlagen prüfen" },
-          { "was": "Fachfragen zur Normbasis beantworten, wenn keine Prüfung verlangt ist, immer mit Vorbehalt.", "beispiel": "Was die Verordnung 2025 zu einer Wahlqualifikation sagt, mit der Fundstelle im Bundesgesetzblatt.", "titel": "Fachfragen beantworten" },
-          { "was": "Je Lauf seine Befundordner, dazu eine Laufnotiz und ein Bewertungsbogen.", "beispiel": "Der Bogen geht an den Projektverantwortlichen, der jeden Befund als richtig oder Fehlalarm einstuft.", "titel": "Befunde festhalten" },
-          { "was": "Berichte erzeugen über die vorhandenen Generatoren, bis der Reporter das übernimmt.", "beispiel": "Ein Kapitelbericht zu einem Themenkomplex als HTML.", "titel": "Berichte erzeugen" }
+          {
+            "was": "Use-Cases, Quizze, Szenarien, Enabler, den Bestand und den Maßstab selbst, jeweils über ein eigenes Prüfskript.",
+            "beispiel": "Der erste vollständige Lauf über 238 Use-Cases ergab 229 freigebbar, 7 mit Nacharbeit und 2 nicht freigebbar.",
+            "titel": "Unterlagen prüfen"
+          },
+          {
+            "was": "Fachfragen zur Normbasis beantworten, wenn keine Prüfung verlangt ist, immer mit Vorbehalt.",
+            "beispiel": "Was die Verordnung 2025 zu einer Wahlqualifikation sagt, mit der Fundstelle im Bundesgesetzblatt.",
+            "titel": "Fachfragen beantworten"
+          },
+          {
+            "was": "Je Lauf seine Befundordner, dazu eine Laufnotiz und ein Bewertungsbogen.",
+            "beispiel": "Der Bogen geht an den Projektverantwortlichen, der jeden Befund als richtig oder Fehlalarm einstuft.",
+            "titel": "Befunde festhalten"
+          },
+          {
+            "was": "Berichte erzeugen über die vorhandenen Generatoren, bis der Reporter das übernimmt.",
+            "beispiel": "Ein Kapitelbericht zu einem Themenkomplex als HTML.",
+            "titel": "Berichte erzeugen"
+          }
         ],
         "ziele": [
-          { "was": "Meilenstein 1: abgenommen. Offen ist nur noch der Test mit einer fremden Kennung, der mit Meilenstein 2 läuft.", "bis": "2026-10-23", "erreicht": true },
-          { "was": "Ein echter Auftrag, der kein Test ist. Welcher, ist noch offen.", "bis": "2026-10-23", "erreicht": false },
-          { "was": "Den Bewertungsbogen zu Regel E5 übernehmen.", "bis": "2026-10-28", "erreicht": false },
-          { "was": "Meilenstein 2: Auch das Team kann ihn über Hermes beauftragen.", "bis": "2026-10-30", "erreicht": false },
-          { "was": "Seine Akte wird an den Reporter angeglichen; danach erzeugt er keine Berichte mehr selbst.", "bis": "2026-11-02", "erreicht": false },
-          { "was": "Freigabe je Regel: höchstens 20 Prozent Fehlalarme an mindestens 30 einzeln angesehenen Fällen. Gemessen ist bisher eine von 26 Regeln.", "bis": null, "erreicht": false }
+          {
+            "was": "Meilenstein 1: abgenommen. Offen ist nur noch der Test mit einer fremden Kennung, der mit Meilenstein 2 läuft.",
+            "bis": "2026-10-23",
+            "erreicht": true
+          },
+          {
+            "was": "Ein echter Auftrag, der kein Test ist. Welcher, ist noch offen.",
+            "bis": "2026-10-23",
+            "erreicht": false
+          },
+          {
+            "was": "Den Bewertungsbogen zu Regel E5 übernehmen.",
+            "bis": "2026-10-28",
+            "erreicht": false
+          },
+          {
+            "was": "Meilenstein 2: Auch das Team kann ihn über Hermes beauftragen.",
+            "bis": "2026-10-30",
+            "erreicht": false
+          },
+          {
+            "was": "Seine Akte wird an den Reporter angeglichen; danach erzeugt er keine Berichte mehr selbst.",
+            "bis": "2026-11-02",
+            "erreicht": false
+          },
+          {
+            "was": "Freigabe je Regel: höchstens 20 Prozent Fehlalarme an mindestens 30 einzeln angesehenen Fällen. Gemessen ist bisher eine von 26 Regeln.",
+            "bis": null,
+            "erreicht": false
+          }
         ],
         "werkzeuge": [
-          { "was": "Liest Normbasis, Maßstab, Profile und Prüfobjekte. Er schreibt nur seine Befundordner, seine Berichte und seine Prüfläufe.", "titel": "Dateien", "art": "dateien" },
-          { "was": "Nur zwölf Skripte: sechs Prüfskripte, das Skript für den Bewertungsbogen und fünf Berichtserzeuger.", "beispiel": "Sein Prüfskript für Use-Cases über die Fälle eines Kapitels.", "titel": "Kommandozeile", "art": "kommandozeile" },
-          { "was": "Karten: liest, kommentiert und meldet die Karte, die Hermes ihm gibt.", "titel": "Board", "art": "board" },
-          { "was": "Fragt beim Auftraggeber nach.", "beispiel": "Welcher Jahrgang gemeint ist, weil Verträge ab dem 01.08.2025 der neuen Verordnung folgen.", "titel": "Rückfrage", "art": "rueckfrage" },
-          { "was": "Plant einen langen Lauf in Schritten.", "titel": "Aufgabenliste", "art": "aufgabenliste" },
-          { "was": "Gedächtnis des Profils: behält, was über einen Lauf hinaus gilt. Die Ablage bleibt die Quelle.", "titel": "Gedächtnis", "art": "gedaechtnis" },
-          { "was": "Laden; anlegen nur mit Freigabe eines Menschen.", "titel": "Skills", "art": "skills" },
-          { "was": "Eigener Bot im Messenger; Aufträge darüber gibt allein der Projektverantwortliche.", "titel": "Eigener Bot", "art": "bot" }
+          {
+            "was": "Liest Normbasis, Maßstab, Profile und Prüfobjekte. Er schreibt nur seine Befundordner, seine Berichte und seine Prüfläufe.",
+            "titel": "Dateien",
+            "art": "dateien"
+          },
+          {
+            "was": "Nur zwölf Skripte: sechs Prüfskripte, das Skript für den Bewertungsbogen und fünf Berichtserzeuger.",
+            "beispiel": "Sein Prüfskript für Use-Cases über die Fälle eines Kapitels.",
+            "titel": "Kommandozeile",
+            "art": "kommandozeile"
+          },
+          {
+            "was": "Karten: liest, kommentiert und meldet die Karte, die Hermes ihm gibt.",
+            "titel": "Board",
+            "art": "board"
+          },
+          {
+            "was": "Fragt beim Auftraggeber nach.",
+            "beispiel": "Welcher Jahrgang gemeint ist, weil Verträge ab dem 01.08.2025 der neuen Verordnung folgen.",
+            "titel": "Rückfrage",
+            "art": "rueckfrage"
+          },
+          {
+            "was": "Plant einen langen Lauf in Schritten.",
+            "titel": "Aufgabenliste",
+            "art": "aufgabenliste"
+          },
+          {
+            "was": "Gedächtnis des Profils: behält, was über einen Lauf hinaus gilt. Die Ablage bleibt die Quelle.",
+            "titel": "Gedächtnis",
+            "art": "gedaechtnis"
+          },
+          {
+            "was": "Laden; anlegen nur mit Freigabe eines Menschen.",
+            "titel": "Skills",
+            "art": "skills"
+          },
+          {
+            "was": "Eigener Bot im Messenger; Aufträge darüber gibt allein der Projektverantwortliche.",
+            "titel": "Eigener Bot",
+            "art": "bot"
+          }
         ],
         "tutNie": "Ins Netz gehen, freigeben, bewerten, Unterlagen ändern, Aufträge weitergeben, committen.",
         "freigabe": "oeffentlich"
@@ -4187,27 +4363,93 @@
         "kopf": "orchestrator",
         "satz": "Nimmt Aufträge an, wählt den zuständigen Mitarbeiter aus einer festen Tabelle, legt erst die Auftragsnotiz und dann die Karte an und reicht das Ergebnis unverändert weiter. Er fasst nicht zusammen, urteilt nicht und gibt nichts frei.",
         "aufgaben": [
-          { "was": "Aufträge annehmen über den Bot im Messenger, die App und die Kommandozeile.", "beispiel": "Der Projektverantwortliche schreibt: Prüf die Use-Cases von Themenkomplex 14.", "titel": "Aufträge annehmen" },
-          { "was": "Bevor er zuweist.", "beispiel": "Für den Reviewer fehlen Jahrgang und Zielgruppe, also fragt er zurück, statt zu raten.", "titel": "Pflichtangaben nachfragen" },
-          { "was": "Zuweisen aus der Zuordnungstabelle, nie aus dem Gefühl. Was nicht in der Tabelle steht, lehnt er mit Begründung ab.", "beispiel": "Bau mir ein Skript geht an die Werkbank, nicht an einen Mitarbeiter.", "titel": "Zuweisen" },
-          { "was": "Erst die Auftragsnotiz mit eigener Nummer, danach die Karte.", "beispiel": "Die Nummer A-0013 mit Notiz und Karte für den Pfleger der Seiten.", "titel": "Erst Notiz, dann Karte" },
-          { "was": "Das Ergebnis weiterreichen, ohne eigenen Satz, mit Verfasser, Nummer und Fundstelle.", "titel": "Ergebnis weiterreichen" },
-          { "was": "Ab Meilenstein 3: nach einem Lauf des Reviewers den Folgeauftrag an den Reporter geben.", "titel": "Folgeauftrag an den Reporter" }
+          {
+            "was": "Aufträge annehmen über den Bot im Messenger, die App und die Kommandozeile.",
+            "beispiel": "Der Projektverantwortliche schreibt: Prüf die Use-Cases von Themenkomplex 14.",
+            "titel": "Aufträge annehmen"
+          },
+          {
+            "was": "Bevor er zuweist.",
+            "beispiel": "Für den Reviewer fehlen Jahrgang und Zielgruppe, also fragt er zurück, statt zu raten.",
+            "titel": "Pflichtangaben nachfragen"
+          },
+          {
+            "was": "Zuweisen aus der Zuordnungstabelle, nie aus dem Gefühl. Was nicht in der Tabelle steht, lehnt er mit Begründung ab.",
+            "beispiel": "Bau mir ein Skript geht an die Werkbank, nicht an einen Mitarbeiter.",
+            "titel": "Zuweisen"
+          },
+          {
+            "was": "Erst die Auftragsnotiz mit eigener Nummer, danach die Karte.",
+            "beispiel": "Die Nummer A-0013 mit Notiz und Karte für den Pfleger der Seiten.",
+            "titel": "Erst Notiz, dann Karte"
+          },
+          {
+            "was": "Das Ergebnis weiterreichen, ohne eigenen Satz, mit Verfasser, Nummer und Fundstelle.",
+            "titel": "Ergebnis weiterreichen"
+          },
+          {
+            "was": "Ab Meilenstein 3: nach einem Lauf des Reviewers den Folgeauftrag an den Reporter geben.",
+            "titel": "Folgeauftrag an den Reporter"
+          }
         ],
         "ziele": [
-          { "was": "Ein Lauf, in dem die Fälle 1 bis 17 des Prüfstands erfüllt sind und der Zaun nichts ablehnen musste. Am 19.10. abends waren 5 erfüllt, 2 teilweise.", "bis": "2026-10-27", "erreicht": false },
-          { "was": "Laufzeit: von der Nachricht bis zur Karte höchstens zwei Minuten.", "bis": null, "erreicht": false },
-          { "was": "Meilenstein 2: Das Team gibt Aufträge über seinen Bot, eine fremde Kennung wird abgewiesen.", "bis": "2026-10-30", "erreicht": false },
-          { "was": "Der Projektverantwortliche zieht jede Woche eine Stichprobe. Maßstab: kein Wort und keine Zahl geändert, nichts weggelassen.", "bis": null, "erreicht": false },
-          { "was": "Meilenstein 3: Aufträge auch per Sprache, Folgeauftrag an den Reporter.", "bis": "2026-11-06", "erreicht": false }
+          {
+            "was": "Ein Lauf, in dem die Fälle 1 bis 17 des Prüfstands erfüllt sind und der Zaun nichts ablehnen musste. Am 19.10. abends waren 5 erfüllt, 2 teilweise.",
+            "bis": "2026-10-27",
+            "erreicht": false
+          },
+          {
+            "was": "Laufzeit: von der Nachricht bis zur Karte höchstens zwei Minuten.",
+            "bis": null,
+            "erreicht": false
+          },
+          {
+            "was": "Meilenstein 2: Das Team gibt Aufträge über seinen Bot, eine fremde Kennung wird abgewiesen.",
+            "bis": "2026-10-30",
+            "erreicht": false
+          },
+          {
+            "was": "Der Projektverantwortliche zieht jede Woche eine Stichprobe. Maßstab: kein Wort und keine Zahl geändert, nichts weggelassen.",
+            "bis": null,
+            "erreicht": false
+          },
+          {
+            "was": "Meilenstein 3: Aufträge auch per Sprache, Folgeauftrag an den Reporter.",
+            "bis": "2026-11-06",
+            "erreicht": false
+          }
         ],
         "werkzeuge": [
-          { "was": "Liest Konventionen, Leitplanken und die Akten aller Mitarbeiter, um die Pflichtangaben zu kennen. Er schreibt nur seine Auftragsnotizen.", "titel": "Dateien", "art": "dateien" },
-          { "was": "An den Reviewer, den Architekten, den Pfleger der Seiten und die Researcherin, jeweils nur mit Nummer, passender Notiz und dem Arbeitsordner des Mitarbeiters. Eine Karte mit eigenem Modell oder eigenen Skills lehnt der Zaun ab.", "titel": "Karten anlegen", "art": "board" },
-          { "was": "Karten lesen und kommentieren: Ergebnis einsammeln, Rückfragen beantworten.", "titel": "Karten lesen", "art": "board" },
-          { "was": "Messenger senden: die Antwort an den Auftraggeber.", "titel": "Messenger", "art": "bot" },
-          { "was": "Jeder Eintrag braucht eine Freigabe.", "titel": "Gedächtnis", "art": "gedaechtnis" },
-          { "was": "Schlägt nach, welche Werkzeuge es gibt; den inneren Aufruf prüft der Zaun.", "titel": "Werkzeugverzeichnis", "art": "verzeichnis" }
+          {
+            "was": "Liest Konventionen, Leitplanken und die Akten aller Mitarbeiter, um die Pflichtangaben zu kennen. Er schreibt nur seine Auftragsnotizen.",
+            "titel": "Dateien",
+            "art": "dateien"
+          },
+          {
+            "was": "An den Reviewer, den Architekten, den Pfleger der Seiten und die Researcherin, jeweils nur mit Nummer, passender Notiz und dem Arbeitsordner des Mitarbeiters. Eine Karte mit eigenem Modell oder eigenen Skills lehnt der Zaun ab.",
+            "titel": "Karten anlegen",
+            "art": "board"
+          },
+          {
+            "was": "Karten lesen und kommentieren: Ergebnis einsammeln, Rückfragen beantworten.",
+            "titel": "Karten lesen",
+            "art": "board"
+          },
+          {
+            "was": "Messenger senden: die Antwort an den Auftraggeber.",
+            "titel": "Messenger",
+            "art": "bot"
+          },
+          {
+            "was": "Jeder Eintrag braucht eine Freigabe.",
+            "titel": "Gedächtnis",
+            "art": "gedaechtnis"
+          },
+          {
+            "was": "Schlägt nach, welche Werkzeuge es gibt; den inneren Aufruf prüft der Zaun.",
+            "titel": "Werkzeugverzeichnis",
+            "art": "verzeichnis"
+          }
         ],
         "tutNie": "Terminal, Netz, selbst prüfen, zusammenfassen, eine Karte für einen anderen abschließen, eine Blockade lösen.",
         "freigabe": "oeffentlich"
@@ -4216,20 +4458,61 @@
         "kopf": "researcherin",
         "satz": "Beobachtet Neuigkeiten zu KI und Agenten und stellt jede in Bezug zu unserem eigenen Aufbau. Eine Nachricht ohne Bezug ist für sie nur ein Link.",
         "aufgaben": [
-          { "was": "Täglicher Bericht um 9 Uhr als fester Lauf, zugestellt über ihren Bot im Messenger an den Projektverantwortlichen.", "beispiel": "Eine neue Fassung von Hermes Agent, mit dem Satz, was sie für unseren Zaun bedeutet.", "titel": "Täglicher Bericht" },
-          { "was": "Als Karte, mit Frage und Zeitraum als Pflicht.", "beispiel": "Was hat sich in den letzten zwei Wochen bei Claude Code geändert?", "titel": "Aufträge über Hermes" },
-          { "was": "Quellen nach Rang trennen: Release-Notiz und Dokumentation sind Beleg, Fachpresse ist Beleg mit Absender, Foren sind nur Hinweis.", "beispiel": "Ein Forenbeitrag zeigt ihr, wonach sie in der Release-Notiz suchen soll.", "titel": "Quellen nach Rang" }
+          {
+            "was": "Täglicher Bericht um 9 Uhr als fester Lauf, zugestellt über ihren Bot im Messenger an den Projektverantwortlichen.",
+            "beispiel": "Eine neue Fassung von Hermes Agent, mit dem Satz, was sie für unseren Zaun bedeutet.",
+            "titel": "Täglicher Bericht"
+          },
+          {
+            "was": "Als Karte, mit Frage und Zeitraum als Pflicht.",
+            "beispiel": "Was hat sich in den letzten zwei Wochen bei Claude Code geändert?",
+            "titel": "Aufträge über Hermes"
+          },
+          {
+            "was": "Quellen nach Rang trennen: Release-Notiz und Dokumentation sind Beleg, Fachpresse ist Beleg mit Absender, Foren sind nur Hinweis.",
+            "beispiel": "Ein Forenbeitrag zeigt ihr, wonach sie in der Release-Notiz suchen soll.",
+            "titel": "Quellen nach Rang"
+          }
         ],
         "ziele": [
-          { "was": "Ihr täglicher Lauf läuft unter dem Zaun durch, und der Projektverantwortliche bekommt den Bericht, jeden Morgen mit höchstens acht Aufrufen im Netz.", "bis": "2026-10-23", "erreicht": false },
-          { "was": "Meilenstein 4: läuft mit Zaun, Schreibversuche werden abgelehnt. Der Zaun hängt bereits, vorgezogen.", "bis": "2026-11-13", "erreicht": false },
-          { "was": "Abnahme: Ein Kriterium vom Projektverantwortlichen gibt es noch nicht.", "bis": null, "erreicht": false }
+          {
+            "was": "Ihr täglicher Lauf läuft unter dem Zaun durch, und der Projektverantwortliche bekommt den Bericht, jeden Morgen mit höchstens acht Aufrufen im Netz.",
+            "bis": "2026-10-23",
+            "erreicht": false
+          },
+          {
+            "was": "Meilenstein 4: läuft mit Zaun, Schreibversuche werden abgelehnt. Der Zaun hängt bereits, vorgezogen.",
+            "bis": "2026-11-13",
+            "erreicht": false
+          },
+          {
+            "was": "Abnahme: Ein Kriterium vom Projektverantwortlichen gibt es noch nicht.",
+            "bis": null,
+            "erreicht": false
+          }
         ],
         "werkzeuge": [
-          { "was": "Websuche und Seitenabruf: höchstens acht Aufrufe, dazu drei zum Nachprüfen.", "beispiel": "Sie sucht nach neuen Fassungen von Hermes Agent und liest die Seite der Freigaben.", "titel": "Websuche", "art": "websuche" },
-          { "was": "Im Bereich KI-Mitarbeiter, um den Bezug zu einer Notiz herzustellen. Sie schreibt nirgends hin.", "titel": "Dateien, nur lesen", "art": "dateien" },
-          { "was": "Karten: lesen, kommentieren, melden, mit einer Rückfrage blockieren. Anlegen darf sie keine.", "titel": "Board", "art": "board" },
-          { "was": "Eigener Bot im Messenger für den täglichen Bericht.", "titel": "Eigener Bot", "art": "bot" }
+          {
+            "was": "Websuche und Seitenabruf: höchstens acht Aufrufe, dazu drei zum Nachprüfen.",
+            "beispiel": "Sie sucht nach neuen Fassungen von Hermes Agent und liest die Seite der Freigaben.",
+            "titel": "Websuche",
+            "art": "websuche"
+          },
+          {
+            "was": "Im Bereich KI-Mitarbeiter, um den Bezug zu einer Notiz herzustellen. Sie schreibt nirgends hin.",
+            "titel": "Dateien, nur lesen",
+            "art": "dateien"
+          },
+          {
+            "was": "Karten: lesen, kommentieren, melden, mit einer Rückfrage blockieren. Anlegen darf sie keine.",
+            "titel": "Board",
+            "art": "board"
+          },
+          {
+            "was": "Eigener Bot im Messenger für den täglichen Bericht.",
+            "titel": "Eigener Bot",
+            "art": "bot"
+          }
         ],
         "tutNie": "Empfehlen, entscheiden, an Dritte senden, Terminal, Browser, in die Ablage schreiben.",
         "freigabe": "intern"
@@ -4238,18 +4521,50 @@
         "kopf": "reporter",
         "satz": "Erzeugt aus einem Lauf des Reviewers Kapitelbericht und OnePager, nur über die vorhandenen Generatoren. Er schreibt keine Zahl selbst und bewertet keinen Befund. Er hat eine Grenzdatei und eine Akte als Vorlage, aber noch kein Profil.",
         "aufgaben": [
-          { "was": "Bericht zu einem Lauf des Reviewers, als Folgeauftrag von Hermes.", "beispiel": "Nach einem Lauf über Themenkomplex 14 der Kapitelbericht zu diesem Themenkomplex als HTML.", "titel": "Bericht zu einem Lauf" },
-          { "was": "OnePager für Use-Cases, Quizze und Enabler, im CI der WAMOCON.", "titel": "OnePager" }
+          {
+            "was": "Bericht zu einem Lauf des Reviewers, als Folgeauftrag von Hermes.",
+            "beispiel": "Nach einem Lauf über Themenkomplex 14 der Kapitelbericht zu diesem Themenkomplex als HTML.",
+            "titel": "Bericht zu einem Lauf"
+          },
+          {
+            "was": "OnePager für Use-Cases, Quizze und Enabler, im CI der WAMOCON.",
+            "titel": "OnePager"
+          }
         ],
         "ziele": [
-          { "was": "Akte freigeben; die erste Frist ist verstrichen.", "bis": "2026-11-02", "erreicht": false },
-          { "was": "Profil mit Zaun, eingetragen in die Tabelle von Hermes.", "bis": "2026-11-04", "erreicht": false },
-          { "was": "Meilenstein 3: liefert nach einem Lauf des Reviewers den Bericht ohne Sitzung der Werkbank; ein Schreibversuch außerhalb seiner Ordner wird abgelehnt.", "bis": "2026-11-06", "erreicht": false }
+          {
+            "was": "Akte freigeben; die erste Frist ist verstrichen.",
+            "bis": "2026-11-02",
+            "erreicht": false
+          },
+          {
+            "was": "Profil mit Zaun, eingetragen in die Tabelle von Hermes.",
+            "bis": "2026-11-04",
+            "erreicht": false
+          },
+          {
+            "was": "Meilenstein 3: liefert nach einem Lauf des Reviewers den Bericht ohne Sitzung der Werkbank; ein Schreibversuch außerhalb seiner Ordner wird abgelehnt.",
+            "bis": "2026-11-06",
+            "erreicht": false
+          }
         ],
         "werkzeuge": [
-          { "was": "Nur seine sieben Berichtsgeneratoren. Er arbeitet in den Ordnern des Reviewers.", "beispiel": "Sein Berichtsgenerator für Enabler über die Befunde eines Laufs.", "titel": "Kommandozeile", "art": "kommandozeile" },
-          { "was": "Liest Befunde, Profile, CI und Auftreten. Er schreibt nur seine Berichte und die Präsentation.", "titel": "Dateien", "art": "dateien" },
-          { "was": "Karten: liest, kommentiert und meldet die eigene.", "titel": "Board", "art": "board" }
+          {
+            "was": "Nur seine sieben Berichtsgeneratoren. Er arbeitet in den Ordnern des Reviewers.",
+            "beispiel": "Sein Berichtsgenerator für Enabler über die Befunde eines Laufs.",
+            "titel": "Kommandozeile",
+            "art": "kommandozeile"
+          },
+          {
+            "was": "Liest Befunde, Profile, CI und Auftreten. Er schreibt nur seine Berichte und die Präsentation.",
+            "titel": "Dateien",
+            "art": "dateien"
+          },
+          {
+            "was": "Karten: liest, kommentiert und meldet die eigene.",
+            "titel": "Board",
+            "art": "board"
+          }
         ],
         "tutNie": "Prüfen, einen Befund ändern, das CI ändern, Git, Netz, Aufträge geben.",
         "freigabe": "oeffentlich"
@@ -4258,20 +4573,62 @@
         "kopf": "architekt",
         "satz": "Bereitet Entscheidungen über unseren eigenen Aufbau vor. Er ordnet, was in den Notizen steht, findet Widersprüche, legt Wege mit ihren Folgen nebeneinander und schließt mit genau einer Empfehlung und ihrem Kipppunkt. Entscheiden tut der Projektverantwortliche.",
         "aufgaben": [
-          { "was": "Entscheidungsvorlage zu einer offenen Frage, immer in derselben Gliederung: Frage, Bestand mit Fundstellen, Widersprüche, Wege, eine Empfehlung, Kipppunkt, nicht Belegtes.", "beispiel": "Ob der Ordner mit den Prüfregeln des Reviewers seine Verbindung zum Repository der Seite auf GitHub behält. Daraus wurde die Entscheidung des Projektverantwortlichen, sie zu entfernen.", "titel": "Entscheidungsvorlage" },
-          { "was": "Prüfen, ob schon entschieden ist: Steht eine Frage im Logbuch als entschieden, legt er sie nicht neu vor, sondern nennt die Entscheidung.", "beispiel": "Der Arbeitsordner des Reporters.", "titel": "Prüfen, ob entschieden ist" },
-          { "was": "Widersprüche zwischen Notizen festhalten, mit beiden Fundstellen, ohne sie aufzulösen.", "titel": "Widersprüche festhalten" }
+          {
+            "was": "Entscheidungsvorlage zu einer offenen Frage, immer in derselben Gliederung: Frage, Bestand mit Fundstellen, Widersprüche, Wege, eine Empfehlung, Kipppunkt, nicht Belegtes.",
+            "beispiel": "Ob der Ordner mit den Prüfregeln des Reviewers seine Verbindung zum Repository der Seite auf GitHub behält. Daraus wurde die Entscheidung des Projektverantwortlichen, sie zu entfernen.",
+            "titel": "Entscheidungsvorlage"
+          },
+          {
+            "was": "Prüfen, ob schon entschieden ist: Steht eine Frage im Logbuch als entschieden, legt er sie nicht neu vor, sondern nennt die Entscheidung.",
+            "beispiel": "Der Arbeitsordner des Reporters.",
+            "titel": "Prüfen, ob entschieden ist"
+          },
+          {
+            "was": "Widersprüche zwischen Notizen festhalten, mit beiden Fundstellen, ohne sie aufzulösen.",
+            "titel": "Widersprüche festhalten"
+          }
         ],
         "ziele": [
-          { "was": "Ein echter Auftrag.", "bis": "2026-10-23", "erreicht": true },
-          { "was": "Die erste Vorlage als Datei in seinen Ordner für Entscheidungsvorlagen. Bisher liegt dort nur die Übersicht.", "bis": null, "erreicht": false }
+          {
+            "was": "Ein echter Auftrag.",
+            "bis": "2026-10-23",
+            "erreicht": true
+          },
+          {
+            "was": "Die erste Vorlage als Datei in seinen Ordner für Entscheidungsvorlagen. Bisher liegt dort nur die Übersicht.",
+            "bis": null,
+            "erreicht": false
+          }
         ],
         "werkzeuge": [
-          { "was": "Den ganzen Bereich KI-Mitarbeiter, die Akten beider Bereiche, den Code des Reviewers und der Seite kiKollege und den Quelltext von Hermes Agent.", "beispiel": "Er liest im Quelltext nach, wann Hermes Agent den Zaun aufruft, statt es zu vermuten.", "titel": "Dateien lesen", "art": "dateien" },
-          { "was": "Nur seine Vorlagen.", "beispiel": "Eine Vorlage mit einem Datum und einem Thema, als ungeprüft angelegt.", "titel": "Dateien schreiben", "art": "dateien" },
-          { "was": "Websuche und Seitenabruf, nur für Dokumentation dessen, was wir einsetzen.", "beispiel": "Was eine neue Fassung von Hermes Agent an der Stelle ändert, an der der Zaun aufgerufen wird.", "titel": "Websuche", "art": "websuche" },
-          { "was": "Einen, der für jede Angabe eine nachprüfbare Quelle verlangt, und einen für ein Schaubild neben der Vorlage.", "titel": "Skills", "art": "skills" },
-          { "was": "Karten: liest, kommentiert und meldet die eigene. Die Meldung nennt den Ort der Vorlage und die Empfehlung in einem Satz.", "titel": "Board", "art": "board" }
+          {
+            "was": "Den ganzen Bereich KI-Mitarbeiter, die Akten beider Bereiche, den Code des Reviewers und der Seite kiKollege und den Quelltext von Hermes Agent.",
+            "beispiel": "Er liest im Quelltext nach, wann Hermes Agent den Zaun aufruft, statt es zu vermuten.",
+            "titel": "Dateien lesen",
+            "art": "dateien"
+          },
+          {
+            "was": "Nur seine Vorlagen.",
+            "beispiel": "Eine Vorlage mit einem Datum und einem Thema, als ungeprüft angelegt.",
+            "titel": "Dateien schreiben",
+            "art": "dateien"
+          },
+          {
+            "was": "Websuche und Seitenabruf, nur für Dokumentation dessen, was wir einsetzen.",
+            "beispiel": "Was eine neue Fassung von Hermes Agent an der Stelle ändert, an der der Zaun aufgerufen wird.",
+            "titel": "Websuche",
+            "art": "websuche"
+          },
+          {
+            "was": "Einen, der für jede Angabe eine nachprüfbare Quelle verlangt, und einen für ein Schaubild neben der Vorlage.",
+            "titel": "Skills",
+            "art": "skills"
+          },
+          {
+            "was": "Karten: liest, kommentiert und meldet die eigene. Die Meldung nennt den Ort der Vorlage und die Empfehlung in einem Satz.",
+            "titel": "Board",
+            "art": "board"
+          }
         ],
         "tutNie": "Entscheiden, bauen, prüfen, eine Akte ändern, Terminal, Browser, Gedächtnis.",
         "freigabe": "oeffentlich"
@@ -4280,24 +4637,83 @@
         "kopf": "seiten",
         "satz": "Hält die Seite kiKollege auf dem Stand der Ablage und baut an ihr, wenn eine Karte es verlangt. Jede Änderung geht als Pull Request an den Projektverantwortlichen; zusammenführen tut ein Mensch.",
         "aufgaben": [
-          { "was": "Den Stand der Seite nachziehen. Das Gezählte kommt über den Pflegelauf, das Gelesene trägt er aus Logbuch und Protokollen von Hand nach, jede Angabe mit Quelle.", "beispiel": "Pull Request 9 am 19.10., die Ablage von 175 auf 224 Notizen.", "titel": "Pflege" },
-          { "was": "Code, Gestaltung und Texte, nur mit Auftrag.", "beispiel": "Ein Pfadfehler im Export mit drei Testfällen; das Organigramm auf der Unterseite stand; der Stand zieht bei jedem Nachtrag mit.", "titel": "Bau auf Karte" },
-          { "was": "Tests, Build und die Prüfungen der Seite, darunter die, dass nichts Internes in die öffentliche Fassung gerät.", "titel": "Prüfen, bevor er stellt" }
+          {
+            "was": "Den Stand der Seite nachziehen. Das Gezählte kommt über den Pflegelauf, das Gelesene trägt er aus Logbuch und Protokollen von Hand nach, jede Angabe mit Quelle.",
+            "beispiel": "Pull Request 9 am 19.10., die Ablage von 175 auf 224 Notizen.",
+            "titel": "Pflege"
+          },
+          {
+            "was": "Code, Gestaltung und Texte, nur mit Auftrag.",
+            "beispiel": "Ein Pfadfehler im Export mit drei Testfällen; das Organigramm auf der Unterseite stand; der Stand zieht bei jedem Nachtrag mit.",
+            "titel": "Bau auf Karte"
+          },
+          {
+            "was": "Tests, Build und die Prüfungen der Seite, darunter die, dass nichts Internes in die öffentliche Fassung gerät.",
+            "titel": "Prüfen, bevor er stellt"
+          }
         ],
         "ziele": [
-          { "was": "Lauffähig mit einer echten Aufgabe.", "bis": "2026-10-23", "erreicht": true },
-          { "was": "Abnahme: Ein Pflegelauf und ein Bau ergeben je einen Pull Request, beides erfüllt. Es fehlt das eigene Konto mit der Sperre vor dem Hauptzweig. Bis dahin hält nur der Zaun, und die Pull Requests stellt die Werkbank.", "bis": null, "erreicht": false },
-          { "was": "Der feste Pflegelauf am Montag und Donnerstag um 7 Uhr. Eingerichtet am 20.10.", "bis": "2026-10-20", "erreicht": true }
+          {
+            "was": "Lauffähig mit einer echten Aufgabe.",
+            "bis": "2026-10-23",
+            "erreicht": true
+          },
+          {
+            "was": "Abnahme: Ein Pflegelauf und ein Bau ergeben je einen Pull Request, beides erfüllt. Es fehlt das eigene Konto mit der Sperre vor dem Hauptzweig. Bis dahin hält nur der Zaun, und die Pull Requests stellt die Werkbank.",
+            "bis": null,
+            "erreicht": false
+          },
+          {
+            "was": "Der feste Pflegelauf am Montag und Donnerstag um 7 Uhr. Eingerichtet am 20.10.",
+            "bis": "2026-10-20",
+            "erreicht": true
+          }
         ],
         "werkzeuge": [
-          { "was": "33 Befehlsmuster: Git nur für die eigenen Zweige, Pull Requests stellen und lesen, Tests, Build, die Prüfungen und den Pflegelauf.", "beispiel": "Einen Push seines eigenen Zweigs. Abgelehnt: ein Push auf den Hauptzweig, das Zusammenführen, das Installieren neuer Pakete.", "titel": "Kommandozeile", "art": "kommandozeile" },
-          { "was": "Liest einen Ausschnitt der Ablage, etwa Logbuch und Protokolle. Er schreibt nur im Klon der Seite, nie an den Abläufen auf GitHub und nie an den Prüfskripten.", "titel": "Dateien", "art": "dateien" },
-          { "was": "Seit dem 20.10.: nur die gebaute Seite und die veröffentlichte.", "beispiel": "Er öffnet die Unterseite stand und prüft, ob das Organigramm alle Köpfe zeigt.", "titel": "Browser", "art": "browser" },
-          { "was": "Seit dem 20.10.: ein Bildschirmfoto aus dem Browser lesen.", "beispiel": "Ist ein Text im dunklen Modus lesbar?", "titel": "Bilder ansehen", "art": "bilder" },
-          { "was": "Websuche und Seitenabruf, für Dokumentation.", "beispiel": "Wie Next.js eine Seite statisch exportiert.", "titel": "Websuche", "art": "websuche" },
-          { "was": "Für einen Bau mit Testfall, wenn eine Prüfung scheitert, für einen neuen Abschnitt, für Aufbau und Raster, nie für Farben und Schriften, und um die Seite im Browser durchzugehen.", "titel": "Skills", "art": "skills" },
-          { "was": "Karten: liest, kommentiert und meldet die eigene.", "titel": "Board", "art": "board" },
-          { "was": "Baut mit dem Modell auf dem KI-Rechner. Scheitert ein Bau daran, wird er mit einem anderen Sprachmodell wiederholt.", "titel": "Modell", "art": "modell" }
+          {
+            "was": "33 Befehlsmuster: Git nur für die eigenen Zweige, Pull Requests stellen und lesen, Tests, Build, die Prüfungen und den Pflegelauf.",
+            "beispiel": "Einen Push seines eigenen Zweigs. Abgelehnt: ein Push auf den Hauptzweig, das Zusammenführen, das Installieren neuer Pakete.",
+            "titel": "Kommandozeile",
+            "art": "kommandozeile"
+          },
+          {
+            "was": "Liest einen Ausschnitt der Ablage, etwa Logbuch und Protokolle. Er schreibt nur im Klon der Seite, nie an den Abläufen auf GitHub und nie an den Prüfskripten.",
+            "titel": "Dateien",
+            "art": "dateien"
+          },
+          {
+            "was": "Seit dem 20.10.: nur die gebaute Seite und die veröffentlichte.",
+            "beispiel": "Er öffnet die Unterseite stand und prüft, ob das Organigramm alle Köpfe zeigt.",
+            "titel": "Browser",
+            "art": "browser"
+          },
+          {
+            "was": "Seit dem 20.10.: ein Bildschirmfoto aus dem Browser lesen.",
+            "beispiel": "Ist ein Text im dunklen Modus lesbar?",
+            "titel": "Bilder ansehen",
+            "art": "bilder"
+          },
+          {
+            "was": "Websuche und Seitenabruf, für Dokumentation.",
+            "beispiel": "Wie Next.js eine Seite statisch exportiert.",
+            "titel": "Websuche",
+            "art": "websuche"
+          },
+          {
+            "was": "Für einen Bau mit Testfall, wenn eine Prüfung scheitert, für einen neuen Abschnitt, für Aufbau und Raster, nie für Farben und Schriften, und um die Seite im Browser durchzugehen.",
+            "titel": "Skills",
+            "art": "skills"
+          },
+          {
+            "was": "Karten: liest, kommentiert und meldet die eigene.",
+            "titel": "Board",
+            "art": "board"
+          },
+          {
+            "was": "Baut mit dem Modell auf dem KI-Rechner. Scheitert ein Bau daran, wird er mit einem anderen Sprachmodell wiederholt.",
+            "titel": "Modell",
+            "art": "modell"
+          }
         ],
         "tutNie": "Auf den Hauptzweig pushen, zusammenführen, ein Paket installieren, etwas von intern nach öffentlich heben, einen Eintrag aus den Daten entfernen, eine Notiz in der Ablage ändern.",
         "freigabe": "oeffentlich"
@@ -4306,10 +4722,18 @@
         "kopf": "archivar",
         "satz": "Kommt nach dem 13.11., ohne Termin, mit Akte, Profil mit Zaun und eigener Arbeitskopie.",
         "aufgaben": [
-          { "was": "Pflegt die Form der Ablage, nie den Inhalt.", "beispiel": "Ein fehlendes Feld Stand nachtragen oder einen kaputten Link richten, als Commit unter eigenem Namen.", "titel": "Form pflegen" }
+          {
+            "was": "Pflegt die Form der Ablage, nie den Inhalt.",
+            "beispiel": "Ein fehlendes Feld Stand nachtragen oder einen kaputten Link richten, als Commit unter eigenem Namen.",
+            "titel": "Form pflegen"
+          }
         ],
         "ziele": [
-          { "was": "Die Abnahme ist nur vorgeschlagen, nicht entschieden.", "bis": null, "erreicht": false }
+          {
+            "was": "Die Abnahme ist nur vorgeschlagen, nicht entschieden.",
+            "bis": null,
+            "erreicht": false
+          }
         ],
         "werkzeuge": [],
         "tutNie": "Den Inhalt der Ablage ändern.",
@@ -4319,10 +4743,18 @@
         "kopf": "entwickler",
         "satz": "Kommt nach dem 13.11., ohne Termin, mit Akte, Profil mit Zaun und eigener Arbeitskopie.",
         "aufgaben": [
-          { "was": "Schreibt Testfälle zu einer bewerteten Regel.", "beispiel": "Ein richtiges und ein falsches Beispiel, an denen eine Regel des Reviewers zeigen muss, dass sie richtig entscheidet.", "titel": "Testfälle schreiben" }
+          {
+            "was": "Schreibt Testfälle zu einer bewerteten Regel.",
+            "beispiel": "Ein richtiges und ein falsches Beispiel, an denen eine Regel des Reviewers zeigen muss, dass sie richtig entscheidet.",
+            "titel": "Testfälle schreiben"
+          }
         ],
         "ziele": [
-          { "was": "Die Abnahme ist nur vorgeschlagen, nicht entschieden.", "bis": null, "erreicht": false }
+          {
+            "was": "Die Abnahme ist nur vorgeschlagen, nicht entschieden.",
+            "bis": null,
+            "erreicht": false
+          }
         ],
         "werkzeuge": [],
         "tutNie": "Eine Regel selbst ändern.",
@@ -4332,29 +4764,174 @@
     "werkzeuge": {
       "satz": "Hermes Agent kennt die folgenden Werkzeugsätze.",
       "inBetrieb": [
-        { "name": "Dateien", "was": "Dateien lesen, anlegen, gezielt ändern und durchsuchen. Wohin geschrieben werden darf, sagt die Grenzdatei.", "beispiel": "Gregor ändert in den Daten das Feld stand, Hermes legt eine Auftragsnotiz an.", "wer": ["reviewer", "orchestrator", "researcherin", "architekt", "seiten"], "art": "dateien" },
-        { "name": "Board für Aufträge", "was": "Das Board, über das Aufträge laufen. Karten anlegen darf nur Hermes.", "beispiel": "Hermes legt für Gregor die Karte zu A-0015 an, Gregor liest sie und meldet sie mit dem Commit ab.", "wer": ["reviewer", "orchestrator", "researcherin", "architekt", "seiten"], "art": "board" },
-        { "name": "Kommandozeile", "was": "Einen Befehl ausführen. Nur Befehle, die als Muster in der Grenzdatei stehen; Ketten aus mehreren Befehlen lehnt der Zaun ab.", "beispiel": "Fritz startet sein Prüfskript, Gregor die Tests.", "wer": ["reviewer", "seiten"], "art": "kommandozeile" },
-        { "name": "Websuche und Seitenabruf", "was": "Im Netz suchen und eine Seite als Text holen. Gesucht wird ohne interne Namen.", "beispiel": "Die Researcherin sucht jeden Morgen neue Fassungen von Hermes Agent und liest die Release-Notiz.", "wer": ["researcherin", "architekt", "seiten"], "art": "websuche" },
-        { "name": "Browser", "was": "Eine Seite in einem echten Browser öffnen, klicken, scrollen, die Konsole lesen, ein Bildschirmfoto ansehen.", "beispiel": "Gregor öffnet die gebaute Seite stand.", "wer": ["seiten"], "art": "browser" },
-        { "name": "Bilder ansehen", "was": "Ein Bild ins Gespräch laden und beschreiben. Die Quelle des Bildes prüft der Zaun wie einen Lesepfad.", "beispiel": "Gregor prüft auf einem Bildschirmfoto den Kontrast.", "wer": ["seiten"], "art": "bilder" },
-        { "name": "Anleitungen für die Arbeit", "was": "Eine Anleitung für eine bestimmte Arbeit laden. Anlegen darf nur der Reviewer, und nur mit Freigabe eines Menschen.", "beispiel": "Der Architekt lädt die Anleitung für nachprüfbare Quellen.", "wer": ["reviewer", "architekt", "seiten"], "art": "skills" },
-        { "name": "Gedächtnis", "was": "Ein Gedächtnis über Gespräche hinweg. Jeder Eintrag braucht eine Freigabe.", "beispiel": "Ein Hinweis des Auftraggebers, der auch beim nächsten Mal gelten soll.", "wer": ["orchestrator", "reviewer"], "art": "gedaechtnis" },
-        { "name": "Aufgabenliste", "was": "Eine Aufgabenliste für einen langen Auftrag.", "beispiel": "Fritz plant einen Lauf in Schritten: Profil wählen, prüfen, Bogen.", "wer": ["reviewer"], "art": "aufgabenliste" },
-        { "name": "Rückfrage", "was": "Beim Auftraggeber nachfragen, mit Auswahl oder offen.", "beispiel": "Welcher Jahrgang gemeint ist.", "wer": ["reviewer"], "art": "rueckfrage" }
+        {
+          "name": "Dateien",
+          "was": "Dateien lesen, anlegen, gezielt ändern und durchsuchen. Wohin geschrieben werden darf, sagt die Grenzdatei.",
+          "beispiel": "Gregor ändert in den Daten das Feld stand, Hermes legt eine Auftragsnotiz an.",
+          "wer": [
+            "reviewer",
+            "orchestrator",
+            "researcherin",
+            "architekt",
+            "seiten"
+          ],
+          "art": "dateien"
+        },
+        {
+          "name": "Board für Aufträge",
+          "was": "Das Board, über das Aufträge laufen. Karten anlegen darf nur Hermes.",
+          "beispiel": "Hermes legt für Gregor die Karte zu A-0015 an, Gregor liest sie und meldet sie mit dem Commit ab.",
+          "wer": [
+            "reviewer",
+            "orchestrator",
+            "researcherin",
+            "architekt",
+            "seiten"
+          ],
+          "art": "board"
+        },
+        {
+          "name": "Kommandozeile",
+          "was": "Einen Befehl ausführen. Nur Befehle, die als Muster in der Grenzdatei stehen; Ketten aus mehreren Befehlen lehnt der Zaun ab.",
+          "beispiel": "Fritz startet sein Prüfskript, Gregor die Tests.",
+          "wer": [
+            "reviewer",
+            "seiten"
+          ],
+          "art": "kommandozeile"
+        },
+        {
+          "name": "Websuche und Seitenabruf",
+          "was": "Im Netz suchen und eine Seite als Text holen. Gesucht wird ohne interne Namen.",
+          "beispiel": "Die Researcherin sucht jeden Morgen neue Fassungen von Hermes Agent und liest die Release-Notiz.",
+          "wer": [
+            "researcherin",
+            "architekt",
+            "seiten"
+          ],
+          "art": "websuche"
+        },
+        {
+          "name": "Browser",
+          "was": "Eine Seite in einem echten Browser öffnen, klicken, scrollen, die Konsole lesen, ein Bildschirmfoto ansehen.",
+          "beispiel": "Gregor öffnet die gebaute Seite stand.",
+          "wer": [
+            "seiten"
+          ],
+          "art": "browser"
+        },
+        {
+          "name": "Bilder ansehen",
+          "was": "Ein Bild ins Gespräch laden und beschreiben. Die Quelle des Bildes prüft der Zaun wie einen Lesepfad.",
+          "beispiel": "Gregor prüft auf einem Bildschirmfoto den Kontrast.",
+          "wer": [
+            "seiten"
+          ],
+          "art": "bilder"
+        },
+        {
+          "name": "Anleitungen für die Arbeit",
+          "was": "Eine Anleitung für eine bestimmte Arbeit laden. Anlegen darf nur der Reviewer, und nur mit Freigabe eines Menschen.",
+          "beispiel": "Der Architekt lädt die Anleitung für nachprüfbare Quellen.",
+          "wer": [
+            "reviewer",
+            "architekt",
+            "seiten"
+          ],
+          "art": "skills"
+        },
+        {
+          "name": "Gedächtnis",
+          "was": "Ein Gedächtnis über Gespräche hinweg. Jeder Eintrag braucht eine Freigabe.",
+          "beispiel": "Ein Hinweis des Auftraggebers, der auch beim nächsten Mal gelten soll.",
+          "wer": [
+            "orchestrator",
+            "reviewer"
+          ],
+          "art": "gedaechtnis"
+        },
+        {
+          "name": "Aufgabenliste",
+          "was": "Eine Aufgabenliste für einen langen Auftrag.",
+          "beispiel": "Fritz plant einen Lauf in Schritten: Profil wählen, prüfen, Bogen.",
+          "wer": [
+            "reviewer"
+          ],
+          "art": "aufgabenliste"
+        },
+        {
+          "name": "Rückfrage",
+          "was": "Beim Auftraggeber nachfragen, mit Auswahl oder offen.",
+          "beispiel": "Welcher Jahrgang gemeint ist.",
+          "wer": [
+            "reviewer"
+          ],
+          "art": "rueckfrage"
+        }
       ],
       "gesperrt": [
-        { "name": "Code ausführen", "was": "Ein Skript schreiben und ausführen, das selbst Werkzeuge aufruft.", "beispiel": "Zehn Dateien in einem Zug lesen.", "warum": "Der Zaun sieht nur den Aufruf, nicht, was das Skript tut." },
-        { "name": "Helfer starten", "was": "Einen Helfer mit eigenem Kontext starten.", "beispiel": "Fritz gibt die Rechenprüfung ab.", "warum": "Der Helfer liefe ohne eigene Akte unter der Grenze des Aufrufers. Aufträge laufen über Karten." },
-        { "name": "Zeitplan", "was": "Einen Lauf nach Zeitplan anlegen.", "beispiel": "Jeden Montag um 7 Uhr ein Pflegelauf.", "warum": "Feste Läufe legt die Werkbank an. Kein Mitarbeiter plant sich selbst." },
-        { "name": "Gespräche durchsuchen", "was": "Frühere Gespräche durchsuchen.", "beispiel": "Was hat der Projektverantwortliche letzte Woche gesagt?", "warum": "Was gilt, steht in der Ablage, nicht in alten Gesprächen." },
-        { "name": "Fremddienste anbinden", "was": "Fremddienste anbinden und dort handeln.", "beispiel": "Ein Konto eines fremden Diensts verbinden.", "warum": "Kein Mitarbeiter verbindet Konten." },
-        { "name": "Bildschirm bedienen", "was": "Einen Bildschirm mit Maus und Tastatur bedienen.", "warum": "Kein Bedarf." },
-        { "name": "Bilder erzeugen", "was": "Ein Bild aus einem Text erzeugen.", "beispiel": "Ein Titelbild.", "warum": "Kein Auftrag verlangt es, Bilder legt das CI fest." },
-        { "name": "Video", "was": "Ein Video auswerten oder erzeugen.", "warum": "Kein Bedarf." },
-        { "name": "Sprache und Vorlesen", "was": "Text vorlesen oder Sprache in Text wandeln.", "beispiel": "Eine Sprachnachricht.", "warum": "Im Lauf braucht es kein Mitarbeiter. Für Sprache an Hermes steht Meilenstein 3." },
-        { "name": "Beiträge eines Netzwerks durchsuchen", "was": "Beiträge auf einem Netzwerk durchsuchen.", "warum": "Braucht einen Anbieter; die Researcherin nimmt Foren über Websuche und Seitenabruf." },
-        { "name": "Weitere Sätze", "was": "Eine andere Gedächtnis-Maschine, Austausch mit fremden Agenten, Werkzeuge einzelner Chat-Dienste.", "warum": "Kein Bedarf." }
+        {
+          "name": "Code ausführen",
+          "was": "Ein Skript schreiben und ausführen, das selbst Werkzeuge aufruft.",
+          "beispiel": "Zehn Dateien in einem Zug lesen.",
+          "warum": "Der Zaun sieht nur den Aufruf, nicht, was das Skript tut."
+        },
+        {
+          "name": "Helfer starten",
+          "was": "Einen Helfer mit eigenem Kontext starten.",
+          "beispiel": "Fritz gibt die Rechenprüfung ab.",
+          "warum": "Der Helfer liefe ohne eigene Akte unter der Grenze des Aufrufers. Aufträge laufen über Karten."
+        },
+        {
+          "name": "Zeitplan",
+          "was": "Einen Lauf nach Zeitplan anlegen.",
+          "beispiel": "Jeden Montag um 7 Uhr ein Pflegelauf.",
+          "warum": "Feste Läufe legt die Werkbank an. Kein Mitarbeiter plant sich selbst."
+        },
+        {
+          "name": "Gespräche durchsuchen",
+          "was": "Frühere Gespräche durchsuchen.",
+          "beispiel": "Was hat der Projektverantwortliche letzte Woche gesagt?",
+          "warum": "Was gilt, steht in der Ablage, nicht in alten Gesprächen."
+        },
+        {
+          "name": "Fremddienste anbinden",
+          "was": "Fremddienste anbinden und dort handeln.",
+          "beispiel": "Ein Konto eines fremden Diensts verbinden.",
+          "warum": "Kein Mitarbeiter verbindet Konten."
+        },
+        {
+          "name": "Bildschirm bedienen",
+          "was": "Einen Bildschirm mit Maus und Tastatur bedienen.",
+          "warum": "Kein Bedarf."
+        },
+        {
+          "name": "Bilder erzeugen",
+          "was": "Ein Bild aus einem Text erzeugen.",
+          "beispiel": "Ein Titelbild.",
+          "warum": "Kein Auftrag verlangt es, Bilder legt das CI fest."
+        },
+        {
+          "name": "Video",
+          "was": "Ein Video auswerten oder erzeugen.",
+          "warum": "Kein Bedarf."
+        },
+        {
+          "name": "Sprache und Vorlesen",
+          "was": "Text vorlesen oder Sprache in Text wandeln.",
+          "beispiel": "Eine Sprachnachricht.",
+          "warum": "Im Lauf braucht es kein Mitarbeiter. Für Sprache an Hermes steht Meilenstein 3."
+        },
+        {
+          "name": "Beiträge eines Netzwerks durchsuchen",
+          "was": "Beiträge auf einem Netzwerk durchsuchen.",
+          "warum": "Braucht einen Anbieter; die Researcherin nimmt Foren über Websuche und Seitenabruf."
+        },
+        {
+          "name": "Weitere Sätze",
+          "was": "Eine andere Gedächtnis-Maschine, Austausch mit fremden Agenten, Werkzeuge einzelner Chat-Dienste.",
+          "warum": "Kein Bedarf."
+        }
       ],
       "kanaele": "Hermes Agent lässt sich über viele Dienste ansprechen, unter anderem Messenger, Discord, Slack, WhatsApp, Signal, E-Mail, SMS, Matrix, Mattermost und Teams. Jeder Kanal bringt einen großen eigenen Werkzeugsatz mit. Bei uns ist nur der Messenger in Betrieb, mit drei Bots: dem von Hermes, über den der Projektverantwortliche und ab Meilenstein 2 das Team Aufträge geben, dem des Reviewers und dem der Researcherin. Der Architekt, der Pfleger der Seiten und künftig der Reporter haben keinen Bot; ihre Aufträge kommen als Karte."
     },
