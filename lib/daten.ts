@@ -1,5 +1,6 @@
 import rohdaten from '@/data/projektstand.json'
 import type { Freigabe, MitFreigabe } from './freigabe'
+import type { WerkzeugArt } from './werkzeugart'
 
 export interface Kennzahl extends MitFreigabe {
   id: string
@@ -248,6 +249,10 @@ export interface Mannschaft extends MitFreigabe {
  *  danach, dazu ein Beispiel, wenn es in der Quelle steht. */
 export interface SteckbriefPunkt {
   was: string
+  /** Kurzer Titel, der im Abzeichen steht, wenn die Karte ihn zeigt. */
+  titel?: string
+  /** Art des Werkzeugs, für die Gruppe in der Werkzeugmatrix. */
+  art?: WerkzeugArt
   beispiel?: string
 }
 
@@ -279,6 +284,8 @@ export interface WerkzeugInBetrieb extends MitFreigabe {
   beispiel: string
   /** ids der Köpfe, die es haben */
   wer: string[]
+  /** Art des Werkzeugs, für die Gruppe in der Werkzeugmatrix. */
+  art: WerkzeugArt
 }
 
 /** Ein Werkzeug von Hermes Agent, das es gibt, bei uns aber gesperrt ist. */
