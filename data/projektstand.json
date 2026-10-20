@@ -4145,7 +4145,7 @@
   "steckbriefe": {
     "stand": "2026-10-20",
     "quelle": "Steckbriefe der KI-Mitarbeiter vom 20.10.2026, ohne Profilnamen, Pfade, Versionen und Modell",
-    "satz": "Zu jedem KI-Mitarbeiter steht hier ein Steckbrief mit Aufgaben, Zielen und Werkzeugen, jede Angabe mit einem Beispiel oder einer Erklärung. Grundlage ist eine Notiz in der Ablage, die der Projektverantwortliche gelesen und freigegeben hat.",
+    "satz": "Zu jedem KI-Mitarbeiter steht hier ein Steckbrief mit Aufgaben, Zielen und Werkzeugen, jede Angabe mit einem Beispiel oder einer Erklärung. Grundlage ist eine Notiz in der Ablage, die der Projektverantwortliche gelesen hat.",
     "lesehilfe": "Hermes Agent bündelt Werkzeuge in Sätzen, und ein Profil schaltet ganze Sätze ein. Danach prüft der Zaun vor jedem einzelnen Aufruf, ob die Grenzdatei ihn erlaubt. Ein Werkzeug ist nur dann nutzbar, wenn beide es durchlassen. Beispiel: Gregor hat den Satz Terminal, aber der Zaun lässt nur seine 33 Befehlsmuster durch und lehnt einen Push auf den Hauptzweig ab.",
     "mitarbeiter": [
       {
