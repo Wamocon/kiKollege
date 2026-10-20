@@ -19,7 +19,7 @@ import { existsSync, statSync } from 'node:fs'
 import { readFile } from 'node:fs/promises'
 import { extname, join, resolve } from 'node:path'
 
-const SEITEN = ['/', '/stand/', '/impressum/', '/datenschutz/']
+const SEITEN = ['/', '/stand/', '/mannschaft/', '/impressum/', '/datenschutz/']
 const BREITEN = [1280, 375]
 /** Eine Glyphe darf den Rand um so viel beruehren; das ist ihr Seitenabstand. */
 const TOLERANZ = 1.5

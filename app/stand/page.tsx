@@ -670,6 +670,11 @@ export default function Seite() {
                 </tbody>
               </table>
             </div>
+            <p style={{ marginTop: '1rem' }}>
+              <a href={pfad('/mannschaft/')}>
+                Steckbriefe aller KI-Mitarbeiter, mit Aufgaben, Zielen und Werkzeugen
+              </a>
+            </p>
             {sichtbar(d.mannschaft.verlauf) ? (
               <div className="prosa" style={{ marginTop: '1.3rem' }}>
                 <p>
