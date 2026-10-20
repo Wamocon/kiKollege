@@ -28,7 +28,7 @@ const geaendert = { 'git diff --quiet': { status: 1 } }
 /** Ein lesbares Minimum von data/projektstand.json für die Stand-Tests. */
 const stehendeDaten = () => ({
   stand: '2026-09-10',
-  herkunft: { erzeugt: '2026-09-18' },
+  herkunft: { erzeugt: '2026-09-12' },
 })
 const lauf = (w, mehr = {}) =>
   nachtragen({ vault: 'V', ablage: 'A', heute: '2026-09-18', lauf: w.lauf, schreibe: () => {}, log: () => {}, ...mehr })
@@ -96,7 +96,7 @@ test('ein Lauf ohne Änderung lässt stand und erzeugt stehen und schreibt die D
   assert.equal(gelesen, 0, 'liest die Datei nicht')
   assert.equal(geschrieben, 0, 'schreibt die Datei nicht')
   assert.equal(daten.stand, '2026-09-10', 'stand bleibt')
-  assert.equal(daten.herkunft.erzeugt, '2026-09-18', 'erzeugt bleibt')
+  assert.equal(daten.herkunft.erzeugt, '2026-09-12', 'erzeugt bleibt')
 })
 
 test('ein jüngerer stand bleibt stehen, erzeugt zieht mit', async () => {
