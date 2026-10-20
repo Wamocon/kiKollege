@@ -244,6 +244,66 @@ export interface Mannschaft extends MitFreigabe {
   organigrammQuelle: string
 }
 
+/** Ein Punkt in den Listen der Steckbriefe: der fette Anfang und der Satz
+ *  danach, dazu ein Beispiel, wenn es in der Quelle steht. */
+export interface SteckbriefPunkt {
+  was: string
+  beispiel?: string
+}
+
+/** Ein Ziel eines KI-Mitarbeiters, mit dem Tag, bis zu dem es gilt, wenn es
+ *  einen gibt, und dem Stand, ob es erreicht ist. */
+export interface SteckbriefZiel {
+  was: string
+  /** Tag im Format JJJJ-MM-TT, null ohne Datum. */
+  bis: string | null
+  erreicht: boolean
+}
+
+/** Der Steckbrief eines KI-Mitarbeiters: Rolle in einem Satz, Aufgaben,
+ *  Ziele, Werkzeuge, und was er nie tut. */
+export interface Steckbrief extends MitFreigabe {
+  /** id eines Kopfes in mannschaft.koepfe */
+  kopf: string
+  satz: string
+  aufgaben: SteckbriefPunkt[]
+  ziele: SteckbriefZiel[]
+  werkzeuge: SteckbriefPunkt[]
+  tutNie: string
+}
+
+/** Ein Werkzeug von Hermes Agent, das bei uns in Betrieb ist. */
+export interface WerkzeugInBetrieb extends MitFreigabe {
+  name: string
+  was: string
+  beispiel: string
+  /** ids der Köpfe, die es haben */
+  wer: string[]
+}
+
+/** Ein Werkzeug von Hermes Agent, das es gibt, bei uns aber gesperrt ist. */
+export interface WerkzeugGesperrt extends MitFreigabe {
+  name: string
+  was: string
+  beispiel?: string
+  warum: string
+}
+
+/** Die Steckbriefe der KI-Mitarbeiter und die Werkzeuge, die dahinterliegen. */
+export interface Steckbriefe extends MitFreigabe {
+  stand: string
+  quelle: string
+  satz: string
+  lesehilfe: string
+  mitarbeiter: Steckbrief[]
+  werkzeuge: {
+    satz: string
+    inBetrieb: WerkzeugInBetrieb[]
+    gesperrt: WerkzeugGesperrt[]
+    kanaele: string
+  }
+}
+
 export interface AblageBereich {
   id: string
   gruppe: 'wissen' | 'gedaechtnis' | 'werkstatt'
@@ -816,6 +876,7 @@ export interface Projektstand {
   geschaeftsfuehrung: string
   ansprechpartner: { name: string; rolle: string }
   quellen: Quelle[]
+  steckbriefe: Steckbriefe
 }
 
 export const daten = rohdaten as unknown as Projektstand
