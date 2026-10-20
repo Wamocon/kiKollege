@@ -3,6 +3,7 @@ import type { ReactNode } from 'react'
 import { inWorten } from '@/lib/alter'
 import { daten, datum, zahl, type AblageBereich, type Kopf } from '@/lib/daten'
 import { nurSichtbare, sichtbar } from '@/lib/freigabe'
+import { pfad } from '@/lib/pfad'
 import { Figur } from './gemeinsam'
 
 /** Das Organigramm der Mannschaft, im Stil des Blatts vom 16.10.: oben der
@@ -135,6 +136,18 @@ function wissensfelder(bereiche: AblageBereich[]) {
   ]
 }
 
+/** Ein Kasten mit Steckbrief führt zu ihm (Erwin 20.10.2026). */
+function MitSteckbrief({ kopf, children }: { kopf: Kopf; children: ReactNode }) {
+  const hat = nurSichtbare(daten.steckbriefe.mitarbeiter).some((s) => s.kopf === kopf.id)
+  if (!hat) return <>{children}</>
+  const titel = kopf.name ? `${kopf.rolle}, ${kopf.name}` : kopf.rolle
+  return (
+    <a href={pfad(`/mannschaft/#${kopf.id}`)} aria-label={`Steckbrief: ${titel}`} className="figur-verweis">
+      {children}
+    </a>
+  )
+}
+
 export function MannschaftFigur() {
   const m = daten.mannschaft
   const koepfe = nurSichtbare(m.koepfe)
@@ -158,11 +171,13 @@ export function MannschaftFigur() {
       { text: m.mensch.zusatz, groesse: 10.5, farbe: 'leise' },
     ]} />,
     <line key="mensch-pfeil" x1={500} y1={64} x2={500} y2={92} stroke="var(--signal)" strokeWidth="2" markerEnd="url(#spitze-rot)" />,
-    <Kasten key={oben.id} {...orch} art={artVon(oben)} zeilen={[
-      { text: oben.name ?? oben.kurz, groesse: 16, fett: true, farbe: 'text' },
-      { text: `${oben.rolle}, ${oben.kern}`, groesse: 12, farbe: 'leise' },
-      { text: oben.marke ?? '', groesse: 10.5, fett: true, farbe: 'marke' },
-    ]} />,
+    <MitSteckbrief key={oben.id} kopf={oben}>
+      <Kasten {...orch} art={artVon(oben)} zeilen={[
+        { text: oben.name ?? oben.kurz, groesse: 16, fett: true, farbe: 'text' },
+        { text: `${oben.rolle}, ${oben.kern}`, groesse: 12, farbe: 'leise' },
+        { text: oben.marke ?? '', groesse: 10.5, fett: true, farbe: 'marke' },
+      ]} />
+    </MitSteckbrief>,
   )
 
   // Die Rollen darunter
@@ -200,7 +215,9 @@ export function MannschaftFigur() {
         <line x1={mitte(i)} y1={yVerteiler} x2={mitte(i)} y2={214}
               stroke={laeuft ? 'var(--signal)' : 'var(--wmc-border)'} strokeWidth={laeuft ? 2 : 1.6}
               markerEnd={laeuft ? 'url(#spitze-rot)' : 'url(#spitze-grau)'} />
-        <Kasten x={xVon(i)} y={218} b={b} h={112} art={art} zeilen={zeilen} />
+        <MitSteckbrief kopf={k}>
+          <Kasten x={xVon(i)} y={218} b={b} h={112} art={art} zeilen={zeilen} />
+        </MitSteckbrief>
       </g>,
     )
   })

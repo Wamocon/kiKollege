@@ -1568,3 +1568,8 @@ p.stand-hinweis {
   .sb-kopf { flex-wrap: wrap; }
   .sb-marke { margin-left: 0; }
 }
+
+/* Anklickbare Kästen im Organigramm (A-0017) */
+.figur-verweis { cursor: pointer; }
+.figur-verweis:hover rect, .figur-verweis:focus-visible rect { stroke: var(--wmc-ink); stroke-width: 2.5; }
+.figur-verweis:focus { outline: none; }
