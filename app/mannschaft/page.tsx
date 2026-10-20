@@ -2,10 +2,9 @@ import type { Metadata } from 'next'
 
 import { Kopf } from '@/components/Kopf'
 import { Fuss } from '@/components/Fuss'
-import { Hinweis, Marker } from '@/components/bausteine'
+import { Marker } from '@/components/bausteine'
 import { daten, datum } from '@/lib/daten'
 import { istIntern, nurSichtbare, sichtbar } from '@/lib/freigabe'
-import { pfad } from '@/lib/pfad'
 
 export const metadata: Metadata = {
   title: 'Mannschaft',
@@ -24,10 +23,15 @@ export default function Seite() {
     return k.name ? `${k.rolle}, ${k.name}` : k.rolle
   }
 
-  /** Die ids in „wer“ als Namen, in der Reihenfolge der Daten. */
+  /** Die ids in „wer“ als Namen, in der Reihenfolge der Daten. Für einen Kopf
+   *  ohne Rufnamen steht seine Rolle, und Köpfe, die in dieser Fassung nicht
+   *  sichtbar sind, bleiben ganz weg. */
   const werNamen = (wer: string[]) =>
     wer
-      .map((id) => koepfe.find((k) => k.id === id)?.name ?? id)
+      .map((id) => koepfe.find((k) => k.id === id))
+      .filter((k): k is NonNullable<typeof k> => k !== undefined)
+      .filter(sichtbar)
+      .map((k) => k.name ?? k.rolle)
       .join(', ')
 
   const sichtbareMitarbeiter = nurSichtbare(s.mitarbeiter)
@@ -70,9 +74,6 @@ export default function Seite() {
                 </tbody>
               </table>
             </div>
-            <p className="fussnote">
-              Ein Steckbrief, der hier fehlt, ist in dieser Fassung nicht sichtbar.
-            </p>
           </section>
 
           {/* 02 ------------------------------------------------------------ */}

@@ -4173,7 +4173,7 @@
           { "was": "Aufgabenliste: plant einen langen Lauf in Schritten." },
           { "was": "Gedächtnis des Profils: behält, was über einen Lauf hinaus gilt. Die Ablage bleibt die Quelle." },
           { "was": "Skills: laden; anlegen nur mit Freigabe eines Menschen." },
-          { "was": "Eigener Bot im Messenger, nur für den Projektverantwortlichen." }
+          { "was": "Eigener Bot im Messenger; Aufträge darüber gibt allein der Projektverantwortliche." }
         ],
         "tutNie": "Ins Netz gehen, freigeben, bewerten, Unterlagen ändern, Aufträge weitergeben, committen.",
         "freigabe": "oeffentlich"
