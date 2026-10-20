@@ -48,7 +48,9 @@
       "Logbuch, 2026-10-19 Entscheidung Arbeitsordner des Reporters",
       "Logbuch, 2026-10-19 Entscheidung Remote von reviewer",
       "Logbuch, 2026-10-19 Entscheidungen Testläufe und Weitergabe",
-      "Logbuch, 2026-10-19 Wochenziel fünf KI-Mitarbeiter"
+      "Logbuch, 2026-10-19 Wochenziel fünf KI-Mitarbeiter",
+      "Tagesprotokoll vom 19.10.2026",
+      "Tagesprotokoll vom 20.10.2026"
     ],
     "getrenntAm": "2026-09-09",
     "notizordner": "KFBM/00_Vault/10_KI-Mitarbeiter"
@@ -1923,10 +1925,10 @@
         "tutNie": "empfehlen, eine Forenmeldung als Beleg ausgeben, interne Angaben in eine Suche schreiben, etwas nach außen senden",
         "zustand": "arbeitet",
         "seit": "2026-09-12",
-        "hinweis": "Bisher die einzige mit Netz. Seit dem 20.09. beobachtet sie den eigenen Betrieb statt des Marktes. Ihre Grenze am Profil kommt mit Meilenstein 4.",
+        "hinweis": "Seit dem 20.09. beobachtet sie den eigenen Betrieb statt des Marktes. Ihre Grenze hängt seit dem 19.10. am Profil, vorgezogen aus Meilenstein 4.",
         "freigabe": "intern",
-        "betrieb": "ohneGrenze",
-        "marke": "läuft täglich, Grenze folgt"
+        "betrieb": "mitGrenze",
+        "marke": "täglich, mit Grenze seit 19.10."
       },
       {
         "id": "reporter",
@@ -3772,7 +3774,7 @@
       },
       {
         "wer": "Researcherin",
-        "stand": "Läuft täglich. Ihre Grenze am Profil kommt mit Meilenstein 4."
+        "stand": "Läuft täglich, seit dem 19.10. mit ihrer Grenze am Profil."
       },
       {
         "wer": "Sprache",
@@ -4285,7 +4287,7 @@
         "ziele": [
           { "was": "Lauffähig mit einer echten Aufgabe.", "bis": "2026-10-23", "erreicht": true },
           { "was": "Abnahme: Ein Pflegelauf und ein Bau ergeben je einen Pull Request, beides erfüllt. Es fehlt das eigene Konto mit der Sperre vor dem Hauptzweig. Bis dahin hält nur der Zaun, und die Pull Requests stellt die Werkbank.", "bis": null, "erreicht": false },
-          { "was": "Der feste Pflegelauf am Montag und Donnerstag. Eingerichtet ist er noch nicht.", "bis": null, "erreicht": false }
+          { "was": "Der feste Pflegelauf am Montag und Donnerstag um 7 Uhr. Eingerichtet am 20.10.", "bis": "2026-10-20", "erreicht": true }
         ],
         "werkzeuge": [
           { "was": "33 Befehlsmuster: Git nur für die eigenen Zweige, Pull Requests stellen und lesen, Tests, Build, die Prüfungen und den Pflegelauf.", "beispiel": "Einen Push seines eigenen Zweigs. Abgelehnt: ein Push auf den Hauptzweig, das Zusammenführen, das Installieren neuer Pakete.", "titel": "Kommandozeile", "art": "kommandozeile" },
