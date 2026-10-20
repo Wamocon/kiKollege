@@ -389,7 +389,8 @@ npm run pruefe:aktualitaet -- --ablage "D:\WAMOCON"
 1. **Adressat und Schluss der Seite.** Vertagt. Die Landing Page hat deshalb
    keinen Schlussabschnitt und keine Anrede.
 2. **`/stand` nachziehen.** Am 17.09. nachgezogen, mit Stufen und dem
-   Meilensteinplan im Einzelnen. Das Organigramm fehlt ihr weiter.
+   Meilensteinplan im Einzelnen. Das Organigramm steht seit dem 16.10. unter
+   Übertragbarkeit, seine Daten folgen dem Organigramm vom 19.10.
 3. **Kürzen.** Am 17.09. von neunzehn auf zwölf Abschnitte gekürzt, ohne Inhalt
    zu verlieren: Was wegfiel, steht unter `/stand/`. Am Abend kam die Ablage als
    dreizehnter dazu. Ob das so bleibt,
