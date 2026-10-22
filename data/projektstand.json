@@ -4624,7 +4624,7 @@
       {
         "id": "assessment-center",
         "begriff": "Assessment Center",
-        "erklaerung": "Geplante Prüfung, die jeder neue KI-Mitarbeiter durchläuft. Volles Mitglied wird er erst, wenn seine Ergebnisse dort eine bestimmte Qualität erreichen; Aufgaben und Schwelle stehen noch nicht fest.",
+        "erklaerung": "Prüfung, die jeder neue KI-Mitarbeiter durchläuft, bevor er volles Mitglied wird: der Prüfstand seiner Rolle zweimal hintereinander und drei echte Aufgaben, ohne Herkunft bewertet. Erst wer die feste Schwelle schafft, darf vom Team beauftragt werden. Wiederholt alle drei Monate; noch nicht gebaut.",
         "quelle": "Logbuch 2026-10-22 Entscheidungen Prozess neuer KI-Mitarbeiter und Assessment Center"
       },
       {
@@ -5431,14 +5431,14 @@
       },
       {
         "titel": "In Betrieb nehmen",
-        "text": "Der Orchestrator nimmt Aufträge für ihn an, er steht in der Mannschaft, und ein Prüfstand misst jede spätere Änderung nach."
+        "text": "Der Orchestrator nimmt Aufträge für ihn an, zuerst nur vom Projektverantwortlichen. Er steht in der Mannschaft, und ein Prüfstand misst jede spätere Änderung nach."
       }
     ],
     "assessment": {
       "titel": "Dazu kommt das Assessment Center",
-      "text": "Geplant und noch nicht gebaut. Jeder neue KI-Mitarbeiter durchläuft es. Volles Mitglied wird er erst, wenn seine Ergebnisse dort eine bestimmte Qualität erreichen. Welche Aufgaben und welche Schwelle gelten, ist noch nicht festgelegt."
+      "text": "Geplant und noch nicht gebaut. Jeder neue KI-Mitarbeiter durchläuft es: den Prüfstand seiner Rolle zweimal hintereinander und drei echte Aufgaben, ohne Herkunft bewertet. Volles Mitglied wird er erst, wenn er alle Pflichtfälle besteht und keine der echten Aufgaben verworfen wird; erst dann darf ihn das Team beauftragen. Bis dahin ist er auf Probe. Das Assessment Center wird alle drei Monate wiederholt; die ersten KI-Mitarbeiter holen es nach."
     },
-    "quelle": "Prozess neuer KI-Mitarbeiter, angenommen am 22.10.2026; Logbuch 2026-10-22 Entscheidungen Prozess neuer KI-Mitarbeiter und Assessment Center",
+    "quelle": "Prozess neuer KI-Mitarbeiter, angenommen am 22.10.2026; Logbuch 2026-10-22 Entscheidungen Prozess neuer KI-Mitarbeiter und Assessment Center, mit den sechs Fragen zum Assessment Center",
     "freigabe": "oeffentlich"
   }
 }
