@@ -64,7 +64,9 @@
       "Logbuch 2026-10-21: Entscheidung Infrastrukturprobleme sind Arnolds Thema",
       "Logbuch 2026-10-21: Entscheidungen Volltext Fritz",
       "Protokolle KI-Mitarbeiter vom 17. bis 22.10.2026",
-      "Arbeitsplan 2026-10-16, Stand 20.10.2026, Punkt 11"
+      "Arbeitsplan 2026-10-16, Stand 20.10.2026, Punkt 11",
+      "Logbuch 2026-10-16: Abnahme Meilenstein 1, mit Nachtrag vom 19.10.2026",
+      "Arbeitsplan 2026-10-16, Stand 20.10.2026, Punkte 12, 14, 16, 49 und 50 und Abschnitt „Aus den Sitzungen“ vom 21.10."
     ],
     "getrenntAm": "2026-09-09",
     "notizordner": "KFBM/00_Vault/10_KI-Mitarbeiter"
@@ -1084,6 +1086,16 @@
       "datum": "2026-10-21",
       "entscheidung": "Fritz liest den Text einer Unterlage über ein eigenes Skript, das nur unter den Dokumenten der Academy liest",
       "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-16",
+      "entscheidung": "Meilenstein 1 ist erreicht, abgenommen mit Vorbehalt, eine Woche vor dem Termin",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-19",
+      "entscheidung": "Der Vorbehalt aus Meilenstein 1 ist bis auf den Test mit einer fremden Kennung erledigt; dieser Test läuft mit Meilenstein 2",
+      "freigabe": "intern"
     }
   ],
   "entscheidungenNachtrag": "Die Entscheidung vom 04.09. dreht bewusst eine zuvor festgelegte Reihenfolge um: Ursprünglich sollte die Fehlalarmquote vor dem Plattformwechsel gemessen werden. Die Technik wurde vorgezogen. Das ist kein Widerspruch, sondern eine andere Reihenfolge mit einer benannten Folge, und die Folge steht im Abschnitt zur Messlücke.",
@@ -1825,7 +1837,7 @@
       },
       {
         "datum": "2026-10-16",
-        "text": "Neue Termine: Meilenstein 1 am 23.10., der letzte am 13.11. Ein Testauftrag läuft über das Board zum Reviewer, und Systemarchitektur und Organigramm stehen auf dem Stand des Tages.",
+        "text": "Neue Termine: Meilenstein 1 am 23.10., der letzte am 13.11. Ein Testauftrag läuft über das Board zum Reviewer, und Systemarchitektur und Organigramm stehen auf dem Stand des Tages. Meilenstein 1 ist erreicht und mit Vorbehalt abgenommen.",
         "freigabe": "oeffentlich"
       },
       {
@@ -1840,7 +1852,7 @@
       },
       {
         "datum": "2026-10-19",
-        "text": "Das Wochenziel: fünf KI-Mitarbeiter lauffähig, jeder mit einer echten Aufgabe. julia-trend und Gregor Dev laufen mit ihrer Grenze; Gregor Devs erster Pflegelauf und sein erster Bauauftrag sind zusammengeführt.",
+        "text": "Das Wochenziel: fünf KI-Mitarbeiter lauffähig, jeder mit einer echten Aufgabe. julia-trend und Gregor Dev laufen mit ihrer Grenze; Gregor Devs erster Pflegelauf und sein erster Bauauftrag sind zusammengeführt. Der Vorbehalt aus Meilenstein 1 ist bis auf den Test mit einer fremden Kennung erledigt.",
         "freigabe": "oeffentlich"
       },
       {
@@ -3683,11 +3695,13 @@
             "erledigt": "laut Prüfung vom 16.10."
           },
           {
-            "text": "Ein eigener Zugang im Messenger für den Orchestrator"
+            "text": "Ein eigener Zugang im Messenger für den Orchestrator",
+            "entfaellt": "seit dem 17.10.",
+            "teilweise": "Das Team schreibt demselben Zugang, hinter dem seit dem 18.10. der Orchestrator mit seiner Grenze steht"
           },
           {
             "text": "Der erste Auftrag über das Board: vom Projektverantwortlichen an den Orchestrator, als Karte zum Reviewer und zurück",
-            "teilweise": "Ein Testauftrag lief am 16.10. über das Board zum Reviewer."
+            "erledigt": "am 16.10."
           },
           {
             "text": "Jira an den Plan angleichen"
@@ -3698,7 +3712,11 @@
           }
         ],
         "abnahme": "Der Projektverantwortliche gibt dem Orchestrator einen Auftrag, der über Auftragsnotiz und Karte zum Reviewer und unverändert zurück läuft. Einen Auftrag, der nicht in seiner Tabelle steht, lehnt der Orchestrator ab und sagt warum.",
-        "erwinMinuten": 85
+        "erwinMinuten": 85,
+        "abgenommen": {
+          "am": "2026-10-16",
+          "text": "mit Vorbehalt; am 19.10. bis auf den Test mit einer fremden Kennung erledigt, der mit Meilenstein 2 läuft"
+        }
       },
       {
         "id": "M2",
@@ -3710,7 +3728,8 @@
             "text": "Die Kennungen der Teamliste beim Orchestrator freischalten"
           },
           {
-            "text": "Eine Anleitung fürs Team auf einer Seite: was der Orchestrator annimmt, was er ablehnt, was mit dem Ergebnis passiert"
+            "text": "Eine Anleitung fürs Team auf einer Seite: was der Orchestrator annimmt, was er ablehnt, was mit dem Ergebnis passiert",
+            "teilweise": "Der Entwurf liegt seit dem 16.10. in der Ablage, der Abschnitt Beauftragen auf dieser Seite seit dem 17.10."
           },
           {
             "text": "Den Bewertungsbogen von Regel E5 übernehmen und zählen"
@@ -3724,9 +3743,16 @@
           {
             "text": "Eine Textfassung der gesprochenen Antworten",
             "erledigt": "am 29.09. entschieden: keine"
+          },
+          {
+            "text": "Ein Laufskript für den Prüfstand des Orchestrators: jeden Fall in einer neuen Sitzung geben, danach zählen und den Bewertungsbogen erzeugen"
+          },
+          {
+            "text": "Der erste Lauf des Prüfstands, bewertet vom Projektverantwortlichen, vor den Aufträgen des Teams",
+            "teilweise": "Am 21.10. erfüllte der Orchestrator 3 von 18 Fällen"
           }
         ],
-        "abnahme": "Zwei Teammitglieder außer dem Projektverantwortlichen haben je einen Auftrag über den Orchestrator gegeben und ein Ergebnis bekommen. Beide Aufträge liegen mit Ergebnis im Auftragsbuch.",
+        "abnahme": "Zwei Teammitglieder außer dem Projektverantwortlichen haben je einen Auftrag über den Orchestrator gegeben und ein Ergebnis bekommen. Beide Aufträge liegen mit Ergebnis im Auftragsbuch. Eine nicht zugelassene Kennung wird abgewiesen.",
         "erwinMinuten": 50
       },
       {
@@ -3947,7 +3973,7 @@
       },
       {
         "wer": "Orchestrator",
-        "stand": "Akte freigegeben, Profil mit Grenze eingerichtet. Fürs Team wartet er auf die Teamliste. Am 16.10. lief ein Testauftrag über das Board zum Reviewer."
+        "stand": "Läuft seit dem 18.10. mit Akte und Grenze; jeder Auftrag liegt als Notiz vor der Karte. Fürs Team wartet er auf die Teamliste. Im Prüfstand erfüllte er am 21.10. 3 von 18 Fällen."
       },
       {
         "wer": "Reporter",
@@ -3967,7 +3993,7 @@
       },
       {
         "wer": "Team",
-        "stand": "Außer dem Projektverantwortlichen ist niemand freigeschaltet."
+        "stand": "Außer dem Projektverantwortlichen ist niemand freigeschaltet. Der Entwurf der Anfrage für die Teamliste liegt seit dem 19.10. vor."
       }
     ],
     "quelle": "Meilensteinplan 29.09. bis 23.10.2026 mit dem Hinweis auf die Termine vom 16.10.; Logbuch vom 25.09., 28.09., 29.09. und 16.10.2026; Abnahme M1 vom 15.10.2026; Übergabe vom 15.10. und Tagesprotokoll vom 16.10.2026",

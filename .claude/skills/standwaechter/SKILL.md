@@ -153,6 +153,8 @@ gebauten Seite, auch in Grafiken; ein Fund hält den Pull Request auf.
 | Wie man einen Auftrag gibt, was der Orchestrator annimmt und ablehnt; nur aus seiner freigegebenen Akte | `anleitung` |
 | Ein neues Fachwort auf der Seite | `glossar.eintraege`, mit `id`, Erklärung und Quelle |
 | Ein Plan, der ersetzt wird | bleibt stehen; `ueberholtAm` und `ueberholt` setzen, den neuen unter `meilensteinplanAktuell` |
+| Abnahme eines Meilensteins, auch vor dem Termin | `meilensteinplanAktuell.meilensteine[].abgenommen` mit `am` und `text`; die Seite nimmt dann den nächsten als nächste Abnahme |
+| Eine Arbeit, die nicht mehr nötig ist | `inhalt[].entfaellt` mit dem Datum, sie zählt nicht mehr mit; entfernt wird sie nicht |
 | Baustein oder Verbindung der Systemlandschaft | `landschaft` |
 | Neue oder umbenannte Rubrik des Unternehmenswissens | `unternehmenswissen.rubriken`, die Anzahlen zählt `abbild:vault` |
 | Risiko | `hemmnisse.gruppen[].punkte` |

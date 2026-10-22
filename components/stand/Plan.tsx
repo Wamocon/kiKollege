@@ -56,10 +56,16 @@ export function PlanAbschnitt() {
       <h3 style={{ marginTop: '1.8rem' }}>Die Arbeiten je Meilenstein</h3>
       {p.meilensteine.map((m) => (
         <Block key={m.id} titel={`${m.id}, ${datum(m.termin).slice(0, 6)}: ${m.titel}`}>
+          {m.abgenommen ? (
+            <p style={{ marginBottom: '0.6rem' }}>
+              <b>Abgenommen am {datum(m.abgenommen.am)}</b>, {m.abgenommen.text}.
+            </p>
+          ) : null}
           <ul>
             {m.inhalt.map((i) => (
               <li key={i.text}>
                 {i.erledigt ? <b>erledigt {i.erledigt}: </b> : null}
+                {i.entfaellt ? <b>entfällt {i.entfaellt}: </b> : null}
                 {i.text}
                 {i.teilweise ? <>. {i.teilweise}</> : null}
               </li>
