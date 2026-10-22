@@ -4620,6 +4620,18 @@
         "begriff": "Zaun",
         "erklaerung": "Das Programm, das die Grenze durchsetzt: Es prüft jeden Werkzeugaufruf gegen die Grenzdatei und lehnt ab, bevor etwas geschieht.",
         "quelle": "Vault-Konventionen, Abschnitt Begriffe"
+      },
+      {
+        "id": "assessment-center",
+        "begriff": "Assessment Center",
+        "erklaerung": "Geplante Prüfung, die jeder neue KI-Mitarbeiter durchläuft. Volles Mitglied wird er erst, wenn seine Ergebnisse dort eine bestimmte Qualität erreichen; Aufgaben und Schwelle stehen noch nicht fest.",
+        "quelle": "Logbuch 2026-10-22 Entscheidungen Prozess neuer KI-Mitarbeiter und Assessment Center"
+      },
+      {
+        "id": "tor",
+        "begriff": "Tor",
+        "erklaerung": "Eine Stelle im Prozess für einen neuen KI-Mitarbeiter, an der der Projektverantwortliche Ja sagen muss, bevor es weitergeht. Es gibt vier: Bedarf, Rolle, Wortlaut der Akte, Abnahme.",
+        "quelle": "Prozess neuer KI-Mitarbeiter, 22.10.2026"
       }
     ],
     "freigabe": "oeffentlich"
@@ -5387,6 +5399,46 @@
       }
     ],
     "quelle": "Logbuch 2026-10-18 Entscheidungen Training, 2026-10-19 Trainingsziel Hermes, 2026-10-20 Prüfstand Hermes und Nutzentest, 2026-10-21 Volltext Fritz, 2026-10-22 Training Fritz und Zaun; Prüfstandlauf vom 20.10.2026",
+    "freigabe": "oeffentlich"
+  },
+  "aufnahme": {
+    "stand": "2026-10-22",
+    "satz": "Ein neuer KI-Mitarbeiter kommt in sechs Schritten dazu. An vier Toren sagt der Projektverantwortliche Ja; vorher geht es nicht weiter.",
+    "schritte": [
+      {
+        "titel": "Bedarf klären",
+        "text": "Macht ein anderer die Aufgabe schon? Ist sie schon entschieden? Reicht eine neue Fähigkeit für einen, den es gibt?",
+        "tor": "Tor 1: Ja, ausarbeiten"
+      },
+      {
+        "titel": "Rolle zuschneiden",
+        "text": "Zwölf feste Fragen: Name, Gegenstand, Ergebnis, wer ihn beauftragen darf, was er lesen und schreiben darf, welche Werkzeuge, welches Modell, wie er abgenommen wird.",
+        "tor": "Tor 2: Rolle freigegeben"
+      },
+      {
+        "titel": "Akte bauen",
+        "text": "Auftrag, Haltung und Grenze als Dateien. Die Testfälle für die Grenze entstehen zuerst.",
+        "tor": "Tor 3: Wortlaut freigegeben"
+      },
+      {
+        "titel": "Einrichten",
+        "text": "Ein eigenes Profil auf dem KI-Rechner, nur mit den Werkzeugen aus der Akte. Der Zaun prüft jeden Schritt. Konten legt nur ein Mensch an."
+      },
+      {
+        "titel": "Abnahme",
+        "text": "Ein echter Auftrag aus seiner eigenen Rolle, vorher angekündigt. Jede Ablehnung durch den Zaun zählt als Fehler.",
+        "tor": "Tor 4: abgenommen"
+      },
+      {
+        "titel": "In Betrieb nehmen",
+        "text": "Der Orchestrator nimmt Aufträge für ihn an, er steht in der Mannschaft, und ein Prüfstand misst jede spätere Änderung nach."
+      }
+    ],
+    "assessment": {
+      "titel": "Dazu kommt das Assessment Center",
+      "text": "Geplant und noch nicht gebaut. Jeder neue KI-Mitarbeiter durchläuft es. Volles Mitglied wird er erst, wenn seine Ergebnisse dort eine bestimmte Qualität erreichen. Welche Aufgaben und welche Schwelle gelten, ist noch nicht festgelegt."
+    },
+    "quelle": "Prozess neuer KI-Mitarbeiter, angenommen am 22.10.2026; Logbuch 2026-10-22 Entscheidungen Prozess neuer KI-Mitarbeiter und Assessment Center",
     "freigabe": "oeffentlich"
   }
 }

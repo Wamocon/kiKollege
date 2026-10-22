@@ -694,6 +694,16 @@ export interface Projektstand {
   ersterHinweis: { kopf: string; text: string; quelle: string; freigabe: Freigabe }
   /** Prüfstand und Nutzentest: geübt und gemessen seit dem 18.10. */
   tests: { satz: string; punkte: ({ titel: string; text: string } & MitFreigabe)[]; quelle: string; freigabe: Freigabe }
+  /** Wie ein neuer KI-Mitarbeiter dazukommt: sechs Schritte, vier Tore, dazu
+   *  das geplante Assessment Center. Angenommen am 22.10.2026. */
+  aufnahme: {
+    stand: string
+    satz: string
+    schritte: { titel: string; text: string; tor?: string }[]
+    assessment: { titel: string; text: string }
+    quelle: string
+    freigabe: Freigabe
+  }
   landschaft: Landschaft
   meilensteinplan: Meilensteinplan
   meilensteinplanAktuell: AktuellerPlan
