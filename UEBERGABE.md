@@ -6,6 +6,26 @@ verloren gehen darf.
 
 Stand dieser Übergabe: 22.10.2026.
 
+## Nachtrag 22.10.2026: Labor für eine neue Form der Landing Page
+
+Auf dem Zweig `landing/labor-taste` (gestapelt auf `landing/abgleich-2026-10-22`)
+steht unter `/labor/` die Landing Page in neuer Form, Entwurf zur Freigabe. Die
+Landing Page unter `/` ist unverändert.
+
+- **Grundlage:** der Taste-Skill (`design-taste-frontend` aus nexu-io/open-design),
+  gelesen, nicht installiert. Angewandt als Redesign mit Erhalt der Marke: CI-Farben,
+  Inter, Haarlinien und eckige Formen bleiben, Regler Varianz 4, Bewegung 2, Dichte 4.
+- **Entschieden am 22.10.:** gleicher Inhalt in neuer Form, als Laborseite im
+  Projekt, keine Fotos; die Grafiken aus den Daten sind die Bilder.
+- **Was neu ist:** ein Hero in zwei Zeilen mit „Auftrag geben“ und „Stand ansehen“
+  und der Zeichnung daneben; wechselnde Layoutformen statt immer gleicher Kästen;
+  Labels nur an drei Kapitelanfängen; lange Listen und Nebenfiguren klappen auf.
+- **Ergebnis:** 30 % kürzer am Schreibtisch, 26 % am Handy, bei gleicher Wortzahl.
+  Alle Prüfungen grün, die Figurenprüfung auch für `/labor/`.
+- **Nach der Freigabe:** `app/labor/page.tsx` ersetzt `app/page.tsx`, `labor.css` geht
+  in `globals.css` auf, `components/labor/` wird umbenannt oder aufgelöst, die Route
+  `/labor/` fällt weg. Wird die Form verworfen, fällt nur der Zweig weg.
+
 ## Nachtrag 22.10.2026: Abgleich der Seite mit der Ablage
 
 Drei Prüfer haben die drei Seiten am 22.10. gegen Logbuch, Protokolle, Arbeitsplan

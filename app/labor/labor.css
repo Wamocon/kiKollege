@@ -1,0 +1,573 @@
+/* ============================================================================
+   LABOR: die Landing Page in neuer Form, Entwurf zur Freigabe (22.10.2026)
+   Grundlage ist der Taste-Skill (design-taste-frontend), angewandt als
+   Redesign mit Erhalt der Marke: CI-Farben, Inter, Haarlinien und eckige
+   Formen bleiben. Neu sind ein Hero mit zwei Einstiegen, wechselnde
+   Layoutformen statt immer gleicher Kästen, Labels nur noch an
+   Kapitelanfängen, und lange Listen klappen auf.
+   Regler: Varianz 4, Bewegung 2, Dichte 4. Alle Klassen tragen das Präfix
+   lab-, damit nichts außerhalb von /labor/ berührt wird.
+   ========================================================================= */
+
+.lab {
+  --lab-luft: clamp(3rem, 6vw, 5.5rem);
+  --lab-spalte: var(--lp-spalte);
+}
+
+/* --- Hinweis oben --- */
+.lab-hinweis {
+  background: var(--wmc-surface-soft);
+  border-bottom: 1px solid var(--wmc-border);
+}
+.lab-hinweis-innen {
+  max-width: var(--lab-spalte);
+  margin: 0 auto;
+  padding: 0.6rem clamp(1.25rem, 3vw, 2.5rem);
+  font-size: 0.86rem;
+  line-height: 1.5;
+}
+.lab-hinweis a { color: var(--wmc-primary-text); }
+
+/* --- Abschnitte --- */
+/* Die Rinne bleibt ab 1240 px frei, dort steht die Navigationsschiene. Darunter
+   nimmt der Inhalt die ganze Breite. */
+.lab-sektion { border-top: 1px solid var(--rand-leise); scroll-margin-top: 68px; }
+.lab-sektion:first-of-type { border-top: 0; }
+.lab-inhalt [id] { scroll-margin-top: 68px; }
+.lab-sektion-innen {
+  max-width: var(--lab-spalte);
+  margin: 0 auto;
+  padding: var(--lab-luft) clamp(1.25rem, 3vw, 2.5rem);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+}
+.lab-rinne { display: none; }
+@media (min-width: 1240px) {
+  .lab-sektion-innen {
+    grid-template-columns: var(--lp-rinne) minmax(0, 1fr);
+    column-gap: clamp(1.5rem, 4vw, 4rem);
+  }
+  .lab-rinne { display: block; }
+}
+.lab-inhalt { min-width: 0; }
+
+/* Ein Kapitel nennt sich einmal, über seinem ersten Abschnitt */
+.lab-kapitel {
+  margin: 0 0 1rem;
+  font-family: var(--schrift-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--wmc-primary-text);
+}
+
+/* --- Typografie --- */
+.lab-display {
+  margin: 0;
+  font-size: clamp(2.1rem, 4.3vw, 3.4rem);
+  font-weight: 800;
+  letter-spacing: -0.042em;
+  line-height: 1.02;
+}
+.lab-display span { display: block; }
+.lab-aussage {
+  margin: 0;
+  max-width: 26ch;
+  font-size: clamp(1.5rem, 2.6vw, 2.2rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.14;
+  text-wrap: balance;
+}
+.lab-aussage.breit { max-width: 34ch; }
+.lab-aussage.klein { font-size: clamp(1.2rem, 1.8vw, 1.5rem); max-width: 40ch; }
+/* Lange Aussagen aus den Daten bekommen weniger Größe statt mehr Zeilen */
+.lab-aussage.lang { font-size: clamp(1.3rem, 2vw, 1.7rem); max-width: 52ch; }
+.lab-text { max-width: 64ch; margin: 0; }
+.lab-text p { margin: 0 0 0.85em; }
+.lab-text p:last-child { margin-bottom: 0; }
+.lab-lead { margin: 0; font-size: clamp(1.02rem, 1.2vw, 1.14rem); line-height: 1.62; }
+.lab-unterzeile { margin: 0.6rem 0 0; font-size: 0.92rem; color: var(--wmc-muted); }
+.lab-leise { color: var(--wmc-muted); font-size: 0.9rem; }
+.lab-gross { margin: 0 0 0.6rem; font-size: 1.08rem; line-height: 1.5; font-weight: 600; }
+.lab-quelle { margin: 1.4rem 0 0; font-size: 0.78rem; color: var(--wmc-muted); max-width: 90ch; }
+.lab h4,
+.lab .lab-titel { margin: 0 0 0.45rem; font-size: 0.98rem; font-weight: 700; letter-spacing: -0.01em; }
+.lab .lab-zwischen { margin: 0 0 0.8rem; font-size: 1rem; }
+/* Abstände nach oben stehen zuletzt und mit .lab davor, damit sie gegen
+   Element-Regeln wie .lab h4 gewinnen */
+.lab .lab-luft { margin-top: clamp(2.4rem, 5vw, 4rem); }
+.lab .lab-luft-klein { margin-top: 1rem; }
+
+/* --- Hero: Überschrift über die ganze Breite, darunter Satz, Knöpfe, Zeichnung --- */
+.lab-hero .lab-sektion-innen { padding-top: clamp(2.5rem, 5vw, 4.5rem); }
+.lab-hero-raster {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+  gap: clamp(2rem, 5vw, 4.5rem);
+  align-items: center;
+  margin-top: clamp(1.4rem, 3vw, 2.2rem);
+}
+.lab-hero-satz {
+  margin: 0;
+  max-width: 34ch;
+  font-size: clamp(1.1rem, 1.5vw, 1.3rem);
+  line-height: 1.5;
+}
+.lab-knoepfe { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.6rem; }
+.lab-knopf {
+  display: inline-block;
+  padding: 0.8rem 1.25rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  white-space: nowrap;
+  text-decoration: none;
+  color: var(--wmc-bg);
+  background: var(--wmc-ink);
+  border: 1px solid var(--wmc-ink);
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.1s ease;
+}
+.lab-knopf:hover { background: var(--wmc-primary-text); border-color: var(--wmc-primary-text); }
+.lab-knopf:active { transform: translateY(1px); }
+.lab-knopf:focus-visible { outline: 2px solid var(--fokus); outline-offset: 3px; }
+.lab-knopf.zweit { color: var(--wmc-ink); background: transparent; border-color: var(--wmc-border); }
+.lab-knopf.zweit:hover { border-color: var(--wmc-ink); background: transparent; }
+.lab-anatomie { margin: 0; }
+.lab-anatomie svg { display: block; width: 100%; max-width: 520px; height: auto; margin-left: auto; }
+@media (max-width: 860px) {
+  .lab-hero-raster { grid-template-columns: minmax(0, 1fr); }
+  .lab-anatomie svg { margin: 0 auto; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .lab-knopf { transition: none; }
+  .lab-knopf:active { transform: none; }
+}
+
+/* --- Zwei Spalten, ungleich --- */
+.lab-zweispalt {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  gap: clamp(1.6rem, 4vw, 3.5rem);
+  align-items: start;
+}
+@media (max-width: 860px) { .lab-zweispalt { grid-template-columns: minmax(0, 1fr); } }
+.lab-satz { margin: 0 0 1rem; font-weight: 700; line-height: 1.45; }
+.lab-vier { margin: 0; display: grid; gap: 0.9rem; }
+.lab-vier div { padding-left: 1rem; border-left: 2px solid var(--signal); }
+.lab-vier dt { font-weight: 700; }
+.lab-vier dd { margin: 0.15rem 0 0; font-size: 0.9rem; line-height: 1.5; color: var(--wmc-muted); }
+
+/* --- Chatbot gegen KI-Mitarbeiter: drei Zeilen, die rechte trägt --- */
+.lab-gegen { margin-top: 1.6rem; }
+.lab-gegen-kopf,
+.lab-gegen-zeile {
+  display: grid;
+  grid-template-columns: 8rem minmax(0, 1fr) minmax(0, 1.2fr);
+  gap: 0.4rem 1.5rem;
+  margin: 0;
+}
+.lab-gegen-kopf { padding-bottom: 0.6rem; font-size: 0.8rem; color: var(--wmc-muted); }
+.lab-gegen-kopf span:last-child { color: var(--wmc-ink); font-weight: 700; }
+.lab-gegen-zeile { padding: 0.9rem 0; border-top: 1px solid var(--rand-leise); }
+.lab-gegen-zeile .merkmal { font-weight: 700; }
+.lab-gegen-zeile .chatbot { color: var(--wmc-muted); }
+.lab-gegen-zeile .mitarbeiter { font-size: 1.05rem; font-weight: 600; }
+@media (max-width: 620px) {
+  .lab-gegen-kopf { display: none; }
+  .lab-gegen-zeile { grid-template-columns: minmax(0, 1fr); }
+  .lab-gegen-zeile .nur-vorlesen {
+    position: static; width: auto; height: auto; clip-path: none;
+    font-size: 0.78rem; color: var(--wmc-muted); font-weight: 400; margin-right: 0.3rem;
+  }
+}
+
+/* --- Geeignet und ungeeignet --- */
+.lab-eignung {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1.6rem, 4vw, 3.5rem);
+  margin-top: 1.6rem;
+}
+@media (max-width: 760px) { .lab-eignung { grid-template-columns: minmax(0, 1fr); } }
+.lab-eignung h3 { margin: 0 0 0.7rem; font-size: 1.05rem; }
+.lab-eignung ul { list-style: none; margin: 0; padding: 0; }
+.lab-eignung li {
+  position: relative;
+  padding: 0.55rem 0 0.55rem 1.3rem;
+  border-top: 1px solid var(--rand-leise);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+.lab-eignung li::before {
+  content: ""; position: absolute; left: 0; top: 1.05em;
+  width: 7px; height: 7px; background: var(--signal);
+}
+.lab-eignung .nein li::before { background: none; border: 1px solid var(--wmc-muted); }
+.lab-eignung .nein li { color: var(--wmc-muted); }
+.lab-ohne-rahmen { margin-top: clamp(1.6rem, 3vw, 2.4rem); }
+.lab-ohne-rahmen .lab-leise { margin: 0 0 0.6rem; }
+
+/* --- Fritz --- */
+.lab-notiz {
+  margin: 0;
+  padding: 1.1rem 1.25rem;
+  background: var(--wmc-surface-soft);
+  border-left: 3px solid var(--signal);
+  font-size: 0.94rem;
+  line-height: 1.55;
+}
+.lab-notiz p { margin: 0; }
+.lab-fakten {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.2rem clamp(1.5rem, 3vw, 2.5rem);
+  margin: clamp(1.8rem, 3vw, 2.6rem) 0 0;
+}
+.lab-fakten dt { font-size: 0.8rem; color: var(--wmc-muted); margin-bottom: 0.2rem; }
+.lab-fakten dd { margin: 0; font-size: 0.98rem; line-height: 1.45; }
+
+/* Zahlenband: keine Kästen, eine Linie darüber */
+.lab-zahlen {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 1.4rem clamp(1.5rem, 3vw, 2.5rem);
+  margin-top: clamp(1.8rem, 3vw, 2.6rem);
+  padding-top: 1.4rem;
+  border-top: 1px solid var(--wmc-border);
+}
+.lab-zahlen .wert {
+  margin: 0;
+  font-size: clamp(2rem, 3.6vw, 2.9rem);
+  font-weight: 800;
+  letter-spacing: -0.045em;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+.lab-zahlen .wert.signal { color: var(--wmc-primary-text); }
+.lab-zahlen .was { margin: 0.5rem 0 0; font-size: 0.86rem; line-height: 1.45; color: var(--wmc-muted); max-width: 26ch; }
+
+/* Bento: der Befund groß, zwei Erträge, das Raster quer */
+.lab-bento {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr) minmax(0, 1fr);
+  grid-template-areas:
+    "befund punkt1 punkt2"
+    "befund raster raster";
+  gap: 1px;
+  margin-top: 1.6rem;
+  background: var(--wmc-border);
+  border: 1px solid var(--wmc-border);
+}
+.lab-bento > div { background: var(--wmc-bg); padding: 1.25rem 1.35rem 1.4rem; display: flex; flex-direction: column; gap: 0.5rem; }
+.lab-bento p { margin: 0; font-size: 0.92rem; line-height: 1.55; color: var(--wmc-muted); }
+.lab-bento p.stark { color: var(--wmc-ink); }
+.lab-bento-befund { grid-area: befund; background: var(--wmc-surface-soft) !important; }
+.lab-bento-befund .fundstelle { font-family: var(--schrift-mono); font-size: 0.74rem; color: var(--wmc-primary-text); }
+.lab-bento-punkt:nth-of-type(2) { grid-area: punkt1; }
+.lab-bento-punkt:nth-of-type(3) { grid-area: punkt2; }
+.lab-bento-raster { grid-area: raster; }
+@media (max-width: 900px) {
+  .lab-bento {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: "befund" "punkt1" "punkt2" "raster";
+  }
+}
+
+/* --- Verlässlich? --- */
+.lab-fragen {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1.6rem, 4vw, 3.5rem);
+  margin-top: clamp(1.8rem, 3vw, 2.6rem);
+}
+@media (max-width: 760px) { .lab-fragen { grid-template-columns: minmax(0, 1fr); } }
+.lab-fragen > div { padding-top: 1rem; border-top: 2px solid var(--wmc-ink); }
+.lab-fragen > div.offen { border-top-color: var(--signal); }
+.lab-fragen h3 { margin: 0 0 0.5rem; font-size: 1.2rem; letter-spacing: -0.015em; }
+.lab-fragen p { margin: 0 0 0.6rem; font-size: 0.94rem; line-height: 1.55; color: var(--wmc-muted); }
+.lab-fragen p.stark { color: var(--wmc-ink); }
+.lab-zustand {
+  margin: 0 0 0.4rem !important;
+  font-family: var(--schrift-mono);
+  font-size: 0.72rem !important;
+  color: var(--wmc-muted);
+}
+.lab-fragen .offen .lab-zustand { color: var(--wmc-primary-text); }
+
+/* Leitsatz als Zitat */
+.lab-zitat {
+  margin-left: 0;
+  margin-right: 0;
+  padding: 0.2rem 0 0.2rem clamp(1rem, 2.5vw, 1.8rem);
+  border-left: 3px solid var(--signal);
+  max-width: 46ch;
+}
+.lab-zitat p {
+  margin: 0;
+  font-size: clamp(1.35rem, 2.3vw, 1.9rem);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.2;
+  text-wrap: balance;
+}
+.lab-zitat footer { margin-top: 0.7rem; font-size: 0.84rem; color: var(--wmc-muted); }
+/* Ein langer Satz trägt als Zitat nicht; er bleibt abgesetzt, aber in Lesegröße */
+.lab-zitat.lang { max-width: 64ch; }
+.lab-zitat.lang p { font-size: clamp(1.05rem, 1.4vw, 1.2rem); font-weight: 600; letter-spacing: -0.01em; line-height: 1.5; }
+
+/* --- Aufklappen --- */
+.lab-mehr {
+  margin-top: clamp(1.6rem, 3vw, 2.4rem);
+  border-top: 1px solid var(--wmc-border);
+  border-bottom: 1px solid var(--wmc-border);
+}
+.lab-mehr > summary {
+  cursor: pointer;
+  list-style: none;
+  padding: 0.95rem 2rem 0.95rem 0;
+  position: relative;
+  font-weight: 700;
+  font-size: 0.98rem;
+}
+.lab-mehr > summary::-webkit-details-marker { display: none; }
+.lab-mehr > summary::after {
+  content: "+";
+  position: absolute;
+  right: 0.2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--schrift-mono);
+  font-size: 1.1rem;
+  color: var(--wmc-primary-text);
+}
+.lab-mehr[open] > summary::after { content: "\2212"; }
+.lab-mehr > summary:hover { color: var(--wmc-primary-text); }
+.lab-mehr > summary:focus-visible { outline: 2px solid var(--fokus); outline-offset: 2px; }
+.lab-mehr > :not(summary) { margin-bottom: 1.4rem; }
+.lab-mehr > :not(summary):first-of-type { margin-top: 0.2rem; }
+
+/* Reihen: Titel links, Text rechts, wenige Einträge */
+.lab-reihen { margin: 1rem 0 0; }
+.lab-reihen > div {
+  display: grid;
+  grid-template-columns: minmax(9rem, 14rem) minmax(0, 1fr);
+  gap: 0.3rem 1.5rem;
+  padding: 0.85rem 0;
+}
+.lab-reihen > div + div { border-top: 1px solid var(--rand-leise); }
+.lab-reihen dt { font-weight: 700; }
+.lab-reihen dd { margin: 0; font-size: 0.94rem; line-height: 1.55; color: var(--wmc-muted); max-width: 64ch; }
+@media (max-width: 620px) { .lab-reihen > div { grid-template-columns: minmax(0, 1fr); } }
+
+/* Definitionen in zwei Spalten, ohne Linie unter jeder Zeile */
+.lab-raster-dl {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.1rem clamp(1.5rem, 4vw, 3rem);
+  margin: 0;
+}
+@media (max-width: 760px) { .lab-raster-dl { grid-template-columns: minmax(0, 1fr); } }
+.lab-raster-dl dt { font-weight: 700; font-size: 0.94rem; }
+.lab-raster-dl dd { margin: 0.2rem 0 0; font-size: 0.9rem; line-height: 1.5; color: var(--wmc-muted); }
+
+/* --- Beauftragen --- */
+/* Drei Schritte als Ablauf auf einer Linie, nicht als drei gleiche Kästen */
+.lab-ablauf {
+  list-style: none;
+  counter-reset: schritt;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1.2rem, 3vw, 2.5rem);
+  margin: clamp(1.8rem, 3vw, 2.6rem) 0 0;
+  padding: 0;
+}
+.lab-ablauf li {
+  counter-increment: schritt;
+  position: relative;
+  padding-top: 2.6rem;
+  border-top: 2px solid var(--wmc-ink);
+}
+.lab-ablauf li::before {
+  content: counter(schritt);
+  position: absolute;
+  top: -1rem;
+  left: 0;
+  width: 2rem;
+  height: 2rem;
+  display: grid;
+  place-items: center;
+  font-family: var(--schrift-mono);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--wmc-bg);
+  background: var(--wmc-ink);
+}
+.lab-ablauf li:last-child { border-top-color: var(--signal); }
+.lab-ablauf li:last-child::before { background: var(--signal); }
+.lab-ablauf h3 { margin: 0 0 0.4rem; font-size: 1.05rem; }
+.lab-ablauf p { margin: 0; font-size: 0.92rem; line-height: 1.55; color: var(--wmc-muted); }
+@media (max-width: 760px) {
+  .lab-ablauf { grid-template-columns: minmax(0, 1fr); gap: 2.2rem; }
+}
+.lab-tabelle { margin-top: 1rem; }
+.lab-liste { list-style: none; margin: 1rem 0 0; padding: 0; }
+.lab-liste li {
+  position: relative;
+  padding: 0.35rem 0 0.35rem 1.2rem;
+  font-size: 0.94rem;
+  line-height: 1.5;
+}
+.lab-liste li::before {
+  content: ""; position: absolute; left: 0; top: 0.95em;
+  width: 8px; height: 2px; background: var(--signal);
+}
+.lab-stapel { display: grid; gap: 1px; background: var(--wmc-border); border: 1px solid var(--wmc-border); }
+.lab-stapel > div { background: var(--wmc-bg); padding: 1.1rem 1.25rem 1.25rem; }
+.lab-stapel > div.traegt { background: var(--wmc-surface-soft); }
+.lab-stapel p { margin: 0; font-size: 0.92rem; line-height: 1.55; color: var(--wmc-muted); }
+.lab-stapel .traegt p { color: var(--wmc-ink); }
+
+/* Schweregrade als Skala: Rot nimmt von links nach rechts ab */
+.lab-skala {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0 1px;
+  margin: 0;
+  padding: 0;
+}
+.lab-skala li { padding-top: 0.9rem; border-top: 8px solid var(--ton); }
+.lab-skala .lab-stufe-name { display: block; font-weight: 700; font-size: 0.95rem; }
+.lab-skala .bedeutung { display: block; margin-top: 0.25rem; padding-right: 1rem; font-size: 0.88rem; line-height: 1.5; color: var(--wmc-muted); }
+@media (max-width: 760px) {
+  .lab-skala { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.4rem 1px; }
+}
+
+/* Mitmachen als getöntes Band */
+.lab-band {
+  padding: clamp(1.4rem, 3vw, 2.4rem) clamp(1.2rem, 3vw, 2.4rem);
+  background: var(--wmc-surface-soft);
+}
+.lab-band .lab-text { margin-top: 1rem; }
+.lab-band .lab-reihen > div + div { border-top-color: var(--wmc-border); }
+
+/* --- Mannschaft --- */
+.lab-rollen {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.6rem clamp(1.5rem, 3vw, 2.5rem);
+}
+.lab-rollen h3 { margin: 0 0 0.35rem; font-size: 1rem; }
+.lab-rollen p { margin: 0 0 0.35rem; font-size: 0.9rem; line-height: 1.5; }
+
+/* --- Landschaft: drei Spalten wie eine Tafel --- */
+.lab-spalten {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1.2rem, 3vw, 2.5rem);
+  margin-top: 0.4rem;
+}
+@media (max-width: 860px) { .lab-spalten { grid-template-columns: minmax(0, 1fr); } }
+.lab-spalten > div { padding-top: 0.8rem; border-top: 2px solid var(--wmc-ink); }
+.lab-spalten > div.traegt { border-top-color: var(--signal); }
+.lab-spalten .lab-titel { display: flex; justify-content: space-between; gap: 1rem; }
+.lab-spalten .anzahl { font-family: var(--schrift-mono); font-weight: 400; color: var(--wmc-muted); }
+.lab-spalten ul { list-style: none; margin: 0; padding: 0; }
+.lab-spalten li { padding: 0.3rem 0; font-size: 0.88rem; line-height: 1.45; color: var(--wmc-muted); }
+
+/* --- Stand: Tafel mit einer Hauptzahl --- */
+.lab-tafel {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr);
+  gap: 1px;
+  margin-top: 1.6rem;
+  background: var(--wmc-border);
+  border: 1px solid var(--wmc-border);
+}
+@media (max-width: 860px) { .lab-tafel { grid-template-columns: minmax(0, 1fr); } }
+.lab-tafel > * { background: var(--wmc-bg); margin: 0; }
+.lab-tafel-haupt { padding: 1.5rem 1.5rem 1.6rem; background: var(--wmc-surface-soft) !important; }
+.lab-tafel-haupt .wert {
+  margin: 0 0 0.8rem;
+  font-size: clamp(3rem, 7vw, 5.2rem);
+  font-weight: 800;
+  letter-spacing: -0.05em;
+  line-height: 0.9;
+  color: var(--wmc-primary-text);
+}
+.lab-tafel-haupt p:not(.wert) { margin: 0; font-size: 0.94rem; line-height: 1.55; }
+.lab-tafel-rest { padding: 0.4rem 1.5rem; }
+.lab-tafel-rest > div {
+  display: grid;
+  grid-template-columns: 7.5rem minmax(0, 1fr);
+  gap: 0.2rem 1.2rem;
+  align-items: baseline;
+  padding: 0.9rem 0;
+}
+.lab-tafel-rest > div + div { border-top: 1px solid var(--rand-leise); }
+.lab-tafel-rest dt { font-size: 1.45rem; font-weight: 800; letter-spacing: -0.035em; white-space: nowrap; }
+.lab-tafel-rest dd { margin: 0; font-size: 0.88rem; line-height: 1.5; color: var(--wmc-muted); }
+@media (max-width: 520px) { .lab-tafel-rest > div { grid-template-columns: minmax(0, 1fr); } }
+
+/* Zeitleiste: eine Linie, ein Quadrat je Tag */
+.lab-zeitleiste { list-style: none; margin: 1.4rem 0 0; padding: 0 0 0 1.4rem; border-left: 1px solid var(--wmc-border); }
+.lab-zeitleiste li { position: relative; padding: 0 0 1.3rem; }
+.lab-zeitleiste li:last-child { padding-bottom: 0; }
+.lab-zeitleiste li::before {
+  content: ""; position: absolute; left: calc(-1.4rem - 4px); top: 0.3rem;
+  width: 7px; height: 7px; background: var(--wmc-bg); border: 1px solid var(--wmc-ink);
+}
+.lab-zeitleiste li:last-child::before { background: var(--signal); border-color: var(--signal); }
+.lab-zeitleiste time { font-family: var(--schrift-mono); font-size: 0.76rem; color: var(--wmc-muted); }
+.lab-zeitleiste p { margin: 0.2rem 0 0; max-width: 72ch; font-size: 0.95rem; line-height: 1.55; }
+
+/* Vier Gruppen als ein Balken, ohne Spur dahinter */
+.lab-anteile { display: flex; gap: 3px; height: 14px; margin-top: 1.4rem; }
+.lab-anteile span { background: var(--ui300); }
+.lab-anteile span.technisch { background: var(--signal); }
+.lab-anteile-legende {
+  display: grid;
+  /* Spalten so breit wie die Stücke des Balkens darüber */
+  grid-template-columns: var(--spalten, repeat(4, minmax(0, 1fr)));
+  gap: 1rem clamp(1rem, 2vw, 2rem);
+  margin: 0.9rem 0 0;
+}
+.lab-anteile { gap: clamp(1rem, 2vw, 2rem); }
+@media (max-width: 760px) {
+  .lab-anteile { gap: 3px; }
+  .lab-anteile-legende { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+.lab-anteile-legende dt { font-weight: 700; font-size: 0.94rem; }
+.lab-anteile-legende .anzahl { display: block; font-weight: 400; font-size: 0.8rem; color: var(--wmc-muted); }
+.lab-anteile-legende dd { margin: 0.2rem 0 0; font-size: 0.86rem; color: var(--wmc-muted); }
+.lab-anteile-legende .technisch dt { color: var(--wmc-primary-text); }
+
+/* --- Meilensteine nebeneinander, als Zeitleiste --- */
+.lab-meilensteine {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(1rem, 2vw, 1.8rem);
+  margin: clamp(1.8rem, 3vw, 2.6rem) 0 0;
+  padding: 0;
+}
+@media (max-width: 960px) { .lab-meilensteine { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 620px) { .lab-meilensteine { grid-template-columns: minmax(0, 1fr); } }
+.lab-meilensteine li { position: relative; padding-top: 1.3rem; border-top: 2px solid var(--wmc-border); }
+.lab-meilensteine li::before {
+  content: ""; position: absolute; top: -6px; left: 0;
+  width: 10px; height: 10px; background: var(--wmc-bg); border: 2px solid var(--wmc-ink);
+}
+.lab-meilensteine li.abgenommen { border-top-color: var(--wmc-ink); }
+.lab-meilensteine li.abgenommen::before { background: var(--wmc-ink); }
+.lab-meilensteine .wann { margin: 0 0 0.3rem; font-family: var(--schrift-mono); font-size: 0.76rem; font-weight: 700; color: var(--wmc-primary-text); }
+.lab-meilensteine h3 { margin: 0 0 0.5rem; font-size: 1rem; line-height: 1.3; }
+.lab-meilensteine p { margin: 0 0 0.45rem; font-size: 0.88rem; line-height: 1.5; }
+.lab-meilensteine .lab-leise { font-size: 0.82rem; }
+
+/* --- Begriffe in zwei Spalten --- */
+.lab-begriffe { columns: 2 22rem; column-gap: clamp(2rem, 4vw, 3.5rem); margin: 1.8rem 0 0; }
+.lab-begriffe > div { break-inside: avoid; padding: 0 0 1rem; }
+.lab-begriffe dt { font-weight: 700; font-size: 0.96rem; }
+.lab-begriffe dd { margin: 0.15rem 0 0; font-size: 0.9rem; line-height: 1.5; color: var(--wmc-muted); }
+.lab-begriffe > div:target { background: var(--wmc-surface-soft); outline: 6px solid var(--wmc-surface-soft); }
