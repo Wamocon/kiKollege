@@ -155,6 +155,7 @@ gebauten Seite, auch in Grafiken; ein Fund hält den Pull Request auf.
 | Was die Zahlen zu Fritz belegen und was nicht, als Kopfzeile von Abschnitt 02 | `ersterHinweis` |
 | Wofür die Bewertungen der Befunde gelten und wofür nicht | `bewertungen.geltung` |
 | Prüfstand und Nutzentest: was geübt und gemessen wird | `tests` mit `satz` und `punkte`, jeder Punkt mit eigener Freigabe |
+| Das Trainingskonzept: Lernkreis, Takt, Ebenen, wer was tut, Messlatte; „entschieden am …“ oder „Vorschlag“ steht im Text | `training`; die Messlatte und die Herkunft neuer Fälle zeigt nur `/stand/` |
 | Ein Plan, der ersetzt wird | bleibt stehen; `ueberholtAm` und `ueberholt` setzen, den neuen unter `meilensteinplanAktuell` |
 | Abnahme eines Meilensteins, auch vor dem Termin | `meilensteinplanAktuell.meilensteine[].abgenommen` mit `am` und `text`; die Seite nimmt dann den nächsten als nächste Abnahme |
 | Eine Arbeit, die nicht mehr nötig ist | `inhalt[].entfaellt` mit dem Datum, sie zählt nicht mehr mit; entfernt wird sie nicht |

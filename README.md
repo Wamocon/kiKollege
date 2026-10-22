@@ -32,7 +32,7 @@ jeder Mitarbeiter sie ohne den Projektverantwortlichen versteht:
   falschen Befund zu tun ist, wie man mitmacht. Grundlage ist die freigegebene Akte
   des Orchestrators, Daten unter `anleitung`. Termine erscheinen nur, wo der Plan
   sichtbar ist.
-- **Begriffe**, neu: 44 Fachwörter mit Erklärung und Quelle, Daten unter
+- **Begriffe**, neu: 48 Fachwörter mit Erklärung und Quelle, Daten unter
   `glossar`. `components/landing/Begriff.tsx` verlinkt ein Wort auf seine
   Erklärung.
 - **Ohne Namen.** Der Projektverantwortliche steht nur mit seiner Rolle auf beiden

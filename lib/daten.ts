@@ -704,6 +704,27 @@ export interface Projektstand {
     quelle: string
     freigabe: Freigabe
   }
+  /** Wie ein KI-Mitarbeiter besser wird: Lernkreis, Takt, Ebenen und Messlatte
+   *  aus dem Trainingskonzept vom 22.10.2026. Was entschieden ist, trägt ein
+   *  Datum; der Rest ist Vorschlag. */
+  training: {
+    stand: string
+    satz: string
+    hinweis: string
+    kreis: { titel: string; text: string }[]
+    kreisSeit: string
+    gelernt: { text: string; warum: string; seit: string }
+    takt: { wann: string; was: string; stand: string }[]
+    ebenen: { titel: string; text: string }[]
+    ebenenSatz: string
+    wer: { wer: string; tut: string }[]
+    regel: string
+    pruefstaende: string
+    messlatte: { satz: string; stufen: { stufe: string; schwelle: string }[]; dazu: string }
+    neueFaelle: { satz: string; punkte: string[] }
+    quelle: string
+    freigabe: Freigabe
+  }
   landschaft: Landschaft
   meilensteinplan: Meilensteinplan
   meilensteinplanAktuell: AktuellerPlan

@@ -215,17 +215,61 @@ export default function Seite() {
             <div className="prosa" style={{ marginTop: '1.3rem' }}>
               <p>
                 Der Weg, auf dem aus Gedächtnis wieder Wissen wird, ist ein Mechanismus, durch den ein
-                KI-Mitarbeiter über die Zeit besser wird; seit dem 18.10. kommt der Lernkreis mit Prüfstand
-                dazu: Ein Mensch bewertet einen Befund mit Fundstelle,
+                KI-Mitarbeiter über die Zeit besser wird: Ein Mensch bewertet einen Befund mit Fundstelle,
                 über viele Bewertungen ergibt sich je Regel eine Quote, und ein urteilender Prüfpunkt, der
                 dreimal gleich ausfällt, wird zu einer mechanischen Regel mit Testfällen aus genau den Fällen,
-                die sie ausgelöst haben.
+                die sie ausgelöst haben. Seit dem 18.10. kommt der Lernkreis mit Prüfstand dazu, seit dem
+                22.10. in einem festen Takt.
               </p>
               <p>
                 Ausdrücklich kein Gedächtnis ist der Verlauf einer Sitzung. Was nicht geschrieben wurde, ist
                 nicht passiert.
               </p>
             </div>
+
+            {sichtbar(d.training) ? (
+              <>
+                <h3 id="training" style={{ marginTop: '1.8rem' }}>
+                  Das Trainingskonzept vom {datum(d.training.stand)}
+                </h3>
+                <div className="prosa">
+                  <p>
+                    {d.training.satz} {d.training.hinweis}
+                  </p>
+                  <p>{d.training.messlatte.satz}</p>
+                </div>
+                <div className="tabellenrahmen">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th style={{ width: '7rem' }}>Stufe</th>
+                        <th>Schwelle bei den drei echten Aufgaben</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {d.training.messlatte.stufen.map((s) => (
+                        <tr key={s.stufe}>
+                          <td>{s.stufe}</td>
+                          <td>{s.schwelle}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+                <div className="prosa" style={{ marginTop: '1rem' }}>
+                  <p>{d.training.messlatte.dazu}</p>
+                  <p>{d.training.neueFaelle.satz}</p>
+                  <ul>
+                    {d.training.neueFaelle.punkte.map((p) => (
+                      <li key={p}>{p}</li>
+                    ))}
+                  </ul>
+                </div>
+                <p className="fussnote" style={{ marginTop: '1rem' }}>
+                  Quelle: {d.training.quelle}
+                </p>
+              </>
+            ) : null}
 
             {sichtbar(d.ablage) ? (
               <>

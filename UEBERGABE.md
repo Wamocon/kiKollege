@@ -6,6 +6,26 @@ verloren gehen darf.
 
 Stand dieser Übergabe: 22.10.2026.
 
+## Nachtrag 22.10.2026: Das Trainingskonzept auf der Seite
+
+Der Zweig `landing/trainingskonzept` steht auf `landing/prozess-neuer-ki-mitarbeiter`
+(Pull Request 21) und bringt das Trainingskonzept vom 22.10. auf die Seite, auf
+Wunsch des Projektverantwortlichen vom selben Abend, übermittelt von der Sitzung
+„KI-Mitarbeiter Training“.
+
+- **Landing Page, Abschnitt 05:** Block „Wie ein KI-Mitarbeiter besser wird.“ direkt
+  nach „Wie ein neuer dazukommt.“, in den bestehenden Formen: Lernkreis in fünf
+  Schritten, wann ein Fall gelernt ist, der feste Takt mit „entschieden am …“ oder
+  „Vorschlag“, die Ebenen beim Nachschärfen, wer was tut, wer schon einen Prüfstand hat.
+- **`/stand/`, Abschnitt Gedächtnis:** die Messlatte des Assessment Centers in drei
+  Stufen und woher neue Fälle kommen.
+- **Daten:** Schlüssel `training`, zwei neue Begriffe (Nachschärfen, Pflichtfall),
+  Prüfstand und Training neu erklärt, acht Entscheidungen vom 22.10., Chronik ergänzt.
+- **Bewusst nicht auf der Seite:** Einzelheiten zu Zaun und Profilen, die Nutzungs-
+  bedingungen, das Modell, Links auf die privaten OnePager.
+- **Quelle:** `Trainingskonzept KI-Mitarbeiter.md`, Stand 22.10., ungeprüft und beim
+  Lesen noch nicht committet; die Seite sagt, dass es ein Entwurf ist.
+
 ## Nachtrag 22.10.2026: Abgleich der Seite mit der Ablage
 
 Drei Prüfer haben die drei Seiten am 22.10. gegen Logbuch, Protokolle, Arbeitsplan
