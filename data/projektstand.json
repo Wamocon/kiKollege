@@ -1,9 +1,9 @@
 {
-  "stand": "2026-10-20",
+  "stand": "2026-10-22",
   "herkunft": {
     "arbeitsordner": "D:\\WAMOCON",
     "einstieg": "KI-Mitarbeiter/75_KI-Mitarbeiter/KI-Mitarbeiter — Einstieg.md",
-    "erzeugt": "2026-10-20",
+    "erzeugt": "2026-10-22",
     "fristTage": 7,
     "verfahren": "Erstbefüllung von Hand aus dem Übergabedokument vom 05.09.2026, am 11.09. fortgeschrieben aus den beiden Blättern vom 09.09., am 17.09. aus dem Vault: Logbuch, Tagesprotokolle, Meilensteinplan, Bestandsaufnahme vom 16.09., Akte des Reviewers, Laufnotizen und Quoten je Regel. Das Abbild der Ablage zählt scripts/abbild-vault.mjs. Spätere Stände der Prüfläufe schreibt scripts/export-vault.mjs aus dem Frontmatter der Laufnotizen.",
     "freigabe": "intern",
@@ -57,7 +57,14 @@
       "Protokoll 2026-10-19 KFBM, Abschnitt reviewer ohne Remote",
       "Steckbriefe KI-Mitarbeiter 2026-10-20, Abschnitt Überblick und Werkzeuge",
       "Tagesprotokoll vom 19.10.2026",
-      "Tagesprotokoll vom 20.10.2026"
+      "Tagesprotokoll vom 20.10.2026",
+      "Logbuch 2026-10-20: Entscheidungen fester Lauf Gregor Dev",
+      "Logbuch 2026-10-20: Entscheidungen Abnahme Arnold und M4 julia-trend",
+      "Logbuch 2026-10-20: Entscheidungen Nutzentest KI-Mitarbeiter",
+      "Logbuch 2026-10-21: Entscheidung Infrastrukturprobleme sind Arnolds Thema",
+      "Logbuch 2026-10-21: Entscheidungen Volltext Fritz",
+      "Protokolle KI-Mitarbeiter vom 17. bis 22.10.2026",
+      "Arbeitsplan 2026-10-16, Stand 20.10.2026, Punkt 11"
     ],
     "getrenntAm": "2026-09-09",
     "notizordner": "KFBM/00_Vault/10_KI-Mitarbeiter"
@@ -1037,6 +1044,46 @@
       "datum": "2026-10-20",
       "entscheidung": "Jira bekommt beides: der Wächter schlägt Stories vor und stimmt den Tagesstatus ab, angelegt wird nur was einzeln freigegeben ist",
       "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-20",
+      "entscheidung": "Gregor Devs fester Pflegelauf startet am Montag und Donnerstag um 7:00, als Karte aus seinem Profil über das Board",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-20",
+      "entscheidung": "Solange Gregor Dev kein Konto hat, gleicht die Werkbank seinen Zweig mit Logbuch und Protokollen ab; den Pull Request stellt sie erst nach dem Ja des Projektverantwortlichen",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-20",
+      "entscheidung": "Arnolds Erweiterung vom 19.10. ist abgenommen",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-20",
+      "entscheidung": "Für Meilenstein 4 gilt: julia-trend läuft mit ihrer Grenze, und ein Schreibversuch irgendwo in der Ablage wird abgelehnt",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-20",
+      "entscheidung": "Der Nutzentest vergleicht je Aufgabe drei Fassungen: den KI-Mitarbeiter auf dem KI-Rechner, dieselbe Rolle mit Claude und die Werkbank direkt",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-20",
+      "entscheidung": "Ob eine Rolle verworfen wird, entscheidet der Projektverantwortliche nach dem Lesen, ohne Grenze vorab",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-21",
+      "entscheidung": "Probleme der IT-Infrastruktur rund um die KI-Mitarbeiter sind Arnolds Thema; julia-trend bleibt bei Neuigkeiten zu KI und Agenten",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-21",
+      "entscheidung": "Fritz liest den Text einer Unterlage über ein eigenes Skript, das nur unter den Dokumenten der Academy liest",
+      "freigabe": "intern"
     }
   ],
   "entscheidungenNachtrag": "Die Entscheidung vom 04.09. dreht bewusst eine zuvor festgelegte Reihenfolge um: Ursprünglich sollte die Fehlalarmquote vor dem Plattformwechsel gemessen werden. Die Technik wurde vorgezogen. Das ist kein Widerspruch, sondern eine andere Reihenfolge mit einer benannten Folge, und die Folge steht im Abschnitt zur Messlücke.",
@@ -1780,6 +1827,36 @@
         "datum": "2026-10-16",
         "text": "Neue Termine: Meilenstein 1 am 23.10., der letzte am 13.11. Ein Testauftrag läuft über das Board zum Reviewer, und Systemarchitektur und Organigramm stehen auf dem Stand des Tages.",
         "freigabe": "oeffentlich"
+      },
+      {
+        "datum": "2026-10-17",
+        "text": "Diese Seite ist für alle Leser umgebaut: Kapitel, ein Abschnitt zum Beauftragen, ein Verzeichnis der Begriffe. Systemarchitektur und Organigramm stehen auf dem Stand des Tages.",
+        "freigabe": "oeffentlich"
+      },
+      {
+        "datum": "2026-10-18",
+        "text": "Arnold, der Technische Architekt, ist eingerichtet und abgenommen. Gregor Dev übernimmt die Pflege dieser Seite. Training heißt ab jetzt Lernkreis mit Prüfstand: feste Übungsaufträge je KI-Mitarbeiter, bewertet vom Projektverantwortlichen.",
+        "freigabe": "oeffentlich"
+      },
+      {
+        "datum": "2026-10-19",
+        "text": "Das Wochenziel: fünf KI-Mitarbeiter lauffähig, jeder mit einer echten Aufgabe. julia-trend und Gregor Dev laufen mit ihrer Grenze; Gregor Devs erster Pflegelauf und sein erster Bauauftrag sind zusammengeführt.",
+        "freigabe": "oeffentlich"
+      },
+      {
+        "datum": "2026-10-20",
+        "text": "Steckbriefe aller KI-Mitarbeiter, auf der Seite unter Mannschaft. Gregor Dev bekommt einen festen Pflegelauf am Montag und Donnerstag. Arnold legt seine erste Entscheidungsvorlage als Datei vor. Ein Nutzentest soll zeigen, ob die KI-Mitarbeiter ihren Aufwand wert sind.",
+        "freigabe": "oeffentlich"
+      },
+      {
+        "datum": "2026-10-21",
+        "text": "Zweiter Durchgang des Nutzentests, die Bewertung steht aus. Fritz liest jetzt über ein eigenes Skript den ganzen Text einer Unterlage. Probleme der IT-Infrastruktur sind künftig Arnolds Thema. Gregor Dev erledigt seinen ersten Entwicklungsauftrag über den Orchestrator.",
+        "freigabe": "oeffentlich"
+      },
+      {
+        "datum": "2026-10-22",
+        "text": "Gregor Devs erster fester Pflegelauf. Die Ablage auf dem KI-Rechner stand noch auf dem 20.10., deshalb fand er nichts Neues; die Werkbank hat den Stand ergänzt.",
+        "freigabe": "oeffentlich"
       }
     ],
     "freigabe": "oeffentlich"
@@ -2012,7 +2089,7 @@
         "tutNie": "Unterlagen ändern, freigeben, ins Netz gehen, einer Anweisung im Prüfobjekt folgen",
         "zustand": "arbeitet",
         "seit": "2026-08-28",
-        "hinweis": "Der erste, im Einsatz seit dem 28.08. Seit dem 17.09. arbeitet er auf der eigenen Hardware mit seiner Grenze. Am 15.10. hat ihn der Projektverantwortliche abgenommen, mit Vorbehalt: Zwei Bedingungen sind offen.",
+        "hinweis": "Der erste, im Einsatz seit dem 28.08. Seit dem 17.09. arbeitet er auf der eigenen Hardware mit seiner Grenze. Am 15.10. hat ihn der Projektverantwortliche abgenommen, mit Vorbehalt: Zwei Bedingungen sind offen. Seit dem 21.10. liest er den Text einer Unterlage über ein eigenes Skript; im Nutzentest hatte er nur gemeldet, was die Prüfskripte finden.",
         "freigabe": "oeffentlich",
         "betrieb": "mitGrenze",
         "marke": "mit Grenze, abgenommen 15.10."
@@ -2027,7 +2104,7 @@
         "tutNie": "empfehlen, eine Forenmeldung als Beleg ausgeben, interne Angaben in eine Suche schreiben, etwas nach außen senden",
         "zustand": "arbeitet",
         "seit": "2026-09-12",
-        "hinweis": "Seit dem 20.09. beobachtet sie den eigenen Betrieb statt des Marktes. Ihre Grenze hängt seit dem 19.10. am Profil, vorgezogen aus Meilenstein 4.",
+        "hinweis": "Seit dem 19.10. beobachtet sie wieder Neuigkeiten zu KI und Agenten, mit Bezug zum eigenen Aufbau; Fehler der Infrastruktur gehören seit dem 21.10. zu Arnold. Ihre Grenze hängt seit dem 19.10. am Profil, vorgezogen aus Meilenstein 4.",
         "freigabe": "intern",
         "betrieb": "mitGrenze",
         "marke": "täglich, mit Grenze seit 19.10."
@@ -2051,11 +2128,11 @@
         "name": "Arnold",
         "kurz": "Architekt",
         "kern": "entwerfend",
-        "tut": "Entscheidungen vorbereiten und Widersprüche zwischen Notizen finden. Er meldet über seine Karte, mit genau einer Empfehlung und dem Punkt, an dem sie kippt.",
-        "tutNie": "entscheiden, bauen, prüfen, in die Ablage schreiben",
+        "tut": "Entscheidungen vorbereiten und Widersprüche zwischen Notizen finden, mit genau einer Empfehlung und dem Punkt, an dem sie kippt. Die Vorlage legt er als Datei in seinem Ordner ab.",
+        "tutNie": "entscheiden, bauen, prüfen, außerhalb seines Ordners für Vorlagen schreiben",
         "zustand": "arbeitet",
         "seit": "2026-10-18",
-        "hinweis": "Grenzdatei mit Testfällen seit dem 28.09. Am 18.10. hat der Projektverantwortliche die Akte und die Grenze freigegeben und ihn abgenommen. Sein Auftrag: zu einer offenen Frage eine Empfehlung mit Kipppunkt vorschlagen. Er schreibt nichts, seine Vorlage steht auf der Karte.",
+        "hinweis": "Grenzdatei mit Testfällen seit dem 28.09. Am 18.10. hat der Projektverantwortliche die Akte und die Grenze freigegeben und ihn abgenommen, am 20.10. seine Erweiterung: ein eigener Ordner für Vorlagen. Seit dem 21.10. sind Probleme der IT-Infrastruktur rund um die KI-Mitarbeiter sein Thema; der Wortlaut dafür in seiner Akte steht noch aus.",
         "freigabe": "oeffentlich",
         "betrieb": "mitGrenze",
         "marke": "mit Grenze, abgenommen 18.10."
@@ -2096,7 +2173,7 @@
         "tutNie": "nach main pushen, einen Pull Request zusammenführen, etwas aus den Daten entfernen, ein Datenelement von intern auf öffentlich heben, eine Notiz in der Ablage ändern, eine Prüfung abschalten",
         "zustand": "arbeitet",
         "seit": "2026-10-19",
-        "hinweis": "Am 18.09. entschieden, weil weitere Seiten entstehen sollen. Am 18.10. hat der Projektverantwortliche Akte und Grenze freigegeben. Am 19.10. liefen sein erster Pflegelauf und sein erster Bauauftrag, beide sind als Pull Request zusammengeführt. Ein eigenes Konto fehlt noch; bis dahin stellt die Werkbank seine Pull Requests unter dem Konto des Projektverantwortlichen.",
+        "hinweis": "Am 18.09. entschieden, weil weitere Seiten entstehen sollen. Am 18.10. hat der Projektverantwortliche Akte und Grenze freigegeben. Am 19.10. liefen sein erster Pflegelauf und sein erster Bauauftrag, beide sind als Pull Request zusammengeführt. Ein eigenes Konto fehlt noch; bis dahin stellt die Werkbank seine Pull Requests unter dem Konto des Projektverantwortlichen. Seit dem 20.10. läuft sein Pflegelauf fest am Montag und Donnerstag um 7 Uhr. Am 21.10. hat er seinen ersten Entwicklungsauftrag über den Orchestrator erledigt.",
         "freigabe": "oeffentlich",
         "betrieb": "mitGrenze",
         "marke": "mit Grenze seit 19.10."
@@ -2247,10 +2324,10 @@
   },
   "ablage": {
     "freigabe": "oeffentlich",
-    "gezaehltAm": "2026-10-20",
-    "notizen": 265,
-    "verweise": 2089,
-    "unaufgeloest": 38,
+    "gezaehltAm": "2026-10-22",
+    "notizen": 296,
+    "verweise": 2178,
+    "unaufgeloest": 40,
     "regelnotizen": 1,
     "bereiche": [
       {
@@ -2272,7 +2349,7 @@
           "quellen": 0,
           "prueflaeufe": 33,
           "arbeitsstand": 22,
-          "protokoll": 26,
+          "protokoll": 27,
           "einstiege": 3,
           "archiv": 4
         }
@@ -2282,21 +2359,21 @@
         "gruppe": "wissen",
         "name": "Entscheidungen mit Datum",
         "kurz": "Entscheidungen",
-        "notizen": 32,
+        "notizen": 35,
         "verbindlich": 8,
         "informativ": 1,
-        "ungeprueft": 23,
+        "ungeprueft": 26,
         "ohneFeld": 0,
         "verweiseNach": {
           "konventionen": 3,
           "unternehmen": 0,
-          "bauplan": 40,
+          "bauplan": 42,
           "normbasis": 0,
           "massstab": 3,
           "quellen": 0,
           "prueflaeufe": 0,
-          "arbeitsstand": 75,
-          "protokoll": 8,
+          "arbeitsstand": 84,
+          "protokoll": 9,
           "einstiege": 10,
           "archiv": 0
         }
@@ -2337,13 +2414,13 @@
         "ohneFeld": 15,
         "verweiseNach": {
           "konventionen": 7,
-          "entscheidungen": 62,
+          "entscheidungen": 65,
           "unternehmen": 3,
           "normbasis": 2,
           "massstab": 10,
           "quellen": 0,
           "prueflaeufe": 14,
-          "arbeitsstand": 82,
+          "arbeitsstand": 83,
           "protokoll": 6,
           "einstiege": 1,
           "archiv": 2
@@ -2450,22 +2527,22 @@
         "gruppe": "werkstatt",
         "name": "Pläne, Berichte, Übergaben",
         "kurz": "Arbeitsstände",
-        "notizen": 64,
+        "notizen": 84,
         "verbindlich": 0,
         "informativ": 6,
-        "ungeprueft": 26,
-        "ohneFeld": 32,
+        "ungeprueft": 29,
+        "ohneFeld": 49,
         "verweiseNach": {
           "konventionen": 15,
-          "entscheidungen": 67,
+          "entscheidungen": 86,
           "unternehmen": 5,
-          "bauplan": 106,
+          "bauplan": 119,
           "normbasis": 1,
           "massstab": 22,
           "quellen": 0,
           "prueflaeufe": 6,
           "protokoll": 20,
-          "einstiege": 3,
+          "einstiege": 5,
           "archiv": 4
         }
       },
@@ -2474,21 +2551,21 @@
         "gruppe": "werkstatt",
         "name": "Tagesprotokolle",
         "kurz": "Protokolle",
-        "notizen": 26,
+        "notizen": 27,
         "verbindlich": 0,
         "informativ": 0,
         "ungeprueft": 0,
-        "ohneFeld": 26,
+        "ohneFeld": 27,
         "verweiseNach": {
-          "konventionen": 45,
-          "entscheidungen": 74,
+          "konventionen": 46,
+          "entscheidungen": 79,
           "unternehmen": 0,
-          "bauplan": 81,
+          "bauplan": 85,
           "normbasis": 1,
           "massstab": 5,
           "quellen": 0,
-          "prueflaeufe": 13,
-          "arbeitsstand": 138,
+          "prueflaeufe": 14,
+          "arbeitsstand": 146,
           "einstiege": 1,
           "archiv": 0
         }
@@ -2498,11 +2575,11 @@
         "gruppe": "werkstatt",
         "name": "Einstiege und Eingang",
         "kurz": "Einstiege",
-        "notizen": 16,
+        "notizen": 23,
         "verbindlich": 1,
         "informativ": 1,
         "ungeprueft": 1,
-        "ohneFeld": 13,
+        "ohneFeld": 20,
         "verweiseNach": {
           "konventionen": 11,
           "entscheidungen": 1,
@@ -2673,7 +2750,7 @@
         "art": "notizen",
         "wofuer": "Aufträge an die Mannschaft, eine Notiz je Auftrag, mit Übersicht.",
         "hinweis": "Seit dem 28.09. angelegt, bisher nur mit der Vorlage.",
-        "notizen": 24,
+        "notizen": 41,
         "verbindlich": 0
       },
       {
@@ -2681,7 +2758,7 @@
         "stufe": "ordnung",
         "art": "notizen",
         "wofuer": "Entscheidungen und Ereignisse in zeitlicher Folge.",
-        "notizen": 31,
+        "notizen": 34,
         "verbindlich": 7
       },
       {
@@ -2717,7 +2794,7 @@
         "wofuer": "Website-Abzüge und Datenschicht, nicht im Repository und nicht im Index."
       }
     ],
-    "gezaehltAm": "2026-10-20",
+    "gezaehltAm": "2026-10-22",
     "quelle": "Ordnertabelle und Kontextstrategie im Einstieg des Repositorys KI-Mitarbeiter, Akten nach den Vault-Konventionen, Anzahlen aus der Zählung der Ablage",
     "freigabe": "oeffentlich"
   },
@@ -3616,7 +3693,8 @@
             "text": "Jira an den Plan angleichen"
           },
           {
-            "text": "Die Teamliste beginnen: wer mitmacht, mit Einverständnis und Kennung"
+            "text": "Die Teamliste beginnen: wer mitmacht, mit Einverständnis und Kennung",
+            "teilweise": "Der Entwurf der Anfrage liegt seit dem 19.10. vor"
           }
         ],
         "abnahme": "Der Projektverantwortliche gibt dem Orchestrator einen Auftrag, der über Auftragsnotiz und Karte zum Reviewer und unverändert zurück läuft. Einen Auftrag, der nicht in seiner Tabelle steht, lehnt der Orchestrator ab und sagt warum.",
@@ -3692,13 +3770,14 @@
             "text": "Die Seite lesen und im Team teilen"
           },
           {
-            "text": "Die Researcherin: Akte nachziehen, Schreibweg festlegen, Grenze am Profil"
+            "text": "Die Researcherin: Akte nachziehen, Schreibweg festlegen, Grenze am Profil",
+            "teilweise": "Die Grenze hängt seit dem 19.10. am Profil"
           },
           {
             "text": "Die Wochenstichprobe"
           }
         ],
-        "abnahme": "Die Seite ist im Team geteilt, am Morgen der Abnahme neu erzeugt, jede Zahl trägt ein Datum, und Menschen erscheinen nur als Auftraggeber. Zwei Teammitglieder haben sie geöffnet. Die Researcherin läuft mit ihrer Grenze, und ein Schreibversuch außerhalb ihres Ordners wird abgelehnt.",
+        "abnahme": "Die Seite ist im Team geteilt, am Morgen der Abnahme neu erzeugt, jede Zahl trägt ein Datum, und Menschen erscheinen nur als Auftraggeber. Zwei Teammitglieder haben sie geöffnet. Die Researcherin läuft mit ihrer Grenze, und ein Schreibversuch irgendwo in der Ablage wird abgelehnt.",
         "erwinMinuten": 75
       }
     ],
@@ -4250,8 +4329,8 @@
     "freigabe": "oeffentlich"
   },
   "steckbriefe": {
-    "stand": "2026-10-20",
-    "quelle": "Steckbriefe der KI-Mitarbeiter vom 20.10.2026, ohne Profilnamen, Pfade, Versionen und Modell",
+    "stand": "2026-10-22",
+    "quelle": "Steckbriefe der KI-Mitarbeiter vom 20.10.2026, ohne Profilnamen, Pfade, Versionen und Modell; Arnold nachgezogen am 22.10.2026 aus dem Logbuch vom 20. und 21.10.",
     "satz": "Zu jedem KI-Mitarbeiter steht hier ein Steckbrief mit Aufgaben, Zielen und Werkzeugen, jede Angabe mit einem Beispiel oder einer Erklärung. Grundlage ist eine Notiz in der Ablage, die der Projektverantwortliche gelesen hat.",
     "lesehilfe": "Hermes Agent bündelt Werkzeuge in Sätzen, und ein Profil schaltet ganze Sätze ein. Danach prüft der Zaun vor jedem einzelnen Aufruf, ob die Grenzdatei ihn erlaubt. Ein Werkzeug ist nur dann nutzbar, wenn beide es durchlassen. Beispiel: Gregor hat den Satz Terminal, aber der Zaun lässt nur seine 33 Befehlsmuster durch und lehnt einen Push auf den Hauptzweig ab.",
     "mitarbeiter": [
@@ -4595,7 +4674,12 @@
             "erreicht": true
           },
           {
-            "was": "Die erste Vorlage als Datei in seinen Ordner für Entscheidungsvorlagen. Bisher liegt dort nur die Übersicht.",
+            "was": "Die erste Vorlage als Datei in seinen Ordner für Entscheidungsvorlagen, am 20.10.",
+            "bis": null,
+            "erreicht": true
+          },
+          {
+            "was": "Neue Aufgabe: ein Problem der IT-Infrastruktur rund um die KI-Mitarbeiter entdecken oder einen Vorschlag dazu machen. Der Wortlaut für seine Akte steht aus.",
             "bis": null,
             "erreicht": false
           }
