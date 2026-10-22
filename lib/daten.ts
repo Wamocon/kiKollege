@@ -537,6 +537,8 @@ export interface Bewertungen extends MitFreigabe {
   quelle: string
   /** Die erste Regel, die die Schwelle erreicht hat. */
   ersteRegel?: { regel: string; am: string; gesehen: number; fehlalarme: number; satz: string }
+  /** Wofür die Bewertungen gelten und wofür nicht. */
+  geltung?: string
 }
 
 /** "bei keiner Regel", "bei einer von 10 Regeln", "bei 2 von 10 Regeln" */
@@ -688,6 +690,10 @@ export interface Projektstand {
   ablage: Ablage
   unternehmenswissen: Unternehmenswissen
   bewertungen: Bewertungen
+  /** Was die Zahlen zu Fritz belegen und was nicht. */
+  ersterHinweis: { kopf: string; text: string; quelle: string; freigabe: Freigabe }
+  /** Prüfstand und Nutzentest: geübt und gemessen seit dem 18.10. */
+  tests: { satz: string; punkte: ({ titel: string; text: string } & MitFreigabe)[]; quelle: string; freigabe: Freigabe }
   landschaft: Landschaft
   meilensteinplan: Meilensteinplan
   meilensteinplanAktuell: AktuellerPlan

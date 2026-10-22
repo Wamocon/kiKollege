@@ -199,7 +199,7 @@ export default function Seite() {
                   <li>Der Lauf, eine Notiz mit Kennzahlen.</li>
                 </ul>
                 <p style={{ marginTop: '0.7rem' }}>
-                  Die mittlere Körnung fehlt heute.
+                  Die mittlere Körnung ist erst für eine Regel abgelegt.
                 </p>
               </div>
             </div>
@@ -214,8 +214,9 @@ export default function Seite() {
 
             <div className="prosa" style={{ marginTop: '1.3rem' }}>
               <p>
-                Der Weg, auf dem aus Gedächtnis wieder Wissen wird, ist der einzige Mechanismus, durch den ein
-                KI-Mitarbeiter über die Zeit besser wird: Ein Mensch bewertet einen Befund mit Fundstelle,
+                Der Weg, auf dem aus Gedächtnis wieder Wissen wird, ist ein Mechanismus, durch den ein
+                KI-Mitarbeiter über die Zeit besser wird; seit dem 18.10. kommt der Lernkreis mit Prüfstand
+                dazu: Ein Mensch bewertet einen Befund mit Fundstelle,
                 über viele Bewertungen ergibt sich je Regel eine Quote, und ein urteilender Prüfpunkt, der
                 dreimal gleich ausfällt, wird zu einer mechanischen Regel mit Testfällen aus genau den Fällen,
                 die sie ausgelöst haben.
@@ -553,6 +554,7 @@ export default function Seite() {
                   {zahl(b.gesehen)} davon einzeln angesehen. Fehlalarme darunter:{' '}
                   {zahl(b.fehlalarme)}. Das ist ein gutes Zeichen und noch keine Abnahme:
                 </p>
+                {b.geltung ? <p style={{ marginTop: '0.5rem' }}>{b.geltung}</p> : null}
                 <ul className="liste">
                   <li>
                     {b.gruppen} Einzeln angesehen wurden {zahl(b.gesehen)} von {zahl(b.bewertet)}.

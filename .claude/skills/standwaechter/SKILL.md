@@ -145,13 +145,16 @@ gebauten Seite, auch in Grafiken; ein Fund hält den Pull Request auf.
 | Ein Tag in der Chronik | `arbeitstage.eintraege` |
 | Rolle, Kern, Tut, Tut nie | `mannschaft.koepfe` |
 | Rufname einer Rolle, wenn die Ablage ihn nennt | `mannschaft.koepfe[].name` |
-| Läuft eine Rolle, mit oder ohne Grenze; kurze Marke mit Datum fürs Organigramm | `mannschaft.koepfe[].betrieb`, `.marke`, `.passtNicht` |
+| Läuft eine Rolle, mit oder ohne Grenze; kurze Marke mit Datum fürs Organigramm, höchstens zwei Zeilen zu 17 Zeichen, sonst schneidet die Grafik ab | `mannschaft.koepfe[].betrieb`, `.marke`, `.passtNicht` |
 | Mensch, Team, Helfer der Werkbank und das gemeinsame Band im Organigramm | `mannschaft.mensch`, `.team`, `.werkbank`, `.basis` |
 | Was Impressum und Datenschutz noch fehlt | `recht.impressumFehlt`, `recht.datenschutzFehlt` |
 | Stufe mit Abnahme | `stufen`, Abnahme in `bedingung` |
 | Der Plan, der gilt: Termine, Meilensteine, Fristen, Risiken | `meilensteinplanAktuell` |
 | Wie man einen Auftrag gibt, was der Orchestrator annimmt und ablehnt; nur aus seiner freigegebenen Akte | `anleitung` |
 | Ein neues Fachwort auf der Seite | `glossar.eintraege`, mit `id`, Erklärung und Quelle |
+| Was die Zahlen zu Fritz belegen und was nicht, als Kopfzeile von Abschnitt 02 | `ersterHinweis` |
+| Wofür die Bewertungen der Befunde gelten und wofür nicht | `bewertungen.geltung` |
+| Prüfstand und Nutzentest: was geübt und gemessen wird | `tests` mit `satz` und `punkte`, jeder Punkt mit eigener Freigabe |
 | Ein Plan, der ersetzt wird | bleibt stehen; `ueberholtAm` und `ueberholt` setzen, den neuen unter `meilensteinplanAktuell` |
 | Abnahme eines Meilensteins, auch vor dem Termin | `meilensteinplanAktuell.meilensteine[].abgenommen` mit `am` und `text`; die Seite nimmt dann den nächsten als nächste Abnahme |
 | Eine Arbeit, die nicht mehr nötig ist | `inhalt[].entfaellt` mit dem Datum, sie zählt nicht mehr mit; entfernt wird sie nicht |

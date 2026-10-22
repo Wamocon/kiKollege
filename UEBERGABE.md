@@ -6,6 +6,44 @@ verloren gehen darf.
 
 Stand dieser Übergabe: 22.10.2026.
 
+## Nachtrag 22.10.2026: Abgleich der Seite mit der Ablage
+
+Drei Prüfer haben die drei Seiten am 22.10. gegen Logbuch, Protokolle, Arbeitsplan
+und Akten gelesen; der Zweig `landing/abgleich-2026-10-22` behebt, was sie fanden.
+Die Landing Page bleibt für alle Leser; Einzelheiten stehen unter `/stand/`.
+
+- **Beauftragen** war an zwei Stellen falsch: Prüfumfang heißt, welche Kriterien
+  gelten, und über den Orchestrator kommt eine Meldung, noch kein Bericht. Dazu:
+  nur Unterlagen, die schon auf dem KI-Rechner liegen, keine Unterlagen und keine
+  personenbezogenen Daten in den Chat, die Tabelle nach der Akte vom 22.10.
+- **Fritz und Verlässlichkeit:** Die Zahlen auf der Seite stammen aus Läufen an der
+  Werkbank vor seiner Akte; im Nutzentest fand er auf dem KI-Rechner keinen der
+  fachlichen Fehler. Die Bewertungen gelten für Enabler, Szenarien und Bestand, nicht
+  für Use-Cases. Prüfstand und Nutzentest stehen jetzt im Abschnitt 03.
+- **Meilensteinplan nach dem Arbeitsplan vom 16.10.:** neue Fristen statt „alle
+  verstrichen“, Trainingsziel 27.10. im Pfad und als Risiko R31, Zeit 6 h 00.
+- **Mannschaft:** Archivar vorgezogen, Tester neu als neunte Rolle, Steckbriefe dazu.
+  Der Gestalter steht weiter in den Daten (`passtNicht`), aber nicht im Organigramm
+  und nicht in der Zählung „läuft“.
+- **Meilenstein 1:** Das eigene Profil des Orchestrators ist anders gelöst; er läuft
+  seit dem 18.10. im bestehenden Profil mit Grenze und Akte.
+- **Sicherheit:** Einzelheiten zu Profilen, Zugängen, Zaun, Modell und Datenwegen
+  stehen nicht mehr auf der Seite. Die Einträge sind umformuliert, nicht gelöscht.
+- **Ablage** aus den Repositories gezählt (267 Notizen, 11 verbindlich), nicht aus der
+  Kopie auf dem KI-Rechner (296, 14). Eine Beobachtung hält den Unterschied fest.
+  Gezählt wurde aus `git archive` der drei Repositories in einen leeren Ordner; der
+  lokale Arbeitsordner enthält unversionierte Ordner, die die Zählung verfälschen.
+- **Länge:** Die Landing Page hat ohne die Begriffe 5.812 Wörter statt 5.161 (beide
+  in der Fassung `alles`, gleich gezählt). Zugelegt haben 03 (Prüfstand und
+  Nutzentest), 04 (vier neue Zeilen, zwei Ablehnungen) und 11 (vier Zeilen „Wo es
+  heute steht“).
+- **Prüfung:** Drei interne Texte lauteten wie öffentliche und schlugen in
+  `pruefe:oeffentlich` an; sie sind umformuliert. Werkzeugtitel bleiben unter 24
+  Zeichen, wenn derselbe Titel bei einer internen Rolle vorkommt.
+
+Die Werkzeugmatrix auf `/mannschaft/` bleibt, wie bisher entschieden; ob die
+Werkzeuge je Rolle öffentlich sein sollen, entscheidet der Projektverantwortliche.
+
 ## Nachtrag 22.10.2026: Meilenstein 1 abgenommen
 
 Die Seite rechnete Meilenstein 1 bis zum 22.10. als offen, obwohl der
