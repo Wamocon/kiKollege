@@ -711,8 +711,11 @@ export interface Projektstand {
     stand: string
     satz: string
     hinweis: string
-    kreis: { titel: string; text: string }[]
+    kreis: { titel: string; text: string; kurz: string }[]
     kreisSeit: string
+    /** Text in der Mitte der Zeichnung des Lernkreises */
+    kreisMitte: { gross: string; zeilen: string[]; hinweis: string }
+    kreisBeschriftung: string
     gelernt: { text: string; warum: string; seit: string }
     takt: { wann: string; was: string; stand: string }[]
     ebenen: { titel: string; text: string }[]

@@ -87,7 +87,10 @@ Entscheidung lesen. Drei davon standen hier drin und sind raus:
 
 - **Einblenden beim Scrollen auf jedem Block.** Das gab es an 68 Stellen. Bewegung
   gibt es jetzt an genau einer: dem Hero. Nebeneffekt: Im Ruhezustand steht alles
-  da, statt auf einen Beobachter zu warten.
+  da, statt auf einen Beobachter zu warten. Seit dem 22.10. bewegen sich auf Wunsch
+  des Projektverantwortlichen zwei weitere Zeichnungen, Lernkreis und Takt im
+  Abschnitt Mannschaft, weil sie eine Reihenfolge in der Zeit zeigen. Beide laufen
+  ohne Skript, nur mit CSS, und stehen bei reduzierter Bewegung still.
 - **Großbuchstaben auf jedem Label.** Sie bleiben, wo sie strukturell tragen: Marke,
   Tabellenköpfe, Navigationsschiene, Statusabzeichen. Überall sonst sind sie weg.
   Im Deutschen kommt ein handfester Grund dazu: `text-transform: uppercase` macht
@@ -179,7 +182,7 @@ verborgen bleibt.
 
 ## Die Figuren
 
-Dreizehn Zeichnungen, alle aus `data/projektstand.json` gespeist, zwölf davon in
+Fünfzehn Zeichnungen, alle aus `data/projektstand.json` gespeist, vierzehn davon in
 `components/figuren/`. Sie sind eigene SVG in den CI-Farben, keine Kopien der
 Vorlagen aus der Einführung. Farben kommen aus den Tokens, damit sie in beiden Themen
 mitwandern; Rot trägt in jeder Figur genau ein Element, nämlich das, worum es geht.
@@ -224,6 +227,11 @@ Aussehen setzt die Klasse `lp-aussage`.
   (gefüllt läuft, leer vorhanden, gestrichelt entschieden). Rot trägt die eine
   Verbindung, an der der Rest hängt: die Ablage über Git auf dem KI-Rechner.
   Daneben steht dieselbe Aufzählung als Text, für Leser ohne Bild.
+- **Lernkreis** (`Lernkreis.tsx`): die fünf Schritte des Trainings im Kreis; ein
+  Punkt läuft sie ab, der Schritt darunter leuchtet auf. Daten unter `training.kreis`.
+- **Takt** (`Takt.tsx`): der feste Takt an einem Beispielquartal über 13 Wochen; eine
+  rote Spalte wandert Woche für Woche. Die Läufe nach einer Änderung sind als Beispiel
+  gekennzeichnet, der Rückblick als Vorschlag gestrichelt, solange er einer ist.
 - **Termine** — die vier Meilensteine des Plans vom 29.09. auf einer Zeitachse:
   offen die Frist, die der Plan selbst gesetzt hatte, gefüllt der Termin nach der
   Entscheidung vom 16.10. Ein Tageskalender passt hier nicht mehr, weil nach dem

@@ -5500,23 +5500,28 @@
     "kreis": [
       {
         "titel": "Fall",
-        "text": "Jeder Fehler im Betrieb und jede Lücke in der Akte wird ein Übungsfall, mit dem erwarteten Verhalten und der Stelle in der Akte, aus der es folgt."
+        "text": "Jeder Fehler im Betrieb und jede Lücke in der Akte wird ein Übungsfall, mit dem erwarteten Verhalten und der Stelle in der Akte, aus der es folgt.",
+        "kurz": "Fehler aus dem Betrieb"
       },
       {
         "titel": "Lauf",
-        "text": "Die Fälle laufen auf einem Prüfstand, angekündigt und erst nach dem Ja des Projektverantwortlichen, jeder Fall in einer neuen Sitzung."
+        "text": "Die Fälle laufen auf einem Prüfstand, angekündigt und erst nach dem Ja des Projektverantwortlichen, jeder Fall in einer neuen Sitzung.",
+        "kurz": "eine Sitzung je Fall"
       },
       {
         "titel": "Bewertung",
-        "text": "Was sich zählen lässt, zählt die Werkbank. Den Rest bewertet der Projektverantwortliche."
+        "text": "Was sich zählen lässt, zählt die Werkbank. Den Rest bewertet der Projektverantwortliche.",
+        "kurz": "erst zählen, dann urteilen"
       },
       {
         "titel": "Nachschärfen",
-        "text": "Der Projektverantwortliche gibt den Wortlaut frei, an der Ebene, an der die Schwäche liegt, zuerst an der Akte."
+        "text": "Der Projektverantwortliche gibt den Wortlaut frei, an der Ebene, an der die Schwäche liegt, zuerst an der Akte.",
+        "kurz": "Akte zuerst, Modell zuletzt"
       },
       {
         "titel": "Wiederholen",
-        "text": "Der ganze Prüfstand läuft wieder, nicht nur der eine Fall."
+        "text": "Der ganze Prüfstand läuft wieder, nicht nur der eine Fall.",
+        "kurz": "der ganze Prüfstand"
       }
     ],
     "kreisSeit": "2026-10-18",
@@ -5627,6 +5632,15 @@
       ]
     },
     "quelle": "Trainingskonzept KI-Mitarbeiter, Stand 22.10.2026, ungeprüft; Logbuch 2026-10-18 Entscheidungen Training, 2026-10-20 Entscheidungen Prüfstand Hermes, 2026-10-22 Entscheidungen Trainingskonzept, 2026-10-22 Entscheidungen Prüfstand Tester und Messlatte, 2026-10-22 Entscheidungen Gegenprüfung Trainingskonzept",
-    "freigabe": "oeffentlich"
+    "freigabe": "oeffentlich",
+    "kreisMitte": {
+      "gross": "gelernt",
+      "zeilen": [
+        "nach zwei Läufen hintereinander,",
+        "je dreimal erfüllt"
+      ],
+      "hinweis": "kippt er, zählt es von vorn"
+    },
+    "kreisBeschriftung": "Fünf Schritte im Uhrzeigersinn, nach dem fünften geht es beim ersten weiter. Der Punkt zeigt, wo ein Fall gerade steht."
   }
 }

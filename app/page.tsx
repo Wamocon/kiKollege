@@ -4,6 +4,8 @@ import { EnablerRaster } from '@/components/figuren/EnablerRaster'
 import { LandschaftFigur } from '@/components/figuren/Landschaft'
 import { TermineFigur } from '@/components/figuren/Termine'
 import { MannschaftFigur } from '@/components/figuren/Mannschaft'
+import { LernkreisFigur } from '@/components/figuren/Lernkreis'
+import { TaktFigur } from '@/components/figuren/Takt'
 import { Schichtenstapel } from '@/components/figuren/Schichtenstapel'
 import { Durchlauf } from '@/components/figuren/Durchlauf'
 import { Pruefpunkte } from '@/components/figuren/Pruefpunkte'
@@ -583,15 +585,19 @@ export default function Landing() {
                 Der <Begriff id="pruefstand">Lernkreis</Begriff>, entschieden am{' '}
                 {datum(d.training.kreisSeit).slice(0, 6)}
               </p>
-              <div className="lp-zellen vier lp-luft-oben-klein">
-                {d.training.kreis.map((s, i) => (
-                  <div className="lp-zelle" key={s.titel}>
-                    <span className="kopf">
-                      {i + 1}. {s.titel}
-                    </span>
-                    <p>{s.text}</p>
-                  </div>
-                ))}
+              <div className="lp-hero-raster lp-lernkreis-raster">
+                <LernkreisFigur />
+                <ol className="lp-punkte">
+                  {d.training.kreis.map((s, i) => (
+                    <li key={s.titel}>
+                      <span className="nr">{String(i + 1).padStart(2, '0')}</span>
+                      <div>
+                        <p className="punkt">{s.titel}</p>
+                        <p className="grund">{s.text}</p>
+                      </div>
+                    </li>
+                  ))}
+                </ol>
               </div>
               <div className="lp-zellen">
                 <div className="lp-zelle traegt">
@@ -604,6 +610,7 @@ export default function Landing() {
               </div>
 
               <p className="lp-klein lp-luft-oben">Der feste Takt</p>
+              <TaktFigur />
               <div className="lp-gegen-rahmen">
                 <table className="lp-gegen lp-stapel">
                   <thead>
