@@ -71,12 +71,13 @@ export function TermineFigur() {
   }
 
   // Der Stand der Daten
-  const xs = x(p.stand)
+  // Der Stand der Daten, den jeder Pflegelauf nachzieht, nicht der des Plans
+  const xs = x(daten.stand)
   teile.push(
     <g key="stand">
       <line x1={xs} y1={28} x2={xs} y2={unten} stroke="var(--wmc-muted)" strokeWidth="1" strokeDasharray="3 2" />
       <text x={xs + 4} y={38} fontSize="10.5" fontWeight="700" fill="var(--wmc-ink)">
-        Stand {kurz(p.stand)}
+        Stand {kurz(daten.stand)}
       </text>
     </g>,
   )
@@ -109,12 +110,22 @@ export function TermineFigur() {
               fill="var(--wmc-primary-text)">
           {kurz(m.termin)}
         </text>
+        {m.abgenommen ? (
+          <>
+            <circle cx={x(m.abgenommen.am)} cy={mitte} r={5.5} fill="var(--wmc-ink)" />
+            <text x={x(m.abgenommen.am)} y={mitte + 20} textAnchor="middle" fontSize="10.5"
+                  fontWeight="700" fill="var(--wmc-ink)">
+              {kurz(m.abgenommen.am)}
+            </text>
+          </>
+        ) : null}
       </g>,
     )
   })
 
   // Legende
   const ly = unten + 26
+  const abgenommene = p.meilensteine.filter((m) => m.abgenommen)
   teile.push(
     <g key="legende">
       <line x1={0} y1={unten} x2={BREITE} y2={unten} stroke="var(--wmc-border)" strokeWidth="1" />
@@ -130,6 +141,14 @@ export function TermineFigur() {
       <text x={462} y={ly} fontSize="11" fill="var(--wmc-muted)">
         Stand der Daten
       </text>
+      {abgenommene.length ? (
+        <>
+          <circle cx={602} cy={ly - 4} r={5.5} fill="var(--wmc-ink)" />
+          <text x={614} y={ly} fontSize="11" fill="var(--wmc-muted)">
+            abgenommen
+          </text>
+        </>
+      ) : null}
     </g>,
   )
 
@@ -142,7 +161,12 @@ export function TermineFigur() {
       beschriftung={
         `Jeder Meilenstein ist um rund ${wochen} Wochen gerückt: offen die Frist, die der Plan vom ` +
         `${kurz(p.von)} gesetzt hatte, gefüllt der Termin, den der Projektverantwortliche am ${datum(p.termineAm)} ` +
-        `freigegeben hat. Die gestrichelte Linie zeigt den Stand dieser Daten.`
+        `freigegeben hat. Die gestrichelte Linie zeigt den Stand dieser Daten.` +
+        (abgenommene.length
+          ? ` Der dunkle Kreis ist der Tag der Abnahme: ${abgenommene
+              .map((m) => `${m.id} am ${kurz(m.abgenommen!.am)}`)
+              .join(', ')}`
+          : '')
       }
       viewBox={`0 0 ${BREITE} ${ly + 10}`}
     >

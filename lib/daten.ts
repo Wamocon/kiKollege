@@ -560,10 +560,24 @@ export interface AktuellerMeilenstein {
   termin: string
   fruehereFrist: string
   titel: string
-  /** erledigt: wann und wie; teilweise: was davon schon gelaufen ist. */
-  inhalt: { text: string; erledigt?: string; teilweise?: string }[]
+  /** erledigt: wann und wie; teilweise: was davon schon gelaufen ist;
+   *  entfaellt: seit wann die Arbeit nicht mehr nötig ist. */
+  inhalt: { text: string; erledigt?: string; teilweise?: string; entfaellt?: string }[]
   abnahme: string
+  /** Gesetzt, sobald der Projektverantwortliche den Meilenstein abgenommen hat. */
+  abgenommen?: { am: string; text: string }
   erwinMinuten: number
+}
+
+/** Wie weit die Arbeiten eines Meilensteins sind. Eine entfallene Arbeit zählt
+ *  nicht mit. */
+export function arbeitenStand(m: AktuellerMeilenstein): { erledigt: number; gesamt: number; entfallen: number } {
+  const entfallen = m.inhalt.filter((i) => i.entfaellt).length
+  return {
+    erledigt: m.inhalt.filter((i) => i.erledigt).length,
+    gesamt: m.inhalt.length - entfallen,
+    entfallen,
+  }
 }
 
 export interface PlanFrist {

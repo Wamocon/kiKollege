@@ -14,7 +14,7 @@ import { HeroAnatomie } from '@/components/landing/HeroAnatomie'
 import { Kopfleiste } from '@/components/landing/Kopfleiste'
 import { Begriff } from '@/components/landing/Begriff'
 import { Sektion } from '@/components/landing/Sektion'
-import { belastbarBei, daten, datum, harteRegel, tageZwischen, zahl, zielErreicht, type AnleitungAb } from '@/lib/daten'
+import { arbeitenStand, belastbarBei, daten, datum, harteRegel, tageZwischen, zahl, zielErreicht, type AnleitungAb } from '@/lib/daten'
 import { inWorten } from '@/lib/alter'
 import { istIntern, nurSichtbare, sichtbar, zeigtInternes } from '@/lib/freigabe'
 import { pfad } from '@/lib/pfad'
@@ -43,7 +43,9 @@ export default function Landing() {
   const verbindlich = d.ablage.bereiche.reduce((s, a) => s + a.verbindlich, 0)
 
   // Auf einen Blick: was als Nächstes ansteht, gerechnet am Stand der Daten
-  const naechsterMeilenstein = plan.meilensteine.find((ms) => ms.termin >= d.stand)
+  // Die nächste Abnahme ist die erste, die noch aussteht
+  const naechsterMeilenstein = plan.meilensteine.find((ms) => !ms.abgenommen)
+  const zuletztAbgenommen = [...plan.meilensteine].reverse().find((ms) => ms.abgenommen)
   const teamHeute = plan.heute.find((h) => h.wer === 'Team')
 
   // Die Anleitung nennt Termine nur, wo der Plan sichtbar ist
@@ -58,7 +60,18 @@ export default function Landing() {
   }
   const teamAb = termin(a.teamAb)
   const spracheAb = termin(a.spracheAb)
-  const erledigtIn = (ms: (typeof plan.meilensteine)[number]) => ms.inhalt.filter((i) => i.erledigt).length
+  const arbeitenSatz = (ms: (typeof plan.meilensteine)[number]) => {
+    const s = arbeitenStand(ms)
+    const erledigt =
+      s.erledigt === 0
+        ? 'Erledigt ist noch keine'
+        : s.erledigt === 1
+          ? 'Erledigt ist eine'
+          : `Erledigt sind ${inWorten(s.erledigt)}`
+    const entfallen =
+      s.entfallen === 0 ? '' : s.entfallen === 1 ? ', eine entfällt' : `, ${inWorten(s.entfallen)} entfallen`
+    return `${erledigt} von ${inWorten(s.gesamt)} Arbeiten${entfallen}.`
+  }
   const laufen = koepfe.filter((k) => k.betrieb).length
   const mitGrenze = koepfe.filter((k) => k.betrieb === 'mitGrenze').length
 
@@ -720,9 +733,12 @@ export default function Landing() {
                 <div className="lp-kpi-kachel">
                   <p className="lp-kpi-wert">{kurz(naechsterMeilenstein.termin)}</p>
                   <p className="lp-kpi-label">
-                    Nächste Abnahme, {naechsterMeilenstein.id}: {naechsterMeilenstein.titel}. Erledigt
-                    sind {inWorten(erledigtIn(naechsterMeilenstein))} von{' '}
-                    {inWorten(naechsterMeilenstein.inhalt.length)} Arbeiten.
+                    {zuletztAbgenommen?.abgenommen
+                      ? `${zuletztAbgenommen.id} ist am ${kurz(zuletztAbgenommen.abgenommen.am)} abgenommen. `
+                      : ''}
+                    Nächste Abnahme, {naechsterMeilenstein.id}: {naechsterMeilenstein.titel}.{' '}
+                    {arbeitenSatz(naechsterMeilenstein)}
+                    {teamAb === naechsterMeilenstein.termin && teamHeute ? ` ${teamHeute.stand}` : ''}
                   </p>
                 </div>
               ) : null}
@@ -735,7 +751,7 @@ export default function Landing() {
                   Betrieb: {koepfe.length - laufen}.
                 </p>
               </div>
-              {sichtbar(plan) && teamAb ? (
+              {sichtbar(plan) && teamAb && teamAb !== naechsterMeilenstein?.termin ? (
                 <div className="lp-kpi-kachel">
                   <p className="lp-kpi-wert">{kurz(teamAb)}</p>
                   <p className="lp-kpi-label">
@@ -845,9 +861,12 @@ export default function Landing() {
                   </span>
                   <div>
                     <h3>{ms.titel}</h3>
-                    <p>
-                      Erledigt sind {inWorten(erledigtIn(ms))} von {inWorten(ms.inhalt.length)} Arbeiten.
-                    </p>
+                    {ms.abgenommen ? (
+                      <p>
+                        <b>Abgenommen am {datum(ms.abgenommen.am)}</b>, {ms.abgenommen.text}.
+                      </p>
+                    ) : null}
+                    <p>{arbeitenSatz(ms)}</p>
                     <p className="bedingung">Abnahme: {ms.abnahme}</p>
                   </div>
                 </div>

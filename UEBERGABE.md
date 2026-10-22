@@ -4,7 +4,28 @@ Diese Datei ist für die nächste Sitzung geschrieben, nicht für die Nachwelt. 
 sagt, wo das Vorhaben steht, was als Erstes zu tun ist und was dabei nicht
 verloren gehen darf.
 
-Stand dieser Übergabe: 17.10.2026.
+Stand dieser Übergabe: 22.10.2026.
+
+## Nachtrag 22.10.2026: Meilenstein 1 abgenommen
+
+Die Seite rechnete Meilenstein 1 bis zum 22.10. als offen, obwohl der
+Projektverantwortliche ihn am 16.10. abgenommen hatte, mit Vorbehalt, und den
+Vorbehalt am 19.10. bis auf den Test mit einer fremden Kennung erledigt hat
+(Logbuch 2026-10-16 Abnahme Meilenstein 1). Weder der Standwächter noch Gregor
+Devs Pflegelauf hatten die Abnahme nachgetragen; die Daten kannten dafür kein Feld.
+
+- Neu: `meilensteine[].abgenommen` und `inhalt[].entfaellt`. Die Landing Page
+  zeigt die Abnahme beim Meilenstein, in der Grafik als dunklen Kreis, und nimmt als
+  nächste Abnahme den ersten, der noch aussteht.
+- Die Linie „Stand der Daten“ in der Grafik der Termine folgt jetzt `stand`, nicht
+  dem Stand des Plans; sie stand beim 16.10.
+- Meilenstein 2 hat die zwei Arbeiten zum Prüfstand des Orchestrators dazu und die
+  Abnahme „eine nicht zugelassene Kennung wird abgewiesen“, beides aus dem
+  Arbeitsplan vom 16.10.
+
+Der Arbeitsplan vom 16.10. ist die genauere Quelle für Meilensteine als der
+Meilensteinplan vom 29.09.: Er führt jede Arbeit mit Frist und Stand. Ein
+Pflegelauf sollte ihn mitlesen.
 
 ## Nachtrag 17.10.2026: Umbau für alle Leser
 
