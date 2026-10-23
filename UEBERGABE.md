@@ -6,6 +6,15 @@ verloren gehen darf.
 
 Stand dieser Übergabe: 23.10.2026.
 
+## Nachtrag 23.10.2026: Ergebnis des ersten Trainingslaufs
+
+Auf Wunsch des Projektverantwortlichen vom 23.10. (übermittelt von der Sitzung
+„KI-Mitarbeiter Training“) steht im Block „Wie ein KI-Mitarbeiter besser wird.“ das
+Ergebnis von Hermes' erstem Lauf nach der Regel vom 22.10.: 3 von 18 Fällen dreimal
+erfüllt, 9 wackelig, 6 nie; was klappt, woran nachgeschärft wird, was offen ist.
+Daten unter `training.ersterLauf`. Ohne Fallnummern, Auftragsnummern, Pfade und
+ohne den Zaun. Die Stellen, die „Ergebnis steht aus“ sagten, sind nachgezogen.
+
 ## Nachtrag 23.10.2026: Stand der Nacht, zur Vorstellung um 16 Uhr
 
 Der Zweig `landing/stand-2026-10-23` steht auf `landing/trainingskonzept` (Pull

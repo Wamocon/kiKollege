@@ -724,6 +724,18 @@ export interface Projektstand {
     regel: string
     pruefstaende: string
     messlatte: { satz: string; stufen: { stufe: string; schwelle: string }[]; dazu: string }
+    /** Ergebnis des ersten Laufs nach der Regel vom 22.10., ohne Fallnummern */
+    ersterLauf?: {
+      am: string
+      satz: string
+      zahlen: { wert: number; text: string }[]
+      warum: string
+      klappt: string[]
+      nachschaerfen: string[]
+      weiter: string
+      offen: string
+      quelle: string
+    }
     neueFaelle: { satz: string; punkte: string[] }
     quelle: string
     freigabe: Freigabe
