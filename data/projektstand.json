@@ -5781,14 +5781,14 @@
   },
   "techstack": {
     "stand": "2026-10-23",
-    "satz": "Zwei Orte, eine Ablage: An der Werkbank wird gebaut und gemessen, auf dem KI-Rechner im Haus arbeitet die Mannschaft. Das sind die Bausteine, mit Namen.",
+    "satz": "Zwei Orte, eine Ablage: An der Werkbank wird gebaut und gemessen, auf dem KI-Rechner im Haus arbeitet die Mannschaft. Jira trägt die Aufträge und den Stand fürs Team, GitHub den Code und diese Seite. Das sind die Bausteine, mit Namen.",
     "gruppen": [
       {
         "titel": "Werkbank: bauen und messen",
         "teile": [
           {
             "name": "Claude Code",
-            "wozu": "die Werkbank. Hier entstehen Akten, Prüfskripte, der Zaun und diese Seite, im Gespräch mit dem Projektverantwortlichen."
+            "wozu": "die Werkbank. Hier entstehen Akten, Prüfskripte, der Zaun und diese Seite, im Gespräch mit dem Projektverantwortlichen und in geplanten Aufgaben, etwa werktags um 18 Uhr."
           },
           {
             "name": "Claude von Anthropic",
@@ -5809,7 +5809,7 @@
         "teile": [
           {
             "name": "NVIDIA DGX Spark",
-            "wozu": "der Rechner im Haus, auf dem die Mannschaft läuft, seit dem 17.09."
+            "wozu": "der Rechner im Haus, auf dem die Mannschaft läuft."
           },
           {
             "name": "Hermes Agent von Nous Research",
@@ -5821,7 +5821,7 @@
           },
           {
             "name": "Ollama",
-            "wozu": "rechnet das Modell auf dem Grafikprozessor der DGX Spark."
+            "wozu": "rechnet das Modell auf der DGX Spark."
           },
           {
             "name": "Kanban-Board von Hermes Agent",
@@ -5842,7 +5842,7 @@
           },
           {
             "name": "Jira",
-            "wozu": "der Stand des Projekts für das Team, ein Kommentar am Tag."
+            "wozu": "Epics und Stories für Entwicklungsaufträge und den Stand des Projekts; Kommentare und neue Stories erst nach Freigabe."
           }
         ]
       },
@@ -5924,12 +5924,54 @@
       ],
       "beschriftung": "Der rote Punkt folgt einem Auftrag: von Telegram zu Hermes Agent, durch die Schleife aus Qwen, Zaun und Werkzeug, über das Board zu Fritz und zurück. Die Ablage kommt über Git auf den KI-Rechner."
     },
-    "quelle": "Harness, Stand 03.09.2026; Analyse Laufzeit Hermes und Modell vom 20.10.2026; Systemarchitektur Orchestrator; Logbuch 2026-09-03 bis 2026-10-22; Entscheidung des Projektverantwortlichen vom 23.10.2026, alle Produktnamen zu nennen",
-    "freigabe": "oeffentlich"
+    "quelle": "Harness, Stand 03.09.2026; Analyse Laufzeit Hermes und Modell vom 20.10.2026; Systemarchitektur Orchestrator; Logbuch 2026-09-03 bis 2026-10-22; Entscheidung des Projektverantwortlichen vom 23.10.2026, alle Produktnamen zu nennen; Logbuch 2026-10-20 Entscheidung offene Punkte aus den Sitzungen, 2026-10-21 Wächter ohne Freigabe, 2026-10-23 Jira Stories nach dem Morgenbriefing",
+    "freigabe": "oeffentlich",
+    "gesamtbild": {
+      "satz": "Menschen sprechen mit zwei Stellen: mit dem Orchestrator über Telegram und mit Claude Code an der Werkbank. Jira trägt die Aufträge und den Stand fürs Team, die Ablage das Wissen, GitHub den Code und diese Seite.",
+      "schritte": [
+        {
+          "titel": "Alltag",
+          "text": "Menschen geben dem Orchestrator Aufträge über Telegram, heute nur der Projektverantwortliche, das Team ab dem 30.10. Das Ergebnis kommt denselben Weg zurück."
+        },
+        {
+          "titel": "Sitzung",
+          "text": "Der Projektverantwortliche arbeitet mit Claude Code an der Werkbank: bauen, messen, entscheiden."
+        },
+        {
+          "titel": "Aus Jira",
+          "text": "Entwicklungsaufträge stehen als Epic mit Stories in Jira, etwa WMC Inventar mit sieben Meilensteinen. Die Werkbank macht daraus Aufträge an den Orchestrator."
+        },
+        {
+          "titel": "Nach Jira",
+          "text": "Werktags um 18 Uhr stimmt die Werkbank als geplante Aufgabe den Stand des Tages für Jira ab und schlägt Stories vor; vor Terminen kommt ein Morgenbriefing dazu. Gepostet und angelegt wird nur, was der Projektverantwortliche freigibt."
+        },
+        {
+          "titel": "In die Ablage",
+          "text": "Was an der Werkbank entsteht, kommt in die Ablage: Akten, Grenzen, Prüfstände. Der Archivar trägt am Ende jeder Sitzung Protokoll, Logbuch und Arbeitsplan nach."
+        },
+        {
+          "titel": "Über Git",
+          "text": "Über Git kommt die Ablage auf den KI-Rechner, gezogen erst nach dem Ja des Projektverantwortlichen."
+        },
+        {
+          "titel": "Läufe",
+          "text": "Die Werkbank gibt dem KI-Rechner Prüfstand- und Trainingsläufe und startet Auftragsketten, angekündigt und mit Ja. Die Ergebnisse liest sie zurück."
+        },
+        {
+          "titel": "Mannschaft",
+          "text": "Auf dem KI-Rechner verteilt der Orchestrator über das Board an die Mannschaft. Wie das im Einzelnen läuft, zeigt die nächste Zeichnung."
+        },
+        {
+          "titel": "Nach GitHub",
+          "text": "Was Gregor Dev baut, liegt als Zweig auf dem KI-Rechner. Die Werkbank prüft ihn, beim Pflegelauf jeden Montag und Donnerstag um 9 Uhr, und stellt nach dem Ja des Projektverantwortlichen einen Pull Request. Zusammengeführt wird nur von einem Menschen; diese Seite geht dann auf GitHub Pages."
+        }
+      ],
+      "beschriftung": "Der rote Punkt folgt einem Entwicklungsauftrag: aus Jira über die Werkbank zum Orchestrator, über das Board zu Gregor Dev und Theo und als Pull Request nach GitHub."
+    }
   },
   "fahrplan": {
     "stand": "2026-10-23",
-    "satz": "Vom ersten Prüflauf am 26.08. bis zur ersten Auftragskette am 23.10.: was wann entstanden ist, wie weit wir sind und woran es am meisten hing.",
+    "satz": "Vom ersten Tag am 26.08. bis zur ersten Auftragskette am 23.10.: was wann entstanden ist, wie weit wir sind und woran es am meisten hing.",
     "phasen": [
       {
         "von": "2026-08-26",

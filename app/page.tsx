@@ -3,6 +3,7 @@ import { AblageGraphFigur } from '@/components/figuren/AblageGraph'
 import { EnablerRaster } from '@/components/figuren/EnablerRaster'
 import { LandschaftFigur } from '@/components/figuren/Landschaft'
 import { HermesQwenFigur } from '@/components/figuren/HermesQwen'
+import { GesamtbildFigur } from '@/components/figuren/Gesamtbild'
 import { TermineFigur } from '@/components/figuren/Termine'
 import { MannschaftFigur } from '@/components/figuren/Mannschaft'
 import { LernkreisFigur } from '@/components/figuren/Lernkreis'
@@ -937,6 +938,23 @@ export default function Landing() {
                 </div>
               ))}
             </div>
+
+            <h3 className="lp-aussage lp-luft-oben">Das Gesamtbild: Werkbank, KI-Rechner, Jira und GitHub.</h3>
+            <div className="lp-text lp-luft-oben-klein">
+              <p>{d.techstack.gesamtbild.satz}</p>
+            </div>
+            <GesamtbildFigur />
+            <ol className="lp-punkte">
+              {d.techstack.gesamtbild.schritte.map((s, i) => (
+                <li key={s.titel}>
+                  <span className="nr">{String(i + 1).padStart(2, '0')}</span>
+                  <div>
+                    <p className="punkt">{s.titel}</p>
+                    <p className="grund">{s.text}</p>
+                  </div>
+                </li>
+              ))}
+            </ol>
 
             <h3 className="lp-aussage lp-luft-oben">Wie Hermes und Qwen einen Auftrag bearbeiten.</h3>
             <div className="lp-text lp-luft-oben-klein">

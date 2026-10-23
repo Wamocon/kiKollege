@@ -113,7 +113,7 @@ export function HermesQwenFigur() {
       </text>
 
       {/* Die Ablage */}
-      <Box x={400} y={395} b={240} h={58} titel="Ablage" zeilen={['Obsidian und Git, auf dem KI-Rechner']} />
+      <Box x={400} y={395} b={240} h={58} titel="Ablage" zeilen={['als Kopie über Git']} />
       <line x1={520} y1={395} x2={520} y2={342} {...leise} />
       <path d="M 640 424 L 825 424 L 825 302" {...leise} />
       <text x={732} y={416} textAnchor="middle" fontSize="11" fill="var(--wmc-muted)">liest</text>

@@ -747,6 +747,8 @@ export interface Projektstand {
     satz: string
     gruppen: { titel: string; teile: { name: string; wozu: string }[] }[]
     ablauf: { satz: string; schritte: { titel: string; text: string }[]; beschriftung: string }
+    /** Das Gesamtbild: Werkbank, Jira, Ablage, GitHub und KI-Rechner */
+    gesamtbild: { satz: string; schritte: { titel: string; text: string }[]; beschriftung: string }
     quelle: string
     freigabe: Freigabe
   }

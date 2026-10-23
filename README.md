@@ -182,7 +182,7 @@ verborgen bleibt.
 
 ## Die Figuren
 
-Siebzehn Zeichnungen, alle aus `data/projektstand.json` gespeist, sechzehn davon in
+Achtzehn Zeichnungen, alle aus `data/projektstand.json` gespeist, siebzehn davon in
 `components/figuren/`. Sie sind eigene SVG in den CI-Farben, keine Kopien der
 Vorlagen aus der Einführung. Farben kommen aus den Tokens, damit sie in beiden Themen
 mitwandern; Rot trägt in jeder Figur genau ein Element, nämlich das, worum es geht.
@@ -227,6 +227,10 @@ Aussehen setzt die Klasse `lp-aussage`.
   (gefüllt läuft, leer vorhanden, gestrichelt entschieden). Rot trägt die eine
   Verbindung, an der der Rest hängt: die Ablage über Git auf dem KI-Rechner.
   Daneben steht dieselbe Aufzählung als Text, für Leser ohne Bild.
+- **Gesamtbild** (`Gesamtbild.tsx`): Menschen, Jira, die Werkbank mit Claude Code, Ablage,
+  GitHub und der KI-Rechner mit Hermes Agent und Qwen, neun nummerierte Wege. Ein roter
+  Punkt folgt einem Entwicklungsauftrag aus Jira bis zum Pull Request. Daten unter
+  `techstack.gesamtbild`.
 - **Hermes und Qwen** (`HermesQwen.tsx`): wie ein Auftrag durch Hermes Agent und Qwen
   läuft, von Telegram über die Schleife aus Qwen, Zaun und Werkzeug und das Board zu
   Fritz und zurück. Ein roter Punkt folgt dem Auftrag (SVG `animateMotion`), bei
