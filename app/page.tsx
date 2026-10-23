@@ -609,6 +609,52 @@ export default function Landing() {
                 </div>
               </div>
 
+              {d.training.ersterLauf ? (
+                <>
+                  <p className="lp-klein lp-luft-oben">
+                    Der erste Lauf nach dieser Regel, {datum(d.training.ersterLauf.am)}
+                  </p>
+                  <div className="lp-text lp-luft-oben-klein">
+                    <p>{d.training.ersterLauf.satz}</p>
+                  </div>
+                  <div className="lp-kpi">
+                    {d.training.ersterLauf.zahlen.map((z) => (
+                      <div className="lp-kpi-kachel" key={z.text}>
+                        <p className="lp-kpi-wert">{zahl(z.wert)}</p>
+                        <p className="lp-kpi-label">{z.text}</p>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="lp-text lp-luft-oben-klein">
+                    <p>{d.training.ersterLauf.warum}</p>
+                  </div>
+                  <div className="lp-zellen">
+                    <div className="lp-zelle">
+                      <span className="kopf">Was schon jedes Mal klappt</span>
+                      <ul className="liste">
+                        {d.training.ersterLauf.klappt.map((t) => (
+                          <li key={t}>{t}</li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div className="lp-zelle traegt">
+                      <span className="kopf">Woran nachgeschärft wird</span>
+                      <ul className="liste">
+                        {d.training.ersterLauf.nachschaerfen.map((t) => (
+                          <li key={t}>{t}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                  <div className="lp-text lp-luft-oben-klein">
+                    <p>
+                      {d.training.ersterLauf.weiter} {d.training.ersterLauf.offen}
+                    </p>
+                    <p className="lp-klein">Quelle: {d.training.ersterLauf.quelle}</p>
+                  </div>
+                </>
+              ) : null}
+
               <p className="lp-klein lp-luft-oben">Der feste Takt</p>
               <TaktFigur />
               <div className="lp-gegen-rahmen">
