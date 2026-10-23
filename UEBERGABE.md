@@ -4,7 +4,28 @@ Diese Datei ist für die nächste Sitzung geschrieben, nicht für die Nachwelt. 
 sagt, wo das Vorhaben steht, was als Erstes zu tun ist und was dabei nicht
 verloren gehen darf.
 
-Stand dieser Übergabe: 22.10.2026.
+Stand dieser Übergabe: 23.10.2026.
+
+## Nachtrag 23.10.2026: Stand der Nacht, zur Vorstellung um 16 Uhr
+
+Der Zweig `landing/stand-2026-10-23` steht auf `landing/trainingskonzept` (Pull
+Request 22) und zieht den Stand aus dem Morgenbriefing im Tagesprotokoll vom 23.10.
+nach. Bestellt hat ihn die Sitzung „Morgenbriefing und Jira“ nach der Entscheidung
+des Projektverantwortlichen vom 22.10. abends: Vorschau bis 12 Uhr, gemergt wird
+erst nach seinem Okay im Chat, in der Reihenfolge 19, 21, 22 und dieser.
+
+- **Theo, der Tester:** Name nach der Entscheidung vom 22.10.; er läuft auf dem
+  KI-Rechner mit Grenze und eigenem Zugang. Erster Prüfstandlauf: 9 von 18
+  Pflichtfällen, Grenzen gehalten, noch kein volles Mitglied. Die Mannschaft zählt
+  jetzt sieben laufende Rollen.
+- **WMC Inventar:** erster Entwicklungsauftrag als Kette in sieben Meilensteinen.
+  M1 gebaut, 24 Testfälle geschrieben, noch nicht ausgeführt; bei M2 hält die Kette.
+  Neu: Baustein „Auftragsketten über einen Wächter“, Begriff Auftragskette.
+- **Hermes:** erster Trainingslauf nach dem neuen Konzept seit 02:08, Ergebnis offen.
+- **Daten:** Chronik 23.10., acht Entscheidungen vom 22.10. abends, zwei Beobachtungen
+  (Kette und Trainingslauf, Trockenlauf „grün“).
+- **Nicht auf der Seite:** Benutzer, Pfade, Ports, Zweige und Commits auf dem
+  KI-Rechner, das Risiko aus dem gemeinsamen Benutzer, Einzelheiten des Zauns.
 
 ## Nachtrag 22.10.2026: Das Trainingskonzept auf der Seite
 

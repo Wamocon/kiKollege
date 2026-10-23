@@ -1,9 +1,9 @@
 {
-  "stand": "2026-10-22",
+  "stand": "2026-10-23",
   "herkunft": {
     "arbeitsordner": "D:\\WAMOCON",
     "einstieg": "KI-Mitarbeiter/75_KI-Mitarbeiter/KI-Mitarbeiter — Einstieg.md",
-    "erzeugt": "2026-10-22",
+    "erzeugt": "2026-10-23",
     "fristTage": 7,
     "verfahren": "Erstbefüllung von Hand aus dem Übergabedokument vom 05.09.2026, am 11.09. fortgeschrieben aus den beiden Blättern vom 09.09., am 17.09. aus dem Vault: Logbuch, Tagesprotokolle, Meilensteinplan, Bestandsaufnahme vom 16.09., Akte des Reviewers, Laufnotizen und Quoten je Regel. Das Abbild der Ablage zählt scripts/abbild-vault.mjs. Spätere Stände der Prüfläufe schreibt scripts/export-vault.mjs aus dem Frontmatter der Laufnotizen.",
     "freigabe": "intern",
@@ -69,7 +69,9 @@
       "Arbeitsplan 2026-10-16, Stand 20.10.2026, Punkte 12, 14, 16, 49 und 50 und Abschnitt „Aus den Sitzungen“ vom 21.10.",
       "Akten des Orchestrators, des Reviewers, des Archivars und des Testers, Stand 21. und 22.10.2026",
       "Logbuch 2026-10-19 bis 2026-10-22, darunter Entscheidungen julia-trend, Trainingsziel Hermes, Fähigkeiten Arnold und Gregor Dev, Teamliste Hermes, Archivar als Gedächtnis, Tester, Kartenvorlagen Fritz, Training Fritz und Zaun",
-      "Protokolle KI-Mitarbeiter und KFBM vom 19. bis 22.10.2026; Analyse der Seite gegen die Ablage vom 22.10.2026"
+      "Protokolle KI-Mitarbeiter und KFBM vom 19. bis 22.10.2026; Analyse der Seite gegen die Ablage vom 22.10.2026",
+      "Tagesprotokoll KI-Mitarbeiter vom 23.10.2026, Morgenbriefing, Stand 06:06",
+      "Prüfstandlauf 2026-10-22 Tester 1; Logbuch 2026-10-22 Entscheidungen Tester, WMC Inventar einrichten, Tester ruft die Seite auf, Training Commit und Reihenfolge Trainingslauf, Morgenläufe Landing Page und Leitblätter"
     ],
     "getrenntAm": "2026-09-09",
     "notizordner": "KFBM/00_Vault/10_KI-Mitarbeiter"
@@ -1214,6 +1216,46 @@
       "datum": "2026-10-22",
       "entscheidung": "Das Trainingskonzept steht auf der Landing Page",
       "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-22",
+      "entscheidung": "Der Tester heißt Theo; seine Kennung bleibt tester",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-22",
+      "entscheidung": "WMC Inventar: Gregor Dev entwickelt, Theo testet parallel, beide als Probeauftrag vor der Abnahme",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-22",
+      "entscheidung": "WMC Inventar entsteht als Kette von sieben Meilensteinen; ein Wächter schickt den nächsten, wenn Bau und Test des vorigen erledigt sind",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-22",
+      "entscheidung": "Das Board lässt weiter nur eine Karte zur Zeit laufen",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-22",
+      "entscheidung": "Der Tester ruft in jedem Test die Seite tatsächlich auf; ein Trockenlauf heißt nie grün",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-22",
+      "entscheidung": "Die Prüfstandläufe 2 und 3 des Testers laufen erst nach WMC Inventar und dem Training",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-22",
+      "entscheidung": "Der erste Trainingslauf des Orchestrators läuft nach dem ersten Auftrag für WMC Inventar",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-22",
+      "entscheidung": "Die Landing Page geht nach dem Okay des Projektverantwortlichen live, zur Vorstellung am 23.10.",
+      "freigabe": "intern"
     }
   ],
   "entscheidungenNachtrag": "Die Entscheidung vom 04.09. dreht bewusst eine zuvor festgelegte Reihenfolge um: Ursprünglich sollte die Fehlalarmquote vor dem Plattformwechsel gemessen werden. Die Technik wurde vorgezogen. Das ist kein Widerspruch, sondern eine andere Reihenfolge mit einer benannten Folge, und die Folge steht im Abschnitt zur Messlücke.",
@@ -1569,6 +1611,20 @@
       "titel": "Die Ablage wird auf dem KI-Rechner gezählt",
       "text": "Den Abschnitt zur Ablage zählt der Pflegelauf auf dem KI-Rechner. Dessen Kopie kann hinterherhinken und zählt Notizen mit, die nicht versioniert sind, etwa Auftragsnotizen. Am 22.10. zählte er dort 296 Notizen, 14 davon verbindlich; aus den Repositories gezählt sind es am selben Tag 267, 11 davon verbindlich. Die Seite zeigt die Zählung aus den Repositories.",
       "quelle": "Pflegelauf von Gregor Dev vom 22.10.2026 gegen die Zählung aus den Repositories vom 22.10.2026 (Commits 9478835, 6dc5021, c4f3e11)",
+      "freigabe": "intern"
+    },
+    {
+      "id": "kette-und-trainingslauf",
+      "titel": "Kette und Trainingslauf kamen sich in die Quere",
+      "text": "In der Nacht zum 23.10. teilten sich die Kette WMC Inventar und der Trainingslauf des Orchestrators den einzigen Arbeiterplatz des Boards. Die Kette schickte M2 mitten in den ersten Durchgang; zwei Karten an Fritz warteten danach je gut eine Stunde. Die Kette soll erst nach dem Trainingslauf weitergehen.",
+      "quelle": "Tagesprotokoll KI-Mitarbeiter vom 23.10.2026, Morgenbriefing",
+      "freigabe": "intern"
+    },
+    {
+      "id": "trockenlauf-gruen",
+      "titel": "Theo nannte einen Trockenlauf grün",
+      "text": "Zu M1 von WMC Inventar meldete Theo den Trockenlauf zweimal als „grün“, obwohl seine Akte das seit dem 22.10. ausschließt. Ausgeführt war keiner der 24 Testfälle, weil das Startskript einen Befehl verlangt, der erst zu M6 gehört.",
+      "quelle": "Tagesprotokoll KI-Mitarbeiter vom 23.10.2026, Morgenbriefing; Logbuch 2026-10-22 Entscheidung Tester ruft die Seite auf",
       "freigabe": "intern"
     }
   ],
@@ -2005,6 +2061,11 @@
         "datum": "2026-10-22",
         "text": "Gregor Devs erster fester Pflegelauf; die Werkbank hat den Stand ergänzt. Der Archivar ist vorgezogen und pflegt das Gedächtnis der Ablage, der Tester ist als neue Rolle entschieden. Meilenstein 1 steht als abgenommen auf der Seite. Ein festes Trainingskonzept legt Takt und Messlatte fest.",
         "freigabe": "oeffentlich"
+      },
+      {
+        "datum": "2026-10-23",
+        "text": "Erster Entwicklungsauftrag als Kette: WMC Inventar in sieben Meilensteinen. Gregor Dev baute M1 in 36 Minuten, Theo, der Tester, schrieb 24 Testfälle dazu; ausgeführt sind sie noch nicht. Bei M2 hält die Kette seit 03:40. Theo erfüllte in seinem ersten Prüfstandlauf 9 von 18 Pflichtfällen. Hermes läuft seit 02:08 den ersten Trainingslauf nach dem neuen Konzept.",
+        "freigabe": "oeffentlich"
       }
     ],
     "freigabe": "oeffentlich"
@@ -2206,8 +2267,8 @@
     }
   ],
   "mannschaft": {
-    "satz": "Aus einem Mitarbeiter wird eine Mannschaft. Fünf KI-Mitarbeiter laufen auf dem KI-Rechner, der Archivar auf der Werkbank. Der Reporter folgt in diesem Plan, der Tester ist neu entschieden, der Entwickler kommt danach.",
-    "gezaehltAm": "2026-10-22",
+    "satz": "Aus einem Mitarbeiter wird eine Mannschaft. Sechs KI-Mitarbeiter laufen auf dem KI-Rechner, der Archivar auf der Werkbank. Der Reporter folgt in diesem Plan, der Entwickler kommt danach.",
+    "gezaehltAm": "2026-10-23",
     "trennung": "Wer baut, prüft nicht. Wer prüft, baut nicht. Wer pflegt, urteilt nicht.",
     "engpass": "Der Engpass ist die gemessene Fehlalarmquote des ersten, nicht die Zahl der Mitarbeiter. Kein weiterer misst sie, und jeder weitere vergrößert, was ungemessen läuft.",
     "akte": "Jeder KI-Mitarbeiter bekommt eine Akte: Auftrag, Haltung und Grenze als Dateien, unabhängig vom Harness. Ein kleines Programm prüft vor jedem Werkzeugaufruf, ob die Akte ihn erlaubt, und lehnt im Zweifel ab. Der Reviewer hat seine Akte seit dem 11.09., der Orchestrator seit dem 28.09.",
@@ -2322,7 +2383,7 @@
         "tutNie": "nach main pushen, einen Pull Request zusammenführen, etwas aus den Daten entfernen, ein Datenelement von intern auf öffentlich heben, eine Notiz in der Ablage ändern, eine Prüfung abschalten",
         "zustand": "arbeitet",
         "seit": "2026-10-19",
-        "hinweis": "Am 18.09. entschieden, weil weitere Seiten entstehen sollen. Am 18.10. hat der Projektverantwortliche Akte und Grenze freigegeben. Am 19.10. liefen sein erster Pflegelauf und sein erster Bauauftrag, beide sind als Pull Request zusammengeführt. Ein eigenes Konto fehlt noch; bis dahin stellt die Werkbank seine Pull Requests unter dem Konto des Projektverantwortlichen. Seit dem 20.10. läuft sein Pflegelauf fest am Montag und Donnerstag um 7 Uhr. Am 21.10. hat er seinen ersten Entwicklungsauftrag über den Orchestrator erledigt.",
+        "hinweis": "Am 18.09. entschieden, weil weitere Seiten entstehen sollen. Am 18.10. hat der Projektverantwortliche Akte und Grenze freigegeben. Am 19.10. liefen sein erster Pflegelauf und sein erster Bauauftrag, beide sind als Pull Request zusammengeführt. Ein eigenes Konto fehlt noch; bis dahin stellt die Werkbank seine Pull Requests unter dem Konto des Projektverantwortlichen. Seit dem 20.10. läuft sein Pflegelauf fest am Montag und Donnerstag um 7 Uhr. Am 21.10. hat er seinen ersten Entwicklungsauftrag über den Orchestrator erledigt. Seit dem 22.10. baut er WMC Inventar, die Hardware-Verwaltung der IT, in sieben Meilensteinen; Theo testet parallel.",
         "freigabe": "oeffentlich",
         "betrieb": "mitGrenze",
         "marke": "mit Grenze seit 19.10."
@@ -2334,11 +2395,13 @@
         "kern": "prüfend",
         "tut": "Zu Entwicklungsaufträgen Tests mit Robot Framework aus den Akzeptanzkriterien schreiben, in einem festen Prüfcontainer ausführen und nach ISTQB dokumentieren. Fragen rund ums Testen beantworten.",
         "tutNie": "Produktcode ändern, etwas abnehmen, entscheiden, ob der Test oder der Code falsch ist",
-        "zustand": "entschieden",
-        "seit": null,
-        "hinweis": "Am 22.10. entschieden, Akte und Grenze sind freigegeben. Er bekommt einen eigenen Zugang im Messenger; Kollegen stellen dort Fragen, sobald die Teamliste steht. Ein Profil auf dem KI-Rechner gibt es noch nicht.",
-        "marke": "entschieden 22.10.",
-        "freigabe": "oeffentlich"
+        "zustand": "arbeitet",
+        "seit": "2026-10-22",
+        "hinweis": "Am 22.10. entschieden und am Abend eingerichtet, Akte und Grenze sind freigegeben; er heißt Theo. Er läuft auf dem KI-Rechner mit eigenem Zugang im Messenger; Kollegen stellen dort Fragen, sobald die Teamliste steht. Im ersten Prüfstandlauf am 22.10. erfüllte er 9 von 18 Pflichtfällen und hielt seine Grenzen durchgehend. Volles Mitglied wird er nach dem Assessment Center.",
+        "marke": "mit Grenze seit 22.10.",
+        "freigabe": "oeffentlich",
+        "name": "Theo",
+        "betrieb": "mitGrenze"
       },
       {
         "id": "gestalter",
@@ -2358,7 +2421,7 @@
     "freigabe": "oeffentlich",
     "grenzeWarum": "Die meisten Beschreibungen von KI-Agenten setzen Grenzen im Anweisungstext. Ein Text hält niemanden auf, am wenigsten ein Modell, das in einem geprüften Dokument auf eine gegenteilige Anweisung stößt.",
     "verlauf": {
-      "text": "Am 09.09. waren sieben Rollen gesetzt. Am 11.09. ruhten alle außer Reviewer und Orchestrator, am 12.09. kam die Researcherin als achte dazu und arbeitet. Am 16.09. hat der Projektverantwortliche für alle acht Rollen vierzig Fragen beantwortet; umgesetzt ist das als Vorschlag, freigegeben wird Rolle für Rolle. Am 17.09. neu geschnitten: Bis zum 16.10. sollen Reviewer, Orchestrator, Reporter, Archivar, Architekt und Entwickler lauffähig sein. Der Gestalter bleibt draußen. Am 18.09. kommt Gregor Dev als neunte Rolle dazu: Er pflegt die öffentlichen Seiten und darf dafür als Zweiter ins Netz. Am 29.09. neu geschnitten: Zuerst kommen Reviewer, Orchestrator, Reporter und Researcherin, Architekt, Entwickler und Archivar danach. Das Organigramm vom 16.10. führt sieben geplante KI-Mitarbeiter und sieht den Gestalter nicht vor. Am 22.10. ist der Archivar vorgezogen und der Tester als zehnte Rolle entschieden.",
+      "text": "Am 09.09. waren sieben Rollen gesetzt. Am 11.09. ruhten alle außer Reviewer und Orchestrator, am 12.09. kam die Researcherin als achte dazu und arbeitet. Am 16.09. hat der Projektverantwortliche für alle acht Rollen vierzig Fragen beantwortet; umgesetzt ist das als Vorschlag, freigegeben wird Rolle für Rolle. Am 17.09. neu geschnitten: Bis zum 16.10. sollen Reviewer, Orchestrator, Reporter, Archivar, Architekt und Entwickler lauffähig sein. Der Gestalter bleibt draußen. Am 18.09. kommt Gregor Dev als neunte Rolle dazu: Er pflegt die öffentlichen Seiten und darf dafür als Zweiter ins Netz. Am 29.09. neu geschnitten: Zuerst kommen Reviewer, Orchestrator, Reporter und Researcherin, Architekt, Entwickler und Archivar danach. Das Organigramm vom 16.10. führt sieben geplante KI-Mitarbeiter und sieht den Gestalter nicht vor. Am 22.10. ist der Archivar vorgezogen und der Tester als zehnte Rolle entschieden. Seit dem Abend des 22.10. läuft der Tester als Theo auf dem KI-Rechner.",
       "freigabe": "intern"
     },
     "mensch": {
@@ -2971,12 +3034,12 @@
     "freigabe": "oeffentlich"
   },
   "landschaft": {
-    "stand": "2026-10-22",
+    "stand": "2026-10-23",
     "rechnerAufgenommen": "2026-09-17",
     "rechnerBestaetigt": "2026-09-17",
     "satz": "Zwei Orte führen dieselbe Mannschaft aus. Verbunden sind sie nur über die Ablage.",
     "erklaerung": "Gebaut und gemessen wird auf der Werkbank mit Claude Code. Der Dauerbetrieb läuft im Haus, mit Hermes Agent auf einer DGX Spark und einem offenen Modell. Beide lesen und schreiben dieselbe Ablage, und nur die sehen beide. Was ein KI-Mitarbeiter zum Arbeiten braucht, steht in seiner Akte und nicht in einem der beiden Werkzeuge. So zieht er beim Wechsel mit.",
-    "rechnerStand": "Auf der eigenen Hardware laufen Harness und Modell; Reviewer und Orchestrator sind dort als eigene Profile mit ihrer Grenze eingerichtet. Seit dem 17.09. kommt die Ablage über Git dorthin, mit den Akten und den Prüfprofilen. Seinen Referenzlauf hat der Reviewer dort am 18.09. gefahren.",
+    "rechnerStand": "Auf der eigenen Hardware laufen Harness und Modell; sechs KI-Mitarbeiter sind dort als eigene Profile mit ihrer Grenze eingerichtet, zuletzt am 22.10. Theo, der Tester. Seit dem 17.09. kommt die Ablage über Git dorthin, mit den Akten und den Prüfprofilen. Seinen Referenzlauf hat der Reviewer dort am 18.09. gefahren.",
     "vergleich": "Ob das offene Modell so gut prüft wie das Cloud-Modell, misst seit dem 20.10. der Nutzentest am selben Aufgabensatz; die Bewertung steht aus. Bis dahin ist der Betrieb im Haus ein Pilot.",
     "mensch": {
       "name": "Der Mensch",
@@ -3114,6 +3177,12 @@
         "name": "Aufträge verteilen über das Board",
         "zustand": "laeuft",
         "traegt": true
+      },
+      {
+        "id": "kette",
+        "ort": "rechner",
+        "name": "Auftragsketten über einen Wächter",
+        "zustand": "laeuft"
       },
       {
         "id": "sprache",
@@ -3805,7 +3874,7 @@
     "ueberholt": "Am 25.09. um eine Woche geschoben, am 29.09. auf ein neues Ziel geschnitten. Er bleibt hier als Verlauf stehen."
   },
   "meilensteinplanAktuell": {
-    "stand": "2026-10-22",
+    "stand": "2026-10-23",
     "status": "Plan vom 29.09.2026, Termine am 16.10.2026 vom Projektverantwortlichen freigegeben",
     "von": "2026-09-29",
     "bis": "2026-11-13",
@@ -3916,7 +3985,7 @@
           },
           {
             "text": "Der erste Lauf des Prüfstands, bewertet vom Projektverantwortlichen, vor den Aufträgen des Teams",
-            "teilweise": "Ziel bis zum 27.10.: zwei Läufe hintereinander mit den Fällen 1 bis 17 und 23; im Lauf vom 20.10. waren es 3 von 18"
+            "teilweise": "Ziel bis zum 27.10.: zwei Läufe hintereinander mit den Fällen 1 bis 17 und 23; im Lauf vom 20.10. waren es 3 von 18; seit dem 23.10. läuft der erste Trainingslauf mit drei Durchgängen"
           },
           {
             "text": "Den Prüfstand des Orchestrators durchsehen und die Fälle festlegen",
@@ -4199,7 +4268,7 @@
       },
       {
         "wer": "Orchestrator",
-        "stand": "Läuft seit dem 18.10. mit Akte und Grenze; jeder Auftrag liegt als Notiz vor der Karte. Im Prüfstand erfüllte er am 20.10. 3 von 18 Fällen; bis zum 27.10. braucht es zwei fehlerfreie Läufe."
+        "stand": "Läuft seit dem 18.10. mit Akte und Grenze; jeder Auftrag liegt als Notiz vor der Karte. Im Prüfstand erfüllte er am 20.10. 3 von 18 Fällen. Seit dem 23.10., 02:08 läuft sein erster Trainingslauf nach dem neuen Konzept, jeder Fall dreimal; das Ergebnis steht aus. Bis zum 27.10. braucht es zwei fehlerfreie Läufe. Bei WMC Inventar legt er je Meilenstein den Bauauftrag an Gregor Dev und Suite und Lauf an Theo an; bei M2 ließ er die Karte für den Lauf weg."
       },
       {
         "wer": "Reporter",
@@ -4223,7 +4292,7 @@
       },
       {
         "wer": "Pfleger der Seiten",
-        "stand": "Gregor Dev läuft seit dem 19.10. mit seiner Grenze, mit festem Pflegelauf am Montag und Donnerstag. Es fehlt ein eigenes Konto."
+        "stand": "Gregor Dev läuft seit dem 19.10. mit seiner Grenze, mit festem Pflegelauf am Montag und Donnerstag. Seit dem 22.10. baut er WMC Inventar: M1, das Grundgerüst, in 36 Minuten; bei M2 kam er in zwei Anläufen nicht zu Ende, die Kette hält seit dem 23.10., 03:40. Es fehlt ein eigenes Konto."
       },
       {
         "wer": "Archivar",
@@ -4231,14 +4300,14 @@
       },
       {
         "wer": "Tester",
-        "stand": "Am 22.10. entschieden, die Akte ist freigegeben; ein Profil gibt es noch nicht."
+        "stand": "Theo läuft seit dem 22.10. auf dem KI-Rechner mit seiner Grenze. Im ersten Prüfstandlauf erfüllte er 9 von 18 Pflichtfällen und hielt seine Grenzen durchgehend; volles Mitglied ist er noch nicht. Zu M1 von WMC Inventar schrieb er 24 Testfälle; ausgeführt sind sie noch nicht, weil die Anwendung nicht startete."
       },
       {
         "wer": "Team",
         "stand": "Außer dem Projektverantwortlichen ist niemand freigeschaltet. Der Entwurf der Anfrage für die Teamliste liegt seit dem 19.10. vor."
       }
     ],
-    "quelle": "Meilensteinplan 29.09. bis 23.10.2026 mit dem Hinweis auf die Termine vom 16.10.; Logbuch vom 25.09., 28.09., 29.09. und 16.10.2026; Abnahme M1 vom 15.10.2026; Übergabe vom 15.10. und Tagesprotokoll vom 16.10.2026; Arbeitsplan 2026-10-16, Stand 20.10.2026, mit Einträgen bis 22.10.; Logbuch vom 19. bis 22.10.2026",
+    "quelle": "Meilensteinplan 29.09. bis 23.10.2026 mit dem Hinweis auf die Termine vom 16.10.; Logbuch vom 25.09., 28.09., 29.09. und 16.10.2026; Abnahme M1 vom 15.10.2026; Übergabe vom 15.10. und Tagesprotokoll vom 16.10.2026; Arbeitsplan 2026-10-16, Stand 20.10.2026, mit Einträgen bis 22.10.; Logbuch vom 19. bis 22.10.2026; Tagesprotokoll vom 23.10.2026",
     "freigabe": "intern"
   },
   "anleitung": {
@@ -4317,7 +4386,7 @@
         "freigabe": "oeffentlich"
       },
       {
-        "auftrag": "Die Browser-Startseite für WMC und WMA bauen oder ändern",
+        "auftrag": "Die Browser-Startseite für WMC und WMA oder WMC Inventar bauen oder ändern",
         "wer": "Gregor Dev",
         "angaben": "Auftragsnummer, was anders sein soll, woran man sieht, dass es fertig ist",
         "ab": {
@@ -4336,10 +4405,10 @@
       },
       {
         "auftrag": "Tests mit Robot Framework zu einem Entwicklungsauftrag schreiben und ausführen",
-        "wer": "der Tester",
+        "wer": "Theo, der Tester",
         "angaben": "Repository und Akzeptanzkriterien, dazu der Bauauftrag oder der Zweig",
         "ab": {
-          "nur": "sobald sein Profil läuft, zuerst nur für den Projektverantwortlichen"
+          "nur": "nur für den Projektverantwortlichen, als Probeauftrag; nach jedem Bauauftrag legt der Orchestrator ihn selbst an"
         },
         "freigabe": "oeffentlich"
       }
@@ -4369,7 +4438,7 @@
         "text": "Kehrt eine Aufgabe regelmäßig wieder, lässt sich ihr Maßstab aufschreiben und ist sie zu viel für Handarbeit, schlag sie dem Projektverantwortlichen vor."
       }
     ],
-    "quelle": "Akte des Orchestrators, Stand 22.10.2026; Akte des Reviewers, Stand 21.10.2026; Logbuch 2026-10-19 Entscheidungen Teamliste Hermes; Auskunft des Projektverantwortlichen vom 17.10.2026 zum Melden von Fehlalarmen",
+    "quelle": "Akte des Orchestrators, Stand 22.10.2026; Akte des Reviewers, Stand 21.10.2026; Logbuch 2026-10-19 Entscheidungen Teamliste Hermes; Auskunft des Projektverantwortlichen vom 17.10.2026 zum Melden von Fehlalarmen; Logbuch 2026-10-22 Entscheidungen WMC Inventar einrichten",
     "freigabe": "oeffentlich",
     "angaben": [
       {
@@ -4684,6 +4753,12 @@
         "begriff": "Pflichtfall",
         "erklaerung": "Ein Fall des Prüfstands, den ein KI-Mitarbeiter im Assessment Center bestehen muss. Pflicht wird jeder Fall, sobald er gelernt ist, und jeder Fehler aus dem Betrieb.",
         "quelle": "Logbuch 2026-10-22 Entscheidungen Prüfstand Tester und Messlatte"
+      },
+      {
+        "id": "auftragskette",
+        "begriff": "Auftragskette",
+        "erklaerung": "Ein Entwicklungsauftrag in Meilensteinen. Ein Wächter auf dem KI-Rechner schickt den nächsten erst, wenn Bau und Test des vorigen erledigt sind und gepusht ist; hängt eine Karte, hält er an, bis ein Mensch weitermacht.",
+        "quelle": "Logbuch 2026-10-22 Entscheidungen WMC Inventar einrichten"
       }
     ],
     "freigabe": "oeffentlich"
@@ -4838,7 +4913,7 @@
         ],
         "ziele": [
           {
-            "was": "Zwei Läufe hintereinander, in denen die Fälle 1 bis 17 und 23 des Prüfstands erfüllt sind und der Zaun nichts ablehnen musste. Am 20.10. waren es 3 von 18.",
+            "was": "Zwei Läufe hintereinander, in denen die Fälle 1 bis 17 und 23 des Prüfstands erfüllt sind und der Zaun nichts ablehnen musste. Am 20.10. waren es 3 von 18. Seit dem 23.10. läuft der erste Trainingslauf, jeder Fall dreimal.",
             "bis": "2026-10-27",
             "erreicht": false
           },
@@ -5116,6 +5191,11 @@
             "was": "Der feste Pflegelauf am Montag und Donnerstag um 7 Uhr. Eingerichtet am 20.10.",
             "bis": "2026-10-20",
             "erreicht": true
+          },
+          {
+            "was": "WMC Inventar, Version 1 in sieben Meilensteinen, mit Theo als Tester. M1 am 23.10. gebaut, bei M2 hält die Kette an.",
+            "bis": null,
+            "erreicht": false
           }
         ],
         "werkzeuge": [
@@ -5224,6 +5304,11 @@
           },
           {
             "was": "Ein Profil auf dem KI-Rechner, mit Zaun und eigenem Zugang.",
+            "bis": "2026-10-22",
+            "erreicht": true
+          },
+          {
+            "was": "Assessment Center: zwei Prüfstandläufe hintereinander mit allen Pflichtfällen, je dreimal erfüllt. Im ersten Lauf am 22.10. waren es 9 von 18; die Läufe 2 und 3 folgen nach WMC Inventar und dem Training.",
             "bis": null,
             "erreicht": false
           }
@@ -5441,7 +5526,7 @@
     "punkte": [
       {
         "titel": "Prüfstand",
-        "text": "Feste Übungsaufträge je KI-Mitarbeiter, ein Mensch bewertet. Der Orchestrator erfüllte im Lauf vom 20.10. 3 von 18 Fällen. Ziel bis zum 27.10. sind zwei Läufe hintereinander mit den Fällen 1 bis 17 und 23; erst danach bekommt das Team Zugang. Für Fritz liegt ein Prüfstand als Entwurf vor.",
+        "text": "Feste Übungsaufträge je KI-Mitarbeiter, ein Mensch bewertet. Der Orchestrator erfüllte im Lauf vom 20.10. 3 von 18 Fällen. Ziel bis zum 27.10. sind zwei Läufe hintereinander mit den Fällen 1 bis 17 und 23; erst danach bekommt das Team Zugang. Seit dem 23.10. läuft sein erster Trainingslauf nach dem neuen Konzept, jeder Fall dreimal; das Ergebnis steht aus. Theo, der Tester, erfüllte in seinem ersten Lauf am 22.10. 9 von 18 Pflichtfällen. Für Fritz liegt ein Prüfstand als Entwurf vor.",
         "freigabe": "oeffentlich"
       },
       {
@@ -5603,7 +5688,7 @@
       }
     ],
     "regel": "Kein KI-Mitarbeiter wird mit Antworten von Claude nachtrainiert, und Urteile von Claude gehen in kein Training (entschieden am 22.10.).",
-    "pruefstaende": "Einen Prüfstand haben heute Hermes, Fritz als Entwurf und der Tester. Die übrigen folgen in der Reihenfolge des Assessment Centers: Gregor Dev, julia-trend und der Archivar, danach Arnold und der Reporter (entschieden am 22.10.).",
+    "pruefstaende": "Einen Prüfstand haben heute Hermes, Fritz als Entwurf und Theo, der Tester. Theo erfüllte im ersten Lauf am 22.10. 9 von 18 Pflichtfällen; Hermes läuft seit dem 23.10. den ersten Trainingslauf nach diesem Konzept. Die übrigen folgen in der Reihenfolge des Assessment Centers: Gregor Dev, julia-trend und der Archivar, danach Arnold und der Reporter (entschieden am 22.10.).",
     "messlatte": {
       "satz": "Die Messlatte des Assessment Centers steigt mit jedem Durchgang um eine Stufe, also alle drei Monate (entschieden am 22.10.).",
       "stufen": [
