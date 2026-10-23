@@ -72,8 +72,9 @@ export default function Landing() {
       s.entfallen === 0 ? '' : s.entfallen === 1 ? ', eine entfällt' : `, ${inWorten(s.entfallen)} entfallen`
     return `${erledigt} von ${inWorten(s.gesamt)} Arbeiten${entfallen}.`
   }
-  const laufen = koepfe.filter((k) => k.betrieb).length
-  const mitGrenze = koepfe.filter((k) => k.betrieb === 'mitGrenze').length
+  const rollen = koepfe.filter((k) => !k.passtNicht)
+  const laufen = rollen.filter((k) => k.betrieb).length
+  const mitGrenze = rollen.filter((k) => k.betrieb === 'mitGrenze').length
 
   return (
     <>
@@ -160,7 +161,7 @@ export default function Landing() {
         {/* 02 Der erste: Fritz ------------------------------------------------ */}
         <Sektion id="erster">
           <p className="lp-klein">
-            Im Einsatz seit dem {datum(d.arbeitstage.beginn)}
+            {d.ersterHinweis.kopf}
           </p>
           <h2 className="lp-aussage breit lp-luft-oben-klein">
             Fritz, Reviewer für Schulungsunterlagen.
@@ -173,6 +174,7 @@ export default function Landing() {
               vollständig und jedes Mal gleich geprüft werden. Die Aufgabe ist nicht schwer, sie ist
               zu viel.
             </p>
+            <p>{d.ersterHinweis.text}</p>
           </div>
 
           <dl className="lp-spec">
@@ -227,7 +229,7 @@ export default function Landing() {
             <div className="lp-kpi-kachel">
               <p className="lp-kpi-wert">{zahl(fachreview.blocker!)}</p>
               <p className="lp-kpi-label">
-                schwerwiegende Befunde darunter: Antworten, die fachlich falsch sind
+                schwerwiegende Befunde darunter, etwa Antworten, die fachlich falsch sind
               </p>
             </div>
           </div>
@@ -333,15 +335,32 @@ export default function Landing() {
                   Das ist ein gutes Zeichen und noch keine Abnahme. Das eigene Ziel sind{' '}
                   {zahl(b.zielGesehenJeRegel)} einzeln angesehene Fälle je Regel. {zielErreicht(b)}
                 </p>
+                {b.geltung ? <p>{b.geltung}</p> : null}
               </div>
 
               <div className="lp-text lp-luft-oben">
                 <p>
-                  Aus den ersten Läufen sind {zahl(fehlalarmquote.unbewertet!)} Befunde und Hinweise
-                  weiter ohne Bewertung. Ein Beispiel, was eine Bewertung lehrt, steht im{' '}
+                  Aus den protokollierten Läufen sind {zahl(fehlalarmquote.unbewertet!)} Befunde und
+                  Hinweise weiter ohne Bewertung. Ein Beispiel, was eine Bewertung lehrt, steht im{' '}
                   <a href={pfad('/stand/#luecke')}>ausführlichen Stand</a>.
                 </p>
               </div>
+
+              {sichtbar(d.tests) ? (
+                <>
+                  <div className="lp-text lp-luft-oben">
+                    <p>{d.tests.satz}</p>
+                  </div>
+                  <div className="lp-zellen">
+                    {nurSichtbare(d.tests.punkte).map((t) => (
+                      <div className="lp-zelle" key={t.titel}>
+                        <span className="kopf">{t.titel}</span>
+                        <p>{t.text}</p>
+                      </div>
+                    ))}
+                  </div>
+                </>
+              ) : null}
             </>
           ) : (
             <div className="lp-hero-zahl lp-luft-oben">
@@ -454,7 +473,7 @@ export default function Landing() {
 
             <div className="lp-zellen lp-luft-oben">
               <div className="lp-zelle">
-                <span className="kopf">So liest du einen Bericht</span>
+                <span className="kopf">Was du zurückbekommst</span>
                 <p>{a.bericht}</p>
               </div>
               <div className="lp-zelle traegt">
@@ -499,7 +518,7 @@ export default function Landing() {
             {koepfe.map((k) => (
               <div className="lp-stufe" key={k.id}>
                 <span className="wann">
-                  {k.zustand}
+                  {k.passtNicht ? 'nicht im Plan' : k.zustand}
                   {istIntern && k.freigabe === 'intern' ? ', nur intern' : ''}
                 </span>
                 <div>
@@ -744,11 +763,11 @@ export default function Landing() {
               ) : null}
               <div className="lp-kpi-kachel">
                 <p className="lp-kpi-wert">
-                  {laufen} von {koepfe.length}
+                  {laufen} von {rollen.length}
                 </p>
                 <p className="lp-kpi-label">
                   Rollen laufen, {inWorten(mitGrenze)} davon mit Grenze. Entschieden und noch nicht in
-                  Betrieb: {koepfe.length - laufen}.
+                  Betrieb: {rollen.length - laufen}.
                 </p>
               </div>
               {sichtbar(plan) && teamAb && teamAb !== naechsterMeilenstein?.termin ? (

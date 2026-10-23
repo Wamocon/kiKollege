@@ -150,7 +150,8 @@ function MitSteckbrief({ kopf, children }: { kopf: Kopf; children: ReactNode }) 
 
 export function MannschaftFigur() {
   const m = daten.mannschaft
-  const koepfe = nurSichtbare(m.koepfe)
+  // Wer nach dem Organigramm nicht in die Mannschaft passt, steht nicht darin
+  const koepfe = nurSichtbare(m.koepfe).filter((k) => !k.passtNicht)
   const [oben, ...unten] = koepfe
   const teile: ReactNode[] = []
   const lueck = 10

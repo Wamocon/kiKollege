@@ -32,7 +32,7 @@ jeder Mitarbeiter sie ohne den Projektverantwortlichen versteht:
   falschen Befund zu tun ist, wie man mitmacht. Grundlage ist die freigegebene Akte
   des Orchestrators, Daten unter `anleitung`. Termine erscheinen nur, wo der Plan
   sichtbar ist.
-- **Begriffe**, neu: 39 Fachwörter mit Erklärung und Quelle, Daten unter
+- **Begriffe**, neu: 44 Fachwörter mit Erklärung und Quelle, Daten unter
   `glossar`. `components/landing/Begriff.tsx` verlinkt ein Wort auf seine
   Erklärung.
 - **Ohne Namen.** Der Projektverantwortliche steht nur mit seiner Rolle auf beiden
@@ -457,10 +457,11 @@ ein geänderter Plan, ein Widerspruch zwischen zwei Blättern — das ist der Au
 des Standwächters.
 
 Am 18.09.2026 ist dafür eine Rolle entschieden: **Gregor Dev**, Pfleger der
-Seiten, neunte in der Mannschaft. Er trägt den Stand nach und baut auf Auftrag
-weitere Seiten nach demselben Muster. `AKTE-VORSCHLAG.md` ist der Entwurf seiner
-Akte, `ZUGANG-GREGOR-DEV.md` der Arbeitsplan für sein Konto. Beides fehlt noch,
-und bis dahin läuft der Durchgang unter dem Konto eines Menschen.
+Seiten. Er trägt den Stand nach und baut auf Auftrag weitere Seiten nach demselben
+Muster. `AKTE-VORSCHLAG.md` war der Entwurf seiner Akte; seit dem 18.10. ist sie
+freigegeben, seit dem 20.10. läuft sein Pflegelauf fest am Montag und Donnerstag.
+`ZUGANG-GREGOR-DEV.md` ist der Arbeitsplan für sein eigenes Konto, das noch fehlt.
+Seine Pull Requests stellt bis dahin die Werkbank.
 
 Ob die Ablage weiter ist, sagt `scripts/pruefe-aktualitaet.mjs`:
 
