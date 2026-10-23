@@ -8,6 +8,7 @@ import { AblageFigur, AblageTabelle } from '@/components/figuren/Ablage'
 import { AblageGraphFigur, AblageGraphListe } from '@/components/figuren/AblageGraph'
 import { Durchlauf } from '@/components/figuren/Durchlauf'
 import { EnablerRaster } from '@/components/figuren/EnablerRaster'
+import { FahrplanFigur } from '@/components/figuren/Fahrplan'
 import { LandschaftFigur } from '@/components/figuren/Landschaft'
 import { MannschaftFigur } from '@/components/figuren/Mannschaft'
 import { Pruefpunkte } from '@/components/figuren/Pruefpunkte'
@@ -19,7 +20,7 @@ import { PlanAbschnitt } from '@/components/stand/Plan'
 import { StufenAbschnitt } from '@/components/stand/Stufen'
 import { abschnitt } from '@/lib/abschnitte'
 import { inWorten } from '@/lib/alter'
-import { daten, datum, harteRegel, zahl, zielErreicht } from '@/lib/daten'
+import { arbeitenStand, belastbarBei, daten, datum, harteRegel, zahl, zielErreicht } from '@/lib/daten'
 import { istIntern, nurSichtbare, sichtbar } from '@/lib/freigabe'
 import { pfad } from '@/lib/pfad'
 
@@ -41,6 +42,10 @@ export default function Seite() {
   const n = d.gegenstand.normbasis
   const b = d.bewertungen
   const beobachtungen = nurSichtbare(d.beobachtungen)
+  // Für den Fahrplan: wie die Landing Page ohne Rollen, die nicht im Plan sind
+  const rollen = nurSichtbare(d.mannschaft.koepfe).filter((k) => !k.passtNicht)
+  const rollenLaufen = rollen.filter((k) => k.betrieb).length
+  const rollenMitGrenze = rollen.filter((k) => k.betrieb === 'mitGrenze').length
 
   return (
     <>
@@ -737,6 +742,93 @@ export default function Seite() {
           </section>
 
           {/* 12 ------------------------------------------------------------ */}
+          {zeigen('fahrplan') && sichtbar(d.fahrplan) ? (
+            <section id="fahrplan">
+              <Kopfzeile id="fahrplan" />
+              <div className="prosa">
+                <p>{d.fahrplan.satz}</p>
+              </div>
+              <FahrplanFigur />
+
+              {d.fahrplan.phasen.map((p) => (
+                <Block
+                  key={p.von}
+                  titel={`${p.von === p.bis ? datum(p.von) : `${datum(p.von).slice(0, 6)} bis ${datum(p.bis)}`}: ${p.titel}`}
+                >
+                  <ul>
+                    {p.punkte.map((t) => (
+                      <li key={t}>{t}</li>
+                    ))}
+                  </ul>
+                  <p style={{ marginTop: '0.6rem' }}>
+                    <b>{p.ergebnis}</b>
+                  </p>
+                </Block>
+              ))}
+
+              <h3 style={{ marginTop: '1.8rem' }}>Wie weit wir sind, Stand {datum(d.stand)}</h3>
+              <div className="prosa">
+                <ul>
+                  <li>
+                    <b>Mannschaft:</b> {rollenLaufen} von {rollen.length} Rollen laufen, {inWorten(rollenMitGrenze)} davon
+                    mit Grenze. Noch nicht in Betrieb: {rollen.filter((k) => !k.betrieb).map((k) => k.rolle).join(', ')}.
+                  </li>
+                  {sichtbar(d.meilensteinplanAktuell) ? (
+                    <li>
+                      <b>Meilensteine:</b>{' '}
+                      {d.meilensteinplanAktuell.meilensteine
+                        .map((m) =>
+                          m.abgenommen
+                            ? `${m.id} abgenommen am ${datum(m.abgenommen.am).slice(0, 6)}`
+                            : `${m.id} bis ${datum(m.termin).slice(0, 6)}, ${arbeitenStand(m).erledigt} von ${arbeitenStand(m).gesamt} Arbeiten erledigt`,
+                        )
+                        .join('; ')}
+                      .
+                    </li>
+                  ) : null}
+                  {sichtbar(d.meilensteinplanAktuell)
+                    ? d.meilensteinplanAktuell.heute
+                        .filter((h) => ['Team', 'Sprache', 'Interne Seite'].includes(h.wer))
+                        .map((h) => (
+                          <li key={h.wer}>
+                            <b>{h.wer}:</b> {h.stand}
+                          </li>
+                        ))
+                    : null}
+                  {sichtbar(b) ? (
+                    <li>
+                      <b>Verlässlichkeit:</b> {zahl(b.bewertet)} Befunde von einem Menschen bewertet, belastbar ist die
+                      Quote {belastbarBei(b)}.
+                      {d.training.ersterLauf
+                        ? ` Im ersten Trainingslauf gelangen dem Orchestrator ${d.training.ersterLauf.zahlen[0].wert} von ${d.training.ersterLauf.zahlen.reduce((s, z) => s + z.wert, 0)} Fällen jedes Mal.`
+                        : ''}
+                    </li>
+                  ) : null}
+                  {sichtbar(d.ablage) ? (
+                    <li>
+                      <b>Ablage:</b> {zahl(d.ablage.bereiche.reduce((s, a) => s + a.verbindlich, 0))} von{' '}
+                      {zahl(d.ablage.notizen)} Notizen sind verbindlich.
+                    </li>
+                  ) : null}
+                </ul>
+              </div>
+
+              <h3 style={{ marginTop: '1.8rem' }}>Die größten Herausforderungen</h3>
+              {d.fahrplan.herausforderungen.map((h, i) => (
+                <Block key={h.titel} titel={`${i + 1}. ${h.titel}`}>
+                  <p>{h.text}</p>
+                  <p style={{ marginTop: '0.5rem' }}>
+                    <b>Was wir dagegen tun:</b> {h.antwort}
+                  </p>
+                </Block>
+              ))}
+              <p className="fussnote" style={{ marginTop: '1rem' }}>
+                Quelle: {d.fahrplan.quelle}
+              </p>
+            </section>
+          ) : null}
+
+          {/* 13 ------------------------------------------------------------ */}
           {zeigen('plan') && sichtbar(d.meilensteinplanAktuell) ? (
             <section id="plan">
               <Kopfzeile id="plan" />

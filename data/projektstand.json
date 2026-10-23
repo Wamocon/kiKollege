@@ -72,7 +72,8 @@
       "Protokolle KI-Mitarbeiter und KFBM vom 19. bis 22.10.2026; Analyse der Seite gegen die Ablage vom 22.10.2026",
       "Tagesprotokoll KI-Mitarbeiter vom 23.10.2026, Morgenbriefing, Stand 06:06",
       "Prüfstandlauf 2026-10-22 Tester 1; Logbuch 2026-10-22 Entscheidungen Tester, WMC Inventar einrichten, Tester ruft die Seite auf, Training Commit und Reihenfolge Trainingslauf, Morgenläufe Landing Page und Leitblätter",
-      "Prüfstandlauf 2026-10-23 Hermes drei Wiederholungen"
+      "Prüfstandlauf 2026-10-23 Hermes drei Wiederholungen",
+      "Harness, Stand 03.09.2026; Analyse Laufzeit Hermes und Modell vom 20.10.2026; Systemarchitektur Orchestrator"
     ],
     "getrenntAm": "2026-09-09",
     "notizordner": "KFBM/00_Vault/10_KI-Mitarbeiter"
@@ -1256,6 +1257,16 @@
     {
       "datum": "2026-10-22",
       "entscheidung": "Die Landing Page geht nach dem Okay des Projektverantwortlichen live, zur Vorstellung am 23.10.",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-23",
+      "entscheidung": "Auf der Seite stehen alle Produktnamen, auch Qwen, Telegram und Obsidian",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-23",
+      "entscheidung": "Der Fahrplan seit dem 26.08. ist ein Abschnitt der Seite",
       "freigabe": "intern"
     }
   ],
@@ -3890,7 +3901,7 @@
     "zielteile": [
       {
         "teil": "mehrere lauffähige KI-Mitarbeiter",
-        "festgelegt": "Reviewer, Orchestrator, Reporter und Researcherin. Vorgezogen sind Arnold, der Technische Architekt, seit dem 18.10., Gregor Dev seit dem 19.10. und der Archivar seit dem 22.10. Der Entwickler folgt nach dem 13.11.; der Tester ist am 22.10. entschieden."
+        "festgelegt": "Reviewer, Orchestrator, Reporter und Researcherin. Vorgezogen sind Arnold, der Technische Architekt, seit dem 18.10., Gregor Dev seit dem 19.10. und der Archivar seit dem 22.10. Der Entwickler folgt nach dem 13.11.; Theo, der Tester, läuft seit dem Abend des 22.10."
       },
       {
         "teil": "die einzelnen Teammitgliedern helfen",
@@ -4760,6 +4771,12 @@
         "begriff": "Auftragskette",
         "erklaerung": "Ein Entwicklungsauftrag in Meilensteinen. Ein Wächter auf dem KI-Rechner schickt den nächsten erst, wenn Bau und Test des vorigen erledigt sind und gepusht ist; hängt eine Karte, hält er an, bis ein Mensch weitermacht.",
         "quelle": "Logbuch 2026-10-22 Entscheidungen WMC Inventar einrichten"
+      },
+      {
+        "id": "laufzeit",
+        "begriff": "Laufzeit",
+        "erklaerung": "Das Programm, in dem ein KI-Mitarbeiter arbeitet: Es nimmt Nachrichten an, lädt Akte und Gedächtnis, gibt dem Modell Text und führt die Werkzeuge aus, die das Modell anfordert. Auf dem KI-Rechner ist das Hermes Agent, an der Werkbank Claude Code.",
+        "quelle": "Harness, Stand 03.09.2026"
       }
     ],
     "freigabe": "oeffentlich"
@@ -5761,5 +5778,310 @@
       "offen": "Zwei Läufe hintereinander mit allen 18 Fällen sind bis zum 27.10. nicht in Sicht. Ob das Team wie geplant am 30.10. Zugang bekommt, entscheidet der Projektverantwortliche noch.",
       "quelle": "Prüfstandlauf 2026-10-23 Hermes drei Wiederholungen, ausgewertet am 23.10.2026, ungeprüft"
     }
+  },
+  "techstack": {
+    "stand": "2026-10-23",
+    "satz": "Zwei Orte, eine Ablage: An der Werkbank wird gebaut und gemessen, auf dem KI-Rechner im Haus arbeitet die Mannschaft. Jira trägt die Aufträge und den Stand fürs Team, GitHub den Code und diese Seite. Das sind die Bausteine, mit Namen.",
+    "gruppen": [
+      {
+        "titel": "Werkbank: bauen und messen",
+        "teile": [
+          {
+            "name": "Claude Code",
+            "wozu": "die Werkbank. Hier entstehen Akten, Prüfskripte, der Zaun und diese Seite, im Gespräch mit dem Projektverantwortlichen und in geplanten Aufgaben, etwa werktags um 18 Uhr."
+          },
+          {
+            "name": "Claude von Anthropic",
+            "wozu": "das Modell der Werkbank. Auf dem KI-Rechner läuft es nicht."
+          },
+          {
+            "name": "Acht Werkzeugmacher",
+            "wozu": "Unteragenten in Claude Code, die je eine Art Werkzeug bauen. Selbst prüfen sie nichts."
+          },
+          {
+            "name": "Python",
+            "wozu": "die Prüfskripte des Reviewers, der Zaun, Auswertungen und Wächter."
+          }
+        ]
+      },
+      {
+        "titel": "KI-Rechner: Dauerbetrieb im Haus",
+        "teile": [
+          {
+            "name": "NVIDIA DGX Spark",
+            "wozu": "der Rechner im Haus, auf dem die Mannschaft läuft."
+          },
+          {
+            "name": "Hermes Agent von Nous Research",
+            "wozu": "die Laufzeit. Je KI-Mitarbeiter ein Profil mit Akte, Seele, Skills und Gedächtnis."
+          },
+          {
+            "name": "Qwen",
+            "wozu": "das Sprachmodell, offen und lokal: Qwen 3.8 mit 27 Milliarden Parametern."
+          },
+          {
+            "name": "Ollama",
+            "wozu": "rechnet das Modell auf der DGX Spark."
+          },
+          {
+            "name": "Kanban-Board von Hermes Agent",
+            "wozu": "eine Karte je Auftrag, eine Karte zur Zeit."
+          },
+          {
+            "name": "Der Zaun",
+            "wozu": "ein eigenes Programm, das jeden Werkzeugaufruf gegen die Grenze prüft, bevor er läuft."
+          }
+        ]
+      },
+      {
+        "titel": "Kanäle",
+        "teile": [
+          {
+            "name": "Telegram",
+            "wozu": "Aufträge an den Orchestrator. Theo, der Tester, hat einen eigenen Zugang."
+          },
+          {
+            "name": "Jira",
+            "wozu": "Epics und Stories für Entwicklungsaufträge und den Stand des Projekts; Kommentare und neue Stories erst nach Freigabe."
+          }
+        ]
+      },
+      {
+        "titel": "Ablage",
+        "teile": [
+          {
+            "name": "Obsidian",
+            "wozu": "das Werkzeug, in dem Menschen die Ablage lesen und schreiben: Notizen mit Datum und Freigabestand."
+          },
+          {
+            "name": "Git und GitHub",
+            "wozu": "vier Repositories. Über Git kommt die Ablage auf den KI-Rechner, über GitHub diese Seite."
+          }
+        ]
+      },
+      {
+        "titel": "Tests",
+        "teile": [
+          {
+            "name": "Robot Framework",
+            "wozu": "Theos Tests, mit Browser Library und SeleniumLibrary, dokumentiert nach ISTQB."
+          },
+          {
+            "name": "Prüfstände",
+            "wozu": "feste Übungsfälle je KI-Mitarbeiter, über das Board oder die Kommandozeile gestartet."
+          }
+        ]
+      },
+      {
+        "titel": "Diese Seite",
+        "teile": [
+          {
+            "name": "Next.js und React",
+            "wozu": "statisch gebaut, aus einer einzigen Datendatei."
+          },
+          {
+            "name": "GitHub Pages und GitHub Actions",
+            "wozu": "prüfen und veröffentlichen bei jedem Merge."
+          },
+          {
+            "name": "Playwright",
+            "wozu": "prüft die Grafiken in einem echten Browser."
+          }
+        ]
+      }
+    ],
+    "ablauf": {
+      "satz": "Hermes Agent ist die Laufzeit, Qwen das Modell darin. Qwen bekommt Text und gibt Text zurück. Alles andere tut Hermes Agent: Nachrichten annehmen, Akten laden, Werkzeuge ausführen, Karten verteilen. Beides läuft auf der DGX Spark im Haus.",
+      "schritte": [
+        {
+          "titel": "Nachricht",
+          "text": "Ein Mensch schreibt dem Orchestrator in Telegram."
+        },
+        {
+          "titel": "Profil",
+          "text": "Hermes Agent nimmt die Nachricht an und legt sie mit Akte, Seele, Skills und Gedächtnis des Orchestrators zusammen."
+        },
+        {
+          "titel": "Qwen",
+          "text": "Das Ganze geht als Text an Qwen. Qwen antwortet mit Text oder mit dem Wunsch, ein Werkzeug zu benutzen, etwa eine Notiz zu schreiben oder eine Karte anzulegen."
+        },
+        {
+          "titel": "Zaun",
+          "text": "Bevor ein Werkzeug läuft, prüft der Zaun den Aufruf gegen die Grenze. Was die Grenze nicht erlaubt, wird abgelehnt."
+        },
+        {
+          "titel": "Werkzeug",
+          "text": "Hermes Agent führt das Werkzeug aus und gibt das Ergebnis an Qwen zurück. Das wiederholt sich, bis Qwen kein Werkzeug mehr braucht."
+        },
+        {
+          "titel": "Karte",
+          "text": "Der Orchestrator legt eine Karte auf das Board. Hermes Agent startet dafür das Profil des zuständigen KI-Mitarbeiters, etwa Fritz, mit seiner eigenen Akte und derselben Schleife."
+        },
+        {
+          "titel": "Zurück",
+          "text": "Das Ergebnis steht auf der Karte. Der Orchestrator reicht es unverändert über Telegram zurück."
+        }
+      ],
+      "beschriftung": "Der rote Punkt folgt einem Auftrag: von Telegram zu Hermes Agent, durch die Schleife aus Qwen, Zaun und Werkzeug, über das Board zu Fritz und zurück. Die Ablage kommt über Git auf den KI-Rechner."
+    },
+    "quelle": "Harness, Stand 03.09.2026; Analyse Laufzeit Hermes und Modell vom 20.10.2026; Systemarchitektur Orchestrator; Logbuch 2026-09-03 bis 2026-10-22; Entscheidung des Projektverantwortlichen vom 23.10.2026, alle Produktnamen zu nennen; Logbuch 2026-10-20 Entscheidung offene Punkte aus den Sitzungen, 2026-10-21 Wächter ohne Freigabe, 2026-10-23 Jira Stories nach dem Morgenbriefing",
+    "freigabe": "oeffentlich",
+    "gesamtbild": {
+      "satz": "Menschen sprechen mit zwei Stellen: mit dem Orchestrator über Telegram und mit Claude Code an der Werkbank. Jira trägt die Aufträge und den Stand fürs Team, die Ablage das Wissen, GitHub den Code und diese Seite.",
+      "schritte": [
+        {
+          "titel": "Alltag",
+          "text": "Menschen geben dem Orchestrator Aufträge über Telegram, heute nur der Projektverantwortliche, das Team ab dem 30.10. Das Ergebnis kommt denselben Weg zurück."
+        },
+        {
+          "titel": "Sitzung",
+          "text": "Der Projektverantwortliche arbeitet mit Claude Code an der Werkbank: bauen, messen, entscheiden."
+        },
+        {
+          "titel": "Aus Jira",
+          "text": "Entwicklungsaufträge stehen als Epic mit Stories in Jira, etwa WMC Inventar mit sieben Meilensteinen. Die Werkbank macht daraus Aufträge an den Orchestrator."
+        },
+        {
+          "titel": "Nach Jira",
+          "text": "Werktags um 18 Uhr stimmt die Werkbank als geplante Aufgabe den Stand des Tages für Jira ab und schlägt Stories vor; vor Terminen kommt ein Morgenbriefing dazu. Gepostet und angelegt wird nur, was der Projektverantwortliche freigibt."
+        },
+        {
+          "titel": "In die Ablage",
+          "text": "Was an der Werkbank entsteht, kommt in die Ablage: Akten, Grenzen, Prüfstände. Der Archivar trägt am Ende jeder Sitzung Protokoll, Logbuch und Arbeitsplan nach."
+        },
+        {
+          "titel": "Über Git",
+          "text": "Über Git kommt die Ablage auf den KI-Rechner, gezogen erst nach dem Ja des Projektverantwortlichen."
+        },
+        {
+          "titel": "Läufe",
+          "text": "Die Werkbank gibt dem KI-Rechner Prüfstand- und Trainingsläufe und startet Auftragsketten, angekündigt und mit Ja. Die Ergebnisse liest sie zurück."
+        },
+        {
+          "titel": "Mannschaft",
+          "text": "Auf dem KI-Rechner verteilt der Orchestrator über das Board an die Mannschaft. Wie das im Einzelnen läuft, zeigt die nächste Zeichnung."
+        },
+        {
+          "titel": "Nach GitHub",
+          "text": "Was Gregor Dev baut, liegt als Zweig auf dem KI-Rechner. Die Werkbank prüft ihn, beim Pflegelauf jeden Montag und Donnerstag um 9 Uhr, und stellt nach dem Ja des Projektverantwortlichen einen Pull Request. Zusammengeführt wird nur von einem Menschen; diese Seite geht dann auf GitHub Pages."
+        }
+      ],
+      "beschriftung": "Der rote Punkt folgt einem Entwicklungsauftrag: aus Jira über die Werkbank zum Orchestrator, über das Board zu Gregor Dev und Theo und als Pull Request nach GitHub."
+    }
+  },
+  "fahrplan": {
+    "stand": "2026-10-23",
+    "satz": "Vom ersten Tag am 26.08. bis zur ersten Auftragskette am 23.10.: was wann entstanden ist, wie weit wir sind und woran es am meisten hing.",
+    "phasen": [
+      {
+        "von": "2026-08-26",
+        "bis": "2026-09-04",
+        "titel": "Der erste KI-Mitarbeiter an der Werkbank",
+        "punkte": [
+          "Die Ausbildungsordnung als 55 verknüpfte Notizen im amtlichen Wortlaut",
+          "Der erste vollständige Prüflauf: 238 Übungsfälle in vier Minuten, 10 752 Rechnungen nachgerechnet",
+          "Der Reviewer heißt Fritz; der Fehlalarm wiegt schwerer als der übersehene Fehler",
+          "Elf Themenkomplexe fachlich geprüft: 3 090 Quizfragen über 103 Enabler",
+          "Wiederholbarkeit gemessen: sieben von sieben Befunden bestätigt"
+        ],
+        "ergebnis": "Fritz prüft vollständig und gleich, aber nur an der Werkbank."
+      },
+      {
+        "von": "2026-09-02",
+        "bis": "2026-09-16",
+        "titel": "Aus einem Werkzeug wird ein Bauplan",
+        "punkte": [
+          "Die zweite Wissensablage: das Wissen über das Unternehmen, für alle KI-Mitarbeiter",
+          "Am 03.09. entschieden: Dauerbetrieb mit Hermes Agent und Qwen auf der DGX Spark",
+          "Orchestrator und Spezialisten entworfen; der Orchestrator läuft ab dem 09.09. als Profil auf dem KI-Rechner",
+          "Fritz bekommt seine Akte, ein Programm setzt seine Grenze durch, mit Testfällen",
+          "julia-trend wird Researcherin; vierzig Fragen zu den Rollen beantwortet"
+        ],
+        "ergebnis": "Der Bauplan der Mannschaft steht, und die Grenze ist Technik statt Vereinbarung."
+      },
+      {
+        "von": "2026-09-17",
+        "bis": "2026-09-29",
+        "titel": "Ins Haus und an die Öffentlichkeit",
+        "punkte": [
+          "Diese Seite geht auf GitHub Pages online",
+          "Die Ablage kommt über Git auf den KI-Rechner; Fritz fährt dort seinen Referenzlauf",
+          "Regel E13 ist als erste gemessen: 30 Fälle, kein Fehlalarm",
+          "Akte des Orchestrators freigegeben, Auftragsbuch und Board angelegt",
+          "Das Ziel vom 17.09. bestätigt, der Plan mit vier KI-Mitarbeitern zuerst neu geschnitten"
+        ],
+        "ergebnis": "Der Dauerbetrieb im Haus ist eingerichtet, der Plan gilt."
+      },
+      {
+        "von": "2026-09-30",
+        "bis": "2026-10-16",
+        "titel": "Die erste Abnahme",
+        "punkte": [
+          "Zwischen dem 29.09. und dem 15.10. ist in der Ablage nichts festgehalten",
+          "Am 15.10. nimmt der Projektverantwortliche Fritz ab, mit Vorbehalt",
+          "Am 16.10. läuft ein Testauftrag über das Board zu Fritz; neue Termine bis zum 13.11.",
+          "Meilenstein 1 ist am 16.10. abgenommen"
+        ],
+        "ergebnis": "Der erste KI-Mitarbeiter ist abgenommen, der Orchestrator verteilt über das Board."
+      },
+      {
+        "von": "2026-10-17",
+        "bis": "2026-10-22",
+        "titel": "Die Mannschaft wächst",
+        "punkte": [
+          "Arnold, Gregor Dev und julia-trend laufen mit ihrer Grenze; der Archivar ist vorgezogen",
+          "Training heißt Lernkreis mit Prüfstand; der Orchestrator erfüllt im ersten Lauf 3 von 18 Fällen",
+          "Ein Nutzentest vergleicht die KI-Mitarbeiter mit einem Cloud-Modell und der Werkbank",
+          "Fritz liest über ein eigenes Skript den ganzen Text einer Unterlage",
+          "Theo, der Tester, wird eingerichtet; der Prozess für neue KI-Mitarbeiter und das Trainingskonzept stehen"
+        ],
+        "ergebnis": "Sieben Rollen laufen, und es gibt ein festes Verfahren, wie sie besser werden."
+      },
+      {
+        "von": "2026-10-23",
+        "bis": "2026-10-23",
+        "titel": "Erste Kette, erste Trainingsläufe",
+        "punkte": [
+          "WMC Inventar läuft als Kette in sieben Meilensteinen: Gregor Dev baut, Theo testet",
+          "Theo erfüllt im ersten Prüfstandlauf 9 von 18 Pflichtfällen",
+          "Im ersten Trainingslauf nach dem neuen Konzept gelingen dem Orchestrator 3 von 18 Fällen in allen drei Durchgängen"
+        ],
+        "ergebnis": "Die Mannschaft arbeitet zum ersten Mal zusammen an einem echten Entwicklungsauftrag."
+      }
+    ],
+    "herausforderungen": [
+      {
+        "titel": "Verlässlichkeit lässt sich nur mit Menschen messen",
+        "text": "Ob ein Befund stimmt, kann nur jemand sagen, der das Fach kennt. Bewertet sind 139 Befunde, belastbar ist die Quote bei einer von zehn Regeln, und 1 923 Befunde und Hinweise sind ohne Bewertung.",
+        "antwort": "Ein Bewertungsbogen je Regel, das Ziel von 30 einzeln angesehenen Fällen, und die Bitte ans Team, mitzubewerten."
+      },
+      {
+        "titel": "Ein offenes Modell antwortet nicht jedes Mal gleich",
+        "text": "Bei gleicher Akte kippen Fälle zwischen zwei Läufen. Im Nutzentest fand Fritz auf dem KI-Rechner keinen der elf fachlichen Fehler, weil er die Unterlagen nicht ganz lesen konnte.",
+        "antwort": "Jeder Fall läuft dreimal, gelernt ist er erst nach zwei Läufen mit je drei von drei. Fritz bekam ein Skript für den ganzen Text, und der Nutzentest vergleicht mit einem Cloud-Modell."
+      },
+      {
+        "titel": "Grenzen müssen technisch halten",
+        "text": "Ein Satz in der Akte hält niemanden auf. Eine Anweisung, die in einem Auftrag versteckt war, wollte der Orchestrator sich jedes Mal merken.",
+        "antwort": "Der Zaun prüft jeden Werkzeugaufruf, das Gedächtnis ändert sich nur mit Freigabe, und jede Änderung an der Grenze kommt mit Testfällen."
+      },
+      {
+        "titel": "Ein Rechner, eine Karte zur Zeit",
+        "text": "Liefen mehrere Gespräche gleichzeitig, verdrängten sie sich im Speicher des Modells; ein Auftrag brauchte zehn Minuten bis zur Karte. Seit das Board nur eine Karte zur Zeit laufen lässt, stehen sich Aufträge und Trainingsläufe im Weg.",
+        "antwort": "Seit dem 20.10. mehr Speicher für Gesprächsstände, eine Karte zur Zeit und eine knappere Eingabe. Ketten laufen erst nach einem Trainingslauf weiter."
+      },
+      {
+        "titel": "Freigaben brauchen Zeit von Menschen",
+        "text": "Von 267 Notizen der Ablage sind 11 verbindlich, Normbasis und Prüfmaßstab hat noch niemand freigegeben, und die Teamliste fehlt. Die Termine sind um rund drei Wochen gerückt. Von vier Gruppen der offenen Punkte ist genau eine technisch.",
+        "antwort": "Ein Arbeitsplan mit der Zeit des Projektverantwortlichen je Meilenstein, vier Tore für neue KI-Mitarbeiter und eine feste Trainingsrunde am Freitag."
+      },
+      {
+        "titel": "Der Stand muss mithalten",
+        "text": "Seite, Ablage und die Kopie auf dem KI-Rechner liefen auseinander. Zwischen dem 29.09. und dem 15.10. ist in der Ablage nichts festgehalten.",
+        "antwort": "Der Archivar trägt am Ende jeder Sitzung ein, Gregor Dev pflegt die Seite zweimal die Woche, und am 22.10. ist die Seite gegen die Ablage abgeglichen."
+      }
+    ],
+    "quelle": "Chronik dieser Seite vom 26.08. bis 23.10.2026; Meilensteinpläne vom 17.09. und 29.09.2026; Arbeitsplan 2026-10-16; Analyse Laufzeit Hermes und Modell vom 20.10.2026; Prüfstandläufe vom 20., 22. und 23.10.2026; Hemmnisse und Beobachtungen dieser Seite",
+    "freigabe": "oeffentlich"
   }
 }

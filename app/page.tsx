@@ -2,6 +2,8 @@ import { AblageFigur } from '@/components/figuren/Ablage'
 import { AblageGraphFigur } from '@/components/figuren/AblageGraph'
 import { EnablerRaster } from '@/components/figuren/EnablerRaster'
 import { LandschaftFigur } from '@/components/figuren/Landschaft'
+import { HermesQwenFigur } from '@/components/figuren/HermesQwen'
+import { GesamtbildFigur } from '@/components/figuren/Gesamtbild'
 import { TermineFigur } from '@/components/figuren/Termine'
 import { MannschaftFigur } from '@/components/figuren/Mannschaft'
 import { LernkreisFigur } from '@/components/figuren/Lernkreis'
@@ -917,7 +919,64 @@ export default function Landing() {
           </Sektion>
         ) : null}
 
-        {/* 10 Stand ----------------------------------------------------------- */}
+        {/* 10 Technik --------------------------------------------------------- */}
+        {sichtbar(d.techstack) ? (
+          <Sektion id="technik">
+            <h2 className="lp-aussage breit">Womit die Mannschaft läuft.</h2>
+            <div className="lp-text lp-luft-oben-klein">
+              <p>{d.techstack.satz}</p>
+            </div>
+            <div className="lp-zellen breit">
+              {d.techstack.gruppen.map((g) => (
+                <div className="lp-zelle" key={g.titel}>
+                  <span className="kopf">{g.titel}</span>
+                  {g.teile.map((t) => (
+                    <p key={t.name}>
+                      <b>{t.name}</b>: {t.wozu}
+                    </p>
+                  ))}
+                </div>
+              ))}
+            </div>
+
+            <h3 className="lp-aussage lp-luft-oben">Das Gesamtbild: Werkbank, KI-Rechner, Jira und GitHub.</h3>
+            <div className="lp-text lp-luft-oben-klein">
+              <p>{d.techstack.gesamtbild.satz}</p>
+            </div>
+            <GesamtbildFigur />
+            <ol className="lp-punkte">
+              {d.techstack.gesamtbild.schritte.map((s, i) => (
+                <li key={s.titel}>
+                  <span className="nr">{String(i + 1).padStart(2, '0')}</span>
+                  <div>
+                    <p className="punkt">{s.titel}</p>
+                    <p className="grund">{s.text}</p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+
+            <h3 className="lp-aussage lp-luft-oben">Wie Hermes und Qwen einen Auftrag bearbeiten.</h3>
+            <div className="lp-text lp-luft-oben-klein">
+              <p>{d.techstack.ablauf.satz}</p>
+            </div>
+            <HermesQwenFigur />
+            <ol className="lp-punkte">
+              {d.techstack.ablauf.schritte.map((s, i) => (
+                <li key={s.titel}>
+                  <span className="nr">{String(i + 1).padStart(2, '0')}</span>
+                  <div>
+                    <p className="punkt">{s.titel}</p>
+                    <p className="grund">{s.text}</p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+            <p className="lp-klein lp-luft-oben">Quelle: {d.techstack.quelle}</p>
+          </Sektion>
+        ) : null}
+
+        {/* 11 Stand ----------------------------------------------------------- */}
         <Sektion id="stand">
           <div className="lp-blick" role="group" aria-labelledby="blick-titel">
             <h2 className="lp-klein" id="blick-titel">
@@ -998,6 +1057,13 @@ export default function Landing() {
               Alle {zahl(nurSichtbare(d.arbeitstage.eintraege).length)} Einträge der{' '}
               {tageZwischen(d.arbeitstage.beginn, d.stand)} Tage seit dem {datum(d.arbeitstage.beginn)}{' '}
               stehen in der <a href={pfad('/stand/#chronik')}>Chronik</a>.
+              {sichtbar(d.fahrplan) ? (
+                <>
+                  {' '}
+                  Was wann entstand, wie weit wir sind und woran es am meisten hing, zeigt der{' '}
+                  <a href={pfad('/stand/#fahrplan')}>Fahrplan seit dem {datum(d.fahrplan.phasen[0].von)}</a>.
+                </>
+              ) : null}
             </p>
           </div>
 

@@ -6,6 +6,21 @@ verloren gehen darf.
 
 Stand dieser Übergabe: 23.10.2026.
 
+## Nachtrag 23.10.2026: Tech Stack, Hermes und Qwen, Fahrplan
+
+Auf Wunsch des Projektverantwortlichen vom 23.10.:
+
+- **Neuer Abschnitt „Technik“ auf der Landing Page** (Kapitel Bauen, nach der
+  Landschaft): der Tech Stack mit Namen in sechs Gruppen und „Wie Hermes und Qwen
+  einen Auftrag bearbeiten“, mit bewegter Zeichnung und sieben Schritten.
+- **Alle Produktnamen erlaubt:** `NUR_INTERN` in `scripts/pruefe-oeffentlich.mjs` führt
+  Qwen, Anthropic, Telegram und Obsidian nicht mehr. Intern bleiben Pfade, Ports,
+  Versionen, Benutzer und Einzelheiten des Zauns.
+- **Neuer Abschnitt „Der Fahrplan seit dem 26.08.“ unter `/stand/`** (Nummer 12, die
+  folgenden rücken nach): Zeitachse, sechs Abschnitte der Arbeit, wie weit wir sind,
+  die sechs größten Herausforderungen mit dem, was wir dagegen tun. Die Landing Page
+  verlinkt ihn im Abschnitt Stand.
+
 ## Nachtrag 23.10.2026: Ergebnis des ersten Trainingslaufs
 
 Auf Wunsch des Projektverantwortlichen vom 23.10. (übermittelt von der Sitzung

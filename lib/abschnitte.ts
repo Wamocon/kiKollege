@@ -21,15 +21,17 @@ export const abschnitte: readonly Abschnitt[] = [
   { id: 'luecke', nr: '09', titel: 'Was nicht gemessen ist' },
   { id: 'uebertragbarkeit', nr: '10', titel: 'Übertragbarkeit' },
   { id: 'stufen', nr: '11', titel: 'Stufen bis zum Dauerbetrieb' },
-  // Der Fahrplan gehört nach der Übergabe vom 11.09. nicht in die öffentliche
-  // Fassung. Pages zeigt seit dem 17.09. ohnehin alles.
-  { id: 'plan', nr: '12', titel: 'Der Meilensteinplan im Einzelnen', freigabe: 'intern' },
-  { id: 'plattform', nr: '13', titel: 'Wo Fritz läuft', freigabe: 'intern' },
-  { id: 'entscheidungen', nr: '14', titel: 'Entscheidungen mit Datum' },
-  { id: 'chronik', nr: '15', titel: 'Chronik' },
-  { id: 'offen', nr: '16', titel: 'Offene Punkte' },
-  { id: 'beobachtungen', nr: '17', titel: 'Beobachtungen aus dem Abgleich', freigabe: 'intern' },
-  { id: 'quellen', nr: '18', titel: 'Wo die Quellen liegen', freigabe: 'intern' },
+  // Seit dem 23.10.: was wann entstand, wie weit wir sind, was am schwersten war
+  { id: 'fahrplan', nr: '12', titel: 'Der Fahrplan seit dem 26.08.' },
+  // Der Meilensteinplan gehört nach der Übergabe vom 11.09. nicht in die
+  // öffentliche Fassung. Pages zeigt seit dem 17.09. ohnehin alles.
+  { id: 'plan', nr: '13', titel: 'Der Meilensteinplan im Einzelnen', freigabe: 'intern' },
+  { id: 'plattform', nr: '14', titel: 'Wo Fritz läuft', freigabe: 'intern' },
+  { id: 'entscheidungen', nr: '15', titel: 'Entscheidungen mit Datum' },
+  { id: 'chronik', nr: '16', titel: 'Chronik' },
+  { id: 'offen', nr: '17', titel: 'Offene Punkte' },
+  { id: 'beobachtungen', nr: '18', titel: 'Beobachtungen aus dem Abgleich', freigabe: 'intern' },
+  { id: 'quellen', nr: '19', titel: 'Wo die Quellen liegen', freigabe: 'intern' },
 ]
 
 export function abschnitt(id: string): Abschnitt {
