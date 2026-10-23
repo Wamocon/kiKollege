@@ -31,6 +31,7 @@ const alle: readonly LpAbschnitt[] = [
   { id: 'wissen', label: 'Wissen', kapitel: 'Bauen' },
   { id: 'durchlauf', label: 'Arbeitsweise', kapitel: 'Bauen' },
   { id: 'landschaft', label: 'Landschaft', kapitel: 'Bauen' },
+  { id: 'technik', label: 'Technik', kapitel: 'Bauen' },
   { id: 'stand', label: 'Stand', kapitel: 'Stand' },
   // Der Fahrplan gehört nach der Übergabe vom 11.09. nicht in die öffentliche
   // Fassung. Pages zeigt seit dem 17.09. ohnehin alles.

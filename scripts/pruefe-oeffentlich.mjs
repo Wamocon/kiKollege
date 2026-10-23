@@ -34,12 +34,12 @@ const NICHT_PRUEFEN = new Set(['freigabe', 'id', 'datei', 'gruppe', 'ort'])
  *  Gestrichen am 17.09.2026, entschieden von Erwin Moretz: Claude, Hermes, DGX
  *  und Spark. Die Systemlandschaft nennt Claude Code, Hermes Agent und DGX
  *  Spark auch oeffentlich. Das Modell, der Anbieter dahinter, der Messenger,
- *  die Ablagesoftware und Pfade bleiben intern. */
+ *  die Ablagesoftware und Pfade bleiben intern.
+ *
+ *  Gestrichen am 23.10.2026, entschieden vom Projektverantwortlichen fuer den
+ *  Tech Stack („Alles nennen“): Qwen, Anthropic, Telegram und Obsidian. Intern
+ *  bleiben Pfade und der Ordnername der Fachablage. */
 export const NUR_INTERN = [
-  'Qwen',
-  'Anthropic',
-  'Telegram',
-  'Obsidian',
   'KFBM',
   'D:\\',
 ]

@@ -821,6 +821,8 @@ th.num { text-align: right; }
   margin-top: clamp(1.6rem, 3vw, 2.6rem);
 }
 .lp-zellen.vier { grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); }
+/* Drei breite Spalten, etwa für den Tech Stack mit längeren Einträgen */
+.lp-zellen.breit { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
 .lp-zelle {
   border-right: 1px solid var(--wmc-border);
   border-bottom: 1px solid var(--wmc-border);
@@ -1479,6 +1481,13 @@ th.num { text-align: right; }
 }
 .lp-takt-woche { transform-box: view-box; animation: lp-takt-woche 26s steps(13, end) infinite; }
 @keyframes lp-takt-woche { to { transform: translateX(var(--takt-weg, 780px)); } }
+/* Der Punkt in der Zeichnung zu Hermes Agent und Qwen läuft über SVG
+   (animateMotion); bei reduzierter Bewegung wird er ausgeblendet. */
+@media (prefers-reduced-motion: reduce) {
+  .lp-hq-punkt { display: none; }
+}
+/* Im Tech Stack trägt der Name, die Erklärung bleibt leise */
+.lp-zelle p b { color: var(--wmc-ink); }
 @media (prefers-reduced-motion: reduce) {
   .lp-lk-laeufer, .lp-takt-woche { display: none; }
   .lp-lk-schritt rect { animation: none; }

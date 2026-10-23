@@ -740,6 +740,26 @@ export interface Projektstand {
     quelle: string
     freigabe: Freigabe
   }
+  /** Der Tech Stack mit Namen und wie Hermes Agent und Qwen einen Auftrag
+   *  bearbeiten. Entschieden am 23.10.2026: alle Produktnamen nennen. */
+  techstack: {
+    stand: string
+    satz: string
+    gruppen: { titel: string; teile: { name: string; wozu: string }[] }[]
+    ablauf: { satz: string; schritte: { titel: string; text: string }[]; beschriftung: string }
+    quelle: string
+    freigabe: Freigabe
+  }
+  /** Der Fahrplan seit dem 26.08.: Abschnitte der Arbeit und die größten
+   *  Herausforderungen. Zeigt nur /stand/. */
+  fahrplan: {
+    stand: string
+    satz: string
+    phasen: { von: string; bis: string; titel: string; punkte: string[]; ergebnis: string }[]
+    herausforderungen: { titel: string; text: string; antwort: string }[]
+    quelle: string
+    freigabe: Freigabe
+  }
   landschaft: Landschaft
   meilensteinplan: Meilensteinplan
   meilensteinplanAktuell: AktuellerPlan

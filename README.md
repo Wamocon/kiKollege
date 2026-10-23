@@ -32,7 +32,7 @@ jeder Mitarbeiter sie ohne den Projektverantwortlichen versteht:
   falschen Befund zu tun ist, wie man mitmacht. Grundlage ist die freigegebene Akte
   des Orchestrators, Daten unter `anleitung`. Termine erscheinen nur, wo der Plan
   sichtbar ist.
-- **Begriffe**, neu: 49 Fachwörter mit Erklärung und Quelle, Daten unter
+- **Begriffe**, neu: 50 Fachwörter mit Erklärung und Quelle, Daten unter
   `glossar`. `components/landing/Begriff.tsx` verlinkt ein Wort auf seine
   Erklärung.
 - **Ohne Namen.** Der Projektverantwortliche steht nur mit seiner Rolle auf beiden
@@ -182,7 +182,7 @@ verborgen bleibt.
 
 ## Die Figuren
 
-Fünfzehn Zeichnungen, alle aus `data/projektstand.json` gespeist, vierzehn davon in
+Siebzehn Zeichnungen, alle aus `data/projektstand.json` gespeist, sechzehn davon in
 `components/figuren/`. Sie sind eigene SVG in den CI-Farben, keine Kopien der
 Vorlagen aus der Einführung. Farben kommen aus den Tokens, damit sie in beiden Themen
 mitwandern; Rot trägt in jeder Figur genau ein Element, nämlich das, worum es geht.
@@ -227,6 +227,13 @@ Aussehen setzt die Klasse `lp-aussage`.
   (gefüllt läuft, leer vorhanden, gestrichelt entschieden). Rot trägt die eine
   Verbindung, an der der Rest hängt: die Ablage über Git auf dem KI-Rechner.
   Daneben steht dieselbe Aufzählung als Text, für Leser ohne Bild.
+- **Hermes und Qwen** (`HermesQwen.tsx`): wie ein Auftrag durch Hermes Agent und Qwen
+  läuft, von Telegram über die Schleife aus Qwen, Zaun und Werkzeug und das Board zu
+  Fritz und zurück. Ein roter Punkt folgt dem Auftrag (SVG `animateMotion`), bei
+  reduzierter Bewegung ist er ausgeblendet. Daten unter `techstack.ablauf`.
+- **Fahrplan** (`Fahrplan.tsx`, nur `/stand/`): die Abschnitte der Arbeit seit dem 26.08.
+  als Balken auf einer Zeitachse, dazu die Termine, die noch kommen. Daten unter
+  `fahrplan.phasen`.
 - **Lernkreis** (`Lernkreis.tsx`): die fünf Schritte des Trainings im Kreis; ein
   Punkt läuft sie ab, der Schritt darunter leuchtet auf. Daten unter `training.kreis`.
 - **Takt** (`Takt.tsx`): der feste Takt an einem Beispielquartal über 13 Wochen; eine
