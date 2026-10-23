@@ -981,7 +981,7 @@
     },
     {
       "datum": "2026-10-19",
-      "entscheidung": "Trainingsziel für den Orchestrator: bis zum 27.10. ein Lauf, in dem die Fälle 1 bis 17 des Prüfstands erfüllt sind und der Zaun nichts ablehnen musste; danach bekommt das Team am 30.10. Zugang",
+      "entscheidung": "Trainingsziel für den Orchestrator: bis zum 27.10. ein Lauf, in dem die 17 Übungsfälle des Ziels erfüllt sind, ohne einen unerlaubten Schritt; danach bekommt das Team am 30.10. Zugang",
       "freigabe": "intern"
     },
     {
@@ -1131,7 +1131,7 @@
     },
     {
       "datum": "2026-10-20",
-      "entscheidung": "Ein Fall des Prüfstands gilt als gelernt, wenn er zweimal hintereinander erfüllt ist; Ziel bis zum 27.10. sind zwei Läufe mit den Fällen 1 bis 17 und 23",
+      "entscheidung": "Ein Fall des Prüfstands gilt als gelernt, wenn er zweimal hintereinander erfüllt ist; Ziel bis zum 27.10. sind zwei Läufe mit allen 18 Übungsfällen des Ziels",
       "freigabe": "intern"
     },
     {
@@ -3997,7 +3997,7 @@
           },
           {
             "text": "Der erste Lauf des Prüfstands, bewertet vom Projektverantwortlichen, vor den Aufträgen des Teams",
-            "teilweise": "Ziel bis zum 27.10.: zwei Läufe hintereinander mit den Fällen 1 bis 17 und 23; im Lauf vom 20.10. waren es 3 von 18; im ersten Trainingslauf mit drei Durchgängen am 23.10. gelangen 3 Fälle jedes Mal, 9 waren wackelig"
+            "teilweise": "Ziel bis zum 27.10.: zwei Läufe hintereinander mit allen 18 Übungsfällen des Ziels; im Lauf vom 20.10. waren es 3 von 18; im ersten Trainingslauf mit drei Durchgängen am 23.10. gelangen 3 Fälle jedes Mal, 9 waren wackelig"
           },
           {
             "text": "Den Prüfstand des Orchestrators durchsehen und die Fälle festlegen",
@@ -4931,7 +4931,7 @@
         ],
         "ziele": [
           {
-            "was": "Zwei Läufe hintereinander, in denen die Fälle 1 bis 17 und 23 des Prüfstands erfüllt sind und der Zaun nichts ablehnen musste. Am 20.10. waren es 3 von 18. Im ersten Trainingslauf am 23.10., jeder Fall dreimal, gelangen 3 Fälle jedes Mal, 9 waren wackelig.",
+            "was": "Zwei Läufe hintereinander, in denen alle 18 Übungsfälle des Ziels erfüllt sind, ohne einen unerlaubten Schritt. Am 20.10. waren es 3 von 18. Im ersten Trainingslauf am 23.10., jeder Fall dreimal, gelangen 3 Fälle jedes Mal, 9 waren wackelig.",
             "bis": "2026-10-27",
             "erreicht": false
           },
@@ -5544,7 +5544,7 @@
     "punkte": [
       {
         "titel": "Prüfstand",
-        "text": "Feste Übungsaufträge je KI-Mitarbeiter, ein Mensch bewertet. Der Orchestrator erfüllte im Lauf vom 20.10. 3 von 18 Fällen. Ziel bis zum 27.10. sind zwei Läufe hintereinander mit den Fällen 1 bis 17 und 23; erst danach bekommt das Team Zugang. Im ersten Trainingslauf nach dem neuen Konzept am 23.10., jeder Fall dreimal, gelangen ihm 3 Fälle jedes Mal, 9 waren wackelig. Theo, der Tester, erfüllte in seinem ersten Lauf am 22.10. 9 von 18 Pflichtfällen. Für Fritz liegt ein Prüfstand als Entwurf vor.",
+        "text": "Feste Übungsaufträge je KI-Mitarbeiter, ein Mensch bewertet. Der Orchestrator erfüllte im Lauf vom 20.10. 3 von 18 Fällen. Ziel bis zum 27.10. sind zwei Läufe hintereinander mit allen 18 Übungsfällen des Ziels; erst danach bekommt das Team Zugang. Im ersten Trainingslauf nach dem neuen Konzept am 23.10., jeder Fall dreimal, gelangen ihm 3 Fälle jedes Mal, 9 waren wackelig. Theo, der Tester, erfüllte in seinem ersten Lauf am 22.10. 9 von 18 Pflichtfällen. Für Fritz liegt ein Prüfstand als Entwurf vor.",
         "freigabe": "oeffentlich"
       },
       {
