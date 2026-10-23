@@ -540,6 +540,38 @@ export default function Landing() {
               <p>{m.grenzeWarum}</p>
             </div>
           </div>
+          {sichtbar(d.aufnahme) ? (
+            <>
+              <h3 className="lp-aussage lp-luft-oben">Wie ein neuer dazukommt.</h3>
+              <div className="lp-text lp-luft-oben-klein">
+                <p>{d.aufnahme.satz}</p>
+              </div>
+              <div className="lp-zellen lp-luft-oben-klein">
+                {d.aufnahme.schritte.map((s, i) => (
+                  <div className="lp-zelle" key={s.titel}>
+                    <span className="kopf">
+                      {i + 1}. {s.titel}
+                    </span>
+                    <p>{s.text}</p>
+                    {s.tor ? (
+                      <p className="stark">
+                        <Begriff id="tor">{s.tor}</Begriff>
+                      </p>
+                    ) : null}
+                  </div>
+                ))}
+              </div>
+              <div className="lp-zellen">
+                <div className="lp-zelle traegt">
+                  <span className="kopf">
+                    <Begriff id="assessment-center">{d.aufnahme.assessment.titel}</Begriff>
+                  </span>
+                  <p className="stark">{d.aufnahme.assessment.text}</p>
+                </div>
+              </div>
+              <p className="lp-klein lp-luft-oben-klein">Quelle: {d.aufnahme.quelle}</p>
+            </>
+          ) : null}
         </Sektion>
 
         {/* 06 Aufbau ---------------------------------------------------------- */}
