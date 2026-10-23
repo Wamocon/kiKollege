@@ -1174,6 +1174,46 @@
       "datum": "2026-10-22",
       "entscheidung": "Gregor Devs Auftrag für die Browser-Startseite gilt schon vor seiner Abnahme, als Probeauftrag",
       "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-22",
+      "entscheidung": "Die feste Trainingsrunde ist jeden Freitag; was der Projektverantwortliche freigibt, gilt ab Montag auf dem KI-Rechner",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-22",
+      "entscheidung": "Ob eine Schwäche beim Nachschärfen eine Ebene tiefer geht, entscheidet der Projektverantwortliche jedes Mal einzeln",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-22",
+      "entscheidung": "Kein KI-Mitarbeiter kann die Erwartungen seines eigenen Prüfstands lesen",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-22",
+      "entscheidung": "Die übrigen KI-Mitarbeiter bekommen ihren Prüfstand in der Reihenfolge des Assessment Centers",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-22",
+      "entscheidung": "Die Messlatte des Assessment Centers steigt je Durchgang um eine Stufe, drei Stufen sind festgelegt",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-22",
+      "entscheidung": "Ein Lauf rechnet jeden Fall dreimal; gelernt ist ein Fall nach zwei Läufen hintereinander mit je drei von drei",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-22",
+      "entscheidung": "Ausgaben und Urteile von Claude gehen in kein Training eines KI-Mitarbeiters",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-22",
+      "entscheidung": "Das Trainingskonzept steht auf der Landing Page",
+      "freigabe": "intern"
     }
   ],
   "entscheidungenNachtrag": "Die Entscheidung vom 04.09. dreht bewusst eine zuvor festgelegte Reihenfolge um: Ursprünglich sollte die Fehlalarmquote vor dem Plattformwechsel gemessen werden. Die Technik wurde vorgezogen. Das ist kein Widerspruch, sondern eine andere Reihenfolge mit einer benannten Folge, und die Folge steht im Abschnitt zur Messlücke.",
@@ -1963,7 +2003,7 @@
       },
       {
         "datum": "2026-10-22",
-        "text": "Gregor Devs erster fester Pflegelauf; die Werkbank hat den Stand ergänzt. Der Archivar ist vorgezogen und pflegt das Gedächtnis der Ablage, der Tester ist als neue Rolle entschieden. Meilenstein 1 steht als abgenommen auf der Seite.",
+        "text": "Gregor Devs erster fester Pflegelauf; die Werkbank hat den Stand ergänzt. Der Archivar ist vorgezogen und pflegt das Gedächtnis der Ablage, der Tester ist als neue Rolle entschieden. Meilenstein 1 steht als abgenommen auf der Seite. Ein festes Trainingskonzept legt Takt und Messlatte fest.",
         "freigabe": "oeffentlich"
       }
     ],
@@ -4576,8 +4616,8 @@
       {
         "id": "training",
         "begriff": "Training",
-        "erklaerung": "Zweierlei: das Lernen eines Sprachmodells aus großen Textmengen, bevor es eingesetzt wird, daher stammt sein allgemeines Wissen; und hier im Haus der Lernkreis mit Prüfstand, seit dem 18.10.",
-        "quelle": "Einführung vom 04.09.2026; Logbuch 2026-10-18 Entscheidungen Training"
+        "erklaerung": "Zweierlei: das Lernen eines Sprachmodells aus großen Textmengen, bevor es eingesetzt wird, daher stammt sein allgemeines Wissen; und hier im Haus der Lernkreis mit Prüfstand, seit dem 18.10., seit dem 22.10. in einem festen Takt.",
+        "quelle": "Einführung vom 04.09.2026; Logbuch 2026-10-18 Entscheidungen Training und 2026-10-22 Entscheidungen Trainingskonzept"
       },
       {
         "id": "use-case",
@@ -4612,8 +4652,8 @@
       {
         "id": "pruefstand",
         "begriff": "Prüfstand, Lernkreis",
-        "erklaerung": "Feste Übungsaufträge je KI-Mitarbeiter mit erwarteter Antwort; ein Mensch bewertet. Ein Fall gilt als gelernt, wenn er zweimal hintereinander erfüllt ist.",
-        "quelle": "Logbuch 2026-10-18 Entscheidungen Training und 2026-10-20 Prüfstand Hermes"
+        "erklaerung": "Feste Übungsfälle je KI-Mitarbeiter mit erwartetem Verhalten; ein Mensch bewertet. Der Lernkreis führt jeden Fall durch fünf Schritte: Fall, Lauf, Bewertung, Nachschärfen, Wiederholen. Gelernt ist ein Fall nach zwei Läufen hintereinander, in denen er jeweils dreimal erfüllt ist.",
+        "quelle": "Logbuch 2026-10-18 Entscheidungen Training, 2026-10-20 Prüfstand Hermes und 2026-10-22 Gegenprüfung Trainingskonzept"
       },
       {
         "id": "zaun",
@@ -4632,6 +4672,18 @@
         "begriff": "Tor",
         "erklaerung": "Eine Stelle im Prozess für einen neuen KI-Mitarbeiter, an der der Projektverantwortliche Ja sagen muss, bevor es weitergeht. Es gibt vier: Bedarf, Rolle, Wortlaut der Akte, Abnahme.",
         "quelle": "Prozess neuer KI-Mitarbeiter, 22.10.2026"
+      },
+      {
+        "id": "nachschaerfen",
+        "begriff": "Nachschärfen",
+        "erklaerung": "Einen KI-Mitarbeiter verbessern, ohne das Modell zu trainieren: an Akte und Seele, einer Fähigkeit, dem Zaun, dem Wissen oder dem Gedächtnis, in dieser Reihenfolge. Jeden Wortlaut gibt ein Mensch frei.",
+        "quelle": "Trainingskonzept KI-Mitarbeiter, Stand 22.10.2026"
+      },
+      {
+        "id": "pflichtfall",
+        "begriff": "Pflichtfall",
+        "erklaerung": "Ein Fall des Prüfstands, den ein KI-Mitarbeiter im Assessment Center bestehen muss. Pflicht wird jeder Fall, sobald er gelernt ist, und jeder Fehler aus dem Betrieb.",
+        "quelle": "Logbuch 2026-10-22 Entscheidungen Prüfstand Tester und Messlatte"
       }
     ],
     "freigabe": "oeffentlich"
@@ -5440,5 +5492,155 @@
     },
     "quelle": "Prozess neuer KI-Mitarbeiter, angenommen am 22.10.2026; Logbuch 2026-10-22 Entscheidungen Prozess neuer KI-Mitarbeiter und Assessment Center, mit den sechs Fragen zum Assessment Center",
     "freigabe": "oeffentlich"
+  },
+  "training": {
+    "stand": "2026-10-22",
+    "satz": "Jeder KI-Mitarbeiter wird in einem festen Takt geübt, gemessen und nachgeschärft. Nachgeschärft wird an dem, was er liest; das Modell selbst kommt zuletzt.",
+    "hinweis": "Das Trainingskonzept ist ein Entwurf vom 22.10.2026. Was entschieden ist, trägt ein Datum, der Rest ist Vorschlag.",
+    "kreis": [
+      {
+        "titel": "Fall",
+        "text": "Jeder Fehler im Betrieb und jede Lücke in der Akte wird ein Übungsfall, mit dem erwarteten Verhalten und der Stelle in der Akte, aus der es folgt.",
+        "kurz": "Fehler aus dem Betrieb"
+      },
+      {
+        "titel": "Lauf",
+        "text": "Die Fälle laufen auf einem Prüfstand, angekündigt und erst nach dem Ja des Projektverantwortlichen, jeder Fall in einer neuen Sitzung.",
+        "kurz": "eine Sitzung je Fall"
+      },
+      {
+        "titel": "Bewertung",
+        "text": "Was sich zählen lässt, zählt die Werkbank. Den Rest bewertet der Projektverantwortliche.",
+        "kurz": "erst zählen, dann urteilen"
+      },
+      {
+        "titel": "Nachschärfen",
+        "text": "Der Projektverantwortliche gibt den Wortlaut frei, an der Ebene, an der die Schwäche liegt, zuerst an der Akte.",
+        "kurz": "Akte zuerst, Modell zuletzt"
+      },
+      {
+        "titel": "Wiederholen",
+        "text": "Der ganze Prüfstand läuft wieder, nicht nur der eine Fall.",
+        "kurz": "der ganze Prüfstand"
+      }
+    ],
+    "kreisSeit": "2026-10-18",
+    "gelernt": {
+      "text": "Gelernt ist ein Fall erst nach zwei Läufen hintereinander, in denen er jeweils dreimal erfüllt ist. Mit einem oder zwei von drei heißt er wackelig.",
+      "warum": "Ein Sprachmodell antwortet nicht jedes Mal gleich. Beim Orchestrator kippten drei Fälle zwischen zwei Läufen, ohne dass sich an seiner Akte etwas geändert hatte.",
+      "seit": "2026-10-22"
+    },
+    "takt": [
+      {
+        "wann": "Nach jeder Änderung",
+        "was": "an Akte, Grenze, Modell oder Laufzeit: der Prüfstand der Betroffenen, zwei Läufe hintereinander",
+        "stand": "entschieden am 18.10., geschärft am 20. und 22.10."
+      },
+      {
+        "wann": "Jeden Freitag",
+        "was": "die Trainingsrunde: neue Fälle der Woche aufnehmen, je KI-Mitarbeiter mit Prüfstand ein Lauf; der Projektverantwortliche bewertet und gibt den Wortlaut frei, der ab Montag auf dem KI-Rechner gilt",
+        "stand": "entschieden am 22.10."
+      },
+      {
+        "wann": "Jeden Monat",
+        "was": "ein Rückblick über alle Verläufe: was gelernt ist, was hängt",
+        "stand": "Vorschlag"
+      },
+      {
+        "wann": "Alle drei Monate",
+        "was": "das Assessment Center für jeden KI-Mitarbeiter; die Messlatte steigt je Durchgang um eine Stufe, drei Stufen sind festgelegt",
+        "stand": "entschieden am 22.10."
+      },
+      {
+        "wann": "Beim Anlegen",
+        "was": "der Prüfstand entsteht mit der Akte, die Testfälle zuerst",
+        "stand": "entschieden am 22.10."
+      }
+    ],
+    "ebenen": [
+      {
+        "titel": "Akte und Seele",
+        "text": "Auftrag, Grenze und Haltung, so wie sie geschrieben sind."
+      },
+      {
+        "titel": "Fähigkeit",
+        "text": "Ein Werkzeug oder eine Anleitung für eine bestimmte Aufgabe. Fritz bekam so ein Skript, mit dem er den ganzen Text einer Unterlage liest."
+      },
+      {
+        "titel": "Zaun",
+        "text": "Das Programm, das die Grenze durchsetzt."
+      },
+      {
+        "titel": "Wissen",
+        "text": "Was in der Ablage gilt, mit Datum und Freigabestand."
+      },
+      {
+        "titel": "Gedächtnis",
+        "text": "Was aus früheren Läufen hängen bleibt, nur mit Freigabe."
+      },
+      {
+        "titel": "Das Modell, zuletzt",
+        "text": "Erst wenn eine Schwäche über alle Ebenen bleibt, und nur mit einer eigenen Entscheidung."
+      }
+    ],
+    "ebenenSatz": "Ob eine Schwäche eine Ebene tiefer geht, entscheidet der Projektverantwortliche jedes Mal einzeln, im Monatsrückblick (entschieden am 22.10.).",
+    "wer": [
+      {
+        "wer": "Der Projektverantwortliche",
+        "tut": "legt fest, was richtig ist, bewertet, gibt jeden Lauf und jeden Wortlaut frei"
+      },
+      {
+        "wer": "Die Werkbank",
+        "tut": "pflegt die Prüfstände, fährt die Läufe, zählt und schlägt den Wortlaut fürs Nachschärfen vor; sie bewertet nicht"
+      },
+      {
+        "wer": "Der Archivar",
+        "tut": "trägt nach jeder Sitzung ein, was gefunden wurde; daraus entstehen viele neue Fälle"
+      },
+      {
+        "wer": "Der KI-Mitarbeiter",
+        "tut": "lernt nur über das, was ein Mensch freigegeben hat"
+      }
+    ],
+    "regel": "Kein KI-Mitarbeiter wird mit Antworten von Claude nachtrainiert, und Urteile von Claude gehen in kein Training (entschieden am 22.10.).",
+    "pruefstaende": "Einen Prüfstand haben heute Hermes, Fritz als Entwurf und der Tester. Die übrigen folgen in der Reihenfolge des Assessment Centers: Gregor Dev, julia-trend und der Archivar, danach Arnold und der Reporter (entschieden am 22.10.).",
+    "messlatte": {
+      "satz": "Die Messlatte des Assessment Centers steigt mit jedem Durchgang um eine Stufe, also alle drei Monate (entschieden am 22.10.).",
+      "stufen": [
+        {
+          "stufe": "1, heute",
+          "schwelle": "keine der drei echten Aufgaben verworfen, die Nacharbeit kürzer als selbst machen"
+        },
+        {
+          "stufe": "2",
+          "schwelle": "die Nacharbeit höchstens halb so lang wie selbst machen, eine Aufgabe ganz ohne Nacharbeit"
+        },
+        {
+          "stufe": "3",
+          "schwelle": "zwei von drei Aufgaben ohne Nacharbeit"
+        }
+      ],
+      "dazu": "Dazu wird jeder Fall Pflicht, sobald er gelernt ist, und Fehler aus dem Betrieb kommen als neue Pflichtfälle dazu. Wer eine Stufe nicht schafft, bleibt auf ihr und wird nachgeschärft. Nach Stufe 3 ist noch nichts festgelegt."
+    },
+    "neueFaelle": {
+      "satz": "Woher neue Fälle kommen (Vorschlag):",
+      "punkte": [
+        "aus dem Betrieb: jeder Fehler eines KI-Mitarbeiters in einem echten Auftrag",
+        "aus den Sitzungen: was der Archivar ins Tagesprotokoll und in den Arbeitsplan einträgt",
+        "aus dem Nutzentest: was der Projektverantwortliche verwirft oder nur mit viel Nacharbeit übernimmt",
+        "aus der Akte: jede neue Regel bekommt einen Fall, der sie prüft, und eine Gegenprobe"
+      ]
+    },
+    "quelle": "Trainingskonzept KI-Mitarbeiter, Stand 22.10.2026, ungeprüft; Logbuch 2026-10-18 Entscheidungen Training, 2026-10-20 Entscheidungen Prüfstand Hermes, 2026-10-22 Entscheidungen Trainingskonzept, 2026-10-22 Entscheidungen Prüfstand Tester und Messlatte, 2026-10-22 Entscheidungen Gegenprüfung Trainingskonzept",
+    "freigabe": "oeffentlich",
+    "kreisMitte": {
+      "gross": "gelernt",
+      "zeilen": [
+        "nach zwei Läufen hintereinander,",
+        "je dreimal erfüllt"
+      ],
+      "hinweis": "kippt er, zählt es von vorn"
+    },
+    "kreisBeschriftung": "Fünf Schritte im Uhrzeigersinn, nach dem fünften geht es beim ersten weiter. Der Punkt zeigt, wo ein Fall gerade steht."
   }
 }

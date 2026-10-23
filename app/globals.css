@@ -1451,6 +1451,38 @@ th.num { text-align: right; }
 }
 
 .lp-anatomie { margin: 0; }
+
+/* --- Bewegte Zeichnungen im Abschnitt Mannschaft (seit dem 22.10.) ----------
+   Der Lernkreis: Ein Punkt läuft den Kreis ab, der Schritt darunter leuchtet.
+   Der Takt: Eine Spalte wandert Woche für Woche durch ein Beispielquartal.
+   Beide zeigen eine Reihenfolge in der Zeit, deshalb bewegen sie sich; bei
+   reduzierter Bewegung stehen sie still. */
+.lp-lernkreis svg { min-width: 480px; max-width: 600px; }
+.lp-lernkreis-raster { align-items: center; }
+.lp-lernkreis-raster .lp-punkte { margin-top: 0; }
+.lp-lernkreis-raster .lp-diagramm { margin-top: 0; }
+.lp-lk-laeufer {
+  transform-box: view-box;
+  transform-origin: 300px 265px;
+  animation: lp-lk-dreh var(--lk-dauer, 10s) linear infinite;
+}
+@keyframes lp-lk-dreh { to { transform: rotate(360deg); } }
+.lp-lk-schritt rect {
+  fill: var(--wmc-bg);
+  stroke: var(--wmc-ink);
+  stroke-width: 1.5;
+  animation: lp-lk-leuchten var(--lk-dauer, 10s) linear infinite;
+}
+@keyframes lp-lk-leuchten {
+  0%, 12% { fill: var(--wmc-surface-soft); stroke: var(--signal); }
+  16%, 100% { fill: var(--wmc-bg); stroke: var(--wmc-ink); }
+}
+.lp-takt-woche { transform-box: view-box; animation: lp-takt-woche 26s steps(13, end) infinite; }
+@keyframes lp-takt-woche { to { transform: translateX(var(--takt-weg, 780px)); } }
+@media (prefers-reduced-motion: reduce) {
+  .lp-lk-laeufer, .lp-takt-woche { display: none; }
+  .lp-lk-schritt rect { animation: none; }
+}
 /* Die Zeichnung haelt eine Mindestbreite, damit die Beschriftung lesbar bleibt.
    Sie scrollt darunter im eigenen Kasten, sonst schiebt sie die ganze Seite
    seitwaerts. */

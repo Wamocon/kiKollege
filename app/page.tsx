@@ -4,6 +4,8 @@ import { EnablerRaster } from '@/components/figuren/EnablerRaster'
 import { LandschaftFigur } from '@/components/figuren/Landschaft'
 import { TermineFigur } from '@/components/figuren/Termine'
 import { MannschaftFigur } from '@/components/figuren/Mannschaft'
+import { LernkreisFigur } from '@/components/figuren/Lernkreis'
+import { TaktFigur } from '@/components/figuren/Takt'
 import { Schichtenstapel } from '@/components/figuren/Schichtenstapel'
 import { Durchlauf } from '@/components/figuren/Durchlauf'
 import { Pruefpunkte } from '@/components/figuren/Pruefpunkte'
@@ -570,6 +572,102 @@ export default function Landing() {
                 </div>
               </div>
               <p className="lp-klein lp-luft-oben-klein">Quelle: {d.aufnahme.quelle}</p>
+            </>
+          ) : null}
+          {sichtbar(d.training) ? (
+            <>
+              <h3 className="lp-aussage lp-luft-oben">Wie ein KI-Mitarbeiter besser wird.</h3>
+              <div className="lp-text lp-luft-oben-klein">
+                <p>{d.training.satz}</p>
+                <p className="lp-klein">{d.training.hinweis}</p>
+              </div>
+              <p className="lp-klein lp-luft-oben">
+                Der <Begriff id="pruefstand">Lernkreis</Begriff>, entschieden am{' '}
+                {datum(d.training.kreisSeit).slice(0, 6)}
+              </p>
+              <div className="lp-hero-raster lp-lernkreis-raster">
+                <LernkreisFigur />
+                <ol className="lp-punkte">
+                  {d.training.kreis.map((s, i) => (
+                    <li key={s.titel}>
+                      <span className="nr">{String(i + 1).padStart(2, '0')}</span>
+                      <div>
+                        <p className="punkt">{s.titel}</p>
+                        <p className="grund">{s.text}</p>
+                      </div>
+                    </li>
+                  ))}
+                </ol>
+              </div>
+              <div className="lp-zellen">
+                <div className="lp-zelle traegt">
+                  <span className="kopf">
+                    Wann ein Fall gelernt ist, entschieden am {datum(d.training.gelernt.seit).slice(0, 6)}
+                  </span>
+                  <p className="stark">{d.training.gelernt.text}</p>
+                  <p>{d.training.gelernt.warum}</p>
+                </div>
+              </div>
+
+              <p className="lp-klein lp-luft-oben">Der feste Takt</p>
+              <TaktFigur />
+              <div className="lp-gegen-rahmen">
+                <table className="lp-gegen lp-stapel">
+                  <thead>
+                    <tr>
+                      <th>Wann</th>
+                      <th>Was</th>
+                      <th>Stand</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {d.training.takt.map((t) => (
+                      <tr key={t.wann}>
+                        <td data-kopf="Wann">{t.wann}</td>
+                        <td data-kopf="Was">{t.was}</td>
+                        <td data-kopf="Stand" className="leise">{t.stand}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+
+              <p className="lp-klein lp-luft-oben">
+                Woran <Begriff id="nachschaerfen">nachgeschärft</Begriff> wird, in dieser Reihenfolge
+              </p>
+              <ol className="lp-punkte">
+                {d.training.ebenen.map((e, i) => (
+                  <li key={e.titel}>
+                    <span className="nr">{String(i + 1).padStart(2, '0')}</span>
+                    <div>
+                      <p className="punkt">{e.titel}</p>
+                      <p className="grund">{e.text}</p>
+                    </div>
+                  </li>
+                ))}
+              </ol>
+              <div className="lp-text lp-luft-oben-klein">
+                <p>{d.training.ebenenSatz}</p>
+              </div>
+
+              <dl className="lp-spec">
+                {d.training.wer.map((w) => (
+                  <div className="lp-spec-zeile" key={w.wer}>
+                    <dt>{w.wer}</dt>
+                    <dd>{w.tut}</dd>
+                  </div>
+                ))}
+              </dl>
+              <div className="lp-text lp-luft-oben">
+                <p>{d.training.regel}</p>
+                <p>{d.training.pruefstaende}</p>
+                <p>
+                  Die Messlatte des <Begriff id="assessment-center">Assessment Centers</Begriff>, Stufe für
+                  Stufe, und woher neue Fälle kommen, stehen im{' '}
+                  <a href={pfad('/stand/#gedaechtnis')}>ausführlichen Stand</a>.
+                </p>
+              </div>
+              <p className="lp-klein lp-luft-oben-klein">Quelle: {d.training.quelle}</p>
             </>
           ) : null}
         </Sektion>
