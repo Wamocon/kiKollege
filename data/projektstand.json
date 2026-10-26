@@ -1,9 +1,9 @@
 {
-  "stand": "2026-10-23",
+  "stand": "2026-10-26",
   "herkunft": {
     "arbeitsordner": "D:\\WAMOCON",
     "einstieg": "KI-Mitarbeiter/75_KI-Mitarbeiter/KI-Mitarbeiter — Einstieg.md",
-    "erzeugt": "2026-10-23",
+    "erzeugt": "2026-10-26",
     "fristTage": 7,
     "verfahren": "Erstbefüllung von Hand aus dem Übergabedokument vom 05.09.2026, am 11.09. fortgeschrieben aus den beiden Blättern vom 09.09., am 17.09. aus dem Vault: Logbuch, Tagesprotokolle, Meilensteinplan, Bestandsaufnahme vom 16.09., Akte des Reviewers, Laufnotizen und Quoten je Regel. Das Abbild der Ablage zählt scripts/abbild-vault.mjs. Spätere Stände der Prüfläufe schreibt scripts/export-vault.mjs aus dem Frontmatter der Laufnotizen.",
     "freigabe": "intern",
@@ -73,7 +73,14 @@
       "Tagesprotokoll KI-Mitarbeiter vom 23.10.2026, Morgenbriefing, Stand 06:06",
       "Prüfstandlauf 2026-10-22 Tester 1; Logbuch 2026-10-22 Entscheidungen Tester, WMC Inventar einrichten, Tester ruft die Seite auf, Training Commit und Reihenfolge Trainingslauf, Morgenläufe Landing Page und Leitblätter",
       "Prüfstandlauf 2026-10-23 Hermes drei Wiederholungen",
-      "Harness, Stand 03.09.2026; Analyse Laufzeit Hermes und Modell vom 20.10.2026; Systemarchitektur Orchestrator"
+      "Harness, Stand 03.09.2026; Analyse Laufzeit Hermes und Modell vom 20.10.2026; Systemarchitektur Orchestrator",
+      "Logbuch 2026-10-23: Entscheidungen WMC Inventar M1 und M2",
+      "Logbuch 2026-10-23: Entscheidungen Landing Page Technik und Fahrplan",
+      "Logbuch 2026-10-23: Entscheidung Trainingsergebnis auf die Landing Page",
+      "Logbuch 2026-10-23: Entscheidungen Jira Stories nach dem Morgenbriefing",
+      "Logbuch 2026-10-23: Entscheidung Tester nachschärfen nach Prüfstandlauf 1",
+      "Logbuch 2026-10-23: Entscheidung Landing Page Pull Requests mergen",
+      "Protokoll 2026-10-23 KI-Mitarbeiter, Abschnitte Jira, Landing Page, Theo nachgeschärft, WMC Inventar Nacht und Morgen"
     ],
     "getrenntAm": "2026-09-09",
     "notizordner": "KFBM/00_Vault/10_KI-Mitarbeiter"
@@ -1267,6 +1274,51 @@
     {
       "datum": "2026-10-23",
       "entscheidung": "Der Fahrplan seit dem 26.08. ist ein Abschnitt der Seite",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-23",
+      "entscheidung": "Das Ergebnis des Trainingslaufs von Hermes soll auf die Landing Page, ohne Fallnummern und Einzelheiten zum Zaun",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-23",
+      "entscheidung": "Die vier Pull Requests der Landing Page mergen, in der Reihenfolge #19, #21, #22, #23",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-23",
+      "entscheidung": "Punkte 1 bis 5 zum Nachschärfen des Testers umsetzen, abgestimmt mit der Sitzung WMC Inventar",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-23",
+      "entscheidung": "WMC Inventar: ohne Testsiegel weiterstarten und es in der Meldung sagen, danach voller Probestart und -stopp gegen Gregors Stand",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-23",
+      "entscheidung": "WMC Inventar: die fehlende Lauf-Karte zu A-0058 von der Werkbank anlegen, gegen gregor/inventar, mit Gregors Karte und Theos Suite als Eltern",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-23",
+      "entscheidung": "WMC Inventar: Gregors blockierte Karte zu M2 entsperren und weiterbauen, mit dem Stand im Klon",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-23",
+      "entscheidung": "WMC Inventar: 400 Iterationen statt 150 je Karte für Gregor",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-23",
+      "entscheidung": "WMC Inventar: beispieldaten --neu im Startskript, auch für Theos Läufe",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-23",
+      "entscheidung": "Jira: WMCNL-2788, WMCNL-2756 und WMCNL-2757 auf in Arbeit, das Epic WMCNL-2755 auf Umsetzung, neu WMCNL-2806 Assessment Center am Epic WMCNL-4",
       "freigabe": "intern"
     }
   ],
