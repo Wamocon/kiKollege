@@ -20,7 +20,7 @@ import { PlanAbschnitt } from '@/components/stand/Plan'
 import { StufenAbschnitt } from '@/components/stand/Stufen'
 import { abschnitt } from '@/lib/abschnitte'
 import { inWorten } from '@/lib/alter'
-import { arbeitenStand, belastbarBei, daten, datum, harteRegel, zahl, zielErreicht } from '@/lib/daten'
+import { arbeitenStand, belastbarBei, daten, datum, harteRegel, terminText, zahl, zielErreicht } from '@/lib/daten'
 import { istIntern, nurSichtbare, sichtbar } from '@/lib/freigabe'
 import { pfad } from '@/lib/pfad'
 
@@ -780,7 +780,7 @@ export default function Seite() {
                         .map((m) =>
                           m.abgenommen
                             ? `${m.id} abgenommen am ${datum(m.abgenommen.am).slice(0, 6)}`
-                            : `${m.id} bis ${datum(m.termin).slice(0, 6)}, ${arbeitenStand(m).erledigt} von ${arbeitenStand(m).gesamt} Arbeiten erledigt`,
+                            : `${m.id} ${m.terminOffen ? 'Termin offen' : `bis ${terminText(m)}`}, ${arbeitenStand(m).erledigt} von ${arbeitenStand(m).gesamt} Arbeiten erledigt`,
                         )
                         .join('; ')}
                       .

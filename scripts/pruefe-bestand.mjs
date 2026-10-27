@@ -14,10 +14,13 @@
 import { readFile } from 'node:fs/promises'
 import { resolve } from 'node:path'
 
+/** Die Felder, die einen Listeneintrag tragen, in dieser Rangfolge. */
+const TRAGEND = ['id', 'nr', 'titel', 'punkt', 'ort', 'name', 'rolle']
+
 /** Stabile Kennung eines Listeneintrags. Ohne Kennung bleibt nur die Anzahl. */
 export function kennung(eintrag) {
   if (eintrag == null || typeof eintrag !== 'object') return null
-  for (const feld of ['id', 'nr', 'titel', 'punkt', 'ort', 'name', 'rolle']) {
+  for (const feld of TRAGEND) {
     if (eintrag[feld] != null) return `${feld}=${eintrag[feld]}`
   }
   if (eintrag.datum != null) {
@@ -32,6 +35,15 @@ export function kennung(eintrag) {
 /** Ein Eintrag, den nur sein Datum und sein Wortlaut tragen, etwa ein Tag der
  *  Chronik oder eine Entscheidung. */
 const nurDatum = (eintrag) => kennung(eintrag)?.startsWith('datum=') ?? false
+
+/** Die Kennung, die ein umbenannter Eintrag vorher trug. Ein Titel darf sich
+ *  ändern, wenn der Eintrag den alten in `umbenanntVon` nennt; verloren ist er
+ *  dann nicht. */
+function frueher(eintrag) {
+  if (eintrag == null || typeof eintrag !== 'object' || eintrag.umbenanntVon == null) return null
+  const feld = TRAGEND.find((f) => eintrag[f] != null)
+  return feld ? `${feld}=${eintrag.umbenanntVon}` : null
+}
 
 /** Solche Eintraege je Tag gezaehlt. */
 function jeTag(liste) {
@@ -60,7 +72,7 @@ export function fehlendes(alt, neu, pfad = '') {
       const jetzt = tageNeu.get(tag) ?? 0
       if (jetzt < anzahl) funde.push({ pfad: `${pfad}[datum=${tag}]`, art: 'entfallen', alt: anzahl, neu: jetzt })
     }
-    const vorhanden = new Set(neu.map(kennung).filter(Boolean))
+    const vorhanden = new Set([...neu.map(kennung), ...neu.map(frueher)].filter(Boolean))
     for (const eintrag of alt) {
       if (nurDatum(eintrag)) continue
       const k = kennung(eintrag)

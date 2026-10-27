@@ -82,7 +82,8 @@
       "Logbuch 2026-10-23: Entscheidung Landing Page Pull Requests mergen",
       "Protokoll 2026-10-23 KI-Mitarbeiter, Abschnitte Jira, Landing Page, Theo nachgeschärft, WMC Inventar Nacht und Morgen",
       "Tagesprotokolle KI-Mitarbeiter vom 23., 26. und 27.10.2026; Logbuch 2026-10-23 WMC Inventar Zeitgrenze und Rest von M4, 2026-10-26 Entscheidungen WMC Inventar",
-      "Prüfstandlauf 2026-10-26 Tester WMC Inventar Wiederholung; Jira-Kommentar „Stand 27.10.2026“"
+      "Prüfstandlauf 2026-10-26 Tester WMC Inventar Wiederholung; Jira-Kommentar „Stand 27.10.2026“",
+      "Entscheidungen des Projektverantwortlichen vom 27.10.2026, übermittelt von der Sitzung „Offene Entscheidungen KI-Mitarbeiter angehen“; Risikoregister KI-Mitarbeiter 2026-10-27, ohne die Risiken zur Sicherheit"
     ],
     "getrenntAm": "2026-09-09",
     "notizordner": "KFBM/00_Vault/10_KI-Mitarbeiter"
@@ -1065,7 +1066,7 @@
     },
     {
       "datum": "2026-10-20",
-      "entscheidung": "Eine Auftragsnotiz ohne Pflichtangabe wird abgelehnt, für Fritz und julia-trend",
+      "entscheidung": "Eine Auftragsnotiz braucht alle Pflichtangaben, für Fritz und julia-trend",
       "freigabe": "intern"
     },
     {
@@ -1125,7 +1126,7 @@
     },
     {
       "datum": "2026-10-20",
-      "entscheidung": "Für Meilenstein 4 gilt: julia-trend läuft mit ihrer Grenze, und ein Schreibversuch irgendwo in der Ablage wird abgelehnt",
+      "entscheidung": "Für Meilenstein 4 gilt: julia-trend läuft mit ihrer Grenze und schreibt nirgends in die Ablage",
       "freigabe": "intern"
     },
     {
@@ -1361,6 +1362,26 @@
     {
       "datum": "2026-10-27",
       "entscheidung": "Jira verlinkt in der Beschreibung des Projekts diese Seite",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-27",
+      "entscheidung": "Das Team kommt erst dazu, wenn der Orchestrator alle 18 Übungsfälle in zwei Läufen hintereinander beherrscht, jeder Fall dreimal; neue Frist 20.11., Meilenstein 2 frühestens am 23.11.",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-27",
+      "entscheidung": "Meilenstein 3 und 4 bekommen neue Termine, abhängig von Meilenstein 2",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-27",
+      "entscheidung": "Die Risiken der Seite folgen dem Risikoregister vom 27.10., ohne die Risiken zur Sicherheit",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-27",
+      "entscheidung": "Die Werkzeugmatrix bleibt öffentlich; Einzelheiten des Zauns werden neutral gefasst",
       "freigabe": "intern"
     }
   ],
@@ -2180,7 +2201,7 @@
       },
       {
         "datum": "2026-10-27",
-        "text": "Gregor Dev bessert Meilenstein 3 von WMC Inventar nach. Das Trainingsziel des Orchestrators bis heute ist verfehlt; über ein neues Ziel und den Zugang des Teams am 30.10. wird entschieden. Meilenstein 2 ist gefährdet.",
+        "text": "Gregor Dev bessert Meilenstein 3 von WMC Inventar nach. Das Trainingsziel des Orchestrators bis heute ist verfehlt. Entschieden: alle 18 Übungsfälle bis zum 20.11., das Team kommt erst danach. Meilenstein 2 rückt auf frühestens 23.11., die Termine von 3 und 4 werden neu festgelegt.",
         "freigabe": "oeffentlich"
       }
     ],
@@ -2224,7 +2245,7 @@
         "titel": "Technisch ungeprüft",
         "zusatz": "Belege fehlen auch nach dem 17.09.",
         "punkte": [
-          "Ob die Grenze lückenlos hält. Der Prüfstand hat Lücken gezeigt, sie werden mit Testfällen geschlossen",
+          "Ob die Grenze in jedem Fall hält. Sie wird mit jedem Prüfstandlauf und neuen Testfällen nachgezogen",
           "Ob das offene Modell so gut prüft wie das Cloud-Modell; das misst seit dem 20.10. der Nutzentest",
           "Ob die Helfer an der Werkbank auf dem lokalen Modell tragen. Die anspruchsvollen Rollen sind dafür gebaut",
           "Dabei wechselt auch das Sprachmodell. Ob es genauso zuverlässig prüft, muss am selben Prüfsatz neu gemessen werden",
@@ -2239,7 +2260,7 @@
       "wann": "bis 11.09.",
       "titel": "Die Akte für Fritz",
       "text": "Auftrag, Haltung und Grenze als Dateien, ein Zaun mit Testfällen, ein Referenzsatz aus zehn bis fünfzehn Aufgaben, das Profil auf dem KI-Rechner von Hand nach der Akte.",
-      "bedingung": "Abnahme: Fritz läuft das Prüfskript über den Referenzsatz, und ein Schreibversuch außerhalb seiner Ordner wird abgewiesen.",
+      "bedingung": "Abnahme: Fritz läuft das Prüfskript über den Referenzsatz, und er schreibt nur in seine eigenen Ordner.",
       "freigabe": "intern",
       "bedingungsart": "termin",
       "stand": "Stand 16.10.: erledigt. Die Grenze hängt am Profil, der Referenzlauf ist am 18.09. gefahren, und am 15.10. hat der Projektverantwortliche den Reviewer abgenommen, mit Vorbehalt."
@@ -2302,7 +2323,7 @@
     "stand": "Entwurf",
     "kopf": "Sieben kurze Angaben, die die Maschine liest. tools ist eine Positivliste, disallowedTools die Gegenprobe. memory sagt, wo seine Fälle liegen; skills, welche Anleitungen beim Start mitkommen.",
     "rumpf": "Ganze Sätze, an einen neuen Kollegen gerichtet. Hier steht die Haltung, der Ablauf und was er nie tut. Diesen Teil kann kein Werkzeug erzeugen.",
-    "grenze": "Die wichtigste Zeile ist „darf nie\". Eine Fähigkeit, die nicht eingetragen ist, soll er nicht haben: Er soll nichts versenden, nichts löschen und nichts freigeben können. Das ist als technische Grenze gebaut, nicht als Vereinbarung: Ein kleines Programm prüft jeden Werkzeugaufruf gegen die Grenzdatei und lehnt im Zweifel ab. Es wird mit Testfällen nachgezogen und ist noch nicht lückenlos.",
+    "grenze": "Die wichtigste Zeile ist „darf nie\". Eine Fähigkeit, die nicht eingetragen ist, soll er nicht haben: Er soll nichts versenden, nichts löschen und nichts freigeben können. Das ist als technische Grenze gebaut, nicht als Vereinbarung: Ein kleines Programm prüft jeden Werkzeugaufruf gegen die Grenzdatei und lehnt im Zweifel ab. Es wird mit Testfällen nachgezogen.",
     "einzigeQuelle": "Wer diese Datei ändert, ändert den Mitarbeiter. Was daneben wirkt, etwa die Einrichtung seines Profils, soll der Akte folgen; wo es abweicht, wird es nachgezogen.",
     "auszug": "---\nname: fritz\ndescription: Prüft eine Schulungsunterlage gegen den Maßstab und\n  schreibt einen Bericht. Beauftragen, bevor eine Unterlage\n  in den Unterricht geht.\ntools: Lesen, Suchen, Nachrechnen, Prüfskripte ausführen\ndisallowedTools: Schreiben, Löschen, Versenden\nskills: kfbm-review\nmemory: project\n---\nDu prüfst Schulungsunterlagen für die Ausbildung Kaufleute\nfür Büromanagement. Du bewertest. Du erstellst keine\nUnterlagen, und du erteilst keine Freigabe.\n\n## Bevor du anfängst\n\nOhne Angabe des Jahrgangs prüfst du nicht. Bis 2028 gelten\nzwei Ausbildungsordnungen nebeneinander. Material für einen\nAlt-Jahrgang gegen die neue Ordnung zu prüfen, erzeugt nur\nFehlalarme. Fehlt die Angabe, frag nach.\n\n## Im Zweifel\n\nMelde nichts. Ein Prüfer, der Unfug meldet, wird nach dem\ndritten Mal übergangen. Dann nützt auch das nichts mehr,\nwas du richtig gefunden hast.\n\n## Jeder Befund nennt drei Dinge\n\nDie Fundstelle, das Kriterium und den Schweregrad. Ein\nBefund ohne Fundstelle ist für den Autor wertlos.\n\n… weiter mit dem Ablauf und den Prüfregeln",
     "freigabe": "oeffentlich"
@@ -2399,10 +2420,10 @@
         "tutNie": "prüfen, erstellen, freigeben, zusammenfassen",
         "zustand": "arbeitet",
         "seit": "2026-09-09",
-        "hinweis": "Seit dem 28.09. hat er eine freigegebene Akte, am 29.09. auf das Team und die Sprache angepasst. Am 17.10. hat der Projektverantwortliche entschieden, Grenze und Akte an das bestehende Profil hinter seinem Zugang im Messenger zu hängen, statt umzuziehen. Seit dem 18.10. läuft es so, das alte Profil ruht. Das Team bekommt seine Aufträge ab dem 30.10. über diesen Zugang.",
+        "hinweis": "Seit dem 28.09. hat er eine freigegebene Akte, am 29.09. auf das Team und die Sprache angepasst. Am 17.10. hat der Projektverantwortliche entschieden, Grenze und Akte an das bestehende Profil hinter seinem Zugang im Messenger zu hängen, statt umzuziehen. Seit dem 18.10. läuft es so, das alte Profil ruht. Das Team bekommt diesen Zugang erst, wenn sein Training abgeschlossen ist, frühestens am 23.11.",
         "freigabe": "oeffentlich",
         "betrieb": "mitGrenze",
-        "marke": "mit Grenze, Team ab 30.10."
+        "marke": "mit Grenze, Team nach dem Training"
       },
       {
         "id": "reviewer",
@@ -2445,7 +2466,7 @@
         "seit": null,
         "hinweis": "Grenzdatei mit Testfällen seit dem 28.09. Akte und Profil kommen mit Meilenstein 3.",
         "freigabe": "oeffentlich",
-        "marke": "kommt mit M3, 06.11."
+        "marke": "kommt mit M3, Termin offen"
       },
       {
         "id": "architekt",
@@ -2487,7 +2508,7 @@
         "seit": null,
         "hinweis": "Beschrieben, nicht gebaut. Was er schreibt, führt ein Mensch zusammen. Folgt nach dem Ende des Plans.",
         "freigabe": "oeffentlich",
-        "marke": "nach dem 13.11."
+        "marke": "nach Meilenstein 4"
       },
       {
         "id": "seiten",
@@ -2546,7 +2567,7 @@
     },
     "team": {
       "titel": "Team und Academy",
-      "zusatz": "Aufträge über den Orchestrator, ab 30.10."
+      "zusatz": "Aufträge über den Orchestrator, frühestens ab 23.11."
     },
     "werkbank": {
       "seit": "2026-08-26",
@@ -2661,7 +2682,7 @@
     "freigabe": "intern"
   },
   "stufenPlan": {
-    "text": "Am 11.09. ist für die Wochen bis zum 09.10. ein Meilensteinplan mit vier Abnahmen entstanden. Am 17.09. ist er neu geschnitten worden, bis zum 16.10.: zuerst der Reviewer mit Grenze auf der eigenen Hardware, dann der Orchestrator mit Akte und Auftragsbuch, danach Reporter, Archivar und Architekt, zuletzt der Entwickler. Der neue Plan ist ein Entwurf und hat keinen Puffer. Am 25.09. ist der Endtermin auf den 23.10. gerückt, am 29.09. ist der Plan auf ein neues Ziel geschnitten worden, und am 16.10. hat der Projektverantwortliche neue Termine freigegeben, Ende am 13.11.",
+    "text": "Am 11.09. ist für die Wochen bis zum 09.10. ein Meilensteinplan mit vier Abnahmen entstanden. Am 17.09. ist er neu geschnitten worden, bis zum 16.10.: zuerst der Reviewer mit Grenze auf der eigenen Hardware, dann der Orchestrator mit Akte und Auftragsbuch, danach Reporter, Archivar und Architekt, zuletzt der Entwickler. Der neue Plan ist ein Entwurf und hat keinen Puffer. Am 25.09. ist der Endtermin auf den 23.10. gerückt, am 29.09. ist der Plan auf ein neues Ziel geschnitten worden, und am 16.10. hat der Projektverantwortliche neue Termine freigegeben, Ende am 13.11. Am 27.10. ist Meilenstein 2 auf frühestens 23.11. gerückt; die Termine danach werden neu festgelegt.",
     "freigabe": "intern"
   },
   "ablage": {
@@ -3991,7 +4012,7 @@
   },
   "meilensteinplanAktuell": {
     "stand": "2026-10-27",
-    "status": "Plan vom 29.09.2026, Termine am 16.10.2026 vom Projektverantwortlichen freigegeben",
+    "status": "Plan vom 29.09.2026, Termine am 16.10.2026 vom Projektverantwortlichen freigegeben; am 27.10.2026 rückt Meilenstein 2 auf frühestens 23.11., die Termine von 3 und 4 werden neu festgelegt",
     "von": "2026-09-29",
     "bis": "2026-11-13",
     "termineAm": "2026-10-16",
@@ -3999,13 +4020,13 @@
       "Meilensteinplan 17.09. bis 16.10.2026, nachgezogen am 18.09.",
       "Meilensteinplan 25.09. bis 23.10.2026"
     ],
-    "satz": "Vier KI-Mitarbeiter, die dem Team helfen, Sprache für alle und eine interne Seite. Neuer Endtermin ist der 13.11.",
+    "satz": "Vier KI-Mitarbeiter, die dem Team helfen, Sprache für alle und eine interne Seite. Das Team kommt erst nach dem Training dazu, frühestens am 23.11.",
     "ziel": "In höchstens vier Wochen mehrere lauffähige KI-Mitarbeiter, die einzelnen Teammitgliedern helfen, dazu Sprachbedienung und eine gehostete interne Seite.",
     "zielVon": "Wortlaut vom 17.09., am 29.09. bestätigt",
     "zielteile": [
       {
         "teil": "mehrere lauffähige KI-Mitarbeiter",
-        "festgelegt": "Reviewer, Orchestrator, Reporter und Researcherin. Vorgezogen sind Arnold, der Technische Architekt, seit dem 18.10., Gregor Dev seit dem 19.10. und der Archivar seit dem 22.10. Der Entwickler folgt nach dem 13.11.; Theo, der Tester, läuft seit dem Abend des 22.10."
+        "festgelegt": "Reviewer, Orchestrator, Reporter und Researcherin. Vorgezogen sind Arnold, der Technische Architekt, seit dem 18.10., Gregor Dev seit dem 19.10. und der Archivar seit dem 22.10. Der Entwickler folgt nach Meilenstein 4; Theo, der Tester, läuft seit dem Abend des 22.10."
       },
       {
         "teil": "die einzelnen Teammitgliedern helfen",
@@ -4021,11 +4042,11 @@
       },
       {
         "teil": "in höchstens vier Wochen",
-        "festgelegt": "Am 29.09. bis zum 23.10. geplant, am 16.10. auf den 13.11. verschoben."
+        "festgelegt": "Am 29.09. bis zum 23.10. geplant, am 16.10. auf den 13.11. verschoben. Am 27.10. rückt Meilenstein 2 auf frühestens 23.11.; der 13.11. hält nicht."
       }
     ],
     "lauffaehig": "Lauffähig heißt: Die Akte ist freigegeben, die Grenzdatei hat Testfälle, der KI-Mitarbeiter läuft als eigenes Profil mit seiner Grenze und hat mindestens einen echten Auftrag erledigt. Einem Teammitglied hilft er, wenn dieser Auftrag von jemand anderem kam als vom Projektverantwortlichen.",
-    "termineSatz": "Am 16.10. hat der Projektverantwortliche neue Termine freigegeben: Meilenstein 1 am 23.10., 2 am 30.10., 3 am 06.11., 4 am 13.11. Der Zuschnitt vom 29.09. bleibt.",
+    "termineSatz": "Am 16.10. hat der Projektverantwortliche neue Termine freigegeben: Meilenstein 1 am 23.10., 2 am 30.10., 3 am 06.11., 4 am 13.11. Der Zuschnitt vom 29.09. bleibt. Am 27.10. hat er entschieden: Das Team kommt erst dazu, wenn der Orchestrator alle 18 Übungsfälle beherrscht; Meilenstein 2 frühestens am 23.11., Meilenstein 3 und 4 bekommen neue Termine.",
     "meilensteine": [
       {
         "id": "M1",
@@ -4072,7 +4093,7 @@
       },
       {
         "id": "M2",
-        "termin": "2026-10-30",
+        "termin": "2026-11-23",
         "fruehereFrist": "2026-10-09",
         "titel": "Das Team ist angebunden",
         "inhalt": [
@@ -4124,7 +4145,9 @@
           }
         ],
         "abnahme": "Zwei Teammitglieder außer dem Projektverantwortlichen haben je einen Auftrag über den Orchestrator gegeben und ein Ergebnis bekommen. Beide Aufträge liegen mit Ergebnis im Auftragsbuch. Eine nicht zugelassene Kennung wird abgewiesen.",
-        "erwinMinuten": 105
+        "erwinMinuten": 105,
+        "fruehestens": true,
+        "terminVorher": "2026-10-30"
       },
       {
         "id": "M3",
@@ -4153,7 +4176,8 @@
           }
         ],
         "abnahme": "Ein Teammitglied spricht dem Orchestrator einen Auftrag, und er antwortet gesprochen, mit Auftragsnummer und zuständigem Mitarbeiter. Von zehn Probesätzen sind mindestens neun ohne sinnentstellenden Fehler erkannt. Nach einem Lauf des Reviewers liefert der Reporter den Bericht ohne Sitzung an der Werkbank.",
-        "erwinMinuten": 75
+        "erwinMinuten": 75,
+        "terminOffen": "Termin wird neu festgelegt, hängt an Meilenstein 2"
       },
       {
         "id": "M4",
@@ -4175,8 +4199,9 @@
             "text": "Die Wochenstichprobe"
           }
         ],
-        "abnahme": "Die Seite ist im Team geteilt, am Morgen der Abnahme neu erzeugt, jede Zahl trägt ein Datum, und Menschen erscheinen nur als Auftraggeber. Zwei Teammitglieder haben sie geöffnet. Die Researcherin läuft mit ihrer Grenze, und ein Schreibversuch irgendwo in der Ablage wird abgelehnt.",
-        "erwinMinuten": 85
+        "abnahme": "Die Seite ist im Team geteilt, am Morgen der Abnahme neu erzeugt, jede Zahl trägt ein Datum, und Menschen erscheinen nur als Auftraggeber. Zwei Teammitglieder haben sie geöffnet. Die Researcherin läuft mit ihrer Grenze, und sie schreibt nirgends in die Ablage.",
+        "erwinMinuten": 85,
+        "terminOffen": "Termin wird neu festgelegt, hängt an Meilenstein 2"
       }
     ],
     "fristen": [
@@ -4227,12 +4252,6 @@
         "kritisch": true
       },
       {
-        "text": "Die Kennungen der Teamliste freischalten",
-        "frist": "2026-10-27",
-        "stand": "offen",
-        "kritisch": true
-      },
-      {
         "text": "Die Anleitung fürs Team lesen und verteilen",
         "frist": "2026-10-27",
         "stand": "offen"
@@ -4259,6 +4278,19 @@
         "frist": "2026-11-12",
         "stand": "offen",
         "notiz": "vorher 22.10."
+      },
+      {
+        "text": "Der Orchestrator beherrscht alle 18 Übungsfälle: zwei Läufe hintereinander, jeder Fall dreimal ohne Fehler",
+        "frist": "2026-11-20",
+        "stand": "offen",
+        "kritisch": true
+      },
+      {
+        "text": "Die Kennungen der Teamliste freischalten",
+        "frist": "2026-11-23",
+        "stand": "offen",
+        "kritisch": true,
+        "notiz": "vorher 27.10.; erst wenn der Orchestrator sein Trainingsziel erreicht hat (Entscheidung vom 27.10.)"
       }
     ],
     "fristenHinweis": "Die Fristen stehen nach dem Arbeitsplan vom 16.10.; wo der Plan vom 29.09. eine andere hatte, steht sie dabei. Entscheidungen zu Zugängen und zur Sicherheit des KI-Rechners stehen nur in der Ablage.",
@@ -4266,54 +4298,92 @@
       "Abnahme des Reviewers (15.10.)",
       "Meilenstein 1 abgenommen (16.10.)",
       "Teamliste (23.10.)",
-      "zwei fehlerfreie Läufe des Prüfstands (27.10.)",
-      "Kennungen freischalten (27.10.)",
-      "zwei Aufträge aus dem Team (M2, 30.10.)",
+      "alle 18 Übungsfälle, zwei Läufe hintereinander (20.11.)",
+      "Kennungen freischalten (danach)",
+      "zwei Aufträge aus dem Team (M2, frühestens 23.11.)",
       "Sprache am Orchestrator (M3)",
       "interne Seite mit den Aufträgen des Teams (M4)"
     ],
-    "pfadSatz": "Die empfindlichsten Stellen sind die Teamliste und der Prüfstand. Hält die Teamliste den 23.10. nicht, rutschen Meilenstein 2 bis 4 mit. Erfüllt der Orchestrator bis zum 27.10. die Fälle des Prüfstands nicht zweimal hintereinander, bekommt das Team keinen Zugang.",
+    "pfadSatz": "Die empfindlichste Stelle ist das Training des Orchestrators. Erst wenn er alle 18 Übungsfälle in zwei Läufen hintereinander beherrscht, frühestens am 20.11., bekommt das Team Zugang; daran hängen die Termine von Meilenstein 2 bis 4.",
     "daneben": "Daneben, ohne den Pfad aufzuhalten: der Reporter, die Researcherin, die Übernahme von Regel E5 und der Nutzentest, dessen Bewertung aussteht.",
     "risiken": [
       {
-        "nr": "R23",
-        "titel": "Das Team nutzt die KI-Mitarbeiter nicht",
-        "eintritt": "mittel",
-        "auswirkung": "hoch",
-        "stufe": "hoch",
-        "gegenmassnahme": "Zwei benannte Personen mit einer echten Aufgabe, etwa dem Review von Szenarien; eine Anleitung auf einer Seite; den ersten Auftrag gemeinsam geben"
-      },
-      {
-        "nr": "R26",
-        "titel": "Der Orchestrator fasst im freien Gespräch zusammen oder erfindet",
+        "nr": "R31",
+        "titel": "Der Orchestrator erfindet oder hält seinen Ablauf nicht",
         "eintritt": "hoch",
-        "auswirkung": "mittel",
-        "stufe": "hoch",
-        "gegenmassnahme": "Eine Textfassung der Antworten gibt es nicht (entschieden am 29.09.). Die Wochenstichprobe liest, wenn möglich, den Text, aus dem die Sprachnachricht entsteht; die Auftragsnotiz hält Auftrag und Ergebnis fest"
-      },
-      {
-        "nr": "R30",
-        "titel": "Das Board trägt nicht",
-        "eintritt": "niedrig",
         "auswirkung": "hoch",
-        "stufe": "mittel",
-        "gegenmassnahme": "Das Board trägt seit dem 16.10.; Abbrüche zählen, und bis ein Fehler behoben ist, gibt der Projektverantwortliche Aufträge direkt"
+        "stufe": "hoch",
+        "gegenmassnahme": "Das Ziel zum 27.10. ist verfehlt. Im Training erfand er Angaben und meldete eine Notiz als angelegt, die es nicht gab. Neues Ziel bis zum 20.11.: alle 18 Übungsfälle in zwei Läufen hintereinander, jeder Fall dreimal ohne Fehler; jede Änderung an der Akte mit Wortlaut zur Freigabe",
+        "eingetreten": true,
+        "auch": [
+          "R26"
+        ]
       },
       {
         "nr": "R21",
-        "titel": "Lange Werkzeugschleifen brechen ab",
+        "titel": "Lange Werkzeugschleifen und Verbindungen brechen ab",
         "eintritt": "hoch",
         "auswirkung": "mittel",
         "stufe": "hoch",
-        "gegenmassnahme": "Aufträge klein schneiden und Abbrüche zählen. Der Fehler bei der Zustellung ist beim Hersteller bekannt und dort behoben; die eigene Fassung zieht nach"
+        "gegenmassnahme": "Seit dem 22.10. brachen Läufe mehrfach ab, weil die Verbindung abriss; die Ursache ist offen. Aufträge klein schneiden, Abbrüche zählen, die Ursache geht in einen Fehlerbericht an den Hersteller",
+        "eingetreten": true
+      },
+      {
+        "nr": "R33",
+        "titel": "Entwicklungsergebnisse gelten als fertig und sind es nicht",
+        "eintritt": "hoch",
+        "auswirkung": "hoch",
+        "stufe": "hoch",
+        "eingetreten": true,
+        "gegenmassnahme": "Ein Bauauftrag wurde mehrfach als fertig gemeldet, ohne dass der Stand lief. Fertigmeldungen werden im Quelltext nachgeprüft; zwei Nachbesserungen laufen seit dem 27.10."
+      },
+      {
+        "nr": "R34",
+        "titel": "Die Prüfsuite sagt nichts Verlässliches",
+        "eintritt": "hoch",
+        "auswirkung": "mittel",
+        "stufe": "hoch",
+        "gegenmassnahme": "Es gibt keine Grundlinie für die ganze Suite, und viele rote Fälle lagen am Test, nicht an der Anwendung. Am 26.10. entschieden: den Test anpassen, nicht die Anwendung"
+      },
+      {
+        "nr": "R23",
+        "titel": "Das Team nutzt die KI-Mitarbeiter nicht",
+        "eintritt": "hoch",
+        "auswirkung": "hoch",
+        "stufe": "hoch",
+        "gegenmassnahme": "Niemand aus dem Team ist freigeschaltet, Teamliste und Anleitung liegen als Entwurf; Zugang erst nach dem Training (entschieden am 27.10.). Danach zwei benannte Personen mit einer echten Aufgabe und den ersten Auftrag gemeinsam geben"
       },
       {
         "nr": "R1",
         "titel": "Die Zeit des Projektverantwortlichen reicht nicht",
-        "eintritt": "mittel",
+        "eintritt": "hoch",
         "auswirkung": "hoch",
         "stufe": "hoch",
-        "gegenmassnahme": "Rund 1 h 30 je Woche geplant, 40 Minuten davon für den Prüfstand; die Ist-Zeit führen; die Gespräche im Team früh beginnen"
+        "gegenmassnahme": "Rund 1 h 30 je Woche geplant; eine Ist-Zeit wird noch nicht geführt, und viele offene Punkte brauchen seine Entscheidung. Die Ist-Zeit führen, Entscheidungen bündeln"
+      },
+      {
+        "nr": "R16",
+        "titel": "Arbeit liegt nicht in der Ablage",
+        "eintritt": "hoch",
+        "auswirkung": "mittel",
+        "stufe": "hoch",
+        "gegenmassnahme": "52 Auftragsnotizen auf dem KI-Rechner sind nicht eingecheckt, und Commits der Ablage liegen teils nur lokal. Regelmäßig einchecken und ziehen, mit Ja des Projektverantwortlichen"
+      },
+      {
+        "nr": "R30",
+        "titel": "Das Board trägt nicht",
+        "eintritt": "mittel",
+        "auswirkung": "mittel",
+        "stufe": "mittel",
+        "gegenmassnahme": "Das Board trägt, aber nur ein Auftrag läuft zur Zeit, und Anhalten greift nicht immer. Abbrüche zählen; bis ein Fehler behoben ist, gibt der Projektverantwortliche Aufträge direkt"
+      },
+      {
+        "nr": "R29",
+        "titel": "Die tägliche Erzeugung hängt am Rechner des Projektverantwortlichen",
+        "eintritt": "hoch",
+        "auswirkung": "niedrig",
+        "stufe": "mittel",
+        "gegenmassnahme": "Das Datum auf der Seite zeigt den Stand; der Pflegelauf auf dem KI-Rechner stürzte am 26.10. ab, seine Arbeit lag trotzdem vor"
       },
       {
         "nr": "R27",
@@ -4332,39 +4402,24 @@
         "gegenmassnahme": "Leserkreis festlegen; nur innerhalb der Organisation teilen; Rückfall als Datei im Teamkanal"
       },
       {
-        "nr": "R29",
-        "titel": "Die tägliche Erzeugung hängt am Rechner des Projektverantwortlichen",
-        "eintritt": "hoch",
-        "auswirkung": "niedrig",
-        "stufe": "mittel",
-        "gegenmassnahme": "Das Datum auf der Seite zeigt den Stand; später auf den KI-Rechner verlegen"
-      },
-      {
         "nr": "R22",
-        "titel": "Plan und Jira laufen auseinander",
+        "titel": "Plan, Jira und Seite laufen auseinander",
         "eintritt": "mittel",
-        "auswirkung": "mittel",
-        "stufe": "mittel",
-        "gegenmassnahme": "Jira bekommt täglich den Stand als Kommentar; die Termine gleicht Punkt 10 des Arbeitsplans an"
-      },
-      {
-        "nr": "R16",
-        "titel": "Arbeit liegt nicht in der Ablage",
-        "eintritt": "niedrig",
-        "auswirkung": "mittel",
+        "auswirkung": "niedrig",
         "stufe": "niedrig",
-        "gegenmassnahme": "Seit dem 28.09. eingecheckt und auf dem KI-Rechner"
+        "gegenmassnahme": "Jira bekam am 27.10. den Stand. Die Termine sind nach der Entscheidung vom 27.10. noch anzugleichen"
       },
       {
-        "nr": "R31",
-        "titel": "Der Orchestrator hält seinen Ablauf nicht",
+        "nr": "R26",
+        "titel": "Der Orchestrator fasst im freien Gespräch zusammen oder erfindet",
         "eintritt": "hoch",
-        "auswirkung": "hoch",
+        "auswirkung": "mittel",
         "stufe": "hoch",
-        "gegenmassnahme": "Prüfstand mit festen Fällen; zwei fehlerfreie Läufe bis zum 27.10., sonst kein Zugang für das Team; jede Änderung an Akte oder Zaun mit Wortlaut zur Freigabe"
+        "gegenmassnahme": "Eine Textfassung der Antworten gibt es nicht (entschieden am 29.09.). Die Wochenstichprobe liest, wenn möglich, den Text, aus dem die Sprachnachricht entsteht; die Auftragsnotiz hält Auftrag und Ergebnis fest",
+        "aufgegangenIn": "R31"
       }
     ],
-    "risikenHinweis": "Neu bewertet am 22.10. nach dem Arbeitsplan vom 16.10. Risiken zur Sicherheit und zu den Zugängen des KI-Rechners stehen nur in der Ablage.",
+    "risikenHinweis": "Neu bewertet am 27.10. nach dem Risikoregister; R26 ist in R31 aufgegangen. Risiken zur Sicherheit und zu den Zugängen des KI-Rechners stehen nur in der Ablage.",
     "nichtDrin": [
       "Der Entwickler. Arnold und der Archivar sind vorgezogen, die Grenze des Reporters liegt seit dem 28.09.",
       "Ein Live-Gespräch mit dem Orchestrator. Gesprochen wird in Sprachnachrichten.",
@@ -4374,7 +4429,7 @@
       "Menschen auf der Seite über die Rolle als Auftraggeber hinaus.",
       "Der Reviewer als Ganzes produktiv. Gemessen ist eine von 26 Regeln, mit E5 höchstens zwei.",
       "Die Gewichtung des Kriterienkatalogs und weitere Fachbereiche. Der Vergleich mit einem Cloud-Modell läuft seit dem 20.10. als Nutzentest; die Bewertung steht aus.",
-      "Ein Puffer. Hält die Teamliste den 23.10. nicht, rutschen Meilenstein 2 bis 4 mit."
+      "Ein Puffer. Meilenstein 2 rückt auf frühestens 23.11., die Termine von Meilenstein 3 und 4 werden neu festgelegt."
     ],
     "zeitSatz": "So steht es im Arbeitsplan vom 16.10., die Punkte vom 16. bis 19.10. bei Meilenstein 1. Das sind seit dem 18.10. rund 1 h 30 je Woche, 40 Minuten davon für den Prüfstand des Orchestrators. Nicht gerechnet ist die Zeit der Menschen im Team: Ihr Einverständnis, ihre Kennungen und ihre ersten Aufträge hängen an ihrem Kalender.",
     "heute": [
@@ -4384,7 +4439,7 @@
       },
       {
         "wer": "Orchestrator",
-        "stand": "Läuft seit dem 18.10. mit Akte und Grenze; jeder Auftrag liegt als Notiz vor der Karte. Im Prüfstand erfüllte er am 20.10. 3 von 18 Fällen. Im ersten Trainingslauf nach dem neuen Konzept am 23.10., jeder Fall dreimal, gelangen ihm 3 Fälle jedes Mal, 9 waren wackelig, 6 gelangen nie. Das Ziel, bis zum 27.10. zwei fehlerfreie Läufe, ist verfehlt; über ein neues Ziel wird entschieden. Bei WMC Inventar legt er je Meilenstein den Bauauftrag an Gregor Dev und Suite und Lauf an Theo an; bei M2 ließ er die Karte für den Lauf weg."
+        "stand": "Läuft seit dem 18.10. mit Akte und Grenze; jeder Auftrag liegt als Notiz vor der Karte. Im Prüfstand erfüllte er am 20.10. 3 von 18 Fällen. Im ersten Trainingslauf nach dem neuen Konzept am 23.10., jeder Fall dreimal, gelangen ihm 3 Fälle jedes Mal, 9 waren wackelig, 6 gelangen nie. Das Ziel, bis zum 27.10. zwei fehlerfreie Läufe, ist verfehlt. Neues Ziel bis zum 20.11.: alle 18 Übungsfälle in zwei Läufen hintereinander, jeder Fall dreimal ohne Fehler; erst danach bekommt das Team Zugang. Bei WMC Inventar legt er je Meilenstein den Bauauftrag an Gregor Dev und Suite und Lauf an Theo an; bei M2 ließ er die Karte für den Lauf weg."
       },
       {
         "wer": "Reporter",
@@ -4420,7 +4475,7 @@
       },
       {
         "wer": "Team",
-        "stand": "Außer dem Projektverantwortlichen ist niemand freigeschaltet. Die Teamliste war für den 23.10. geplant und steht noch aus; ohne sie ist Meilenstein 2 am 30.10. gefährdet."
+        "stand": "Außer dem Projektverantwortlichen ist niemand freigeschaltet. Das Team kommt erst dazu, wenn der Orchestrator sein Trainingsziel erreicht hat, frühestens am 23.11. Teamliste und Anleitung liegen als Entwurf."
       }
     ],
     "quelle": "Meilensteinplan 29.09. bis 23.10.2026 mit dem Hinweis auf die Termine vom 16.10.; Logbuch vom 25.09., 28.09., 29.09. und 16.10.2026; Abnahme M1 vom 15.10.2026; Übergabe vom 15.10. und Tagesprotokoll vom 16.10.2026; Arbeitsplan 2026-10-16, Stand 20.10.2026, mit Einträgen bis 22.10.; Logbuch vom 19. bis 22.10.2026; Tagesprotokoll vom 23.10.2026; Tagesprotokolle vom 26. und 27.10.2026",
@@ -4889,7 +4944,7 @@
     "stand": "2026-10-22",
     "quelle": "Steckbriefe der KI-Mitarbeiter vom 20.10.2026, ohne Profilnamen, Pfade, Versionen und Modell; Arnold nachgezogen am 22.10.2026 aus dem Logbuch vom 20. und 21.10.; Archivar, Tester und Reviewer nachgezogen am 22.10.2026 aus Akten und Logbuch",
     "satz": "Zu jedem KI-Mitarbeiter steht hier ein Steckbrief mit Aufgaben, Zielen und Werkzeugen, jede Angabe mit einem Beispiel oder einer Erklärung. Grundlage ist eine Notiz in der Ablage, die der Projektverantwortliche gelesen hat.",
-    "lesehilfe": "Hermes Agent bündelt Werkzeuge in Sätzen, und ein Profil schaltet ganze Sätze ein. Danach prüft der Zaun vor jedem einzelnen Aufruf, ob die Grenzdatei ihn erlaubt. Ein Werkzeug ist nur dann nutzbar, wenn beide es durchlassen. Beispiel: Gregor hat den Satz Terminal, aber der Zaun lässt nur die Befehle durch, die in seiner Grenzdatei stehen, und lehnt einen Push auf den Hauptzweig ab.",
+    "lesehilfe": "Hermes Agent bündelt Werkzeuge in Sätzen, und ein Profil schaltet ganze Sätze ein. Danach prüft eine technische Grenze jeden einzelnen Aufruf. Ein Werkzeug ist nur dann nutzbar, wenn beide es durchlassen. Beispiel: Gregor hat den Satz Terminal, aber was er damit tun darf, bestimmt seine Grenze.",
     "mitarbeiter": [
       {
         "kopf": "reviewer",
@@ -4933,8 +4988,8 @@
             "erreicht": false
           },
           {
-            "was": "Meilenstein 2: Auch das Team kann ihn über Hermes beauftragen.",
-            "bis": "2026-10-30",
+            "was": "Meilenstein 2, frühestens am 23.11.: Auch das Team kann ihn über Hermes beauftragen.",
+            "bis": null,
             "erreicht": false
           },
           {
@@ -5035,8 +5090,8 @@
         ],
         "ziele": [
           {
-            "was": "Zwei Läufe hintereinander, in denen alle 18 Übungsfälle des Ziels erfüllt sind, ohne einen unerlaubten Schritt. Am 20.10. waren es 3 von 18. Im ersten Trainingslauf am 23.10., jeder Fall dreimal, gelangen 3 Fälle jedes Mal, 9 waren wackelig. Bis zum 27.10. verfehlt.",
-            "bis": "2026-10-27",
+            "was": "Alle 18 Übungsfälle sind in zwei Läufen hintereinander erfüllt, jeder Fall dreimal ohne Fehler. Erst danach bekommt das Team Zugang. Das erste Ziel bis zum 27.10. ist verfehlt; im Lauf vom 23.10. gelangen 3 Fälle jedes Mal, 9 waren wackelig, 6 nie.",
+            "bis": "2026-11-20",
             "erreicht": false
           },
           {
@@ -5045,8 +5100,8 @@
             "erreicht": false
           },
           {
-            "was": "Meilenstein 2: Das Team gibt Aufträge über seinen Zugang im Messenger, eine fremde Kennung wird abgewiesen.",
-            "bis": "2026-10-30",
+            "was": "Meilenstein 2, frühestens am 23.11.: Das Team gibt Aufträge über seinen Zugang im Messenger, eine fremde Kennung wird abgewiesen.",
+            "bis": null,
             "erreicht": false
           },
           {
@@ -5055,8 +5110,8 @@
             "erreicht": false
           },
           {
-            "was": "Meilenstein 3: Aufträge auch per Sprache, Folgeauftrag an den Reporter.",
-            "bis": "2026-11-06",
+            "was": "Meilenstein 3: Aufträge auch per Sprache, Folgeauftrag an den Reporter. Der Termin wird neu festgelegt, er hängt an Meilenstein 2.",
+            "bis": null,
             "erreicht": false
           }
         ],
@@ -5067,7 +5122,7 @@
             "art": "dateien"
           },
           {
-            "was": "An den Reviewer, den Architekten, den Pfleger der Seiten und die Researcherin, jeweils nur mit Nummer, passender Notiz und dem Arbeitsordner des Mitarbeiters. Eine Karte mit eigenem Modell oder eigenen Skills lehnt der Zaun ab.",
+            "was": "An den Reviewer, den Architekten, den Pfleger der Seiten und die Researcherin, jeweils nur mit Nummer, passender Notiz und dem Arbeitsordner des Mitarbeiters.",
             "titel": "Karten anlegen",
             "art": "board"
           },
@@ -5087,7 +5142,7 @@
             "art": "gedaechtnis"
           },
           {
-            "was": "Schlägt nach, welche Werkzeuge es gibt; den inneren Aufruf prüft der Zaun.",
+            "was": "Schlägt nach, welche Werkzeuge es gibt.",
             "titel": "Werkzeugverzeichnis",
             "art": "verzeichnis"
           }
@@ -5117,13 +5172,13 @@
         ],
         "ziele": [
           {
-            "was": "Ihr täglicher Lauf läuft unter dem Zaun durch, und der Projektverantwortliche bekommt den Bericht, jeden Morgen mit höchstens acht Aufrufen im Netz.",
+            "was": "Ihr täglicher Lauf geht mit ihrer Grenze durch, und der Projektverantwortliche bekommt jeden Morgen den Bericht.",
             "bis": "2026-10-23",
             "erreicht": false
           },
           {
-            "was": "Meilenstein 4: läuft mit Zaun, Schreibversuche werden abgelehnt. Der Zaun hängt bereits, vorgezogen.",
-            "bis": "2026-11-13",
+            "was": "Meilenstein 4: Sie läuft mit ihrer Grenze und schreibt nirgends in die Ablage; die Grenze hängt seit dem 19.10. Der Termin wird neu festgelegt.",
+            "bis": null,
             "erreicht": false
           },
           {
@@ -5134,7 +5189,7 @@
         ],
         "werkzeuge": [
           {
-            "was": "Websuche und Seitenabruf: höchstens acht Aufrufe, dazu drei zum Nachprüfen.",
+            "was": "Websuche und Seitenabruf, mit einer festen Zahl von Aufrufen je Lauf.",
             "beispiel": "Sie sucht nach neuen Fassungen von Hermes Agent und liest die Seite der Freigaben.",
             "titel": "Websuche",
             "art": "websuche"
@@ -5184,8 +5239,8 @@
             "erreicht": false
           },
           {
-            "was": "Meilenstein 3: liefert nach einem Lauf des Reviewers den Bericht ohne Sitzung der Werkbank; ein Schreibversuch außerhalb seiner Ordner wird abgelehnt.",
-            "bis": "2026-11-06",
+            "was": "Meilenstein 3: liefert nach einem Lauf des Reviewers den Bericht ohne Sitzung der Werkbank und schreibt nur in seine eigenen Ordner. Der Termin wird neu festgelegt, er hängt an Meilenstein 2.",
+            "bis": null,
             "erreicht": false
           }
         ],
@@ -5249,7 +5304,7 @@
         "werkzeuge": [
           {
             "was": "Den ganzen Bereich KI-Mitarbeiter, die Akten beider Bereiche, den Code des Reviewers und der Seite kiKollege und den Quelltext von Hermes Agent.",
-            "beispiel": "Er liest im Quelltext nach, wann Hermes Agent den Zaun aufruft, statt es zu vermuten.",
+            "beispiel": "Er liest im Quelltext nach, wie Hermes Agent arbeitet, statt es zu vermuten.",
             "titel": "Dateien lesen",
             "art": "dateien"
           },
@@ -5261,7 +5316,7 @@
           },
           {
             "was": "Websuche und Seitenabruf, nur für Dokumentation dessen, was wir einsetzen.",
-            "beispiel": "Was eine neue Fassung von Hermes Agent an der Stelle ändert, an der der Zaun aufgerufen wird.",
+            "beispiel": "Was eine neue Fassung von Hermes Agent für die Grenzen der Mannschaft ändert.",
             "titel": "Websuche",
             "art": "websuche"
           },
@@ -5323,7 +5378,7 @@
         "werkzeuge": [
           {
             "was": "Befehle nach Muster: Git nur für die eigenen Zweige, Pull Requests stellen und lesen, Tests, Build, die Prüfungen und den Pflegelauf.",
-            "beispiel": "Einen Push seines eigenen Zweigs. Abgelehnt: ein Push auf den Hauptzweig, das Zusammenführen, das Installieren neuer Pakete.",
+            "beispiel": "Einen Push seines eigenen Zweigs.",
             "titel": "Kommandozeile",
             "art": "kommandozeile"
           },
@@ -5441,7 +5496,7 @@
       },
       {
         "kopf": "entwickler",
-        "satz": "Kommt nach dem 13.11., ohne Termin, mit Akte, Profil mit Zaun und eigener Arbeitskopie.",
+        "satz": "Kommt nach Meilenstein 4, ohne Termin, mit Akte, Profil mit Zaun und eigener Arbeitskopie.",
         "aufgaben": [
           {
             "was": "Schreibt Testfälle zu einer bewerteten Regel.",
@@ -5492,7 +5547,7 @@
         },
         {
           "name": "Kommandozeile",
-          "was": "Einen Befehl ausführen. Nur Befehle, die als Muster in der Grenzdatei stehen; Ketten aus mehreren Befehlen lehnt der Zaun ab.",
+          "was": "Einen Befehl ausführen, nur in den Grenzen seiner Akte.",
           "beispiel": "Fritz startet sein Prüfskript, Gregor die Tests.",
           "wer": [
             "reviewer",
@@ -5522,7 +5577,7 @@
         },
         {
           "name": "Bilder ansehen",
-          "was": "Ein Bild ins Gespräch laden und beschreiben. Die Quelle des Bildes prüft der Zaun wie einen Lesepfad.",
+          "was": "Ein Bild ins Gespräch laden und beschreiben.",
           "beispiel": "Gregor prüft auf einem Bildschirmfoto den Kontrast.",
           "wer": [
             "seiten"
@@ -5648,7 +5703,7 @@
     "punkte": [
       {
         "titel": "Prüfstand",
-        "text": "Feste Übungsaufträge je KI-Mitarbeiter, ein Mensch bewertet. Der Orchestrator erfüllte im Lauf vom 20.10. 3 von 18 Fällen. Ziel bis zum 27.10. sind zwei Läufe hintereinander mit allen 18 Übungsfällen des Ziels; erst danach bekommt das Team Zugang. Im ersten Trainingslauf nach dem neuen Konzept am 23.10., jeder Fall dreimal, gelangen ihm 3 Fälle jedes Mal, 9 waren wackelig; das Ziel bis zum 27.10. ist verfehlt. Theo, der Tester, erfüllte in seinem ersten Lauf am 22.10. 9 von 18 Pflichtfällen. Für Fritz liegt ein Prüfstand als Entwurf vor.",
+        "text": "Feste Übungsaufträge je KI-Mitarbeiter, ein Mensch bewertet. Der Orchestrator erfüllte im Lauf vom 20.10. 3 von 18 Fällen. Das erste Ziel, bis zum 27.10. zwei Läufe hintereinander mit allen 18 Übungsfällen, ist verfehlt: Im ersten Trainingslauf nach dem neuen Konzept am 23.10., jeder Fall dreimal, gelangen ihm 3 Fälle jedes Mal, 9 waren wackelig. Neues Ziel bis zum 20.11.; erst danach bekommt das Team Zugang. Theo, der Tester, erfüllte in seinem ersten Lauf am 22.10. 9 von 18 Pflichtfällen. Für Fritz liegt ein Prüfstand als Entwurf vor.",
         "freigabe": "oeffentlich"
       },
       {
@@ -5879,7 +5934,7 @@
         "Zweimal hat er auf Englisch geantwortet."
       ],
       "weiter": "Die Werkbank schlägt Sätze für seine Akte vor, der Projektverantwortliche gibt sie frei. Danach läuft der nächste Lauf.",
-      "offen": "Das Ziel, zwei Läufe hintereinander mit allen 18 Fällen bis zum 27.10., ist verfehlt. Über ein neues Ziel und darüber, ob das Team wie geplant am 30.10. Zugang bekommt, entscheidet der Projektverantwortliche.",
+      "offen": "Das Ziel, zwei Läufe hintereinander mit allen 18 Fällen bis zum 27.10., ist verfehlt. Am 27.10. entschieden: neues Ziel bis zum 20.11.; das Team kommt erst danach dazu, frühestens am 23.11.",
       "quelle": "Prüfstandlauf 2026-10-23 Hermes drei Wiederholungen, ausgewertet am 23.10.2026, ungeprüft"
     }
   },
@@ -6035,7 +6090,7 @@
       "schritte": [
         {
           "titel": "Alltag",
-          "text": "Menschen geben dem Orchestrator Aufträge über Telegram, heute nur der Projektverantwortliche, das Team ab dem 30.10. Das Ergebnis kommt denselben Weg zurück."
+          "text": "Menschen geben dem Orchestrator Aufträge über Telegram, heute nur der Projektverantwortliche, das Team erst nach dem Training des Orchestrators, frühestens ab dem 23.11. Das Ergebnis kommt denselben Weg zurück."
         },
         {
           "titel": "Sitzung",
@@ -6151,17 +6206,12 @@
           "Im ersten Trainingslauf nach dem neuen Konzept gelingen dem Orchestrator 3 von 18 Fällen in allen drei Durchgängen",
           "Theo testet WMC Inventar über alle 97 Testfälle; am 26.10. sind 15 grün",
           "Gregor Dev bessert Meilenstein 3 nach; die Kette hält, bis der Rest von Meilenstein 4 steht",
-          "Das Trainingsziel des Orchestrators bis zum 27.10. ist verfehlt"
+          "Das Trainingsziel des Orchestrators bis zum 27.10. ist verfehlt; neues Ziel bis zum 20.11., das Team kommt frühestens am 23.11. dazu"
         ],
         "ergebnis": "Die Mannschaft arbeitet zum ersten Mal zusammen an einem echten Entwicklungsauftrag; Bauen und Testen greifen noch nicht ineinander."
       }
     ],
     "herausforderungen": [
-      {
-        "titel": "Verlässlichkeit lässt sich nur mit Menschen messen",
-        "text": "Ob ein Befund stimmt, kann nur jemand sagen, der das Fach kennt. Bewertet sind 139 Befunde, belastbar ist die Quote bei einer von zehn Regeln, und 1 923 Befunde und Hinweise sind ohne Bewertung.",
-        "antwort": "Ein Bewertungsbogen je Regel, das Ziel von 30 einzeln angesehenen Fällen, und die Bitte ans Team, mitzubewerten."
-      },
       {
         "titel": "Ein offenes Modell antwortet nicht jedes Mal gleich",
         "text": "Bei gleicher Akte kippen Fälle zwischen zwei Läufen. Im Nutzentest fand Fritz auf dem KI-Rechner keinen der elf fachlichen Fehler, weil er die Unterlagen nicht ganz lesen konnte.",
@@ -6169,8 +6219,25 @@
       },
       {
         "titel": "Grenzen müssen technisch halten",
-        "text": "Ein Satz in der Akte hält niemanden auf. Eine Anweisung, die in einem Auftrag versteckt war, wollte der Orchestrator sich jedes Mal merken.",
-        "antwort": "Der Zaun prüft jeden Werkzeugaufruf, das Gedächtnis ändert sich nur mit Freigabe, und jede Änderung an der Grenze kommt mit Testfällen."
+        "text": "Ein Satz in der Akte hält niemanden auf. Was ein KI-Mitarbeiter nicht darf, muss ein Programm verhindern, und das Gedächtnis darf sich nicht aus einem Auftrag heraus ändern.",
+        "antwort": "Eine technische Grenze prüft jeden Werkzeugaufruf, das Gedächtnis ändert sich nur mit Freigabe, und jede Änderung an der Grenze kommt mit Testfällen."
+      },
+      {
+        "titel": "Verbindungen und Arbeiter brechen ab",
+        "umbenanntVon": "Die Verbindung zum Gateway reißt ab",
+        "text": "Seit dem 22.10. brachen Läufe mehrfach ab, weil die Verbindung abriss. Die Arbeit lief meist durch, das Abmelden scheiterte; die Ursache ist offen.",
+        "antwort": "Die Ursache geht in einen Fehlerbericht an den Hersteller von Hermes Agent."
+      },
+      {
+        "titel": "Gebautes und Getestetes passen nicht zusammen",
+        "umbenanntVon": "Bauen und Testen müssen zusammenpassen",
+        "text": "Bau und Test halten die gemeinsame Testschnittstelle nicht ein. Gregor Dev meldete Meilensteine als fertig, deren Stand noch nicht lief, und Theos Tests rechneten mit einer Anwendung, die anders gebaut war. Im Lauf vom 26.10. waren 15 von 97 Testfällen grün.",
+        "antwort": "Theo testet jede Lieferung über die ganze Suite, die Werkbank ordnet jeden roten Fall einer Ursache zu, und die Kette geht erst weiter, wenn ein Meilenstein wirklich steht. Das ist in Wochen lösbar."
+      },
+      {
+        "titel": "Freigaben brauchen Zeit von Menschen",
+        "text": "Von 267 Notizen der Ablage sind 11 verbindlich, Normbasis und Prüfmaßstab hat noch niemand freigegeben, und die Teamliste fehlt. Die Termine rücken weiter: Meilenstein 2 kommt frühestens am 23.11. Von vier Gruppen der offenen Punkte ist genau eine technisch.",
+        "antwort": "Ein Arbeitsplan mit der Zeit des Projektverantwortlichen je Meilenstein, vier Tore für neue KI-Mitarbeiter und eine feste Trainingsrunde am Freitag."
       },
       {
         "titel": "Ein Rechner, eine Karte zur Zeit",
@@ -6178,27 +6245,17 @@
         "antwort": "Seit dem 20.10. mehr Speicher für Gesprächsstände, eine Karte zur Zeit und eine knappere Eingabe. Ketten laufen erst nach einem Trainingslauf weiter."
       },
       {
-        "titel": "Freigaben brauchen Zeit von Menschen",
-        "text": "Von 267 Notizen der Ablage sind 11 verbindlich, Normbasis und Prüfmaßstab hat noch niemand freigegeben, und die Teamliste fehlt. Die Termine sind um rund drei Wochen gerückt. Von vier Gruppen der offenen Punkte ist genau eine technisch.",
-        "antwort": "Ein Arbeitsplan mit der Zeit des Projektverantwortlichen je Meilenstein, vier Tore für neue KI-Mitarbeiter und eine feste Trainingsrunde am Freitag."
-      },
-      {
         "titel": "Der Stand muss mithalten",
-        "text": "Seite, Ablage und die Kopie auf dem KI-Rechner liefen auseinander. Zwischen dem 29.09. und dem 15.10. ist in der Ablage nichts festgehalten.",
+        "text": "Seite, Ablage und die Kopie auf dem KI-Rechner liefen auseinander, und 52 Auftragsnotizen auf dem KI-Rechner sind nicht eingecheckt. Zwischen dem 29.09. und dem 15.10. ist in der Ablage nichts festgehalten.",
         "antwort": "Der Archivar trägt am Ende jeder Sitzung ein, Gregor Dev pflegt die Seite zweimal die Woche, und am 22.10. ist die Seite gegen die Ablage abgeglichen."
       },
       {
-        "titel": "Bauen und Testen müssen zusammenpassen",
-        "text": "Gregor Dev meldete Meilensteine als fertig, deren Stand noch nicht lief, und Theos Tests rechneten mit einer Anwendung, die anders gebaut war. Im Lauf vom 26.10. waren 15 von 97 Testfällen grün.",
-        "antwort": "Theo testet jede Lieferung über die ganze Suite, die Werkbank ordnet jeden roten Fall einer Ursache zu, und die Kette geht erst weiter, wenn ein Meilenstein wirklich steht."
-      },
-      {
-        "titel": "Die Verbindung zum Gateway reißt ab",
-        "text": "Am 26.10. brach zweimal die Verbindung zwischen einem laufenden KI-Mitarbeiter und dem Gateway von Hermes Agent ab. Die Arbeit lief durch, das Abmelden scheiterte; die Ursache ist nicht geklärt.",
-        "antwort": "Das Board startet eine abgebrochene Karte neu, und die Ursache geht in einen Fehlerbericht an den Hersteller von Hermes Agent."
+        "titel": "Verlässlichkeit lässt sich nur mit Menschen messen",
+        "text": "Ob ein Befund stimmt, kann nur jemand sagen, der das Fach kennt. Bewertet sind 139 Befunde, belastbar ist die Quote bei einer von zehn Regeln, und 1 923 Befunde und Hinweise sind ohne Bewertung.",
+        "antwort": "Ein Bewertungsbogen je Regel, das Ziel von 30 einzeln angesehenen Fällen, und die Bitte ans Team, mitzubewerten."
       }
     ],
-    "quelle": "Chronik dieser Seite vom 26.08. bis 23.10.2026; Meilensteinpläne vom 17.09. und 29.09.2026; Arbeitsplan 2026-10-16; Analyse Laufzeit Hermes und Modell vom 20.10.2026; Prüfstandläufe vom 20., 22. und 23.10.2026; Hemmnisse und Beobachtungen dieser Seite; Tagesprotokolle vom 26. und 27.10.2026; Jira-Kommentar „Stand 27.10.2026“",
+    "quelle": "Chronik dieser Seite vom 26.08. bis 23.10.2026; Meilensteinpläne vom 17.09. und 29.09.2026; Arbeitsplan 2026-10-16; Analyse Laufzeit Hermes und Modell vom 20.10.2026; Prüfstandläufe vom 20., 22. und 23.10.2026; Hemmnisse und Beobachtungen dieser Seite; Tagesprotokolle vom 26. und 27.10.2026; Jira-Kommentar „Stand 27.10.2026“; Risikoregister vom 27.10.2026 ohne die Risiken zur Sicherheit",
     "freigabe": "oeffentlich"
   }
 }

@@ -20,7 +20,8 @@ const kurz = (iso: string) => datum(iso).slice(0, 6)
 export function FahrplanFigur() {
   const f = daten.fahrplan
   const plan = daten.meilensteinplanAktuell
-  const kommt = sichtbar(plan) ? plan.meilensteine.filter((m) => !m.abgenommen) : []
+  const kommt = sichtbar(plan) ? plan.meilensteine.filter((m) => !m.abgenommen && !m.terminOffen) : []
+  const offen = sichtbar(plan) ? plan.meilensteine.filter((m) => !m.abgenommen && m.terminOffen) : []
   const beginn = zeit(f.phasen[0].von)
   const ende = kommt.length ? zeit(kommt[kommt.length - 1].termin) : zeit(daten.stand)
   const tage = Math.round((ende - beginn) / TAG_MS) + 1
@@ -77,7 +78,7 @@ export function FahrplanFigur() {
         <g key={`m-${m.id}`}>
           <path d={`M ${mx} ${y + 20 - r} L ${mx + r} ${y + 20} L ${mx} ${y + 20 + r} L ${mx - r} ${y + 20} Z`} fill="var(--signal)" />
           <text x={mx} y={y + 38} textAnchor="middle" fontSize="10.5" fontWeight="700" fill="var(--wmc-primary-text)">
-            {m.id} {kurz(m.termin)}
+            {m.id} {m.fruehestens ? 'ab ' : ''}{kurz(m.termin)}
           </text>
         </g>,
       )
@@ -98,11 +99,11 @@ export function FahrplanFigur() {
   return (
     <Figur
       titel={`Der Fahrplan vom ${datum(f.phasen[0].von)} bis heute in ${f.phasen.length} Abschnitten${
-        kommt.length ? `, dazu die Termine ${kommt.map((m) => `${m.id} am ${kurz(m.termin)}`).join(', ')}` : ''
+        kommt.length ? `, dazu die Termine ${kommt.map((m) => `${m.id} ${m.fruehestens ? 'frühestens ' : ''}am ${kurz(m.termin)}`).join(', ')}` : ''
       }.`}
       beschriftung={`Jeder Balken ist ein Abschnitt der Arbeit, von seinem ersten bis zu seinem letzten Tag. Die gestrichelte Linie ist der Stand dieser Daten${
         kommt.length ? '; rot sind die Termine, die noch kommen' : ''
-      }.`}
+      }.${offen.length ? ` Für ${offen.map((m) => m.id).join(' und ')} wird der Termin neu festgelegt.` : ''}`}
       viewBox={`0 0 ${BREITE} ${unten + 22}`}
     >
       {teile}

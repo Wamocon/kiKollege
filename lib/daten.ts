@@ -569,6 +569,21 @@ export interface AktuellerMeilenstein {
   /** Gesetzt, sobald der Projektverantwortliche den Meilenstein abgenommen hat. */
   abgenommen?: { am: string; text: string }
   erwinMinuten: number
+  /** Der Termin ist der früheste mögliche, kein fester (seit dem 27.10. bei M2). */
+  fruehestens?: boolean
+  /** Der Termin gilt nicht mehr und wird neu festgelegt; der Text sagt, woran
+   *  er hängt. `termin` bleibt als der zuletzt freigegebene stehen. */
+  terminOffen?: string
+  /** Der Termin vor der letzten Änderung */
+  terminVorher?: string
+}
+
+/** Der Termin eines Meilensteins so, wie die Seite ihn nennt: fest,
+ *  frühestens oder offen. Kurz heißt ohne Jahr. */
+export function terminText(m: AktuellerMeilenstein, kurz = true): string {
+  if (m.terminOffen) return 'Termin offen'
+  const d = kurz ? datum(m.termin).slice(0, 6) : datum(m.termin)
+  return m.fruehestens ? `frühestens ${d}` : d
 }
 
 /** Wie weit die Arbeiten eines Meilensteins sind. Eine entfallene Arbeit zählt
@@ -598,6 +613,12 @@ export interface AktuellerRisiko {
   auswirkung: string
   stufe: string
   gegenmassnahme: string
+  /** Das Risiko ist schon eingetreten */
+  eingetreten?: boolean
+  /** In ein anderes Risiko aufgegangen; die Seite zeigt es nicht mehr einzeln */
+  aufgegangenIn?: string
+  /** Weitere Nummern, die in diesem Risiko aufgegangen sind */
+  auch?: string[]
 }
 
 /** Der Plan, der gerade gilt. Der vom 17.09. bleibt unter meilensteinplan
