@@ -6223,12 +6223,14 @@
         "antwort": "Eine technische Grenze prüft jeden Werkzeugaufruf, das Gedächtnis ändert sich nur mit Freigabe, und jede Änderung an der Grenze kommt mit Testfällen."
       },
       {
-        "titel": "Die Verbindung zum Gateway reißt ab",
-        "text": "Seit dem 22.10. brachen Läufe mehrfach ab, weil die Verbindung zwischen einem laufenden KI-Mitarbeiter und dem Gateway von Hermes Agent abriss. Die Arbeit lief meist durch, das Abmelden scheiterte; die Ursache ist offen.",
-        "antwort": "Das Board startet eine abgebrochene Karte neu, und die Ursache geht in einen Fehlerbericht an den Hersteller von Hermes Agent."
+        "titel": "Verbindungen und Arbeiter brechen ab",
+        "umbenanntVon": "Die Verbindung zum Gateway reißt ab",
+        "text": "Seit dem 22.10. brachen Läufe mehrfach ab, weil die Verbindung abriss. Die Arbeit lief meist durch, das Abmelden scheiterte; die Ursache ist offen.",
+        "antwort": "Die Ursache geht in einen Fehlerbericht an den Hersteller von Hermes Agent."
       },
       {
-        "titel": "Bauen und Testen müssen zusammenpassen",
+        "titel": "Gebautes und Getestetes passen nicht zusammen",
+        "umbenanntVon": "Bauen und Testen müssen zusammenpassen",
         "text": "Bau und Test halten die gemeinsame Testschnittstelle nicht ein. Gregor Dev meldete Meilensteine als fertig, deren Stand noch nicht lief, und Theos Tests rechneten mit einer Anwendung, die anders gebaut war. Im Lauf vom 26.10. waren 15 von 97 Testfällen grün.",
         "antwort": "Theo testet jede Lieferung über die ganze Suite, die Werkbank ordnet jeden roten Fall einer Ursache zu, und die Kette geht erst weiter, wenn ein Meilenstein wirklich steht. Das ist in Wochen lösbar."
       },

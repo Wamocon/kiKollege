@@ -34,6 +34,16 @@ test('fehlendes findet eine kürzere Liste', () => {
   assert.deepEqual(funde[1], { pfad: 'liste[id=y]', art: 'entfallen' })
 })
 
+test('fehlendes lässt einen umbenannten Eintrag gelten, der den alten Titel nennt', () => {
+  const alt = { liste: [{ titel: 'A' }, { titel: 'B' }] }
+  assert.deepEqual(fehlendes(alt, { liste: [{ titel: 'A' }, { titel: 'C', umbenanntVon: 'B' }] }), [])
+  assert.deepEqual(
+    fehlendes(alt, { liste: [{ titel: 'A' }, { titel: 'C', umbenanntVon: 'X' }] }),
+    [{ pfad: 'liste[titel=B]', art: 'entfallen' }],
+    'nur der genannte alte Titel zählt',
+  )
+})
+
 test('fehlendes findet einen ausgetauschten Eintrag trotz gleicher Länge', () => {
   const funde = fehlendes({ liste: [{ id: 'x' }, { id: 'y' }] }, { liste: [{ id: 'x' }, { id: 'z' }] })
   assert.deepEqual(funde, [{ pfad: 'liste[id=y]', art: 'entfallen' }])

@@ -24,7 +24,9 @@ Stand dieser Übergabe: 27.10.2026.
    Risiko aufgegangen sind) und `aufgegangenIn` (das Risiko bleibt in den Daten,
    damit `pruefe:bestand` nicht anschlägt, und wird in der Tabelle ausgeblendet).
    R26 steckt jetzt in R31, R33 und R34 sind neu. Die Herausforderungen im
-   Fahrplan folgen derselben Reihenfolge.
+   Fahrplan folgen derselben Reihenfolge und tragen die Titel des Registers.
+   Wo ein Titel wechselt, nennt `umbenanntVon` den alten; `pruefe:bestand`
+   erkennt den Eintrag daran wieder und meldet ihn nicht als verloren.
 3. **Werkzeugmatrix bleibt öffentlich.** Sätze mit Einzelheiten oder Lücken der
    Grenze sind neutral gefasst; der allgemeine Satz, dass eine technische Grenze
    jeden Werkzeugaufruf prüft, bleibt.

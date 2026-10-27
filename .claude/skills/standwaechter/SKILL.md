@@ -161,6 +161,7 @@ gebauten Seite, auch in Grafiken; ein Fund hält den Pull Request auf.
 | Ein Plan, der ersetzt wird | bleibt stehen; `ueberholtAm` und `ueberholt` setzen, den neuen unter `meilensteinplanAktuell` |
 | Abnahme eines Meilensteins, auch vor dem Termin | `meilensteinplanAktuell.meilensteine[].abgenommen` mit `am` und `text`; die Seite nimmt dann den nächsten als nächste Abnahme |
 | Ein Termin rückt, ist nur ein frühester Termin oder ist offen | `meilensteine[].terminVorher` mit dem alten Datum, `fruehestens: true`, oder `terminOffen` mit einem Satz; `termin` bleibt dabei stehen |
+| Ein Eintrag mit Titel bekommt einen neuen Titel | den alten in `umbenanntVon` daneben schreiben; ohne ihn meldet `pruefe:bestand` den Eintrag als verloren |
 | Risiko im Plan: eingetreten oder in einem anderen aufgegangen | `risiken[].eingetreten`; beim aufgegangenen `aufgegangenIn`, beim aufnehmenden `auch`. Nie löschen, nie die Risiken zur Sicherheit |
 | Eine Arbeit, die nicht mehr nötig ist | `inhalt[].entfaellt` mit dem Datum, sie zählt nicht mehr mit; entfernt wird sie nicht |
 | Baustein oder Verbindung der Systemlandschaft | `landschaft` |
