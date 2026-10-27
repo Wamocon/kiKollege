@@ -1,7 +1,7 @@
 import { Block } from '@/components/bausteine'
 import { TermineFigur } from '@/components/figuren/Termine'
 import { ZeitplanFigur } from '@/components/figuren/Zeitplan'
-import { daten, datum, dauer } from '@/lib/daten'
+import { daten, datum, dauer, terminText } from '@/lib/daten'
 
 /** Die Einzelheiten des Plans, der gilt: das Ziel in Teilen, die Zeit des Projektverantwortlichen, der
  *  kritische Pfad, was nicht hineinpasst, die Risiken. Die Landing Page zeigt
@@ -55,7 +55,14 @@ export function PlanAbschnitt() {
 
       <h3 style={{ marginTop: '1.8rem' }}>Die Arbeiten je Meilenstein</h3>
       {p.meilensteine.map((m) => (
-        <Block key={m.id} titel={`${m.id}, ${datum(m.termin).slice(0, 6)}: ${m.titel}`}>
+        <Block key={m.id} titel={`${m.id}, ${terminText(m)}: ${m.titel}`}>
+          {m.terminOffen || m.terminVorher ? (
+            <p style={{ marginBottom: '0.6rem' }}>
+              {m.terminOffen
+                ? `${m.terminOffen}. Zuletzt geplant war der ${datum(m.termin)}.`
+                : `Vorher geplant war der ${datum(m.terminVorher!)}.`}
+            </p>
+          ) : null}
           {m.abgenommen ? (
             <p style={{ marginBottom: '0.6rem' }}>
               <b>Abgenommen am {datum(m.abgenommen.am)}</b>, {m.abgenommen.text}.
@@ -85,7 +92,7 @@ export function PlanAbschnitt() {
         {p.meilensteine.map((m) => (
           <div className="karte" key={m.id}>
             <h3>
-              {m.id}, bis {datum(m.termin).slice(0, 6)}: {dauer(m.erwinMinuten)}
+              {m.id}, {m.terminOffen ? 'Termin offen' : `bis ${terminText(m)}`}: {dauer(m.erwinMinuten)}
             </h3>
             <p>{m.titel}</p>
           </div>
@@ -157,14 +164,15 @@ export function PlanAbschnitt() {
             </tr>
           </thead>
           <tbody>
-            {p.risiken.map((r) => (
+            {p.risiken.filter((r) => !r.aufgegangenIn).map((r) => (
               <tr key={r.nr}>
-                <td>{r.nr}</td>
+                <td>{[...(r.auch ?? []), r.nr].join(', ')}</td>
                 <td>
                   <b>{r.titel}</b>
                 </td>
                 <td>
                   {r.stufe}, Eintritt {r.eintritt}, Auswirkung {r.auswirkung}
+                  {r.eingetreten ? <b>, eingetreten</b> : null}
                 </td>
                 <td>
                   {r.gegenmassnahme}

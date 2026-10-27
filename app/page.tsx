@@ -18,7 +18,7 @@ import { HeroAnatomie } from '@/components/landing/HeroAnatomie'
 import { Kopfleiste } from '@/components/landing/Kopfleiste'
 import { Begriff } from '@/components/landing/Begriff'
 import { Sektion } from '@/components/landing/Sektion'
-import { arbeitenStand, belastbarBei, daten, datum, harteRegel, tageZwischen, zahl, zielErreicht, type AnleitungAb } from '@/lib/daten'
+import { arbeitenStand, belastbarBei, daten, datum, harteRegel, tageZwischen, terminText, zahl, zielErreicht, type AnleitungAb } from '@/lib/daten'
 import { inWorten } from '@/lib/alter'
 import { istIntern, nurSichtbare, sichtbar, zeigtInternes } from '@/lib/freigabe'
 import { pfad } from '@/lib/pfad'
@@ -54,16 +54,26 @@ export default function Landing() {
 
   // Die Anleitung nennt Termine nur, wo der Plan sichtbar ist
   const a = d.anleitung
-  const termin = (id: string) => plan.meilensteine.find((ms) => ms.id === id)?.termin
+  const meilenstein = (id: string) => plan.meilensteine.find((ms) => ms.id === id)
+  const termin = (id: string) => meilenstein(id)?.termin
   const kurz = (iso: string) => datum(iso).slice(0, 6)
+  // Ein Termin ist fest, frühestens oder offen; die Seite sagt es dazu
+  const letzter = plan.meilensteine[plan.meilensteine.length - 1]
   const abWann = (ab: AnleitungAb) => {
     if ('nur' in ab) return ab.nur
-    if ('nachPlan' in ab) return sichtbar(plan) ? `nach dem ${kurz(plan.bis)}` : 'später'
-    const t = termin(ab.meilenstein)
-    return sichtbar(plan) && t ? `ab ${kurz(t)}` : 'später'
+    if ('nachPlan' in ab) {
+      if (!sichtbar(plan)) return 'später'
+      return letzter.terminOffen ? `nach Meilenstein ${letzter.id.slice(1)}` : `nach dem ${kurz(plan.bis)}`
+    }
+    const m = meilenstein(ab.meilenstein)
+    if (!sichtbar(plan) || !m) return 'später'
+    if (m.terminOffen) return `mit Meilenstein ${m.id.slice(1)}, Termin offen`
+    return m.fruehestens ? `frühestens ab ${kurz(m.termin)}` : `ab ${kurz(m.termin)}`
   }
-  const teamAb = termin(a.teamAb)
-  const spracheAb = termin(a.spracheAb)
+  const teamMs = meilenstein(a.teamAb)
+  const spracheMs = meilenstein(a.spracheAb)
+  const teamAb = teamMs?.terminOffen ? undefined : teamMs?.termin
+  const spracheAb = spracheMs?.terminOffen ? undefined : spracheMs?.termin
   const arbeitenSatz = (ms: (typeof plan.meilensteine)[number]) => {
     const s = arbeitenStand(ms)
     const erledigt =
@@ -409,7 +419,7 @@ export default function Landing() {
                 {sichtbar(plan) && teamAb ? (
                   <>
                     {' '}
-                    Fürs Team geht das ab dem {datum(teamAb)}
+                    Fürs Team geht das {teamMs?.fruehestens ? 'frühestens ' : ''}ab dem {datum(teamAb)}
                     {teamHeute ? `; heute gilt: ${teamHeute.stand.replace(/\.$/, '')}` : ''}.
                   </>
                 ) : null}
@@ -429,6 +439,13 @@ export default function Landing() {
             {sichtbar(plan) && spracheAb ? (
               <div className="lp-text lp-luft-oben-klein">
                 <p>Ab dem {datum(spracheAb)} geht ein Auftrag auch als Sprachnachricht.</p>
+              </div>
+            ) : sichtbar(plan) && spracheMs?.terminOffen ? (
+              <div className="lp-text lp-luft-oben-klein">
+                <p>
+                  Mit Meilenstein {spracheMs.id.slice(1)} geht ein Auftrag auch als Sprachnachricht; der
+                  Termin wird neu festgelegt.
+                </p>
               </div>
             ) : null}
 
@@ -987,6 +1004,7 @@ export default function Landing() {
                 <div className="lp-kpi-kachel">
                   <p className="lp-kpi-wert">{kurz(naechsterMeilenstein.termin)}</p>
                   <p className="lp-kpi-label">
+                    {naechsterMeilenstein.fruehestens ? 'Frühestens. ' : ''}
                     {zuletztAbgenommen?.abgenommen
                       ? `${zuletztAbgenommen.id} ist am ${kurz(zuletztAbgenommen.abgenommen.am)} abgenommen. `
                       : ''}
@@ -1118,7 +1136,7 @@ export default function Landing() {
               {plan.meilensteine.map((ms) => (
                 <div className="lp-stufe" key={ms.id}>
                   <span className="wann">
-                    {ms.id} · {datum(ms.termin).slice(0, 6)}
+                    {ms.id} · {terminText(ms)}
                   </span>
                   <div>
                     <h3>{ms.titel}</h3>

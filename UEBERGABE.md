@@ -6,6 +6,29 @@ verloren gehen darf.
 
 Stand dieser Übergabe: 27.10.2026.
 
+## Nachtrag 27.10.2026: drei Entscheidungen
+
+Übermittelt von der Sitzung „Offene Entscheidungen KI-Mitarbeiter angehen“:
+
+1. **Erst alle 18, Team danach.** Neues Ziel des Orchestrators bis 20.11.: alle 18
+   Übungsfälle in zwei Läufen hintereinander, jeder Fall dreimal ohne Fehler. Erst
+   danach bekommt das Team Zugang. Meilenstein 2 steht auf frühestens 23.11., die
+   Termine von 3 und 4 sind offen. Dafür gibt es drei neue Felder an
+   `meilensteinplanAktuell.meilensteine[]`: `fruehestens` (die Seite schreibt
+   „frühestens“ vor das Datum), `terminVorher` (der alte Termin, als Satz im Plan)
+   und `terminOffen` (ein Satz statt Datum; `termin` bleibt als zuletzt geplanter
+   Termin stehen, Figuren und Texte zeigen „offen“). `terminText()` in
+   `lib/daten.ts` setzt das für alle Stellen gleich.
+2. **Risiken nach dem Register vom 27.10.**, ohne die Risiken zur Sicherheit.
+   Neue Felder an `risiken[]`: `eingetreten`, `auch` (Nummern, die in diesem
+   Risiko aufgegangen sind) und `aufgegangenIn` (das Risiko bleibt in den Daten,
+   damit `pruefe:bestand` nicht anschlägt, und wird in der Tabelle ausgeblendet).
+   R26 steckt jetzt in R31, R33 und R34 sind neu. Die Herausforderungen im
+   Fahrplan folgen derselben Reihenfolge.
+3. **Werkzeugmatrix bleibt öffentlich.** Sätze mit Einzelheiten oder Lücken der
+   Grenze sind neutral gefasst; der allgemeine Satz, dass eine technische Grenze
+   jeden Werkzeugaufruf prüft, bleibt.
+
 ## Nachtrag 27.10.2026: Stand vom 23. bis 27.10.
 
 Aus den Tagesprotokollen vom 23., 26. und 27.10., dem Logbuch und Theos Lauf vom

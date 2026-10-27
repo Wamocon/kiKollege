@@ -48,7 +48,8 @@ function Raute({ x, y, r, gefuellt }: { x: number; y: number; r: number; gefuell
 export function TermineFigur() {
   const p = daten.meilensteinplanAktuell
   const start = zeit(p.von)
-  const tage = Math.round((zeit(p.bis) - start) / TAG_MS) + 1
+  const ende = Math.max(zeit(p.bis), ...p.meilensteine.map((m) => zeit(m.termin)))
+  const tage = Math.round((ende - start) / TAG_MS) + 1
   const tag = (BREITE - X0 - RECHTS) / tage
   const x = (iso: string) => X0 + (Math.round((zeit(iso) - start) / TAG_MS) + 0.5) * tag
   const unten = KOPF + p.meilensteine.length * ZEILE
@@ -105,11 +106,22 @@ export function TermineFigur() {
         <text x={xa} y={mitte + 20} textAnchor="middle" fontSize="10.5" fill="var(--wmc-muted)">
           {kurz(m.fruehereFrist)}
         </text>
-        <Raute x={xn} y={mitte} r={7} gefuellt />
-        <text x={xn} y={mitte + 21} textAnchor="middle" fontSize="11.5" fontWeight="700"
-              fill="var(--wmc-primary-text)">
-          {kurz(m.termin)}
-        </text>
+        {m.terminOffen ? (
+          <>
+            <Raute x={xn} y={mitte} r={7} gefuellt={false} />
+            <text x={xn} y={mitte + 21} textAnchor="middle" fontSize="11" fontWeight="700" fill="var(--wmc-muted)">
+              offen
+            </text>
+          </>
+        ) : (
+          <>
+            <Raute x={xn} y={mitte} r={7} gefuellt />
+            <text x={xn} y={mitte + 21} textAnchor="middle" fontSize="11.5" fontWeight="700"
+                  fill="var(--wmc-primary-text)">
+              {m.fruehestens ? `ab ${kurz(m.termin)}` : kurz(m.termin)}
+            </text>
+          </>
+        )}
         {m.abgenommen ? (
           <>
             <circle cx={x(m.abgenommen.am)} cy={mitte} r={5.5} fill="var(--wmc-ink)" />
@@ -152,8 +164,12 @@ export function TermineFigur() {
     </g>,
   )
 
-  const verschoben = p.meilensteine.map((m) => Math.round((zeit(m.termin) - zeit(m.fruehereFrist)) / TAG_MS))
+  const verschoben = p.meilensteine
+    .filter((m) => !m.terminOffen && !m.fruehestens)
+    .map((m) => Math.round((zeit(m.termin) - zeit(m.fruehereFrist)) / TAG_MS))
   const wochen = Math.round(Math.max(...verschoben) / 7)
+  const offen = p.meilensteine.filter((m) => m.terminOffen)
+  const fruehestens = p.meilensteine.filter((m) => m.fruehestens)
 
   return (
     <Figur
@@ -162,6 +178,12 @@ export function TermineFigur() {
         `Jeder Meilenstein ist um rund ${wochen} Wochen gerückt: offen die Frist, die der Plan vom ` +
         `${kurz(p.von)} gesetzt hatte, gefüllt der Termin, den der Projektverantwortliche am ${datum(p.termineAm)} ` +
         `freigegeben hat. Die gestrichelte Linie zeigt den Stand dieser Daten.` +
+        (fruehestens.length
+          ? ` ${fruehestens.map((m) => `${m.id} kommt frühestens am ${kurz(m.termin)}`).join(', ')}`
+          : '') +
+        (offen.length
+          ? ` Für ${offen.map((m) => m.id).join(' und ')} wird der Termin neu festgelegt; die Raute steht grau beim zuletzt geplanten.`
+          : '') +
         (abgenommene.length
           ? ` Der dunkle Kreis ist der Tag der Abnahme: ${abgenommene
               .map((m) => `${m.id} am ${kurz(m.abgenommen!.am)}`)
