@@ -4,7 +4,21 @@ Diese Datei ist für die nächste Sitzung geschrieben, nicht für die Nachwelt. 
 sagt, wo das Vorhaben steht, was als Erstes zu tun ist und was dabei nicht
 verloren gehen darf.
 
-Stand dieser Übergabe: 23.10.2026.
+Stand dieser Übergabe: 27.10.2026.
+
+## Nachtrag 27.10.2026: Stand vom 23. bis 27.10.
+
+Aus den Tagesprotokollen vom 23., 26. und 27.10., dem Logbuch und Theos Lauf vom
+26.10.: Chronik 26. und 27.10., „Wo es heute steht“ (Orchestrator, Gregor Dev,
+Theo, julia-trend, Team), Steckbriefe, Training, die letzte Phase des Fahrplans bis
+27.10. und zwei neue Herausforderungen aus dem Jira-Kommentar vom 27.10. (Bauen und
+Testen, Verbindung zum Gateway). Gregors Pflegelauf vom 26.10. (#27) hatte eine
+Auftragsnummer, einen Zweig, Ticketnummern und einen Befehl in Entscheidungen
+geschrieben; die sind neutral gefasst.
+
+Nicht hier, sondern in der Sitzung „Offene Entscheidungen KI-Mitarbeiter angehen“:
+das neue Trainingsziel für Hermes, der Zugang des Teams am 30.10., die Bewertung der
+Risiken und die Werkzeugmatrix. Die Seite sagt dazu nur, dass entschieden wird.
 
 ## Nachtrag 23.10.2026: Tech Stack, Hermes und Qwen, Fahrplan
 

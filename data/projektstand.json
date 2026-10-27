@@ -1,9 +1,9 @@
 {
-  "stand": "2026-10-26",
+  "stand": "2026-10-27",
   "herkunft": {
     "arbeitsordner": "D:\\WAMOCON",
     "einstieg": "KI-Mitarbeiter/75_KI-Mitarbeiter/KI-Mitarbeiter — Einstieg.md",
-    "erzeugt": "2026-10-26",
+    "erzeugt": "2026-10-27",
     "fristTage": 7,
     "verfahren": "Erstbefüllung von Hand aus dem Übergabedokument vom 05.09.2026, am 11.09. fortgeschrieben aus den beiden Blättern vom 09.09., am 17.09. aus dem Vault: Logbuch, Tagesprotokolle, Meilensteinplan, Bestandsaufnahme vom 16.09., Akte des Reviewers, Laufnotizen und Quoten je Regel. Das Abbild der Ablage zählt scripts/abbild-vault.mjs. Spätere Stände der Prüfläufe schreibt scripts/export-vault.mjs aus dem Frontmatter der Laufnotizen.",
     "freigabe": "intern",
@@ -80,7 +80,9 @@
       "Logbuch 2026-10-23: Entscheidungen Jira Stories nach dem Morgenbriefing",
       "Logbuch 2026-10-23: Entscheidung Tester nachschärfen nach Prüfstandlauf 1",
       "Logbuch 2026-10-23: Entscheidung Landing Page Pull Requests mergen",
-      "Protokoll 2026-10-23 KI-Mitarbeiter, Abschnitte Jira, Landing Page, Theo nachgeschärft, WMC Inventar Nacht und Morgen"
+      "Protokoll 2026-10-23 KI-Mitarbeiter, Abschnitte Jira, Landing Page, Theo nachgeschärft, WMC Inventar Nacht und Morgen",
+      "Tagesprotokolle KI-Mitarbeiter vom 23., 26. und 27.10.2026; Logbuch 2026-10-23 WMC Inventar Zeitgrenze und Rest von M4, 2026-10-26 Entscheidungen WMC Inventar",
+      "Prüfstandlauf 2026-10-26 Tester WMC Inventar Wiederholung; Jira-Kommentar „Stand 27.10.2026“"
     ],
     "getrenntAm": "2026-09-09",
     "notizordner": "KFBM/00_Vault/10_KI-Mitarbeiter"
@@ -1298,7 +1300,7 @@
     },
     {
       "datum": "2026-10-23",
-      "entscheidung": "WMC Inventar: die fehlende Lauf-Karte zu A-0058 von der Werkbank anlegen, gegen gregor/inventar, mit Gregors Karte und Theos Suite als Eltern",
+      "entscheidung": "WMC Inventar: die fehlende Karte für Theos Lauf zu M2 legt die Werkbank an, gegen Gregors Stand, nach Gregors Karte und Theos Suite",
       "freigabe": "intern"
     },
     {
@@ -1313,12 +1315,52 @@
     },
     {
       "datum": "2026-10-23",
-      "entscheidung": "WMC Inventar: beispieldaten --neu im Startskript, auch für Theos Läufe",
+      "entscheidung": "WMC Inventar: das Startskript legt die Beispieldaten für jeden Lauf neu an, auch für Theos Läufe",
       "freigabe": "intern"
     },
     {
       "datum": "2026-10-23",
-      "entscheidung": "Jira: WMCNL-2788, WMCNL-2756 und WMCNL-2757 auf in Arbeit, das Epic WMCNL-2755 auf Umsetzung, neu WMCNL-2806 Assessment Center am Epic WMCNL-4",
+      "entscheidung": "Jira: die Stories zum Tester und zu M1 und M2 von WMC Inventar auf in Arbeit, das Epic WMC Inventar auf Umsetzung, neu die Story Assessment Center am Projekt",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-23",
+      "entscheidung": "WMC Inventar: Theos Läufe dürfen bis zu 1 900 Sekunden dauern",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-23",
+      "entscheidung": "WMC Inventar: erst der Rest von M4, dann M5; die Kette hält bis dahin",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-26",
+      "entscheidung": "WMC Inventar: Theos neuer Lauf über alle 97 Testfälle sofort",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-26",
+      "entscheidung": "WMC Inventar: der Rest von M4 als Nachbesserung erst nach Theos Lauf",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-26",
+      "entscheidung": "WMC Inventar: Theo wählt die Kategorie über den sichtbaren Text; die Teständerungen gehen gebündelt an ihn, der Import als Nachbesserung an Gregor Dev, beides zur Freigabe",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-26",
+      "entscheidung": "Gregor Devs Pflegelauf vom 26.10. wird Pull Request; der Projektverantwortliche führt selbst zusammen",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-27",
+      "entscheidung": "WMC Inventar: Gregor Dev bessert M3 in zwei Teilen nach, erst das Gerätedetail, dann die Vorgänge als Dialoge",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-27",
+      "entscheidung": "Jira verlinkt in der Beschreibung des Projekts diese Seite",
       "freigabe": "intern"
     }
   ],
@@ -2129,6 +2171,16 @@
       {
         "datum": "2026-10-23",
         "text": "Erster Entwicklungsauftrag als Kette: WMC Inventar in sieben Meilensteinen. Gregor Dev baute M1 in 36 Minuten, Theo, der Tester, schrieb 24 Testfälle dazu; ausgeführt sind sie noch nicht. Bei M2 hält die Kette seit 03:40. Theo erfüllte in seinem ersten Prüfstandlauf 9 von 18 Pflichtfällen. Im ersten Trainingslauf nach dem neuen Konzept gelangen Hermes 3 von 18 Fällen in allen drei Durchgängen, 9 waren wackelig.",
+        "freigabe": "oeffentlich"
+      },
+      {
+        "datum": "2026-10-26",
+        "text": "Theo testet WMC Inventar zum ersten Mal über alle 97 Testfälle: 15 sind grün. Von den roten liegen die meisten am Test, neun am fehlenden Import und vierzehn am Rest von Meilenstein 4. Gregor Devs Pflegelauf trägt den Stand dieser Seite nach. Zweimal reißt die Verbindung zum Gateway ab; die Arbeit läuft durch.",
+        "freigabe": "oeffentlich"
+      },
+      {
+        "datum": "2026-10-27",
+        "text": "Gregor Dev bessert Meilenstein 3 von WMC Inventar nach. Das Trainingsziel des Orchestrators bis heute ist verfehlt; über ein neues Ziel und den Zugang des Teams am 30.10. wird entschieden. Meilenstein 2 ist gefährdet.",
         "freigabe": "oeffentlich"
       }
     ],
@@ -3938,7 +3990,7 @@
     "ueberholt": "Am 25.09. um eine Woche geschoben, am 29.09. auf ein neues Ziel geschnitten. Er bleibt hier als Verlauf stehen."
   },
   "meilensteinplanAktuell": {
-    "stand": "2026-10-23",
+    "stand": "2026-10-27",
     "status": "Plan vom 29.09.2026, Termine am 16.10.2026 vom Projektverantwortlichen freigegeben",
     "von": "2026-09-29",
     "bis": "2026-11-13",
@@ -4332,7 +4384,7 @@
       },
       {
         "wer": "Orchestrator",
-        "stand": "Läuft seit dem 18.10. mit Akte und Grenze; jeder Auftrag liegt als Notiz vor der Karte. Im Prüfstand erfüllte er am 20.10. 3 von 18 Fällen. Im ersten Trainingslauf nach dem neuen Konzept am 23.10., jeder Fall dreimal, gelangen ihm 3 Fälle jedes Mal, 9 waren wackelig, 6 gelangen nie. Zwei fehlerfreie Läufe bis zum 27.10. sind nicht in Sicht. Bei WMC Inventar legt er je Meilenstein den Bauauftrag an Gregor Dev und Suite und Lauf an Theo an; bei M2 ließ er die Karte für den Lauf weg."
+        "stand": "Läuft seit dem 18.10. mit Akte und Grenze; jeder Auftrag liegt als Notiz vor der Karte. Im Prüfstand erfüllte er am 20.10. 3 von 18 Fällen. Im ersten Trainingslauf nach dem neuen Konzept am 23.10., jeder Fall dreimal, gelangen ihm 3 Fälle jedes Mal, 9 waren wackelig, 6 gelangen nie. Das Ziel, bis zum 27.10. zwei fehlerfreie Läufe, ist verfehlt; über ein neues Ziel wird entschieden. Bei WMC Inventar legt er je Meilenstein den Bauauftrag an Gregor Dev und Suite und Lauf an Theo an; bei M2 ließ er die Karte für den Lauf weg."
       },
       {
         "wer": "Reporter",
@@ -4340,7 +4392,7 @@
       },
       {
         "wer": "Researcherin",
-        "stand": "Läuft täglich, seit dem 19.10. mit ihrer Grenze am Profil. Aufträge über den Orchestrator gibt nur der Projektverantwortliche."
+        "stand": "Läuft täglich, seit dem 19.10. mit ihrer Grenze am Profil, und liefert jeden Morgen einen Bericht; bewertet ist noch keiner. Aufträge über den Orchestrator gibt nur der Projektverantwortliche."
       },
       {
         "wer": "Sprache",
@@ -4356,7 +4408,7 @@
       },
       {
         "wer": "Pfleger der Seiten",
-        "stand": "Gregor Dev läuft seit dem 19.10. mit seiner Grenze, mit festem Pflegelauf am Montag und Donnerstag. Seit dem 22.10. baut er WMC Inventar: M1, das Grundgerüst, in 36 Minuten; bei M2 kam er in zwei Anläufen nicht zu Ende, die Kette hält seit dem 23.10., 03:40. Es fehlt ein eigenes Konto."
+        "stand": "Gregor Dev läuft seit dem 19.10. mit seiner Grenze, mit festem Pflegelauf am Montag und Donnerstag; der vom 26.10. hat den Stand dieser Seite nachgetragen. Seit dem 22.10. baut er WMC Inventar: M1 bis M4 stehen, M4 nur zum Teil, der Import fehlt noch, und M3 bessert er seit dem 27.10. nach. Die Kette hält, bis der Rest von M4 steht. Es fehlt ein eigenes Konto."
       },
       {
         "wer": "Archivar",
@@ -4364,14 +4416,14 @@
       },
       {
         "wer": "Tester",
-        "stand": "Theo läuft seit dem 22.10. auf dem KI-Rechner mit seiner Grenze. Im ersten Prüfstandlauf erfüllte er 9 von 18 Pflichtfällen und hielt seine Grenzen durchgehend; volles Mitglied ist er noch nicht. Zu M1 von WMC Inventar schrieb er 24 Testfälle; ausgeführt sind sie noch nicht, weil die Anwendung nicht startete."
+        "stand": "Theo läuft seit dem 22.10. auf dem KI-Rechner mit seiner Grenze und ist am 23.10. in fünf Punkten nachgeschärft. Seine Suite zu WMC Inventar hat 97 Testfälle; im Lauf vom 26.10. waren 15 grün. Von den roten liegen die meisten am Test, den er nachbessert, neun am fehlenden Import und vierzehn am Rest von M4. Volles Mitglied ist er noch nicht."
       },
       {
         "wer": "Team",
-        "stand": "Außer dem Projektverantwortlichen ist niemand freigeschaltet. Der Entwurf der Anfrage für die Teamliste liegt seit dem 19.10. vor."
+        "stand": "Außer dem Projektverantwortlichen ist niemand freigeschaltet. Die Teamliste war für den 23.10. geplant und steht noch aus; ohne sie ist Meilenstein 2 am 30.10. gefährdet."
       }
     ],
-    "quelle": "Meilensteinplan 29.09. bis 23.10.2026 mit dem Hinweis auf die Termine vom 16.10.; Logbuch vom 25.09., 28.09., 29.09. und 16.10.2026; Abnahme M1 vom 15.10.2026; Übergabe vom 15.10. und Tagesprotokoll vom 16.10.2026; Arbeitsplan 2026-10-16, Stand 20.10.2026, mit Einträgen bis 22.10.; Logbuch vom 19. bis 22.10.2026; Tagesprotokoll vom 23.10.2026",
+    "quelle": "Meilensteinplan 29.09. bis 23.10.2026 mit dem Hinweis auf die Termine vom 16.10.; Logbuch vom 25.09., 28.09., 29.09. und 16.10.2026; Abnahme M1 vom 15.10.2026; Übergabe vom 15.10. und Tagesprotokoll vom 16.10.2026; Arbeitsplan 2026-10-16, Stand 20.10.2026, mit Einträgen bis 22.10.; Logbuch vom 19. bis 22.10.2026; Tagesprotokoll vom 23.10.2026; Tagesprotokolle vom 26. und 27.10.2026",
     "freigabe": "intern"
   },
   "anleitung": {
@@ -4983,7 +5035,7 @@
         ],
         "ziele": [
           {
-            "was": "Zwei Läufe hintereinander, in denen alle 18 Übungsfälle des Ziels erfüllt sind, ohne einen unerlaubten Schritt. Am 20.10. waren es 3 von 18. Im ersten Trainingslauf am 23.10., jeder Fall dreimal, gelangen 3 Fälle jedes Mal, 9 waren wackelig.",
+            "was": "Zwei Läufe hintereinander, in denen alle 18 Übungsfälle des Ziels erfüllt sind, ohne einen unerlaubten Schritt. Am 20.10. waren es 3 von 18. Im ersten Trainingslauf am 23.10., jeder Fall dreimal, gelangen 3 Fälle jedes Mal, 9 waren wackelig. Bis zum 27.10. verfehlt.",
             "bis": "2026-10-27",
             "erreicht": false
           },
@@ -5263,7 +5315,7 @@
             "erreicht": true
           },
           {
-            "was": "WMC Inventar, Version 1 in sieben Meilensteinen, mit Theo als Tester. M1 am 23.10. gebaut, bei M2 hält die Kette an.",
+            "was": "WMC Inventar, Version 1 in sieben Meilensteinen, mit Theo als Tester. M1 bis M4 stehen, M4 nur zum Teil; der Import fehlt, M3 wird nachgebessert.",
             "bis": null,
             "erreicht": false
           }
@@ -5596,7 +5648,7 @@
     "punkte": [
       {
         "titel": "Prüfstand",
-        "text": "Feste Übungsaufträge je KI-Mitarbeiter, ein Mensch bewertet. Der Orchestrator erfüllte im Lauf vom 20.10. 3 von 18 Fällen. Ziel bis zum 27.10. sind zwei Läufe hintereinander mit allen 18 Übungsfällen des Ziels; erst danach bekommt das Team Zugang. Im ersten Trainingslauf nach dem neuen Konzept am 23.10., jeder Fall dreimal, gelangen ihm 3 Fälle jedes Mal, 9 waren wackelig. Theo, der Tester, erfüllte in seinem ersten Lauf am 22.10. 9 von 18 Pflichtfällen. Für Fritz liegt ein Prüfstand als Entwurf vor.",
+        "text": "Feste Übungsaufträge je KI-Mitarbeiter, ein Mensch bewertet. Der Orchestrator erfüllte im Lauf vom 20.10. 3 von 18 Fällen. Ziel bis zum 27.10. sind zwei Läufe hintereinander mit allen 18 Übungsfällen des Ziels; erst danach bekommt das Team Zugang. Im ersten Trainingslauf nach dem neuen Konzept am 23.10., jeder Fall dreimal, gelangen ihm 3 Fälle jedes Mal, 9 waren wackelig; das Ziel bis zum 27.10. ist verfehlt. Theo, der Tester, erfüllte in seinem ersten Lauf am 22.10. 9 von 18 Pflichtfällen. Für Fritz liegt ein Prüfstand als Entwurf vor.",
         "freigabe": "oeffentlich"
       },
       {
@@ -5827,7 +5879,7 @@
         "Zweimal hat er auf Englisch geantwortet."
       ],
       "weiter": "Die Werkbank schlägt Sätze für seine Akte vor, der Projektverantwortliche gibt sie frei. Danach läuft der nächste Lauf.",
-      "offen": "Zwei Läufe hintereinander mit allen 18 Fällen sind bis zum 27.10. nicht in Sicht. Ob das Team wie geplant am 30.10. Zugang bekommt, entscheidet der Projektverantwortliche noch.",
+      "offen": "Das Ziel, zwei Läufe hintereinander mit allen 18 Fällen bis zum 27.10., ist verfehlt. Über ein neues Ziel und darüber, ob das Team wie geplant am 30.10. Zugang bekommt, entscheidet der Projektverantwortliche.",
       "quelle": "Prüfstandlauf 2026-10-23 Hermes drei Wiederholungen, ausgewertet am 23.10.2026, ungeprüft"
     }
   },
@@ -6022,7 +6074,7 @@
     }
   },
   "fahrplan": {
-    "stand": "2026-10-23",
+    "stand": "2026-10-27",
     "satz": "Vom ersten Tag am 26.08. bis zur ersten Auftragskette am 23.10.: was wann entstanden ist, wie weit wir sind und woran es am meisten hing.",
     "phasen": [
       {
@@ -6091,14 +6143,17 @@
       },
       {
         "von": "2026-10-23",
-        "bis": "2026-10-23",
+        "bis": "2026-10-27",
         "titel": "Erste Kette, erste Trainingsläufe",
         "punkte": [
           "WMC Inventar läuft als Kette in sieben Meilensteinen: Gregor Dev baut, Theo testet",
           "Theo erfüllt im ersten Prüfstandlauf 9 von 18 Pflichtfällen",
-          "Im ersten Trainingslauf nach dem neuen Konzept gelingen dem Orchestrator 3 von 18 Fällen in allen drei Durchgängen"
+          "Im ersten Trainingslauf nach dem neuen Konzept gelingen dem Orchestrator 3 von 18 Fällen in allen drei Durchgängen",
+          "Theo testet WMC Inventar über alle 97 Testfälle; am 26.10. sind 15 grün",
+          "Gregor Dev bessert Meilenstein 3 nach; die Kette hält, bis der Rest von Meilenstein 4 steht",
+          "Das Trainingsziel des Orchestrators bis zum 27.10. ist verfehlt"
         ],
-        "ergebnis": "Die Mannschaft arbeitet zum ersten Mal zusammen an einem echten Entwicklungsauftrag."
+        "ergebnis": "Die Mannschaft arbeitet zum ersten Mal zusammen an einem echten Entwicklungsauftrag; Bauen und Testen greifen noch nicht ineinander."
       }
     ],
     "herausforderungen": [
@@ -6131,9 +6186,19 @@
         "titel": "Der Stand muss mithalten",
         "text": "Seite, Ablage und die Kopie auf dem KI-Rechner liefen auseinander. Zwischen dem 29.09. und dem 15.10. ist in der Ablage nichts festgehalten.",
         "antwort": "Der Archivar trägt am Ende jeder Sitzung ein, Gregor Dev pflegt die Seite zweimal die Woche, und am 22.10. ist die Seite gegen die Ablage abgeglichen."
+      },
+      {
+        "titel": "Bauen und Testen müssen zusammenpassen",
+        "text": "Gregor Dev meldete Meilensteine als fertig, deren Stand noch nicht lief, und Theos Tests rechneten mit einer Anwendung, die anders gebaut war. Im Lauf vom 26.10. waren 15 von 97 Testfällen grün.",
+        "antwort": "Theo testet jede Lieferung über die ganze Suite, die Werkbank ordnet jeden roten Fall einer Ursache zu, und die Kette geht erst weiter, wenn ein Meilenstein wirklich steht."
+      },
+      {
+        "titel": "Die Verbindung zum Gateway reißt ab",
+        "text": "Am 26.10. brach zweimal die Verbindung zwischen einem laufenden KI-Mitarbeiter und dem Gateway von Hermes Agent ab. Die Arbeit lief durch, das Abmelden scheiterte; die Ursache ist nicht geklärt.",
+        "antwort": "Das Board startet eine abgebrochene Karte neu, und die Ursache geht in einen Fehlerbericht an den Hersteller von Hermes Agent."
       }
     ],
-    "quelle": "Chronik dieser Seite vom 26.08. bis 23.10.2026; Meilensteinpläne vom 17.09. und 29.09.2026; Arbeitsplan 2026-10-16; Analyse Laufzeit Hermes und Modell vom 20.10.2026; Prüfstandläufe vom 20., 22. und 23.10.2026; Hemmnisse und Beobachtungen dieser Seite",
+    "quelle": "Chronik dieser Seite vom 26.08. bis 23.10.2026; Meilensteinpläne vom 17.09. und 29.09.2026; Arbeitsplan 2026-10-16; Analyse Laufzeit Hermes und Modell vom 20.10.2026; Prüfstandläufe vom 20., 22. und 23.10.2026; Hemmnisse und Beobachtungen dieser Seite; Tagesprotokolle vom 26. und 27.10.2026; Jira-Kommentar „Stand 27.10.2026“",
     "freigabe": "oeffentlich"
   }
 }
