@@ -1162,11 +1162,31 @@ export default function Landing() {
               ))}
             </dl>
 
+            <h3 className="lp-aussage lp-luft-oben">So gehen wir die Risiken an.</h3>
+            <div className="lp-luft-oben">
+              {plan.risikoplan.schritte.map((s, i) => (
+                <div className="lp-stufe" key={s.name}>
+                  <span className="wann">
+                    {datum(s.von).slice(0, 6)} bis {datum(s.bis).slice(0, 6)}
+                  </span>
+                  <div>
+                    <h3>
+                      {i + 1}. {s.name}
+                    </h3>
+                    <p>{s.text}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div className="lp-text lp-luft-oben">
+              <p>{plan.risikoplan.satz}</p>
+            </div>
+
             <div className="lp-text lp-luft-oben">
               <p>
                 Die Arbeiten je Meilenstein, der kritische Pfad, die Entscheidungen mit Frist, die
-                Zeit des Projektverantwortlichen, was in diesen Wochen nicht passt, und die Risiken
-                stehen im{' '}
+                Zeit des Projektverantwortlichen, was in diesen Wochen nicht passt, und was gegen
+                jedes Risiko hilft, stehen im{' '}
                 <a href={pfad('/stand/#plan')}>ausführlichen Stand</a>, dazu der Plan vom 17.09. als
                 Verlauf.
               </p>
