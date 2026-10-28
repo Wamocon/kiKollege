@@ -83,7 +83,8 @@
       "Protokoll 2026-10-23 KI-Mitarbeiter, Abschnitte Jira, Landing Page, Theo nachgeschärft, WMC Inventar Nacht und Morgen",
       "Tagesprotokolle KI-Mitarbeiter vom 23., 26. und 27.10.2026; Logbuch 2026-10-23 WMC Inventar Zeitgrenze und Rest von M4, 2026-10-26 Entscheidungen WMC Inventar",
       "Prüfstandlauf 2026-10-26 Tester WMC Inventar Wiederholung; Jira-Kommentar „Stand 27.10.2026“",
-      "Entscheidungen des Projektverantwortlichen vom 27.10.2026, übermittelt von der Sitzung „Offene Entscheidungen KI-Mitarbeiter angehen“; Risikoregister KI-Mitarbeiter 2026-10-27, ohne die Risiken zur Sicherheit"
+      "Entscheidungen des Projektverantwortlichen vom 27.10.2026, übermittelt von der Sitzung „Offene Entscheidungen KI-Mitarbeiter angehen“; Risikoregister KI-Mitarbeiter 2026-10-27, ohne die Risiken zur Sicherheit",
+      "Antworten des Projektverantwortlichen vom 27.10.2026 zum Risikoregister, übermittelt von der Sitzung „Offene Entscheidungen KI-Mitarbeiter angehen“"
     ],
     "getrenntAm": "2026-09-09",
     "notizordner": "KFBM/00_Vault/10_KI-Mitarbeiter"
@@ -1382,6 +1383,11 @@
     {
       "datum": "2026-10-27",
       "entscheidung": "Die Werkzeugmatrix bleibt öffentlich; Einzelheiten des Zauns werden neutral gefasst",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-10-27",
+      "entscheidung": "Das Risikoregister vom 27.10. gilt als Grundlage; neu bewertet wird freitags in der Trainingsrunde, die Seite übernimmt die Bewertung",
       "freigabe": "intern"
     }
   ],
@@ -4239,13 +4245,6 @@
         "notiz": "vorher 02.10.; laut Logbuch vom 19.10. angeglichen, im Arbeitsplan noch offen"
       },
       {
-        "text": "Die Teamliste: wer mitmacht, mit Einverständnis und Kennung",
-        "frist": "2026-10-23",
-        "stand": "offen",
-        "kritisch": true,
-        "notiz": "vorher 05.10.; der Entwurf der Anfrage liegt seit dem 19.10. vor"
-      },
-      {
         "text": "Den ersten Lauf des Prüfstands bewerten, vor den Aufträgen des Teams",
         "frist": "2026-10-27",
         "stand": "offen",
@@ -4262,6 +4261,11 @@
         "stand": "offen"
       },
       {
+        "text": "Die Termine von Meilenstein 3 und 4 neu festlegen",
+        "frist": "2026-10-30",
+        "stand": "offen"
+      },
+      {
         "text": "Die Akte des Reporters",
         "frist": "2026-11-02",
         "stand": "offen",
@@ -4271,13 +4275,20 @@
         "text": "Der Leserkreis der internen Seite",
         "frist": "2026-11-05",
         "stand": "offen",
-        "notiz": "vorher 12.10."
+        "notiz": "vorher 12.10.; nach dem Risikoplan erst nach Meilenstein 2, der Termin hängt an Meilenstein 4"
       },
       {
         "text": "Die interne Seite im Team teilen",
         "frist": "2026-11-12",
         "stand": "offen",
-        "notiz": "vorher 22.10."
+        "notiz": "vorher 22.10.; nach dem Risikoplan erst nach Meilenstein 2, der Termin hängt an Meilenstein 4"
+      },
+      {
+        "text": "Die Teamliste: wer mitmacht, mit Einverständnis und Kennung",
+        "frist": "2026-11-13",
+        "stand": "offen",
+        "kritisch": true,
+        "notiz": "vorher 23.10., davor 05.10.; der Entwurf der Anfrage liegt seit dem 19.10. vor"
       },
       {
         "text": "Der Orchestrator beherrscht alle 18 Übungsfälle: zwei Läufe hintereinander, jeder Fall dreimal ohne Fehler",
@@ -4313,7 +4324,7 @@
         "eintritt": "hoch",
         "auswirkung": "hoch",
         "stufe": "hoch",
-        "gegenmassnahme": "Das Ziel zum 27.10. ist verfehlt. Im Training erfand er Angaben und meldete eine Notiz als angelegt, die es nicht gab. Neues Ziel bis zum 20.11.: alle 18 Übungsfälle in zwei Läufen hintereinander, jeder Fall dreimal ohne Fehler; jede Änderung an der Akte mit Wortlaut zur Freigabe",
+        "gegenmassnahme": "Nachschärfen in den Freitagsrunden am 30.10., 06.11. und 13.11., nach jeder Runde ein Prüfstandlauf. Am 20.11. müssen alle 18 Übungsfälle zwei Läufe hintereinander je dreimal halten",
         "eingetreten": true,
         "auch": [
           "R26"
@@ -4325,7 +4336,7 @@
         "eintritt": "hoch",
         "auswirkung": "mittel",
         "stufe": "hoch",
-        "gegenmassnahme": "Seit dem 22.10. brachen Läufe mehrfach ab, weil die Verbindung abriss; die Ursache ist offen. Aufträge klein schneiden, Abbrüche zählen, die Ursache geht in einen Fehlerbericht an den Hersteller",
+        "gegenmassnahme": "Die Abbrüche werden bis 06.11. nach Muster geordnet, Verbindungsabbrüche und erschöpfte Iterationsgrenze getrennt; dazu ein Fehlerbericht mit Zahlen. Ein Update der Software erst nach einer Sicherung",
         "eingetreten": true
       },
       {
@@ -4335,7 +4346,7 @@
         "auswirkung": "hoch",
         "stufe": "hoch",
         "eingetreten": true,
-        "gegenmassnahme": "Ein Bauauftrag wurde mehrfach als fertig gemeldet, ohne dass der Stand lief. Fertigmeldungen werden im Quelltext nachgeprüft; zwei Nachbesserungen laufen seit dem 27.10."
+        "gegenmassnahme": "„Fertig“ heißt ab sofort: Der Lauf des Testers ist grün und der Tester stimmt zu. Die Regel kommt bis 06.11. in die Akten"
       },
       {
         "nr": "R34",
@@ -4343,7 +4354,7 @@
         "eintritt": "hoch",
         "auswirkung": "mittel",
         "stufe": "hoch",
-        "gegenmassnahme": "Es gibt keine Grundlinie für die ganze Suite, und viele rote Fälle lagen am Test, nicht an der Anwendung. Am 26.10. entschieden: den Test anpassen, nicht die Anwendung"
+        "gegenmassnahme": "Feste Zeitgrenze im Laufskript des Testers bis 30.10.; ein Abbruch ohne Ergebnis zählt als Fehler"
       },
       {
         "nr": "R23",
@@ -4351,7 +4362,7 @@
         "eintritt": "hoch",
         "auswirkung": "hoch",
         "stufe": "hoch",
-        "gegenmassnahme": "Niemand aus dem Team ist freigeschaltet, Teamliste und Anleitung liegen als Entwurf; Zugang erst nach dem Training (entschieden am 27.10.). Danach zwei benannte Personen mit einer echten Aufgabe und den ersten Auftrag gemeinsam geben"
+        "gegenmassnahme": "Teamliste bis 13.11. Das Team kommt nach bestandenem Prüfstand"
       },
       {
         "nr": "R1",
@@ -4359,7 +4370,7 @@
         "eintritt": "hoch",
         "auswirkung": "hoch",
         "stufe": "hoch",
-        "gegenmassnahme": "Rund 1 h 30 je Woche geplant; eine Ist-Zeit wird noch nicht geführt, und viele offene Punkte brauchen seine Entscheidung. Die Ist-Zeit führen, Entscheidungen bündeln"
+        "gegenmassnahme": "Die Ist-Zeit des Projektverantwortlichen wird je Woche erfasst; nach zwei Wochen wird umverteilt"
       },
       {
         "nr": "R16",
@@ -4367,7 +4378,7 @@
         "eintritt": "hoch",
         "auswirkung": "mittel",
         "stufe": "hoch",
-        "gegenmassnahme": "52 Auftragsnotizen auf dem KI-Rechner sind nicht eingecheckt, und Commits der Ablage liegen teils nur lokal. Regelmäßig einchecken und ziehen, mit Ja des Projektverantwortlichen"
+        "gegenmassnahme": "Ablage bis 29.10. sichern, danach meldet der tägliche Wächter, was unversioniert ist"
       },
       {
         "nr": "R30",
@@ -4375,7 +4386,7 @@
         "eintritt": "mittel",
         "auswirkung": "mittel",
         "stufe": "mittel",
-        "gegenmassnahme": "Das Board trägt, aber nur ein Auftrag läuft zur Zeit, und Anhalten greift nicht immer. Abbrüche zählen; bis ein Fehler behoben ist, gibt der Projektverantwortliche Aufträge direkt"
+        "gegenmassnahme": "Die Abbrüche werden bis 06.11. untersucht; neue Karten zerlegt das Board nicht mehr von selbst"
       },
       {
         "nr": "R29",
@@ -4383,7 +4394,7 @@
         "eintritt": "hoch",
         "auswirkung": "niedrig",
         "stufe": "mittel",
-        "gegenmassnahme": "Das Datum auf der Seite zeigt den Stand; der Pflegelauf auf dem KI-Rechner stürzte am 26.10. ab, seine Arbeit lag trotzdem vor"
+        "gegenmassnahme": "Pflegelauf und Wächter bis 06.11. stabil, mit Warnung, bevor eine Anmeldung abläuft"
       },
       {
         "nr": "R27",
@@ -4391,7 +4402,7 @@
         "eintritt": "mittel",
         "auswirkung": "mittel",
         "stufe": "mittel",
-        "gegenmassnahme": "Probe mit zehn Sätzen; Rückfall auf Text"
+        "gegenmassnahme": "Probe mit zehn Sätzen, Rückfall auf Text; beides nach Meilenstein 2, der Termin hängt an Meilenstein 3"
       },
       {
         "nr": "R28",
@@ -4399,7 +4410,7 @@
         "eintritt": "mittel",
         "auswirkung": "mittel",
         "stufe": "mittel",
-        "gegenmassnahme": "Leserkreis festlegen; nur innerhalb der Organisation teilen; Rückfall als Datei im Teamkanal"
+        "gegenmassnahme": "Leserkreis festlegen, nur innerhalb der Organisation teilen, Rückfall als Datei im Teamkanal; alles nach Meilenstein 2, der Termin hängt an Meilenstein 4"
       },
       {
         "nr": "R22",
@@ -4407,7 +4418,7 @@
         "eintritt": "mittel",
         "auswirkung": "niedrig",
         "stufe": "niedrig",
-        "gegenmassnahme": "Jira bekam am 27.10. den Stand. Die Termine sind nach der Entscheidung vom 27.10. noch anzugleichen"
+        "gegenmassnahme": "Das Register wird freitags neu bewertet, die Seite übernimmt die Bewertung. Neue Termine für Meilenstein 3 und 4 legt der Projektverantwortliche am 30.10. fest"
       },
       {
         "nr": "R26",
@@ -4419,7 +4430,30 @@
         "aufgegangenIn": "R31"
       }
     ],
-    "risikenHinweis": "Neu bewertet am 27.10. nach dem Risikoregister; R26 ist in R31 aufgegangen. Risiken zur Sicherheit und zu den Zugängen des KI-Rechners stehen nur in der Ablage.",
+    "risikenHinweis": "Zuletzt bewertet am 27.10.; R26 ist in R31 aufgegangen. Risiken zur Sicherheit und zu den Zugängen des KI-Rechners stehen nur in der Ablage.",
+    "risikoplan": {
+      "satz": "Die Bewertung folgt dem Risikoregister, das der Projektverantwortliche am 27.10. als Grundlage bestätigt hat; neu bewertet wird freitags.",
+      "schritte": [
+        {
+          "name": "Absichern",
+          "von": "2026-10-27",
+          "bis": "2026-10-30",
+          "text": "Die Plattform wird abgesichert, bevor weitere Menschen Zugang bekommen. Die Arbeit liegt versioniert in der Ablage, der Prüflauf des Testers hat eine feste Zeitgrenze."
+        },
+        {
+          "name": "Verlässlich machen",
+          "von": "2026-10-31",
+          "bis": "2026-11-13",
+          "text": "Der Orchestrator wird im Prüfstand stabil, Abbrüche bekommen eine benannte Ursache, „fertig“ heißt geprüft."
+        },
+        {
+          "name": "Öffnen",
+          "von": "2026-11-14",
+          "bis": "2026-11-23",
+          "text": "Besteht der Orchestrator am 20.11. seinen Prüfstand, kommt das Team dazu. Meilenstein 2 kommt frühestens am 23.11."
+        }
+      ]
+    },
     "nichtDrin": [
       "Der Entwickler. Arnold und der Archivar sind vorgezogen, die Grenze des Reporters liegt seit dem 28.09.",
       "Ein Live-Gespräch mit dem Orchestrator. Gesprochen wird in Sprachnachrichten.",
@@ -4478,7 +4512,7 @@
         "stand": "Außer dem Projektverantwortlichen ist niemand freigeschaltet. Das Team kommt erst dazu, wenn der Orchestrator sein Trainingsziel erreicht hat, frühestens am 23.11. Teamliste und Anleitung liegen als Entwurf."
       }
     ],
-    "quelle": "Meilensteinplan 29.09. bis 23.10.2026 mit dem Hinweis auf die Termine vom 16.10.; Logbuch vom 25.09., 28.09., 29.09. und 16.10.2026; Abnahme M1 vom 15.10.2026; Übergabe vom 15.10. und Tagesprotokoll vom 16.10.2026; Arbeitsplan 2026-10-16, Stand 20.10.2026, mit Einträgen bis 22.10.; Logbuch vom 19. bis 22.10.2026; Tagesprotokoll vom 23.10.2026; Tagesprotokolle vom 26. und 27.10.2026",
+    "quelle": "Meilensteinplan 29.09. bis 23.10.2026 mit dem Hinweis auf die Termine vom 16.10.; Logbuch vom 25.09., 28.09., 29.09. und 16.10.2026; Abnahme M1 vom 15.10.2026; Übergabe vom 15.10. und Tagesprotokoll vom 16.10.2026; Arbeitsplan 2026-10-16, Stand 20.10.2026, mit Einträgen bis 22.10.; Logbuch vom 19. bis 22.10.2026; Tagesprotokoll vom 23.10.2026; Tagesprotokolle vom 26. und 27.10.2026; Risikoregister KI-Mitarbeiter 2026-10-27 und Antworten des Projektverantwortlichen dazu vom 27.10.2026",
     "freigabe": "intern"
   },
   "anleitung": {

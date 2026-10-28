@@ -6,6 +6,26 @@ verloren gehen darf.
 
 Stand dieser Übergabe: 27.10.2026.
 
+## Nachtrag 28.10.2026: Risikoplan bis 23.11.
+
+Der Projektverantwortliche hat am 27.10. das Risikoregister als Grundlage
+bestätigt; neu bewertet wird freitags in der Trainingsrunde, die Seite übernimmt
+die Bewertung. Übermittelt von der Sitzung „Offene Entscheidungen KI-Mitarbeiter
+angehen“.
+
+- Neues Feld `meilensteinplanAktuell.risikoplan` mit `satz` und drei
+  `schritte[]` (`name`, `von`, `bis`, `text`): Absichern, Verlässlich
+  machen, Öffnen. Die Landing Page zeigt sie im Abschnitt Meilensteine, `/stand/`
+  als Tabelle über den Risiken. Die Schritte heißen bewusst nicht „Stufe“, weil
+  die Seite das Wort schon zweimal braucht: für die Stufe eines Risikos und für
+  die Stufen bis zum Dauerbetrieb.
+- `risiken[].gegenmassnahme` nennt jetzt das Arbeitspaket mit Termin.
+- Fristen: die Teamliste steht auf 13.11., neu ist „Die Termine von Meilenstein 3
+  und 4 neu festlegen“ zum 30.10. Leserkreis und Teilen der internen Seite hängen
+  am Termin von Meilenstein 4.
+- Nicht auf der Seite: die übrigen drei Antworten vom 27.10. Sie betreffen die
+  Sicherheit des KI-Rechners und bleiben in der Ablage.
+
 ## Nachtrag 27.10.2026: drei Entscheidungen
 
 Übermittelt von der Sitzung „Offene Entscheidungen KI-Mitarbeiter angehen“:
@@ -37,7 +57,7 @@ Aus den Tagesprotokollen vom 23., 26. und 27.10., dem Logbuch und Theos Lauf vom
 26.10.: Chronik 26. und 27.10., „Wo es heute steht“ (Orchestrator, Gregor Dev,
 Theo, julia-trend, Team), Steckbriefe, Training, die letzte Phase des Fahrplans bis
 27.10. und zwei neue Herausforderungen aus dem Jira-Kommentar vom 27.10. (Bauen und
-Testen, Verbindung zum Gateway). Gregors Pflegelauf vom 26.10. (#27) hatte eine
+Testen, abreißende Verbindungen). Gregors Pflegelauf vom 26.10. (#27) hatte eine
 Auftragsnummer, einen Zweig, Ticketnummern und einen Befehl in Entscheidungen
 geschrieben; die sind neutral gefasst.
 

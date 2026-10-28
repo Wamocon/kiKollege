@@ -644,6 +644,11 @@ export interface AktuellerPlan extends MitFreigabe {
   daneben: string
   risiken: AktuellerRisiko[]
   risikenHinweis: string
+  /** Wie die Risiken angegangen werden, in Schritten mit Zeitraum */
+  risikoplan: {
+    satz: string
+    schritte: { name: string; von: string; bis: string; text: string }[]
+  }
   nichtDrin: string[]
   zeitSatz: string
   heute: { wer: string; stand: string }[]

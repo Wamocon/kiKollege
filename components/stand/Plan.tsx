@@ -152,6 +152,37 @@ export function PlanAbschnitt() {
         </ul>
       </Block>
 
+      <h3 style={{ marginTop: '1.8rem' }}>So gehen wir die Risiken an</h3>
+      <div className="tabellenrahmen">
+        <table>
+          <thead>
+            <tr>
+              <th style={{ width: '9rem' }}>Zeitraum</th>
+              <th style={{ width: '12rem' }}>Schritt</th>
+              <th>Was geschieht</th>
+            </tr>
+          </thead>
+          <tbody>
+            {p.risikoplan.schritte.map((s, i) => (
+              <tr key={s.name}>
+                <td className="datum">
+                  {datum(s.von).slice(0, 6)} bis {datum(s.bis).slice(0, 6)}
+                </td>
+                <td>
+                  <b>
+                    {i + 1}. {s.name}
+                  </b>
+                </td>
+                <td>{s.text}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <div className="prosa" style={{ marginTop: '1.3rem' }}>
+        <p>{p.risikoplan.satz}</p>
+      </div>
+
       <h3 style={{ marginTop: '1.8rem' }}>Risiken nach Eintritt und Auswirkung</h3>
       <div className="tabellenrahmen">
         <table>
