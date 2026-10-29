@@ -868,6 +868,24 @@ export interface Projektstand {
   stufenPlan: { text: string; freigabe: Freigabe }
   anleitung: Anleitung
   glossar: { satz: string; eintraege: GlossarEintrag[]; freigabe: Freigabe }
+  /** Die Texte der Produktseite im Labor vom 29.10.2026: kiKollege als Produkt,
+   *  sechs Szenen nach dem Einstieg und ein nachgestellter Auftrag. */
+  produktseite: {
+    stand: string
+    name: string
+    dach: string
+    lead: string
+    szenen: { id: string; label: string; titel: string; text: string }[]
+    /** Kennungen aus glossar.eintraege, die die Szene Begriffe zeigt */
+    kernbegriffe: string[]
+    beispielAuftrag: {
+      quelle: string
+      /** schritt: welcher der drei Schritte der Anleitung zu der Nachricht gehört */
+      nachrichten: { von: string; schritt: number; text: string }[]
+    }
+    archivSatz: string
+    freigabe: Freigabe
+  }
   arbeitsschwerpunkt: {
     satz: string
     brauchtEs: string
