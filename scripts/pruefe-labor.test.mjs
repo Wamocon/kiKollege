@@ -1,7 +1,14 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
 
-import { fehlende, ohneArchiv, stuecke } from './pruefe-labor.mjs'
+import { doppelteGrafiken, fehlende, ohneArchiv, stuecke } from './pruefe-labor.mjs'
+
+test('doppelteGrafiken meldet eine Grafik, die zweimal dasteht', () => {
+  const eine = '<svg role="img" aria-label="Termine der Meilensteine"></svg>'
+  const andere = '<svg aria-label="Graph der Ablage" role="img"></svg>'
+  assert.deepEqual(doppelteGrafiken(eine + andere), [])
+  assert.deepEqual(doppelteGrafiken(eine + andere + eine), ['Termine der Meilensteine'])
+})
 
 test('stuecke nimmt Text zwischen Tags, ohne Kommentare und kurze Reste', () => {
   const s = stuecke('<p>Ein Satz.<!-- -->Noch einer</p><b>ab</b><i>Fritz &amp; Hermes</i>')

@@ -23,7 +23,7 @@ import { pfad } from '@/lib/pfad'
 
 /** Die Abschnitte der Landing Page. Die Landing Page zeigt alle mit Rahmen;
  *  das Labor zeigt einzelne als Einzelheiten, ohne Nummer in der Rinne. */
-export function LandingAbschnitte({ nur, rahmen = true }: { nur?: string[]; rahmen?: boolean } = {}) {
+export function LandingAbschnitte({ nur, rahmen = true, ohne }: { nur?: string[]; rahmen?: boolean; ohne?: string[] } = {}) {
   const d = daten
   const gmbh = d.gesellschaften[0]
   const fachreview = d.prueflaeufe.laeufe.find((l) => l.art === 'urteilend')!
@@ -91,6 +91,8 @@ export function LandingAbschnitte({ nur, rahmen = true }: { nur?: string[]; rahm
   const mitGrenze = rollen.filter((k) => k.betrieb === 'mitGrenze').length
 
   const zeige = (id: string) => !nur || nur.includes(id)
+  // Teile, die das Labor weglässt, weil sie in seinen Einzelheiten schon an anderer Stelle stehen
+  const teil = (k: string) => !ohne?.includes(k)
 
   return (
     <>
@@ -575,11 +577,13 @@ export function LandingAbschnitte({ nur, rahmen = true }: { nur?: string[]; rahm
               <span className="kopf">Warum nicht mehr auf einmal</span>
               <p className="stark">{m.engpass}</p>
             </div>
-            <div className="lp-zelle">
-              <span className="kopf">Warum ein Programm</span>
-              <p className="stark">{d.auftrag.anweisungImDokument.satz}</p>
-              <p>{m.grenzeWarum}</p>
-            </div>
+            {teil('mannschaft-grenze') ? (
+              <div className="lp-zelle">
+                <span className="kopf">Warum ein Programm</span>
+                <p className="stark">{d.auftrag.anweisungImDokument.satz}</p>
+                <p>{m.grenzeWarum}</p>
+              </div>
+            ) : null}
           </div>
           {sichtbar(d.aufnahme) ? (
             <>
@@ -959,7 +963,7 @@ export function LandingAbschnitte({ nur, rahmen = true }: { nur?: string[]; rahm
             <p>{d.durchlauf.verdichtung}</p>
           </div>
 
-          <Pruefpunkte />
+          {teil('durchlauf-pruefpunkte') ? <Pruefpunkte /> : null}
 
           <h3 className="lp-aussage breit lp-luft-oben">
             Wie er gesteuert wird, und was er selbst steuert.
@@ -1217,18 +1221,22 @@ export function LandingAbschnitte({ nur, rahmen = true }: { nur?: string[]; rahm
         {sichtbar(plan) ? (
           <Sektion rahmen={rahmen} id="plan">
             {istIntern ? <p className="lp-intern">nur intern</p> : null}
-            <p className="lp-klein">
-              {plan.status}.
-            </p>
-            <h2 className="lp-aussage breit lp-luft-oben-klein">{plan.satz}</h2>
-            <div className="lp-text lp-luft-oben">
-              <p>
-                <b>„{plan.ziel}“</b> {plan.zielVon}.
+            {teil('plan-status') ? (
+              <p className="lp-klein">
+                {plan.status}.
               </p>
-              <p>{plan.lauffaehig}</p>
-            </div>
+            ) : null}
+            <h2 className="lp-aussage breit lp-luft-oben-klein">{plan.satz}</h2>
+            {teil('plan-ziel') ? (
+              <div className="lp-text lp-luft-oben">
+                <p>
+                  <b>„{plan.ziel}“</b> {plan.zielVon}.
+                </p>
+                <p>{plan.lauffaehig}</p>
+              </div>
+            ) : null}
 
-            <TermineFigur />
+            {teil('plan-termine') ? <TermineFigur /> : null}
 
             <div className="lp-luft-oben">
               {plan.meilensteine.map((ms) => (
@@ -1244,7 +1252,7 @@ export function LandingAbschnitte({ nur, rahmen = true }: { nur?: string[]; rahm
                       </p>
                     ) : null}
                     <p>{arbeitenSatz(ms)}</p>
-                    <p className="bedingung">Abnahme: {ms.abnahme}</p>
+                    {teil('plan-abnahme') ? <p className="bedingung">Abnahme: {ms.abnahme}</p> : null}
                   </div>
                 </div>
               ))}
@@ -1260,6 +1268,8 @@ export function LandingAbschnitte({ nur, rahmen = true }: { nur?: string[]; rahm
               ))}
             </dl>
 
+            {teil('plan-risikoplan') ? (
+            <>
             <h3 className="lp-aussage lp-luft-oben">So gehen wir die Risiken an.</h3>
             <div className="lp-luft-oben">
               {plan.risikoplan.schritte.map((s, i) => (
@@ -1279,6 +1289,8 @@ export function LandingAbschnitte({ nur, rahmen = true }: { nur?: string[]; rahm
             <div className="lp-text lp-luft-oben">
               <p>{plan.risikoplan.satz}</p>
             </div>
+            </>
+            ) : null}
 
             <div className="lp-text lp-luft-oben">
               <p>
@@ -1288,7 +1300,7 @@ export function LandingAbschnitte({ nur, rahmen = true }: { nur?: string[]; rahm
                 <a href={pfad('/stand/#plan')}>ausführlichen Stand</a>, dazu der Plan vom 17.09. als
                 Verlauf.
               </p>
-              <p className="lp-klein">Quelle: {plan.quelle}</p>
+              {teil('plan-quelle') ? <p className="lp-klein">Quelle: {plan.quelle}</p> : null}
             </div>
           </Sektion>
         ) : null}
