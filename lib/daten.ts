@@ -762,6 +762,18 @@ export interface Projektstand {
       offen: string
       quelle: string
     }
+    /** Alle Läufe des Orchestrators, eine Zeile je Lauf, ohne Fallnummern; bereiche je Zeile in der Reihenfolge von bereiche */
+    laeufe?: {
+      stand: string
+      titel: string
+      satz: string
+      bereiche: { name: string; faelle: number }[]
+      zeilen: { wann: string; was: string; erfuellt: number; wackelig: number; nie: number; gelernt: number; bereiche: number[] }[]
+      standSatz: string
+      ehrlich: string
+      weiter: string
+      quelle: string
+    }
     neueFaelle: { satz: string; punkte: string[] }
     quelle: string
     freigabe: Freigabe
