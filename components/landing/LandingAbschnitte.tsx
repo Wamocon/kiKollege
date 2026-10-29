@@ -98,10 +98,13 @@ export function LandingAbschnitte({ nur, rahmen = true }: { nur?: string[]; rahm
         <>
         {/* 01 Was ein KI-Mitarbeiter ist ------------------------------------- */}
         <Sektion rahmen={rahmen} id="vorhaben" klasse="lp-hero">
-          <h1 className="lp-display">
-            <span className="zeile">Ein KI-Mitarbeiter arbeitet zu.</span>
-            <span className="zeile">Ein Mensch entscheidet.</span>
-          </h1>
+          {/* Im Labor steht der Kernsatz schon im Einstieg; zwei h1 darf eine Seite nicht haben */}
+          {rahmen ? (
+            <h1 className="lp-display">
+              <span className="zeile">Ein KI-Mitarbeiter arbeitet zu.</span>
+              <span className="zeile">Ein Mensch entscheidet.</span>
+            </h1>
+          ) : null}
 
           <p className="lp-lead lp-luft-oben">
             Ein KI-Mitarbeiter ist ein <Begriff id="sprachmodell">Sprachmodell</Begriff>, also die
