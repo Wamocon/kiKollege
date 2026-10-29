@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "postbuild": "node scripts/film-kopieren.mjs",
     "start": "next start",
     "export:vault": "node scripts/export-vault.mjs",
     "abbild:vault": "node scripts/abbild-vault.mjs",
@@ -17,6 +18,8 @@
     "pruefe:ausgabe": "node scripts/pruefe-ausgabe.mjs",
     "pruefe:figuren": "node scripts/pruefe-figuren.mjs",
     "pruefe:labor": "node scripts/pruefe-labor.mjs",
+    "pruefe:film": "node scripts/pruefe-film.mjs",
+    "baue:film": "node scripts/baue-film.mjs",
     "test:export": "node --test scripts/export-vault.test.mjs",
     "test": "node --test \"scripts/*.test.mjs\" \"lib/*.test.mjs\""
   },

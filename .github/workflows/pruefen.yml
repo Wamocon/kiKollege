@@ -44,6 +44,7 @@ jobs:
           npm run pruefe:ausgabe
           npm run pruefe:figuren -- --streng
           npm run pruefe:labor
+          npm run pruefe:film
         env:
           BASE_PATH: /${{ github.event.repository.name }}
       - name: Öffentliche Fassung bauen

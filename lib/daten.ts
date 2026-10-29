@@ -875,7 +875,12 @@ export interface Projektstand {
     name: string
     dach: string
     lead: string
-    szenen: { id: string; label: string; titel: string; text: string }[]
+    /** umbenanntVon: die frühere Kennung, seit Fortschritt im Überblick aufging */
+    szenen: { id: string; umbenanntVon?: string; label: string; titel: string; text: string }[]
+    /** Kopf über den hohen Risiken in der Szene Überblick */
+    herausforderungen: { titel: string; text: string }
+    /** Kopf über dem Film, den scripts/baue-film.mjs aus diesen Daten rendert */
+    film: { titel: string; text: string }
     /** Kennungen aus glossar.eintraege, die die Szene Begriffe zeigt */
     kernbegriffe: string[]
     beispielAuftrag: {

@@ -42,6 +42,25 @@ Labor freigibt.
   `DOPPELT` steht in `app/labor/page.tsx`. Ohne `ohne` bleiben beide Seiten
   unverändert. `pruefe:labor` meldet jetzt auch jede Grafik, die im Labor
   mehrfach steht; weggelassene Überschriften stehen dort in `OHNE_UEBERSCHRIFT`.
+- **Projektüberblick und Film (29.10. abends):** Die Szene Fortschritt ist in
+  der neuen Szene 02 „Überblick“ direkt nach dem Einstieg aufgegangen:
+  Zeitstrahl mit Meilensteinen, Stand der Daten und den drei Phasen des
+  Risikoplans, Fortschritt in Zahlen mit den Läufen des Orchestrators, dazu die
+  großen Herausforderungen. Das sind die Risiken der Stufe hoch, die
+  eingetretenen als Stapel, jedes mit Gegenmaßnahme. Mehr Bewegung: Der
+  Zeitstrahl wird beim Scrollen gezogen, die dunkle Bühne öffnet sich, die
+  Einleitungen füllen sich Wort für Wort, ein Laufband trägt den Kernsatz, und
+  die Karten der Funktionen kippen zur Maus.
+- **Film „kiKollege in 30 Sekunden“:** gebaut mit HyperFrames (HTML und GSAP,
+  Bild für Bild gerendert), stumm, oben in der Szene Überblick und zum
+  Herunterladen. `scripts/film-daten.mjs` nimmt jeden Satz und jede Zahl aus den
+  Daten und schreibt die Kompositionen. `npm run baue:film` rendert von Hand
+  nach `film/` (braucht ffmpeg); Film, Standbild und `film/stand.json` werden
+  committet. `postbuild` legt beides neben das Labor, nicht in die öffentliche
+  Fassung, weil der Film den intern freigegebenen Plan zeigt. `pruefe:film`
+  meldet in der CI als Hinweis, wenn sich die gezeigten Daten seit dem Rendern
+  geändert haben. Drehbuch, Prüfung und was aus dem Labor übertragen wurde:
+  `film/DREHBUCH.md`, `film/PRUEFUNG.md`, `film/UEBERTRAGUNG.md`.
 - **Offen bis zur Freigabe:** Übernahme als Startseite, `/stand/` als Archiv,
   Weiterleitung alter Anker, Abbau der zweiten Fassung.
 

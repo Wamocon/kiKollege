@@ -6398,6 +6398,13 @@
     "lead": "kiKollege ist die Mannschaft der KI-Mitarbeiter bei WAMOCON. Jeder hat eine feste Aufgabe, einen aufgeschriebenen Maßstab und eine Grenze. Sie prüfen, sortieren und bereiten vor. Was daraus folgt, entscheidest du.",
     "szenen": [
       {
+        "id": "ueberblick",
+        "umbenanntVon": "fortschritt",
+        "label": "Überblick",
+        "titel": "Wo kiKollege steht.",
+        "text": "Vier Meilensteine bis zum Team, die Phasen bis dahin und die Risiken, an denen am meisten hängt. Der Orchestrator lernt im Prüfstand, bis er alle Fälle sicher beherrscht; erst dann kommst du dazu."
+      },
+      {
         "id": "funktionen",
         "label": "Funktionen",
         "titel": "Was kiKollege kann.",
@@ -6422,18 +6429,20 @@
         "text": "Ein Sprachmodell allein ist noch kein Mitarbeiter. Vier Dinge kommen dazu, und alle vier schreibt ein Mensch auf."
       },
       {
-        "id": "fortschritt",
-        "label": "Fortschritt",
-        "titel": "Wo kiKollege steht.",
-        "text": "Vier Meilensteine bis zum Team. Der Orchestrator lernt im Prüfstand, bis er alle Fälle sicher beherrscht; erst dann kommst du dazu."
-      },
-      {
         "id": "glossar",
         "label": "Begriffe",
         "titel": "Die wichtigsten Begriffe.",
         "text": "Die Wörter, die auf dieser Seite immer wieder vorkommen. Alle anderen stehen in den Einzelheiten."
       }
     ],
+    "herausforderungen": {
+      "titel": "Die großen Herausforderungen",
+      "text": "Die Risiken der Stufe hoch aus dem Risikoregister, die schon eingetretenen zuerst. Zu jedem steht, was dagegen getan wird."
+    },
+    "film": {
+      "titel": "kiKollege in 30 Sekunden",
+      "text": "Der Film zeigt in Kürze, was diese Seite ausführlich zeigt: zum Vorführen und zum Weitergeben. Er läuft ohne Ton."
+    },
     "kernbegriffe": [
       "ki-mitarbeiter",
       "akte",

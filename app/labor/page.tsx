@@ -12,6 +12,7 @@ import { abschnitt } from '@/lib/abschnitte'
 import { belastbarBei, daten, datum, terminText } from '@/lib/daten'
 import { nurSichtbare, sichtbar } from '@/lib/freigabe'
 import { pfad } from '@/lib/pfad'
+import film from '@/film/stand.json'
 
 /** Labor vom 29.10.2026: kiKollege als Produktseite. Eine Präsentationsebene
  *  in sieben Szenen, darunter je Szene die Einzelheiten zum Aufklappen. Die
@@ -34,6 +35,7 @@ const szene = (id: string) => p.szenen.find((s) => s.id === id)!
 /** Welche Abschnitte der heutigen Seiten unter welcher Szene aufklappen */
 const EINZELHEITEN: Record<string, { landing: string[]; stand: string[] }> = {
   start: { landing: ['vorhaben'], stand: ['vorhaben'] },
+  ueberblick: { landing: ['stand', 'plan'], stand: ['stufen', 'fahrplan', 'plan'] },
   funktionen: { landing: ['erster', 'mannschaft'], stand: [] },
   anwenden: { landing: ['auftrag'], stand: [] },
   verlass: { landing: ['messung'], stand: ['fritz', 'massstab', 'gegenstand', 'gemessen', 'luecke'] },
@@ -41,7 +43,6 @@ const EINZELHEITEN: Record<string, { landing: string[]; stand: string[] }> = {
     landing: ['aufbau', 'wissen', 'durchlauf', 'landschaft', 'technik'],
     stand: ['schichten', 'gedaechtnis', 'plattform', 'uebertragbarkeit'],
   },
-  fortschritt: { landing: ['stand', 'plan'], stand: ['stufen', 'fahrplan', 'plan'] },
   glossar: { landing: ['begriffe'], stand: ['begriffe'] },
 }
 /** Was in den Einzelheiten doppelt stünde, weil Landing Page und /stand/ dasselbe
@@ -95,7 +96,7 @@ function SzenenKopf({ id, nr }: { id: string; nr: string }) {
       <h2 className="lb-titel" data-lb-split>
         {s.titel}
       </h2>
-      <p className="lb-lead" data-lb-reveal>
+      <p className="lb-lead" data-lb-fuell>
         {s.text}
       </p>
     </header>
@@ -135,6 +136,53 @@ function auftraege(k: (typeof d.mannschaft.koepfe)[number]): string | null {
   return m.terminOffen ? `mit Meilenstein ${m.id.slice(1)}, Termin offen` : `für alle ab Meilenstein ${m.id.slice(1)}, ${terminText(m, false)}`
 }
 
+/** Ein Satz aus den Daten, der ohne Punkt endet, bekommt einen. */
+const satz = (t: string) => (/[.!?“]$/.test(t.trim()) ? t : `${t}.`)
+
+const MONATE = ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember']
+const tage = (von: string, bis: string) => Math.round((Date.parse(bis) - Date.parse(von)) / 86_400_000)
+const prozent = (x: number) => `${x.toFixed(2)}%`
+/** Anteil der Breite, den die Tage bekommen; dahinter stehen die Meilensteine ohne Termin */
+const TAGE_BREITE = 80
+
+/** Der Zeitstrahl der Szene Überblick: vom Beginn des Plans bis zum spätesten
+ *  festen Datum. Alles kommt aus dem Plan; ein abgenommener Meilenstein steht
+ *  am Tag der Abnahme, einer ohne Termin hinter dem Ende. */
+function zeitstrahl(stand: string, ziel?: { frist: string; text: string }) {
+  const anfang = plan.von
+  const fest = plan.meilensteine.filter((m) => !m.terminOffen).map((m) => m.abgenommen?.am ?? m.termin)
+  const ende = [...fest, ...plan.risikoplan.schritte.map((s) => s.bis), stand, ziel?.frist ?? stand].sort().at(-1)!
+  const x = (iso: string) => (tage(anfang, iso) / tage(anfang, ende)) * TAGE_BREITE
+  const offen = plan.meilensteine.filter((m) => m.terminOffen)
+  const meilensteine = plan.meilensteine.map((m) => {
+    if (m.terminOffen) {
+      const i = offen.indexOf(m)
+      return { m, x: TAGE_BREITE + ((i + 1) * (100 - TAGE_BREITE)) / (offen.length + 1), art: 'offen', wann: 'Termin offen' }
+    }
+    if (m.abgenommen) return { m, x: x(m.abgenommen.am), art: 'fertig', wann: `abgenommen ${kurz(m.abgenommen.am)}` }
+    return { m, x: x(m.termin), art: 'kommt', wann: terminText(m, true) }
+  })
+  // Der Erste jedes Monats nach dem Anfang, solange er vor dem Ende liegt
+  const monate: { name: string; x: number }[] = []
+  let [jahr, monat] = anfang.split('-').map(Number)
+  for (;;) {
+    if (monat === 12) { monat = 1; jahr++ } else monat++
+    const erster = `${jahr}-${String(monat).padStart(2, '0')}-01`
+    if (erster > ende) break
+    monate.push({ name: MONATE[monat - 1], x: x(erster) })
+  }
+  // Eine Phase reicht bis zum Ende ihres letzten Tages
+  const einTag = TAGE_BREITE / tage(anfang, ende)
+  const phasen = plan.risikoplan.schritte.map((s, i) => ({
+    s,
+    nr: i + 1,
+    von: x(s.von),
+    bis: Math.min(TAGE_BREITE, x(s.bis) + einTag),
+    laeuft: s.von <= stand && stand <= s.bis,
+  }))
+  return { anfang, ende, stand: x(stand), ziel: ziel ? x(ziel.frist) : null, meilensteine, monate, phasen }
+}
+
 export default function Labor() {
   const koepfe = nurSichtbare(d.mannschaft.koepfe).filter((k) => !k.passtNicht)
   const laeufe = sichtbar(d.training) ? d.training.laeufe : undefined
@@ -153,6 +201,14 @@ export default function Labor() {
     .map((id) => d.glossar.eintraege.find((e) => e.id === id))
     .filter((e): e is NonNullable<typeof e> => e != null)
   const nav = [{ id: 'start', label: 'Was es ist' }, ...p.szenen.map((s) => ({ id: s.id, label: s.label }))]
+  // Überblick: Zeitstrahl, Fortschritt in Zahlen und die hohen Risiken
+  const zs = zeitstrahl(d.stand, zielFrist ? { frist: zielFrist, text: 'Ziel des Prüfstands' } : undefined)
+  const abgenommen = plan.meilensteine.filter((m) => m.abgenommen).length
+  const phase = zs.phasen.find((ph) => ph.laeuft)
+  const hohe = plan.risiken.filter((r) => r.stufe === 'hoch' && !r.aufgegangenIn)
+  const eingetreten = hohe.filter((r) => r.eingetreten)
+  const weitere = hohe.filter((r) => !r.eingetreten)
+  const filmMb = (film.bytes / 1_000_000).toLocaleString('de-DE', { maximumFractionDigits: 1 })
 
   return (
     <div className="lb">
@@ -217,7 +273,7 @@ export default function Labor() {
               <a className="lb-knopf voll" href="#anwenden" data-lb-magnet>
                 So gibst du einen Auftrag
               </a>
-              <a className="lb-knopf" href="#fortschritt" data-lb-magnet>
+              <a className="lb-knopf" href="#ueberblick" data-lb-magnet>
                 Wo es steht
               </a>
             </div>
@@ -275,10 +331,250 @@ export default function Labor() {
           </div>
         </section>
 
+        {/* Überblick ---------------------------------------------------------- */}
+        <section id="ueberblick" className="lb-szene lb-ueberblick">
+          <div className="lb-rahmen">
+            <div className={planSichtbar ? 'lb-ueberblick-kopf mit-film' : 'lb-ueberblick-kopf'}>
+              <SzenenKopf id="ueberblick" nr="02" />
+              {planSichtbar ? (
+                <figure className="lb-film" data-lb-reveal>
+                  <video
+                    className="lb-film-video"
+                    src={pfad(`/labor/${film.datei}`)}
+                    poster={pfad(`/labor/${film.bild}`)}
+                    width={film.breite}
+                    height={film.hoehe}
+                    muted
+                    loop
+                    playsInline
+                    controls
+                    preload="none"
+                    aria-label={`${p.film.titel}, Film ohne Ton`}
+                  />
+                  <figcaption>
+                    <b>{p.film.titel}</b>, Stand {datum(film.stand)}. {p.film.text}{' '}
+                    <a href={pfad(`/labor/${film.datei}`)} download>
+                      Film herunterladen (MP4, {filmMb} MB)
+                    </a>
+                  </figcaption>
+                </figure>
+              ) : null}
+            </div>
+
+            {planSichtbar ? (
+              <div className="lb-zs">
+                <h3 className="lb-teilkopf">Meilensteine</h3>
+                <figure
+                  className="lb-zs-bild"
+                  aria-label={`Zeitstrahl vom ${kurz(zs.anfang)} bis ${kurz(zs.ende)}: die Meilensteine, der Stand der Daten und die Phasen des Risikoplans`}
+                >
+                  <div className="lb-zs-flaeche">
+                    <span className="lb-zs-linie" aria-hidden="true" />
+                    <span className="lb-zs-vergangen" style={{ width: prozent(zs.stand) }} aria-hidden="true" />
+                    <span className="lb-zs-ohne" style={{ left: prozent(TAGE_BREITE) }} aria-hidden="true">
+                      <span>Termin offen</span>
+                    </span>
+                    <ol className="lb-zs-monate" aria-hidden="true">
+                      {zs.monate.map((m) => (
+                        <li key={m.name} style={{ left: prozent(m.x) }}>
+                          {m.name}
+                        </li>
+                      ))}
+                    </ol>
+                    <ol className="lb-zs-phasen" aria-hidden="true">
+                      {zs.phasen.map((ph) => (
+                        <li
+                          key={ph.nr}
+                          className={ph.laeuft ? 'laeuft' : undefined}
+                          style={{ left: prozent(ph.von), width: prozent(ph.bis - ph.von) }}
+                        >
+                          {/* Der Name passt nur in eine breite Phase; die Karten nennen alle */}
+                          <span data-name={ph.bis - ph.von >= 9 ? ph.s.name : undefined}>{ph.nr}</span>
+                        </li>
+                      ))}
+                    </ol>
+                    <ol className="lb-zs-punkte">
+                      {zs.meilensteine.map(({ m, x, art, wann }) => (
+                        <li
+                          key={m.id}
+                          className={`lb-zs-punkt oben ${art}${x > 70 && art !== 'offen' ? ' rechts' : ''}`}
+                          style={{ left: prozent(x) }}
+                        >
+                          <span className="lb-zs-text">
+                            <b>{m.id}</b>
+                            {art !== 'offen' ? <span>{wann}</span> : null}
+                          </span>
+                        </li>
+                      ))}
+                      <li className="lb-zs-punkt unten stand" style={{ left: prozent(zs.stand) }}>
+                        <span className="lb-zs-text">
+                          <b>Stand der Daten</b>
+                          <span>{kurz(d.stand)}</span>
+                        </span>
+                      </li>
+                      {zs.ziel != null && zielFrist ? (
+                        <li className={`lb-zs-punkt unten ziel${zs.ziel > 70 ? ' rechts' : ''}`} style={{ left: prozent(zs.ziel) }}>
+                          <span className="lb-zs-text">
+                            <b>Ziel des Prüfstands</b>
+                            <span>alle {faelle} Fälle, {kurz(zielFrist)}</span>
+                          </span>
+                        </li>
+                      ) : null}
+                    </ol>
+                  </div>
+                </figure>
+                <ol className="lb-ms-karten">
+                  {zs.meilensteine.map(({ m, art, wann }) => (
+                    <li key={m.id} className={art}>
+                      <span className="lb-ms-id">{m.id}</span>
+                      <span className="lb-ms-termin">{wann}</span>
+                      <span className="lb-ms-titel">{m.titel}</span>
+                    </li>
+                  ))}
+                </ol>
+              </div>
+            ) : null}
+
+            <div className="lb-fortschritt">
+              <h3 className="lb-teilkopf">Fortschritt</h3>
+              <dl className="lb-fz" data-lb-staffel>
+                {planSichtbar ? (
+                  <div>
+                    <dt>Meilensteine abgenommen</dt>
+                    <dd>
+                      <span data-lb-zahl={abgenommen}>{abgenommen}</span>
+                      <small> von {plan.meilensteine.length}</small>
+                    </dd>
+                  </div>
+                ) : null}
+                {letzterLauf ? (
+                  <div>
+                    <dt>
+                      Prüffälle, die der Orchestrator gelernt hat
+                      {planSichtbar && zielFrist ? `; alle sollen es bis ${kurz(zielFrist)} sein` : ''}
+                    </dt>
+                    <dd>
+                      <span data-lb-zahl={letzterLauf.gelernt}>{letzterLauf.gelernt}</span>
+                      <small> von {faelle}</small>
+                    </dd>
+                  </div>
+                ) : null}
+                {planSichtbar && phase ? (
+                  <div>
+                    <dt>
+                      Phase des Risikoplans: {phase.s.name}, bis {kurz(phase.s.bis)}
+                    </dt>
+                    <dd>
+                      <span>{phase.nr}</span>
+                      <small> von {zs.phasen.length}</small>
+                    </dd>
+                  </div>
+                ) : null}
+              </dl>
+              {laeufe ? (
+                <div className="lb-laeufe">
+                  <h4>{laeufe.titel}</h4>
+                  <p className="lb-lead-klein">{laeufe.satz}</p>
+                  <ul className="lb-laeufe-liste" data-lb-staffel>
+                    {laeufe.zeilen.map((z) => (
+                      <li key={z.wann}>
+                        <span className="lb-lauf-wann">{z.wann}</span>
+                        <span className="lb-lauf-balken" aria-hidden="true">
+                          <span className="erfuellt" style={{ flexGrow: z.erfuellt }} />
+                          <span className="wackelig" style={{ flexGrow: z.wackelig }} />
+                          <span className="nie" style={{ flexGrow: z.nie }} />
+                        </span>
+                        <span className="lb-lauf-text">
+                          {z.erfuellt} erfüllt, {z.wackelig} wackelig, {z.nie} nie; <b>{z.gelernt} gelernt</b>
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                  <p className="lb-hinweis">{laeufe.standSatz}</p>
+                </div>
+              ) : null}
+            </div>
+          </div>
+
+          {planSichtbar ? (
+            <div className="lb-herausforderungen lb-buehne" id="herausforderungen">
+              <div className="lb-rahmen">
+                <h3 className="lb-teilkopf">{p.herausforderungen.titel}</h3>
+                <p className="lb-lead" data-lb-fuell>
+                  {p.herausforderungen.text}
+                </p>
+                <ol className="lb-deck">
+                  {eingetreten.map((r, i) => (
+                    <li className="lb-deck-karte" key={r.nr}>
+                      <p className="lb-deck-kopf">
+                        <span className="lb-abzeichen eingetreten">schon eingetreten</span>
+                        <span>
+                          {r.nr} im Risikoregister, Stufe {r.stufe}
+                        </span>
+                        <span className="lb-deck-zaehler">
+                          {i + 1} von {eingetreten.length}
+                        </span>
+                      </p>
+                      <h4>{r.titel}</h4>
+                      <p className="lb-deck-tun">
+                        <b>Was dagegen getan wird</b>
+                        {satz(r.gegenmassnahme)}
+                      </p>
+                    </li>
+                  ))}
+                </ol>
+                {weitere.length ? (
+                  <div className="lb-weitere">
+                    <h4>Ebenfalls Stufe hoch, noch nicht eingetreten</h4>
+                    <ul data-lb-staffel>
+                      {weitere.map((r) => (
+                        <li key={r.nr}>
+                          <span className="lb-weitere-nr">{r.nr}</span>
+                          <b>{r.titel}</b>
+                          <p>{satz(r.gegenmassnahme)}</p>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ) : null}
+                <div className="lb-risikoplan">
+                  <h4>So gehen wir die Risiken an</h4>
+                  <ol data-lb-staffel>
+                    {zs.phasen.map((ph) => (
+                      <li key={ph.nr} className={ph.laeuft ? 'laeuft' : undefined}>
+                        <span className="lb-rp-zeit">
+                          {kurz(ph.s.von)} bis {kurz(ph.s.bis)}
+                          {ph.laeuft ? <em>läuft</em> : null}
+                        </span>
+                        <b>
+                          {ph.nr}. {ph.s.name}
+                        </b>
+                        <p>{ph.s.text}</p>
+                      </li>
+                    ))}
+                  </ol>
+                  <p className="lb-hinweis">{plan.risikoplan.satz}</p>
+                </div>
+              </div>
+            </div>
+          ) : null}
+
+          <div className="lb-rahmen">
+            <Einzelheiten id="ueberblick" titel={szene('ueberblick').label} />
+          </div>
+        </section>
+
+        <div className="lb-laufband" aria-hidden="true">
+          <p>
+            <span>Ein KI-Mitarbeiter arbeitet zu.</span> <span>Ein Mensch entscheidet.</span>{' '}
+            <span>Ein KI-Mitarbeiter arbeitet zu.</span> <span>Ein Mensch entscheidet.</span>
+          </p>
+        </div>
+
         {/* Funktionen --------------------------------------------------------- */}
         <section id="funktionen" className="lb-szene lb-galerie">
           <div className="lb-rahmen">
-            <SzenenKopf id="funktionen" nr="02" />
+            <SzenenKopf id="funktionen" nr="03" />
             {planSichtbar && teamHeute ? (
               <p className="lb-heute lb-heute-hell" data-lb-reveal>
                 {teamHeute.stand}
@@ -323,7 +619,7 @@ export default function Labor() {
 
         {/* Anwenden ----------------------------------------------------------- */}
         {sichtbar(d.anleitung) ? (
-          <Szene id="anwenden" nr="03">
+          <Szene id="anwenden" nr="04">
             <div className="lb-anwenden">
               <ol className="lb-schritte">
                 {d.anleitung.schritte.map((s, i) => (
@@ -373,7 +669,7 @@ export default function Labor() {
         ) : null}
 
         {/* Verlässlich -------------------------------------------------------- */}
-        <Szene id="verlass" nr="04">
+        <Szene id="verlass" nr="05">
           <dl className="lb-zahlen" data-lb-staffel>
             <div>
               <dt>Punkte auf der Checkliste, nach denen Fritz jede Unterlage prüft</dt>
@@ -424,7 +720,7 @@ export default function Labor() {
         </Szene>
 
         {/* Aufbau ------------------------------------------------------------- */}
-        <Szene id="bauweise" nr="05">
+        <Szene id="bauweise" nr="06">
           <div className="lb-anatomie">
             <div className="lb-kern" data-lb-reveal>
               <b>{d.anatomie.kern.titel}</b>
@@ -447,64 +743,6 @@ export default function Labor() {
                   <p>{g.teile.map((t) => t.name).join(' · ')}</p>
                 </div>
               ))}
-            </div>
-          ) : null}
-        </Szene>
-
-        {/* Fortschritt -------------------------------------------------------- */}
-        <Szene id="fortschritt" nr="06" buehne>
-          {planSichtbar ? (
-            <ol className="lb-meilensteine" data-lb-staffel>
-              {plan.meilensteine.map((m) => (
-                <li key={m.id} className={m.abgenommen ? 'fertig' : m.terminOffen ? 'offen' : 'kommt'}>
-                  <span className="lb-ms-id">{m.id}</span>
-                  <span className="lb-ms-termin">
-                    {m.abgenommen ? `abgenommen am ${kurz(m.abgenommen.am)}` : terminText(m, true)}
-                  </span>
-                  <span className="lb-ms-titel">{m.titel}</span>
-                </li>
-              ))}
-            </ol>
-          ) : null}
-          {laeufe ? (
-            <div className="lb-laeufe">
-              <h3>{laeufe.titel}</h3>
-              <p className="lb-lead-klein">{laeufe.satz}</p>
-              <ul className="lb-laeufe-liste" data-lb-staffel>
-                {laeufe.zeilen.map((z) => (
-                  <li key={z.wann}>
-                    <span className="lb-lauf-wann">{z.wann}</span>
-                    <span className="lb-lauf-balken" aria-hidden="true">
-                      <span className="erfuellt" style={{ flexGrow: z.erfuellt }} />
-                      <span className="wackelig" style={{ flexGrow: z.wackelig }} />
-                      <span className="nie" style={{ flexGrow: z.nie }} />
-                    </span>
-                    <span className="lb-lauf-text">
-                      {z.erfuellt} erfüllt, {z.wackelig} wackelig, {z.nie} nie; <b>{z.gelernt} gelernt</b>
-                    </span>
-                  </li>
-                ))}
-              </ul>
-              <p className="lb-hinweis">{laeufe.standSatz}</p>
-            </div>
-          ) : null}
-          {planSichtbar ? (
-            <div className="lb-risikoplan">
-              <h3>So gehen wir die Risiken an</h3>
-              <ol data-lb-staffel>
-                {plan.risikoplan.schritte.map((s, i) => (
-                  <li key={s.name}>
-                    <span className="lb-rp-zeit">
-                      {kurz(s.von)} bis {kurz(s.bis)}
-                    </span>
-                    <b>
-                      {i + 1}. {s.name}
-                    </b>
-                    <p>{s.text}</p>
-                  </li>
-                ))}
-              </ol>
-              <p className="lb-hinweis">{plan.risikoplan.satz}</p>
             </div>
           ) : null}
         </Szene>
