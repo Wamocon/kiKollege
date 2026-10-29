@@ -163,6 +163,7 @@ gebauten Seite, auch in Grafiken; ein Fund hält den Pull Request auf.
 | Ein Termin rückt, ist nur ein frühester Termin oder ist offen | `meilensteine[].terminVorher` mit dem alten Datum, `fruehestens: true`, oder `terminOffen` mit einem Satz; `termin` bleibt dabei stehen |
 | Ein Eintrag mit Titel bekommt einen neuen Titel | den alten in `umbenanntVon` daneben schreiben; ohne ihn meldet `pruefe:bestand` den Eintrag als verloren |
 | Text der Produktseite im Labor (Einstieg, Szene, Beispiel) | `produktseite`; Zahlen und Termine nie dort hineinschreiben, die kommen aus den übrigen Daten. `kernbegriffe` nur mit Kennungen aus `glossar.eintraege` |
+| `pruefe:film` meldet, dass der Film im Labor veraltet ist | nicht selbst rendern; im Bericht erwähnen. Neu gerendert wird von Hand mit `npm run baue:film`, Film, Standbild und `film/stand.json` gehen in einen eigenen Commit |
 | Register freitags neu bewertet | `risiken[]` nach dem Register: Stufe, Eintritt, Auswirkung, `gegenmassnahme` mit Paket und Termin; `risikoplan.schritte[]` nur ändern, wenn sich ein Zeitraum ändert. Nie die Risiken zur Sicherheit |
 | Risiko im Plan: eingetreten oder in einem anderen aufgegangen | `risiken[].eingetreten`; beim aufgegangenen `aufgegangenIn`, beim aufnehmenden `auch`. Nie löschen, nie die Risiken zur Sicherheit |
 | Eine Arbeit, die nicht mehr nötig ist | `inhalt[].entfaellt` mit dem Datum, sie zählt nicht mehr mit; entfernt wird sie nicht |
