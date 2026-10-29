@@ -4,18 +4,28 @@ import { istIntern } from '@/lib/freigabe'
 
 /** Abschnitt mit Monospace-Index in der Rinne. Gibt null zurück, wenn der
  *  Abschnitt in dieser Fassung nicht gezeigt wird, damit die Seite ihn nicht
- *  einzeln abfragen muss. */
+ *  einzeln abfragen muss. Ohne Rahmen bleibt nur der Inhalt, so wie das Labor
+ *  ihn als Einzelheiten aufklappt. */
 export function Sektion({
   id,
   klasse,
+  rahmen = true,
   children,
 }: {
   id: string
   klasse?: string
+  rahmen?: boolean
   children: ReactNode
 }) {
   const a = lpAbschnitt(id)
   if (!a) return null
+  if (!rahmen) {
+    return (
+      <section id={id} className="lp-einzelheit">
+        <div className="lp-inhalt">{children}</div>
+      </section>
+    )
+  }
   const nurIntern = a.freigabe === 'intern' && istIntern
 
   return (
