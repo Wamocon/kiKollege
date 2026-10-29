@@ -44,6 +44,22 @@ const EINZELHEITEN: Record<string, { landing: string[]; stand: string[] }> = {
   fortschritt: { landing: ['stand', 'plan'], stand: ['stufen', 'fahrplan', 'plan'] },
   glossar: { landing: ['begriffe'], stand: ['begriffe'] },
 }
+/** Was in den Einzelheiten doppelt stünde, weil Landing Page und /stand/ dasselbe
+ *  Thema je auf ihre Art zeigten. Es bleibt die Fassung, die dort steht, wo das
+ *  Thema hingehört; pruefe:labor sichert, dass dabei nichts ganz wegfällt. */
+const DOPPELT = [
+  // Meilensteine: Stand, Ziel, Termine, Risikoplan und Quelle stehen im Plan von /stand/
+  'plan-status', 'plan-ziel', 'plan-termine', 'plan-risikoplan', 'plan-quelle', 'plan-abnahme',
+  // Prüfpunkte beim Maßstab, nicht bei der Arbeitsweise
+  'durchlauf-pruefpunkte',
+  // Warum ein Programm die Grenze hält, steht als Hinweis bei Fritz
+  'mannschaft-grenze',
+  // Diese Grafiken und Absätze zeigt schon der Abschnitt der Landing Page
+  'schichten-stapel', 'gedaechtnis-wissensablagen', 'gedaechtnis-training-satz', 'gedaechtnis-ablagefigur',
+  'gedaechtnis-ablagegraph', 'fritz-durchlauf', 'fritz-steuerung', 'gegenstand-enabler', 'luecke-geltung',
+  'uebertragbarkeit-auswahlregel', 'uebertragbarkeit-organigramm', 'plattform-landschaft',
+]
+
 const ARCHIV = [
   { id: 'chronik', label: 'Chronik' },
   { id: 'entscheidungen', label: 'Entscheidungen mit Datum' },
@@ -62,8 +78,8 @@ function Einzelheiten({ id, titel }: { id: string; titel: string }) {
         <span className="lb-einzelheiten-zeichen" aria-hidden="true" />
       </summary>
       <div className="lb-einzelheiten-inhalt">
-        {e.landing.length ? <LandingAbschnitte nur={e.landing} rahmen={false} /> : null}
-        {e.stand.length ? <StandAbschnitte nur={e.stand} rahmen={false} /> : null}
+        {e.landing.length ? <LandingAbschnitte nur={e.landing} rahmen={false} ohne={DOPPELT} /> : null}
+        {e.stand.length ? <StandAbschnitte nur={e.stand} rahmen={false} ohne={DOPPELT} /> : null}
       </div>
     </details>
   )

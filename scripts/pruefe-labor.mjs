@@ -60,10 +60,32 @@ export function stuecke(html) {
   return s
 }
 
+/** Überschriften von Blöcken, die das Labor weglässt, weil ihr Inhalt dort
+ *  schon an anderer Stelle steht (Auslassliste DOPPELT in app/labor/page.tsx).
+ *  Nur Überschriften, nie Inhalt. */
+export const OHNE_UEBERSCHRIFT = [
+  'Warum ein Programm',
+  'So gehen wir die Risiken an.',
+  'Wer ihn anstößt, und was er abgibt',
+  'Auswahlregel',
+]
+
 /** Was in alt steht und in neu fehlt. */
-export function fehlende(alt, neu) {
+export function fehlende(alt, neu, ausnahmen = OHNE_UEBERSCHRIFT) {
   const vorhanden = stuecke(neu)
-  return [...stuecke(alt)].filter((t) => !vorhanden.has(t))
+  return [...stuecke(alt)].filter((t) => !vorhanden.has(t) && !ausnahmen.includes(t))
+}
+
+/** Grafiken, die mehr als einmal auf der Seite stehen, erkannt an ihrer
+ *  Beschriftung für Screenreader. Seit dem 29.10. soll jede Grafik im Labor
+ *  genau einmal vorkommen. */
+export function doppelteGrafiken(html) {
+  const zahl = new Map()
+  for (const m of html.matchAll(/<[^>]*\brole="img"[^>]*>/g)) {
+    const label = m[0].match(/aria-label="([^"]+)"/)?.[1]
+    if (label) zahl.set(label, (zahl.get(label) ?? 0) + 1)
+  }
+  return [...zahl].filter(([, n]) => n > 1).map(([label]) => label)
 }
 
 export async function pruefen({ ausgabe, log = console.log }) {
@@ -82,10 +104,17 @@ export async function pruefen({ ausgabe, log = console.log }) {
   } else {
     log('Nichts verloren.')
   }
-  return fehlt
+  const doppelt = doppelteGrafiken(labor)
+  if (doppelt.length) {
+    log(`Im Labor stehen ${doppelt.length} Grafiken mehrfach:`)
+    for (const t of doppelt) log(`  - ${t.slice(0, 140)}`)
+  } else {
+    log('Jede Grafik steht einmal.')
+  }
+  return [...fehlt, ...doppelt]
 }
 
 if (import.meta.url === pathToFileURL(process.argv[1] ?? '').href) {
-  const fehlt = await pruefen({ ausgabe: 'out' })
-  process.exit(fehlt.length ? 1 : 0)
+  const probleme = await pruefen({ ausgabe: 'out' })
+  process.exit(probleme.length ? 1 : 0)
 }

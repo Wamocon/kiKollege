@@ -23,7 +23,7 @@ const zeigen = (id: string) => sichtbar(abschnitt(id))
 
 /** Die Abschnitte des ausführlichen Stands. /stand/ zeigt alle mit Kopfzeile;
  *  das Labor zeigt einzelne als Einzelheiten, ohne Kopfzeile und mit eigener Kennung. */
-export function StandAbschnitte({ nur, rahmen = true }: { nur?: string[]; rahmen?: boolean } = {}) {
+export function StandAbschnitte({ nur, rahmen = true, ohne }: { nur?: string[]; rahmen?: boolean; ohne?: string[] } = {}) {
   const d = daten
   const mechanisch = d.prueflaeufe.laeufe.filter((l) => l.art === 'mechanisch')
   const urteilend = d.prueflaeufe.laeufe.filter((l) => l.art === 'urteilend')
@@ -40,6 +40,8 @@ export function StandAbschnitte({ nur, rahmen = true }: { nur?: string[]; rahmen
   const rollenMitGrenze = rollen.filter((k) => k.betrieb === 'mitGrenze').length
 
   const zeige = (id: string) => !nur || nur.includes(id)
+  // Teile, die das Labor weglässt, weil sie in seinen Einzelheiten schon an anderer Stelle stehen
+  const teil = (k: string) => !ohne?.includes(k)
 
   return (
     <>
@@ -147,7 +149,7 @@ export function StandAbschnitte({ nur, rahmen = true }: { nur?: string[]; rahmen
               Die beiden mit „trägt“ markierten Schichten sind die, an denen der Rest hängt.
             </p>
 
-            <Schichtenstapel />
+            {teil('schichten-stapel') ? <Schichtenstapel /> : null}
 
             <Hinweis art="wichtig" wort="Schwerpunkt">
               <p>
@@ -181,7 +183,7 @@ export function StandAbschnitte({ nur, rahmen = true }: { nur?: string[]; rahmen
               </p>
             </div>
 
-            <Wissensablagen />
+            {teil('gedaechtnis-wissensablagen') ? <Wissensablagen /> : null}
 
             <div className="raster">
               <div className="karte">
@@ -240,9 +242,11 @@ export function StandAbschnitte({ nur, rahmen = true }: { nur?: string[]; rahmen
                   Das Trainingskonzept vom {datum(d.training.stand)}
                 </h3>
                 <div className="prosa">
-                  <p>
-                    {d.training.satz} {d.training.hinweis}
-                  </p>
+                  {teil('gedaechtnis-training-satz') ? (
+                    <p>
+                      {d.training.satz} {d.training.hinweis}
+                    </p>
+                  ) : null}
                   <p>{d.training.messlatte.satz}</p>
                 </div>
                 <div className="tabellenrahmen">
@@ -281,9 +285,9 @@ export function StandAbschnitte({ nur, rahmen = true }: { nur?: string[]; rahmen
             {sichtbar(d.ablage) ? (
               <>
                 <h3 style={{ marginTop: '1.8rem' }}>Die Ablage am {datum(d.ablage.gezaehltAm)}</h3>
-                <AblageFigur />
+                {teil('gedaechtnis-ablagefigur') ? <AblageFigur /> : null}
                 <AblageTabelle />
-                <AblageGraphFigur />
+                {teil('gedaechtnis-ablagegraph') ? <AblageGraphFigur /> : null}
                 <AblageGraphListe />
               </>
             ) : null}
@@ -334,7 +338,7 @@ export function StandAbschnitte({ nur, rahmen = true }: { nur?: string[]; rahmen
               {inWorten(d.auftrag.ablauf.length)} Schritte: {d.auftrag.ablauf.join('; ')}.
             </p>
 
-            <Durchlauf />
+            {teil('fritz-durchlauf') ? <Durchlauf /> : null}
 
             <Hinweis wort="Grenze" titel={d.auftrag.anweisungImDokument.satz}>
               <p>
@@ -355,8 +359,12 @@ export function StandAbschnitte({ nur, rahmen = true }: { nur?: string[]; rahmen
               ))}
             </div>
 
-            <h3 style={{ marginTop: '1.8rem' }}>Wer ihn anstößt, und was er abgibt</h3>
-            <Steuerung />
+            {teil('fritz-steuerung') ? (
+              <>
+                <h3 style={{ marginTop: '1.8rem' }}>Wer ihn anstößt, und was er abgibt</h3>
+                <Steuerung />
+              </>
+            ) : null}
           </section>
             </>
           ) : null}
@@ -447,9 +455,11 @@ export function StandAbschnitte({ nur, rahmen = true }: { nur?: string[]; rahmen
               </p>
             </div>
 
-            <div className="schmale-figur">
-              <EnablerRaster />
-            </div>
+            {teil('gegenstand-enabler') ? (
+              <div className="schmale-figur">
+                <EnablerRaster />
+              </div>
+            ) : null}
 
             <Hinweis
               wort="Rechtsstand"
@@ -625,7 +635,7 @@ export function StandAbschnitte({ nur, rahmen = true }: { nur?: string[]; rahmen
                   {zahl(b.gesehen)} davon einzeln angesehen. Fehlalarme darunter:{' '}
                   {zahl(b.fehlalarme)}. Das ist ein gutes Zeichen und noch keine Abnahme:
                 </p>
-                {b.geltung ? <p style={{ marginTop: '0.5rem' }}>{b.geltung}</p> : null}
+                {b.geltung && teil('luecke-geltung') ? <p style={{ marginTop: '0.5rem' }}>{b.geltung}</p> : null}
                 <ul className="liste">
                   <li>
                     {b.gruppen} Einzeln angesehen wurden {zahl(b.gesehen)} von {zahl(b.bewertet)}.
@@ -719,12 +729,14 @@ export function StandAbschnitte({ nur, rahmen = true }: { nur?: string[]; rahmen
               <p>{d.uebertragbarkeit.uebergabe}</p>
             </div>
 
-            <Hinweis wort="Auswahlregel">
-              <p>{d.uebertragbarkeit.auswahlregel}</p>
-            </Hinweis>
+            {teil('uebertragbarkeit-auswahlregel') ? (
+              <Hinweis wort="Auswahlregel">
+                <p>{d.uebertragbarkeit.auswahlregel}</p>
+              </Hinweis>
+            ) : null}
 
             <h3 style={{ marginTop: '1.8rem' }}>Die Mannschaft am {datum(d.mannschaft.gezaehltAm)}</h3>
-            <MannschaftFigur />
+            {teil('uebertragbarkeit-organigramm') ? <MannschaftFigur /> : null}
             <div className="tabellenrahmen" style={{ marginTop: '1.3rem' }}>
               <table>
                 <thead>
@@ -892,7 +904,7 @@ export function StandAbschnitte({ nur, rahmen = true }: { nur?: string[]; rahmen
                 <p>{d.plattform.ablageregel}</p>
               </div>
 
-              {sichtbar(d.landschaft) ? <LandschaftFigur /> : null}
+              {sichtbar(d.landschaft) && teil('plattform-landschaft') ? <LandschaftFigur /> : null}
 
               <h3 style={{ marginTop: '1.8rem' }}>
                 Fünf Schritte bis zum {datum(d.plattform.termin)}

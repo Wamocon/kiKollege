@@ -36,6 +36,12 @@ Labor freigibt.
   Bewegung und ohne JavaScript ist alles sofort lesbar.
 - **Neue Prüfung:** `pruefe:labor` vergleicht den Text der Landing Page und von
   `/stand/` ohne Archiv mit dem Labor und meldet, was fehlt.
+- **Ohne Doppelungen (29.10. nachmittags):** Startseite und `/stand/` zeigten
+  manche Themen beide; im Labor stünden sie zweimal. `ohne` in
+  `LandingAbschnitte` und `StandAbschnitte` lässt benannte Teile weg, die Liste
+  `DOPPELT` steht in `app/labor/page.tsx`. Ohne `ohne` bleiben beide Seiten
+  unverändert. `pruefe:labor` meldet jetzt auch jede Grafik, die im Labor
+  mehrfach steht; weggelassene Überschriften stehen dort in `OHNE_UEBERSCHRIFT`.
 - **Offen bis zur Freigabe:** Übernahme als Startseite, `/stand/` als Archiv,
   Weiterleitung alter Anker, Abbau der zweiten Fassung.
 
