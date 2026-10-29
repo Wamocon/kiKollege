@@ -674,6 +674,56 @@ export default function Landing() {
                 </>
               ) : null}
 
+              {d.training.laeufe ? (
+                <>
+                  <p className="lp-klein lp-luft-oben">
+                    {d.training.laeufe.titel}, Stand {datum(d.training.laeufe.stand)}
+                  </p>
+                  <div className="lp-text lp-luft-oben-klein">
+                    <p>{d.training.laeufe.satz}</p>
+                  </div>
+                  <div className="lp-gegen-rahmen">
+                    <table className="lp-gegen lp-stapel">
+                      <thead>
+                        <tr>
+                          <th>Lauf</th>
+                          <th>Was sich geändert hat</th>
+                          <th>Erfüllt</th>
+                          <th>Wackelig</th>
+                          <th>Nie</th>
+                          <th>Gelernt danach</th>
+                          <th>Erfüllt je Bereich</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {d.training.laeufe.zeilen.map((z) => (
+                          <tr key={z.wann}>
+                            <td data-kopf="Lauf">{z.wann}</td>
+                            <td data-kopf="Was sich geändert hat">{z.was}</td>
+                            <td data-kopf="Erfüllt">{zahl(z.erfuellt)}</td>
+                            <td data-kopf="Wackelig">{zahl(z.wackelig)}</td>
+                            <td data-kopf="Nie">{zahl(z.nie)}</td>
+                            <td data-kopf="Gelernt danach">{zahl(z.gelernt)}</td>
+                            <td data-kopf="Erfüllt je Bereich" className="leise">
+                              {(d.training.laeufe?.bereiche ?? [])
+                                .map((b, i) => `${b.name} ${z.bereiche[i]} von ${b.faelle}`)
+                                .join(' · ')}
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                  <div className="lp-text lp-luft-oben-klein">
+                    <p className="stark">{d.training.laeufe.standSatz}</p>
+                    <p>
+                      {d.training.laeufe.ehrlich} {d.training.laeufe.weiter}
+                    </p>
+                    <p className="lp-klein">Quelle: {d.training.laeufe.quelle}</p>
+                  </div>
+                </>
+              ) : null}
+
               <p className="lp-klein lp-luft-oben">Der feste Takt</p>
               <TaktFigur />
               <div className="lp-gegen-rahmen">

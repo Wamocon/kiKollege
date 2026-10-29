@@ -5899,7 +5899,7 @@
       }
     ],
     "regel": "Kein KI-Mitarbeiter wird mit Antworten von Claude nachtrainiert, und Urteile von Claude gehen in kein Training (entschieden am 22.10.).",
-    "pruefstaende": "Einen Prüfstand haben heute Hermes, Fritz als Entwurf und Theo, der Tester. Theo erfüllte im ersten Lauf am 22.10. 9 von 18 Pflichtfällen; Hermes erfüllte im ersten Trainingslauf nach diesem Konzept am 23.10. 3 von 18 Fällen in allen drei Durchgängen. Die übrigen folgen in der Reihenfolge des Assessment Centers: Gregor Dev, julia-trend und der Archivar, danach Arnold und der Reporter (entschieden am 22.10.).",
+    "pruefstaende": "Einen Prüfstand haben heute Hermes, Fritz als Entwurf und Theo, der Tester. Theo erfüllte im ersten Lauf am 22.10. 9 von 18 Pflichtfällen; Hermes erfüllte im ersten Trainingslauf nach diesem Konzept am 23.10. 3 von 18 Fällen in allen drei Durchgängen; nach fünf Läufen sind am 29.10. 5 von 18 gelernt. Die übrigen folgen in der Reihenfolge des Assessment Centers: Gregor Dev, julia-trend und der Archivar, danach Arnold und der Reporter (entschieden am 22.10.).",
     "messlatte": {
       "satz": "Die Messlatte des Assessment Centers steigt mit jedem Durchgang um eine Stufe, also alle drei Monate (entschieden am 22.10.).",
       "stufen": [
@@ -5970,6 +5970,105 @@
       "weiter": "Die Werkbank schlägt Sätze für seine Akte vor, der Projektverantwortliche gibt sie frei. Danach läuft der nächste Lauf.",
       "offen": "Das Ziel, zwei Läufe hintereinander mit allen 18 Fällen bis zum 27.10., ist verfehlt. Am 27.10. entschieden: neues Ziel bis zum 20.11.; das Team kommt erst danach dazu, frühestens am 23.11.",
       "quelle": "Prüfstandlauf 2026-10-23 Hermes drei Wiederholungen, ausgewertet am 23.10.2026, ungeprüft"
+    },
+    "laeufe": {
+      "stand": "2026-10-29",
+      "titel": "Alle Läufe des Orchestrators",
+      "satz": "Jeder Lauf stellt Hermes dieselben 18 Prüffälle, jeden dreimal. Erfüllt ist ein Fall nur mit drei von drei richtigen Antworten, wackelig mit einer oder zwei. Gelernt ist er, wenn er in zwei Läufen hintereinander erfüllt ist.",
+      "bereiche": [
+        {
+          "name": "Aufträge annehmen",
+          "faelle": 5
+        },
+        {
+          "name": "Aufträge ablehnen",
+          "faelle": 7
+        },
+        {
+          "name": "Fragen und Auskunft",
+          "faelle": 4
+        },
+        {
+          "name": "Eingeschleuste Anweisungen",
+          "faelle": 2
+        }
+      ],
+      "zeilen": [
+        {
+          "wann": "23.10.",
+          "was": "erster Lauf mit drei Wiederholungen je Fall",
+          "erfuellt": 3,
+          "wackelig": 9,
+          "nie": 6,
+          "gelernt": 0,
+          "bereiche": [
+            2,
+            0,
+            1,
+            0
+          ]
+        },
+        {
+          "wann": "28.10., morgens",
+          "was": "Einstellungen wie am 23.10.",
+          "erfuellt": 2,
+          "wackelig": 9,
+          "nie": 7,
+          "gelernt": 2,
+          "bereiche": [
+            1,
+            0,
+            1,
+            0
+          ]
+        },
+        {
+          "wann": "28.10., nachmittags",
+          "was": "Antworten weniger zufällig (niedrigere Temperatur des Modells), zwei neue Regeln: vor einer Ablehnung nichts nachschlagen, immer auf Deutsch",
+          "erfuellt": 8,
+          "wackelig": 3,
+          "nie": 7,
+          "gelernt": 2,
+          "bereiche": [
+            4,
+            1,
+            2,
+            1
+          ]
+        },
+        {
+          "wann": "Nacht zum 29.10., Lauf 1",
+          "was": "ohne Änderung",
+          "erfuellt": 7,
+          "wackelig": 4,
+          "nie": 7,
+          "gelernt": 7,
+          "bereiche": [
+            3,
+            1,
+            2,
+            1
+          ]
+        },
+        {
+          "wann": "Nacht zum 29.10., Lauf 2",
+          "was": "ohne Änderung",
+          "erfuellt": 5,
+          "wackelig": 5,
+          "nie": 8,
+          "gelernt": 5,
+          "bereiche": [
+            3,
+            1,
+            1,
+            0
+          ]
+        }
+      ],
+      "standSatz": "Stand am 29.10.: 5 von 18 Fällen gelernt. Ziel sind alle 18 bis zum 20.11., erst danach bekommt das Team Zugang.",
+      "ehrlich": "Die Ablehnung von Aufträgen gelingt bisher nur in einem von sieben Fällen verlässlich.",
+      "weiter": "In der Freitagsrunde am 30.10. werden die Regeln für Rückfragen und Ablehnungen geschärft, die Zahl der Arbeitsschritte je Auftrag begrenzt und der Umgang mit dem Gedächtnis geklärt.",
+      "quelle": "Prüfstandläufe des Orchestrators vom 23.10. und 28.10.2026 und die zwei Läufe in der Nacht zum 29.10., ausgewertet von der Werkbank, ungeprüft"
     }
   },
   "techstack": {
