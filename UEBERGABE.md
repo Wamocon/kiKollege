@@ -6,6 +6,39 @@ verloren gehen darf.
 
 Stand dieser Übergabe: 27.10.2026.
 
+## Nachtrag 29.10.2026: Labor „kiKollege als Produktseite“
+
+Auf Wunsch des Projektverantwortlichen vom 29.10. (Befragung in fünf Runden):
+ein komplett neues Konzept der Landing Page, zuerst als Labor unter `/labor/`,
+nicht verlinkt und ohne Suchindex. Die heutige Landing Page bleibt, bis er das
+Labor freigibt.
+
+- **Konzept:** kiKollege als Produkt, für alle Mitarbeiter, eine Fassung ohne
+  Trennung in intern und extern, durchgehend „du“. Sieben Szenen: Was es ist (mit
+  Stand-Leiste), Funktionen, Anwenden, Verlässlich, Aufbau, Fortschritt, Begriffe;
+  danach das Archiv. Unter jeder Szene klappen die Einzelheiten am Ort auf.
+- **Einzelheiten:** Das sind die Abschnitte der heutigen Landing Page und von
+  `/stand/`, unverändert. Dafür stehen sie jetzt in
+  `components/landing/LandingAbschnitte.tsx` und
+  `components/stand/StandAbschnitte.tsx`; `nur` wählt Abschnitte aus,
+  `rahmen={false}` lässt Nummer und Kopfzeile weg. Die beiden Seiten liefern
+  damit Zeichen für Zeichen dasselbe HTML wie vorher.
+- **Archiv:** Chronik, Entscheidungen, offene Punkte, Beobachtungen und Quellen
+  bleiben auf `/stand/`.
+- **Texte:** neuer Schlüssel `produktseite` (Einstieg, Szenen, Kernbegriffe, ein
+  nachgestellter Auftrag aus den Prüfaufträgen an Fritz vom 19.10. ohne
+  Auftragsnummer und Ablageort).
+- **Gestaltung:** nach dem Skill premium-frontend-ui, kinoartig, hell mit dunklen
+  Bühnen, nur CI-Farben, Inter als variable Schrift (`@fontsource-variable/inter`).
+  Bewegung mit GSAP und Lenis in `components/labor/Bewegung.tsx`: Vorhang unter
+  einer Sekunde, geglättetes Scrollen, Einblendungen, Zähler, Parallaxe,
+  waagerechte Galerie, Mauszeiger und magnetische Knöpfe. Bei reduzierter
+  Bewegung und ohne JavaScript ist alles sofort lesbar.
+- **Neue Prüfung:** `pruefe:labor` vergleicht den Text der Landing Page und von
+  `/stand/` ohne Archiv mit dem Labor und meldet, was fehlt.
+- **Offen bis zur Freigabe:** Übernahme als Startseite, `/stand/` als Archiv,
+  Weiterleitung alter Anker, Abbau der zweiten Fassung.
+
 ## Nachtrag 28.10.2026: Risikoplan bis 23.11.
 
 Der Projektverantwortliche hat am 27.10. das Risikoregister als Grundlage
