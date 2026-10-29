@@ -416,9 +416,32 @@ html.lenis, html.lenis body { height: auto; }
 @media (max-width: 760px) { .lb-zahlen { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 .lb-paar { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(1.5rem, 4vw, 3.5rem); align-items: stretch; }
 @media (max-width: 860px) { .lb-paar { grid-template-columns: minmax(0, 1fr); } }
-.lb-zitat { margin: 0; padding: 0.4rem 0 0 1.6rem; border-left: 3px solid var(--lb-rot); }
-.lb-zitat p { margin: 0; font-size: clamp(1.35rem, 2.3vw, 2rem); font-weight: 400; line-height: 1.35; letter-spacing: -0.02em; }
-.lb-zitat footer { margin-top: 1rem; font-family: var(--schrift-mono); font-size: 0.74rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--lb-leise); }
+.lb-grade h3, .lb-befund h3, .lb-drei h3 { margin: 0 0 1rem; font-size: 1.25rem; font-weight: 740; letter-spacing: -0.02em; }
+.lb-grade dl { margin: 0; display: grid; gap: 0; }
+.lb-grade dl div { display: grid; grid-template-columns: 7rem minmax(0, 1fr); gap: 1rem; padding: 0.9rem 0; border-top: 1px solid var(--lb-linie); }
+.lb-grade dt { font-weight: 700; color: var(--lb-rot-tief); }
+.lb-grade dd { margin: 0; line-height: 1.5; color: var(--lb-leise); }
+
+/* Drei Fragen unter der Anleitung */
+.lb-drei { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.4rem; margin-top: clamp(2.5rem, 6vh, 4rem); }
+.lb-drei > div { padding: 1.4rem 1.4rem 1.5rem; border-radius: var(--lb-rund); background: var(--lb-flaeche); border: 1px solid var(--lb-linie); }
+.lb-drei p { margin: 0; font-size: 0.97rem; line-height: 1.6; color: var(--lb-leise); }
+@media (max-width: 860px) { .lb-drei { grid-template-columns: minmax(0, 1fr); } }
+
+/* Was heute schon geht, gleich unter dem Einstieg */
+.lb-heute {
+  margin: 1.1rem 0 0;
+  padding: 0.7rem 1rem;
+  max-width: 58ch;
+  border-left: 3px solid var(--lb-rot);
+  background: rgba(244, 14, 14, 0.1);
+  border-radius: 0 10px 10px 0;
+  font-size: 0.98rem;
+  line-height: 1.5;
+}
+.lb-galerie .lb-heute-hell { margin: -1.2rem 0 2.6rem; background: var(--lb-flaeche); }
+.lb-karte-auftrag { font-size: 0.86rem !important; line-height: 1.45 !important; color: var(--lb-rot-tief); }
+.lb-mittel { font-size: clamp(1.1rem, 1.5vw, 1.35rem); font-weight: 680; line-height: 1.25; letter-spacing: -0.015em; }
 .lb-befund {
   margin: 0;
   padding: 1.7rem 1.7rem 1.4rem;

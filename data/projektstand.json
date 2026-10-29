@@ -6401,7 +6401,7 @@
         "id": "funktionen",
         "label": "Funktionen",
         "titel": "Was kiKollege kann.",
-        "text": "Jede Funktion ist ein KI-Mitarbeiter mit eigener Akte. Das Abzeichen zeigt, wie weit er ist: verfügbar, im Training oder geplant."
+        "text": "Jede Funktion ist ein KI-Mitarbeiter mit eigener Akte. Das Abzeichen zeigt, wie weit er ist: verfügbar heißt, er läuft und ist geprüft; im Training heißt, er lernt noch; geplant heißt, er ist beschrieben, aber nicht gebaut."
       },
       {
         "id": "anwenden",
@@ -6442,7 +6442,11 @@
       "orchestrator",
       "pruefstand",
       "befund",
-      "fehlalarmquote"
+      "fundstelle",
+      "fehlalarmquote",
+      "meilenstein",
+      "ki-rechner",
+      "werkbank"
     ],
     "beispielAuftrag": {
       "quelle": "Beispiel, nachgestellt aus den Prüfaufträgen an Fritz vom 19.10.2026; Auftragsnummer und Ablageort sind ersetzt.",
@@ -6470,7 +6474,7 @@
         {
           "von": "Hermes",
           "schritt": 2,
-          "text": "Fertig. Der Prüfbericht liegt bei den Prüfberichten. Verfasser: Fritz, Auftrag A-xxxx."
+          "text": "Fertig. Fritz meldet, wo die Befunde liegen; jeder nennt Fundstelle, Kriterium und Schweregrad. Verfasser: Fritz, Auftrag A-xxxx."
         }
       ]
     },

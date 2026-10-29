@@ -106,6 +106,19 @@ function abzeichen(k: (typeof d.mannschaft.koepfe)[number]): { text: string; art
   return { text: 'verfügbar', art: 'bereit' }
 }
 
+/** Wer einer Funktion heute Aufträge geben kann, aus der Tabelle der Anleitung.
+ *  Verfügbar heißt nicht, dass jeder schon beauftragen darf; das steht hier. */
+function auftraege(k: (typeof d.mannschaft.koepfe)[number]): string | null {
+  if (k.id === 'orchestrator') return 'nimmt alle Aufträge an und gibt sie weiter'
+  const z = d.anleitung.zeilen.find((z) => (k.name && z.wer.startsWith(k.name)) || z.wer.includes(k.kurz))
+  if (!z) return null
+  if ('nur' in z.ab) return z.ab.nur
+  if ('nachPlan' in z.ab) return 'nach dem Ende des Plans'
+  const m = plan.meilensteine.find((ms) => ms.id === (z.ab as { meilenstein: string }).meilenstein)
+  if (!m || !sichtbar(plan)) return 'später'
+  return m.terminOffen ? `mit Meilenstein ${m.id.slice(1)}, Termin offen` : `für alle ab Meilenstein ${m.id.slice(1)}, ${terminText(m, false)}`
+}
+
 export default function Labor() {
   const koepfe = nurSichtbare(d.mannschaft.koepfe).filter((k) => !k.passtNicht)
   const laeufe = sichtbar(d.training) ? d.training.laeufe : undefined
@@ -114,8 +127,12 @@ export default function Labor() {
   const planSichtbar = sichtbar(plan)
   const naechster = plan.meilensteine.find((m) => !m.abgenommen)
   const risiko = plan.risiken.find((r) => !r.aufgegangenIn)
+  // Ab wann das Team beauftragt, und bis wann der Orchestrator gelernt haben soll
+  const teamMs = plan.meilensteine.find((m) => m.id === d.anleitung.teamAb)
+  const zielFrist = plan.fristen.find((f) => f.kritisch && f.text.startsWith('Der Orchestrator beherrscht'))?.frist
+  const teamHeute = plan.heute.find((h) => h.wer === 'Team')
+  const fritzPruefen = d.anleitung.zeilen[0]
   const b = d.bewertungen
-  const grenze = d.anatomie.teile.find((t) => t.id === 'auftrag')
   const begriffe = p.kernbegriffe
     .map((id) => d.glossar.eintraege.find((e) => e.id === id))
     .filter((e): e is NonNullable<typeof e> => e != null)
@@ -174,9 +191,15 @@ export default function Labor() {
             <p className="lb-lead lb-start-lead" data-lb-reveal>
               {p.lead}
             </p>
+            {planSichtbar && teamMs && !teamMs.terminOffen ? (
+              <p className="lb-heute" data-lb-reveal>
+                Beauftragen kannst du ab Meilenstein {teamMs.id.slice(1)}, {terminText(teamMs, false)}. Bis dahin lernt
+                der Orchestrator.
+              </p>
+            ) : null}
             <div className="lb-knoepfe" data-lb-reveal>
               <a className="lb-knopf voll" href="#anwenden" data-lb-magnet>
-                So nutzt du ihn
+                So gibst du einen Auftrag
               </a>
               <a className="lb-knopf" href="#fortschritt" data-lb-magnet>
                 Wo es steht
@@ -191,7 +214,7 @@ export default function Labor() {
                   <dd>
                     <span className="lb-gross">{naechster.id}</span>
                     <span className="lb-klein">
-                      {terminText(naechster, false)}: {naechster.titel}
+                      Meilenstein {naechster.id.slice(1)}, {terminText(naechster, false)}: {naechster.titel}
                     </span>
                   </dd>
                 </div>
@@ -204,7 +227,10 @@ export default function Labor() {
                       <span data-lb-zahl={letzterLauf.gelernt}>{letzterLauf.gelernt}</span>
                       <span className="lb-von"> von {faelle}</span>
                     </span>
-                    <span className="lb-klein">Fällen gelernt, Ziel alle {faelle} bis 20.11.</span>
+                    <span className="lb-klein">
+                      Prüffällen gelernt, die er sicher beherrschen muss, bevor das Team dazukommt
+                      {planSichtbar && zielFrist ? `; Ziel bis ${kurz(zielFrist)}` : ''}
+                    </span>
                   </dd>
                 </div>
               ) : null}
@@ -212,10 +238,10 @@ export default function Labor() {
                 <div className="lb-standzelle">
                   <dt>Größtes Risiko</dt>
                   <dd>
-                    <span className="lb-gross">{risiko.nr}</span>
+                    <span className="lb-mittel">{risiko.titel}</span>
                     <span className="lb-klein">
-                      {risiko.titel}; Stufe {risiko.stufe}
-                      {risiko.eingetreten ? ', eingetreten' : ''}
+                      {risiko.nr} im Risikoregister, Stufe {risiko.stufe}
+                      {risiko.eingetreten ? ', schon eingetreten' : ''}
                     </span>
                   </dd>
                 </div>
@@ -237,11 +263,17 @@ export default function Labor() {
         <section id="funktionen" className="lb-szene lb-galerie">
           <div className="lb-rahmen">
             <SzenenKopf id="funktionen" nr="02" />
+            {planSichtbar && teamHeute ? (
+              <p className="lb-heute lb-heute-hell" data-lb-reveal>
+                {teamHeute.stand}
+              </p>
+            ) : null}
           </div>
           <div className="lb-galerie-fenster">
             <ol className="lb-galerie-spur">
               {koepfe.map((k) => {
                 const a = abzeichen(k)
+                const wer = auftraege(k)
                 return (
                   <li className="lb-karte" key={k.id}>
                     <p className={`lb-abzeichen ${a.art}`}>{a.text}</p>
@@ -249,7 +281,11 @@ export default function Labor() {
                       {k.kurz}
                       <span>{k.name ?? 'noch ohne Namen'}</span>
                     </h3>
-                    <p className="lb-karte-kern">{k.kern}</p>
+                    {wer ? (
+                      <p className="lb-karte-auftrag">
+                        <b>Aufträge:</b> {wer}
+                      </p>
+                    ) : null}
                     <p>{k.tut}</p>
                     <p className="lb-karte-nie">
                       <b>Nie:</b> {k.tutNie}
@@ -298,6 +334,22 @@ export default function Labor() {
                 <figcaption>{p.beispielAuftrag.quelle}</figcaption>
               </figure>
             </div>
+            <div className="lb-drei" data-lb-staffel>
+              <div>
+                <h3>Was du angeben musst</h3>
+                <p>
+                  Wenn Fritz prüfen soll: {fritzPruefen.angaben}. Fehlt eine Angabe, fragt der Orchestrator nach.
+                </p>
+              </div>
+              <div>
+                <h3>Was zurückkommt</h3>
+                <p>{d.anleitung.bericht}</p>
+              </div>
+              <div>
+                <h3>Wenn ein Befund falsch ist</h3>
+                <p>{d.anleitung.fehlalarm}</p>
+              </div>
+            </div>
             <p className="lb-hinweis" data-lb-reveal>
               {d.anleitung.wer}
             </p>
@@ -308,33 +360,39 @@ export default function Labor() {
         <Szene id="verlass" nr="04">
           <dl className="lb-zahlen" data-lb-staffel>
             <div>
-              <dt>Prüfpunkte in der Checkliste</dt>
+              <dt>Punkte auf der Checkliste, nach denen Fritz jede Unterlage prüft</dt>
               <dd data-lb-zahl={d.pruefpunkte.gesamt}>{d.pruefpunkte.gesamt}</dd>
             </div>
             <div>
-              <dt>Kriterien einer guten Unterlage</dt>
+              <dt>Kriterien einer guten Unterlage, aufgeschrieben im Maßstab</dt>
               <dd data-lb-zahl={d.massstab.kriterien.gesamt}>{d.massstab.kriterien.gesamt}</dd>
             </div>
             <div>
-              <dt>Schweregrade je Befund</dt>
+              <dt>Schweregrade, in die jeder Befund eingestuft ist</dt>
               <dd data-lb-zahl={d.massstab.schweregrade.length}>{d.massstab.schweregrade.length}</dd>
             </div>
             {letzterLauf ? (
               <div>
-                <dt>Prüffälle für den Orchestrator</dt>
+                <dt>Prüffälle, die der Orchestrator sicher beherrschen muss</dt>
                 <dd data-lb-zahl={faelle}>{faelle}</dd>
               </div>
             ) : null}
           </dl>
           <div className="lb-paar">
-            {grenze ? (
-              <blockquote className="lb-zitat" data-lb-reveal>
-                <p>{grenze.text}</p>
-                <footer>{grenze.titel}</footer>
-              </blockquote>
-            ) : null}
+            <div className="lb-grade" data-lb-reveal>
+              <h3>Die {d.massstab.schweregrade.length} Schweregrade</h3>
+              <dl>
+                {d.massstab.schweregrade.map((s) => (
+                  <div key={s.stufe}>
+                    <dt>{s.stufe}</dt>
+                    <dd>{s.bedeutung}</dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
             {sichtbar(d.beispielbefund) ? (
               <figure className="lb-befund" data-lb-reveal>
+                <h3>So sieht ein Befund aus</h3>
                 <p className="lb-befund-stufe">{d.beispielbefund.stufe}</p>
                 <p className="lb-befund-text">{d.beispielbefund.text}</p>
                 <p className="lb-befund-ort">{d.beispielbefund.fundstelle}</p>
@@ -344,7 +402,7 @@ export default function Labor() {
           </div>
           {sichtbar(b) ? (
             <p className="lb-hinweis" data-lb-reveal>
-              Wie oft ein Befund ein Fehlalarm ist, gilt als belastbar {belastbarBei(b)}.
+              Wie oft ein Befund falsch ist, die Fehlalarmquote, ist bisher {belastbarBei(b)} belastbar gemessen.
             </p>
           ) : null}
         </Szene>
