@@ -70,6 +70,8 @@ Requests sind sofort sichtbar, auch vor dem Merge.
   Schlüssel, Benutzer, Pfade, Einzelheiten der technischen Grenze, Profilnamen,
   fremde Kennungen wie Ticketnummern, Auftragsnummern, Zweignamen und Befehle.
   Produktnamen sind seit dem 23.10. erlaubt.
+- Die KI-Mitarbeiter stehen mit ihren Namen auf der Seite, Menschen aus dem Team
+  nicht. Im Fuß steht der Geschäftsführer als Pflichtangabe.
 - Der Name des Projektverantwortlichen steht in keiner gebauten Seite,
   `pruefe:ausgabe` schlägt sonst an. Auf der Seite heißt er „der
   Projektverantwortliche“.
