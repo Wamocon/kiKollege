@@ -1,12 +1,15 @@
 # kiKollege
 
-Zwei Seiten zum Vorhaben KI-Mitarbeiter der WAMOCON GmbH, gespeist aus derselben
-Datenquelle.
+Seiten zum Vorhaben KI-Mitarbeiter der WAMOCON GmbH, gespeist aus derselben
+Datenquelle. Wer die Seite pflegt, liest zuerst `PFLEGE.md`: was heute gilt und
+worauf man beim Ändern achtet.
 
 | Route | Was sie ist |
 |---|---|
 | `/` | Landing Page für alle Leser, in vier Kapiteln: verstehen, damit arbeiten, wie es gebaut ist, wo es steht. Elf Abschnitte und die Begriffe. |
 | `/stand/` | Dichte Standseite mit Ankernavigation, allen Tabellen, Prüfläufen, Stufen und dem Meilensteinplan im Einzelnen, dazu die Zeichnungen der Landing Page im jeweils passenden Abschnitt. |
+| `/mannschaft/` | Steckbriefe der KI-Mitarbeiter mit Aufgaben, Zielen und Werkzeugen. |
+| `/labor/` | Produktseite, Entwurf zur Freigabe seit dem 29.10.2026, nicht verlinkt. Szenen mit Bewegung, darunter die Einzelheiten aus `/` und `/stand/`, dazu der Film „kiKollege in 30 Sekunden“. Siehe `PFLEGE.md`. |
 | `/impressum/`, `/datenschutz/` | Entwürfe, rechtlich nicht geprüft. Siehe „Impressum und Datenschutz“. |
 
 Bis zum 17.09.2026 hatte die Landing Page neunzehn Abschnitte und rund 9.500
