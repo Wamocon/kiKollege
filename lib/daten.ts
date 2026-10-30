@@ -151,6 +151,9 @@ export interface OffenerPunkt extends MitFreigabe {
   grund: string | null
   /** Gesetzt, sobald der Punkt entschieden ist. Der Punkt bleibt stehen. */
   erledigt?: { am: string; text: string }
+  /** Nur die Geschäftsführung kann ihn entscheiden oder anstoßen; die
+   *  Management Summary im Labor zeigt ihn, solange er offen ist. */
+  geschaeftsfuehrung?: boolean
 }
 
 export interface Beobachtung extends MitFreigabe {
@@ -697,6 +700,15 @@ export interface GlossarEintrag {
 
 export interface Projektstand {
   stand: string
+  /** Das Gesamturteil der Management Summary. Setzt nur der
+   *  Projektverantwortliche, von Hand; kein Pflegelauf ändert es. */
+  ampel: MitFreigabe & {
+    farbe: 'gruen' | 'gelb' | 'rot'
+    satz: string
+    am: string
+    von: string
+    quelle: string
+  }
   herkunft: {
     arbeitsordner: string
     /** Vom Export gesetzt: der Ordner mit den Laufnotizen, relativ zum Arbeitsordner. */
@@ -877,6 +889,14 @@ export interface Projektstand {
     lead: string
     /** umbenanntVon: die frühere Kennung, seit Fortschritt im Überblick aufging */
     szenen: { id: string; umbenanntVon?: string; label: string; titel: string; text: string }[]
+    /** Texte des Kastens Management Summary unter dem Einstieg */
+    management: {
+      titel: string
+      lead: string
+      ampelHinweis: string
+      entscheidungenSatz: string
+      kostenSatz: string
+    }
     /** Kopf über den hohen Risiken in der Szene Überblick */
     herausforderungen: { titel: string; text: string }
     /** Kopf über dem Film, den scripts/baue-film.mjs aus diesen Daten rendert */

@@ -7,9 +7,10 @@ import './labor.css'
 import { Fussleiste } from '@/components/landing/Fussleiste'
 import { LandingAbschnitte } from '@/components/landing/LandingAbschnitte'
 import { StandAbschnitte } from '@/components/stand/StandAbschnitte'
+import { AmpelAlter } from '@/components/labor/AmpelAlter'
 import { Bewegung } from '@/components/labor/Bewegung'
 import { abschnitt } from '@/lib/abschnitte'
-import { belastbarBei, daten, datum, terminText } from '@/lib/daten'
+import { belastbarBei, daten, datum, dauer, terminText } from '@/lib/daten'
 import { nurSichtbare, sichtbar } from '@/lib/freigabe'
 import { pfad } from '@/lib/pfad'
 import film from '@/film/stand.json'
@@ -138,6 +139,12 @@ function auftraege(k: (typeof d.mannschaft.koepfe)[number]): string | null {
 
 /** Ein Satz aus den Daten, der ohne Punkt endet, bekommt einen. */
 const satz = (t: string) => (/[.!?“]$/.test(t.trim()) ? t : `${t}.`)
+/** Der erste Satz eines Textes, für die Management Summary */
+const ersterSatz = (t: string) => satz(t.split(/(?<=[.!?])\s+(?=[A-ZÄÖÜ„])/)[0])
+
+const AMPEL = { gruen: 'Grün', gelb: 'Gelb', rot: 'Rot' } as const
+/** Nach so vielen Tagen steht an der Ampel „nicht aktuell“ */
+const AMPEL_FRIST = 14
 
 const MONATE = ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember']
 const tage = (von: string, bis: string) => Math.round((Date.parse(bis) - Date.parse(von)) / 86_400_000)
@@ -200,7 +207,11 @@ export default function Labor() {
   const begriffe = p.kernbegriffe
     .map((id) => d.glossar.eintraege.find((e) => e.id === id))
     .filter((e): e is NonNullable<typeof e> => e != null)
-  const nav = [{ id: 'start', label: 'Was es ist' }, ...p.szenen.map((s) => ({ id: s.id, label: s.label }))]
+  const nav = [
+    { id: 'start', label: 'Was es ist' },
+    { id: 'management', label: 'Management' },
+    ...p.szenen.map((s) => ({ id: s.id, label: s.label })),
+  ]
   // Überblick: Zeitstrahl, Fortschritt in Zahlen und die hohen Risiken
   const zs = zeitstrahl(d.stand, zielFrist ? { frist: zielFrist, text: 'Ziel des Prüfstands' } : undefined)
   const abgenommen = plan.meilensteine.filter((m) => m.abgenommen).length
@@ -209,6 +220,10 @@ export default function Labor() {
   const eingetreten = hohe.filter((r) => r.eingetreten)
   const weitere = hohe.filter((r) => !r.eingetreten)
   const filmMb = (film.bytes / 1_000_000).toLocaleString('de-DE', { maximumFractionDigits: 1 })
+  // Management Summary: Ampel von Hand, offene Punkte für die Geschäftsführung
+  const ampel = sichtbar(d.ampel) ? d.ampel : undefined
+  const fuerGf = nurSichtbare(d.offenePunkte).filter((o) => o.geschaeftsfuehrung && !o.erledigt)
+  const zeitGesamt = plan.meilensteine.reduce((s, m) => s + m.erwinMinuten, 0)
 
   return (
     <div className="lb">
@@ -276,6 +291,9 @@ export default function Labor() {
               <a className="lb-knopf" href="#ueberblick" data-lb-magnet>
                 Wo es steht
               </a>
+              <a className="lb-knopf" href="#management" data-lb-magnet>
+                {p.management.titel}
+              </a>
             </div>
             </div>
 
@@ -328,6 +346,138 @@ export default function Labor() {
             </dl>
             </div>
             <Einzelheiten id="start" titel="Was ein KI-Mitarbeiter ist" />
+          </div>
+        </section>
+
+        {/* Management Summary ------------------------------------------------- */}
+        <section id="management" className="lb-management" aria-labelledby="management-titel">
+          <div className="lb-rahmen">
+            <div className="lb-mgmt" data-lb-reveal>
+              <header className="lb-mgmt-kopf">
+                <div>
+                  <p className="lb-marke">Für die Geschäftsführung</p>
+                  <h2 id="management-titel" className="lb-mgmt-titel">
+                    {p.management.titel}
+                  </h2>
+                  <p className="lb-mgmt-lead">{p.management.lead}</p>
+                </div>
+                {ampel ? (
+                  <div className={`lb-ampel ${ampel.farbe}`}>
+                    <p className="lb-ampel-farbe">
+                      <span className="lb-ampel-licht" aria-hidden="true" />
+                      Ampel: {AMPEL[ampel.farbe]}
+                      <AmpelAlter am={ampel.am} fristTage={AMPEL_FRIST} />
+                    </p>
+                    <p className="lb-ampel-satz">{ampel.satz}</p>
+                    <p className="lb-ampel-wer">
+                      {ampel.von}, {datum(ampel.am)}. {p.management.ampelHinweis}
+                    </p>
+                  </div>
+                ) : null}
+              </header>
+
+              <div className="lb-mgmt-raster">
+                {planSichtbar ? (
+                  <div className="lb-mgmt-feld">
+                    <h3>Status</h3>
+                    <p>{plan.satz}</p>
+                    <ol className="lb-mgmt-ms">
+                      {zs.meilensteine.map(({ m, art, wann }) => (
+                        <li key={m.id} className={art}>
+                          <b>{m.id}</b>
+                          <span className="lb-mgmt-wann">{wann}</span>
+                          <span>{m.titel}</span>
+                        </li>
+                      ))}
+                    </ol>
+                    <dl className="lb-mgmt-zahlen">
+                      <div>
+                        <dt>Meilensteine abgenommen</dt>
+                        <dd>
+                          {abgenommen} von {plan.meilensteine.length}
+                        </dd>
+                      </div>
+                      {letzterLauf ? (
+                        <div>
+                          <dt>Prüffälle gelernt{zielFrist ? `, alle bis ${kurz(zielFrist)}` : ''}</dt>
+                          <dd>
+                            {letzterLauf.gelernt} von {faelle}
+                          </dd>
+                        </div>
+                      ) : null}
+                      {phase ? (
+                        <div>
+                          <dt>Phase des Risikoplans</dt>
+                          <dd>
+                            {phase.nr} von {zs.phasen.length}, {phase.s.name}
+                          </dd>
+                        </div>
+                      ) : null}
+                      <div>
+                        <dt>Stand der Daten</dt>
+                        <dd>{datum(d.stand)}</dd>
+                      </div>
+                    </dl>
+                  </div>
+                ) : null}
+
+                {planSichtbar && hohe.length ? (
+                  <div className="lb-mgmt-feld">
+                    <h3>Hohe Risiken</h3>
+                    <ul className="lb-mgmt-liste" data-lb-staffel>
+                      {[...eingetreten, ...weitere].map((r) => (
+                        <li key={r.nr}>
+                          <b>
+                            {r.titel}
+                            {r.eingetreten ? <span className="lb-mgmt-marke">eingetreten</span> : null}
+                          </b>
+                          <span>Dagegen: {ersterSatz(r.gegenmassnahme)}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    <a className="lb-mgmt-mehr" href="#herausforderungen">
+                      Alle Risiken mit Gegenmaßnahme und Risikoplan
+                    </a>
+                  </div>
+                ) : null}
+
+                {fuerGf.length ? (
+                  <div className="lb-mgmt-feld">
+                    <h3>Was du entscheiden musst</h3>
+                    <p className="lb-mgmt-vorsatz">{p.management.entscheidungenSatz}</p>
+                    <ul className="lb-mgmt-liste" data-lb-staffel>
+                      {fuerGf.map((o) => (
+                        <li key={o.nr}>
+                          <b>{satz(o.punkt)}</b>
+                          {o.grund ? <span>{o.grund}</span> : null}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ) : null}
+
+                <div className="lb-mgmt-feld">
+                  <h3>Nutzen und Aufwand</h3>
+                  {sichtbar(d.ertrag) ? (
+                    <ul className="lb-mgmt-liste">
+                      {d.ertrag.punkte.map((pt) => (
+                        <li key={pt.titel}>
+                          <b>{pt.titel}</b>
+                          <span>{pt.text}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  ) : null}
+                  {planSichtbar ? (
+                    <p className="lb-mgmt-aufwand">
+                      Zeit des Projektverantwortlichen für alle {plan.meilensteine.length} Meilensteine laut Plan:
+                      zusammen {dauer(zeitGesamt)}. {plan.zeitSatz}
+                    </p>
+                  ) : null}
+                  <p className="lb-mgmt-klein">{p.management.kostenSatz}</p>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
