@@ -21,9 +21,9 @@ Geschäftsführung, als Kasten im Labor direkt unter dem Einstieg, mit „du“.
 - **Ampel:** neuer Schlüssel `ampel`, gesetzt vom Projektverantwortlichen, zum
   Start gelb. `components/labor/AmpelAlter.tsx` zeigt im Browser „nicht
   aktuell“, wenn sie älter als vierzehn Tage ist.
-- **Entscheidungsbedarf:** neues Feld `offenePunkte[].geschaeftsfuehrung`. Die
-  erste Auswahl (Punkte 3, 13, 14 und 15) ist ein Vorschlag der Werkbank, den der
-  Projektverantwortliche bestätigt.
+- **Entscheidungsbedarf:** neues Feld `offenePunkte[].geschaeftsfuehrung`. Markiert
+  ist Punkt 3, den Kriterienkatalog gewichten; so hat der Projektverantwortliche
+  es am 30.10. aus vier Vorschlägen (3, 13, 14, 15) ausgewählt.
 - Texte unter `produktseite.management`. Regeln in `PFLEGE.md` und in der
   Tabelle des Standwächters.
 

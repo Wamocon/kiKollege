@@ -1506,22 +1506,19 @@
       "nr": 13,
       "punkt": "Die vertragliche Lage der Academy-Unterlagen klären",
       "grund": "Folge der Entscheidung vom 09.09.",
-      "freigabe": "intern",
-      "geschaeftsfuehrung": true
+      "freigabe": "intern"
     },
     {
       "nr": 14,
       "punkt": "Drei bis fünf vergangene Entscheidungen sammeln, an denen sich die Haltung des Hauses zeigt",
       "grund": "Eine Philosophie, die nur an der Wand hängt, lässt sich nicht anwenden; sie zeigt sich in Abwägungen, nicht in einer Werteliste.",
-      "freigabe": "oeffentlich",
-      "geschaeftsfuehrung": true
+      "freigabe": "oeffentlich"
     },
     {
       "nr": 15,
       "punkt": "Den Zeitbedarf des heutigen Reviews erheben, solange er noch erhebbar ist",
       "grund": null,
-      "freigabe": "oeffentlich",
-      "geschaeftsfuehrung": true
+      "freigabe": "oeffentlich"
     },
     {
       "nr": 16,
