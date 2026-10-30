@@ -4,7 +4,39 @@ Diese Datei ist für die nächste Sitzung geschrieben, nicht für die Nachwelt. 
 sagt, wo das Vorhaben steht, was als Erstes zu tun ist und was dabei nicht
 verloren gehen darf.
 
-Stand dieser Übergabe: 27.10.2026.
+Stand dieser Übergabe: 30.10.2026.
+
+Was heute gilt, steht zusammengefasst in `PFLEGE.md`: die Seiten, die Fassungen,
+die Prüfungen, was nicht auf die Seite darf, Bewegung, Film und wer was tut. Diese
+Datei bleibt die Chronik.
+
+## Nachtrag 30.10.2026, später: Management Summary im Labor
+
+Auf Wunsch des Projektverantwortlichen vom 30.10.: eine Sicht für die
+Geschäftsführung, als Kasten im Labor direkt unter dem Einstieg, mit „du“.
+
+- **Inhalt:** Ampel, Status mit Meilensteinen und Fortschritt, die hohen Risiken
+  mit dem ersten Satz ihrer Gegenmaßnahme, was die Geschäftsführung entscheiden
+  muss, Nutzen und Aufwand. Kosten in Euro sind nicht erfasst.
+- **Ampel:** neuer Schlüssel `ampel`, gesetzt vom Projektverantwortlichen, zum
+  Start gelb. `components/labor/AmpelAlter.tsx` zeigt im Browser „nicht
+  aktuell“, wenn sie älter als vierzehn Tage ist.
+- **Entscheidungsbedarf:** neues Feld `offenePunkte[].geschaeftsfuehrung`. Markiert
+  ist Punkt 3, den Kriterienkatalog gewichten; so hat der Projektverantwortliche
+  es am 30.10. aus vier Vorschlägen (3, 13, 14, 15) ausgewählt.
+- Texte unter `produktseite.management`. Regeln in `PFLEGE.md` und in der
+  Tabelle des Standwächters.
+
+## Nachtrag 30.10.2026: Handbuch zur Pflege, Film erst im Chat
+
+- **`PFLEGE.md`**, neu: die Erkenntnisse aus dem Bau des Labors, zusammengefasst
+  für alle, die die Seite pflegen. Gregor Dev liest sie bei jedem Start; seine Akte
+  in der Ablage nennt sie dafür.
+- **Film erst im Chat** (Projektverantwortlicher, 30.10.): Ein neuer oder neu
+  gerenderter Film geht zuerst als Datei an ihn in den Chat. Eingebaut und
+  committet wird er erst nach seinem Okay. Beim Film vom 29.10. war das noch
+  anders; er kam gleich mit dem Pull Request.
+- PR #35 ist gemergt, Labor und Film stehen auf Pages.
 
 ## Nachtrag 29.10.2026: Labor „kiKollege als Produktseite“
 
@@ -542,6 +574,10 @@ Laufnotizen unter `D:\WAMOCON\KFBM`. Einzelheiten in der README, Abschnitt
 siehe oben.
 
 ## Die Lage
+
+*Die folgenden Abschnitte beschreiben den Anfang am 17.09.2026 und sind in Teilen
+überholt: Pages baut seit dem 17.09. die Fassung `alles`, die Abschnitte stehen
+in `components/`, und es gibt das Labor. Was heute gilt, steht in `PFLEGE.md`.*
 
 Das Repository `Wamocon/kiKollege` auf GitHub war bis zu dieser Übergabe **leer**:
 kein Commit, kein Zweig. Die gesamte Arbeit entstand in einer Sitzung ohne
