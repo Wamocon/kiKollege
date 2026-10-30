@@ -14,7 +14,7 @@ Stand: 30.10.2026.
 | `/` | Startseite, Abschnitte nach Kapiteln | `components/landing/LandingAbschnitte.tsx`, Reihenfolge in `lib/lpAbschnitte.ts` |
 | `/stand/` | dichte Zweitseite: Plan, Risiken, Stufen, Messung und das Archiv mit Chronik, Entscheidungen, offenen Punkten, Beobachtungen und Quellen | `components/stand/StandAbschnitte.tsx` |
 | `/mannschaft/` | Steckbriefe der KI-Mitarbeiter | `app/mannschaft/page.tsx` |
-| `/labor/` | Produktseite, Entwurf zur Freigabe. Szenen vom Einstieg bis zu den Begriffen, unter jeder Szene die Einzelheiten aus `/` und `/stand/`. Nicht verlinkt, für Suchmaschinen gesperrt. | `app/labor/`, `components/labor/Bewegung.tsx` |
+| `/labor/` | Produktseite, Entwurf zur Freigabe. Unter dem Einstieg der Kasten Management Summary, dann Szenen bis zu den Begriffen, unter jeder Szene die Einzelheiten aus `/` und `/stand/`. Nicht verlinkt, für Suchmaschinen gesperrt. | `app/labor/`, `components/labor/` |
 | `/labor/kikollege-30s.mp4` | Film „kiKollege in 30 Sekunden“, stumm | `film/`, `scripts/film-*.mjs`, `scripts/baue-film.mjs` |
 | `/impressum/`, `/datenschutz/` | Entwürfe, rechtlich nicht geprüft | `app/impressum/`, `app/datenschutz/` |
 
@@ -59,6 +59,23 @@ umleiten, die öffentliche Fassung abbauen.
 - **Nur das Labor geändert?** Dann liefern `/` und `/stand/` danach dasselbe HTML
   wie vorher. Keine Prüfung sieht das von selbst: vor und nach der Änderung bauen
   und `out/index.html` und `out/stand/index.html` vergleichen.
+
+## Management Summary
+
+Ein Kasten im Labor direkt unter dem Einstieg, für die Geschäftsführung, in der
+Anrede „du“ wie der Rest des Labors. Er zeigt Ampel, Status, hohe Risiken, was die
+Geschäftsführung entscheiden muss, Nutzen und Aufwand. Bis auf die Ampel und die
+Auswahl der offenen Punkte kommt alles aus Daten, die schon da sind.
+
+- **Die Ampel** (`ampel`) setzt nur der Projektverantwortliche, von Hand: Farbe
+  (`gruen`, `gelb`, `rot`), ein Satz Begründung, Datum. Sie ist ein Urteil,
+  keine Rechnung. Gregor Dev und der Standwächter ändern sie nie, auch nicht ihr
+  Datum. Ist sie älter als vierzehn Tage, steht im Browser des Lesers „nicht
+  aktuell“ daneben.
+- **Was die Geschäftsführung entscheiden muss**, sind die offenen Punkte mit
+  `geschaeftsfuehrung: true`. Ein erledigter Punkt fällt von selbst heraus. Wer
+  einen Punkt neu markiert, fragt vorher den Projektverantwortlichen.
+- Kosten in Euro sind nicht erfasst; der Kasten sagt das.
 
 ## Was nicht auf die Seite darf
 
