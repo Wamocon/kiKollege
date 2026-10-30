@@ -1,5 +1,13 @@
 {
   "stand": "2026-10-27",
+  "ampel": {
+    "farbe": "gelb",
+    "satz": "Meilenstein 1 ist am 16.10. abgenommen. Meilenstein 2 ist vom 30.10. auf frühestens 23.11. verschoben, weil der Orchestrator erst alle 18 Prüffälle sicher beherrschen muss; gelernt hat er bisher 5. Drei von sieben hohen Risiken sind eingetreten, gegen jedes läuft eine Maßnahme. Die Termine von Meilenstein 3 und 4 sind offen.",
+    "am": "2026-10-30",
+    "von": "Projektverantwortlicher",
+    "quelle": "Entscheidung des Projektverantwortlichen vom 30.10.2026",
+    "freigabe": "intern"
+  },
   "herkunft": {
     "arbeitsordner": "D:\\WAMOCON",
     "einstieg": "KI-Mitarbeiter/75_KI-Mitarbeiter/KI-Mitarbeiter — Einstieg.md",
@@ -1413,7 +1421,8 @@
       "nr": 3,
       "punkt": "Den Kriterienkatalog gewichten",
       "grund": "Das kann nur WAMOCON, und es wird nicht geraten.",
-      "freigabe": "oeffentlich"
+      "freigabe": "oeffentlich",
+      "geschaeftsfuehrung": true
     },
     {
       "nr": 4,
@@ -1497,19 +1506,22 @@
       "nr": 13,
       "punkt": "Die vertragliche Lage der Academy-Unterlagen klären",
       "grund": "Folge der Entscheidung vom 09.09.",
-      "freigabe": "intern"
+      "freigabe": "intern",
+      "geschaeftsfuehrung": true
     },
     {
       "nr": 14,
       "punkt": "Drei bis fünf vergangene Entscheidungen sammeln, an denen sich die Haltung des Hauses zeigt",
       "grund": "Eine Philosophie, die nur an der Wand hängt, lässt sich nicht anwenden; sie zeigt sich in Abwägungen, nicht in einer Werteliste.",
-      "freigabe": "oeffentlich"
+      "freigabe": "oeffentlich",
+      "geschaeftsfuehrung": true
     },
     {
       "nr": 15,
       "punkt": "Den Zeitbedarf des heutigen Reviews erheben, solange er noch erhebbar ist",
       "grund": null,
-      "freigabe": "oeffentlich"
+      "freigabe": "oeffentlich",
+      "geschaeftsfuehrung": true
     },
     {
       "nr": 16,
@@ -6435,6 +6447,13 @@
         "text": "Die Wörter, die auf dieser Seite immer wieder vorkommen. Alle anderen stehen in den Einzelheiten."
       }
     ],
+    "management": {
+      "titel": "Management Summary",
+      "lead": "Das Wichtigste für die Geschäftsführung: wo kiKollege steht, welche Risiken es gibt, was du entscheiden musst und was es bringt.",
+      "ampelHinweis": "Die Ampel setzt der Projektverantwortliche von Hand. Sie ist ein Urteil, keine Rechnung.",
+      "entscheidungenSatz": "Diese offenen Punkte kann nur die Geschäftsführung entscheiden oder anstoßen.",
+      "kostenSatz": "Kosten in Euro sind nicht erfasst."
+    },
     "herausforderungen": {
       "titel": "Die großen Herausforderungen",
       "text": "Die Risiken der Stufe hoch aus dem Risikoregister, die schon eingetretenen zuerst. Zu jedem steht, was dagegen getan wird."

@@ -10,6 +10,23 @@ Was heute gilt, steht zusammengefasst in `PFLEGE.md`: die Seiten, die Fassungen,
 die Prüfungen, was nicht auf die Seite darf, Bewegung, Film und wer was tut. Diese
 Datei bleibt die Chronik.
 
+## Nachtrag 30.10.2026, später: Management Summary im Labor
+
+Auf Wunsch des Projektverantwortlichen vom 30.10.: eine Sicht für die
+Geschäftsführung, als Kasten im Labor direkt unter dem Einstieg, mit „du“.
+
+- **Inhalt:** Ampel, Status mit Meilensteinen und Fortschritt, die hohen Risiken
+  mit dem ersten Satz ihrer Gegenmaßnahme, was die Geschäftsführung entscheiden
+  muss, Nutzen und Aufwand. Kosten in Euro sind nicht erfasst.
+- **Ampel:** neuer Schlüssel `ampel`, gesetzt vom Projektverantwortlichen, zum
+  Start gelb. `components/labor/AmpelAlter.tsx` zeigt im Browser „nicht
+  aktuell“, wenn sie älter als vierzehn Tage ist.
+- **Entscheidungsbedarf:** neues Feld `offenePunkte[].geschaeftsfuehrung`. Die
+  erste Auswahl (Punkte 3, 13, 14 und 15) ist ein Vorschlag der Werkbank, den der
+  Projektverantwortliche bestätigt.
+- Texte unter `produktseite.management`. Regeln in `PFLEGE.md` und in der
+  Tabelle des Standwächters.
+
 ## Nachtrag 30.10.2026: Handbuch zur Pflege, Film erst im Chat
 
 - **`PFLEGE.md`**, neu: die Erkenntnisse aus dem Bau des Labors, zusammengefasst
