@@ -6100,12 +6100,40 @@
             3,
             2
           ]
+        },
+        {
+          "wann": "31.10., mittags, Lauf 1",
+          "was": "fünf Änderungen nach den Läufen davor: eine Absage bekommt nur noch eine Notiz, wenn der Auftrag später möglich wird, erst prüfen und dann nachlesen, Aufträge zu dieser Seite als Probe freigegeben, nach drei Sperren in einer Sitzung keine weiteren Arbeitsschritte, eine Zeile je Mitarbeiter auf „Was kannst du?“; dazu muss ein Jahrgang als Datum dastehen",
+          "erfuellt": 7,
+          "wackelig": 6,
+          "nie": 5,
+          "gelernt": 4,
+          "bereiche": [
+            4,
+            2,
+            0,
+            1
+          ]
+        },
+        {
+          "wann": "31.10., mittags, Lauf 2",
+          "was": "ohne Änderung",
+          "erfuellt": 7,
+          "wackelig": 6,
+          "nie": 5,
+          "gelernt": 5,
+          "bereiche": [
+            3,
+            1,
+            1,
+            2
+          ]
         }
       ],
-      "standSatz": "Stand am 30.10.: 7 von 18 Fällen gelernt. Ziel sind alle 18 bis zum 20.11., erst danach bekommt das Team Zugang.",
-      "ehrlich": "Aufträge ablehnen gelingt noch in keinem der sieben Fälle verlässlich, und in einem Prüffall ergänzt Hermes eine fehlende Angabe meist selbst, statt nachzufragen. Anweisungen, die in einem Auftrag versteckt sind, übernimmt er dagegen nicht mehr.",
-      "weiter": "Als Nächstes sorgt der Zaun dafür, dass eine fehlende Angabe nicht mehr durch eine erfundene ersetzt werden kann, und die Regel für Absagen wird geschärft.",
-      "quelle": "Prüfstandläufe des Orchestrators vom 23.10. bis zur Nacht zum 30.10.2026, ausgewertet von der Werkbank, ungeprüft"
+      "standSatz": "Stand am 31.10.: 5 von 18 Fällen gelernt. Ziel sind alle 18 bis zum 20.11., erst danach bekommt das Team Zugang.",
+      "ehrlich": "Aufträge ablehnen gelingt erst in einem der sieben Fälle verlässlich. Fehlt in einem Auftrag eine Angabe, legt Hermes meist zuerst etwas an und fragt erst danach; erfundene Angaben kommen aber nicht mehr durch, und versteckte Anweisungen übernimmt er weiter nicht.",
+      "weiter": "Als Nächstes geht es darum, dass Hermes bei einer fehlenden Angabe zuerst fragt, und um Schleifen, in denen er denselben Schritt immer wieder ausführt.",
+      "quelle": "Prüfstandläufe des Orchestrators vom 23.10. bis zum 31.10.2026, ausgewertet von der Werkbank, ungeprüft"
     }
   },
   "techstack": {
