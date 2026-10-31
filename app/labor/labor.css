@@ -1025,3 +1025,28 @@ html:not(.js) .lb-vorhang { display: none; }
 @media (max-width: 520px) {
   .lb-mgmt-zahlen { grid-template-columns: minmax(0, 1fr); }
 }
+
+/* Figuren der KI-Kollegen -------------------------------------------------------
+   Über jeder Karte die Zeichnung bei der Arbeit, oben und unten etwas
+   beschnitten. Im Chat der Kopf des Orchestrators. Die Zeichnungen stehen in
+   components/figuren/kollegen. */
+.lb-karte-bild {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 16 / 10;
+  margin: -0.6rem -0.5rem 0.1rem;
+  overflow: hidden;
+  border-radius: calc(var(--lb-rund) - 8px);
+}
+.lb-karte-bild .k-bild { flex: none; }
+/* Die angeheftete Galerie muss ganz auf den Schirm passen: Das Bild wird mit
+   der Fensterhöhe kleiner und fällt auf niedrigen Schirmen weg. */
+@media (min-width: 900px) {
+  .lb-karte-bild { aspect-ratio: auto; height: clamp(120px, calc(100svh - 600px), 210px); }
+  .lb-karte-bild .k-bild { width: auto; height: 120%; }
+}
+@media (min-width: 900px) and (max-height: 719px) {
+  .lb-karte-bild { display: none; }
+}
+.lb-chat-bild { flex: none; align-self: center; width: 34px; }

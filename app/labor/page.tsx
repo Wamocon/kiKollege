@@ -7,6 +7,7 @@ import './labor.css'
 import { Fussleiste } from '@/components/landing/Fussleiste'
 import { LandingAbschnitte } from '@/components/landing/LandingAbschnitte'
 import { StandAbschnitte } from '@/components/stand/StandAbschnitte'
+import { FIGUREN } from '@/components/figuren/kollegen'
 import { AmpelAlter } from '@/components/labor/AmpelAlter'
 import { Bewegung } from '@/components/labor/Bewegung'
 import { abschnitt } from '@/lib/abschnitte'
@@ -32,6 +33,8 @@ const p = d.produktseite
 const plan = d.meilensteinplanAktuell
 const kurz = (iso: string) => datum(iso).slice(0, 6)
 const szene = (id: string) => p.szenen.find((s) => s.id === id)!
+/** Der Kopf des Orchestrators steht im Chat der Szene Anwenden */
+const HermesKopf = FIGUREN.orchestrator.kopf
 
 /** Welche Abschnitte der heutigen Seiten unter welcher Szene aufklappen */
 const EINZELHEITEN: Record<string, { landing: string[]; stand: string[] }> = {
@@ -736,8 +739,14 @@ export default function Labor() {
               {koepfe.map((k) => {
                 const a = abzeichen(k)
                 const wer = auftraege(k)
+                const figur = FIGUREN[k.id]
                 return (
                   <li className="lb-karte" key={k.id}>
+                    {figur ? (
+                      <div className="lb-karte-bild">
+                        <figur.linie />
+                      </div>
+                    ) : null}
                     <p className={`lb-abzeichen ${a.art}`}>{a.text}</p>
                     <h3>
                       {k.kurz}
@@ -782,6 +791,9 @@ export default function Labor() {
               </ol>
               <figure className="lb-chat" data-lb-reveal>
                 <div className="lb-chat-kopf">
+                  <span className="lb-chat-bild">
+                    <HermesKopf />
+                  </span>
                   <b>Hermes</b>
                   <span>Orchestrator</span>
                 </div>
