@@ -10,6 +10,13 @@ Was heute gilt, steht zusammengefasst in `PFLEGE.md`: die Seiten, die Fassungen,
 die Prüfungen, was nicht auf die Seite darf, Bewegung, Film und wer was tut. Diese
 Datei bleibt die Chronik.
 
+## Nachtrag 02.11.2026, später: Film der Mannschaft
+
+Auf Wunsch des Projektverantwortlichen vom 02.11.: „bau ein Video, in dem die
+KI-Mitarbeiter sich vorstellen und aufzeigen was sie können.“ Gewählt hat er die
+Geschichte „Ein Tag mit der Mannschaft“, erst ohne Ton, und den Platz im Labor unter
+der Galerie. Regeln in `PFLEGE.md`, Drehbuch und Prüfung in `film/vorstellung/`.
+
 ## Nachtrag 02.11.2026: Stand nachgezogen, was schon entstanden ist
 
 Auf Wunsch des Projektverantwortlichen vom 02.11.: die Seite aktualisieren und

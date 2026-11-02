@@ -194,6 +194,23 @@ Scrollen.
 - In der öffentlichen Fassung fehlt der Film, weil er den intern freigegebenen
   Plan zeigt.
 
+## Der Film der Mannschaft
+
+- „Ein Tag mit der Mannschaft“: 79 Sekunden, stumm, gebaut wie der erste Film.
+  Die KI-Mitarbeiter, die schon arbeiten, stellen sich in Ich-Form vor, zeigen ein
+  Beispiel und sagen, was sie nie tun. Er steht im Labor unter der Galerie.
+- **Sätze** stehen in `produktseite.vorstellung`. Paketzahl und Trainingsstand kommen
+  aus `entstanden` und `training.laeufe`, die Zeichnungen aus dem Code der Figuren.
+- **Die Uhr** ist nur bei Arnold, Gregor Dev und julia-trend eine echte Zeit. Bei den
+  anderen zeigt sie, dass der Tag vergeht; ihr Text nennt den wahren Anlass.
+- **Er veraltet schnell**, denn jede neue Paketzahl von WMC Inventar und jeder neue
+  Trainingsstand ändert ihn. `pruefe:film` meldet das als Hinweis. Neu gerendert wird
+  mit `npm run baue:vorstellung`, nicht bei jedem Paket, sondern wenn es sich lohnt.
+- **Erst zeigen, dann einbauen** gilt auch hier: erst in den Chat, nach dem Okay
+  Film, Standbild und `film/vorstellung/stand.json` committen.
+- Die öffentliche Fassung zeigt ihn nicht, weil julia-trend darin vorkommt; nur ihr
+  Abschnitt ist in den Daten intern. Drehbuch und Prüfung stehen in `film/vorstellung/`.
+
 ## Figuren der KI-Kollegen
 
 Seit dem 31.10.2026 hat jeder KI-Mitarbeiter fünf Zeichnungen. Sie stehen als SVG

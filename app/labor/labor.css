@@ -526,6 +526,7 @@ html.lenis, html.lenis body { height: auto; }
 @media (max-width: 960px) { .lb-ueberblick-kopf.mit-film { grid-template-columns: minmax(0, 1fr); } }
 
 .lb-film { margin: 0; }
+.lb-film-mannschaft { max-width: 980px; margin-top: clamp(1.8rem, 4vw, 3rem); }
 .lb-film-video {
   display: block;
   width: 100%;

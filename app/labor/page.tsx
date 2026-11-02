@@ -12,9 +12,10 @@ import { AmpelAlter } from '@/components/labor/AmpelAlter'
 import { Bewegung } from '@/components/labor/Bewegung'
 import { abschnitt } from '@/lib/abschnitte'
 import { belastbarBei, daten, datum, dauer, terminText } from '@/lib/daten'
-import { nurSichtbare, sichtbar } from '@/lib/freigabe'
+import { nurSichtbare, sichtbar, zeigtInternes } from '@/lib/freigabe'
 import { pfad } from '@/lib/pfad'
 import film from '@/film/stand.json'
+import filmMannschaft from '@/film/vorstellung/stand.json'
 
 /** Labor vom 29.10.2026: kiKollege als Produktseite. Eine Präsentationsebene
  *  in acht Szenen, darunter je Szene die Einzelheiten zum Aufklappen. Die
@@ -794,6 +795,28 @@ export default function Labor() {
               Aufträge gibst du über den Orchestrator.
               {planSichtbar && naechster ? ` Das Team kommt mit ${naechster.id} dazu, ${terminText(naechster, false)}.` : ''}
             </p>
+            {zeigtInternes ? (
+              <figure className="lb-film lb-film-mannschaft" data-lb-reveal>
+                <video
+                  className="lb-film-video"
+                  src={pfad(`/labor/${filmMannschaft.datei}`)}
+                  poster={pfad(`/labor/${filmMannschaft.bild}`)}
+                  width={filmMannschaft.breite}
+                  height={filmMannschaft.hoehe}
+                  muted
+                  playsInline
+                  controls
+                  preload="none"
+                  aria-label={`${p.vorstellung.titel}, Film ohne Ton`}
+                />
+                <figcaption>
+                  <b>{p.vorstellung.titel}</b>, Stand {datum(filmMannschaft.stand)}. {p.vorstellung.text}{' '}
+                  <a href={pfad(`/labor/${filmMannschaft.datei}`)} download>
+                    Film herunterladen (MP4, {(filmMannschaft.bytes / 1_000_000).toLocaleString('de-DE', { maximumFractionDigits: 1 })} MB)
+                  </a>
+                </figcaption>
+              </figure>
+            ) : null}
             <Einzelheiten id="funktionen" titel="Fritz und die ganze Mannschaft" />
           </div>
         </section>

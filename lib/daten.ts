@@ -923,6 +923,8 @@ export interface Projektstand {
     herausforderungen: { titel: string; text: string }
     /** Kopf über dem Film, den scripts/baue-film.mjs aus diesen Daten rendert */
     film: { titel: string; text: string }
+    /** Sätze des Films „Ein Tag mit der Mannschaft“, den scripts/baue-vorstellung.mjs rendert */
+    vorstellung: { titel: string; text: string }
     /** Kennungen aus glossar.eintraege, die die Szene Begriffe zeigt */
     kernbegriffe: string[]
     beispielAuftrag: {
