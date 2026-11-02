@@ -77,6 +77,25 @@ Auswahl der offenen Punkte kommt alles aus Daten, die schon da sind.
   einen Punkt neu markiert, fragt vorher den Projektverantwortlichen.
 - Kosten in Euro sind nicht erfasst; der Kasten sagt das.
 
+## Was schon entstanden ist
+
+Seit dem 02.11.2026 zeigt die Seite, was mit den KI-Mitarbeitern gebaut wurde:
+auf `/` als Abschnitt `entstanden`, im Labor als Szene Ergebnisse mit den Köpfen
+von Gregor Dev und Theo, in der Management Summary als kurze Liste. Alles kommt aus
+`entstanden` in den Daten.
+
+- **Ein Projekt je Eintrag** in `entstanden.projekte`: `art` ist `laeuft`, `bau` oder
+  `pflege`, dazu Status als kurzes Wort, was es ist, wer es gebaut hat, wie weit es
+  ist und was fehlt.
+- **Ehrlich nach Beitrag:** Was die Werkbank übernommen hat, steht bei `wer`, auch
+  wenn es den KI-Mitarbeiter schlechter aussehen lässt.
+- **Zahlen nachziehen:** Status und Stand von WMC Inventar ändern sich mit jedem
+  Paket und jedem Lauf von Theo. Dazu gehören die Chronik und `meilensteinplanAktuell.heute`.
+- **Keine Adressen und keine Nummern:** keine Rechnernamen, keine Ports, keine
+  Jira-Vorgänge und keine Commits, wie überall.
+- **Fertig heißt abgenommen.** „Läuft“ sagt nur, dass es im Einsatz ist. Abgenommen
+  hat es erst der Projektverantwortliche.
+
 ## Was nicht auf die Seite darf
 
 Das Repository ist öffentlich. Commit-Nachrichten, Zweignamen und Texte von Pull
@@ -218,13 +237,17 @@ gemeinsamen Bausteine in `basis.tsx`. `index.ts` ordnet sie den Kennungen in
   merged, auch nicht automatisch. Baut ein Zweig auf einem offenen auf, geht sein
   Pull Request gegen diesen Zweig.
 
-## Offen am 31.10.2026
+## Offen am 02.11.2026
 
-- `stand` zeigt den 27.10., die Prüfstandläufe reichen bis zum 29.10. Beim
-  Nachtrag der Läufe wurde das Datum nicht mitgezogen.
+- Der Film zeigt den Stand vom 27.10. Neu gerendert wird er erst, wenn der
+  Projektverantwortliche ihn im Chat gesehen hat.
+- Die Ampel ist vom 30.10.; ihr Satz nennt noch 5 gelernte Fälle. Sie setzt nur der
+  Projektverantwortliche.
+- Die Prüfstandläufe vom 01.11. und aus den Nächten danach sind noch nicht
+  ausgewertet und stehen deshalb noch nicht in `training.laeufe`.
 - Zahlen, die nicht zueinander passen (Lesetest vom 29.10.): zehn oder elf
-  Themenkomplexe, eine von 10 oder eine von 26 Regeln, der Pflegelauf um 7 oder um
-  9 Uhr.
+  Themenkomplexe, eine von 10 oder eine von 26 Regeln. Der Pflegelauf um 7 und um
+  9 Uhr ist kein Widerspruch: Gregor Dev läuft um 7, die Werkbank prüft um 9.
 - Wen ein neuer Mitarbeiter ansprechen soll, sagt die Seite nicht, weil sie den
   Namen des Projektverantwortlichen nicht nennt.
 - Wie der Film in Teams oder in einer Präsentation wirkt, hat noch niemand

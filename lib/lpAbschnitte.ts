@@ -27,6 +27,7 @@ const alle: readonly LpAbschnitt[] = [
   { id: 'messung', label: 'Verlässlich?', kapitel: 'Verstehen' },
   { id: 'auftrag', label: 'Beauftragen', kapitel: 'Arbeiten' },
   { id: 'mannschaft', label: 'Mannschaft', kapitel: 'Arbeiten' },
+  { id: 'entstanden', label: 'Entstanden', kapitel: 'Arbeiten' },
   { id: 'aufbau', label: 'Aufbau', kapitel: 'Bauen' },
   { id: 'wissen', label: 'Wissen', kapitel: 'Bauen' },
   { id: 'durchlauf', label: 'Arbeitsweise', kapitel: 'Bauen' },

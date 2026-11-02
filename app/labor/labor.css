@@ -1050,3 +1050,54 @@ html:not(.js) .lb-vorhang { display: none; }
   .lb-karte-bild { display: none; }
 }
 .lb-chat-bild { flex: none; align-self: center; width: 34px; }
+
+/* Ergebnisse (02.11.2026) ---------------------------------------------------
+   Was die KI-Mitarbeiter schon gebaut haben. Der Status steht als Wort da, die
+   Farbe sagt dasselbe noch einmal. Jeder Kopf steht nur einmal auf der Seite,
+   siehe „Figuren der KI-Kollegen“ in PFLEGE.md. */
+.lb-entstanden-team {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 2.5rem;
+  margin: clamp(1.5rem, 3vw, 2.4rem) 0 0;
+  padding: 0;
+}
+.lb-entstanden-team li { display: flex; align-items: center; gap: 0.9rem; line-height: 1.35; }
+.lb-entstanden-kopf { flex: none; width: 72px; }
+.lb-projekte {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1rem, 2vw, 1.5rem);
+  margin: clamp(1.5rem, 3vw, 2.4rem) 0 0;
+  padding: 0;
+}
+.lb-projekt {
+  --lb-projekt: var(--lb-leise);
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  padding: clamp(1.2rem, 2.2vw, 1.8rem);
+  border: 1px solid var(--lb-linie);
+  border-top: 5px solid var(--lb-projekt);
+  border-radius: var(--lb-rund);
+  background: var(--lb-flaeche);
+}
+.lb-projekt.laeuft { --lb-projekt: var(--wmc-success); }
+.lb-projekt.bau { --lb-projekt: var(--wmc-warning); }
+.lb-projekt h3 { margin: 0; font-size: 1.3rem; font-weight: 800; letter-spacing: -0.015em; line-height: 1.2; }
+.lb-projekt p { margin: 0; line-height: 1.5; }
+.lb-projekt-status {
+  font-family: var(--schrift-mono);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--lb-leise);
+}
+.lb-projekt-stand { margin-top: auto !important; padding-top: 0.8rem; border-top: 1px solid var(--lb-linie); font-size: 0.93rem; color: var(--lb-leise); }
+.lb-mgmt-entstanden { margin-top: 0.7rem !important; }
+@media (max-width: 960px) {
+  .lb-projekte { grid-template-columns: minmax(0, 1fr); }
+}

@@ -813,6 +813,40 @@ export function LandingAbschnitte({ nur, rahmen = true, ohne }: { nur?: string[]
         </>
       ) : null}
 
+      {/* Was schon entstanden ist ----------------------------------------- */}
+      {zeige('entstanden') && sichtbar(d.entstanden) ? (
+        <Sektion rahmen={rahmen} id="entstanden">
+          <h2 className="lp-aussage breit">{d.entstanden.titel}</h2>
+          <div className="lp-text lp-luft-oben-klein">
+            <p>{d.entstanden.satz}</p>
+          </div>
+          <div className="lp-luft-oben">
+            {nurSichtbare(d.entstanden.projekte).map((pr) => (
+              <div className="lp-stufe" key={pr.id}>
+                <span className="wann">{pr.status}</span>
+                <div>
+                  <h3>{pr.name}</h3>
+                  <p>{pr.was}</p>
+                  <p>{pr.wer}</p>
+                  <p>{pr.stand}</p>
+                  <p className="bedingung">{pr.offen}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="lp-text lp-luft-oben">
+            <p>{d.entstanden.danebenSatz}</p>
+            <ul>
+              {nurSichtbare(d.entstanden.daneben).map((n) => (
+                <li key={n.wer}>
+                  {n.wer} {n.text}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </Sektion>
+      ) : null}
+
       {zeige('aufbau') ? (
         <>
         {/* 06 Aufbau ---------------------------------------------------------- */}

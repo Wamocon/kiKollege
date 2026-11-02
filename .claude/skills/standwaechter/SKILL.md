@@ -162,6 +162,7 @@ gebauten Seite, auch in Grafiken; ein Fund hält den Pull Request auf.
 | Abnahme eines Meilensteins, auch vor dem Termin | `meilensteinplanAktuell.meilensteine[].abgenommen` mit `am` und `text`; die Seite nimmt dann den nächsten als nächste Abnahme |
 | Ein Termin rückt, ist nur ein frühester Termin oder ist offen | `meilensteine[].terminVorher` mit dem alten Datum, `fruehestens: true`, oder `terminOffen` mit einem Satz; `termin` bleibt dabei stehen |
 | Ein Eintrag mit Titel bekommt einen neuen Titel | den alten in `umbenanntVon` daneben schreiben; ohne ihn meldet `pruefe:bestand` den Eintrag als verloren |
+| Was KI-Mitarbeiter gebaut haben: eine neue Anwendung, ein neuer Stand, ein neuer Lauf von Theo | `entstanden.projekte`, mit dem, was die Werkbank übernommen hat, bei `wer`. „Läuft“ heißt nicht abgenommen |
 | Ampel der Management Summary im Labor | `ampel`; nur der Projektverantwortliche setzt Farbe, Satz und Datum. Nie selbst ändern, auch nicht, wenn sie „nicht aktuell“ zeigt; dann im Bericht erwähnen |
 | Ein offener Punkt, den nur die Geschäftsführung entscheiden kann | `offenePunkte[].geschaeftsfuehrung: true`; neu markieren nur nach Rückfrage beim Projektverantwortlichen |
 | Text der Produktseite im Labor (Einstieg, Szene, Beispiel) | `produktseite`; Zahlen und Termine nie dort hineinschreiben, die kommen aus den übrigen Daten. `kernbegriffe` nur mit Kennungen aus `glossar.eintraege` |

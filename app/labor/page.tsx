@@ -17,7 +17,7 @@ import { pfad } from '@/lib/pfad'
 import film from '@/film/stand.json'
 
 /** Labor vom 29.10.2026: kiKollege als Produktseite. Eine Präsentationsebene
- *  in sieben Szenen, darunter je Szene die Einzelheiten zum Aufklappen. Die
+ *  in acht Szenen, darunter je Szene die Einzelheiten zum Aufklappen. Die
  *  Einzelheiten sind die Abschnitte der heutigen Landing Page und von /stand/,
  *  unverändert, damit nichts verloren geht. Die heutige Seite bleibt, bis der
  *  Projektverantwortliche das Labor freigibt. */
@@ -35,12 +35,16 @@ const kurz = (iso: string) => datum(iso).slice(0, 6)
 const szene = (id: string) => p.szenen.find((s) => s.id === id)!
 /** Der Kopf des Orchestrators steht im Chat der Szene Anwenden */
 const HermesKopf = FIGUREN.orchestrator.kopf
+/** Die Köpfe der beiden, die bauen und testen, stehen in der Szene Ergebnisse */
+const GregorKopf = FIGUREN.seiten.kopf
+const TheoKopf = FIGUREN.tester.kopf
 
 /** Welche Abschnitte der heutigen Seiten unter welcher Szene aufklappen */
 const EINZELHEITEN: Record<string, { landing: string[]; stand: string[] }> = {
   start: { landing: ['vorhaben'], stand: ['vorhaben'] },
   ueberblick: { landing: ['stand', 'plan'], stand: ['stufen', 'fahrplan', 'plan'] },
   funktionen: { landing: ['erster', 'mannschaft'], stand: [] },
+  ergebnisse: { landing: ['entstanden'], stand: [] },
   anwenden: { landing: ['auftrag'], stand: [] },
   verlass: { landing: ['messung'], stand: ['fritz', 'massstab', 'gegenstand', 'gemessen', 'luecke'] },
   bauweise: {
@@ -471,6 +475,24 @@ export default function Labor() {
                       ))}
                     </ul>
                   ) : null}
+                  {sichtbar(d.entstanden) ? (
+                    <>
+                      <p className="lb-mgmt-aufwand">Schon entstanden:</p>
+                      <ul className="lb-mgmt-liste lb-mgmt-entstanden">
+                        {nurSichtbare(d.entstanden.projekte)
+                          .filter((pr) => pr.art !== 'pflege')
+                          .map((pr) => (
+                            <li key={pr.id}>
+                              <b>{pr.name}</b>
+                              <span>{pr.status}</span>
+                            </li>
+                          ))}
+                      </ul>
+                      <a className="lb-mgmt-mehr" href="#ergebnisse">
+                        Was schon entstanden ist
+                      </a>
+                    </>
+                  ) : null}
                   {planSichtbar ? (
                     <p className="lb-mgmt-aufwand">
                       Zeit des Projektverantwortlichen für alle {plan.meilensteine.length} Meilensteine laut Plan:
@@ -776,9 +798,43 @@ export default function Labor() {
           </div>
         </section>
 
+        {/* Ergebnisse --------------------------------------------------------- */}
+        {sichtbar(d.entstanden) ? (
+          <Szene id="ergebnisse" nr="04">
+            <ul className="lb-entstanden-team" data-lb-staffel>
+              <li>
+                <span className="lb-entstanden-kopf">
+                  <GregorKopf />
+                </span>
+                <span>
+                  <b>Gregor Dev</b> baut nach Auftrag
+                </span>
+              </li>
+              <li>
+                <span className="lb-entstanden-kopf">
+                  <TheoKopf />
+                </span>
+                <span>
+                  <b>Theo</b> schreibt die Tests und führt sie aus
+                </span>
+              </li>
+            </ul>
+            <ol className="lb-projekte" data-lb-staffel>
+              {nurSichtbare(d.entstanden.projekte).map((pr) => (
+                <li className={`lb-projekt ${pr.art}`} key={pr.id}>
+                  <p className="lb-projekt-status">{pr.status}</p>
+                  <h3>{pr.name}</h3>
+                  <p>{pr.was}</p>
+                  <p className="lb-projekt-stand">{pr.stand}</p>
+                </li>
+              ))}
+            </ol>
+          </Szene>
+        ) : null}
+
         {/* Anwenden ----------------------------------------------------------- */}
         {sichtbar(d.anleitung) ? (
-          <Szene id="anwenden" nr="04">
+          <Szene id="anwenden" nr="05">
             <div className="lb-anwenden">
               <ol className="lb-schritte">
                 {d.anleitung.schritte.map((s, i) => (
@@ -831,7 +887,7 @@ export default function Labor() {
         ) : null}
 
         {/* Verlässlich -------------------------------------------------------- */}
-        <Szene id="verlass" nr="05">
+        <Szene id="verlass" nr="06">
           <dl className="lb-zahlen" data-lb-staffel>
             <div>
               <dt>Punkte auf der Checkliste, nach denen Fritz jede Unterlage prüft</dt>
@@ -882,7 +938,7 @@ export default function Labor() {
         </Szene>
 
         {/* Aufbau ------------------------------------------------------------- */}
-        <Szene id="bauweise" nr="06">
+        <Szene id="bauweise" nr="07">
           <div className="lb-anatomie">
             <div className="lb-kern" data-lb-reveal>
               <b>{d.anatomie.kern.titel}</b>
@@ -910,7 +966,7 @@ export default function Labor() {
         </Szene>
 
         {/* Begriffe ----------------------------------------------------------- */}
-        <Szene id="glossar" nr="07">
+        <Szene id="glossar" nr="08">
           <dl className="lb-begriffe" data-lb-staffel>
             {begriffe.map((e) => (
               <div key={e.id}>
@@ -925,7 +981,7 @@ export default function Labor() {
         <section id="archiv" className="lb-szene lb-archiv">
           <div className="lb-rahmen">
             <p className="lb-marke">
-              <span>08</span> Archiv
+              <span>09</span> Archiv
             </p>
             <h2 className="lb-titel klein">Zum Nachschlagen.</h2>
             <p className="lb-lead">{p.archivSatz}</p>
