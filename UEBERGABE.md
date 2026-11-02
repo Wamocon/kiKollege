@@ -4,11 +4,48 @@ Diese Datei ist für die nächste Sitzung geschrieben, nicht für die Nachwelt. 
 sagt, wo das Vorhaben steht, was als Erstes zu tun ist und was dabei nicht
 verloren gehen darf.
 
-Stand dieser Übergabe: 30.10.2026.
+Stand dieser Übergabe: 02.11.2026.
 
 Was heute gilt, steht zusammengefasst in `PFLEGE.md`: die Seiten, die Fassungen,
 die Prüfungen, was nicht auf die Seite darf, Bewegung, Film und wer was tut. Diese
 Datei bleibt die Chronik.
+
+## Nachtrag 02.11.2026: Stand nachgezogen, was schon entstanden ist
+
+Auf Wunsch des Projektverantwortlichen vom 02.11.: die Seite aktualisieren und
+erwähnen, was mit den KI-Mitarbeitern schon entwickelt wurde.
+
+- **Neu:** Schlüssel `entstanden` mit Browser-Startseite, WMC Inventar und dieser
+  Seite. Auf `/` als Abschnitt `entstanden`, im Labor als Szene `ergebnisse` mit
+  den Köpfen von Gregor Dev und Theo, in der Management Summary als kurze Liste.
+  Die Szene heißt anders als der Abschnitt, weil beide im Labor auf derselben Seite
+  stehen und eine Kennung nur einmal vorkommen darf.
+- **Nachgezogen bis zum 02.11.:** Chronik vom 28.10. bis 01.11., eine neue Phase im
+  Fahrplan, Mannschaft und „Was heute läuft“, Takt des Trainings, zwei Zeilen in der
+  Anleitung, 23 Entscheidungen, zwei offene Punkte, eine Beobachtung.
+- **Ampel:** am 02.11. vom Projektverantwortlichen neu gesetzt, weiter gelb, mit 6
+  gelernten Fällen und dem Stand der beiden Anwendungen im Satz.
+- **Nicht nachgezogen:** Film (erst im Chat), Risiken (das Register vom 27.10. ist
+  nicht neu bewertet), die noch nicht ausgewerteten Prüfstandläufe seit dem 01.11.
+
+## Nachtrag 31.10.2026: Figuren der KI-Kollegen
+
+Auf Wunsch des Projektverantwortlichen vom 30.10.: mehr Charakter auf der Seite
+für die KI-Kollegen.
+
+- **Weg:** Zeichnungen von Hand als SVG im Code, ohne fremden Dienst und ohne
+  neue Bibliothek. Verworfen: Excalidraw (zeichnet Kästen und Pfeile, keine
+  Figuren), ImageMagick (bearbeitet nur), HyperFrames (ein Video wechselt nicht
+  mit dem Thema). Bilddienste mit Schlüssel wurden nicht getestet.
+- **Stil:** Von drei Richtungen hat der Projektverantwortliche Linie und
+  Isometrisch gewählt und Bauhaus verworfen, zwei frühere Proben ebenso.
+- **Umfang:** neun Kollegen mit je fünf Grafiken. Wie sie gebaut sind und was
+  dabei gilt, steht in `PFLEGE.md` unter „Figuren der KI-Kollegen“.
+- **Im Labor:** die Zeichnung bei der Arbeit in den Karten der Galerie, der Kopf
+  von Hermes im Chat. `/` und `/stand/` liefern bis auf die Build-Kennung
+  dasselbe HTML wie vorher.
+- **julia-trend** ist in den Daten intern. Ihre Zeichnung erscheint nur, wo ihre
+  Karte erscheint; die öffentliche Fassung zeigt beide nicht.
 
 ## Nachtrag 30.10.2026, später: Management Summary im Labor
 

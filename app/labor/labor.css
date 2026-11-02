@@ -1025,3 +1025,79 @@ html:not(.js) .lb-vorhang { display: none; }
 @media (max-width: 520px) {
   .lb-mgmt-zahlen { grid-template-columns: minmax(0, 1fr); }
 }
+
+/* Figuren der KI-Kollegen -------------------------------------------------------
+   Über jeder Karte die Zeichnung bei der Arbeit, oben und unten etwas
+   beschnitten. Im Chat der Kopf des Orchestrators. Die Zeichnungen stehen in
+   components/figuren/kollegen. */
+.lb-karte-bild {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 16 / 10;
+  margin: -0.6rem -0.5rem 0.1rem;
+  overflow: hidden;
+  border-radius: calc(var(--lb-rund) - 8px);
+}
+.lb-karte-bild .k-bild { flex: none; }
+/* Die angeheftete Galerie muss ganz auf den Schirm passen: Das Bild wird mit
+   der Fensterhöhe kleiner und fällt auf niedrigen Schirmen weg. */
+@media (min-width: 900px) {
+  .lb-karte-bild { aspect-ratio: auto; height: clamp(120px, calc(100svh - 600px), 210px); }
+  .lb-karte-bild .k-bild { width: auto; height: 120%; }
+}
+@media (min-width: 900px) and (max-height: 719px) {
+  .lb-karte-bild { display: none; }
+}
+.lb-chat-bild { flex: none; align-self: center; width: 34px; }
+
+/* Ergebnisse (02.11.2026) ---------------------------------------------------
+   Was die KI-Mitarbeiter schon gebaut haben. Der Status steht als Wort da, die
+   Farbe sagt dasselbe noch einmal. Jeder Kopf steht nur einmal auf der Seite,
+   siehe „Figuren der KI-Kollegen“ in PFLEGE.md. */
+.lb-entstanden-team {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 2.5rem;
+  margin: clamp(1.5rem, 3vw, 2.4rem) 0 0;
+  padding: 0;
+}
+.lb-entstanden-team li { display: flex; align-items: center; gap: 0.9rem; line-height: 1.35; }
+.lb-entstanden-kopf { flex: none; width: 72px; }
+.lb-projekte {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1rem, 2vw, 1.5rem);
+  margin: clamp(1.5rem, 3vw, 2.4rem) 0 0;
+  padding: 0;
+}
+.lb-projekt {
+  --lb-projekt: var(--lb-leise);
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  padding: clamp(1.2rem, 2.2vw, 1.8rem);
+  border: 1px solid var(--lb-linie);
+  border-top: 5px solid var(--lb-projekt);
+  border-radius: var(--lb-rund);
+  background: var(--lb-flaeche);
+}
+.lb-projekt.laeuft { --lb-projekt: var(--wmc-success); }
+.lb-projekt.bau { --lb-projekt: var(--wmc-warning); }
+.lb-projekt h3 { margin: 0; font-size: 1.3rem; font-weight: 800; letter-spacing: -0.015em; line-height: 1.2; }
+.lb-projekt p { margin: 0; line-height: 1.5; }
+.lb-projekt-status {
+  font-family: var(--schrift-mono);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--lb-leise);
+}
+.lb-projekt-stand { margin-top: auto !important; padding-top: 0.8rem; border-top: 1px solid var(--lb-linie); font-size: 0.93rem; color: var(--lb-leise); }
+.lb-mgmt-entstanden { margin-top: 0.7rem !important; }
+@media (max-width: 960px) {
+  .lb-projekte { grid-template-columns: minmax(0, 1fr); }
+}

@@ -698,6 +698,18 @@ export interface GlossarEintrag {
   quelle: string
 }
 
+/** Eine Anwendung oder Seite, an der KI-Mitarbeiter gebaut haben */
+export interface EntstandenesProjekt extends MitFreigabe {
+  id: string
+  name: string
+  art: 'laeuft' | 'bau' | 'pflege'
+  status: string
+  was: string
+  wer: string
+  stand: string
+  offen: string
+}
+
 export interface Projektstand {
   stand: string
   /** Das Gesamturteil der Management Summary. Setzt nur der
@@ -878,10 +890,20 @@ export interface Projektstand {
   hemmnisse: { satz: string; gruppen: HemmnisGruppe[]; freigabe: Freigabe }
   stufen: Stufe[]
   stufenPlan: { text: string; freigabe: Freigabe }
+  /** Was mit den KI-Mitarbeitern schon gebaut wurde, seit dem 02.11.2026 */
+  entstanden: MitFreigabe & {
+    stand: string
+    titel: string
+    satz: string
+    projekte: EntstandenesProjekt[]
+    danebenSatz: string
+    daneben: (MitFreigabe & { wer: string; text: string })[]
+    quelle: string
+  }
   anleitung: Anleitung
   glossar: { satz: string; eintraege: GlossarEintrag[]; freigabe: Freigabe }
   /** Die Texte der Produktseite im Labor vom 29.10.2026: kiKollege als Produkt,
-   *  sechs Szenen nach dem Einstieg und ein nachgestellter Auftrag. */
+   *  sieben Szenen nach dem Einstieg und ein nachgestellter Auftrag. */
   produktseite: {
     stand: string
     name: string
