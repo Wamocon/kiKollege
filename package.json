@@ -20,6 +20,7 @@
     "pruefe:labor": "node scripts/pruefe-labor.mjs",
     "pruefe:film": "node scripts/pruefe-film.mjs",
     "baue:film": "node scripts/baue-film.mjs",
+    "baue:vorstellung": "node scripts/baue-vorstellung.mjs",
     "test:export": "node --test scripts/export-vault.test.mjs",
     "test": "node --test \"scripts/*.test.mjs\" \"lib/*.test.mjs\""
   },

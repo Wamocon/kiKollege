@@ -6757,7 +6757,177 @@
       ]
     },
     "archivSatz": "Was war und wer was entschieden hat, steht im Archiv: Chronik, Entscheidungen mit Datum, offene Punkte, Beobachtungen und Quellen.",
-    "freigabe": "oeffentlich"
+    "freigabe": "oeffentlich",
+    "vorstellung": {
+      "titel": "Ein Tag mit der Mannschaft",
+      "text": "Die KI-Mitarbeiter stellen sich vor und zeigen, was sie können. Der Film läuft ohne Ton.",
+      "kern": [
+        "Ein KI-Mitarbeiter arbeitet zu.",
+        "Ein Mensch entscheidet."
+      ],
+      "nochNicht": "Noch in Arbeit: der Reporter und der Entwickler.",
+      "stopps": [
+        {
+          "kopf": "architekt",
+          "name": "Arnold",
+          "stunde": 6,
+          "boden": "#140B0B",
+          "hell": false,
+          "wann": "6 Uhr, jeden Morgen",
+          "ich": "Ich bin Arnold.",
+          "kann": "Ich sehe jeden Morgen nach der IT-Infrastruktur und bereite Entscheidungen vor, mit genau einer Empfehlung.",
+          "nie": "Ich entscheide nicht und behebe nichts selbst.",
+          "beispiel": {
+            "art": "bericht",
+            "titel": "Zustandsbericht von heute früh",
+            "zeilen": [
+              "Rechner",
+              "Dienste",
+              "Board",
+              "Protokolle"
+            ],
+            "auffaellig": "Auffällig: Verbindungen brechen ab",
+            "folge": "Daraus wird ein Befund, die Werkbank prüft ihn gegen."
+          }
+        },
+        {
+          "kopf": "seiten",
+          "name": "Gregor Dev",
+          "stunde": 7,
+          "boden": "#241414",
+          "hell": false,
+          "wann": "7 Uhr, Montag und Donnerstag",
+          "ich": "Ich bin Gregor Dev.",
+          "kann": "Ich ziehe den Stand dieser Seite nach. Auf Auftrag baue ich Anwendungen, Theo testet sie.",
+          "nie": "Zusammenführen tut ein Mensch, nicht ich.",
+          "beispiel": {
+            "art": "projekte"
+          }
+        },
+        {
+          "kopf": "researcherin",
+          "name": "julia-trend",
+          "stunde": 9,
+          "boden": "#F4EFEF",
+          "hell": true,
+          "wann": "9 Uhr, jeden Morgen",
+          "ich": "Ich bin julia-trend.",
+          "kann": "Ich schicke einen Bericht zu Neuigkeiten rund um KI und Agenten und vergleiche sie mit unserem Aufbau.",
+          "nie": "Ich empfehle nichts und schreibe nichts Internes in eine Suche.",
+          "beispiel": {
+            "art": "nachricht",
+            "kopf": "Täglicher Bericht",
+            "text": "Eine neue Fassung von Hermes Agent, mit dem Satz, was sie für unseren Zaun bedeutet.",
+            "fuss": "Jede Aussage mit Quelle und Abrufdatum"
+          },
+          "freigabe": "intern"
+        },
+        {
+          "kopf": "orchestrator",
+          "name": "Hermes",
+          "stunde": 10.5,
+          "boden": "#FFFFFF",
+          "hell": true,
+          "wann": "Den ganzen Tag",
+          "ich": "Ich bin Hermes.",
+          "kann": "Ich nehme Aufträge an, prüfe die Pflichtangaben und gebe sie an den, der zuständig ist. Fehlt etwas, frage ich nach.",
+          "nie": "Ich prüfe nicht selbst und gebe nichts frei.",
+          "beispiel": {
+            "art": "chat",
+            "du": "Prüf die Use-Cases von Themenkomplex 14.",
+            "er": "Dafür fehlen mir Jahrgang und Zielgruppe. Welche sollen es sein?"
+          }
+        },
+        {
+          "kopf": "reviewer",
+          "name": "Fritz",
+          "stunde": 13,
+          "boden": "#FFFFFF",
+          "hell": true,
+          "wann": "Wenn ein Prüfauftrag kommt",
+          "ich": "Ich bin Fritz.",
+          "kann": "Ich prüfe Unterlagen der Academy gegen den aufgeschriebenen Maßstab. Jeder Befund hat eine Fundstelle.",
+          "nie": "Ich ändere keine Unterlage und gebe nichts frei.",
+          "beispiel": {
+            "art": "zaehler",
+            "gesamt": 238,
+            "was": "Use-Cases im ersten ganzen Lauf",
+            "teile": [
+              {
+                "zahl": 229,
+                "text": "freigebbar"
+              },
+              {
+                "zahl": 7,
+                "text": "mit Nacharbeit"
+              },
+              {
+                "zahl": 2,
+                "text": "nicht freigebbar",
+                "rot": true
+              }
+            ]
+          }
+        },
+        {
+          "kopf": "tester",
+          "name": "Theo",
+          "stunde": 15,
+          "boden": "#F4EFEF",
+          "hell": true,
+          "wann": "Nach jedem Bauauftrag",
+          "ich": "Ich bin Theo.",
+          "kann": "Ich schreibe die Tests und führe sie aus. Auch Fragen rund ums Testen beantworte ich.",
+          "nie": "Ich ändere keinen Code und nehme nichts ab.",
+          "beispiel": {
+            "art": "tests",
+            "zeilen": [
+              {
+                "name": "Browser-Startseite",
+                "gruen": 85,
+                "von": 85
+              },
+              {
+                "name": "WMC Inventar",
+                "gruen": 62,
+                "von": 119,
+                "wann": "Lauf vom 31.10."
+              }
+            ]
+          }
+        },
+        {
+          "kopf": "archivar",
+          "name": "Archivar",
+          "rolle": "Hält das Gedächtnis der Ablage",
+          "stunde": 18,
+          "boden": "#241414",
+          "hell": false,
+          "wann": "Am Ende jeder Sitzung",
+          "ich": "Ich bin der Archivar.",
+          "kann": "Ich bringe an seinen Platz, was erarbeitet wurde: mit Quelle und Entscheidungen im Wortlaut.",
+          "nie": "Ich entscheide nichts und hebe nichts auf verbindlich.",
+          "beispiel": {
+            "art": "ablage",
+            "zeilen": [
+              {
+                "was": "Erledigtes",
+                "wohin": "Tagesprotokoll"
+              },
+              {
+                "was": "Offenes",
+                "wohin": "Arbeitsplan"
+              },
+              {
+                "was": "Entscheidungen",
+                "wohin": "Logbuch"
+              }
+            ]
+          }
+        }
+      ],
+      "quelle": "Akten und Steckbriefe der KI-Mitarbeiter; Arnolds Aufgabe zur Infrastruktur vom 30.10.2026; entstanden und training.laeufe dieser Daten"
+    }
   },
   "entstanden": {
     "stand": "2026-11-02",
