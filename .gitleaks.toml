@@ -1,0 +1,14 @@
+# Ausnahmen für den Secret Scan, siehe .github/workflows/secret-scan.yml.
+#
+# Die Standardregeln von gitleaks bleiben alle aktiv. Eine Ausnahme nennt genau eine Regel,
+# eine Datei und einen Wert und greift nur, wenn alle drei passen.
+
+[extend]
+useDefault = true
+
+[[allowlists]]
+description = "Erfundener Testwert: Der Test zeigt, dass pruefe:daten solche Zuweisungen erkennt."
+condition = "AND"
+targetRules = ["generic-api-key"]
+paths = ['''^scripts/pruefe-daten\.test\.mjs$''']
+regexes = ['''^abcdefgh1234$''']
