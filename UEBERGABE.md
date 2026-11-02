@@ -4,11 +4,30 @@ Diese Datei ist für die nächste Sitzung geschrieben, nicht für die Nachwelt. 
 sagt, wo das Vorhaben steht, was als Erstes zu tun ist und was dabei nicht
 verloren gehen darf.
 
-Stand dieser Übergabe: 30.10.2026.
+Stand dieser Übergabe: 31.10.2026.
 
 Was heute gilt, steht zusammengefasst in `PFLEGE.md`: die Seiten, die Fassungen,
 die Prüfungen, was nicht auf die Seite darf, Bewegung, Film und wer was tut. Diese
 Datei bleibt die Chronik.
+
+## Nachtrag 31.10.2026: Figuren der KI-Kollegen
+
+Auf Wunsch des Projektverantwortlichen vom 30.10.: mehr Charakter auf der Seite
+für die KI-Kollegen.
+
+- **Weg:** Zeichnungen von Hand als SVG im Code, ohne fremden Dienst und ohne
+  neue Bibliothek. Verworfen: Excalidraw (zeichnet Kästen und Pfeile, keine
+  Figuren), ImageMagick (bearbeitet nur), HyperFrames (ein Video wechselt nicht
+  mit dem Thema). Bilddienste mit Schlüssel wurden nicht getestet.
+- **Stil:** Von drei Richtungen hat der Projektverantwortliche Linie und
+  Isometrisch gewählt und Bauhaus verworfen, zwei frühere Proben ebenso.
+- **Umfang:** neun Kollegen mit je fünf Grafiken. Wie sie gebaut sind und was
+  dabei gilt, steht in `PFLEGE.md` unter „Figuren der KI-Kollegen“.
+- **Im Labor:** die Zeichnung bei der Arbeit in den Karten der Galerie, der Kopf
+  von Hermes im Chat. `/` und `/stand/` liefern bis auf die Build-Kennung
+  dasselbe HTML wie vorher.
+- **julia-trend** ist in den Daten intern. Ihre Zeichnung erscheint nur, wo ihre
+  Karte erscheint; die öffentliche Fassung zeigt beide nicht.
 
 ## Nachtrag 30.10.2026, später: Management Summary im Labor
 

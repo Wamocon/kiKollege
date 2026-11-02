@@ -1,0 +1,17 @@
+/* Figuren der KI-Kollegen, siehe basis.tsx */
+
+.k-bild { display: block; width: 100%; height: auto; overflow: hidden; }
+
+/* Figuren mit Gesicht behalten im dunklen Thema ihre Farben und liegen auf
+   hellem Papier; sonst bekommen sie weißes Haar und ein dunkles Gesicht. */
+.k-papier { --k-papier: transparent; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) .k-papier {
+    --k-papier: #FFFFFF; --k-tinte: #140B0B; --k-grund: #FFFFFF; --k-rot: #F40E0E;
+    --k-flaeche: #E8E4E4; --k-leise: #5F3E3E; --k-rand: #D2C7C7;
+  }
+}
+:root[data-theme='dark'] .k-papier {
+  --k-papier: #FFFFFF; --k-tinte: #140B0B; --k-grund: #FFFFFF; --k-rot: #F40E0E;
+  --k-flaeche: #E8E4E4; --k-leise: #5F3E3E; --k-rand: #D2C7C7;
+}

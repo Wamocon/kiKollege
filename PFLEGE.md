@@ -5,7 +5,7 @@ Gregor Dev liest diese Datei bei jedem Start. Sie sagt, was heute gilt und was m
 wissen muss, bevor man etwas ändert. Wie die Seite gebaut ist, steht im README,
 was wann geschah, in `UEBERGABE.md`.
 
-Stand: 30.10.2026.
+Stand: 31.10.2026.
 
 ## Die Seite heute
 
@@ -175,6 +175,35 @@ Scrollen.
 - In der öffentlichen Fassung fehlt der Film, weil er den intern freigegebenen
   Plan zeigt.
 
+## Figuren der KI-Kollegen
+
+Seit dem 31.10.2026 hat jeder KI-Mitarbeiter fünf Zeichnungen. Sie stehen als SVG
+im Code unter `components/figuren/kollegen/`, eine Datei je Kollege, die
+gemeinsamen Bausteine in `basis.tsx`. `index.ts` ordnet sie den Kennungen in
+`mannschaft.koepfe` zu.
+
+- **Die fünf Grafiken:** bei der Arbeit (Strichzeichnung), Arbeitsplatz
+  (isometrisch, ohne Figur), was er nie tut, Sinnbild und Kopf.
+- **Im Labor** steht in jeder Karte der Galerie die Zeichnung bei der Arbeit, im
+  Chat der Szene Anwenden der Kopf von Hermes. Die übrigen Grafiken sind
+  gezeichnet, aber noch nicht eingebaut.
+- **Niedrige Bildschirme:** In der angehefteten Galerie wird das Bild mit der
+  Fensterhöhe kleiner und fällt unter 720 Pixeln Höhe weg, damit die Karte ganz
+  zu sehen ist. Wer Text in den Karten verlängert, prüft das bei 1300 × 720.
+- **Rot** trägt in jedem Bild genau ein Motiv: das, was der Kollege weitergibt.
+  In der Grenze ist es die rote gestrichelte Linie, die er nicht überschreitet.
+- **Gesichter liegen auf Papier** (`papier` an `Bild`, `Rund` für den Kopf). Im
+  dunklen Thema bleiben sie hell, sonst bekämen sie weißes Haar und ein dunkles
+  Gesicht. Isometrische Bilder kehren sich mit dem Thema um.
+- **Kein Text in den Zeichnungen**, und nichts aus „Was nicht auf die Seite darf“.
+- Jede Figur muss sich auf den ersten Blick von den anderen unterscheiden.
+  Welche Merkmale vergeben sind, steht im Kopfkommentar jeder Datei.
+- Die Kennungen von `clipPath` und `mask` sind je Grafik fest. Steht dieselbe
+  Grafik zweimal auf einer Seite, gibt es sie doppelt. Das vermeiden.
+- **Erst zeigen, dann einbauen:** Neue oder geänderte Figuren gehen wie der Film
+  zuerst als Bild an den Projektverantwortlichen in den Chat.
+- Gregor Dev und der Standwächter ändern an den Figuren nichts ohne Bauauftrag.
+
 ## Wer was tut
 
 - **Gregor Dev** pflegt die Seite: montags und donnerstags ein Pflegelauf, der nur
@@ -189,7 +218,7 @@ Scrollen.
   merged, auch nicht automatisch. Baut ein Zweig auf einem offenen auf, geht sein
   Pull Request gegen diesen Zweig.
 
-## Offen am 30.10.2026
+## Offen am 31.10.2026
 
 - `stand` zeigt den 27.10., die Prüfstandläufe reichen bis zum 29.10. Beim
   Nachtrag der Läufe wurde das Datum nicht mitgezogen.
@@ -201,3 +230,7 @@ Scrollen.
 - Wie der Film in Teams oder in einer Präsentation wirkt, hat noch niemand
   gesehen.
 - Die Übernahme des Labors als Startseite.
+- Wo Arbeitsplatz, Grenze, Sinnbild und Kopf der KI-Kollegen auf die Seite
+  kommen. Reporter und Entwickler haben schon ein Gesicht, laufen aber noch
+  nicht. Die Grenze von Gregor Dev zeigt „nichts entfernen“, nicht „nicht
+  zusammenführen“; dafür fand sich kein Bild ohne Worte.
