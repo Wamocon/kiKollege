@@ -6159,7 +6159,7 @@
       "quelle": "Prüfstandlauf 2026-10-23 Hermes drei Wiederholungen, ausgewertet am 23.10.2026, ungeprüft"
     },
     "laeufe": {
-      "stand": "2026-10-30",
+      "stand": "2026-10-31",
       "titel": "Alle Läufe des Orchestrators",
       "satz": "Jeder Lauf stellt Hermes dieselben 18 Prüffälle, jeden dreimal. Erfüllt ist ein Fall nur mit drei von drei richtigen Antworten, wackelig mit einer oder zwei. Gelernt ist er, wenn er in zwei Läufen hintereinander erfüllt ist.",
       "bereiche": [
