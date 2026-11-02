@@ -2,10 +2,10 @@
   "stand": "2026-11-02",
   "ampel": {
     "farbe": "gelb",
-    "satz": "Meilenstein 1 ist am 16.10. abgenommen. Meilenstein 2 ist vom 30.10. auf frühestens 23.11. verschoben, weil der Orchestrator erst alle 18 Prüffälle sicher beherrschen muss; gelernt hat er bisher 5. Drei von sieben hohen Risiken sind eingetreten, gegen jedes läuft eine Maßnahme. Die Termine von Meilenstein 3 und 4 sind offen.",
-    "am": "2026-10-30",
+    "satz": "Meilenstein 1 ist am 16.10. abgenommen. Meilenstein 2 ist vom 30.10. auf frühestens 23.11. verschoben, weil der Orchestrator erst alle 18 Prüffälle sicher beherrschen muss; gelernt hat er bisher 6. Die Browser-Startseite läuft im Büronetz, an WMC Inventar sind 13 von 25 Paketen fertig. Drei von sieben hohen Risiken sind eingetreten, gegen jedes läuft eine Maßnahme. Die Termine von Meilenstein 3 und 4 sind offen.",
+    "am": "2026-11-02",
     "von": "Projektverantwortlicher",
-    "quelle": "Entscheidung des Projektverantwortlichen vom 30.10.2026",
+    "quelle": "Entscheidung des Projektverantwortlichen vom 02.11.2026",
     "freigabe": "intern"
   },
   "herkunft": {

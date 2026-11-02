@@ -241,8 +241,6 @@ gemeinsamen Bausteine in `basis.tsx`. `index.ts` ordnet sie den Kennungen in
 
 - Der Film zeigt den Stand vom 27.10. Neu gerendert wird er erst, wenn der
   Projektverantwortliche ihn im Chat gesehen hat.
-- Die Ampel ist vom 30.10.; ihr Satz nennt noch 5 gelernte Fälle. Sie setzt nur der
-  Projektverantwortliche.
 - Die Prüfstandläufe vom 01.11. und aus den Nächten danach sind noch nicht
   ausgewertet und stehen deshalb noch nicht in `training.laeufe`.
 - Zahlen, die nicht zueinander passen (Lesetest vom 29.10.): zehn oder elf

@@ -23,9 +23,10 @@ erwähnen, was mit den KI-Mitarbeitern schon entwickelt wurde.
 - **Nachgezogen bis zum 02.11.:** Chronik vom 28.10. bis 01.11., eine neue Phase im
   Fahrplan, Mannschaft und „Was heute läuft“, Takt des Trainings, zwei Zeilen in der
   Anleitung, 23 Entscheidungen, zwei offene Punkte, eine Beobachtung.
-- **Nicht nachgezogen:** Ampel (setzt nur der Projektverantwortliche), Film (erst im
-  Chat), Risiken (das Register vom 27.10. ist nicht neu bewertet), die noch nicht
-  ausgewerteten Prüfstandläufe seit dem 01.11.
+- **Ampel:** am 02.11. vom Projektverantwortlichen neu gesetzt, weiter gelb, mit 6
+  gelernten Fällen und dem Stand der beiden Anwendungen im Satz.
+- **Nicht nachgezogen:** Film (erst im Chat), Risiken (das Register vom 27.10. ist
+  nicht neu bewertet), die noch nicht ausgewerteten Prüfstandläufe seit dem 01.11.
 
 ## Nachtrag 31.10.2026: Figuren der KI-Kollegen
 
