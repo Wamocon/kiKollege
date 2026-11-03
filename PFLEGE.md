@@ -114,6 +114,10 @@ Requests sind sofort sichtbar, auch vor dem Merge.
 - Prüfstandläufe stehen in `training.laeufe`, eine Zeile je Lauf, nur Kennzahlen
   und Bereiche. Keine Fallnummern, keine Einzelheiten der Grenze, keine Namen von
   Menschen, keine Pfade.
+- `gelernt` der letzten Zeile speist das Labor und beide Filme. Ein Lauf im
+  Übungsprofil ändert es nicht, dort bleibt der Stand des Betriebs stehen. Ein
+  gestoppter Lauf trägt richtige Antworten als `wackelig`, weil erfüllt drei von
+  drei verlangt; die Zahlen je Bereich stehen dann in `was`.
 - Ein Pflegelauf am 26.10. hatte eine Auftragsnummer, einen Zweig, Ticketnummern
   und einen Befehl in die Entscheidungen geschrieben. Das ist erst im Review
   aufgefallen und wurde neutral gefasst.
@@ -258,8 +262,6 @@ gemeinsamen Bausteine in `basis.tsx`. `index.ts` ordnet sie den Kennungen in
 
 - Der Film zeigt den Stand vom 27.10. Neu gerendert wird er erst, wenn der
   Projektverantwortliche ihn im Chat gesehen hat.
-- Die Prüfstandläufe vom 01.11. und aus den Nächten danach sind noch nicht
-  ausgewertet und stehen deshalb noch nicht in `training.laeufe`.
 - Zahlen, die nicht zueinander passen (Lesetest vom 29.10.): zehn oder elf
   Themenkomplexe, eine von 10 oder eine von 26 Regeln. Der Pflegelauf um 7 und um
   9 Uhr ist kein Widerspruch: Gregor Dev läuft um 7, die Werkbank prüft um 9.
