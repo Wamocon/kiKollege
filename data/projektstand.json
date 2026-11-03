@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-02",
+  "stand": "2026-11-03",
   "ampel": {
     "farbe": "gelb",
     "satz": "Meilenstein 1 ist am 16.10. abgenommen. Meilenstein 2 ist vom 30.10. auf frühestens 23.11. verschoben, weil der Orchestrator erst alle 18 Prüffälle sicher beherrschen muss; gelernt hat er bisher 6. Die Browser-Startseite läuft im Büronetz, an WMC Inventar sind 13 von 25 Paketen fertig. Drei von sieben hohen Risiken sind eingetreten, gegen jedes läuft eine Maßnahme. Die Termine von Meilenstein 3 und 4 sind offen.",
@@ -11,7 +11,7 @@
   "herkunft": {
     "arbeitsordner": "D:\\WAMOCON",
     "einstieg": "KI-Mitarbeiter/75_KI-Mitarbeiter/KI-Mitarbeiter — Einstieg.md",
-    "erzeugt": "2026-11-02",
+    "erzeugt": "2026-11-03",
     "fristTage": 7,
     "verfahren": "Erstbefüllung von Hand aus dem Übergabedokument vom 05.09.2026, am 11.09. fortgeschrieben aus den beiden Blättern vom 09.09., am 17.09. aus dem Vault: Logbuch, Tagesprotokolle, Meilensteinplan, Bestandsaufnahme vom 16.09., Akte des Reviewers, Laufnotizen und Quoten je Regel. Das Abbild der Ablage zählt scripts/abbild-vault.mjs. Spätere Stände der Prüfläufe schreibt scripts/export-vault.mjs aus dem Frontmatter der Laufnotizen.",
     "freigabe": "intern",
@@ -6011,13 +6011,13 @@
     "takt": [
       {
         "wann": "Nach jeder Änderung",
-        "was": "an Akte, Grenze, Modell oder Laufzeit: der Prüfstand der Betroffenen, zwei Läufe hintereinander",
-        "stand": "entschieden am 18.10., geschärft am 20. und 22.10."
+        "was": "an Akte, Grenze, Modell oder Laufzeit: der Prüfstand der Betroffenen, zwei Läufe hintereinander. Beim Orchestrator laufen der schnelle Test und die Übungsfälle, sein Prüfstand nur vor einer Übernahme in den Betrieb",
+        "stand": "entschieden am 18.10., geschärft am 20. und 22.10., für den Orchestrator am 02.11."
       },
       {
-        "wann": "Jede Nacht",
-        "was": "zwei Läufe des Orchestrators am Prüfstand, mit seiner jeweils besten Übungsfassung, wenn nichts anderes läuft",
-        "stand": "entschieden am 31.10."
+        "wann": "In freigegebenen Nächten",
+        "was": "Übungs- und Prüfstandläufe des Orchestrators, wenn nichts anderes läuft",
+        "stand": "entschieden am 03.11."
       },
       {
         "wann": "Jeden Freitag",
