@@ -6159,7 +6159,7 @@
       "quelle": "Prüfstandlauf 2026-10-23 Hermes drei Wiederholungen, ausgewertet am 23.10.2026, ungeprüft"
     },
     "laeufe": {
-      "stand": "2026-10-31",
+      "stand": "2026-11-03",
       "titel": "Alle Läufe des Orchestrators",
       "satz": "Jeder Lauf stellt Hermes dieselben 18 Prüffälle, jeden dreimal. Erfüllt ist ein Fall nur mit drei von drei richtigen Antworten, wackelig mit einer oder zwei. Gelernt ist er, wenn er in zwei Läufen hintereinander erfüllt ist.",
       "bereiche": [
@@ -6306,12 +6306,68 @@
             1,
             2
           ]
+        },
+        {
+          "wann": "01.11., Lauf 1",
+          "was": "im eigenen Übungsprofil ohne Gedächtnis: neu sind Seele und Zaun der Übungsfassung, dazu ein Absatz in der Seele zum Antworten ohne Werkzeug. Die Akte war noch die des Betriebs, die geänderte kam wegen eines Fehlers im Aufbau nicht an. Für das Ziel zählt der Lauf nicht, gelernt bleibt beim Stand des Betriebs",
+          "erfuellt": 9,
+          "wackelig": 4,
+          "nie": 5,
+          "gelernt": 6,
+          "bereiche": [
+            4,
+            3,
+            0,
+            2
+          ]
+        },
+        {
+          "wann": "01.11., Lauf 2",
+          "was": "der Absatz in der Seele wieder heraus, sonst wie Lauf 1",
+          "erfuellt": 8,
+          "wackelig": 3,
+          "nie": 7,
+          "gelernt": 6,
+          "bereiche": [
+            3,
+            2,
+            2,
+            1
+          ]
+        },
+        {
+          "wann": "01.11., Lauf 3",
+          "was": "ohne Änderung, Hermes bekam dasselbe wie in Lauf 2; der Unterschied zwischen beiden ist reine Streuung",
+          "erfuellt": 9,
+          "wackelig": 3,
+          "nie": 6,
+          "gelernt": 6,
+          "bereiche": [
+            3,
+            3,
+            2,
+            1
+          ]
+        },
+        {
+          "wann": "02.11., gestoppt",
+          "was": "wie Lauf 3 vom 01.11., auch mit der Akte des Betriebs; neu ist nur das Nachdenken vor der Antwort. Nach einem von drei Durchgängen gestoppt, weil er die Arbeit an WMC Inventar aufhielt. Der Lauf zählt nicht für das Ziel, und ohne drei von drei gilt kein Fall als erfüllt. In dem einen Durchgang waren 11 von 18 Antworten richtig (Aufträge annehmen 2 von 5, Aufträge ablehnen 5 von 7, Fragen und Auskunft 3 von 4, eingeschleuste Anweisungen 1 von 2). Der Zaun lehnte nichts ab, dafür blieb Hermes in drei Fällen im Nachdenken hängen",
+          "erfuellt": 0,
+          "wackelig": 11,
+          "nie": 7,
+          "gelernt": 6,
+          "bereiche": [
+            0,
+            0,
+            0,
+            0
+          ]
         }
       ],
-      "standSatz": "Stand am 31.10.: 6 von 18 Fällen gelernt. Ziel sind alle 18 bis zum 20.11., erst danach bekommt das Team Zugang.",
-      "ehrlich": "Aufträge ablehnen gelingt erst in zwei der sieben Fälle verlässlich. Fehlt in einem Auftrag eine Angabe, legt Hermes meist zuerst etwas an und fragt erst danach; erfundene Angaben kommen aber nicht mehr durch, und versteckte Anweisungen übernimmt er weiter nicht.",
-      "weiter": "Ab sofort übt Hermes in einem eigenen Übungsprofil an Übungsfällen, die nicht aus der Prüfung stammen, mit einer umgebauten Akte. Gemessen wird jede Nacht zweimal am Prüfstand; übernommen wird nur, was zwei Läufe hintereinander hält. Am 01.11. erfüllte er in den Übungsrunden zuletzt 13 von 23 Fällen, am Morgen waren es 10.",
-      "quelle": "Prüfstandläufe des Orchestrators vom 23.10. bis zum 31.10.2026, ausgewertet von der Werkbank, ungeprüft; Übungsrunden 2026-11-01"
+      "standSatz": "Stand am 03.11.: 6 von 18 Fällen gelernt, zuletzt gemessen am 31.10. am Hermes im Betrieb. Die Läufe im Übungsprofil ändern daran nichts. Ziel sind alle 18 bis zum 20.11., erst danach bekommt das Team Zugang.",
+      "ehrlich": "Aufträge ablehnen gelingt im Betrieb erst in zwei der sieben Fälle verlässlich. Fehlt in einem Auftrag eine Angabe, legt Hermes meist zuerst etwas an und fragt erst danach; erfundene Angaben kommen aber nicht mehr durch, und versteckte Anweisungen übernimmt er weiter nicht.",
+      "weiter": "Hermes übt weiter in einem eigenen Übungsprofil an Übungsfällen, die nicht aus der Prüfung stammen. Bis zum 02.11. lud dieses Profil durch einen Fehler im Aufbau die Akte des Betriebs, von der Übungsfassung wirkten nur Seele und Zaun. Die Läufe vom 01. und 02.11. sagen deshalb nichts über die Übungsakte, und auch die 13 von 23 Fällen aus den Übungsrunden vom 01.11., die hier standen, sind kein Maß für sie. Der Fehler ist behoben, vor jedem Lauf wird jetzt geprüft, ob die Akte beim Modell ankommt. Einen Prüfstandlauf mit ihr gibt es noch nicht. Bisher gibt es nur den schnellen Test, der an elf Übungsfällen den ersten Schritt prüft (am 02.11., mit einem neuen Werkzeug zum Anlegen von Aufträgen, 51 von 55 in Ordnung), und drei echte Fälle am 03.11. Über die Prüffälle sagt das nichts. In der Nacht zum 04.11. laufen die Übungsfälle ohne und mit Nachdenken. Der ganze Prüfstand läuft seit dem 02.11. nur noch vor einer Übernahme in den Betrieb; übernommen wird nur, was dort zwei Läufe hintereinander hält und der Projektverantwortliche freigibt.",
+      "quelle": "Prüfstandläufe des Orchestrators vom 23.10. bis zum 02.11.2026, ausgewertet von der Werkbank, ungeprüft; Übungsprofil Hermes, Stand 03.11.2026: Berichtigung zur geladenen Akte, schneller Test, drei echte Fälle, Entscheidung zur Nacht zum 04.11."
     }
   },
   "techstack": {
