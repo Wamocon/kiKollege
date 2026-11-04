@@ -185,7 +185,8 @@ Scrollen.
   GSAP, Bild für Bild gerendert. `scripts/film-daten.mjs` nimmt jeden Satz und
   jede Zahl aus den Daten. Drehbuch, Prüfung und was aus dem Labor übernommen
   wurde, steht in `film/`.
-- Ändern sich die gezeigten Daten, meldet `pruefe:film` das als Hinweis. Bis zum
+- Ändern sich die gezeigten Daten, meldet `pruefe:film` das als Hinweis.
+- Der kurze Film zeigt den Stand vom 02.11. und meldet sich ebenso. Bis zum
   nächsten Rendern zeigt der Film den alten Stand.
 - Gerendert wird mit `npm run baue:film` auf einem Rechner mit ffmpeg und Chrome.
   Das Skript ruft HyperFrames in fester Version über npx auf, ohne Telemetrie.
@@ -258,10 +259,11 @@ gemeinsamen Bausteine in `basis.tsx`. `index.ts` ordnet sie den Kennungen in
   merged, auch nicht automatisch. Baut ein Zweig auf einem offenen auf, geht sein
   Pull Request gegen diesen Zweig.
 
-## Offen am 02.11.2026
+## Offen am 04.11.2026
 
-- Der Film zeigt den Stand vom 27.10. Neu gerendert wird er erst, wenn der
-  Projektverantwortliche ihn im Chat gesehen hat.
+- Der Film der Mannschaft zeigt noch 13 von 25 Paketen von WMC Inventar. Neu gerendert
+  wird er nach der letzten Nachbesserung, wieder zuerst im Chat. Bis dahin meldet
+  `pruefe:film` das als Hinweis.
 - Zahlen, die nicht zueinander passen (Lesetest vom 29.10.): zehn oder elf
   Themenkomplexe, eine von 10 oder eine von 26 Regeln. Der Pflegelauf um 7 und um
   9 Uhr ist kein Widerspruch: Gregor Dev läuft um 7, die Werkbank prüft um 9.
