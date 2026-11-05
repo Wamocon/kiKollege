@@ -4,11 +4,34 @@ Diese Datei ist für die nächste Sitzung geschrieben, nicht für die Nachwelt. 
 sagt, wo das Vorhaben steht, was als Erstes zu tun ist und was dabei nicht
 verloren gehen darf.
 
-Stand dieser Übergabe: 02.11.2026.
+Stand dieser Übergabe: 05.11.2026.
 
 Was heute gilt, steht zusammengefasst in `PFLEGE.md`: die Seiten, die Fassungen,
 die Prüfungen, was nicht auf die Seite darf, Bewegung, Film und wer was tut. Diese
 Datei bleibt die Chronik.
+
+## Nachtrag 05.11.2026: Version 1.0, Startseite, Stimme
+
+Auf Wunsch des Projektverantwortlichen vom 05.11.: morgen das Vorhaben „vorstellen.
+Es soll eine Version 1.0 sein, die dann auch weiter ausgearbeitet werden kann.“
+
+- **Umfang:** das ganze Vorhaben als Gesamtstand. Das Tor vom 27.10. bleibt, das Team
+  kommt erst nach dem Prüfstand dazu. Der Kasten `version` sagt, was steht und was
+  fehlt. Vorgestellt wird vor der Geschäftsführung und dem Team.
+- **Startseite:** Die Produktseite aus dem Labor ist seit diesem Umbau `/`, die Dateien
+  heißen `app/page.tsx`, `app/start.css` und `components/start/`. `/labor/` leitet
+  weiter, `/stand/` ist das Archiv. Vor dem Umbau einmal Stück für Stück verglichen:
+  Von der alten Startseite, dem Labor und `/stand/` ohne Archiv fehlt kein Textstück.
+  Weggefallen ist die Sprungmarke `lp-verzeichnis`, die zur alten Kopfleiste gehörte.
+  `pruefe:labor` heißt jetzt `pruefe:start`.
+- **Sprungmarken:** Wer die Seite mit einer Sprungmarke frisch öffnete, landete oben.
+  Das war schon im Labor so und ist behoben.
+- **Stand:** Daten auf den 05.11. nachgezogen, mit dem Prüfbericht zu WMC Inventar, der
+  Ampel, die der Projektverantwortliche neu gesetzt hat, und einer Beobachtung zu den
+  beiden Maßstäben für die Abnahme.
+- **Bewusst nicht gemacht:** öffentliche Fassung abbauen, CSS der alten Kopfleiste
+  aufräumen, Risiken neu bewerten; das Register vom 27.10. nennt Fristen, die vorbei
+  sind.
 
 ## Nachtrag 02.11.2026, später: Film der Mannschaft
 

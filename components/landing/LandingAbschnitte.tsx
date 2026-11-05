@@ -22,7 +22,7 @@ import { istIntern, nurSichtbare, sichtbar, zeigtInternes } from '@/lib/freigabe
 import { pfad } from '@/lib/pfad'
 
 /** Die Abschnitte der Landing Page. Die Landing Page zeigt alle mit Rahmen;
- *  das Labor zeigt einzelne als Einzelheiten, ohne Nummer in der Rinne. */
+ *  die Startseite zeigt einzelne als Einzelheiten, ohne Nummer in der Rinne. */
 export function LandingAbschnitte({ nur, rahmen = true, ohne }: { nur?: string[]; rahmen?: boolean; ohne?: string[] } = {}) {
   const d = daten
   const gmbh = d.gesellschaften[0]
@@ -91,7 +91,7 @@ export function LandingAbschnitte({ nur, rahmen = true, ohne }: { nur?: string[]
   const mitGrenze = rollen.filter((k) => k.betrieb === 'mitGrenze').length
 
   const zeige = (id: string) => !nur || nur.includes(id)
-  // Teile, die das Labor weglässt, weil sie in seinen Einzelheiten schon an anderer Stelle stehen
+  // Teile, die die Startseite weglässt, weil sie in ihren Einzelheiten schon an anderer Stelle stehen
   const teil = (k: string) => !ohne?.includes(k)
 
   return (
@@ -100,7 +100,7 @@ export function LandingAbschnitte({ nur, rahmen = true, ohne }: { nur?: string[]
         <>
         {/* 01 Was ein KI-Mitarbeiter ist ------------------------------------- */}
         <Sektion rahmen={rahmen} id="vorhaben" klasse="lp-hero">
-          {/* Im Labor steht der Kernsatz schon im Einstieg; zwei h1 darf eine Seite nicht haben */}
+          {/* Auf der Startseite steht der Kernsatz schon im Einstieg; zwei h1 darf eine Seite nicht haben */}
           {rahmen ? (
             <h1 className="lp-display">
               <span className="zeile">Ein KI-Mitarbeiter arbeitet zu.</span>

@@ -22,7 +22,7 @@ import { pfad } from '@/lib/pfad'
 const zeigen = (id: string) => sichtbar(abschnitt(id))
 
 /** Die Abschnitte des ausführlichen Stands. /stand/ zeigt alle mit Kopfzeile;
- *  das Labor zeigt einzelne als Einzelheiten, ohne Kopfzeile und mit eigener Kennung. */
+ *  die Startseite zeigt einzelne als Einzelheiten, ohne Kopfzeile und mit eigener Kennung. */
 export function StandAbschnitte({ nur, rahmen = true, ohne }: { nur?: string[]; rahmen?: boolean; ohne?: string[] } = {}) {
   const d = daten
   const mechanisch = d.prueflaeufe.laeufe.filter((l) => l.art === 'mechanisch')
@@ -40,7 +40,7 @@ export function StandAbschnitte({ nur, rahmen = true, ohne }: { nur?: string[]; 
   const rollenMitGrenze = rollen.filter((k) => k.betrieb === 'mitGrenze').length
 
   const zeige = (id: string) => !nur || nur.includes(id)
-  // Teile, die das Labor weglässt, weil sie in seinen Einzelheiten schon an anderer Stelle stehen
+  // Teile, die die Startseite weglässt, weil sie in ihren Einzelheiten schon an anderer Stelle stehen
   const teil = (k: string) => !ohne?.includes(k)
 
   return (

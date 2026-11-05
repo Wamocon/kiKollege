@@ -1,26 +1,26 @@
 #!/usr/bin/env node
 /**
- * Prueft, dass im Labor nichts verloren geht.
+ * Prueft, dass auf der Startseite nichts verloren geht.
  *
- *   npm run build && npm run pruefe:labor
+ *   FREIGABE=alles npm run build && npm run pruefe:start
  *
- * Seit dem 29.10.2026 baut das Labor (/labor/) die Landing Page als
- * Produktseite neu. Der Projektverantwortliche hat verlangt, dass dabei keine
- * Information wegfaellt: Was heute auf der Landing Page steht und was von
- * /stand/ in die Einzelheiten wandert, muss im Labor stehen. Nur das Archiv
- * bleibt auf /stand/.
+ * Seit dem 05.11.2026 ist die Produktseite die Startseite. Der
+ * Projektverantwortliche hat verlangt, dass dabei keine Information wegfaellt:
+ * Jeder Abschnitt der frueheren Landing Page hat einen Platz in den Einzelheiten,
+ * und was von /stand/ dorthin gehoert, muss auf der Startseite stehen. Nur das
+ * Archiv bleibt allein auf /stand/.
  *
  * Verglichen wird der sichtbare Text Stueck fuer Stueck, so wie React ihn
- * ausgibt. Nicht verglichen werden die Nummern und Titel der alten Abschnitte
- * selbst, denn die Gliederung ist das, was sich aendert.
+ * ausgibt. Die Abschnitte der Landing Page haben keine eigene Seite mehr, deshalb
+ * gilt fuer sie die Kennung: Sie muss auf der Startseite stehen.
  */
 
-import { existsSync } from 'node:fs'
+import { existsSync, readFileSync } from 'node:fs'
 import { readFile } from 'node:fs/promises'
 import { join } from 'node:path'
 import { pathToFileURL } from 'node:url'
 
-/** Diese Abschnitte von /stand/ bleiben im Archiv und muessen nicht ins Labor. */
+/** Diese Abschnitte von /stand/ bleiben im Archiv und muessen nicht auf die Startseite. */
 export const ARCHIV = ['entscheidungen', 'chronik', 'offen', 'beobachtungen', 'quellen']
 
 /** Der Bereich zwischen <main> und </main>, ohne Skripte, Stile und Grafiken. */
@@ -60,8 +60,8 @@ export function stuecke(html) {
   return s
 }
 
-/** Überschriften von Blöcken, die das Labor weglässt, weil ihr Inhalt dort
- *  schon an anderer Stelle steht (Auslassliste DOPPELT in app/labor/page.tsx).
+/** Überschriften von Blöcken, die die Startseite weglässt, weil ihr Inhalt dort
+ *  schon an anderer Stelle steht (Auslassliste DOPPELT in app/page.tsx).
  *  Nur Überschriften, nie Inhalt. */
 export const OHNE_UEBERSCHRIFT = [
   'Warum ein Programm',
@@ -77,8 +77,8 @@ export function fehlende(alt, neu, ausnahmen = OHNE_UEBERSCHRIFT) {
 }
 
 /** Grafiken, die mehr als einmal auf der Seite stehen, erkannt an ihrer
- *  Beschriftung für Screenreader. Seit dem 29.10. soll jede Grafik im Labor
- *  genau einmal vorkommen. */
+ *  Beschriftung für Screenreader. Seit dem 29.10. soll jede Grafik auf der
+ *  Produktseite genau einmal vorkommen. */
 export function doppelteGrafiken(html) {
   const zahl = new Map()
   for (const m of html.matchAll(/<[^>]*\brole="img"[^>]*>/g)) {
@@ -88,30 +88,42 @@ export function doppelteGrafiken(html) {
   return [...zahl].filter(([, n]) => n > 1).map(([label]) => label)
 }
 
-export async function pruefen({ ausgabe, log = console.log }) {
+/** Die Kennungen der Abschnitte aus lib/lpAbschnitte.ts, die auf der Startseite fehlen. */
+export function fehlendeAbschnitte(quelle, html) {
+  const ids = [...quelle.matchAll(/\{ id: '([^']+)'[^\n]*\}/g)].map((m) => m[1])
+  return ids.filter((id) => !html.includes(`id="${id}"`))
+}
+
+export async function pruefen({ ausgabe, abschnitte = 'lib/lpAbschnitte.ts', log = console.log }) {
   const lies = (p) => readFile(join(ausgabe, p), 'utf8')
-  if (!existsSync(join(ausgabe, 'labor', 'index.html'))) {
-    log('Kein Labor gebaut, nichts zu pruefen.')
+  if (!existsSync(join(ausgabe, 'index.html'))) {
+    log('Keine Seite gebaut, nichts zu pruefen.')
     return []
   }
-  const labor = hauptteil(await lies('labor/index.html'))
-  const alt = hauptteil(await lies('index.html')) + ohneArchiv(hauptteil(await lies('stand/index.html')))
-  const fehlt = fehlende(alt, labor)
-  log(`Verglichen: ${stuecke(alt).size} Textstuecke der Landing Page und von /stand/ ohne Archiv.`)
+  const start = hauptteil(await lies('index.html'))
+  const alt = ohneArchiv(hauptteil(await lies('stand/index.html')))
+  const fehlt = fehlende(alt, start)
+  log(`Verglichen: ${stuecke(alt).size} Textstuecke von /stand/ ohne Archiv.`)
   if (fehlt.length) {
-    log(`Im Labor fehlen ${fehlt.length}:`)
+    log(`Auf der Startseite fehlen ${fehlt.length}:`)
     for (const t of fehlt.slice(0, 40)) log(`  - ${t.slice(0, 140)}`)
   } else {
     log('Nichts verloren.')
   }
-  const doppelt = doppelteGrafiken(labor)
+  const ohnePlatz = fehlendeAbschnitte(readFileSync(abschnitte, 'utf8'), start)
+  if (ohnePlatz.length) {
+    log(`Ohne Platz in den Einzelheiten (EINZELHEITEN in app/page.tsx): ${ohnePlatz.join(', ')}`)
+  } else {
+    log('Jeder Abschnitt der Landing Page hat seinen Platz.')
+  }
+  const doppelt = doppelteGrafiken(start)
   if (doppelt.length) {
-    log(`Im Labor stehen ${doppelt.length} Grafiken mehrfach:`)
+    log(`Auf der Startseite stehen ${doppelt.length} Grafiken mehrfach:`)
     for (const t of doppelt) log(`  - ${t.slice(0, 140)}`)
   } else {
     log('Jede Grafik steht einmal.')
   }
-  return [...fehlt, ...doppelt]
+  return [...fehlt, ...ohnePlatz, ...doppelt]
 }
 
 if (import.meta.url === pathToFileURL(process.argv[1] ?? '').href) {

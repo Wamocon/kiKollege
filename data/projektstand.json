@@ -1,5 +1,42 @@
 {
   "stand": "2026-11-05",
+  "version": {
+    "nummer": "1.0",
+    "am": "2026-11-06",
+    "titel": "Was Version 1.0 ist.",
+    "satz": "Version 1.0 ist der Gesamtstand des Vorhabens: was steht, was noch fehlt und wie es weitergeht. Auf dieser Grundlage bauen wir weiter. Sie heißt nicht, dass alles fertig ist. Fertig heißt abgenommen, und das steht bei jedem Teil dabei.",
+    "drinTitel": "Was heute steht",
+    "drin": [
+      {
+        "was": "Die Mannschaft",
+        "text": "Wer arbeitet, hat eine feste Aufgabe, einen aufgeschriebenen Maßstab und eine Grenze. Wer schon abgenommen ist, steht bei der Mannschaft."
+      },
+      {
+        "was": "Der Weg eines Auftrags",
+        "text": "Ein Auftrag des Projektverantwortlichen läuft über den Orchestrator zum Reviewer und unverändert zurück. Das ist abgenommen."
+      },
+      {
+        "was": "Der Prüfstand",
+        "text": "Der Orchestrator wird in festem Takt geübt und gemessen, jeder Lauf steht auf dieser Seite."
+      },
+      {
+        "was": "Erste Ergebnisse",
+        "text": "Mit der Mannschaft sind Anwendungen für die IT entstanden. Wie weit jede ist, steht unter Ergebnisse."
+      },
+      {
+        "was": "Die Regeln",
+        "text": "Ein Mensch entscheidet, jeder Befund hat eine Fundstelle, und was nicht gemessen ist, steht als Lücke da."
+      },
+      {
+        "was": "Diese Seite und die Filme",
+        "text": "Alles kommt aus einer Datenquelle, jede Entscheidung steht mit Datum im Archiv."
+      }
+    ],
+    "danachTitel": "Was noch fehlt",
+    "gesamtTitel": "Das Vorhaben insgesamt",
+    "quelle": "Entscheidungen des Projektverantwortlichen vom 05.11.2026",
+    "freigabe": "intern"
+  },
   "ampel": {
     "farbe": "gelb",
     "satz": "Meilenstein 1 ist am 16.10. abgenommen. Meilenstein 2 kommt frühestens am 23.11., weil der Orchestrator erst alle 18 Prüffälle sicher beherrschen muss; gelernt hat er bisher 6. Die Browser-Startseite läuft im Büronetz. WMC Inventar ist gebaut, nach der Prüfung vom 05.11. aber nicht abnahmefähig; die Werkbank behebt die Befunde. Drei von sieben hohen Risiken sind eingetreten, gegen jedes läuft eine Maßnahme. Die Termine von Meilenstein 3 und 4 sind offen.",

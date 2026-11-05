@@ -5,7 +5,7 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Lenis from 'lenis'
 
-/** Die ganze Bewegung des Labors an einer Stelle: Vorhang, geglättetes
+/** Die ganze Bewegung der Startseite an einer Stelle: Vorhang, geglättetes
  *  Scrollen, Einblendungen, Zähler, Parallaxe, die waagerechte Galerie, die
  *  Schritte neben dem Chat, Mauszeiger und magnetische Knöpfe. Wer reduzierte
  *  Bewegung eingestellt hat, bekommt nur Kopfleiste, Menü und Anker; ohne
@@ -65,6 +65,19 @@ export function Bewegung() {
     }
     oeffneZiel(location.hash)?.scrollIntoView()
     auf(window, 'hashchange', () => oeffneZiel(location.hash)?.scrollIntoView())
+
+    // Der Knopf unter einem Film spielt ihn einmal von vorn und mit Ton. Das gilt
+    // auch bei reduzierter Bewegung, denn hier hat ihn jemand ausdrücklich gestartet.
+    for (const knopf of document.querySelectorAll<HTMLButtonElement>('[data-lb-film-ton]')) {
+      auf(knopf, 'click', () => {
+        const v = knopf.closest('figure')?.querySelector('video')
+        if (!v) return
+        v.loop = false
+        v.muted = false
+        v.currentTime = 0
+        v.play().catch(() => {})
+      })
+    }
 
     if (ruhig) {
       document.querySelector('.lb-vorhang')?.remove()
@@ -440,8 +453,13 @@ export function Bewegung() {
     })
     aufraeumen.push(() => ctx.revert())
 
-    // Schriften und Bilder ändern Maße; danach einmal neu messen
-    document.fonts?.ready.then(() => ScrollTrigger.refresh())
+    // Schriften und Bilder ändern Maße; danach einmal neu messen. Wer mit einer
+    // Sprungmarke kommt, etwa über einen alten Link, landet erst dann an der Stelle.
+    document.fonts?.ready.then(() => {
+      ScrollTrigger.refresh()
+      const ziel = oeffneZiel(location.hash)
+      if (ziel) lenis.scrollTo(ziel, { offset: -72, immediate: true, force: true })
+    })
 
     return () => aufraeumen.reverse().forEach((f) => f())
   }, [])

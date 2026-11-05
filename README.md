@@ -6,10 +6,10 @@ worauf man beim Ändern achtet.
 
 | Route | Was sie ist |
 |---|---|
-| `/` | Landing Page für alle Leser, in vier Kapiteln: verstehen, damit arbeiten, wie es gebaut ist, wo es steht. Elf Abschnitte und die Begriffe. |
-| `/stand/` | Dichte Standseite mit Ankernavigation, allen Tabellen, Prüfläufen, Stufen und dem Meilensteinplan im Einzelnen, dazu die Zeichnungen der Landing Page im jeweils passenden Abschnitt. |
+| `/` | Startseite, die Produktseite, seit dem 05.11.2026. Szenen mit Bewegung, darunter die Einzelheiten, dazu Management Summary, Version 1.0 und zwei Filme. Siehe `PFLEGE.md`. |
+| `/stand/` | Das Archiv: dichte Standseite mit Ankernavigation, allen Tabellen, Prüfläufen, Stufen und dem Meilensteinplan im Einzelnen, dazu Chronik, Entscheidungen, offene Punkte, Beobachtungen und Quellen. |
 | `/mannschaft/` | Steckbriefe der KI-Mitarbeiter mit Aufgaben, Zielen und Werkzeugen. |
-| `/labor/` | Produktseite, Entwurf zur Freigabe seit dem 29.10.2026, nicht verlinkt. Szenen mit Bewegung, darunter die Einzelheiten aus `/` und `/stand/`, dazu der Film „kiKollege in 30 Sekunden“. Siehe `PFLEGE.md`. |
+| `/labor/` | Weiterleitung auf die Startseite, für alte Links. |
 | `/impressum/`, `/datenschutz/` | Entwürfe, rechtlich nicht geprüft. Siehe „Impressum und Datenschutz“. |
 
 Bis zum 17.09.2026 hatte die Landing Page neunzehn Abschnitte und rund 9.500
