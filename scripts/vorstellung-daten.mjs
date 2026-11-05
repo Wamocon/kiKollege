@@ -109,7 +109,7 @@ export function vorstellungDaten(d) {
   const projekt = (id) => d.entstanden.projekte.find((p) => p.id === id)
   const inventar = projekt('wmc-inventar')
   const [, fertig, gesamt] = inventar.status.match(/(\d+) von (\d+)/)
-  // „im Bau, 41 von 41 Paketen, nicht abnahmefähig“: was hinter der Zahl steht, gehört in den Blick
+  // „gebaut, 41 von 41 Paketen, Abnahme steht aus“: was hinter der Zahl steht, gehört in den Blick
   const hinterZahl = inventar.status.split(/(?<=\d+ von \d+[^,]*),\s*/)
   const team = plan.meilensteine.find((m) => m.id === d.anleitung.teamAb)
   const teamSatz = team && !team.terminOffen ? `Das Team kommt ${team.fruehestens ? 'frühestens ' : ''}am ${kurz(team.termin)} dazu.` : null
@@ -142,7 +142,11 @@ export function vorstellungDaten(d) {
   })
   const stimme = stopps.flatMap((s, i) => {
     const zusatz = []
-    if (s.beispiel.art === 'projekte') zusatz.push([`${s.beispiel.bau.name}: ${s.beispiel.bau.status}.`, [String(s.beispiel.bau.gesamt), 'Paketen', 'nicht']])
+    if (s.beispiel.art === 'projekte') {
+      const { bau, nachsatz } = s.beispiel
+      zusatz.push([`${bau.name}: ${bau.status}.`, [String(bau.gesamt), 'Paketen', ...(bau.warnung ? [bau.warnung.split(/\s+/)[0]] : [])]])
+      if (nachsatz) zusatz.push([nachsatz, []])
+    }
     if (s.beispiel.art === 'chat') {
       zusatz.push([`Noch bin ich im Training: ${letzter.gelernt} von ${faelle} Fällen gelernt.`, [String(letzter.gelernt)]])
       if (teamSatz) zusatz.push([teamSatz, ['frühestens', 'am']])
@@ -584,7 +588,7 @@ function beispielProjekte(b, id, Z, S) {
   const stand = nach === undefined ? esc(b.bau.stand) : `${esc(vor)}<em id="${id}_pakete">0</em>${esc(nach)}`
   const anBau = Z.an(sagt)
   const voll = Z.bei(sagt, 'Paketen')
-  const warnung = Z.bei(sagt, 'nicht')
+  const warnung = Z.bei(sagt, b.bau.warnung ? b.bau.warnung.split(/\s+/)[0] : 'Paketen')
   return {
     stil: `    #${id}-projekte { position: absolute; inset: 0; color: ${FARBE.weiss}; }
     #${id}-projekte .zeile { position: relative; padding: 12px 0 10px; }
