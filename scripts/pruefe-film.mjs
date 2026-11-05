@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Meldet, wenn einer der beiden Filme im Labor nicht mehr zu den Daten passt.
+ * Meldet, wenn einer der beiden Filme auf der Startseite nicht mehr zu den Daten passt.
  *
  *   npm run pruefe:film                Warnung, der Lauf bleibt grün
  *   npm run pruefe:film -- --streng    schlägt fehl, wenn der Film veraltet ist
@@ -55,7 +55,7 @@ if (import.meta.url === pathToFileURL(process.argv[1] ?? '').href) {
       console.error(grund)
       process.exit(1)
     } else {
-      console.log(process.env.GITHUB_ACTIONS ? `::warning title=Film im Labor::${grund}` : `Hinweis: ${grund}`)
+      console.log(process.env.GITHUB_ACTIONS ? `::warning title=Film auf der Startseite::${grund}` : `Hinweis: ${grund}`)
     }
   }
 }

@@ -15,7 +15,7 @@ Stand: 05.11.2026.
 | `/stand/` | das Archiv: Plan, Risiken, Stufen, Messung, dazu Chronik, Entscheidungen, offene Punkte, Beobachtungen und Quellen | `components/stand/StandAbschnitte.tsx` |
 | `/mannschaft/` | Steckbriefe der KI-Mitarbeiter | `app/mannschaft/page.tsx` |
 | `/labor/` | Weiterleitung auf die Startseite samt Sprungmarke, für alte Links. Dort stand bis zum 05.11.2026 der Entwurf. | `app/labor/page.tsx` |
-| `/film/kikollege-30s.mp4` | Film „kiKollege in 30 Sekunden“, stumm | `film/`, `scripts/film-*.mjs`, `scripts/baue-film.mjs` |
+| `/film/kikollege-30s.mp4` | Film „kiKollege in 30 Sekunden“, mit Stimme | `film/`, `scripts/film-*.mjs`, `scripts/baue-film.mjs` |
 | `/impressum/`, `/datenschutz/` | Entwürfe, rechtlich nicht geprüft | `app/impressum/`, `app/datenschutz/` |
 
 Am 05.11.2026 hat der Projektverantwortliche die Produktseite aus dem Labor als
@@ -196,19 +196,33 @@ Scrollen.
 
 ## Der Film
 
-- 30 Sekunden, stumm, 1920 × 1080, unter 1 MB, gebaut mit HyperFrames: HTML und
-  GSAP, Bild für Bild gerendert. `scripts/film-daten.mjs` nimmt jeden Satz und
-  jede Zahl aus den Daten. Drehbuch, Prüfung und was aus dem Labor übernommen
-  wurde, steht in `film/`.
+- Rund 30 Sekunden, mit Stimme, 1920 × 1080, möglichst unter 3 MB, gebaut mit
+  HyperFrames: HTML und GSAP, Bild für Bild gerendert. Weicht die Länge um mehr als
+  eine Sekunde ab, bricht `baue:film` ab. `scripts/film-daten.mjs` nimmt jeden Satz
+  und jede Zahl aus den Daten. Drehbuch, Prüfung und was aus dem früheren Labor
+  übernommen wurde, steht in `film/`.
+- **Die Stimme** kommt lokal von Piper, seit dem 05.11.2026. Kein Text geht an einen
+  fremden Dienst. Nur Thorsten und Kerstin, beide CC0; andere deutsche Modelle sind
+  nicht kommerziell lizenziert oder ungeklärt. Keine Musik, keine Geräusche.
+- **Die Stimme ist die Uhr:** Wörter und Karten kommen, wenn sie gesprochen werden,
+  die Zeiten kommen aus den gemessenen Sprachdateien. Die Sätze stehen in
+  `filmDaten().stimme`, die Aussprache in `AUSSPRACHE` in `scripts/stimme.mjs`, nur
+  für die Stimme und nie für das Bild.
+- **Auf der Seite** startet ein Film stumm, solange er zu sehen ist. Der Knopf „Mit Ton
+  von vorn abspielen“ spielt ihn einmal ganz mit Ton. Die Untertitel stehen in
+  `film/*.vtt` und im Feld `untertitel` der `stand.json`.
+- Rot trägt je Bild genau ein Motiv.
 - Ändern sich die gezeigten Daten, meldet `pruefe:film` das als Hinweis.
-- Der kurze Film zeigt den Stand vom 02.11. und meldet sich ebenso. Bis zum
-  nächsten Rendern zeigt der Film den alten Stand.
-- Gerendert wird mit `npm run baue:film` auf einem Rechner mit ffmpeg und Chrome.
+- Der Fingerabdruck erfasst auch den gesprochenen Text, seine Aussprache und die
+  Einstellung der Stimme. Bis zum nächsten Rendern zeigt der Film den alten Stand.
+- Gerendert wird mit `npm run baue:film` auf einem Rechner mit ffmpeg, Chrome und
+  Piper: `KIKOLLEGE_STIMMEN` nennt den Ordner, sonst gilt ein Ordner `stimmen`
+  oberhalb des Repositorys. Die Stimmen liegen nicht im Repository.
   Das Skript ruft HyperFrames in fester Version über npx auf, ohne Telemetrie.
 - **Erst zeigen, dann einbauen** (seit 30.10.2026): Ein neuer oder neu
   gerenderter Film geht zuerst als Datei an den Projektverantwortlichen in den
-  Chat. Erst nach seinem Okay werden Film, Standbild und `film/stand.json`
-  committet und auf der Seite eingebaut.
+  Chat. Erst nach seinem Okay werden Film, Standbild, Untertitel und
+  `film/stand.json` committet und auf der Seite eingebaut.
 - Der Standwächter und Gregor Dev rendern nicht. Sie erwähnen einen veralteten
   Film in ihrer Meldung.
 - In der öffentlichen Fassung fehlt der Film, weil er den intern freigegebenen
@@ -216,18 +230,25 @@ Scrollen.
 
 ## Der Film der Mannschaft
 
-- „Ein Tag mit der Mannschaft“: 79 Sekunden, stumm, gebaut wie der erste Film.
-  Die KI-Mitarbeiter, die schon arbeiten, stellen sich in Ich-Form vor, zeigen ein
-  Beispiel und sagen, was sie nie tun. Er steht im Labor unter der Galerie.
+- „Ein Tag mit der Mannschaft“: rund 93 Sekunden, Grenze unter 100, mit Stimme,
+  gebaut wie der erste Film. Die Länge kommt aus den Sprachdateien. Die
+  KI-Mitarbeiter, die schon arbeiten, stellen sich in Ich-Form vor, zeigen ein
+  Beispiel und sagen, was sie nie tun. Er steht auf der Startseite unter der Galerie.
+- **Stimmen** stehen in der Tabelle `SPRECHER`: die Kollegen mit Thorsten, durch Tempo
+  und Tonhöhe unterschieden, julia-trend mit Kerstin.
+- **Die Figuren leben:** Sie atmen, blinzeln und nicken, der Mund läuft im Takt der
+  Satzlänge. Der Film gruppiert nur die Teile der Zeichnung (Tabelle `TEILE`). Ändert
+  jemand eine Zeichnung, schlägt ein Test an, dann `TEILE` nachziehen.
 - **Sätze** stehen in `produktseite.vorstellung`. Paketzahl und Trainingsstand kommen
   aus `entstanden` und `training.laeufe`, die Zeichnungen aus dem Code der Figuren.
 - **Die Uhr** ist nur bei Arnold, Gregor Dev und julia-trend eine echte Zeit. Bei den
-  anderen zeigt sie, dass der Tag vergeht; ihr Text nennt den wahren Anlass.
+  anderen zeigt sie, dass der Tag vergeht; ihr Text nennt den wahren Anlass. Der große
+  Zeiger kriecht beim Sprechen weiter.
 - **Er veraltet schnell**, denn jede neue Paketzahl von WMC Inventar und jeder neue
   Trainingsstand ändert ihn. `pruefe:film` meldet das als Hinweis. Neu gerendert wird
   mit `npm run baue:vorstellung`, nicht bei jedem Paket, sondern wenn es sich lohnt.
 - **Erst zeigen, dann einbauen** gilt auch hier: erst in den Chat, nach dem Okay
-  Film, Standbild und `film/vorstellung/stand.json` committen.
+  Film, Standbild, Untertitel und `film/vorstellung/stand.json` committen.
 - Die öffentliche Fassung zeigt ihn nicht, weil julia-trend darin vorkommt; nur ihr
   Abschnitt ist in den Daten intern. Drehbuch und Prüfung stehen in `film/vorstellung/`.
 
@@ -276,15 +297,18 @@ gemeinsamen Bausteine in `basis.tsx`. `index.ts` ordnet sie den Kennungen in
 
 ## Offen am 05.11.2026
 
-- Der Film der Mannschaft zeigt noch 13 von 25 Paketen von WMC Inventar. Neu gerendert
-  wird er nach der letzten Nachbesserung, wieder zuerst im Chat. Bis dahin meldet
-  `pruefe:film` das als Hinweis.
+- Der Film der Mannschaft ist vom 05.11. Ändert sich der Stand von WMC Inventar, meldet
+  `pruefe:film` das als Hinweis. Neu gerendert wird wieder zuerst für den Chat.
+- Die Stimmen hat beim Bau niemand gehört, sie sind nur gemessen. Die Aussprache steht
+  bis zum ersten Abhören unter Vorbehalt.
+- In den Stopps des Films der Mannschaft unter `produktseite.vorstellung` stehen Zahlen
+  und Termine, entgegen der Regel für `produktseite`.
 - Zahlen, die nicht zueinander passen (Lesetest vom 29.10.): zehn oder elf
   Themenkomplexe, eine von 10 oder eine von 26 Regeln. Der Pflegelauf um 7 und um
   9 Uhr ist kein Widerspruch: Gregor Dev läuft um 7, die Werkbank prüft um 9.
 - Wen ein neuer Mitarbeiter ansprechen soll, sagt die Seite nicht, weil sie den
   Namen des Projektverantwortlichen nicht nennt.
-- Wie der Film in Teams oder in einer Präsentation wirkt, hat noch niemand
+- Wie die Filme in Teams oder in einer Präsentation wirken, hat noch niemand
   gesehen.
 - Der Abbau der öffentlichen Fassung.
 - Wo Arbeitsplatz, Grenze, Sinnbild und Kopf der KI-Kollegen auf die Seite

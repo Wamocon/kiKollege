@@ -29,6 +29,9 @@ Es soll eine Version 1.0 sein, die dann auch weiter ausgearbeitet werden kann.�
 - **Stand:** Daten auf den 05.11. nachgezogen, mit dem Prüfbericht zu WMC Inventar, der
   Ampel, die der Projektverantwortliche neu gesetzt hat, und einer Beobachtung zu den
   beiden Maßstäben für die Abnahme.
+- **Filme:** Beide haben eine Stimme und mehr Bewegung, die Zeiten kommen aus den
+  Sprachdateien. Regeln in `PFLEGE.md`. Gesehen hat sie die Werkbank nur als Einzelbilder,
+  gehört hat sie beim Bau niemand.
 - **Bewusst nicht gemacht:** öffentliche Fassung abbauen, CSS der alten Kopfleiste
   aufräumen, Risiken neu bewerten; das Register vom 27.10. nennt Fristen, die vorbei
   sind.
