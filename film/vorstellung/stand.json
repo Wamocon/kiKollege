@@ -1,10 +1,11 @@
 {
-  "stand": "2026-11-02",
-  "fingerabdruck": "9e305401ccbb42b4",
+  "stand": "2026-11-05",
+  "fingerabdruck": "c65e7a15e86ab30c",
   "datei": "kikollege-mannschaft.mp4",
   "bild": "kikollege-mannschaft.jpg",
-  "bytes": 4947837,
-  "sekunden": 79.2,
+  "untertitel": "kikollege-mannschaft.vtt",
+  "bytes": 11277846,
+  "sekunden": 92.67,
   "breite": 1920,
   "hoehe": 1080,
   "hyperframes": "hyperframes@0.8.217"
