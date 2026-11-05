@@ -388,6 +388,65 @@ export function Bewegung() {
         return () => nachrichten.forEach((n) => n.classList.add('aktiv'))
       })
 
+      // Beim Lesen des Aufbaus leuchtet der passende Ring
+      mm.add('(min-width: 900px)', () => {
+        const zeilen = [...document.querySelectorAll<HTMLElement>('[data-lb-aufbau]')]
+        const ringe = [...document.querySelectorAll<SVGGElement>('[data-lb-ring]')]
+        const setze = (i: number) => {
+          zeilen.forEach((z, n) => z.classList.toggle('aktiv', n === i))
+          ringe.forEach((r, n) => r.classList.toggle('aktiv', n === i))
+        }
+        zeilen.forEach((z, i) => {
+          ScrollTrigger.create({ trigger: z, start: 'top 60%', onEnter: () => setze(i), onLeaveBack: () => setze(i - 1) })
+        })
+        gsap.from('[data-lb-ring]', {
+          opacity: 0,
+          scale: 0.86,
+          svgOrigin: '280 280',
+          duration: 1,
+          stagger: 0.12,
+          ease: 'power3.out',
+          scrollTrigger: { trigger: '[data-lb-ringe]', start: 'top 80%' },
+        })
+        return () => setze(-1)
+      })
+
+      // Der Weg eines Auftrags: steht still, während der Punkt ihn abläuft
+      mm.add('(min-width: 900px)', () => {
+        const weg = document.querySelector<HTMLElement>('[data-lb-weg]')
+        const punkt = weg?.querySelector<SVGGElement>('.lb-weg-punkt')
+        if (!weg || !punkt) return
+        const stuecke = [...weg.querySelectorAll<SVGPathElement>('[data-lb-weg-stueck]')]
+        const spuren = [...weg.querySelectorAll<SVGPathElement>('[data-lb-weg-spur]')]
+        const knoten = [...weg.querySelectorAll<SVGGElement>('[data-lb-weg-knoten]')]
+        const schritte = [...weg.querySelectorAll<HTMLElement>('[data-lb-weg-schritt]')]
+        const laengen = stuecke.map((s) => s.getTotalLength())
+        const summe = laengen.reduce((a, b) => a + b, 0)
+        const setze = (anteil: number) => {
+          let rest = anteil * summe
+          let i = 0
+          while (i < laengen.length - 1 && rest > laengen[i]) rest -= laengen[i++]
+          const ort = stuecke[i].getPointAtLength(rest)
+          punkt.setAttribute('transform', `translate(${ort.x} ${ort.y})`)
+          spuren.forEach((s, n) => {
+            s.style.strokeDashoffset = n < i ? '0' : n === i ? String(1 - rest / laengen[i]) : '1'
+          })
+          const dran = Number(rest / laengen[i] < 0.5 ? stuecke[i].dataset.von : stuecke[i].dataset.zu)
+          knoten.forEach((k, n) => k.classList.toggle('aktiv', n === dran))
+          schritte.forEach((s, n) => s.classList.toggle('aktiv', n === dran))
+        }
+        setze(0)
+        ScrollTrigger.create({
+          trigger: weg,
+          start: 'center center',
+          end: '+=260%',
+          pin: true,
+          pinSpacing: true,
+          scrub: 0.4,
+          onUpdate: (st) => setze(st.progress),
+        })
+      })
+
       // Mauszeiger und magnetische Knöpfe, nur mit feiner Maus ------------------
       mm.add('(hover: hover) and (pointer: fine)', () => {
         const zeiger = document.querySelector<HTMLElement>('.lb-zeiger')
