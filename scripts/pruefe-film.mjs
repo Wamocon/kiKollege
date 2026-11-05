@@ -1,14 +1,15 @@
 #!/usr/bin/env node
 /**
- * Meldet, wenn einer der beiden Filme im Labor nicht mehr zu den Daten passt.
+ * Meldet, wenn einer der beiden Filme auf der Startseite nicht mehr zu den Daten passt.
  *
  *   npm run pruefe:film                Warnung, der Lauf bleibt grün
  *   npm run pruefe:film -- --streng    schlägt fehl, wenn der Film veraltet ist
  *
  * Der Film wird von Hand gerendert (npm run baue:film) und trägt in
- * film/stand.json den Fingerabdruck der Werte, die er zeigt. Ändern sich
- * Meilensteine, Prüfstand oder Risiken, passt der Abdruck nicht mehr. Das soll
- * eine Datenpflege nicht aufhalten, deshalb ist es ohne --streng nur ein Hinweis.
+ * film/stand.json den Fingerabdruck der Werte, die er zeigt und sagt. Ändern sich
+ * Meilensteine, Prüfstand, Risiken oder der gesprochene Text samt Aussprache, passt
+ * der Abdruck nicht mehr. Das soll eine Datenpflege nicht aufhalten, deshalb ist es
+ * ohne --streng nur ein Hinweis.
  */
 
 import { existsSync, readFileSync } from 'node:fs'
@@ -44,7 +45,7 @@ if (import.meta.url === pathToFileURL(process.argv[1] ?? '').href) {
   const daten = JSON.parse(readFileSync('data/projektstand.json', 'utf8'))
   for (const [pfad, vergleich] of [['film/stand.json', vergleiche], ['film/vorstellung/stand.json', vergleicheVorstellung]]) {
     const stand = JSON.parse(readFileSync(pfad, 'utf8'))
-    const fehlt = [stand.datei, stand.bild].filter((f) => !existsSync(`film/${f}`))
+    const fehlt = [stand.datei, stand.bild, stand.untertitel].filter(Boolean).filter((f) => !existsSync(`film/${f}`))
     const { aktuell, grund } = fehlt.length
       ? { aktuell: false, grund: `Es fehlt: ${fehlt.map((f) => `film/${f}`).join(', ')}` }
       : vergleich(stand, daten)
@@ -54,7 +55,7 @@ if (import.meta.url === pathToFileURL(process.argv[1] ?? '').href) {
       console.error(grund)
       process.exit(1)
     } else {
-      console.log(process.env.GITHUB_ACTIONS ? `::warning title=Film im Labor::${grund}` : `Hinweis: ${grund}`)
+      console.log(process.env.GITHUB_ACTIONS ? `::warning title=Film auf der Startseite::${grund}` : `Hinweis: ${grund}`)
     }
   }
 }

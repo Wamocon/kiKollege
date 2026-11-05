@@ -15,4 +15,4 @@ Nach dem Skill `remotion-to-hyperframes` (dort `TRANSLATION_NOTES.md`). Die Vorl
 - Scrollen, Lenis, Parallaxe, Mauszeiger, magnetische Knöpfe und das Kippen der Karten hängen an der Hand des Lesers. Ein Film hat keine; sie fehlen.
 - Die Einzelheiten zum Aufklappen, die Läufe des Orchestrators, die Phasen des Risikoplans und die Gegenmaßnahmen stehen nur auf der Seite. Im Film wären sie in der Zeit nicht zu lesen.
 - Die Kompositionen sind erzeugt, nicht von Hand geschrieben: `scripts/film-daten.mjs` schreibt sie aus den Daten neu. Wer im HyperFrames-Studio etwas ändert, verliert es beim nächsten `npm run baue:film`. Änderungen gehören in das Skript.
-- Ton: Der Skill rät bei Filmen über 15 Sekunden zu Musik. Der Film läuft auf der Seite stumm und bleibt ohne Ton.
+- Ton: Der Skill rät bei Filmen über 15 Sekunden zu Musik. Der Projektverantwortliche hat am 05.11.2026 nur eine Stimme verlangt, also gibt es keine Musik und keine Geräusche. Auf der Seite startet der Film stumm; den Ton schaltet man am Player ein.

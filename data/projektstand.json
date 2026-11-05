@@ -1,17 +1,54 @@
 {
-  "stand": "2026-11-04",
+  "stand": "2026-11-05",
+  "version": {
+    "nummer": "1.0",
+    "am": "2026-11-06",
+    "titel": "Was Version 1.0 ist.",
+    "satz": "Version 1.0 ist der Gesamtstand des Vorhabens: was steht, was noch fehlt und wie es weitergeht. Auf dieser Grundlage bauen wir weiter. Sie heißt nicht, dass alles fertig ist. Fertig heißt abgenommen, und das steht bei jedem Teil dabei.",
+    "drinTitel": "Was heute steht",
+    "drin": [
+      {
+        "was": "Die Mannschaft",
+        "text": "Wer arbeitet, hat eine feste Aufgabe, einen aufgeschriebenen Maßstab und eine Grenze. Wer schon abgenommen ist, steht bei der Mannschaft."
+      },
+      {
+        "was": "Der Weg eines Auftrags",
+        "text": "Ein Auftrag des Projektverantwortlichen läuft über den Orchestrator zum Reviewer und unverändert zurück. Das ist abgenommen."
+      },
+      {
+        "was": "Der Prüfstand",
+        "text": "Der Orchestrator wird in festem Takt geübt und gemessen, jeder Lauf steht auf dieser Seite."
+      },
+      {
+        "was": "Erste Ergebnisse",
+        "text": "Mit der Mannschaft sind Anwendungen für die IT entstanden. Wie weit jede ist, steht unter Ergebnisse."
+      },
+      {
+        "was": "Die Regeln",
+        "text": "Ein Mensch entscheidet, jeder Befund hat eine Fundstelle, und was nicht gemessen ist, steht als Lücke da."
+      },
+      {
+        "was": "Diese Seite und die Filme",
+        "text": "Alles kommt aus einer Datenquelle, jede Entscheidung steht mit Datum im Archiv."
+      }
+    ],
+    "danachTitel": "Was noch fehlt",
+    "gesamtTitel": "Das Vorhaben insgesamt",
+    "quelle": "Entscheidungen des Projektverantwortlichen vom 05.11.2026",
+    "freigabe": "intern"
+  },
   "ampel": {
     "farbe": "gelb",
-    "satz": "Meilenstein 1 ist am 16.10. abgenommen. Meilenstein 2 ist vom 30.10. auf frühestens 23.11. verschoben, weil der Orchestrator erst alle 18 Prüffälle sicher beherrschen muss; gelernt hat er bisher 6. Die Browser-Startseite läuft im Büronetz. WMC Inventar ist gebaut, aber noch nicht abnahmefähig: Der Protokoll-Ablauf funktioniert, eine letzte Nachbesserung ist beauftragt. Drei von sieben hohen Risiken sind eingetreten, gegen jedes läuft eine Maßnahme. Die Termine von Meilenstein 3 und 4 sind offen.",
-    "am": "2026-11-04",
+    "satz": "Meilenstein 1 ist am 16.10. abgenommen. Meilenstein 2 kommt frühestens am 23.11., weil der Orchestrator erst alle 18 Prüffälle sicher beherrschen muss; gelernt hat er bisher 6. Die Browser-Startseite läuft im Büronetz. WMC Inventar ist gebaut, nach der Prüfung vom 05.11. aber nicht abnahmefähig; die Werkbank behebt die Befunde. Drei von sieben hohen Risiken sind eingetreten, gegen jedes läuft eine Maßnahme. Die Termine von Meilenstein 3 und 4 sind offen.",
+    "am": "2026-11-05",
     "von": "Projektverantwortlicher",
-    "quelle": "Entscheidung des Projektverantwortlichen vom 04.11.2026",
+    "quelle": "Entscheidung des Projektverantwortlichen vom 05.11.2026",
     "freigabe": "intern"
   },
   "herkunft": {
     "arbeitsordner": "D:\\WAMOCON",
     "einstieg": "KI-Mitarbeiter/75_KI-Mitarbeiter/KI-Mitarbeiter — Einstieg.md",
-    "erzeugt": "2026-11-04",
+    "erzeugt": "2026-11-05",
     "fristTage": 7,
     "verfahren": "Erstbefüllung von Hand aus dem Übergabedokument vom 05.09.2026, am 11.09. fortgeschrieben aus den beiden Blättern vom 09.09., am 17.09. aus dem Vault: Logbuch, Tagesprotokolle, Meilensteinplan, Bestandsaufnahme vom 16.09., Akte des Reviewers, Laufnotizen und Quoten je Regel. Das Abbild der Ablage zählt scripts/abbild-vault.mjs. Spätere Stände der Prüfläufe schreibt scripts/export-vault.mjs aus dem Frontmatter der Laufnotizen.",
     "freigabe": "intern",
@@ -101,7 +138,10 @@
       "Tagesprotokolle KI-Mitarbeiter vom 02. bis 04.11.2026; Logbuch vom 02. bis 04.11.2026",
       "Prüfbericht WMC Inventar Zwischenstand vom 04.11.2026; Paketliste und Protokoll der Kette, gelesen am 04.11.2026",
       "Übungsprofil Hermes, Stand 04.11.2026",
-      "Arbeitsplan Browser-Startseite online 2026-10-27, Einträge vom 02. und 03.11.2026"
+      "Arbeitsplan Browser-Startseite online 2026-10-27, Einträge vom 02. und 03.11.2026",
+      "Prüfbericht WMC Inventar vom 05.11.2026, mit Anhang je Anforderung",
+      "Protokolle KI-Mitarbeiter vom 04. und 05.11.2026",
+      "Logbuch: Entscheidung WMC Inventar vom 05.11.2026; Entscheidungen Version 1.0 vom 05.11.2026"
     ],
     "getrenntAm": "2026-09-09",
     "notizordner": "KFBM/00_Vault/10_KI-Mitarbeiter"
@@ -1616,6 +1656,36 @@
       "datum": "2026-11-04",
       "entscheidung": "Der Film der Mannschaft wird erst nach der letzten Nachbesserung neu gerendert",
       "freigabe": "intern"
+    },
+    {
+      "datum": "2026-11-05",
+      "entscheidung": "WMC Inventar: Die Werkbank behebt die Befunde der Prüfung selbst; geprüft wird danach wieder von unabhängigen Prüfern",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-11-05",
+      "entscheidung": "Das Vorhaben wird am 06.11. als Version 1.0 vorgestellt, als Gesamtstand, vor der Geschäftsführung und dem Team",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-11-05",
+      "entscheidung": "Das Tor vom 27.10. bleibt: Das Team kommt erst dazu, wenn der Orchestrator alle Prüffälle sicher beherrscht",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-11-05",
+      "entscheidung": "Die Produktseite aus dem Labor wird vor der Vorstellung zur Startseite",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-11-05",
+      "entscheidung": "Beide Filme werden neu gebaut, mit mehr Bewegung und mit einer lokal erzeugten Stimme; das ersetzt „ohne Ton“ vom 29.10. und den Zeitpunkt für den Film der Mannschaft vom 04.11.",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-11-05",
+      "entscheidung": "Die Ampel bleibt gelb; ihr Satz nennt die Prüfung von WMC Inventar vom 05.11.",
+      "freigabe": "intern"
     }
   ],
   "entscheidungenNachtrag": "Die Entscheidung vom 04.09. dreht bewusst eine zuvor festgelegte Reihenfolge um: Ursprünglich sollte die Fehlalarmquote vor dem Plattformwechsel gemessen werden. Die Technik wurde vorgezogen. Das ist kein Widerspruch, sondern eine andere Reihenfolge mit einer benannten Folge, und die Folge steht im Abschnitt zur Messlücke.",
@@ -2005,6 +2075,13 @@
       "titel": "Gregor Devs Übergabe nennt Meilensteine fertig, in denen Punkte offen stehen",
       "text": "Bei WMC Inventar galt der zweite Meilenstein als fertig, obwohl dieselbe Übergabe den Import als teilweise führte und es ihn noch nicht gab. Die Proben der Kette prüfen nur Adressen und Markierungen. Hier wird nicht entschieden, wie das künftig auffällt.",
       "quelle": "Arbeitsplan 2026-10-16, Eintrag vom 31.10.; Vorlage Pakete WMC Inventar vom 31.10.2026",
+      "freigabe": "intern"
+    },
+    {
+      "id": "abnahme-inventar-zwei-massstaebe",
+      "titel": "Für die Abnahme von WMC Inventar stehen zwei Maßstäbe",
+      "text": "Die Entscheidung vom 04.11. und der Stand vom 05.11. sagen, dass für die Abnahme die Prüfung jeder Anforderung zählt und Theos Lauf nur dem Vergleich dient. Der Arbeitsplan verlangt für dieselbe Abnahme weiter einen grünen Lauf von Theo. Hier wird nicht entschieden, welcher Maßstab gilt.",
+      "quelle": "Protokoll KI-Mitarbeiter vom 05.11.2026 gegen Arbeitsplan 2026-10-16",
       "freigabe": "intern"
     }
   ],
@@ -2496,6 +2573,11 @@
         "datum": "2026-11-04",
         "text": "In der Nacht erfüllt die Übungsfassung des Orchestrators ohne Nachdenken alle 23 Übungsfälle dreimal, mit Nachdenken 21. Das sind keine Prüffälle, im Betrieb bleibt es bei 6 von 18; ein zweiter Vergleich auf neuen Fällen läuft. An WMC Inventar sind alle 35 Pakete erledigt. Die Werkbank prüft im Browser: Der Protokoll-Ablauf funktioniert von der Ausgabe bis zur Gegenzeichnung, aber der Import stürzt ab, der Raumplan zeigt keinen Plan, und das Aussehen weicht vom Prototyp ab. Gregor Dev bekommt eine letzte Nachbesserung in drei Paketen.",
         "freigabe": "oeffentlich"
+      },
+      {
+        "datum": "2026-11-05",
+        "text": "An WMC Inventar sind alle 41 Pakete erledigt. Vier unabhängige Prüfer gehen jede Anforderung einzeln durch, von 104 sind 9 erfüllt, 76 teilweise, 17 nicht erfüllt und 2 nur im Code gelesen; die Anwendung ist nicht abnahmefähig. Die Werkbank behebt die Befunde jetzt selbst. Der Projektverantwortliche entscheidet: Das Vorhaben wird am 06.11. als Version 1.0 vorgestellt, die Produktseite wird dafür zur Startseite, und das Team kommt weiter erst nach dem Prüfstand dazu.",
+        "freigabe": "intern"
       }
     ],
     "freigabe": "oeffentlich"
@@ -4304,7 +4386,7 @@
     "ueberholt": "Am 25.09. um eine Woche geschoben, am 29.09. auf ein neues Ziel geschnitten. Er bleibt hier als Verlauf stehen."
   },
   "meilensteinplanAktuell": {
-    "stand": "2026-11-04",
+    "stand": "2026-11-05",
     "status": "Plan vom 29.09.2026, Termine am 16.10.2026 vom Projektverantwortlichen freigegeben; am 27.10.2026 rückt Meilenstein 2 auf frühestens 23.11., die Termine von 3 und 4 werden neu festgelegt",
     "von": "2026-09-29",
     "bis": "2026-11-13",
@@ -4784,7 +4866,7 @@
       },
       {
         "wer": "Pfleger der Seiten",
-        "stand": "Gregor Dev läuft seit dem 19.10. mit seiner Grenze, mit festem Pflegelauf am Montag und Donnerstag; der vom 26.10. hat den Stand dieser Seite nachgetragen. Seit dem 22.10. baut er WMC Inventar: Alle 35 Pakete sind erledigt, die Anwendung ist gebaut, aber noch nicht abnahmefähig; seit dem 04.11. arbeitet er an der letzten Nachbesserung. Seine Browser-Startseite läuft seit dem 28.10. im Büronetz. Es fehlt ein eigenes Konto."
+        "stand": "Gregor Dev läuft seit dem 19.10. mit seiner Grenze, mit festem Pflegelauf am Montag und Donnerstag; der vom 26.10. hat den Stand dieser Seite nachgetragen. Seit dem 22.10. baut er WMC Inventar: Alle 41 Pakete sind erledigt, die Anwendung ist gebaut, aber nicht abnahmefähig; seit dem 05.11. behebt die Werkbank die Befunde selbst. Seine Browser-Startseite läuft seit dem 28.10. im Büronetz. Es fehlt ein eigenes Konto."
       },
       {
         "wer": "Archivar",
@@ -4792,7 +4874,7 @@
       },
       {
         "wer": "Tester",
-        "stand": "Theo läuft seit dem 22.10. auf dem KI-Rechner mit seiner Grenze und ist am 23.10. in fünf Punkten nachgeschärft. Seine Suite zu WMC Inventar hat 186 Testfälle; im Lauf vom 04.11. waren 112 grün, am 26.10. noch 15 von 97. Die roten zu Verleih und Signatur liegen überwiegend an der Suite; für die Abnahme zählt die Prüfung der Werkbank. Seine Tests zur Browser-Startseite sind zuletzt alle grün. Volles Mitglied ist er noch nicht."
+        "stand": "Theo läuft seit dem 22.10. auf dem KI-Rechner mit seiner Grenze und ist am 23.10. in fünf Punkten nachgeschärft. Seine Suite zu WMC Inventar hat 186 Testfälle; im Lauf vom 05.11. waren 110 grün, am 04.11. 112, am 26.10. noch 15 von 97. Der Lauf zählt nur noch zum Vergleich; für die Abnahme zählt die Prüfung jeder einzelnen Anforderung. Seine Tests zur Browser-Startseite sind zuletzt alle grün. Volles Mitglied ist er noch nicht."
       },
       {
         "wer": "Team",
@@ -6675,7 +6757,7 @@
     }
   },
   "fahrplan": {
-    "stand": "2026-11-04",
+    "stand": "2026-11-05",
     "satz": "Vom ersten Tag am 26.08. bis zu den ersten fertigen Ergebnissen: was wann entstanden ist, wie weit wir sind und woran es am meisten hing.",
     "phasen": [
       {
@@ -6762,12 +6844,23 @@
         "titel": "Erste Ergebnisse, mehr Übung",
         "punkte": [
           "Die Browser-Startseite läuft im Büronetz, die Liste pflegt der Projektverantwortliche seit dem 03.11. selbst; offen sind Pilot und Abnahme",
-          "WMC Inventar: alle 35 Pakete erledigt, gebaut, aber noch nicht abnahmefähig; eine letzte Nachbesserung ist beauftragt",
+          "WMC Inventar: alle Pakete des Auftrags erledigt, gebaut, aber noch nicht abnahmefähig; eine letzte Nachbesserung kommt dazu",
           "Arnold sieht seit dem 31.10. jeden Morgen nach der IT-Infrastruktur",
           "Der Orchestrator hat am 31.10. 6 von 18 Fällen gelernt, am 23.10. waren es 3; seitdem übt er in einem eigenen Übungsprofil, dort erfüllt er in der Nacht zum 04.11. alle 23 Übungsfälle",
           "Für diese Seite entsteht im Labor ein neuer Entwurf, mit Management Summary, Film und Zeichnungen der KI-Kollegen"
         ],
         "ergebnis": "Zum ersten Mal läuft im Büronetz etwas, das KI-Mitarbeiter gebaut haben. Bis zur Abnahme braucht es noch viel Nacharbeit, auch von der Werkbank."
+      },
+      {
+        "von": "2026-11-05",
+        "bis": "2026-11-06",
+        "titel": "Version 1.0",
+        "punkte": [
+          "WMC Inventar: Die Prüfung jeder Anforderung ergibt „nicht abnahmefähig“, die Werkbank behebt die Befunde selbst",
+          "Die Produktseite wird zur Startseite, beide Filme bekommen eine Stimme",
+          "Das Vorhaben wird am 06.11. als Gesamtstand vor der Geschäftsführung und dem Team vorgestellt; das Team kommt erst nach dem Prüfstand dazu"
+        ],
+        "ergebnis": "Version 1.0 hält fest, was steht und was noch fehlt. Sie ist die Grundlage zum Weiterbauen, nicht das Ende des Vorhabens."
       }
     ],
     "herausforderungen": [
@@ -6880,7 +6973,7 @@
     },
     "film": {
       "titel": "kiKollege in 30 Sekunden",
-      "text": "Der Film zeigt in Kürze, was diese Seite ausführlich zeigt: zum Vorführen und zum Weitergeben. Er läuft ohne Ton."
+      "text": "Der Film zeigt in Kürze, was diese Seite ausführlich zeigt: zum Vorführen und zum Weitergeben. Er hat eine Stimme, startet auf der Seite aber stumm; den Ton schaltest du am Player ein."
     },
     "kernbegriffe": [
       "ki-mitarbeiter",
@@ -6930,7 +7023,7 @@
     "freigabe": "oeffentlich",
     "vorstellung": {
       "titel": "Ein Tag mit der Mannschaft",
-      "text": "Die KI-Mitarbeiter stellen sich vor und zeigen, was sie können. Der Film läuft ohne Ton.",
+      "text": "Die KI-Mitarbeiter stellen sich vor und zeigen, was sie können, jeder mit eigener Stimme. Der Film startet auf der Seite stumm; den Ton schaltest du am Player ein.",
       "kern": [
         "Ein KI-Mitarbeiter arbeitet zu.",
         "Ein Mensch entscheidet."
@@ -7059,9 +7152,9 @@
               },
               {
                 "name": "WMC Inventar",
-                "gruen": 112,
+                "gruen": 110,
                 "von": 186,
-                "wann": "Lauf vom 04.11."
+                "wann": "Lauf vom 05.11."
               }
             ]
           }
@@ -7100,7 +7193,7 @@
     }
   },
   "entstanden": {
-    "stand": "2026-11-04",
+    "stand": "2026-11-05",
     "titel": "Was schon entstanden ist.",
     "satz": "Gregor Dev baut nach Auftrag, Theo schreibt die Tests und führt sie aus, die Werkbank prüft nach, und abgenommen wird von einem Menschen. So sind bisher zwei Anwendungen für die IT entstanden: Eine läuft im Büronetz, eine ist im Bau. An dieser Seite arbeitet Gregor Dev mit.",
     "projekte": [
@@ -7119,11 +7212,11 @@
         "id": "wmc-inventar",
         "name": "WMC Inventar",
         "art": "bau",
-        "status": "im Bau, 35 von 38 Paketen",
+        "status": "im Bau, 41 von 41 Paketen, nicht abnahmefähig",
         "was": "Die Hardware-Verwaltung der IT, ein eigenes Web-Werkzeug statt der bisherigen Excel-Liste: Geräte und ihr Lebenslauf, Arbeitsplätze mit Raumplan, QR-Etiketten, Import der Bestandsliste, Verleih und Protokolle mit Signatur.",
-        "wer": "Gregor Dev baut, Theo testet parallel, als Auftragskette: Ein Wächter schickt das nächste Paket los, wenn das vorige fertig ist und seine Probe bestanden hat. Hält sie an, greift die Werkbank ein.",
-        "stand": "Alle 35 Pakete des Auftrags sind erledigt, drei für die letzte Nachbesserung kamen am 04.11. dazu. Die Anwendung ist gebaut, aber noch nicht abnahmefähig. In der Prüfung der Werkbank im Browser funktioniert der Protokoll-Ablauf von der Ausgabe bis zur Gegenzeichnung; der Import der Testdatei stürzt noch ab, der Raumplan zeigt keinen Plan, und das Aussehen weicht vom Prototyp ab. Theos letzter ganzer Lauf am 04.11.: 112 von 186 Tests grün, die roten zu Verleih und Signatur liegen überwiegend an den Tests. Bisher läuft es als Testserver mit Beispieldaten.",
-        "offen": "Gregor Dev arbeitet an der letzten Nachbesserung: Fehler, Raumplan und Aussehen. Danach prüft die Werkbank jede Anforderung einzeln, dann folgt die Abnahme; Theos Lauf dient nur noch dem Vergleich. In Betrieb geht es auf einem eigenen Rechner im Büronetz.",
+        "wer": "Gregor Dev hat gebaut, Theo parallel getestet, als Auftragskette: Ein Wächter schickte das nächste Paket los, wenn das vorige fertig war und seine Probe bestanden hatte. Die Korrekturen für Import, Raumplan und Aussehen stammen von der Werkbank, Gregor Dev hat sie eingespielt. Seit dem 05.11. behebt die Werkbank die Befunde der Prüfung selbst. Der Test, ob Gregor Dev so eine Anwendung allein bauen kann, endet damit praktisch, und der Code stammt dann größtenteils von der Werkbank.",
+        "stand": "Alle 41 Pakete sind erledigt, die Anwendung ist gebaut, aber nicht abnahmefähig. Das hat am 05.11. die Prüfung jeder einzelnen Anforderung ergeben: Von 104 sind 9 erfüllt, 76 teilweise, 17 nicht erfüllt und 2 nur im Code gelesen. Teilweise heißt: mindestens eine Abweichung vom Abnahmekriterium, auch eine kleine. Im Browser läuft der Hauptweg von der Anlage eines Geräts über die Ausgabe bis zum versiegelten Protokoll, dazu der Import der Blätter Inventar und Notebooks und der Raumplan mit Grundriss. Theos Lauf vom 05.11. zählt nur zum Vergleich: 110 von 186 Tests grün. Bisher läuft alles als Testserver mit Beispieldaten.",
+        "offen": "Die Werkbank behebt die Befunde. Danach prüfen wieder unabhängige Prüfer jede Anforderung, dann folgt die Abnahme durch einen Menschen. In Betrieb geht es auf einem eigenen Rechner im Büronetz.",
         "freigabe": "oeffentlich"
       },
       {

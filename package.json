@@ -1,8 +1,8 @@
 {
   "name": "kikollege",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
-  "description": "Interne Standseite zum Vorhaben KI-Mitarbeiter der WAMOCON GmbH",
+  "description": "Seiten zum Vorhaben KI-Mitarbeiter der WAMOCON GmbH",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -17,7 +17,7 @@
     "stand:nachtragen": "node scripts/stand-nachtragen.mjs",
     "pruefe:ausgabe": "node scripts/pruefe-ausgabe.mjs",
     "pruefe:figuren": "node scripts/pruefe-figuren.mjs",
-    "pruefe:labor": "node scripts/pruefe-labor.mjs",
+    "pruefe:start": "node scripts/pruefe-start.mjs",
     "pruefe:film": "node scripts/pruefe-film.mjs",
     "baue:film": "node scripts/baue-film.mjs",
     "baue:vorstellung": "node scripts/baue-vorstellung.mjs",

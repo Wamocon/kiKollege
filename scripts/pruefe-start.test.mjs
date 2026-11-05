@@ -1,7 +1,7 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
 
-import { doppelteGrafiken, fehlende, ohneArchiv, stuecke } from './pruefe-labor.mjs'
+import { doppelteGrafiken, fehlende, fehlendeAbschnitte, ohneArchiv, stuecke } from './pruefe-start.mjs'
 
 test('doppelteGrafiken meldet eine Grafik, die zweimal dasteht', () => {
   const eine = '<svg role="img" aria-label="Termine der Meilensteine"></svg>'
@@ -15,7 +15,12 @@ test('stuecke nimmt Text zwischen Tags, ohne Kommentare und kurze Reste', () => 
   assert.deepEqual([...s].sort(), ['Ein Satz.', 'Fritz & Hermes', 'Noch einer'])
 })
 
-test('fehlende meldet, was im Labor nicht mehr steht', () => {
+test('fehlendeAbschnitte meldet einen Abschnitt ohne Platz auf der Startseite', () => {
+  const quelle = "const alle = [\n  { id: 'erster', label: 'Der erste' },\n  { id: 'zweiter', label: 'Der zweite' },\n]"
+  assert.deepEqual(fehlendeAbschnitte(quelle, '<section id="erster"></section>'), ['zweiter'])
+})
+
+test('fehlende meldet, was auf der Startseite nicht mehr steht', () => {
   assert.deepEqual(fehlende('<p>Bleibt da</p><p>Fällt weg</p>', '<div><p>Bleibt da</p></div>'), ['Fällt weg'])
   assert.deepEqual(fehlende('<p>Bleibt da</p>', '<p>Bleibt da</p><p>Neu dazu</p>'), [])
 })

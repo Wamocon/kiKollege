@@ -152,7 +152,7 @@ export interface OffenerPunkt extends MitFreigabe {
   /** Gesetzt, sobald der Punkt entschieden ist. Der Punkt bleibt stehen. */
   erledigt?: { am: string; text: string }
   /** Nur die Geschäftsführung kann ihn entscheiden oder anstoßen; die
-   *  Management Summary im Labor zeigt ihn, solange er offen ist. */
+   *  Management Summary zeigt ihn, solange er offen ist. */
   geschaeftsfuehrung?: boolean
 }
 
@@ -712,6 +712,20 @@ export interface EntstandenesProjekt extends MitFreigabe {
 
 export interface Projektstand {
   stand: string
+  /** Eine benannte Fassung des Vorhabens. Sie ist ein Gesamtstand, kein
+   *  erreichter Meilenstein: Was noch fehlt, rechnet die Startseite aus dem Plan
+   *  und aus `entstanden`, hier steht nur, was zu dieser Fassung gehört. */
+  version: MitFreigabe & {
+    nummer: string
+    am: string
+    titel: string
+    satz: string
+    drinTitel: string
+    drin: { was: string; text: string }[]
+    danachTitel: string
+    gesamtTitel: string
+    quelle: string
+  }
   /** Das Gesamturteil der Management Summary. Setzt nur der
    *  Projektverantwortliche, von Hand; kein Pflegelauf ändert es. */
   ampel: MitFreigabe & {
@@ -902,7 +916,7 @@ export interface Projektstand {
   }
   anleitung: Anleitung
   glossar: { satz: string; eintraege: GlossarEintrag[]; freigabe: Freigabe }
-  /** Die Texte der Produktseite im Labor vom 29.10.2026: kiKollege als Produkt,
+  /** Die Texte der Produktseite, seit dem 05.11.2026 die Startseite: kiKollege als Produkt,
    *  sieben Szenen nach dem Einstieg und ein nachgestellter Auftrag. */
   produktseite: {
     stand: string

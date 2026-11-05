@@ -6,14 +6,14 @@ import { Fuss } from '@/components/Fuss'
 import { StandAbschnitte } from '@/components/stand/StandAbschnitte'
 
 export const metadata: Metadata = {
-  title: 'Ausführlicher Stand',
+  title: 'Archiv und ausführlicher Stand',
   description: 'Alle Prüfläufe, Tabellen, Stufen, Entscheidungen und offenen Punkte zum Vorhaben KI-Mitarbeiter.',
 }
 
 export default function Seite() {
   return (
     <>
-      <Kopf />
+      <Kopf titel="Archiv: alle Tabellen, Prüfläufe und Entscheidungen" />
 
       <div className="rumpf">
         <Nav />
