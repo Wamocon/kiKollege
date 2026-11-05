@@ -469,50 +469,252 @@ html.lenis, html.lenis body { height: auto; }
 .lb-befund-ort { margin: 0.9rem 0 0; font-family: var(--schrift-mono); font-size: 0.82rem; color: var(--lb-leise); }
 .lb-befund figcaption { margin-top: 1.1rem; padding-top: 1rem; border-top: 1px solid var(--lb-linie); font-size: 0.9rem; line-height: 1.55; color: var(--lb-leise); }
 
-/* Aufbau ---------------------------------------------------------------------- */
-.lb-anatomie {
+/* Aufbau: Schnitt durch einen KI-Mitarbeiter ---------------------------------- */
+.lb-aufbau {
+  --lb-ringe-breite: min(44vw, 560px, 72svh);
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 0.8fr) minmax(0, 1fr);
-  grid-template-rows: auto auto;
-  gap: 1.4rem;
-  align-items: center;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+  gap: clamp(2.5rem, 6vw, 6rem);
+  align-items: start;
 }
-.lb-kern {
-  grid-column: 2;
-  grid-row: 1 / span 2;
-  width: min(100%, 290px);
+.lb-ringe {
+  position: sticky;
+  top: calc(var(--lb-kopfhoehe) + (100svh - var(--lb-kopfhoehe) - var(--lb-ringe-breite)) / 2);
+  width: var(--lb-ringe-breite);
+  margin: 0;
   justify-self: center;
+  container-type: inline-size;
+}
+.lb-ringe svg { display: block; width: 100%; height: auto; overflow: visible; }
+.lb-ring circle { fill: none; stroke: rgba(255, 255, 255, 0.07); stroke-width: 38; transition: stroke 0.45s; }
+.lb-ring text {
+  font-family: var(--schrift-mono);
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  fill: rgba(255, 255, 255, 0.6);
+  transition: fill 0.45s;
+}
+.lb-ring.aktiv circle { stroke: var(--lb-rot); }
+.lb-ring.aktiv text { fill: var(--lb-hell); }
+.lb-ringe-kern {
+  position: absolute;
+  inset: 0;
+  width: 34.3%;
   aspect-ratio: 1;
+  margin: auto;
+  padding: 4%;
   display: grid;
   place-content: center;
+  gap: 0.35em;
   text-align: center;
-  gap: 0.5rem;
-  padding: 2rem;
   border-radius: 50%;
-  background: radial-gradient(circle at 50% 40%, var(--lb-buehne-weich), var(--lb-buehne));
-  color: var(--lb-hell);
-  box-shadow: 0 0 0 1px rgba(244, 14, 14, 0.4), 0 0 80px -10px rgba(244, 14, 14, 0.45);
+  background: var(--lb-hell);
+  color: var(--lb-buehne);
 }
-.lb-kern b { font-size: clamp(1.4rem, 2.4vw, 2.1rem); font-weight: 760; letter-spacing: -0.03em; }
-.lb-kern span { font-size: 0.92rem; opacity: 0.7; }
-.lb-teil { padding: 1.4rem 1.5rem; border-radius: var(--lb-rund); background: var(--lb-flaeche); border: 1px solid var(--lb-linie); }
-.lb-teil.t1 { grid-column: 1; grid-row: 1; }
-.lb-teil.t2 { grid-column: 3; grid-row: 1; }
-.lb-teil.t3 { grid-column: 1; grid-row: 2; }
-.lb-teil.t4 { grid-column: 3; grid-row: 2; }
-.lb-teil-nr { font-family: var(--schrift-mono); font-size: 0.78rem; font-weight: 700; color: var(--lb-rot); }
-.lb-teil h3 { margin: 0.5rem 0 0.2rem; font-size: 1.45rem; font-weight: 740; letter-spacing: -0.03em; }
-.lb-teil-kurz { margin: 0 0 0.6rem; font-size: 0.9rem; color: var(--lb-rot-tief); font-weight: 600; }
-.lb-teil p:last-child { margin: 0; font-size: 0.96rem; line-height: 1.55; color: var(--lb-leise); }
-@media (max-width: 900px) {
-  .lb-anatomie { grid-template-columns: minmax(0, 1fr); }
-  .lb-kern { grid-column: 1; grid-row: auto; width: min(260px, 70vw); justify-self: center; }
-  .lb-teil.t1, .lb-teil.t2, .lb-teil.t3, .lb-teil.t4 { grid-column: 1; grid-row: auto; }
+.lb-ringe-kern b { font-size: 3.9cqw; font-weight: 780; letter-spacing: -0.03em; }
+.lb-ringe-kern span { font-size: 2.3cqw; line-height: 1.3; color: rgba(20, 11, 11, 0.66); }
+.lb-aufbau-liste { list-style: none; margin: 0; padding: 0; }
+.lb-aufbau-zeile { padding: 1.7rem 0 2.2rem; border-top: 1px solid var(--lb-linie); transition: opacity 0.4s; }
+.lb-teil-nr { font-family: var(--schrift-mono); font-size: 0.8rem; font-weight: 700; color: var(--lb-rot); }
+.lb-aufbau-zeile h3 { margin: 0.6rem 0 0.25rem; font-size: clamp(1.6rem, 2.6vw, 2.3rem); font-weight: 740; letter-spacing: -0.03em; }
+.lb-teil-kurz { margin: 0 0 0.8rem; font-size: 0.95rem; font-weight: 600; color: var(--lb-rot); }
+.lb-aufbau-zeile p:last-child { margin: 0; max-width: 46ch; font-size: 1.05rem; line-height: 1.65; color: var(--lb-leise); }
+@media (min-width: 900px) {
+  .lb-bewegt .lb-aufbau-zeile { min-height: 42vh; }
+  .lb-bewegt .lb-aufbau-zeile:not(.aktiv) { opacity: 0.35; }
 }
-.lb-stapel { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-top: clamp(3rem, 8vh, 5rem); }
+@media (max-width: 899px) {
+  .lb-aufbau { --lb-ringe-breite: min(100%, 460px); grid-template-columns: minmax(0, 1fr); }
+  .lb-ringe { position: relative; top: auto; }
+  .lb-ring text { font-size: 16px; letter-spacing: 0.08em; }
+}
+
+/* Weitere Teile der Szene; angeheftete Teile brauchen Block statt Flex */
+#bauweise { display: block; }
+.lb-aufbau-teil { margin-top: clamp(5rem, 14vh, 9rem); }
+.lb-aufbau-teil .lb-teilkopf { max-width: 24ch; }
+.lb-aufbau-text { max-width: 62ch; margin: 0 0 clamp(2rem, 5vh, 3.4rem); font-size: 1.1rem; line-height: 1.65; color: var(--lb-leise); }
+
+/* Die Akte als Datei */
+.lb-akte { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: clamp(2rem, 4vw, 4rem); align-items: start; }
+.lb-akte-gruppe + .lb-akte-gruppe { margin-top: 1.5rem; }
+.lb-akte-gruppe-name { margin: 0 0 0.5rem; font-family: var(--schrift-mono); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--lb-leise); }
+.lb-akte-gruppe-name { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.2rem 1rem; }
+.lb-akte-gruppe-name span { font-weight: 500; letter-spacing: 0.04em; text-transform: none; }
+.lb-akte-gruppe-name span.neu { font-weight: 700; color: var(--lb-rot); }
+.lb-akte-erbe { margin: 1.4rem 0 0; font-size: 0.92rem; line-height: 1.5; color: var(--lb-leise); }
+.lb-akte-gruppe ol { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--lb-linie); }
+.lb-akte-frage {
+  display: grid;
+  grid-template-columns: 2.1rem minmax(0, 1fr);
+  gap: 0.1rem 0.6rem;
+  width: 100%;
+  padding: 0.75rem 0.8rem;
+  border: 0;
+  border-bottom: 1px solid var(--lb-linie);
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.35s, box-shadow 0.35s;
+}
+.lb-akte-frage .lb-teil-nr { grid-row: 1 / span 3; padding-top: 0.25rem; }
+.lb-akte-frage b { font-size: 1.1rem; font-weight: 700; letter-spacing: -0.02em; }
+.lb-akte-text { font-size: 0.96rem; line-height: 1.45; color: var(--lb-leise); transition: color 0.35s; }
+.lb-akte-frage code { font-family: var(--schrift-mono); font-size: 0.74rem; color: var(--lb-leise); }
+.lb-akte-frage.aktiv { background: rgba(244, 14, 14, 0.16); box-shadow: inset 3px 0 0 var(--lb-rot); }
+.lb-akte-frage.aktiv .lb-akte-text, .lb-akte-frage.aktiv code { color: var(--lb-hell); }
+.lb-akte-frage:focus-visible { outline: 2px solid var(--lb-hell); outline-offset: -2px; }
+.lb-akte-datei { margin: 0; border: 1px solid var(--lb-linie); border-radius: var(--lb-rund); background: var(--lb-buehne-weich); overflow: hidden; }
+.lb-akte-datei-kopf { display: flex; justify-content: space-between; gap: 1rem; margin: 0; padding: 0.9rem 1.3rem; border-bottom: 1px solid var(--lb-linie); font-family: var(--schrift-mono); font-size: 0.8rem; }
+.lb-akte-datei-kopf span { color: var(--lb-leise); }
+.lb-akte-datei pre { margin: 0; padding: 1rem 0; font-family: var(--schrift-mono); font-size: 0.78rem; line-height: 1.6; white-space: pre-wrap; overflow-wrap: anywhere; }
+.lb-akte-datei pre > span { display: block; padding: 0 1.3rem; color: rgba(255, 255, 255, 0.5); box-shadow: inset 3px 0 0 transparent; transition: color 0.35s, background 0.35s, box-shadow 0.35s; }
+.lb-akte-datei pre > span.lb-akte-kopf { color: rgba(255, 255, 255, 0.72); }
+.lb-akte-datei pre > span.aktiv { color: var(--lb-hell); background: rgba(244, 14, 14, 0.2); box-shadow: inset 3px 0 0 var(--lb-rot); }
+.lb-akte-datei figcaption { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.2rem; padding: 1rem 1.3rem 1.2rem; border-top: 1px solid var(--lb-linie); font-size: 0.86rem; line-height: 1.5; color: var(--lb-leise); }
+.lb-akte-datei figcaption p { margin: 0; }
+.lb-akte-datei figcaption b { display: block; margin-bottom: 0.2rem; color: var(--lb-hell); }
+@media (min-width: 900px) { .lb-akte-datei { position: sticky; top: calc(var(--lb-kopfhoehe) + 1rem); } }
+@media (max-width: 899px) { .lb-akte { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 520px) { .lb-akte-datei figcaption { grid-template-columns: minmax(0, 1fr); } }
+
+/* Zwei Orte und die Ablage dazwischen */
+.lb-orte { margin: 0; }
+.lb-orte-bild {
+  --lb-orte-luecke: clamp(5.5rem, 10vw, 9rem);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) var(--lb-orte-luecke) minmax(0, 1.1fr) var(--lb-orte-luecke) minmax(0, 1fr);
+  grid-template-rows: 6.4rem auto 2.6rem auto 3.2rem;
+}
+.lb-orte-mensch, .lb-orte-seite { display: grid; place-content: center; gap: 0.1rem; min-height: 4.6rem; padding: 0.6rem 1rem; text-align: center; border: 1px solid var(--lb-linie); border-radius: 14px; background: var(--lb-buehne-weich); }
+.lb-orte-mensch { grid-column: 3; grid-row: 1; align-self: start; }
+.lb-orte-mensch b, .lb-orte-seite b { font-size: 1.1rem; font-weight: 740; letter-spacing: -0.02em; }
+.lb-orte-mensch span, .lb-orte-seite span { font-size: 0.88rem; color: var(--lb-leise); }
+.lb-orte-bogen { position: relative; grid-row: 1; margin-top: 2.3rem; border-top: 1px solid rgba(255, 255, 255, 0.4); }
+.lb-orte-bogen.links { grid-column: 1 / 3; margin-left: calc((100% - var(--lb-orte-luecke)) / 2); border-left: 1px solid rgba(255, 255, 255, 0.4); }
+.lb-orte-bogen.rechts { grid-column: 4 / 6; margin-right: calc((100% - var(--lb-orte-luecke)) / 2); border-right: 1px solid rgba(255, 255, 255, 0.4); }
+.lb-orte-bogen span { position: absolute; left: 0; right: 0; top: -1.5rem; text-align: center; font-size: 0.82rem; color: var(--lb-leise); }
+.lb-orte-ort { grid-row: 2; padding: 1.3rem 1.3rem 1.5rem; border: 1px solid var(--lb-linie); border-radius: var(--lb-rund); background: var(--lb-buehne-weich); }
+.lb-orte-ort.werkbank { grid-column: 1; }
+.lb-orte-ort.ablage {
+  --lb-ink: var(--lb-buehne);
+  --lb-leise: rgba(20, 11, 11, 0.66);
+  grid-column: 3;
+  border-color: var(--lb-hell);
+  background: var(--lb-hell);
+  color: var(--lb-buehne);
+}
+.lb-orte-ort.rechner { grid-column: 5; }
+.lb-orte-ort h4 { margin: 0; font-size: clamp(1.25rem, 1.9vw, 1.6rem); font-weight: 760; letter-spacing: -0.03em; }
+.lb-orte-produkt { margin: 0.15rem 0 0; font-size: 0.92rem; font-weight: 650; }
+.lb-orte-rolle { margin: 0.1rem 0 0.9rem; padding-bottom: 0.9rem; border-bottom: 1px solid var(--lb-linie); font-size: 0.88rem; color: var(--lb-leise); }
+.lb-orte-ort.ablage .lb-orte-rolle { border-color: rgba(20, 11, 11, 0.16); }
+.lb-orte-ort ul, .lb-orte-legende { display: grid; gap: 0.42rem; list-style: none; margin: 0; padding: 0; }
+.lb-orte-ort li, .lb-orte-legende li { position: relative; padding-left: 1.2rem; font-size: 0.9rem; line-height: 1.35; }
+.lb-orte-ort li::before, .lb-orte-legende li::before { content: ''; position: absolute; left: 0; top: 0.3em; width: 0.62rem; height: 0.62rem; box-sizing: border-box; }
+.lb-orte-ort li.laeuft::before, .lb-orte-legende li.laeuft::before { background: currentColor; }
+.lb-orte-ort li.vorhanden::before, .lb-orte-legende li.vorhanden::before { border: 1px solid currentColor; }
+.lb-orte-ort li.geplant::before, .lb-orte-legende li.geplant::before { border: 1px dashed currentColor; }
+.lb-orte-ort li.geplant { color: var(--lb-leise); }
+.lb-orte-ort li.traegt { color: var(--lb-hell); font-weight: 700; }
+.lb-orte-ort li.traegt::before, .lb-orte-legende li.traegt::before { background: var(--lb-rot); }
+.lb-orte-weg { position: relative; grid-row: 2; align-self: start; height: 1px; margin-top: 3rem; background: rgba(255, 255, 255, 0.4); container-type: inline-size; }
+.lb-orte-weg.links { grid-column: 2; }
+.lb-orte-weg.rechts { grid-column: 4; }
+.lb-orte-weg span { position: absolute; left: 0.3rem; right: 0.3rem; bottom: 0.45rem; text-align: center; font-size: 0.8rem; line-height: 1.25; color: var(--lb-leise); }
+.lb-orte-weg i { position: absolute; left: 0; top: -3px; width: 7px; height: 7px; border-radius: 50%; background: var(--lb-rot); }
+@media (prefers-reduced-motion: no-preference) {
+  .lb-orte-weg i { animation: lb-orte-fluss 3.2s linear infinite; }
+  .lb-orte-weg.rechts i { animation-direction: reverse; }
+}
+@keyframes lb-orte-fluss { from { transform: translateX(0); } to { transform: translateX(calc(100cqw - 7px)); } }
+.lb-orte-zur-seite { position: relative; grid-column: 3; grid-row: 3; }
+.lb-orte-zur-seite::before { content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 1px; background: rgba(255, 255, 255, 0.4); }
+.lb-orte-zur-seite span { position: absolute; left: calc(50% + 0.7rem); top: 0.65rem; width: 28ch; font-size: 0.8rem; line-height: 1.25; color: var(--lb-leise); }
+.lb-orte-seite { grid-column: 3; grid-row: 4; }
+.lb-orte-vergleich {
+  position: relative;
+  z-index: -1;
+  grid-column: 1 / -1;
+  grid-row: 3 / 6;
+  margin-inline: calc((100% - 2 * var(--lb-orte-luecke)) / 6.2);
+  border: 1px dashed rgba(255, 255, 255, 0.34);
+  border-top: 0;
+}
+.lb-orte-vergleich span { position: absolute; left: 50%; bottom: -0.65rem; translate: -50% 0; padding: 0 0.8rem; white-space: nowrap; font-size: 0.82rem; color: var(--lb-leise); background: var(--lb-buehne); }
+.lb-orte figcaption { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 0.8rem 2rem; margin-top: 2.6rem; font-size: 0.86rem; color: var(--lb-leise); }
+.lb-orte figcaption p { flex-basis: 100%; max-width: 86ch; margin: 0; line-height: 1.5; }
+.lb-orte-legende { display: flex; flex-wrap: wrap; gap: 0.5rem 1.6rem; }
+.lb-orte-legende li { font-size: 0.86rem; }
+@media (max-width: 899px) {
+  .lb-orte-bild { display: flex; flex-direction: column; gap: 0.9rem; }
+  .lb-orte .lb-orte-bogen, .lb-orte .lb-orte-weg, .lb-orte .lb-orte-zur-seite, .lb-orte .lb-orte-vergleich { position: static; align-self: stretch; height: auto; margin: 0; border: 0; background: none; container-type: normal; text-align: center; }
+  .lb-orte-zur-seite::before, .lb-orte-weg i { display: none; }
+  .lb-orte-bogen span, .lb-orte-weg span, .lb-orte-zur-seite span, .lb-orte-vergleich span { position: static; display: block; width: auto; padding: 0; translate: none; white-space: normal; background: none; }
+  .lb-orte-bogen span::before { content: 'Vom Menschen: '; }
+  .lb-orte-mensch { order: 1; }
+  .lb-orte-bogen.links { order: 2; }
+  .lb-orte-ort.werkbank { order: 3; }
+  .lb-orte-weg.links { order: 4; }
+  .lb-orte-ort.ablage { order: 5; }
+  .lb-orte-weg.rechts { order: 6; }
+  .lb-orte-bogen.rechts { order: 7; }
+  .lb-orte-ort.rechner { order: 8; }
+  .lb-orte-zur-seite { order: 9; }
+  .lb-orte-seite { order: 10; }
+  .lb-orte-vergleich { order: 11; }
+}
+
+/* Der Weg eines Auftrags */
+.lb-weg { margin: 0; }
+.lb-weg svg { display: block; width: 100%; max-height: 62svh; height: auto; overflow: visible; }
+.lb-weg-linie { fill: none; stroke: rgba(255, 255, 255, 0.22); stroke-width: 2; }
+.lb-weg-spur { fill: none; stroke: var(--lb-rot); stroke-width: 3; stroke-dasharray: 1; stroke-dashoffset: 1; }
+.lb-weg-knoten circle { fill: var(--lb-buehne); stroke: rgba(255, 255, 255, 0.6); stroke-width: 2; transition: fill 0.3s, stroke 0.3s; }
+.lb-weg-knoten text { font-size: 17px; font-weight: 650; fill: rgba(255, 255, 255, 0.72); transition: fill 0.3s; }
+.lb-weg-knoten.aktiv circle { fill: var(--lb-rot); stroke: var(--lb-rot); }
+.lb-weg-knoten.aktiv text { fill: var(--lb-hell); }
+.lb-weg-schleife { font-family: var(--schrift-mono); font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-anchor: middle; text-transform: uppercase; fill: rgba(255, 255, 255, 0.5); }
+.lb-weg-punkt { display: none; }
+.lb-weg-punkt circle:first-child { fill: rgba(244, 14, 14, 0.3); }
+.lb-weg-punkt circle:last-child { fill: var(--lb-hell); }
+.lb-weg-schritte { display: grid; gap: 1.3rem; list-style: none; margin: 1.6rem 0 0; padding: 0; }
+.lb-weg-schritte li { display: grid; grid-template-columns: 2.1rem minmax(0, 1fr); gap: 0.1rem 0.6rem; }
+.lb-weg-schritte .lb-teil-nr { grid-row: 1 / span 2; padding-top: 0.3rem; }
+.lb-weg-schritte b { font-size: 1.15rem; font-weight: 720; letter-spacing: -0.02em; }
+.lb-weg-schritte p { margin: 0; max-width: 62ch; font-size: 1rem; line-height: 1.55; color: var(--lb-leise); }
+@media (max-width: 699px) { .lb-weg svg { display: none; } .lb-weg figcaption { display: none; } .lb-weg-schritte { margin-top: 0; } }
+.lb-weg figcaption { max-width: 72ch; margin-top: 1.6rem; font-size: 0.86rem; line-height: 1.5; color: var(--lb-leise); }
+@media (min-width: 900px) {
+  .lb-bewegt .lb-weg-punkt { display: block; }
+  .lb-bewegt .lb-weg-schritte { min-height: 6.2rem; }
+  .lb-bewegt .lb-weg-schritte li { grid-area: 1 / 1; align-content: start; opacity: 0; transition: opacity 0.3s; }
+  .lb-bewegt .lb-weg-schritte li.aktiv { opacity: 1; }
+  .lb-bewegt .lb-weg-schritte b { font-size: 1.5rem; }
+  .lb-bewegt .lb-weg-schritte p { font-size: 1.1rem; }
+}
+
+/* Die Bausteine, mit Namen */
+.lb-bausteine { margin-top: clamp(4rem, 10vh, 7rem); }
+.lb-stapel { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2.2rem clamp(1.5rem, 3vw, 3rem); }
 .lb-stapel-gruppe { padding-top: 1rem; border-top: 1px solid var(--lb-linie); }
-.lb-stapel-gruppe h3 { margin: 0 0 0.5rem; font-size: 1rem; font-weight: 700; }
-.lb-stapel-gruppe p { margin: 0; font-size: 0.92rem; line-height: 1.55; color: var(--lb-leise); }
+.lb-stapel-gruppe h4 {
+  margin: 0 0 0.8rem;
+  font-family: var(--schrift-mono);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--lb-leise);
+}
+.lb-stapel-gruppe ul { display: grid; gap: 0.35rem; list-style: none; margin: 0; padding: 0; }
+.lb-stapel-gruppe li { font-size: 1.05rem; font-weight: 560; letter-spacing: -0.01em; }
+@media (max-width: 900px) { .lb-stapel { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 520px) { .lb-stapel { grid-template-columns: minmax(0, 1fr); } }
 
 /* Überblick: Meilensteine, Fortschritt, Herausforderungen --------------------- */
 /* Block statt Flex, wie die Galerie: angeheftete Teile brauchen ihren Platz */

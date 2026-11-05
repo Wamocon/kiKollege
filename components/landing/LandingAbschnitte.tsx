@@ -851,14 +851,18 @@ export function LandingAbschnitte({ nur, rahmen = true, ohne }: { nur?: string[]
         <>
         {/* 06 Aufbau ---------------------------------------------------------- */}
         <Sektion rahmen={rahmen} id="aufbau">
-          <h2 className="lp-aussage breit">
-            Acht Fragen, die auch ein neuer Kollege beantwortet bekommt.
-          </h2>
-          <div className="lp-text lp-luft-oben-klein">
-            <p>{d.schichtenErklaerung}</p>
-          </div>
+          {teil('aufbau-einstieg') ? (
+            <>
+              <h2 className="lp-aussage breit">
+                Acht Fragen, die auch ein neuer Kollege beantwortet bekommt.
+              </h2>
+              <div className="lp-text lp-luft-oben-klein">
+                <p>{d.schichtenErklaerung}</p>
+              </div>
+            </>
+          ) : null}
 
-          <Schichtenstapel />
+          {teil('aufbau-stapel') ? <Schichtenstapel /> : null}
 
           <div className="lp-text lp-luft-oben">
             <p>{d.schichtenDatei}</p>
@@ -869,13 +873,15 @@ export function LandingAbschnitte({ nur, rahmen = true, ohne }: { nur?: string[]
             </p>
           </div>
 
-          <div className="lp-quelltext">
-            <p className="lp-quelltext-kopf">
-              <b>{d.beschreibungsdatei.name}</b>
-              <span>{d.beschreibungsdatei.stand}</span>
-            </p>
-            <pre>{d.beschreibungsdatei.auszug}</pre>
-          </div>
+          {teil('aufbau-quelltext') ? (
+            <div className="lp-quelltext">
+              <p className="lp-quelltext-kopf">
+                <b>{d.beschreibungsdatei.name}</b>
+                <span>{d.beschreibungsdatei.stand}</span>
+              </p>
+              <pre>{d.beschreibungsdatei.auszug}</pre>
+            </div>
+          ) : null}
 
           <div className="lp-zellen lp-luft-oben">
             <div className="lp-zelle traegt">
@@ -1028,12 +1034,16 @@ export function LandingAbschnitte({ nur, rahmen = true, ohne }: { nur?: string[]
         {/* 09 Landschaft ------------------------------------------------------ */}
         {sichtbar(l) ? (
           <Sektion rahmen={rahmen} id="landschaft">
-            <h2 className="lp-aussage breit">{l.satz}</h2>
-            <div className="lp-text lp-luft-oben-klein">
-              <p>{l.erklaerung}</p>
-            </div>
+            {teil('landschaft-einstieg') ? (
+              <>
+                <h2 className="lp-aussage breit">{l.satz}</h2>
+                <div className="lp-text lp-luft-oben-klein">
+                  <p>{l.erklaerung}</p>
+                </div>
+              </>
+            ) : null}
 
-            <LandschaftFigur />
+            {teil('landschaft-figur') ? <LandschaftFigur /> : null}
 
             <div className="lp-zellen lp-luft-oben">
               {zustaende.map((z) => (
@@ -1101,22 +1111,26 @@ export function LandingAbschnitte({ nur, rahmen = true, ohne }: { nur?: string[]
               ))}
             </ol>
 
-            <h3 className="lp-aussage lp-luft-oben">Wie Hermes und Qwen einen Auftrag bearbeiten.</h3>
-            <div className="lp-text lp-luft-oben-klein">
-              <p>{d.techstack.ablauf.satz}</p>
-            </div>
-            <HermesQwenFigur />
-            <ol className="lp-punkte">
-              {d.techstack.ablauf.schritte.map((s, i) => (
-                <li key={s.titel}>
-                  <span className="nr">{String(i + 1).padStart(2, '0')}</span>
-                  <div>
-                    <p className="punkt">{s.titel}</p>
-                    <p className="grund">{s.text}</p>
-                  </div>
-                </li>
-              ))}
-            </ol>
+            {teil('technik-ablauf') ? (
+              <>
+                <h3 className="lp-aussage lp-luft-oben">Wie Hermes und Qwen einen Auftrag bearbeiten.</h3>
+                <div className="lp-text lp-luft-oben-klein">
+                  <p>{d.techstack.ablauf.satz}</p>
+                </div>
+                <HermesQwenFigur />
+                <ol className="lp-punkte">
+                  {d.techstack.ablauf.schritte.map((s, i) => (
+                    <li key={s.titel}>
+                      <span className="nr">{String(i + 1).padStart(2, '0')}</span>
+                      <div>
+                        <p className="punkt">{s.titel}</p>
+                        <p className="grund">{s.text}</p>
+                      </div>
+                    </li>
+                  ))}
+                </ol>
+              </>
+            ) : null}
             <p className="lp-klein lp-luft-oben">Quelle: {d.techstack.quelle}</p>
           </Sektion>
         ) : null}

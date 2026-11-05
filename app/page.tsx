@@ -9,6 +9,10 @@ import { LandingAbschnitte } from '@/components/landing/LandingAbschnitte'
 import { StandAbschnitte } from '@/components/stand/StandAbschnitte'
 import { FIGUREN } from '@/components/figuren/kollegen'
 import { AmpelAlter } from '@/components/start/AmpelAlter'
+import { AufbauAkte } from '@/components/start/AufbauAkte'
+import { AufbauOrte } from '@/components/start/AufbauOrte'
+import { AufbauRinge } from '@/components/start/AufbauRinge'
+import { AufbauWeg } from '@/components/start/AufbauWeg'
 import { Bewegung } from '@/components/start/Bewegung'
 import { abschnitt } from '@/lib/abschnitte'
 import { belastbarBei, daten, datum, dauer, terminText } from '@/lib/daten'
@@ -62,6 +66,8 @@ const DOPPELT = [
   'durchlauf-pruefpunkte',
   // Warum ein Programm die Grenze hält, steht als Hinweis bei Fritz
   'mannschaft-grenze',
+  // Diese Darstellungen zeigt die Szene Aufbau selbst, die Einzelheiten nur den Rest
+  'aufbau-einstieg', 'aufbau-stapel', 'aufbau-quelltext', 'landschaft-einstieg', 'landschaft-figur', 'technik-ablauf',
   // Diese Grafiken und Absätze zeigt schon der Abschnitt der Landing Page
   'schichten-stapel', 'gedaechtnis-wissensablagen', 'gedaechtnis-training-satz', 'gedaechtnis-ablagefigur',
   'gedaechtnis-ablagegraph', 'fritz-durchlauf', 'fritz-steuerung', 'gegenstand-enabler', 'luecke-geltung',
@@ -1039,29 +1045,54 @@ export default function Start() {
         </Szene>
 
         {/* Aufbau ------------------------------------------------------------- */}
-        <Szene id="bauweise" nr="07">
-          <div className="lb-anatomie">
-            <div className="lb-kern" data-lb-reveal>
-              <b>{d.anatomie.kern.titel}</b>
-              <span>{d.anatomie.kern.zusatz}</span>
-            </div>
-            {d.anatomie.teile.map((t, i) => (
-              <div className={`lb-teil t${i + 1}`} key={t.id} data-lb-tiefe={i % 2 ? '0.12' : '-0.12'} data-lb-reveal>
-                <span className="lb-teil-nr">{String(i + 1).padStart(2, '0')}</span>
-                <h3>{t.titel}</h3>
-                <p className="lb-teil-kurz">{t.kurz}</p>
-                <p>{t.text}</p>
-              </div>
-            ))}
-          </div>
-          {sichtbar(d.techstack) ? (
-            <div className="lb-stapel" data-lb-staffel>
-              {d.techstack.gruppen.map((g) => (
-                <div className="lb-stapel-gruppe" key={g.titel}>
-                  <h3>{g.titel}</h3>
-                  <p>{g.teile.map((t) => t.name).join(' · ')}</p>
-                </div>
+        <Szene id="bauweise" nr="07" buehne>
+          <div className="lb-aufbau">
+            <AufbauRinge kern={d.anatomie.kern} teile={d.anatomie.teile} />
+            <ol className="lb-aufbau-liste">
+              {d.anatomie.teile.map((t, i) => (
+                <li className="lb-aufbau-zeile" key={t.id} data-lb-aufbau={i}>
+                  <span className="lb-teil-nr">{String(i + 1).padStart(2, '0')}</span>
+                  <h3>{t.titel}</h3>
+                  <p className="lb-teil-kurz">{t.kurz}</p>
+                  <p>{t.text}</p>
+                </li>
               ))}
+            </ol>
+          </div>
+          <div className="lb-aufbau-teil">
+            <h3 className="lb-teilkopf" data-lb-reveal>Acht Fragen, die auch ein neuer Kollege beantwortet bekommt.</h3>
+            <p className="lb-aufbau-text" data-lb-reveal>{d.schichtenErklaerung}</p>
+            <AufbauAkte schichten={d.schichten} gruppen={d.schichtenGruppen} datei={d.beschreibungsdatei} erbe={d.schichtenErbe} />
+          </div>
+          {sichtbar(d.landschaft) ? (
+            <div className="lb-aufbau-teil">
+              <h3 className="lb-teilkopf" data-lb-reveal>{d.landschaft.satz}</h3>
+              <p className="lb-aufbau-text" data-lb-reveal>{d.landschaft.erklaerung}</p>
+              <AufbauOrte />
+            </div>
+          ) : null}
+          {sichtbar(d.techstack) ? (
+            <div className="lb-aufbau-teil">
+              <h3 className="lb-teilkopf" data-lb-reveal>Wie Hermes und Qwen einen Auftrag bearbeiten.</h3>
+              <p className="lb-aufbau-text" data-lb-reveal>{d.techstack.ablauf.satz}</p>
+              <AufbauWeg schritte={d.techstack.ablauf.schritte} beschriftung={d.techstack.ablauf.beschriftung} />
+            </div>
+          ) : null}
+          {sichtbar(d.techstack) ? (
+            <div className="lb-aufbau-teil">
+              <h3 className="lb-teilkopf" data-lb-reveal>Womit das läuft.</h3>
+              <div className="lb-stapel" data-lb-staffel>
+                {d.techstack.gruppen.map((g) => (
+                  <div className="lb-stapel-gruppe" key={g.titel}>
+                    <h4>{g.titel}</h4>
+                    <ul>
+                      {g.teile.map((t) => (
+                        <li key={t.name}>{t.name}</li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
             </div>
           ) : null}
         </Szene>

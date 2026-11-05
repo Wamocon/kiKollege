@@ -228,6 +228,17 @@ Scrollen.
 - In der öffentlichen Fassung fehlt der Film, weil er den intern freigegebenen
   Plan zeigt.
 
+## Die Szene Aufbau
+
+- Seit dem 05.11.2026 zeigt sie fünf Darstellungen auf dunkler Bühne: die Ringe um das
+  Sprachmodell (`anatomie`), die Akte als Datei (`schichten`, `beschreibungsdatei`), die zwei
+  Orte mit der Ablage (`landschaft`), den Weg eines Auftrags (`techstack.ablauf`) und die
+  Bausteine (`techstack.gruppen`). Alles kommt aus den Daten.
+- **Was dort steht, fehlt in den Einzelheiten.** `DOPPELT` in `app/page.tsx` nimmt Stapel,
+  Quelltext, Landschaft und Ablauf dort heraus. Auf `/stand/` stehen die alten Grafiken weiter.
+- **Der Weg** kennt genau sieben Schritte in fester Reihenfolge (`AufbauWeg.tsx`). Kommt ein
+  Schritt dazu, braucht er einen Platz in der Zeichnung.
+
 ## Der Film der Mannschaft
 
 - „Ein Tag mit der Mannschaft“: rund 93 Sekunden, Grenze unter 100, mit Stimme,
