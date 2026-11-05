@@ -6973,7 +6973,7 @@
     },
     "film": {
       "titel": "kiKollege in 30 Sekunden",
-      "text": "Der Film zeigt in Kürze, was diese Seite ausführlich zeigt: zum Vorführen und zum Weitergeben. Er läuft ohne Ton."
+      "text": "Der Film zeigt in Kürze, was diese Seite ausführlich zeigt: zum Vorführen und zum Weitergeben. Er hat eine Stimme, startet auf der Seite aber stumm; den Ton schaltest du am Player ein."
     },
     "kernbegriffe": [
       "ki-mitarbeiter",
@@ -7023,7 +7023,7 @@
     "freigabe": "oeffentlich",
     "vorstellung": {
       "titel": "Ein Tag mit der Mannschaft",
-      "text": "Die KI-Mitarbeiter stellen sich vor und zeigen, was sie können. Der Film läuft ohne Ton.",
+      "text": "Die KI-Mitarbeiter stellen sich vor und zeigen, was sie können, jeder mit eigener Stimme. Der Film startet auf der Seite stumm; den Ton schaltest du am Player ein.",
       "kern": [
         "Ein KI-Mitarbeiter arbeitet zu.",
         "Ein Mensch entscheidet."
