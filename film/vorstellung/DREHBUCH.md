@@ -20,7 +20,7 @@ LOOK:      Die CI der Seite wie im ersten Film. Grund Tiefschwarz #140B0B, Dämm
            88 px, Lesetext mindestens 28 px. Zeichnungen auf weißem Papier.
 ROT:       Genau eine Sache je Bild, und es wandert mit dem Gesagten: von der Zeichnung
            zum Beispiel oder zurück, zuletzt zur gestrichelten Linie vor dem, was er nie
-           tut. Bei Gregor Dev bleibt es auf „nicht abnahmefähig“, bis er aus dem Bild ist.
+           tut. Bei Gregor Dev bleibt es auf dem, was hinter der Paketzahl steht, heute „Abnahme steht aus“, bis er aus dem Bild ist.
 DINGE:     die Uhr, deren großer Zeiger beim Sprechen kriecht und im Schwenk zur nächsten
            Stunde springt; je Kollege seine Zeichnung bei der Arbeit und ein eigenes
            Beispiel; die gestrichelte Linie vor dem, was er nie tut.

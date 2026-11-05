@@ -39,7 +39,7 @@
   },
   "ampel": {
     "farbe": "gelb",
-    "satz": "Meilenstein 1 ist am 16.10. abgenommen. Meilenstein 2 kommt frühestens am 23.11., weil der Orchestrator erst alle 18 Prüffälle sicher beherrschen muss; gelernt hat er bisher 6. Die Browser-Startseite läuft im Büronetz. WMC Inventar ist gebaut, nach der Prüfung vom 05.11. aber nicht abnahmefähig; die Werkbank behebt die Befunde. Drei von sieben hohen Risiken sind eingetreten, gegen jedes läuft eine Maßnahme. Die Termine von Meilenstein 3 und 4 sind offen.",
+    "satz": "Meilenstein 1 ist am 16.10. abgenommen. Meilenstein 2 kommt frühestens am 23.11., weil der Orchestrator erst alle 18 Prüffälle sicher beherrschen muss; gelernt hat er bisher 6. Die Browser-Startseite läuft im Büronetz. WMC Inventar ist gebaut und wartet auf die Abnahme; vorher sind sieben Fragen zu entscheiden, und den Betrieb mit Docker und PostgreSQL hat noch niemand geprüft. Drei von sieben hohen Risiken sind eingetreten, gegen jedes läuft eine Maßnahme. Die Termine von Meilenstein 3 und 4 sind offen.",
     "am": "2026-11-05",
     "von": "Projektverantwortlicher",
     "quelle": "Entscheidung des Projektverantwortlichen vom 05.11.2026",
@@ -141,7 +141,9 @@
       "Arbeitsplan Browser-Startseite online 2026-10-27, Einträge vom 02. und 03.11.2026",
       "Prüfbericht WMC Inventar vom 05.11.2026, mit Anhang je Anforderung",
       "Protokolle KI-Mitarbeiter vom 04. und 05.11.2026",
-      "Logbuch: Entscheidung WMC Inventar vom 05.11.2026; Entscheidungen Version 1.0 vom 05.11.2026"
+      "Logbuch: Entscheidung WMC Inventar vom 05.11.2026; Entscheidungen Version 1.0 vom 05.11.2026",
+      "Prüfbericht WMC Inventar Werkbank vom 05.11.2026",
+      "Logbuch vom 05.11.2026: Abnahme von WMC Inventar, Nachdenken des Orchestrators, Tickets für Fehler aus dem Test"
     ],
     "getrenntAm": "2026-09-09",
     "notizordner": "KFBM/00_Vault/10_KI-Mitarbeiter"
@@ -1686,6 +1688,26 @@
       "datum": "2026-11-05",
       "entscheidung": "Die Ampel bleibt gelb; ihr Satz nennt die Prüfung von WMC Inventar vom 05.11.",
       "freigabe": "intern"
+    },
+    {
+      "datum": "2026-11-05",
+      "entscheidung": "WMC Inventar: Für die Abnahme zählt die Prüfung im Browser, Theos Lauf dient dem Vergleich",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-11-05",
+      "entscheidung": "Orchestrator: Die Übungsfassung behält das Nachdenken und geht damit in den Prüfstand; ob es in den Betrieb kommt, wird mit den Zahlen entschieden",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-11-05",
+      "entscheidung": "Bestätigte Fehler aus dem Test bekommen Bug-Tickets, je Ursache eines; die Werkbank legt sie für den Tester an, der Aufbau des Tickets ist noch offen",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-11-05",
+      "entscheidung": "Die Ampel bleibt gelb; ihr Satz sagt nach dem Prüfbericht vom selben Tag, dass WMC Inventar auf die Abnahme wartet",
+      "freigabe": "intern"
     }
   ],
   "entscheidungenNachtrag": "Die Entscheidung vom 04.09. dreht bewusst eine zuvor festgelegte Reihenfolge um: Ursprünglich sollte die Fehlalarmquote vor dem Plattformwechsel gemessen werden. Die Technik wurde vorgezogen. Das ist kein Widerspruch, sondern eine andere Reihenfolge mit einer benannten Folge, und die Folge steht im Abschnitt zur Messlücke.",
@@ -2079,9 +2101,9 @@
     },
     {
       "id": "abnahme-inventar-zwei-massstaebe",
-      "titel": "Für die Abnahme von WMC Inventar stehen zwei Maßstäbe",
-      "text": "Die Entscheidung vom 04.11. und der Stand vom 05.11. sagen, dass für die Abnahme die Prüfung jeder Anforderung zählt und Theos Lauf nur dem Vergleich dient. Der Arbeitsplan verlangt für dieselbe Abnahme weiter einen grünen Lauf von Theo. Hier wird nicht entschieden, welcher Maßstab gilt.",
-      "quelle": "Protokoll KI-Mitarbeiter vom 05.11.2026 gegen Arbeitsplan 2026-10-16",
+      "titel": "Für die Abnahme von Entwicklungsaufträgen stehen zwei Maßstäbe",
+      "text": "Für WMC Inventar hat der Projektverantwortliche am 05.11. entschieden: Für die Abnahme zählt die Prüfung im Browser, Theos Lauf dient dem Vergleich. Der Arbeitsplan verlangt für die Abnahme von Entwicklungen weiter einen grünen Lauf von Theo, und gefragt war nur nach WMC Inventar. Hier wird nicht entschieden, was für die übrigen Aufträge gilt.",
+      "quelle": "Logbuch vom 05.11.2026 gegen Arbeitsplan 2026-10-16",
       "freigabe": "intern"
     }
   ],
@@ -2576,7 +2598,7 @@
       },
       {
         "datum": "2026-11-05",
-        "text": "An WMC Inventar sind alle 41 Pakete erledigt. Vier unabhängige Prüfer gehen jede Anforderung einzeln durch, von 104 sind 9 erfüllt, 76 teilweise, 17 nicht erfüllt und 2 nur im Code gelesen; die Anwendung ist nicht abnahmefähig. Die Werkbank behebt die Befunde jetzt selbst. Der Projektverantwortliche entscheidet: Das Vorhaben wird am 06.11. als Version 1.0 vorgestellt, die Produktseite wird dafür zur Startseite, und das Team kommt weiter erst nach dem Prüfstand dazu.",
+        "text": "An WMC Inventar sind alle 41 Pakete erledigt. Vier unabhängige Prüfer gehen jede Anforderung einzeln durch, von 104 sind 9 erfüllt; die Anwendung ist nicht abnahmefähig. Die Werkbank behebt die Befunde selbst, zuletzt stehen 99 erfüllt, 3 teilweise, keiner nicht erfüllt und 2 nur im Code gelesen. Diesen letzten Stand hat noch kein unabhängiger Prüfer gesehen, und vor der Abnahme sind sieben Fragen zu entscheiden. Der Projektverantwortliche entscheidet: Das Vorhaben wird am 06.11. als Version 1.0 vorgestellt, die Produktseite wird dafür zur Startseite, und das Team kommt weiter erst nach dem Prüfstand dazu.",
         "freigabe": "intern"
       }
     ],
@@ -4842,7 +4864,7 @@
       },
       {
         "wer": "Orchestrator",
-        "stand": "Läuft seit dem 18.10. mit Akte und Grenze; jeder Auftrag liegt als Notiz vor der Karte. Im Prüfstand erfüllte er am 20.10. 3 von 18 Fällen. Im ersten Trainingslauf nach dem neuen Konzept am 23.10., jeder Fall dreimal, gelangen ihm 3 Fälle jedes Mal, 9 waren wackelig, 6 gelangen nie. Das Ziel, bis zum 27.10. zwei fehlerfreie Läufe, ist verfehlt. Neues Ziel bis zum 20.11.: alle 18 Übungsfälle in zwei Läufen hintereinander, jeder Fall dreimal ohne Fehler; erst danach bekommt das Team Zugang. Bei WMC Inventar legt er je Meilenstein den Bauauftrag an Gregor Dev und Suite und Lauf an Theo an; bei M2 ließ er die Karte für den Lauf weg. Am 31.10. hatte er 6 von 18 Fällen gelernt. Seitdem übt er in einem eigenen Übungsprofil. In der Nacht zum 04.11. hat seine Übungsfassung alle 23 Übungsfälle dreimal erfüllt; an den Prüffällen ist sie noch nicht gemessen."
+        "stand": "Läuft seit dem 18.10. mit Akte und Grenze; jeder Auftrag liegt als Notiz vor der Karte. Im Prüfstand erfüllte er am 20.10. 3 von 18 Fällen. Im ersten Trainingslauf nach dem neuen Konzept am 23.10., jeder Fall dreimal, gelangen ihm 3 Fälle jedes Mal, 9 waren wackelig, 6 gelangen nie. Das Ziel, bis zum 27.10. zwei fehlerfreie Läufe, ist verfehlt. Neues Ziel bis zum 20.11.: alle 18 Übungsfälle in zwei Läufen hintereinander, jeder Fall dreimal ohne Fehler; erst danach bekommt das Team Zugang. Bei WMC Inventar legt er je Meilenstein den Bauauftrag an Gregor Dev und Suite und Lauf an Theo an; bei M2 ließ er die Karte für den Lauf weg. Am 31.10. hatte er 6 von 18 Fällen gelernt. Seitdem übt er in einem eigenen Übungsprofil. In der Nacht zum 04.11. hat seine Übungsfassung alle 23 Übungsfälle dreimal erfüllt; an den Prüffällen ist sie noch nicht gemessen. Auf 19 neuen Fällen erfüllte sie danach ohne Nachdenken 46 von 57 Durchgängen, mit Nachdenken 54 von 57. Sie behält das Nachdenken und geht so in den Prüfstand; im Betrieb bleibt es bei 6 von 18."
       },
       {
         "wer": "Reporter",
@@ -4866,7 +4888,7 @@
       },
       {
         "wer": "Pfleger der Seiten",
-        "stand": "Gregor Dev läuft seit dem 19.10. mit seiner Grenze, mit festem Pflegelauf am Montag und Donnerstag; der vom 26.10. hat den Stand dieser Seite nachgetragen. Seit dem 22.10. baut er WMC Inventar: Alle 41 Pakete sind erledigt, die Anwendung ist gebaut, aber nicht abnahmefähig; seit dem 05.11. behebt die Werkbank die Befunde selbst. Seine Browser-Startseite läuft seit dem 28.10. im Büronetz. Es fehlt ein eigenes Konto."
+        "stand": "Gregor Dev läuft seit dem 19.10. mit seiner Grenze, mit festem Pflegelauf am Montag und Donnerstag; der vom 26.10. hat den Stand dieser Seite nachgetragen. Seit dem 22.10. baut er WMC Inventar: Alle 41 Pakete sind erledigt; die Befunde der Prüfung hat am 05.11. die Werkbank behoben, die Abnahme steht aus. Seine Browser-Startseite läuft seit dem 28.10. im Büronetz. Es fehlt ein eigenes Konto."
       },
       {
         "wer": "Archivar",
@@ -4874,7 +4896,7 @@
       },
       {
         "wer": "Tester",
-        "stand": "Theo läuft seit dem 22.10. auf dem KI-Rechner mit seiner Grenze und ist am 23.10. in fünf Punkten nachgeschärft. Seine Suite zu WMC Inventar hat 186 Testfälle; im Lauf vom 05.11. waren 110 grün, am 04.11. 112, am 26.10. noch 15 von 97. Der Lauf zählt nur noch zum Vergleich; für die Abnahme zählt die Prüfung jeder einzelnen Anforderung. Seine Tests zur Browser-Startseite sind zuletzt alle grün. Volles Mitglied ist er noch nicht."
+        "stand": "Theo läuft seit dem 22.10. auf dem KI-Rechner mit seiner Grenze und ist am 23.10. in fünf Punkten nachgeschärft. Seine Suite zu WMC Inventar hat 186 Testfälle; im Lauf vom 05.11. waren 110 grün, am 04.11. 112, am 26.10. noch 15 von 97. Der Lauf zählt nur noch zum Vergleich; für die Abnahme von WMC Inventar zählt die Prüfung im Browser. Seine Tests zur Browser-Startseite sind zuletzt alle grün. Volles Mitglied ist er noch nicht."
       },
       {
         "wer": "Team",
@@ -6562,7 +6584,7 @@
       ],
       "standSatz": "Stand am 03.11.: 6 von 18 Fällen gelernt, zuletzt gemessen am 31.10. am Hermes im Betrieb. Die Läufe im Übungsprofil ändern daran nichts. Ziel sind alle 18 bis zum 20.11., erst danach bekommt das Team Zugang.",
       "ehrlich": "Aufträge ablehnen gelingt im Betrieb erst in zwei der sieben Fälle verlässlich. Fehlt in einem Auftrag eine Angabe, legt Hermes meist zuerst etwas an und fragt erst danach; erfundene Angaben kommen aber nicht mehr durch, und versteckte Anweisungen übernimmt er weiter nicht.",
-      "weiter": "Hermes übt weiter in einem eigenen Übungsprofil an Übungsfällen, die nicht aus der Prüfung stammen. Bis zum 02.11. lud dieses Profil durch einen Fehler im Aufbau die Akte des Betriebs, von der Übungsfassung wirkten nur Seele und Zaun. Die Läufe vom 01. und 02.11. sagen deshalb nichts über die Übungsakte, und auch die 13 von 23 Fällen aus den Übungsrunden vom 01.11., die hier standen, sind kein Maß für sie. Der Fehler ist behoben, vor jedem Lauf wird jetzt geprüft, ob die Akte beim Modell ankommt. Einen Prüfstandlauf mit ihr gibt es noch nicht. Bisher gibt es nur den schnellen Test, der an elf Übungsfällen den ersten Schritt prüft (am 02.11., mit einem neuen Werkzeug zum Anlegen von Aufträgen, 51 von 55 in Ordnung), und drei echte Fälle am 03.11. Über die Prüffälle sagt das nichts. In der Nacht zum 04.11. liefen die 23 Übungsfälle je dreimal: ohne Nachdenken waren alle 23 jedes Mal in Ordnung, mit Nachdenken 21, bei doppelter Zeit und zwölfmal so vielen Tokens. An diesen Fällen ist die Akte entstanden, und auch über die Prüffälle sagen sie nichts. Deshalb läuft seit dem 04.11. ein zweiter Vergleich auf 19 neuen Fällen; entschieden ist noch nichts. Der ganze Prüfstand läuft seit dem 02.11. nur noch vor einer Übernahme in den Betrieb; übernommen wird nur, was dort zwei Läufe hintereinander hält und der Projektverantwortliche freigibt.",
+      "weiter": "Hermes übt weiter in einem eigenen Übungsprofil an Übungsfällen, die nicht aus der Prüfung stammen. Bis zum 02.11. lud dieses Profil durch einen Fehler im Aufbau die Akte des Betriebs, von der Übungsfassung wirkten nur Seele und Zaun. Die Läufe vom 01. und 02.11. sagen deshalb nichts über die Übungsakte, und auch die 13 von 23 Fällen aus den Übungsrunden vom 01.11., die hier standen, sind kein Maß für sie. Der Fehler ist behoben, vor jedem Lauf wird jetzt geprüft, ob die Akte beim Modell ankommt. Einen Prüfstandlauf mit ihr gibt es noch nicht. Bisher gibt es nur den schnellen Test, der an elf Übungsfällen den ersten Schritt prüft (am 02.11., mit einem neuen Werkzeug zum Anlegen von Aufträgen, 51 von 55 in Ordnung), und drei echte Fälle am 03.11. Über die Prüffälle sagt das nichts. In der Nacht zum 04.11. liefen die 23 Übungsfälle je dreimal: ohne Nachdenken waren alle 23 jedes Mal in Ordnung, mit Nachdenken 21, bei doppelter Zeit und zwölfmal so vielen Tokens. An diesen Fällen ist die Akte entstanden, und auch über die Prüffälle sagen sie nichts. Deshalb lief am 04.11. ein zweiter Vergleich auf 19 neuen Fällen: ohne Nachdenken 46 von 57 Durchgängen, mit Nachdenken 54 von 57. Am 05.11. hat der Projektverantwortliche entschieden, dass die Übungsfassung das Nachdenken behält. Der ganze Prüfstand läuft seit dem 02.11. nur noch vor einer Übernahme in den Betrieb; übernommen wird nur, was dort zwei Läufe hintereinander hält und der Projektverantwortliche freigibt.",
       "quelle": "Prüfstandläufe des Orchestrators vom 23.10. bis zum 02.11.2026, ausgewertet von der Werkbank, ungeprüft; Übungsprofil Hermes, Stand 04.11.2026: Berichtigung zur geladenen Akte, schneller Test, drei echte Fälle, Ergebnis der Nacht zum 04.11., zweiter Vergleich"
     }
   },
@@ -6856,7 +6878,7 @@
         "bis": "2026-11-06",
         "titel": "Version 1.0",
         "punkte": [
-          "WMC Inventar: Die Prüfung jeder Anforderung ergibt „nicht abnahmefähig“, die Werkbank behebt die Befunde selbst",
+          "WMC Inventar: Die erste Prüfung jeder Anforderung ergibt „nicht abnahmefähig“, die Werkbank behebt die Befunde selbst; danach wartet die Anwendung auf die Abnahme",
           "Die Produktseite wird zur Startseite, beide Filme bekommen eine Stimme",
           "Das Vorhaben wird am 06.11. als Gesamtstand vor der Geschäftsführung und dem Team vorgestellt; das Team kommt erst nach dem Prüfstand dazu"
         ],
@@ -7064,7 +7086,8 @@
           "kann": "Ich ziehe den Stand dieser Seite nach. Auf Auftrag baue ich Anwendungen, Theo testet sie.",
           "nie": "Zusammenführen tut ein Mensch, nicht ich.",
           "beispiel": {
-            "art": "projekte"
+            "art": "projekte",
+            "nachsatz": "Die Befunde der Prüfung hat die Werkbank behoben, nicht ich."
           }
         },
         {
@@ -7195,7 +7218,7 @@
   "entstanden": {
     "stand": "2026-11-05",
     "titel": "Was schon entstanden ist.",
-    "satz": "Gregor Dev baut nach Auftrag, Theo schreibt die Tests und führt sie aus, die Werkbank prüft nach, und abgenommen wird von einem Menschen. So sind bisher zwei Anwendungen für die IT entstanden: Eine läuft im Büronetz, eine ist im Bau. An dieser Seite arbeitet Gregor Dev mit.",
+    "satz": "Gregor Dev baut nach Auftrag, Theo schreibt die Tests und führt sie aus, die Werkbank prüft nach, und abgenommen wird von einem Menschen. So sind bisher zwei Anwendungen für die IT entstanden: Eine läuft im Büronetz, eine wartet auf die Abnahme. An dieser Seite arbeitet Gregor Dev mit.",
     "projekte": [
       {
         "id": "browser-startseite",
@@ -7212,11 +7235,11 @@
         "id": "wmc-inventar",
         "name": "WMC Inventar",
         "art": "bau",
-        "status": "im Bau, 41 von 41 Paketen, nicht abnahmefähig",
+        "status": "gebaut, 41 von 41 Paketen, Abnahme steht aus",
         "was": "Die Hardware-Verwaltung der IT, ein eigenes Web-Werkzeug statt der bisherigen Excel-Liste: Geräte und ihr Lebenslauf, Arbeitsplätze mit Raumplan, QR-Etiketten, Import der Bestandsliste, Verleih und Protokolle mit Signatur.",
-        "wer": "Gregor Dev hat gebaut, Theo parallel getestet, als Auftragskette: Ein Wächter schickte das nächste Paket los, wenn das vorige fertig war und seine Probe bestanden hatte. Die Korrekturen für Import, Raumplan und Aussehen stammen von der Werkbank, Gregor Dev hat sie eingespielt. Seit dem 05.11. behebt die Werkbank die Befunde der Prüfung selbst. Der Test, ob Gregor Dev so eine Anwendung allein bauen kann, endet damit praktisch, und der Code stammt dann größtenteils von der Werkbank.",
-        "stand": "Alle 41 Pakete sind erledigt, die Anwendung ist gebaut, aber nicht abnahmefähig. Das hat am 05.11. die Prüfung jeder einzelnen Anforderung ergeben: Von 104 sind 9 erfüllt, 76 teilweise, 17 nicht erfüllt und 2 nur im Code gelesen. Teilweise heißt: mindestens eine Abweichung vom Abnahmekriterium, auch eine kleine. Im Browser läuft der Hauptweg von der Anlage eines Geräts über die Ausgabe bis zum versiegelten Protokoll, dazu der Import der Blätter Inventar und Notebooks und der Raumplan mit Grundriss. Theos Lauf vom 05.11. zählt nur zum Vergleich: 110 von 186 Tests grün. Bisher läuft alles als Testserver mit Beispieldaten.",
-        "offen": "Die Werkbank behebt die Befunde. Danach prüfen wieder unabhängige Prüfer jede Anforderung, dann folgt die Abnahme durch einen Menschen. In Betrieb geht es auf einem eigenen Rechner im Büronetz.",
+        "wer": "Gregor Dev hat gebaut, Theo parallel getestet, als Auftragskette: Ein Wächter schickte das nächste Paket los, wenn das vorige fertig war und seine Probe bestanden hatte. Die Korrekturen für Import, Raumplan und Aussehen stammen von der Werkbank, Gregor Dev hat sie eingespielt. Alle Änderungen seit der ersten Prüfung vom 05.11. stammen von der Werkbank. Der Test, ob Gregor Dev so eine Anwendung allein bauen kann, endet damit praktisch.",
+        "stand": "Alle 41 Pakete sind erledigt. Die erste Prüfung jeder einzelnen Anforderung ergab am 05.11. von 104 nur 9 erfüllt, 76 teilweise, 17 nicht erfüllt und 2 nur im Code gelesen. Danach hat die Werkbank die Befunde behoben. Die zweite Prüfung aller Anforderungen durch unabhängige Prüfer ergab 73, 28, 1 und 2, ein Nachprüfer sah danach die offenen Punkte. Der letzte Stand der Werkbank liegt bei 99 erfüllt, 3 teilweise, keiner nicht erfüllt und 2 nur im Code gelesen. Diesen Stand hat noch kein unabhängiger Prüfer gesehen, und beide Korrekturrunden davor brachten neue Fehler. Den Betrieb mit Docker und PostgreSQL hat noch niemand laufen lassen. Theos Lauf vom 05.11. zählt nur zum Vergleich: 110 von 186 Tests grün. Der neue Stand liegt noch nicht auf dem Testserver.",
+        "offen": "Der Projektverantwortliche entscheidet sieben Fragen, darunter den Weg auf den Testserver und den ersten Lauf mit Docker und PostgreSQL. Danach folgt seine Abnahme. In Betrieb geht es auf einem eigenen Rechner im Büronetz.",
         "freigabe": "oeffentlich"
       },
       {

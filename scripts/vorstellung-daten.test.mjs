@@ -48,6 +48,19 @@ test('WMC Inventar darf nicht fertig wirken: Was hinter der Zahl steht, wird gez
   assert.match(html, /-warnung">nicht abnahmefähig</)
 })
 
+test('Die Warnung hinter der Paketzahl kann jeden Wortlaut haben, der Nachsatz wird gesagt', () => {
+  const d = daten()
+  const inventar = d.entstanden.projekte.find((p) => p.id === 'wmc-inventar')
+  inventar.status = 'gebaut, 41 von 41 Paketen, Abnahme steht aus'
+  d.produktseite.vorstellung.stopps.find((s) => s.beispiel.art === 'projekte').beispiel.nachsatz = 'Das hat die Werkbank behoben.'
+  const w = vorstellungDaten(d)
+  assert.ok(w.stimme.some((z) => z.sichtbar.includes('Abnahme steht aus')))
+  assert.ok(w.stimme.some((z) => z.sichtbar === 'Das hat die Werkbank behoben.'))
+  const plan = zeitplan(w, messung(w))
+  const html = kompositionen(w, figuren, plan)[`compositions/stopp${w.stopps.findIndex((s) => s.beispiel.art === 'projekte') + 1}.html`]
+  assert.match(html, /-warnung">Abnahme steht aus</)
+})
+
 test('Gesagt wird, was die Daten sagen: Trainingsstand und Termin des Teams', () => {
   const d = daten()
   const text = vorstellungDaten(d).stimme.map((z) => z.sichtbar).join(' ')
