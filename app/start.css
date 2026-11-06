@@ -731,6 +731,7 @@ html.lenis, html.lenis body { height: auto; }
 
 .lb-film { margin: 0; }
 .lb-film-mannschaft { max-width: 980px; margin-top: clamp(1.8rem, 4vw, 3rem); }
+.lb-film-systemdemo { max-width: 980px; margin-top: clamp(3rem, 8vh, 5rem); }
 .lb-film-video {
   display: block;
   width: 100%;

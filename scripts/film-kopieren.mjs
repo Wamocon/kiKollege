@@ -3,7 +3,8 @@
  * Legt die Filme, ihre Standbilder und Untertitel nach dem Build nach out/film/.
  *
  * Läuft als postbuild. Der erste Film zeigt den Meilensteinplan, der zweite auch
- * julia-trend; beides ist nur intern freigegeben. Die öffentliche Fassung bekommt
+ * julia-trend; beides ist nur intern freigegeben. Die Systemdemo hält sich an dieselbe
+ * Regel, damit die öffentliche Fassung ohne Filme auskommt. Die öffentliche Fassung bekommt
  * sie deshalb nicht, und die Startseite zeigt sie dort auch nicht an.
  */
 
@@ -19,7 +20,7 @@ if (!existsSync('out')) {
   process.exit(0)
 }
 mkdirSync('out/film', { recursive: true })
-for (const [pfad, befehl] of [['film/stand.json', 'baue:film'], ['film/vorstellung/stand.json', 'baue:vorstellung']]) {
+for (const [pfad, befehl] of [['film/stand.json', 'baue:film'], ['film/vorstellung/stand.json', 'baue:vorstellung'], ['film/systemdemo/stand.json', 'baue:systemdemo']]) {
   const stand = JSON.parse(readFileSync(pfad, 'utf8'))
   for (const datei of [stand.datei, stand.bild, stand.untertitel].filter(Boolean)) {
     if (!existsSync(`film/${datei}`)) {

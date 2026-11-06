@@ -939,6 +939,8 @@ export interface Projektstand {
     film: { titel: string; text: string }
     /** Sätze des Films „Ein Tag mit der Mannschaft“, den scripts/baue-vorstellung.mjs rendert */
     vorstellung: { titel: string; text: string }
+    /** Titel und Satz der Systemdemo, die scripts/baue-systemdemo.mjs rendert */
+    systemdemo: { titel: string; text: string }
     /** Kennungen aus glossar.eintraege, die die Szene Begriffe zeigt */
     kernbegriffe: string[]
     beispielAuftrag: {
