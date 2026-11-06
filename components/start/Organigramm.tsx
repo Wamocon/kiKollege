@@ -5,7 +5,8 @@ import { pfad } from '@/lib/pfad'
 /** Das Organigramm der Mannschaft, wie das auf /stand/, als Seite gesetzt: oben der Mensch
  *  und das Team, darunter der Orchestrator, darunter alle Rollen in einer Reihe, darunter die
  *  Werkbank, die Wissensschicht und die gemeinsame Basis. Rot ist, was mit Grenze läuft;
- *  gestrichelt, was geplant ist. Alles aus data/projektstand.json. */
+ *  gestrichelt, was geplant ist. Alles aus data/projektstand.json. Wie die Karten der Vorstellung
+ *  beim Scrollen hier ankommen, steht in Bewegung.tsx. */
 
 const m = daten.mannschaft
 const WORTE = ['null', 'ein', 'zwei', 'drei', 'vier', 'fünf', 'sechs', 'sieben', 'acht', 'neun', 'zehn', 'elf', 'zwölf']
@@ -42,11 +43,13 @@ function Rolle({ k, hatSteckbrief }: { k: Kopf; hatSteckbrief: boolean }) {
   )
   const klasse = k.betrieb === 'mitGrenze' ? 'lb-org-karte' : k.betrieb === 'ohneGrenze' ? 'lb-org-karte ohne' : 'lb-org-karte geplant'
   return hatSteckbrief ? (
-    <a className={klasse} href={pfad(`/mannschaft/#${k.id}`)}>
+    <a className={klasse} href={pfad(`/mannschaft/#${k.id}`)} data-lb-kopf={k.id}>
       {inhalt}
     </a>
   ) : (
-    <div className={klasse}>{inhalt}</div>
+    <div className={klasse} data-lb-kopf={k.id}>
+      {inhalt}
+    </div>
   )
 }
 
@@ -60,19 +63,19 @@ export function Organigramm() {
   return (
     <figure className="lb-org" style={{ ['--lb-org-rollen' as string]: unten.length }}>
       <div className="lb-org-oben">
-        <div className="lb-org-team" data-lb-reveal>
+        <div className="lb-org-team">
           <b>{m.team.titel}</b>
           <span>{m.team.zusatz}</span>
         </div>
-        <div className="lb-org-mensch" data-lb-reveal>
+        <div className="lb-org-mensch">
           <b>{m.mensch.titel}</b>
           <span>{m.mensch.zusatz}</span>
         </div>
       </div>
-      <div className="lb-org-chef" data-lb-reveal>
+      <div className="lb-org-chef">
         <Rolle k={oben} hatSteckbrief={steckbriefe.has(oben.id)} />
       </div>
-      <ol className="lb-org-rollen" data-lb-staffel>
+      <ol className="lb-org-rollen">
         {unten.map((k) => (
           <li key={k.id} className={laeuft(k) ? 'laeuft' : undefined}>
             <Rolle k={k} hatSteckbrief={steckbriefe.has(k.id)} />

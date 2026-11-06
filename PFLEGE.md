@@ -267,15 +267,18 @@ Scrollen.
 
 - **Organigramm** in der Szene Funktionen, gebaut wie die Figur auf `/stand/` aus `mannschaft`,
   `ablage` und `kennzahlen`. Die Figur auf der Startseite steht deshalb nicht mehr in den
-  Einzelheiten (`DOPPELT`).
+  Einzelheiten (`DOPPELT`). Ab 900 px Breite fliegen die Karten der Vorstellung beim Scrollen
+  an ihren Platz im Organigramm; Galerie und Organigramm finden sich über `data-lb-kopf`.
 - **Training** in der Szene Verlässlich, aus `training`: Betrieb und Übungsfassung, der
   Prüfstand mit jedem Lauf aus `training.laeufe.zeilen` (beim Scrollen läuft er durch), dazu
   Ablauf, Ebenen und Beteiligte. Eine neue Zeile in den Läufen erscheint dort von selbst.
 - **Das Netz der Ablage** in der Szene Aufbau, aus `data/ablage-netz.json`. Neu zählen mit
-  `npm run abbild:netz -- --vault "D:WAMOCON"`; ins Repository gehen nur Lage, Bereich und Zahl
+  `npm run abbild:netz -- --vault "D:\WAMOCON"`; ins Repository gehen nur Lage, Bereich und Zahl
   der Verweise je Notiz, keine Namen und keine Pfade. `_quellen/` bleibt außen vor. Was in
   welchem Bereich liegt, steht in `BEREICHE_ERKLAERT` in `lib/gedaechtnis.ts`.
 - **Der eigene Mauszeiger** ist seit dem 06.11.2026 entfernt; die Seite nutzt den normalen.
+- **Angeheftete Teile** in `components/start/Bewegung.tsx` in der Reihenfolge der Seite anlegen.
+  Jedes Teil rechnet nur den Platz der vor ihm angelegten mit; `refreshPriority` braucht es dann nicht.
 
 ## Die Systemdemo
 

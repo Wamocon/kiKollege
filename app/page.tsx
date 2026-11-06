@@ -866,7 +866,7 @@ export default function Start() {
                 const wer = auftraege(k)
                 const figur = FIGUREN[k.id]
                 return (
-                  <li className="lb-karte" key={k.id}>
+                  <li className="lb-karte" key={k.id} data-lb-kopf={k.id}>
                     {figur ? (
                       <div className="lb-karte-bild">
                         <figur.linie />
@@ -898,7 +898,7 @@ export default function Start() {
               {planSichtbar && naechster ? ` Das Team kommt mit ${naechster.id} dazu, ${terminText(naechster, false)}.` : ''}
             </p>
             {sichtbar(d.mannschaft) ? (
-              <div className="lb-org-teil">
+              <div className="lb-org-teil" data-lb-org-teil>
                 <h3 className="lb-teilkopf" data-lb-reveal>Wer wem zuarbeitet.</h3>
                 <p className="lb-aufbau-text" data-lb-reveal>{d.mannschaft.satz}</p>
                 <Organigramm />

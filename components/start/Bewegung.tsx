@@ -368,6 +368,105 @@ export function Bewegung() {
         })
       })
 
+      // Die Vorstellung geht ins Organigramm über: Die Karten der Galerie kommen als Reihe zurück,
+      // stellen sich nebeneinander auf und fliegen an ihren Platz, der Orchestrator nach oben.
+      // Danach ziehen sich die Linien, Team und Mensch kommen dazu, zuletzt Werkbank,
+      // Wissensschicht und das gemeinsame Band.
+      mm.add('(min-width: 900px)', () => {
+        const teil = document.querySelector<HTMLElement>('[data-lb-org-teil]')
+        const org = teil?.querySelector<HTMLElement>('.lb-org')
+        const ziele = org ? [...org.querySelectorAll<HTMLElement>('[data-lb-kopf]')] : []
+        const quellen = new Map([...document.querySelectorAll<HTMLElement>('.lb-galerie-spur [data-lb-kopf]')].map((k) => [k.dataset.lbKopf, k]))
+        if (!teil || !org || ziele.length < 2 || !ziele.every((z) => quellen.has(z.dataset.lbKopf))) return
+        const flug = document.createElement('div')
+        flug.className = 'lb-org-flug'
+        flug.setAttribute('aria-hidden', 'true')
+        flug.inert = true
+        const flieger = ziele.map((z) => {
+          const f = quellen.get(z.dataset.lbKopf)!.cloneNode(true) as HTMLElement
+          f.removeAttribute('style')
+          f.removeAttribute('data-lb-kopf')
+          f.classList.add('lb-org-flieger')
+          flug.append(f)
+          return f
+        })
+        org.append(flug)
+        const texte = flieger.flatMap((f) => [...f.querySelectorAll<HTMLElement>(':scope > p')])
+        const oben = [...org.querySelectorAll<HTMLElement>('.lb-org-team, .lb-org-mensch')]
+        const baender = [...org.querySelectorAll<HTMLElement>(':scope > section, :scope > figcaption')]
+        const vorlagen = [...quellen.values()]
+        const n = flieger.length
+
+        // Drei Lagen je Karte, gemessen am Organigramm: als Reihe wie in der Galerie,
+        // alle nebeneinander, am eigenen Platz. Neu gemessen bei jedem Neuberechnen.
+        type Lage = { x: number; y: number; s: number }
+        let mass: { reihe: Lage[]; aufgestellt: Lage[]; platz: Lage[] } | null = null
+        const messen = () => {
+          if (mass) return mass
+          // In der Galerie sind alle Karten so hoch wie die höchste; die Kopien auch
+          const hoch = Math.max(...vorlagen.map((v) => v.offsetHeight))
+          for (const f of flieger) f.style.height = `${hoch}px`
+          const o = org.getBoundingClientRect()
+          const breite = flieger[0].offsetWidth
+          const rolle = ziele[1].getBoundingClientRect()
+          const s1 = 0.6
+          const s2 = (o.width - (n - 1) * 12) / n / breite
+          mass = {
+            reihe: flieger.map((_, i) => ({ x: i * (breite * s1 + 18), y: 0, s: s1 })),
+            aufgestellt: flieger.map((_, i) => ({ x: i * (breite * s2 + 12), y: rolle.top - o.top - 24, s: s2 })),
+            platz: ziele.map((z, i) => {
+              const r = z.getBoundingClientRect()
+              const s = Math.min(r.width / breite, (r.height * 1.5) / hoch)
+              return { x: r.left - o.left + (r.width - breite * s) / 2, y: r.top - o.top + (r.height - hoch * s) / 2, s }
+            }),
+          }
+          return mass
+        }
+        const lage = (k: 'reihe' | 'aufgestellt' | 'platz') => ({
+          x: (i: number) => messen()[k][i].x,
+          y: (i: number) => messen()[k][i].y,
+          scale: (i: number) => messen()[k][i].s,
+        })
+
+        gsap.set(flieger, { transformOrigin: '0 0' })
+        const tl = gsap.timeline({ defaults: { ease: 'power2.inOut' } })
+        tl.fromTo(flieger, { ...lage('reihe'), opacity: 1 }, { ...lage('aufgestellt'), duration: 0.26, stagger: 0.01 }, 0)
+          .to(texte, { opacity: 0, duration: 0.14, ease: 'none' }, 0.04)
+          .to(flieger, { ...lage('platz'), duration: 0.26, stagger: 0.014 }, 0.36)
+          .fromTo(ziele, { opacity: 0 }, { opacity: 1, duration: 0.1, stagger: 0.014, ease: 'none' }, 0.56)
+          .to(flieger, { opacity: 0, duration: 0.1, stagger: 0.014, ease: 'none' }, 0.58)
+          .fromTo(oben, { opacity: 0, y: -24 }, { opacity: 1, y: 0, duration: 0.12, stagger: 0.04, ease: 'power3.out' }, 0.66)
+          .fromTo(org, { '--lb-org-zug': 0 }, { '--lb-org-zug': 1, duration: 0.14, ease: 'none' }, 0.7)
+          .fromTo(baender, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.12, stagger: 0.03, ease: 'power3.out' }, 0.8)
+          .to({}, { duration: 0.12 })
+        ScrollTrigger.create({
+          trigger: teil,
+          start: 'top 5%',
+          end: '+=150%',
+          pin: true,
+          pinSpacing: true,
+          scrub: 0.6,
+          animation: tl,
+          invalidateOnRefresh: true,
+          onRefreshInit: () => {
+            mass = null
+          },
+        })
+        return () => flug.remove()
+      })
+      mm.add('(max-width: 899px)', () => {
+        const org = document.querySelector<HTMLElement>('[data-lb-org-teil] .lb-org')
+        if (!org) return
+        gsap.from(org.querySelectorAll('.lb-org-team, .lb-org-mensch, .lb-org-chef, .lb-org-rollen > li'), {
+          opacity: 0,
+          y: 24,
+          duration: 0.8,
+          stagger: 0.06,
+          ease: 'power3.out',
+          scrollTrigger: { trigger: org, start: 'top 85%' },
+        })
+      })
+
       // Schritte der Anleitung färben die passenden Nachrichten im Chat
       mm.add('(min-width: 900px)', () => {
         const nachrichten = [...document.querySelectorAll<HTMLElement>('.lb-nachricht')]

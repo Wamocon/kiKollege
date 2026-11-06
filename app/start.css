@@ -751,6 +751,15 @@ a.lb-org-karte:hover, a.lb-org-karte:focus-visible { transform: translateY(-3px)
 .lb-org-wissen li.ungeprueft { border: 1.5px dashed var(--lb-org-strich); }
 .lb-org-wissen li.ungeprueft span { color: var(--lb-leise); }
 .lb-org-wissen li.gedaechtnis { border: 2px solid var(--lb-ink); background: var(--lb-hell); }
+/* Übergang aus der Vorstellung: Die Linien ziehen sich über --lb-org-zug, die fliegenden Karten
+   sind Kopien aus der Galerie. Ohne Bewegung steht alles von Anfang an. */
+.lb-galerie { overflow-x: clip; }
+.lb-org { position: relative; --lb-org-zug: 1; }
+.lb-org-chef::before, .lb-org-rollen::after, .lb-org-rollen > li::before { transform: scaleY(var(--lb-org-zug)); transform-origin: top; }
+.lb-org-rollen::before { transform: scaleX(var(--lb-org-zug)); }
+.lb-org-chef::after, .lb-org-rollen > li::after { opacity: var(--lb-org-zug); }
+.lb-org-flug { position: absolute; inset: 0; z-index: 3; pointer-events: none; }
+.lb-org-flug .lb-org-flieger { position: absolute; top: 0; left: 0; margin: 0; transition: none; box-shadow: 0 24px 50px -30px rgba(20, 11, 11, 0.35); }
 .lb-org-fuss { margin: 0.8rem 0 0; font-size: 0.84rem; color: var(--lb-leise); text-align: center; }
 .lb-org-basis { --lb-leise: rgba(255, 255, 255, 0.7); --lb-linie: rgba(255, 255, 255, 0.16); margin-top: 2.6rem; padding: 1.4rem 1.6rem 1.6rem; border-radius: var(--lb-rund); background: var(--lb-buehne); color: var(--lb-hell); }
 .lb-org-basis > div { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; }
