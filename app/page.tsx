@@ -209,6 +209,8 @@ export default function Start() {
   const koepfe = nurSichtbare(d.mannschaft.koepfe).filter((k) => !k.passtNicht)
   const laeufe = sichtbar(d.training) ? d.training.laeufe : undefined
   const letzterLauf = laeufe?.zeilen[laeufe.zeilen.length - 1]
+  // Gelernt in der Übungsfassung, solange sie nicht übernommen ist; letzterLauf.gelernt zählt den Betrieb
+  const uebung = laeufe?.uebung
   const faelle = laeufe?.bereiche.reduce((s, b) => s + b.faelle, 0) ?? 0
   const planSichtbar = sichtbar(plan)
   const naechster = plan.meilensteine.find((m) => !m.abgenommen)
@@ -335,9 +337,14 @@ export default function Start() {
                       <span className="lb-von"> von {faelle}</span>
                     </span>
                     <span className="lb-klein">
-                      Prüffällen gelernt, die er sicher beherrschen muss, bevor das Team dazukommt
+                      Prüffällen {uebung ? 'im Betrieb ' : ''}gelernt, die er sicher beherrschen muss, bevor das Team dazukommt
                       {planSichtbar && zielFrist ? `; Ziel bis ${kurz(zielFrist)}` : ''}
                     </span>
+                    {uebung ? (
+                      <span className="lb-klein">
+                        {uebung.gelernt} von {faelle} {uebung.satz}
+                      </span>
+                    ) : null}
                   </dd>
                 </div>
               ) : null}
@@ -419,6 +426,7 @@ export default function Start() {
                           <dt>Prüffälle gelernt{zielFrist ? `, alle bis ${kurz(zielFrist)}` : ''}</dt>
                           <dd>
                             {letzterLauf.gelernt} von {faelle}
+                            {uebung ? ` im Betrieb, ${uebung.gelernt} in der Übungsfassung` : ''}
                           </dd>
                         </div>
                       ) : null}
@@ -708,8 +716,14 @@ export default function Start() {
                     </dt>
                     <dd>
                       <span data-lb-zahl={letzterLauf.gelernt}>{letzterLauf.gelernt}</span>
-                      <small> von {faelle}</small>
+                      <small> von {faelle}{uebung ? ' im Betrieb' : ''}</small>
                     </dd>
+                    {uebung ? (
+                      <dd className="lb-fz-zweit">
+                        <span data-lb-zahl={uebung.gelernt}>{uebung.gelernt}</span>
+                        <small> von {faelle} {uebung.satz}</small>
+                      </dd>
+                    ) : null}
                   </div>
                 ) : null}
                 {planSichtbar && phase ? (
