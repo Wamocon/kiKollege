@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-05",
+  "stand": "2026-11-06",
   "version": {
     "nummer": "1.0",
     "am": "2026-11-06",
@@ -39,16 +39,16 @@
   },
   "ampel": {
     "farbe": "gelb",
-    "satz": "Meilenstein 1 ist am 16.10. abgenommen. Meilenstein 2 kommt frühestens am 23.11., weil der Orchestrator erst alle 18 Prüffälle sicher beherrschen muss; gelernt hat er bisher 6. Die Browser-Startseite läuft im Büronetz. WMC Inventar ist gebaut und wartet auf die Abnahme; vorher sind sieben Fragen zu entscheiden, und den Betrieb mit Docker und PostgreSQL hat noch niemand geprüft. Drei von sieben hohen Risiken sind eingetreten, gegen jedes läuft eine Maßnahme. Die Termine von Meilenstein 3 und 4 sind offen.",
-    "am": "2026-11-05",
+    "satz": "Meilenstein 1 ist am 16.10. abgenommen. Meilenstein 2 kommt frühestens am 23.11., weil der Orchestrator erst alle 18 Prüffälle sicher beherrschen muss; gelernt hat er bisher 6. Die Browser-Startseite läuft im Büronetz. WMC Inventar ist gebaut und bereit für die Abnahme; den Betrieb auf dem eigenen Rechner im Büronetz hat noch niemand geprüft. Drei von sieben hohen Risiken sind eingetreten, gegen jedes läuft eine Maßnahme. Die Termine von Meilenstein 3 und 4 sind offen.",
+    "am": "2026-11-06",
     "von": "Projektverantwortlicher",
-    "quelle": "Entscheidung des Projektverantwortlichen vom 05.11.2026",
+    "quelle": "Entscheidung des Projektverantwortlichen vom 06.11.2026",
     "freigabe": "intern"
   },
   "herkunft": {
     "arbeitsordner": "D:\\WAMOCON",
     "einstieg": "KI-Mitarbeiter/75_KI-Mitarbeiter/KI-Mitarbeiter — Einstieg.md",
-    "erzeugt": "2026-11-05",
+    "erzeugt": "2026-11-06",
     "fristTage": 7,
     "verfahren": "Erstbefüllung von Hand aus dem Übergabedokument vom 05.09.2026, am 11.09. fortgeschrieben aus den beiden Blättern vom 09.09., am 17.09. aus dem Vault: Logbuch, Tagesprotokolle, Meilensteinplan, Bestandsaufnahme vom 16.09., Akte des Reviewers, Laufnotizen und Quoten je Regel. Das Abbild der Ablage zählt scripts/abbild-vault.mjs. Spätere Stände der Prüfläufe schreibt scripts/export-vault.mjs aus dem Frontmatter der Laufnotizen.",
     "freigabe": "intern",
@@ -143,7 +143,9 @@
       "Protokolle KI-Mitarbeiter vom 04. und 05.11.2026",
       "Logbuch: Entscheidung WMC Inventar vom 05.11.2026; Entscheidungen Version 1.0 vom 05.11.2026",
       "Prüfbericht WMC Inventar Werkbank vom 05.11.2026",
-      "Logbuch vom 05.11.2026: Abnahme von WMC Inventar, Nachdenken des Orchestrators, Tickets für Fehler aus dem Test"
+      "Logbuch vom 05.11.2026: Abnahme von WMC Inventar, Nachdenken des Orchestrators, Tickets für Fehler aus dem Test",
+      "Logbuch vom 05.11.2026: Entscheidungen WMC Inventar vor der Abnahme, Zählregel und Nachmessen im Prüfstand des Orchestrators, Szene „Aufbau“ der Startseite",
+      "Protokoll KI-Mitarbeiter vom 05.11.2026, Nachträge bis 22:41"
     ],
     "getrenntAm": "2026-09-09",
     "notizordner": "KFBM/00_Vault/10_KI-Mitarbeiter"
@@ -1708,6 +1710,36 @@
       "datum": "2026-11-05",
       "entscheidung": "Die Ampel bleibt gelb; ihr Satz sagt nach dem Prüfbericht vom selben Tag, dass WMC Inventar auf die Abnahme wartet",
       "freigabe": "intern"
+    },
+    {
+      "datum": "2026-11-05",
+      "entscheidung": "WMC Inventar vor der Abnahme: eine eigene Instanz zum Durchklicken, ein einmaliger Prüflauf im Container mit PostgreSQL, der Stand „verloren“ bei Verlust oder Diebstahl, ein Rücknahmeprotokoll beim Reparaturabschluss ins Lager, Räume mit Bezeichnung und Umriss reichen",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-11-05",
+      "entscheidung": "Orchestrator: Im Prüfstand lässt jede falsche Entscheidung den Lauf scheitern; bleibt er im Nachdenken hängen, wird der Fall einmal wiederholt und als eigene Zahl geführt",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-11-05",
+      "entscheidung": "Orchestrator: Die Übungsfassung wird in drei Punkten nachgebessert und in der Nacht zweimal hintereinander gemessen",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-11-05",
+      "entscheidung": "Orchestrator: Bleibt er im Nachdenken hängen, bekommt der Absender einen deutschen Satz statt einer englischen Warnung",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-11-05",
+      "entscheidung": "Die Szene „Aufbau“ der Startseite zeigt Ringe, die Akte als Datei, die zwei Orte und den Weg eines Auftrags",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-11-06",
+      "entscheidung": "Die Ampel bleibt gelb; ihr Satz sagt nach dem Endstand der Werkbank, dass WMC Inventar bereit für die Abnahme ist",
+      "freigabe": "intern"
     }
   ],
   "entscheidungenNachtrag": "Die Entscheidung vom 04.09. dreht bewusst eine zuvor festgelegte Reihenfolge um: Ursprünglich sollte die Fehlalarmquote vor dem Plattformwechsel gemessen werden. Die Technik wurde vorgezogen. Das ist kein Widerspruch, sondern eine andere Reihenfolge mit einer benannten Folge, und die Folge steht im Abschnitt zur Messlücke.",
@@ -2598,7 +2630,7 @@
       },
       {
         "datum": "2026-11-05",
-        "text": "An WMC Inventar sind alle 41 Pakete erledigt. Vier unabhängige Prüfer gehen jede Anforderung einzeln durch, von 104 sind 9 erfüllt; die Anwendung ist nicht abnahmefähig. Die Werkbank behebt die Befunde selbst, zuletzt stehen 99 erfüllt, 3 teilweise, keiner nicht erfüllt und 2 nur im Code gelesen. Diesen letzten Stand hat noch kein unabhängiger Prüfer gesehen, und vor der Abnahme sind sieben Fragen zu entscheiden. Der Projektverantwortliche entscheidet: Das Vorhaben wird am 06.11. als Version 1.0 vorgestellt, die Produktseite wird dafür zur Startseite, und das Team kommt weiter erst nach dem Prüfstand dazu.",
+        "text": "An WMC Inventar sind alle 41 Pakete erledigt. Vier unabhängige Prüfer gehen jede Anforderung einzeln durch, von 104 sind 9 erfüllt; die Anwendung ist nicht abnahmefähig. Die Werkbank behebt die Befunde selbst, am Ende des Tages stehen 102 erfüllt, 2 teilweise und keiner nicht erfüllt; den letzten Stand hat kein unabhängiger Prüfer gesehen. Die Fragen vor der Abnahme beantwortet der Projektverantwortliche am selben Tag. Der Projektverantwortliche entscheidet: Das Vorhaben wird am 06.11. als Version 1.0 vorgestellt, die Produktseite wird dafür zur Startseite, und das Team kommt weiter erst nach dem Prüfstand dazu. Am Abend erfüllt die Übungsfassung des Orchestrators einmal alle 18 Prüffälle, im Lauf direkt danach 17; im Betrieb bleibt es bei 6 von 18.",
         "freigabe": "intern"
       }
     ],
@@ -7258,7 +7290,7 @@
     }
   },
   "entstanden": {
-    "stand": "2026-11-05",
+    "stand": "2026-11-06",
     "titel": "Was schon entstanden ist.",
     "satz": "Gregor Dev baut nach Auftrag, Theo schreibt die Tests und führt sie aus, die Werkbank prüft nach, und abgenommen wird von einem Menschen. So sind bisher zwei Anwendungen für die IT entstanden: Eine läuft im Büronetz, eine wartet auf die Abnahme. An dieser Seite arbeitet Gregor Dev mit.",
     "projekte": [
@@ -7280,8 +7312,8 @@
         "status": "gebaut, 41 von 41 Paketen, Abnahme steht aus",
         "was": "Die Hardware-Verwaltung der IT, ein eigenes Web-Werkzeug statt der bisherigen Excel-Liste: Geräte und ihr Lebenslauf, Arbeitsplätze mit Raumplan, QR-Etiketten, Import der Bestandsliste, Verleih und Protokolle mit Signatur.",
         "wer": "Gregor Dev hat gebaut, Theo parallel getestet, als Auftragskette: Ein Wächter schickte das nächste Paket los, wenn das vorige fertig war und seine Probe bestanden hatte. Die Korrekturen für Import, Raumplan und Aussehen stammen von der Werkbank, Gregor Dev hat sie eingespielt. Alle Änderungen seit der ersten Prüfung vom 05.11. stammen von der Werkbank. Der Test, ob Gregor Dev so eine Anwendung allein bauen kann, endet damit praktisch.",
-        "stand": "Alle 41 Pakete sind erledigt. Die erste Prüfung jeder einzelnen Anforderung ergab am 05.11. von 104 nur 9 erfüllt, 76 teilweise, 17 nicht erfüllt und 2 nur im Code gelesen. Danach hat die Werkbank die Befunde behoben. Die zweite Prüfung aller Anforderungen durch unabhängige Prüfer ergab 73, 28, 1 und 2, ein Nachprüfer sah danach die offenen Punkte. Der letzte Stand der Werkbank liegt bei 99 erfüllt, 3 teilweise, keiner nicht erfüllt und 2 nur im Code gelesen. Diesen Stand hat noch kein unabhängiger Prüfer gesehen, und beide Korrekturrunden davor brachten neue Fehler. Den Betrieb mit Docker und PostgreSQL hat noch niemand laufen lassen. Theos Lauf vom 05.11. zählt nur zum Vergleich: 110 von 186 Tests grün. Der neue Stand liegt noch nicht auf dem Testserver.",
-        "offen": "Der Projektverantwortliche entscheidet sieben Fragen, darunter den Weg auf den Testserver und den ersten Lauf mit Docker und PostgreSQL. Danach folgt seine Abnahme. In Betrieb geht es auf einem eigenen Rechner im Büronetz.",
+        "stand": "Alle 41 Pakete sind erledigt. Die erste Prüfung jeder einzelnen Anforderung ergab am 05.11. von 104 nur 9 erfüllt, 76 teilweise, 17 nicht erfüllt und 2 nur im Code gelesen. Danach hat die Werkbank die Befunde behoben. Die zweite Prüfung aller Anforderungen durch unabhängige Prüfer ergab 73, 28, 1 und 2, ein Nachprüfer sah danach die offenen Punkte. Am Endstand der Werkbank sind 102 erfüllt, 2 teilweise und keiner nicht erfüllt. Die zwei teilweise erfüllten hängen am eigenen Rechner im Büronetz, den es noch nicht gibt. Alle Tests liefen auch mit PostgreSQL, die Anwendung lief einmal im Container auf dem KI-Rechner, Sicherung und Rücksicherung eingeschlossen. Die letzte Korrektur und den Lauf im Container hat kein unabhängiger Prüfer gesehen, und jede Korrekturrunde davor brachte neue Befunde. Theos Lauf vom 05.11. zählt nur zum Vergleich: 110 von 186 Tests grün. Für die Abnahme läuft eine eigene Instanz; auf dem Testserver liegt der neue Stand noch nicht.",
+        "offen": "Die Fragen vor der Abnahme hat der Projektverantwortliche am 05.11. beantwortet. Offen sind seine Abnahme und der Weg auf den Testserver. In Betrieb geht es auf einem eigenen Rechner im Büronetz; was erst dieser Rechner zeigen kann, ist noch nicht geprüft.",
         "freigabe": "oeffentlich"
       },
       {
