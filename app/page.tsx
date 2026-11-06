@@ -252,10 +252,11 @@ export default function Start() {
 
   return (
     <div className="lb">
+      {/* Ladebildschirm: Das Logo baut sich ab dem ersten Bild auf (CSS) und fliegt dann
+          an seinen Platz im Einstieg (Bewegung.tsx). */}
       <div className="lb-vorhang" aria-hidden="true">
-        <div className="lb-vorhang-tuer oben" />
-        <div className="lb-vorhang-tuer unten" />
-        <p className="lb-vorhang-wort">{p.name}</p>
+        <div className="lb-vorhang-flaeche" />
+        <KiKollegeLogo className="lb-vorhang-logo" />
       </div>
       <div className="lb-korn" aria-hidden="true" />
 
