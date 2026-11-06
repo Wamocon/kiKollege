@@ -8,6 +8,7 @@ import { Fussleiste } from '@/components/landing/Fussleiste'
 import { LandingAbschnitte } from '@/components/landing/LandingAbschnitte'
 import { StandAbschnitte } from '@/components/stand/StandAbschnitte'
 import { FIGUREN } from '@/components/figuren/kollegen'
+import { KiKollegeLogo } from '@/components/KiKollegeLogo'
 import { AmpelAlter } from '@/components/start/AmpelAlter'
 import { AufbauAkte } from '@/components/start/AufbauAkte'
 import { AufbauOrte } from '@/components/start/AufbauOrte'
@@ -256,7 +257,7 @@ export default function Start() {
 
       <header className="lb-kopf">
         <a className="lb-kopf-marke" href="#start">
-          <b>{p.name}</b>
+          <KiKollegeLogo titel={p.name} />
           <span>WAMOCON{version ? ` · Version ${version.nummer}` : ''}</span>
         </a>
         <button className="lb-kopf-knopf" type="button" aria-expanded="false" aria-controls="lb-menue">
@@ -284,8 +285,16 @@ export default function Start() {
               <span>01</span> {p.dach}
               {version ? <b className="lb-marke-version"> · Version {version.nummer}</b> : null}
             </p>
-            <h1 className="lb-wortmarke" data-lb-split>
-              {p.name}
+            {/* Das Logo statt des gesetzten Namens. Kein data-lb-split, das
+                zerlegt nur Text; die Huelle lb-wort laesst es trotzdem
+                hereingleiten wie die Woerter. */}
+            <h1 className="lb-wortmarke">
+              <span className="lb-wort">
+                <span>
+                  <KiKollegeLogo />
+                </span>
+              </span>
+              <span className="nur-vorlesen">{p.name}</span>
             </h1>
             <div className="lb-start-raster">
             <div>

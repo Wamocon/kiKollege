@@ -1,9 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
-  <title>WAMOCON</title>
-  <rect width="32" height="32" rx="4" fill="#F40E0E"/>
-  <g fill="#FFFFFF">
-    <rect x="6" y="6" width="8" height="8" rx="1"/>
-    <rect x="18" y="6" width="8" height="8" rx="1"/>
-    <rect x="6" y="18" width="8" height="8" rx="1"/>
-  </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="32" height="32" role="img" aria-label="kiKollege"><title>kiKollege</title><rect width="96" height="96" rx="22" fill="#F40E0E"/><g transform="translate(23.625 22) scale(.8125)"><circle cx="14" cy="14" r="14" fill="#FFFFFF"/><path d="M7 64V40A7 7 0 0 1 21 40V64Z" fill="#FFFFFF"/><rect x="34" y="1" width="26" height="26" rx="3" fill="#140B0B"/><path d="M40 64V35A2 2 0 0 1 42 33H52A2 2 0 0 1 54 35V64Z" fill="#FFFFFF"/></g></svg>

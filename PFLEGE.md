@@ -292,6 +292,23 @@ gemeinsamen Bausteine in `basis.tsx`. `index.ts` ordnet sie den Kennungen in
   zuerst als Bild an den Projektverantwortlichen in den Chat.
 - Gregor Dev und der Standwächter ändern an den Figuren nichts ohne Bauauftrag.
 
+## Logo
+
+Seit dem 06.11.2026 hat kiKollege ein Logo: zwei i als Figuren, der Mensch rund,
+die KI eckig. Es steht in der Kopfleiste und im Einstieg der Startseite und im
+Kopf der übrigen Seiten, das Favicon ist sein App-Icon.
+
+- **Erzeugt, nicht gezeichnet:** Den Baustein `components/KiKollegeLogo.tsx`, das
+  Favicon `app/icon.svg` und die Dateien in `marke/` schreibt
+  `scripts/logo-reinzeichnung.mjs`. Von Hand geändert wird nur das Skript.
+- **Farben aus dem Stylesheet:** `.kk-logo` in `app/globals.css`, damit das Logo
+  im hellen und im dunklen Thema passt. Ein anderes Rot setzt man über `--kk-ki`.
+- **Der Fußbereich bleibt WAMOCON.** Eine Datei `public/logo.svg` landet von selbst
+  dort, deshalb liegen die Logodateien in `marke/`.
+- **Die Steckbriefe** behalten die Köpfe der Kollegen. Das Profilbild mit dem KI-i
+  allein ist für Stellen ohne eigenes Gesicht gedacht.
+- Schutzraum und Mindestgröße sind noch nicht festgelegt.
+
 ## Wer was tut
 
 - **Gregor Dev** pflegt die Seite: montags und donnerstags ein Pflegelauf, der nur

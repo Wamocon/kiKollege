@@ -1,6 +1,7 @@
 import { daten, datum } from '@/lib/daten'
 import { fassung, istIntern } from '@/lib/freigabe'
 import { pfad } from '@/lib/pfad'
+import { KiKollegeLogo } from '@/components/KiKollegeLogo'
 import { StandAlter } from '@/components/StandAlter'
 
 export function Kopf({ titel = 'Projektstand: Fritz prüft, ein Mensch gibt frei' }: { titel?: string }) {
@@ -10,11 +11,10 @@ export function Kopf({ titel = 'Projektstand: Fritz prüft, ein Mensch gibt frei
       <header className="kopf">
         <div className="kopf-innen">
           <div>
-            <p className="claim">
-              <a href={pfad('/')} style={{ color: 'inherit', textDecoration: 'none' }}>
-                WAMOCON / KI-Mitarbeiter
-              </a>
-            </p>
+            <a className="kopf-logo" href={pfad('/')}>
+              <KiKollegeLogo titel="kiKollege, zur Startseite" />
+            </a>
+            <p className="claim">WAMOCON / KI-Mitarbeiter</p>
             <h1>{titel}</h1>
           </div>
           <div className="kopf-meta">
