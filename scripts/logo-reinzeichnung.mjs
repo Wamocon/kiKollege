@@ -1,7 +1,9 @@
 #!/usr/bin/env node
 /**
  * Reinzeichnung des kiKollege-Logos, Variante B4 "Zwei i", Proportion "Kopf gross".
- * Schreibt SVG-Dateien mit Pfaden statt Schrift nach marke/, dazu PNG-Fassungen.
+ * Schreibt SVG-Dateien mit Pfaden statt Schrift nach marke/, dazu PNG-Fassungen,
+ * und fuer die Seite das Favicon app/icon.svg und den Baustein
+ * components/KiKollegeLogo.tsx. Beide nicht von Hand aendern, sondern hier.
  *
  *   node scripts/logo-reinzeichnung.mjs
  *
@@ -179,20 +181,17 @@ function svg(x, y, b, h, inhalt, titel = 'kiKollege') {
   )
 }
 
+/** Zeichen links, Schriftzug rechts, beide auf derselben Grundlinie. */
+function querTeile() {
+  const skala = X_HOEHE / ZEICHEN_STAMM
+  const grundlinie = ZEICHEN_H * skala
+  const s = schriftzug(ZEICHEN_B * skala + EM(0.2), grundlinie)
+  return { skala: r(skala * 1000) / 1000, s, breite: s.box.rechts, hoehe: Math.max(grundlinie, s.box.unten) }
+}
+
 function quer(c) {
-  const skala = (X_HOEHE / ZEICHEN_STAMM)
-  const zeichenH = ZEICHEN_H * skala
-  const zeichenB = ZEICHEN_B * skala
-  const grundlinie = zeichenH
-  const s = schriftzug(zeichenB + EM(0.2), grundlinie)
-  const unten = Math.max(grundlinie, s.box.unten)
-  return svg(
-    0,
-    0,
-    s.box.rechts,
-    unten,
-    `<g transform="scale(${r(skala * 1000) / 1000})">${zeichenMarkup(c)}</g>` + schriftzugMarkup(s, c),
-  )
+  const { skala, s, breite, hoehe } = querTeile()
+  return svg(0, 0, breite, hoehe, `<g transform="scale(${skala})">${zeichenMarkup(c)}</g>` + schriftzugMarkup(s, c))
 }
 
 function gestapelt(c) {
@@ -263,6 +262,57 @@ for (const [name, inhalt] of Object.entries(dateien)) {
   await writeFile(join(ziel, name), inhalt)
 }
 console.log(`${Object.keys(dateien).length} SVG-Dateien nach marke/`)
+
+/* ---------- Fuer die Seite ---------- */
+
+// Das Favicon ist das App-Icon.
+await writeFile(join(wurzel, 'app', 'icon.svg'), appIcon().replace('width="512" height="512"', 'width="32" height="32"'))
+
+// Das Logo quer als Baustein. Die Farben kommen aus dem Stylesheet (.kk-logo in
+// app/globals.css), damit es im hellen und im dunklen Thema und auf der Buehne passt.
+const teile = querTeile()
+const komponente = `/**
+ * Das kiKollege-Logo quer: Zeichen und Schriftzug als Pfade.
+ * Erzeugt von scripts/logo-reinzeichnung.mjs, nicht von Hand aendern.
+ *
+ * Mensch und Schrift stehen in der Textfarbe, die KI in --kk-ki, sonst in
+ * --signal (.kk-logo in app/globals.css). Mit titel ist das Logo ein Bild mit
+ * Namen; ohne titel ist es Zierde, dann steht der Name daneben als Text.
+ */
+
+const SCHRIFT =
+  '${teile.s.d}'
+
+export function KiKollegeLogo({ className, titel }: { className?: string; titel?: string }) {
+  const name = titel ? ({ role: 'img', 'aria-label': titel } as const) : ({ 'aria-hidden': true } as const)
+  return (
+    <svg
+      className={className ? \`kk-logo \${className}\` : 'kk-logo'}
+      viewBox="0 0 ${r(teile.breite)} ${r(teile.hoehe)}"
+      focusable="false"
+      {...name}
+    >
+      <g transform="scale(${teile.skala})">
+        <circle className="kk-mensch" cx="14" cy="14" r="14" />
+        <path className="kk-mensch" d="M7 64V40A7 7 0 0 1 21 40V64Z" />
+        <rect className="kk-ki" x="34" y="1" width="26" height="26" rx="3" />
+        <path className="kk-ki" d="M40 64V35A2 2 0 0 1 42 33H52A2 2 0 0 1 54 35V64Z" />
+      </g>
+      <path className="kk-schrift" d={SCHRIFT} />
+      <rect
+        className="kk-ki"
+        x="${r(teile.s.punkt.x)}"
+        y="${r(teile.s.punkt.y)}"
+        width="${r(PUNKT)}"
+        height="${r(PUNKT)}"
+        rx="${r(PUNKT_RUNDUNG)}"
+      />
+    </svg>
+  )
+}
+`
+await writeFile(join(wurzel, 'components', 'KiKollegeLogo.tsx'), komponente)
+console.log('app/icon.svg und components/KiKollegeLogo.tsx geschrieben')
 
 /* ---------- PNG ---------- */
 

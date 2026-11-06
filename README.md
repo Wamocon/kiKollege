@@ -618,8 +618,22 @@ Für Bildmaterial gilt Block 09 weiter: echte Aufnahmen von Team und Arbeit,
 KI-Grafik nur abstrakt und gekennzeichnet. Das Enabler-Feld im Hero ist eine
 Datenfigur und fällt nicht darunter.
 
-Das Favicon liegt als `app/icon.svg` und zeigt drei weiße Zellen auf Rot 600, ein
-Anklang an das Enabler-Feld.
+Das Favicon `app/icon.svg` ist seit dem 06.11.2026 das App-Icon des kiKollegen.
+Vorher zeigte es drei weiße Zellen auf Rot 600, ein Anklang an das Enabler-Feld.
+
+### kiKollege
+
+Das Logo des kiKollegen sind zwei i als Figuren: links der Mensch mit rundem Kopf,
+rechts die KI mit eckigem. Im Schriftzug trägt das i von „ki“ denselben Kopf. Es
+steht in der Kopfleiste und im Einstieg der Startseite und im Kopf der übrigen
+Seiten. Den Fußbereich behält das WAMOCON-Logo.
+
+`scripts/logo-reinzeichnung.mjs` erzeugt alles aus Inter in Stärke 800: die
+Dateien in `marke/` für Dokumente und Präsentationen, das Favicon und den
+Baustein `components/KiKollegeLogo.tsx`. Favicon und Baustein werden nicht von
+Hand geändert. Die Farben setzt `.kk-logo` in `app/globals.css`: Mensch und
+Schrift in der Textfarbe, die KI in der Signalfarbe, auf der Bühne der Startseite
+in `--lb-rot`.
 
 ## Anrede
 
