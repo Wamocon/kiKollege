@@ -807,6 +807,8 @@ export interface Projektstand {
       satz: string
       bereiche: { name: string; faelle: number }[]
       zeilen: { wann: string; was: string; erfuellt: number; wackelig: number; nie: number; gelernt: number; bereiche: number[] }[]
+      /** Gelernt in der Übungsfassung nach derselben Regel, solange sie nicht übernommen ist; gelernt in den Zeilen zählt den Betrieb */
+      uebung?: { gelernt: number; satz: string }
       standSatz: string
       ehrlich: string
       weiter: string
