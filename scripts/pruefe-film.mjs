@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Meldet, wenn einer der beiden Filme auf der Startseite nicht mehr zu den Daten passt.
+ * Meldet, wenn einer der Filme auf der Startseite nicht mehr zu den Daten passt.
  *
  *   npm run pruefe:film                Warnung, der Lauf bleibt grün
  *   npm run pruefe:film -- --streng    schlägt fehl, wenn der Film veraltet ist
@@ -16,6 +16,7 @@ import { existsSync, readFileSync } from 'node:fs'
 import { pathToFileURL } from 'node:url'
 
 import { filmDaten, fingerabdruck } from './film-daten.mjs'
+import { fingerabdruck as abdruckSystemdemo, systemdemoDaten } from './systemdemo-daten.mjs'
 import { fingerabdruck as abdruckVorstellung, vorstellungDaten } from './vorstellung-daten.mjs'
 
 /** Ob der Film zu den Daten passt, und wenn nicht, warum. */
@@ -41,9 +42,20 @@ export function vergleicheVorstellung(stand, daten) {
   }
 }
 
+/** Dasselbe für die Systemdemo „Ein Auftrag, einmal ganz durch“. */
+export function vergleicheSystemdemo(stand, daten) {
+  const jetzt = abdruckSystemdemo(systemdemoDaten(daten))
+  if (!stand.fingerabdruck) return { aktuell: false, grund: 'Die Systemdemo ist noch nicht gerendert.' }
+  if (stand.fingerabdruck === jetzt) return { aktuell: true, grund: `Die Systemdemo passt zu den Daten (Stand ${stand.stand}).` }
+  return {
+    aktuell: false,
+    grund: `Die Systemdemo zeigt den Stand vom ${stand.stand}, die Daten haben sich seitdem geändert. Neu rendern mit npm run baue:systemdemo.`,
+  }
+}
+
 if (import.meta.url === pathToFileURL(process.argv[1] ?? '').href) {
   const daten = JSON.parse(readFileSync('data/projektstand.json', 'utf8'))
-  for (const [pfad, vergleich] of [['film/stand.json', vergleiche], ['film/vorstellung/stand.json', vergleicheVorstellung]]) {
+  for (const [pfad, vergleich] of [['film/stand.json', vergleiche], ['film/vorstellung/stand.json', vergleicheVorstellung], ['film/systemdemo/stand.json', vergleicheSystemdemo]]) {
     const stand = JSON.parse(readFileSync(pfad, 'utf8'))
     const fehlt = [stand.datei, stand.bild, stand.untertitel].filter(Boolean).filter((f) => !existsSync(`film/${f}`))
     const { aktuell, grund } = fehlt.length

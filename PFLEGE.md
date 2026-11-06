@@ -263,6 +263,20 @@ Scrollen.
 - Die öffentliche Fassung zeigt ihn nicht, weil julia-trend darin vorkommt; nur ihr
   Abschnitt ist in den Daten intern. Drehbuch und Prüfung stehen in `film/vorstellung/`.
 
+## Die Systemdemo
+
+- „Ein Auftrag, einmal ganz durch“: rund 74 Sekunden, mit Stimme, 1920 × 1080, gebaut wie
+  der Film der Mannschaft. Ein Prüfauftrag geht vom Handy über Hermes Agent, Qwen und den
+  Zaun aufs Board, Fritz prüft, der Befund kommt unverändert zurück. Er steht in der Szene
+  Anwenden, seit dem 06.11.2026.
+- **Woher alles kommt** steht in `film/systemdemo/DREHBUCH.md`, Titel und Satz darunter in
+  `produktseite.systemdemo`. Nachgestellt und im Film so gekennzeichnet sind der Wortlaut
+  der Nachricht, Telegram, das Board und die übrigen Fragen des Quiz.
+- **Neu rendern** mit `npm run baue:systemdemo`, wenn `pruefe:film` einen Hinweis meldet,
+  etwa nach einem neuen Beispielbefund oder geänderten Schritten des Wegs. Der Stand der
+  Daten allein macht ihn nicht veraltet, er steht nicht im Bild.
+- **Erst zeigen, dann einbauen** gilt auch hier: erst in den Chat, nach dem Okay in einen Commit.
+
 ## Figuren der KI-Kollegen
 
 Seit dem 31.10.2026 hat jeder KI-Mitarbeiter fünf Zeichnungen. Sie stehen als SVG

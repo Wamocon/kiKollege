@@ -737,6 +737,7 @@ html.lenis, html.lenis body { height: auto; }
 
 .lb-film { margin: 0; }
 .lb-film-mannschaft { max-width: 980px; margin-top: clamp(1.8rem, 4vw, 3rem); }
+.lb-film-systemdemo { max-width: 980px; margin-top: clamp(3rem, 8vh, 5rem); }
 .lb-film-video {
   display: block;
   width: 100%;
@@ -898,6 +899,8 @@ html.lenis, html.lenis body { height: auto; }
   font-variant-numeric: tabular-nums;
 }
 .lb-fz small { font-size: 0.32em; font-weight: 650; letter-spacing: -0.01em; color: var(--lb-ink); }
+.lb-fz dd.lb-fz-zweit { margin-top: 1rem; font-size: clamp(2.2rem, 4.2vw, 3.8rem); line-height: 1; }
+.lb-fz dd.lb-fz-zweit small { display: block; margin-top: 0.35rem; font-size: 0.34em; line-height: 1.35; }
 @media (max-width: 760px) { .lb-fz { grid-template-columns: minmax(0, 1fr); } }
 
 .lb-laeufe h4, .lb-risikoplan h4, .lb-weitere h4 { margin: 0; font-size: clamp(1.35rem, 2.3vw, 1.9rem); font-weight: 740; letter-spacing: -0.035em; }

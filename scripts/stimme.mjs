@@ -55,6 +55,9 @@ export const AUSSPRACHE = [
   [/\bReporter\b/g, 'Re-Porter'],
   [/\bArchivar\b/g, 'Archi Var'],
   [/\bM(\d+)\b/g, 'Meilenstein $1'],
+  [/§\s*(\d+)/g, 'Paragraf $1'],
+  [/\bSGB IX\b/g, 'Sozialgesetzbuch neun'],
+  [/\bQwen\b/g, 'Kwenn'],
 ]
 
 const TAGE = [

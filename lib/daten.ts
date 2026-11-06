@@ -807,6 +807,8 @@ export interface Projektstand {
       satz: string
       bereiche: { name: string; faelle: number }[]
       zeilen: { wann: string; was: string; erfuellt: number; wackelig: number; nie: number; gelernt: number; bereiche: number[] }[]
+      /** Gelernt in der Übungsfassung nach derselben Regel, solange sie nicht übernommen ist; gelernt in den Zeilen zählt den Betrieb */
+      uebung?: { gelernt: number; satz: string }
       standSatz: string
       ehrlich: string
       weiter: string
@@ -939,6 +941,8 @@ export interface Projektstand {
     film: { titel: string; text: string }
     /** Sätze des Films „Ein Tag mit der Mannschaft“, den scripts/baue-vorstellung.mjs rendert */
     vorstellung: { titel: string; text: string }
+    /** Titel und Satz der Systemdemo, die scripts/baue-systemdemo.mjs rendert */
+    systemdemo: { titel: string; text: string }
     /** Kennungen aus glossar.eintraege, die die Szene Begriffe zeigt */
     kernbegriffe: string[]
     beispielAuftrag: {
