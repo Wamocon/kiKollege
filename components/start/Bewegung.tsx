@@ -156,18 +156,41 @@ export function Bewegung() {
         }
       }
 
-      // Vorhang, höchstens eine Sekunde ----------------------------------------
+      // Vorhang: Das Logo hat sich per CSS aufgebaut; ist es fertig, fliegt es an seinen Platz
+      // im Einstieg, und die Fläche dahinter geht weg. Liegt der Einstieg nicht im Bild, etwa
+      // nach einem Sprung, blendet der Vorhang nur aus. War er schon von selbst weg, bleibt es dabei.
       const vorhang = document.querySelector<HTMLElement>('.lb-vorhang')
-      const start = gsap.timeline({ defaults: { ease: 'power4.inOut' } })
-      if (vorhang) {
-        start
-          .from('.lb-vorhang-wort', { yPercent: 110, duration: 0.35, ease: 'power3.out' })
-          .to('.lb-vorhang-wort', { opacity: 0, duration: 0.15 }, '+=0.05')
-          .to('.lb-vorhang-tuer.oben', { yPercent: -100, duration: 0.45 }, '<')
-          .to('.lb-vorhang-tuer.unten', { yPercent: 100, duration: 0.45 }, '<')
-          .add(() => vorhang.remove())
+      const einstieg = document.querySelector<HTMLElement>('#start .lb-wortmarke .kk-logo')
+      const worte = [...document.querySelectorAll<HTMLElement>('#start .lb-wort > span')].filter((w) => !w.querySelector('.kk-logo'))
+      const herein = (tl: gsap.core.Timeline, wann: number | string) =>
+        tl.from(worte, { yPercent: 110, duration: 0.9, stagger: 0.06, ease: 'power4.out' }, wann)
+      if (vorhang && getComputedStyle(vorhang).visibility !== 'hidden') {
+        vorhang.style.animation = 'none'
+        const marke = vorhang.querySelector<SVGSVGElement>('.lb-vorhang-logo')
+        const aufbau = vorhang.getAnimations({ subtree: true }).filter((a) => (a.effect as KeyframeEffect | null)?.target !== vorhang)
+        if (einstieg) gsap.set(einstieg, { opacity: 0 })
+        const spaetestens = new Promise((ok) => setTimeout(ok, 2200))
+        Promise.race([Promise.allSettled(aufbau.map((a) => a.finished)), spaetestens]).then(() => {
+          if (!vorhang.isConnected) return
+          const ziel = einstieg?.getBoundingClientRect()
+          const imBild = ziel && ziel.width > 0 && ziel.bottom > 0 && ziel.top < window.innerHeight
+          const tl = gsap.timeline({ onComplete: () => vorhang.remove() })
+          if (marke && ziel && imBild) {
+            const von = marke.getBoundingClientRect()
+            tl.to(marke, { x: ziel.left - von.left, y: ziel.top - von.top, scale: ziel.width / von.width, transformOrigin: '0 0', duration: 0.75, ease: 'power3.inOut' })
+              .to('.lb-vorhang-flaeche', { opacity: 0, duration: 0.55, ease: 'power2.inOut' }, 0.15)
+              .set(einstieg, { opacity: 1 })
+              .set(marke, { opacity: 0 })
+          } else {
+            tl.to(vorhang, { opacity: 0, duration: 0.4, ease: 'power2.out' })
+            if (einstieg) tl.set(einstieg, { opacity: 1 }, 0)
+          }
+          herein(tl, '-=0.35')
+        })
+      } else {
+        vorhang?.remove()
+        herein(gsap.timeline(), 0)
       }
-      start.from('#start .lb-wort > span', { yPercent: 110, duration: 0.9, stagger: 0.06, ease: 'power4.out' }, vorhang ? '-=0.3' : 0)
 
       // Überschriften der übrigen Szenen beim Hereinscrollen
       for (const el of document.querySelectorAll<HTMLElement>('[data-lb-split]')) {

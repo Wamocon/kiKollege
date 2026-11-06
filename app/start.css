@@ -1271,15 +1271,28 @@ a.lb-org-karte:hover, a.lb-org-karte:focus-visible { transform: translateY(-3px)
 .lb-einzelheiten-inhalt [id] { scroll-margin-top: calc(var(--lb-kopfhoehe) + 12px); }
 
 /* Vorhang und Korn ---------------------------------------------------- */
+/* Das Logo baut sich auf, sobald die Seite zu sehen ist: erst wachsen Mensch und KI aus der
+   Grundlinie, dann kommen die Köpfe, der rote der KI fällt hinein. Danach wischt der Schriftzug
+   herein, zuletzt setzt sich der rote i-Punkt. Das Übergeben an den Einstieg macht Bewegung.tsx. */
 .lb-vorhang { position: fixed; inset: 0; z-index: 100; pointer-events: none; display: grid; place-items: center; overflow: hidden; }
-.lb-vorhang-tuer { position: absolute; left: 0; right: 0; height: 50.5%; background: var(--lb-buehne); }
-.lb-vorhang-tuer.oben { top: 0; }
-.lb-vorhang-tuer.unten { bottom: 0; }
-.lb-vorhang-wort { position: relative; margin: 0; color: var(--lb-hell); font-size: clamp(3rem, 9vw, 7rem); font-weight: 820; letter-spacing: -0.06em; }
+.lb-vorhang-flaeche { position: absolute; inset: 0; background: radial-gradient(55% 45% at 50% 52%, rgba(244, 14, 14, 0.16), transparent 72%), var(--lb-buehne); }
+.lb-vorhang-logo { position: relative; width: min(62vw, 560px); overflow: visible; color: var(--lb-hell); --kk-ki: var(--lb-rot); }
+.lb-vorhang-logo g > *, .lb-vorhang-logo > path, .lb-vorhang-logo > rect { transform-box: fill-box; }
+.lb-vorhang-logo g > path { transform-origin: 50% 100%; animation: lb-wachsen 0.5s cubic-bezier(0.2, 0.7, 0.2, 1) 0.1s both; }
+.lb-vorhang-logo g > path.kk-ki { animation-delay: 0.24s; }
+.lb-vorhang-logo g > circle { transform-origin: 50% 50%; animation: lb-auftauchen 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) 0.4s both; }
+.lb-vorhang-logo g > rect { transform-origin: 50% 50%; animation: lb-fallen 0.55s cubic-bezier(0.34, 1.4, 0.64, 1) 0.52s both; }
+.lb-vorhang-logo > path.kk-schrift { animation: lb-wischen 0.6s cubic-bezier(0.65, 0, 0.35, 1) 0.72s both; }
+.lb-vorhang-logo > rect.kk-ki { transform-origin: 50% 50%; animation: lb-punkt 0.4s cubic-bezier(0.34, 1.8, 0.64, 1) 1.22s both; }
+@keyframes lb-wachsen { from { transform: scaleY(0); } }
+@keyframes lb-auftauchen { from { transform: scale(0); } }
+@keyframes lb-fallen { from { transform: translateY(-170%) rotate(-90deg); opacity: 0; } }
+@keyframes lb-wischen { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
+@keyframes lb-punkt { from { transform: scale(0) rotate(45deg); } }
 html:not(.js) .lb-vorhang { display: none; }
 @media (prefers-reduced-motion: reduce) { .lb-vorhang { display: none; } }
 /* Falls das Skript ausbleibt, geht der Vorhang von selbst */
-.lb-vorhang { animation: lb-vorhang-weg 0.01s linear 1.8s forwards; }
+.lb-vorhang { animation: lb-vorhang-weg 0.01s linear 2.6s forwards; }
 @keyframes lb-vorhang-weg { to { visibility: hidden; } }
 
 .lb-korn {

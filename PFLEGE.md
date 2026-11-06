@@ -326,8 +326,8 @@ gemeinsamen Bausteine in `basis.tsx`. `index.ts` ordnet sie den Kennungen in
 ## Logo
 
 Seit dem 06.11.2026 hat kiKollege ein Logo: zwei i als Figuren, der Mensch rund,
-die KI eckig. Es steht in der Kopfleiste und im Einstieg der Startseite und im
-Kopf der übrigen Seiten, das Favicon ist sein App-Icon.
+die KI eckig. Es steht in der Kopfleiste, im Ladebildschirm und im Einstieg der
+Startseite und im Kopf der übrigen Seiten, das Favicon ist sein App-Icon.
 
 - **Erzeugt, nicht gezeichnet:** Den Baustein `components/KiKollegeLogo.tsx`, das
   Favicon `app/icon.svg` und die Dateien in `marke/` schreibt
@@ -338,6 +338,11 @@ Kopf der übrigen Seiten, das Favicon ist sein App-Icon.
   dort, deshalb liegen die Logodateien in `marke/`.
 - **Die Steckbriefe** behalten die Köpfe der Kollegen. Das Profilbild mit dem KI-i
   allein ist für Stellen ohne eigenes Gesicht gedacht.
+- **Ladebildschirm:** Das Logo baut sich per CSS auf (`.lb-vorhang-logo` in
+  `app/start.css`) und fliegt danach an seinen Platz im Einstieg (`Bewegung.tsx`). Die
+  Stile greifen die Teile über ihre Reihenfolge in der Reinzeichnung: in der Gruppe Kopf
+  und Körper von Mensch und KI, danach Schriftzug und i-Punkt. Ändert das Skript diese
+  Reihenfolge, muss der Ladebildschirm mit.
 - Schutzraum und Mindestgröße sind noch nicht festgelegt.
 
 ## Wer was tut
