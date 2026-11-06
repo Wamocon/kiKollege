@@ -10,10 +10,14 @@ import { StandAbschnitte } from '@/components/stand/StandAbschnitte'
 import { FIGUREN } from '@/components/figuren/kollegen'
 import { AmpelAlter } from '@/components/start/AmpelAlter'
 import { AufbauAkte } from '@/components/start/AufbauAkte'
+import { AblageNetz } from '@/components/start/AblageNetz'
+import { AufbauGedaechtnis } from '@/components/start/AufbauGedaechtnis'
 import { AufbauOrte } from '@/components/start/AufbauOrte'
 import { AufbauRinge } from '@/components/start/AufbauRinge'
 import { AufbauWeg } from '@/components/start/AufbauWeg'
 import { Bewegung } from '@/components/start/Bewegung'
+import { Organigramm } from '@/components/start/Organigramm'
+import { Training } from '@/components/start/Training'
 import { abschnitt } from '@/lib/abschnitte'
 import { belastbarBei, daten, datum, dauer, terminText } from '@/lib/daten'
 import { nurSichtbare, sichtbar, zeigtInternes } from '@/lib/freigabe'
@@ -69,6 +73,7 @@ const DOPPELT = [
   'mannschaft-grenze',
   // Diese Darstellungen zeigt die Szene Aufbau selbst, die Einzelheiten nur den Rest
   'aufbau-einstieg', 'aufbau-stapel', 'aufbau-quelltext', 'landschaft-einstieg', 'landschaft-figur', 'technik-ablauf',
+  'mannschaft-organigramm', 'wissen-paar',
   // Diese Grafiken und Absätze zeigt schon der Abschnitt der Landing Page
   'schichten-stapel', 'gedaechtnis-wissensablagen', 'gedaechtnis-training-satz', 'gedaechtnis-ablagefigur',
   'gedaechtnis-ablagegraph', 'fritz-durchlauf', 'fritz-steuerung', 'gegenstand-enabler', 'luecke-geltung',
@@ -250,10 +255,6 @@ export default function Start() {
         <div className="lb-vorhang-tuer oben" />
         <div className="lb-vorhang-tuer unten" />
         <p className="lb-vorhang-wort">{p.name}</p>
-      </div>
-      <div className="lb-zeiger" aria-hidden="true">
-        <span className="lb-zeiger-ring" />
-        <span className="lb-zeiger-punkt" />
       </div>
       <div className="lb-korn" aria-hidden="true" />
 
@@ -887,6 +888,13 @@ export default function Start() {
               Aufträge gibst du über den Orchestrator.
               {planSichtbar && naechster ? ` Das Team kommt mit ${naechster.id} dazu, ${terminText(naechster, false)}.` : ''}
             </p>
+            {sichtbar(d.mannschaft) ? (
+              <div className="lb-org-teil">
+                <h3 className="lb-teilkopf" data-lb-reveal>Wer wem zuarbeitet.</h3>
+                <p className="lb-aufbau-text" data-lb-reveal>{d.mannschaft.satz}</p>
+                <Organigramm />
+              </div>
+            ) : null}
             {zeigtInternes ? (
               <figure className="lb-film lb-film-mannschaft" data-lb-reveal>
                 <video
@@ -1084,6 +1092,7 @@ export default function Start() {
               Wie oft ein Befund falsch ist, die Fehlalarmquote, ist bisher {belastbarBei(b)} belastbar gemessen.
             </p>
           ) : null}
+          {sichtbar(d.training) ? <Training /> : null}
         </Szene>
 
         {/* Aufbau ------------------------------------------------------------- */}
@@ -1106,6 +1115,17 @@ export default function Start() {
             <p className="lb-aufbau-text" data-lb-reveal>{d.schichtenErklaerung}</p>
             <AufbauAkte schichten={d.schichten} gruppen={d.schichtenGruppen} datei={d.beschreibungsdatei} erbe={d.schichtenErbe} />
           </div>
+          {sichtbar(d.bewertungen) ? (
+            <div className="lb-aufbau-teil">
+              <h3 className="lb-teilkopf" data-lb-reveal>Was er weiß, liegt in Obsidian.</h3>
+              <p className="lb-aufbau-text" data-lb-reveal>
+                Wissen und Gedächtnis liegen als Notizen in einer gemeinsamen Ablage. Menschen lesen und schreiben sie in Obsidian, mit Datum und
+                Freigabestand; auf den KI-Rechner kommt sie über Git.
+              </p>
+              <AblageNetz />
+              <AufbauGedaechtnis />
+            </div>
+          ) : null}
           {sichtbar(d.landschaft) ? (
             <div className="lb-aufbau-teil">
               <h3 className="lb-teilkopf" data-lb-reveal>{d.landschaft.satz}</h3>

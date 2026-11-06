@@ -7,7 +7,7 @@ import Lenis from 'lenis'
 
 /** Die ganze Bewegung der Startseite an einer Stelle: Vorhang, geglättetes
  *  Scrollen, Einblendungen, Zähler, Parallaxe, die waagerechte Galerie, die
- *  Schritte neben dem Chat, Mauszeiger und magnetische Knöpfe. Wer reduzierte
+ *  Schritte neben dem Chat, der Prüfstand und magnetische Knöpfe. Wer reduzierte
  *  Bewegung eingestellt hat, bekommt nur Kopfleiste, Menü und Anker; ohne
  *  JavaScript bleibt die Seite vollständig lesbar. */
 export function Bewegung() {
@@ -447,24 +447,54 @@ export function Bewegung() {
         })
       })
 
-      // Mauszeiger und magnetische Knöpfe, nur mit feiner Maus ------------------
-      mm.add('(hover: hover) and (pointer: fine)', () => {
-        const zeiger = document.querySelector<HTMLElement>('.lb-zeiger')
-        if (!zeiger) return
-        doc.classList.add('lb-mit-zeiger')
-        const ring = zeiger.querySelector<HTMLElement>('.lb-zeiger-ring')!
-        const punkt = zeiger.querySelector<HTMLElement>('.lb-zeiger-punkt')!
-        const rx = gsap.quickTo(ring, 'x', { duration: 0.45, ease: 'power3.out' })
-        const ry = gsap.quickTo(ring, 'y', { duration: 0.45, ease: 'power3.out' })
-        const px = gsap.quickTo(punkt, 'x', { duration: 0.08 })
-        const py = gsap.quickTo(punkt, 'y', { duration: 0.08 })
-        const bewegen = (e: PointerEvent) => {
-          zeiger.classList.add('da')
-          rx(e.clientX); ry(e.clientY); px(e.clientX); py(e.clientY)
-          const ueber = (e.target as HTMLElement).closest('a, button, summary')
-          zeiger.classList.toggle('gross', !!ueber)
+      // Das Netz der Ablage wächst von innen nach außen, wenn es ins Bild kommt
+      const netz = document.querySelector<SVGSVGElement>('[data-lb-netz] svg')
+      if (netz) {
+        const punkte = [...netz.querySelectorAll<SVGCircleElement>('circle')]
+        const abstand = (c: SVGCircleElement) => Math.hypot(Number(c.getAttribute('cx')) - 500, Number(c.getAttribute('cy')) - 500)
+        punkte.sort((a, b) => abstand(a) - abstand(b))
+        const tl = gsap.timeline({ scrollTrigger: { trigger: netz, start: 'top 75%' } })
+        tl.from(netz.querySelector('.lb-netz-kanten'), { opacity: 0, duration: 1.6, ease: 'power2.out' }, 0.3)
+          .from(punkte, { opacity: 0, scale: 0, transformOrigin: '50% 50%', duration: 0.5, ease: 'back.out(2)', stagger: { amount: 1.6 } }, 0)
+      }
+
+      // Der Prüfstand: steht still, während die Läufe vom ersten bis zum letzten durchlaufen
+      mm.add('(min-width: 900px)', () => {
+        const ps = document.querySelector<HTMLElement>('[data-lb-pruefstand]')
+        if (!ps) return
+        const laeufe = JSON.parse(ps.dataset.lbPruefstand ?? '[]') as [string, string, number, number, number, number, number[]][]
+        if (!laeufe.length) return
+        const feld = (k: string) => ps.querySelector<HTMLElement>(`[data-ps="${k}"]`)
+        const bereiche = [...ps.querySelectorAll<HTMLElement>('[data-ps-bereich]')]
+        const striche = [...ps.querySelectorAll<HTMLElement>('[data-ps-lauf]')]
+        let zuletzt = -1
+        const zeige = (i: number) => {
+          if (i === zuletzt) return
+          zuletzt = i
+          const [wann, was, erfuellt, wackelig, nie, gelernt, je] = laeufe[i]
+          const setze = (k: string, v: string | number) => { const e = feld(k); if (e) e.textContent = String(v) }
+          setze('wann', wann); setze('was', was); setze('erfuellt', erfuellt); setze('wackelig', wackelig); setze('nie', nie); setze('gelernt', gelernt)
+          bereiche.forEach((b, n) => [...b.children].forEach((k, m) => k.classList.toggle('erfuellt', m < (je[n] ?? 0))))
+          striche.forEach((s, n) => s.classList.toggle('aktiv', n === i))
         }
-        window.addEventListener('pointermove', bewegen)
+        zeige(0)
+        ScrollTrigger.create({
+          trigger: ps,
+          start: 'center center',
+          end: `+=${laeufe.length * 22}%`,
+          // Steht vor dem Weg im Aufbau auf der Seite, wird aber später angelegt: zuerst berechnen
+          refreshPriority: 1,
+          pin: true,
+          pinSpacing: true,
+          scrub: true,
+          onUpdate: (st) => zeige(Math.min(laeufe.length - 1, Math.floor(st.progress * laeufe.length))),
+        })
+        return () => zeige(laeufe.length - 1)
+      })
+
+      // Magnetische Knöpfe und kippende Karten, nur mit feiner Maus ---------------
+      mm.add('(hover: hover) and (pointer: fine)', () => {
+        doc.classList.add('lb-feine-maus')
 
         const magnete = [...document.querySelectorAll<HTMLElement>('[data-lb-magnet]')]
         const weg: (() => void)[] = []
@@ -503,9 +533,8 @@ export function Bewegung() {
           })
         }
         return () => {
-          window.removeEventListener('pointermove', bewegen)
           weg.forEach((f) => f())
-          doc.classList.remove('lb-mit-zeiger')
+          doc.classList.remove('lb-feine-maus')
         }
       })
       aufraeumen.push(() => mm.revert())

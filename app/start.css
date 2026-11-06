@@ -317,7 +317,7 @@ html.lenis, html.lenis body { height: auto; }
 }
 .lb-karte:hover { transform: translateY(-6px) rotateX(2deg); box-shadow: 0 30px 60px -30px rgba(20, 11, 11, 0.35); }
 /* Mit feiner Maus kippt GSAP die Karte; ein CSS-Übergang auf transform würde nachziehen */
-.lb-mit-zeiger .lb-karte { transition: box-shadow 0.5s; }
+.lb-feine-maus .lb-karte { transition: box-shadow 0.5s; }
 .lb-karte h3 { margin: 0.4rem 0 0; font-size: 1.75rem; font-weight: 760; letter-spacing: -0.03em; line-height: 1.05; }
 .lb-karte h3 span { display: block; margin-top: 0.35rem; font-size: 0.95rem; font-weight: 520; letter-spacing: 0; color: var(--lb-leise); }
 .lb-karte p { margin: 0; font-size: 0.97rem; line-height: 1.55; }
@@ -698,6 +698,200 @@ html.lenis, html.lenis body { height: auto; }
   .lb-bewegt .lb-weg-schritte p { font-size: 1.1rem; }
 }
 
+/* Organigramm: wie auf /stand/, als Seite gesetzt ---------------------------------- */
+.lb-org-teil { margin-top: clamp(4rem, 10vh, 7rem); }
+.lb-org { --lb-org-strich: rgba(20, 11, 11, 0.28); margin: 0; }
+.lb-org-oben { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1fr) minmax(0, 0.8fr); gap: 1.4rem; }
+.lb-org-team, .lb-org-mensch { padding: 1rem 1.2rem; border-radius: 14px; text-align: center; }
+.lb-org-team { grid-column: 1; border: 1.5px dashed var(--lb-org-strich); }
+.lb-org-mensch { grid-column: 2; border: 2px solid var(--lb-ink); background: var(--lb-hell); }
+.lb-org-team b, .lb-org-mensch b { display: block; font-size: 1.1rem; font-weight: 760; }
+.lb-org-team span, .lb-org-mensch span { display: block; margin-top: 0.2rem; font-size: 0.88rem; line-height: 1.4; color: var(--lb-leise); }
+.lb-org-chef { position: relative; display: flex; justify-content: center; padding-top: 2.4rem; }
+.lb-org-chef::before { content: ''; position: absolute; top: 0; left: 50%; height: calc(2.4rem - 8px); border-left: 2px solid var(--lb-rot); }
+.lb-org-chef::after { content: ''; position: absolute; top: calc(2.4rem - 10px); left: calc(50% - 6px); border: 6px solid transparent; border-top: 9px solid var(--lb-rot); }
+.lb-org-chef .lb-org-karte { width: min(100%, 460px); padding: 1.1rem 1.4rem 1.2rem; }
+.lb-org-chef .lb-org-karte b { font-size: 1.35rem; }
+.lb-org-karte { display: block; height: 100%; padding: 0.9rem 0.7rem 1rem; border-radius: 14px; border: 2px solid var(--lb-rot); background: rgba(244, 14, 14, 0.05); color: inherit; text-align: center; text-decoration: none; transition: transform 0.25s, box-shadow 0.25s; }
+a.lb-org-karte:hover, a.lb-org-karte:focus-visible { transform: translateY(-3px); box-shadow: 0 10px 24px rgba(20, 11, 11, 0.1); }
+.lb-org-karte b { display: block; font-size: 1.05rem; font-weight: 760; letter-spacing: -0.01em; }
+.lb-org-rolle { display: block; margin-top: 0.25rem; font-size: 0.82rem; line-height: 1.35; color: var(--lb-leise); }
+.lb-org-marke { display: block; margin-top: 0.6rem; font-size: 0.8rem; font-weight: 700; line-height: 1.35; color: var(--lb-rot-tief); }
+.lb-org-karte.ohne { border-style: dashed; }
+.lb-org-karte.geplant { border: 1.5px dashed var(--lb-org-strich); background: transparent; }
+.lb-org-karte.geplant b, .lb-org-karte.geplant .lb-org-marke { color: var(--lb-leise); }
+.lb-org-rollen { --lb-org-luecke: 0.7rem; position: relative; display: grid; grid-template-columns: repeat(var(--lb-org-rollen, 8), minmax(0, 1fr)); gap: var(--lb-org-luecke); list-style: none; margin: 2rem 0 0; padding: 2rem 0 0; }
+.lb-org-rollen::before { content: ''; position: absolute; top: 0; left: calc((100% - (var(--lb-org-rollen, 8) - 1) * var(--lb-org-luecke)) / var(--lb-org-rollen, 8) / 2); right: calc((100% - (var(--lb-org-rollen, 8) - 1) * var(--lb-org-luecke)) / var(--lb-org-rollen, 8) / 2); border-top: 2px solid var(--lb-org-strich); }
+.lb-org-rollen::after { content: ''; position: absolute; top: -2rem; left: 50%; height: 2rem; border-left: 2px solid var(--lb-rot); }
+.lb-org-rollen > li { position: relative; }
+.lb-org-rollen > li::before { content: ''; position: absolute; top: -2rem; left: 50%; height: calc(2rem - 8px); border-left: 2px solid var(--lb-org-strich); }
+.lb-org-rollen > li::after { content: ''; position: absolute; top: -10px; left: calc(50% - 6px); border: 6px solid transparent; border-top: 9px solid var(--lb-org-strich); }
+.lb-org-rollen > li.laeuft::before { border-color: var(--lb-rot); }
+.lb-org-rollen > li.laeuft::after { border-top-color: var(--lb-rot); }
+.lb-org-band { margin-top: 2.6rem; }
+.lb-org-band-kopf { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.4rem 1rem; margin: 0 0 1rem; padding-bottom: 0.6rem; border-bottom: 1px solid var(--lb-linie); font-size: 0.92rem; }
+.lb-org-band-kopf span { color: var(--lb-leise); }
+.lb-org-helfer, .lb-org-wissen { display: grid; gap: 0.7rem; list-style: none; margin: 0; padding: 0; }
+.lb-org-helfer { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.lb-org-helfer li { padding: 0.7rem 0.9rem; border-radius: 12px; border: 1px solid var(--lb-org-strich); background: var(--lb-hell); text-align: center; }
+.lb-org-helfer code { display: block; font-family: var(--schrift-mono); font-size: 0.82rem; font-weight: 700; }
+.lb-org-helfer span { display: block; margin-top: 0.2rem; font-size: 0.84rem; color: var(--lb-leise); }
+.lb-org-wissen { grid-template-columns: repeat(7, minmax(0, 1fr)); }
+.lb-org-wissen li { padding: 0.8rem 0.6rem 0.9rem; border-radius: 12px; text-align: center; }
+.lb-org-wissen b { display: block; font-size: 0.86rem; font-weight: 720; line-height: 1.3; }
+.lb-org-wissen span { display: block; margin-top: 0.4rem; font-size: 0.8rem; font-weight: 700; }
+.lb-org-wissen li.verbindlich { border: 2px solid var(--lb-rot); background: rgba(244, 14, 14, 0.05); }
+.lb-org-wissen li.verbindlich span { color: var(--lb-rot-tief); }
+.lb-org-wissen li.ungeprueft { border: 1.5px dashed var(--lb-org-strich); }
+.lb-org-wissen li.ungeprueft span { color: var(--lb-leise); }
+.lb-org-wissen li.gedaechtnis { border: 2px solid var(--lb-ink); background: var(--lb-hell); }
+.lb-org-fuss { margin: 0.8rem 0 0; font-size: 0.84rem; color: var(--lb-leise); text-align: center; }
+.lb-org-basis { --lb-leise: rgba(255, 255, 255, 0.7); --lb-linie: rgba(255, 255, 255, 0.16); margin-top: 2.6rem; padding: 1.4rem 1.6rem 1.6rem; border-radius: var(--lb-rund); background: var(--lb-buehne); color: var(--lb-hell); }
+.lb-org-basis > div { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; }
+.lb-org-basis > div > div { padding: 1rem 1.1rem; border-radius: 12px; background: rgba(255, 255, 255, 0.06); text-align: center; }
+.lb-org-basis b { display: block; margin-bottom: 0.5rem; font-weight: 740; }
+.lb-org-basis ul { display: grid; gap: 0.25rem; list-style: none; margin: 0; padding: 0; font-size: 0.86rem; line-height: 1.4; color: var(--lb-leise); }
+.lb-org figcaption { margin-top: 0.9rem; font-size: 0.84rem; line-height: 1.5; color: var(--lb-leise); }
+.lb-org figcaption p { margin: 0.2rem 0 0; }
+@media (max-width: 1100px) {
+  .lb-org-rollen { grid-template-columns: repeat(4, minmax(0, 1fr)); padding-top: 0; }
+  .lb-org-rollen::before, .lb-org-rollen > li::before, .lb-org-rollen > li::after { display: none; }
+  .lb-org-rollen::after { top: -2rem; height: 2rem; }
+  .lb-org-wissen { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .lb-org-helfer, .lb-org-basis > div { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 640px) {
+  .lb-org-oben { grid-template-columns: minmax(0, 1fr); }
+  .lb-org-team, .lb-org-mensch { grid-column: auto; }
+  .lb-org-mensch { order: -1; }
+  .lb-org-rollen, .lb-org-wissen { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .lb-org-helfer, .lb-org-basis > div { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* Training: so trainiert der Orchestrator wirklich -------------------------------- */
+.lb-training { margin-top: clamp(5rem, 14vh, 9rem); }
+.lb-training .lb-teilkopf { max-width: 24ch; }
+.lb-fassungen { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr) minmax(0, 1fr); gap: clamp(1rem, 2vw, 2rem); align-items: center; }
+.lb-fassung { padding: 1.6rem 1.8rem 1.8rem; border-radius: var(--lb-rund); border: 1px solid var(--lb-linie); background: var(--lb-flaeche); }
+.lb-fassung.uebung { --lb-leise: rgba(255, 255, 255, 0.7); border-color: var(--lb-buehne); background: var(--lb-buehne); color: var(--lb-hell); }
+.lb-fassung-name { margin: 0; font-family: var(--schrift-mono); font-size: 0.74rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--lb-leise); }
+.lb-fassung-zahl { margin: 0.4rem 0 0.3rem; font-size: clamp(3.4rem, 7vw, 5.6rem); font-weight: 820; line-height: 1; letter-spacing: -0.05em; font-variant-numeric: tabular-nums; }
+.lb-fassung-zahl span { margin-left: 0.5rem; font-size: 1.1rem; font-weight: 600; letter-spacing: 0; color: var(--lb-leise); }
+.lb-fassung p:last-child { margin: 0; font-size: 0.98rem; line-height: 1.5; color: var(--lb-leise); }
+.lb-fassungen-wege { display: grid; gap: 1.8rem; }
+.lb-fassungen-wege p { position: relative; margin: 0; padding: 0 0.6rem 0.9rem; border-bottom: 2px solid var(--lb-ink); font-size: 0.98rem; font-weight: 600; line-height: 1.4; text-align: center; }
+.lb-fassungen-wege p::after { content: ''; position: absolute; bottom: -8px; border: 7px solid transparent; }
+.lb-fassungen-wege p.hin::after { right: -10px; border-left: 11px solid var(--lb-ink); }
+.lb-fassungen-wege p.zurueck { border-color: var(--lb-rot); color: var(--lb-rot-tief); }
+.lb-fassungen-wege p.zurueck::after { left: -10px; border-right: 11px solid var(--lb-rot); }
+.lb-pruefstand { --lb-leise: rgba(255, 255, 255, 0.7); --lb-linie: rgba(255, 255, 255, 0.16); display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.4fr); gap: 1.6rem 3rem; margin: clamp(3rem, 8vh, 5rem) 0 0; padding: clamp(1.6rem, 3vw, 2.6rem); border-radius: var(--lb-rund); background: var(--lb-buehne); color: var(--lb-hell); }
+.lb-ps-name { margin: 0; font-family: var(--schrift-mono); font-size: 0.74rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--lb-leise); }
+.lb-ps-wann { margin: 0.6rem 0 0; font-size: clamp(1.6rem, 2.6vw, 2.2rem); font-weight: 780; letter-spacing: -0.02em; }
+.lb-ps-zahl { margin: 0.6rem 0 0; font-size: 1.1rem; }
+.lb-ps-zahl b { margin-right: 0.3rem; font-size: 3.6rem; font-weight: 820; letter-spacing: -0.04em; color: var(--lb-rot); font-variant-numeric: tabular-nums; }
+.lb-ps-rest { margin: 0.3rem 0 0; color: var(--lb-leise); }
+.lb-ps-rest b { color: var(--lb-hell); font-variant-numeric: tabular-nums; }
+.lb-ps-was { display: -webkit-box; margin: 1rem 0 0; overflow: hidden; font-size: 0.92rem; line-height: 1.5; color: var(--lb-leise); -webkit-line-clamp: 5; -webkit-box-orient: vertical; }
+.lb-ps-felder { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.4rem 2rem; align-content: start; }
+.lb-ps-bereich p { margin: 0 0 0.6rem; font-size: 0.95rem; font-weight: 650; }
+.lb-ps-kacheln { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 8px; }
+.lb-ps-kacheln i { aspect-ratio: 1; border-radius: 8px; border: 1.5px solid rgba(255, 255, 255, 0.3); transition: background 0.25s, border-color 0.25s; }
+.lb-ps-kacheln i.erfuellt { border-color: var(--lb-rot); background: var(--lb-rot); }
+.lb-ps-leiste { grid-column: 1 / -1; display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); gap: 4px; list-style: none; margin: 0; padding: 0 0 1.4rem; }
+.lb-ps-leiste li { position: relative; height: 6px; border-radius: 3px; background: rgba(255, 255, 255, 0.2); transition: background 0.25s; }
+.lb-ps-leiste li.aktiv { background: var(--lb-rot); }
+.lb-ps-leiste span { position: absolute; top: 12px; left: 0; font-size: 0.72rem; white-space: nowrap; color: var(--lb-leise); }
+.lb-pruefstand figcaption { grid-column: 1 / -1; max-width: 80ch; font-size: 0.88rem; line-height: 1.5; color: var(--lb-leise); }
+.lb-ablauf { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 1.4rem; list-style: none; margin: clamp(3rem, 8vh, 5rem) 0 0; padding: 0; }
+.lb-ablauf li { padding-top: 1rem; border-top: 2px solid var(--lb-ink); }
+.lb-ablauf b { display: block; margin: 0.4rem 0 0.1rem; font-size: 1.3rem; font-weight: 740; }
+.lb-ablauf .lb-teil-kurz { display: block; margin: 0 0 0.5rem; font-size: 0.9rem; font-weight: 600; color: var(--lb-rot-tief); }
+.lb-ablauf p { margin: 0; font-size: 0.95rem; line-height: 1.5; color: var(--lb-leise); }
+.lb-training-unten { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(2rem, 5vw, 5rem); margin-top: clamp(3rem, 8vh, 5rem); }
+.lb-training-unten h4 { margin: 0 0 1rem; font-size: 1.3rem; font-weight: 760; }
+.lb-ebenen { display: grid; gap: 0.5rem; list-style: none; margin: 0; padding: 0; }
+.lb-ebenen li { display: grid; grid-template-columns: 9.5rem minmax(0, 1fr); gap: 0.3rem 1rem; padding: 0.7rem 1rem; border-radius: 12px; background: var(--lb-flaeche); }
+.lb-ebenen b { font-weight: 700; }
+.lb-ebenen span { font-size: 0.92rem; line-height: 1.45; color: var(--lb-leise); }
+.lb-ebenen li.zuletzt { border: 1.5px dashed var(--lb-rot); background: transparent; }
+.lb-ebenen li.zuletzt b { color: var(--lb-rot-tief); }
+.lb-wer { display: grid; gap: 0.9rem; margin: 0; }
+.lb-wer div { padding-bottom: 0.9rem; border-bottom: 1px solid var(--lb-linie); }
+.lb-wer dt { font-weight: 700; }
+.lb-wer dd { margin: 0.2rem 0 0; font-size: 0.95rem; line-height: 1.5; color: var(--lb-leise); }
+.lb-training-klein { margin: 1rem 0 0; font-size: 0.88rem; line-height: 1.5; color: var(--lb-leise); }
+@media (max-width: 1000px) { .lb-ablauf { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 899px) {
+  .lb-fassungen, .lb-pruefstand, .lb-training-unten { grid-template-columns: minmax(0, 1fr); }
+  .lb-ps-leiste span { display: none; }
+}
+@media (max-width: 520px) { .lb-ablauf, .lb-ps-felder { grid-template-columns: minmax(0, 1fr); } .lb-ebenen li { grid-template-columns: minmax(0, 1fr); } }
+
+/* Das Netz der Ablage, wie Obsidian es zeigt, zum Anfassen ------------------------- */
+.lb-netz { margin: 0 0 clamp(3rem, 8vh, 5rem); }
+.lb-netz-bedienung { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: clamp(1.5rem, 3vw, 3rem); align-items: start; }
+.lb-netz-flaeche { position: relative; }
+.lb-netz-flaeche svg { display: block; width: 100%; height: auto; max-height: 84svh; overflow: hidden; touch-action: pan-y; user-select: none; -webkit-user-select: none; border-radius: var(--lb-rund); background: rgba(255, 255, 255, 0.025); }
+.lb-netz-flaeche svg.gezoomt { cursor: grab; }
+.lb-netz-kanten { fill: none; stroke: rgba(255, 255, 255, 0.22); stroke-width: 0.9; transition: stroke 0.25s; }
+.mit-fokus .lb-netz-kanten { stroke: rgba(255, 255, 255, 0.06); }
+.lb-netz-hell { fill: none; stroke: rgba(255, 255, 255, 0.85); stroke-width: 1.3; pointer-events: none; }
+.lb-netz-flaeche circle { stroke: var(--lb-buehne); stroke-width: 1; cursor: grab; transition: fill-opacity 0.2s; }
+.lb-netz-flaeche circle:active { cursor: grabbing; }
+.lb-netz-flaeche circle.wissen { fill: var(--lb-hell); }
+.lb-netz-flaeche circle.gedaechtnis { fill: var(--lb-rot); }
+.lb-netz-flaeche circle.werkstatt { fill: #8a7f7f; }
+.mit-fokus circle:not(.an) { fill-opacity: 0.14; }
+.lb-netz-flaeche circle.ich { stroke: var(--lb-rot); stroke-width: 3; }
+.lb-netz-name { pointer-events: none; font-size: 21px; font-weight: 760; letter-spacing: -0.01em; fill: var(--lb-hell); paint-order: stroke; stroke: var(--lb-buehne); stroke-width: 6px; stroke-linejoin: round; transition: fill-opacity 0.2s; }
+.mit-fokus .lb-netz-name:not(.an) { fill-opacity: 0.3; }
+.lb-netz-tipp { position: absolute; z-index: 2; margin: 0; padding: 0.5rem 0.7rem; border-radius: 10px; background: var(--lb-hell); color: var(--lb-buehne); font-size: 0.82rem; line-height: 1.35; white-space: nowrap; pointer-events: none; transform: translate(14px, -50%); box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); }
+.lb-netz-tipp b { display: block; font-weight: 740; }
+.lb-netz-zoom { position: absolute; right: 0.8rem; bottom: 0.8rem; display: flex; gap: 0.4rem; }
+.lb-netz-zoom button { width: 2.5rem; height: 2.5rem; border-radius: 50%; border: 1px solid rgba(255, 255, 255, 0.3); background: var(--lb-buehne-weich); color: var(--lb-hell); font: inherit; font-size: 1.15rem; line-height: 1; cursor: pointer; }
+.lb-netz-zoom button:disabled { opacity: 0.35; cursor: default; }
+.lb-netz-zoom button:focus-visible, .lb-netz-liste button:focus-visible { outline: 2px solid var(--lb-hell); outline-offset: 2px; }
+.lb-netz-seite { display: grid; gap: 1.2rem; }
+.lb-netz-erklaerung { min-height: 12rem; padding: 1.3rem 1.4rem 1.4rem; border-radius: var(--lb-rund); border: 1px solid var(--lb-linie); background: var(--lb-buehne-weich); }
+.lb-netz-erklaerung h4 { margin: 0.3rem 0 0.5rem; font-size: 1.4rem; font-weight: 760; letter-spacing: -0.02em; }
+.lb-netz-erklaerung p { margin: 0; font-size: 0.98rem; line-height: 1.5; color: var(--lb-leise); }
+.lb-netz-erklaerung p.lb-netz-gruppe { font-family: var(--schrift-mono); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; }
+.lb-netz-erklaerung p.lb-netz-gruppe.gedaechtnis { color: var(--lb-rot); }
+.lb-netz-erklaerung p.lb-netz-zahl { margin-top: 0.7rem; font-weight: 650; color: var(--lb-hell); }
+.lb-netz-liste { display: grid; gap: 0.2rem; list-style: none; margin: 0; padding: 0; }
+.lb-netz-liste button { display: flex; align-items: center; gap: 0.7rem; width: 100%; padding: 0.5rem 0.7rem; border: 0; border-radius: 10px; background: none; color: inherit; font: inherit; font-size: 0.95rem; text-align: left; cursor: pointer; transition: background 0.2s; }
+.lb-netz-liste button::before { content: ''; flex: none; width: 0.7rem; height: 0.7rem; border-radius: 50%; background: #8a7f7f; }
+.lb-netz-liste button.wissen::before { background: var(--lb-hell); }
+.lb-netz-liste button.gedaechtnis::before { background: var(--lb-rot); }
+.lb-netz-liste button span { flex: 1; }
+.lb-netz-liste button b { font-weight: 650; font-variant-numeric: tabular-nums; color: var(--lb-leise); }
+.lb-netz-liste button.an { background: rgba(255, 255, 255, 0.08); }
+.lb-netz-liste button[aria-pressed='true'] { background: rgba(255, 255, 255, 0.08); box-shadow: inset 3px 0 0 var(--lb-rot); }
+.lb-netz figcaption { max-width: 80ch; margin-top: 1.2rem; font-size: 0.9rem; line-height: 1.5; color: var(--lb-leise); }
+@media (max-width: 899px) { .lb-netz-bedienung { grid-template-columns: minmax(0, 1fr); } .lb-netz-erklaerung { min-height: 0; } }
+
+/* Gedächtnis: zwei Speicher und ein Rückweg --------------------------------------- */
+.lb-gedaechtnis { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 420px) minmax(0, 1fr); gap: clamp(1.5rem, 3vw, 3rem); align-items: center; }
+.lb-speicher { padding: 1.6rem 1.7rem 1.8rem; border-radius: var(--lb-rund); border: 1px solid var(--lb-linie); background: var(--lb-buehne-weich); }
+.lb-speicher.wissen { --lb-leise: rgba(20, 11, 11, 0.66); border-color: var(--lb-hell); background: var(--lb-hell); color: var(--lb-buehne); }
+.lb-speicher-name { margin: 0; font-size: clamp(1.5rem, 2.4vw, 2rem); font-weight: 780; letter-spacing: -0.03em; }
+.lb-speicher-satz { margin: 0.3rem 0 1rem; padding-bottom: 1rem; border-bottom: 1px solid var(--lb-linie); font-size: 0.95rem; line-height: 1.45; color: var(--lb-leise); }
+.lb-speicher.wissen .lb-speicher-satz { border-color: rgba(20, 11, 11, 0.16); }
+.lb-speicher ul { display: grid; gap: 0.6rem; list-style: none; margin: 0; padding: 0; }
+.lb-speicher li { position: relative; padding-left: 1rem; font-size: 0.98rem; line-height: 1.45; }
+.lb-speicher li::before { content: ''; position: absolute; left: 0; top: 0.55em; width: 0.42rem; height: 0.42rem; background: currentColor; }
+.lb-rueckweg { margin: 0; }
+.lb-rueckweg svg { display: block; width: 100%; height: auto; overflow: visible; }
+.lb-rueckweg-bahn { fill: none; stroke: rgba(255, 255, 255, 0.32); stroke-width: 2; stroke-dasharray: 4 6; }
+.lb-rueckweg-halt { fill: var(--lb-hell); }
+.lb-rueckweg text { font-size: 21px; font-weight: 650; fill: var(--lb-hell); }
+.lb-rueckweg-punkt { fill: var(--lb-rot); transform-box: view-box; transform-origin: 260px 150px; }
+@media (prefers-reduced-motion: no-preference) { .lb-rueckweg-punkt { animation: lb-rueckweg 7s linear infinite; } }
+@keyframes lb-rueckweg { to { transform: rotate(360deg); } }
+.lb-rueckweg figcaption { margin-top: 0.6rem; text-align: center; font-size: 1rem; font-weight: 650; line-height: 1.4; color: var(--lb-hell); }
+.lb-gedaechtnis-zahl { grid-column: 1 / -1; margin: 1rem 0 0; font-size: 0.9rem; color: var(--lb-leise); }
+@media (max-width: 899px) { .lb-gedaechtnis { grid-template-columns: minmax(0, 1fr); } .lb-rueckweg { width: min(100%, 420px); justify-self: center; } }
+
 /* Die Bausteine, mit Namen */
 .lb-bausteine { margin-top: clamp(4rem, 10vh, 7rem); }
 .lb-stapel { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2.2rem clamp(1.5rem, 3vw, 3rem); }
@@ -1059,7 +1253,7 @@ html.lenis, html.lenis body { height: auto; }
 .lb-einzelheiten-inhalt .lp-einzelheit .lp-inhalt { max-width: none; }
 .lb-einzelheiten-inhalt [id] { scroll-margin-top: calc(var(--lb-kopfhoehe) + 12px); }
 
-/* Vorhang, Korn und Mauszeiger ---------------------------------------------------- */
+/* Vorhang und Korn ---------------------------------------------------- */
 .lb-vorhang { position: fixed; inset: 0; z-index: 100; pointer-events: none; display: grid; place-items: center; overflow: hidden; }
 .lb-vorhang-tuer { position: absolute; left: 0; right: 0; height: 50.5%; background: var(--lb-buehne); }
 .lb-vorhang-tuer.oben { top: 0; }
@@ -1081,27 +1275,6 @@ html:not(.js) .lb-vorhang { display: none; }
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='k'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23k)'/%3E%3C/svg%3E");
 }
 @media (prefers-color-scheme: dark) { .lb-korn { mix-blend-mode: screen; opacity: 0.035; } }
-
-.lb-zeiger { display: none; opacity: 0; transition: opacity 0.3s; }
-.lb-mit-zeiger .lb-zeiger { display: block; }
-.lb-zeiger.da { opacity: 1; }
-.lb-zeiger-ring, .lb-zeiger-punkt {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 95;
-  pointer-events: none;
-  border-radius: 50%;
-}
-.lb-zeiger-ring {
-  width: 38px;
-  height: 38px;
-  margin: -19px 0 0 -19px;
-  border: 1.5px solid var(--lb-rot);
-  transition: scale 0.35s cubic-bezier(0.2, 0.7, 0.2, 1), background 0.35s;
-}
-.lb-zeiger-punkt { width: 6px; height: 6px; margin: -3px 0 0 -3px; background: var(--lb-rot); }
-.lb-zeiger.gross .lb-zeiger-ring { scale: 1.7; background: rgba(244, 14, 14, 0.08); }
 
 /* Ohne Skript und bei reduzierter Bewegung ist alles sofort da */
 @media (prefers-reduced-motion: reduce) {

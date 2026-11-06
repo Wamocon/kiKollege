@@ -10,6 +10,7 @@
     "start": "next start",
     "export:vault": "node scripts/export-vault.mjs",
     "abbild:vault": "node scripts/abbild-vault.mjs",
+    "abbild:netz": "node scripts/ablage-netz.mjs",
     "pruefe:oeffentlich": "node scripts/pruefe-oeffentlich.mjs",
     "pruefe:bestand": "node scripts/pruefe-bestand.mjs",
     "pruefe:daten": "node scripts/pruefe-daten.mjs",

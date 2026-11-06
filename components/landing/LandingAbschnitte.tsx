@@ -9,6 +9,7 @@ import { MannschaftFigur } from '@/components/figuren/Mannschaft'
 import { LernkreisFigur } from '@/components/figuren/Lernkreis'
 import { TaktFigur } from '@/components/figuren/Takt'
 import { Schichtenstapel } from '@/components/figuren/Schichtenstapel'
+import { GEDAECHTNIS, WISSEN } from '@/lib/gedaechtnis'
 import { Durchlauf } from '@/components/figuren/Durchlauf'
 import { Pruefpunkte } from '@/components/figuren/Pruefpunkte'
 import { Steuerung } from '@/components/figuren/Steuerung'
@@ -556,7 +557,7 @@ export function LandingAbschnitte({ nur, rahmen = true, ohne }: { nur?: string[]
           <div className="lp-text lp-luft-oben-klein">
             <p>{m.trennung} Jede Rolle bekommt eine Grenze, und die Grenze steht als Datei neben ihr.</p>
           </div>
-          <MannschaftFigur />
+          {teil('mannschaft-organigramm') ? <MannschaftFigur /> : null}
           <div className="lp-luft-oben">
             {koepfe.map((k) => (
               <div className="lp-stufe" key={k.id}>
@@ -619,29 +620,33 @@ export function LandingAbschnitte({ nur, rahmen = true, ohne }: { nur?: string[]
           ) : null}
           {sichtbar(d.training) ? (
             <>
-              <h3 className="lp-aussage lp-luft-oben">Wie ein KI-Mitarbeiter besser wird.</h3>
+              {teil('mannschaft-lernkreis') ? (
+                <h3 className="lp-aussage lp-luft-oben">Wie ein KI-Mitarbeiter besser wird.</h3>
+              ) : null}
               <div className="lp-text lp-luft-oben-klein">
-                <p>{d.training.satz}</p>
+                {teil('mannschaft-lernkreis') ? <p>{d.training.satz}</p> : null}
                 <p className="lp-klein">{d.training.hinweis}</p>
               </div>
               <p className="lp-klein lp-luft-oben">
                 Der <Begriff id="pruefstand">Lernkreis</Begriff>, entschieden am{' '}
                 {datum(d.training.kreisSeit).slice(0, 6)}
               </p>
-              <div className="lp-hero-raster lp-lernkreis-raster">
-                <LernkreisFigur />
-                <ol className="lp-punkte">
-                  {d.training.kreis.map((s, i) => (
-                    <li key={s.titel}>
-                      <span className="nr">{String(i + 1).padStart(2, '0')}</span>
-                      <div>
-                        <p className="punkt">{s.titel}</p>
-                        <p className="grund">{s.text}</p>
-                      </div>
-                    </li>
-                  ))}
-                </ol>
-              </div>
+              {teil('mannschaft-lernkreis') ? (
+                <div className="lp-hero-raster lp-lernkreis-raster">
+                  <LernkreisFigur />
+                  <ol className="lp-punkte">
+                    {d.training.kreis.map((s, i) => (
+                      <li key={s.titel}>
+                        <span className="nr">{String(i + 1).padStart(2, '0')}</span>
+                        <div>
+                          <p className="punkt">{s.titel}</p>
+                          <p className="grund">{s.text}</p>
+                        </div>
+                      </li>
+                    ))}
+                  </ol>
+                </div>
+              ) : null}
               <div className="lp-zellen">
                 <div className="lp-zelle traegt">
                   <span className="kopf">
@@ -913,29 +918,21 @@ export function LandingAbschnitte({ nur, rahmen = true, ohne }: { nur?: string[]
             <p>{d.wissensablagen.gemeinsam.hinweis}</p>
           </div>
 
-          <div className="lp-paar">
-            <div>
-              <h3>Wissen</h3>
-              <p className="lp-untertitel">Was gilt. Schreiben Menschen, ändert sich selten und nie von allein.</p>
-              <ul>
-                <li>Norm von außen: Gesetze, Verordnungen, wörtlich abgeschrieben</li>
-                <li>Maßstab des Hauses: Checklisten, Vorlagen, Corporate Design</li>
-                <li>Begriffe: was ein Wort hier bedeutet</li>
-                <li>Entscheidungen: was einmal festgelegt wurde, mit Datum</li>
-              </ul>
+          {teil('wissen-paar') ? (
+            <div className="lp-paar">
+              {[WISSEN, GEDAECHTNIS].map((s) => (
+                <div key={s.titel}>
+                  <h3>{s.titel}</h3>
+                  <p className="lp-untertitel">{s.untertitel}</p>
+                  <ul>
+                    {s.punkte.map((p) => (
+                      <li key={p}>{p}</li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
             </div>
-            <div>
-              <h3>Gedächtnis</h3>
-              <p className="lp-untertitel">Was herauskam. Fällt beim Arbeiten an und wächst mit jedem Auftrag.</p>
-              <ul>
-                <li>Einzelergebnis: hunderte je Lauf, maschinell geschrieben</li>
-                <li>
-                  Regel: wenige, langlebig. Zweck, Testfälle und die gemessene Fehlalarmquote
-                </li>
-                <li>Lauf: eine Notiz je Durchgang, mit Kennzahlen für den Vergleich über die Zeit</li>
-              </ul>
-            </div>
-          </div>
+          ) : null}
 
           <div className="lp-text lp-luft-oben">
             <p>
