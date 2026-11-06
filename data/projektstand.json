@@ -7287,6 +7287,10 @@
         }
       ],
       "quelle": "Akten und Steckbriefe der KI-Mitarbeiter; Arnolds Aufgabe zur Infrastruktur vom 30.10.2026; entstanden und training.laeufe dieser Daten"
+    },
+    "systemdemo": {
+      "titel": "Ein Auftrag, einmal ganz durch",
+      "text": "Ein Prüfauftrag geht vom Handy über den Orchestrator zu Fritz und zurück. Der Befund stammt aus einem echten Prüflauf, Nachricht und Oberflächen sind nachgestellt."
     }
   },
   "entstanden": {

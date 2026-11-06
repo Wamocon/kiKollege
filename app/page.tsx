@@ -20,6 +20,7 @@ import { nurSichtbare, sichtbar, zeigtInternes } from '@/lib/freigabe'
 import { pfad } from '@/lib/pfad'
 import film from '@/film/stand.json'
 import filmMannschaft from '@/film/vorstellung/stand.json'
+import filmSystemdemo from '@/film/systemdemo/stand.json'
 
 /** Die Startseite, seit dem 05.11.2026: kiKollege als Produktseite. Eine
  *  Präsentationsebene in Szenen, darunter je Szene die Einzelheiten zum
@@ -971,6 +972,33 @@ export default function Start() {
                 <figcaption>{p.beispielAuftrag.quelle}</figcaption>
               </figure>
             </div>
+            {zeigtInternes ? (
+              <figure className="lb-film lb-film-systemdemo" data-lb-reveal>
+                <video
+                  className="lb-film-video"
+                  src={pfad(`/film/${filmSystemdemo.datei}`)}
+                  poster={pfad(`/film/${filmSystemdemo.bild}`)}
+                  width={filmSystemdemo.breite}
+                  height={filmSystemdemo.hoehe}
+                  muted
+                  playsInline
+                  controls
+                  preload="none"
+                  aria-label={`${p.systemdemo.titel}, Film mit Stimme`}
+                >
+                  <track kind="captions" srcLang="de" label="Deutsch" src={pfad(`/film/${filmSystemdemo.untertitel}`)} />
+                </video>
+                <button type="button" className="lb-film-ton" data-lb-film-ton>
+                  Mit Ton von vorn abspielen
+                </button>
+                <figcaption>
+                  <b>{p.systemdemo.titel}</b>, Stand {datum(filmSystemdemo.stand)}. {p.systemdemo.text}{' '}
+                  <a href={pfad(`/film/${filmSystemdemo.datei}`)} download>
+                    Film herunterladen (MP4, {(filmSystemdemo.bytes / 1_000_000).toLocaleString('de-DE', { maximumFractionDigits: 1 })} MB)
+                  </a>
+                </figcaption>
+              </figure>
+            ) : null}
             <div className="lb-drei" data-lb-staffel>
               <div>
                 <h3>Was du angeben musst</h3>
