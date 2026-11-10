@@ -36,7 +36,7 @@ export function Training() {
         </div>
         <div className="lb-fassungen-wege">
           <p className="hin">{erster(t.kreis[0].text)}</p>
-          <p className="zurueck">Übernommen nach zwei Läufen mit allen {faelle} und dem Ja des Projektverantwortlichen</p>
+          <p className="zurueck">Übernommen nach vier Läufen hintereinander mit höchstens zwei Prozent falschen Antworten und dem Ja des Projektverantwortlichen</p>
         </div>
         <div className="lb-fassung uebung">
           <p className="lb-fassung-name">In der Übungsfassung</p>
