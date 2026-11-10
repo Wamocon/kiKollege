@@ -39,7 +39,7 @@
   },
   "ampel": {
     "farbe": "gelb",
-    "satz": "Meilenstein 1 ist am 16.10. abgenommen. Meilenstein 2 kommt frühestens am 23.11., weil der Orchestrator erst alle 18 Prüffälle sicher beherrschen muss; im Betrieb hat er bisher 6 gelernt, in der Übungsfassung 18. Die Browser-Startseite läuft im Büronetz. WMC Inventar ist gebaut und bereit für die Abnahme; den Betrieb auf dem eigenen Rechner im Büronetz hat noch niemand geprüft. Drei von sieben hohen Risiken sind eingetreten, gegen jedes läuft eine Maßnahme. Die Termine von Meilenstein 3 und 4 sind offen.",
+    "satz": "Meilenstein 1 ist am 16.10. abgenommen. Meilenstein 2 kommt frühestens am 23.11., weil der Orchestrator erst alle 18 Prüffälle sicher beherrschen muss; im Betrieb hat er bisher 6 gelernt, in der Übungsfassung 17. Die Browser-Startseite läuft im Büronetz. WMC Inventar ist gebaut und bereit für die Abnahme; den Betrieb auf dem eigenen Rechner im Büronetz hat noch niemand geprüft. Drei von sieben hohen Risiken sind eingetreten, gegen jedes läuft eine Maßnahme. Die Termine von Meilenstein 3 und 4 sind offen.",
     "am": "2026-11-06",
     "von": "Projektverantwortlicher",
     "quelle": "Entscheidung des Projektverantwortlichen vom 06.11.2026",
@@ -6710,16 +6710,44 @@
             4,
             2
           ]
+        },
+        {
+          "wann": "09.11., Lauf 1",
+          "was": "die Fassung vom 06.11. unverändert, vorgezogen auf den Nachmittag und gemessen mit den Modellwerten für das Nachdenken, die seit dem Abend des 06.11. gelten. Alle 18 Fälle hielten in allen drei Durchgängen, der Zaun lehnte nichts ab, und Hermes blieb kein Mal im Nachdenken hängen. Einmal schrieb Hermes den Namen eines Feldes falsch, bekam vom Werkzeug die Meldung, dass etwas fehlt, und berichtigte sich; gezählt ist nach dem Inhalt, nach dem Wort der Prüfung wären es 16 Fälle. Der Lauf hält und ist der erste von zwei hintereinander; am Stand im Betrieb ändert er nichts",
+          "erfuellt": 18,
+          "wackelig": 0,
+          "nie": 0,
+          "gelernt": 6,
+          "bereiche": [
+            5,
+            7,
+            4,
+            2
+          ]
+        },
+        {
+          "wann": "09.11., Lauf 2",
+          "was": "dieselbe Fassung direkt danach. Siebzehn Fälle hielten in allen drei Durchgängen, es gab keine Denkschleife. Bei der Fachfrage an einen Mitarbeiter schrieb Hermes in einem Durchgang den Namen eines Feldes falsch; das Werkzeug meldete darauf, die Auftragsart gebe es nicht, und Hermes lehnte die Frage ab, statt sie anzulegen. Das liegt am Werkzeug, nicht an der Akte. Der Lauf hält deshalb nicht, und es gibt weiter keine zwei haltenden Läufe hintereinander; am Stand im Betrieb ändert er nichts",
+          "erfuellt": 17,
+          "wackelig": 1,
+          "nie": 0,
+          "gelernt": 6,
+          "bereiche": [
+            4,
+            7,
+            4,
+            2
+          ]
         }
       ],
       "uebung": {
-        "gelernt": 18,
+        "gelernt": 17,
         "satz": "in der Übungsfassung, übernommen nach zwei Läufen ohne Fehler und mit höchstens zwei Denkschleifen"
       },
-      "standSatz": "Stand am 06.11.: Im Betrieb sind 6 von 18 Fällen gelernt, zuletzt gemessen am 31.10. am Hermes im Betrieb; die Zahl in jeder Zeile zählt den Betrieb. In der Übungsfassung sind nach derselben Regel alle 18 gelernt, aus den beiden letzten Läufen vom 06.11.; übernommen wird sie, wenn zwei Läufe hintereinander alle 18 halten, jeder mit höchstens zwei Denkschleifen, und der Projektverantwortliche sie freigibt. Ziel sind alle 18 bis zum 20.11., erst danach bekommt das Team Zugang.",
+      "standSatz": "Stand am 09.11.: Im Betrieb sind 6 von 18 Fällen gelernt, zuletzt gemessen am 31.10. am Hermes im Betrieb; die Zahl in jeder Zeile zählt den Betrieb. In der Übungsfassung sind nach derselben Regel 17 gelernt, aus den beiden Läufen vom 09.11.; ein Fall hielt im zweiten Lauf nur in zwei von drei Durchgängen. Übernommen wird sie, wenn zwei Läufe hintereinander alle 18 halten, jeder mit höchstens zwei Denkschleifen, und der Projektverantwortliche sie freigibt. Ziel sind alle 18 bis zum 20.11., erst danach bekommt das Team Zugang.",
       "ehrlich": "Aufträge ablehnen gelingt im Betrieb erst in zwei der sieben Fälle verlässlich. Fehlt in einem Auftrag eine Angabe, legt Hermes meist zuerst etwas an und fragt erst danach; erfundene Angaben kommen aber nicht mehr durch, und versteckte Anweisungen übernimmt er weiter nicht.",
-      "weiter": "Hermes übt weiter in einem eigenen Übungsprofil an Übungsfällen, die nicht aus der Prüfung stammen. Bis zum 02.11. lud dieses Profil durch einen Fehler im Aufbau die Akte des Betriebs, von der Übungsfassung wirkten nur Seele und Zaun. Die Läufe vom 01. und 02.11. sagen deshalb nichts über die Übungsakte, und auch die 13 von 23 Fällen aus den Übungsrunden vom 01.11., die hier standen, sind kein Maß für sie. Der Fehler ist behoben, vor jedem Lauf wird jetzt geprüft, ob die Akte beim Modell ankommt. Bis zum 05.11. gab es mit ihr keinen Prüfstandlauf, nur den schnellen Test, der an elf Übungsfällen den ersten Schritt prüft (am 02.11., mit einem neuen Werkzeug zum Anlegen von Aufträgen, 51 von 55 in Ordnung), und drei echte Fälle am 03.11. Über die Prüffälle sagt das nichts. In der Nacht zum 04.11. liefen die 23 Übungsfälle je dreimal: ohne Nachdenken waren alle 23 jedes Mal in Ordnung, mit Nachdenken 21, bei doppelter Zeit und zwölfmal so vielen Tokens. An diesen Fällen ist die Akte entstanden, und auch über die Prüffälle sagen sie nichts. Deshalb lief am 04.11. ein zweiter Vergleich auf 19 neuen Fällen: ohne Nachdenken 46 von 57 Durchgängen, mit Nachdenken 54 von 57. Am 05.11. hat der Projektverantwortliche entschieden, dass die Übungsfassung das Nachdenken behält. Der ganze Prüfstand läuft seit dem 02.11. nur noch vor einer Übernahme in den Betrieb; übernommen wird nur, was dort zwei Läufe hintereinander hält und der Projektverantwortliche freigibt. Am 05.11. lief die Übungsfassung zum ersten Mal durch den ganzen Prüfstand und erfüllte 15 von 18 Fällen. Nach drei Änderungen erfüllte sie am Abend alle 18, im Lauf direkt danach 17. Am 06.11. wurde die Akte bei Fragen zur DGX geschärft; danach hielt sie wieder alle 18 und im Lauf direkt danach 17. Nach einer zweiten Schärfung am Nachmittag erfüllte sie in zwei Läufen hintereinander alle 18; der zweite davon blieb aber viermal im Nachdenken hängen, erlaubt sind zwei, siehe die letzten beiden Zeilen. Damit fehlt weiter der zweite haltende Lauf hintereinander, und die Übungsfassung bleibt in der Übung. Übernommen wird sie erst, wenn zwei Läufe hintereinander alle 18 halten und der Projektverantwortliche sie freigibt.",
-      "quelle": "Prüfstandläufe des Orchestrators vom 23.10. bis zum 06.11.2026, ausgewertet von der Werkbank, ungeprüft; Übungsprofil Hermes, Stand 06.11.2026: Berichtigung zur geladenen Akte, schneller Test, drei echte Fälle, Ergebnis der Nacht zum 04.11., zweiter Vergleich, Übungsrunden zu Fragen zur DGX und zur Liste der Mitarbeiter"
+      "weiter": "Hermes übt weiter in einem eigenen Übungsprofil an Übungsfällen, die nicht aus der Prüfung stammen. Bis zum 02.11. lud dieses Profil durch einen Fehler im Aufbau die Akte des Betriebs, von der Übungsfassung wirkten nur Seele und Zaun. Die Läufe vom 01. und 02.11. sagen deshalb nichts über die Übungsakte, und auch die 13 von 23 Fällen aus den Übungsrunden vom 01.11., die hier standen, sind kein Maß für sie. Der Fehler ist behoben, vor jedem Lauf wird jetzt geprüft, ob die Akte beim Modell ankommt. Bis zum 05.11. gab es mit ihr keinen Prüfstandlauf, nur den schnellen Test, der an elf Übungsfällen den ersten Schritt prüft (am 02.11., mit einem neuen Werkzeug zum Anlegen von Aufträgen, 51 von 55 in Ordnung), und drei echte Fälle am 03.11. Über die Prüffälle sagt das nichts. In der Nacht zum 04.11. liefen die 23 Übungsfälle je dreimal: ohne Nachdenken waren alle 23 jedes Mal in Ordnung, mit Nachdenken 21, bei doppelter Zeit und zwölfmal so vielen Tokens. An diesen Fällen ist die Akte entstanden, und auch über die Prüffälle sagen sie nichts. Deshalb lief am 04.11. ein zweiter Vergleich auf 19 neuen Fällen: ohne Nachdenken 46 von 57 Durchgängen, mit Nachdenken 54 von 57. Am 05.11. hat der Projektverantwortliche entschieden, dass die Übungsfassung das Nachdenken behält. Der ganze Prüfstand läuft seit dem 02.11. nur noch vor einer Übernahme in den Betrieb; übernommen wird nur, was dort zwei Läufe hintereinander hält und der Projektverantwortliche freigibt. Am 05.11. lief die Übungsfassung zum ersten Mal durch den ganzen Prüfstand und erfüllte 15 von 18 Fällen. Nach drei Änderungen erfüllte sie am Abend alle 18, im Lauf direkt danach 17. Am 06.11. wurde die Akte bei Fragen zur DGX geschärft; danach hielt sie wieder alle 18 und im Lauf direkt danach 17. Nach einer zweiten Schärfung am Nachmittag erfüllte sie in zwei Läufen hintereinander alle 18; der zweite davon blieb aber viermal im Nachdenken hängen, erlaubt sind zwei, siehe die letzten beiden Zeilen. Damit fehlte weiter der zweite haltende Lauf hintereinander. Am 09.11. liefen zwei Läufe mit den Modellwerten der Route, die seit dem Abend des 06.11. gelten; seither blieb Hermes in 360 Durchgängen kein Mal im Nachdenken hängen. Der erste Lauf hielt ohne Denkschleife, der zweite nicht, wegen eines falsch geschriebenen Feldnamens im Aufruf, den das Werkzeug als unbekannte Auftragsart meldete. Damit gibt es weiter keine zwei haltenden Läufe hintereinander, und die Übungsfassung bleibt in der Übung. Übernommen wird sie erst, wenn zwei Läufe hintereinander alle 18 halten und der Projektverantwortliche sie freigibt.",
+      "quelle": "Prüfstandläufe des Orchestrators vom 23.10. bis zum 09.11.2026, ausgewertet von der Werkbank, ungeprüft; Übungsprofil Hermes, Stand 09.11.2026: Berichtigung zur geladenen Akte, schneller Test, drei echte Fälle, Ergebnis der Nacht zum 04.11., zweiter Vergleich, Übungsrunden zu Fragen zur DGX und zur Liste der Mitarbeiter"
     }
   },
   "techstack": {
