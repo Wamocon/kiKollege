@@ -1740,6 +1740,26 @@
       "datum": "2026-11-06",
       "entscheidung": "Die Ampel bleibt gelb; ihr Satz sagt nach dem Endstand der Werkbank, dass WMC Inventar bereit für die Abnahme ist",
       "freigabe": "intern"
+    },
+    {
+      "datum": "2026-11-10",
+      "entscheidung": "Jira: fällige Vorgänge erledigt der Mensch, der sie bekommen hat; Hermes liest Jira nie und setzt den Status nur über die Werkzeuge",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-11-10",
+      "entscheidung": "Der feste Pflegelauf läuft jeden Morgen um 7 Uhr mit einer Vorprüfung ohne Modell, die Karte entsteht nur, wenn die Seite hinter der Ablage zurückliegt",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-11-10",
+      "entscheidung": "Orchestrator: die zusammengeführte Akte und der Prüfstand mit vier Längen werden neu gemessen; der Zielwert ist 18 von 18 in allen Durchgängen",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-11-10",
+      "entscheidung": "Orchestrator: die Fassung geht in den Betrieb, auf Freigabe des Projektverantwortlichen und nach der geänderten Regel: vier Läufe hintereinander ohne Änderung, keine Denkschleife, keine falsche Notiz oder Karte, höchstens zwei falsche Antworten je Lauf und höchstens zwei Prozent über alle vier",
+      "freigabe": "intern"
     }
   ],
   "entscheidungenNachtrag": "Die Entscheidung vom 04.09. dreht bewusst eine zuvor festgelegte Reihenfolge um: Ursprünglich sollte die Fehlalarmquote vor dem Plattformwechsel gemessen werden. Die Technik wurde vorgezogen. Das ist kein Widerspruch, sondern eine andere Reihenfolge mit einer benannten Folge, und die Folge steht im Abschnitt zur Messlücke.",
@@ -2136,6 +2156,13 @@
       "titel": "Für die Abnahme von Entwicklungsaufträgen stehen zwei Maßstäbe",
       "text": "Für WMC Inventar hat der Projektverantwortliche am 05.11. entschieden: Für die Abnahme zählt die Prüfung im Browser, Theos Lauf dient dem Vergleich. Der Arbeitsplan verlangt für die Abnahme von Entwicklungen weiter einen grünen Lauf von Theo, und gefragt war nur nach WMC Inventar. Hier wird nicht entschieden, was für die übrigen Aufträge gilt.",
       "quelle": "Logbuch vom 05.11.2026 gegen Arbeitsplan 2026-10-16",
+      "freigabe": "intern"
+    },
+    {
+      "id": "pruefstand-laeufe-gegen-ziel",
+      "titel": "Der Prüfstand zählt anders als die Regel, die er misst",
+      "text": "Die Regel vom 27.10. gilt für den Betrieb: ein Fall ist gelernt, wenn er in zwei Läufen hintereinander erfüllt ist, und der Lauf zählt ohne Fehler, wenn höchstens zwei Fälle nicht erfüllt sind und über alle vier Läufe höchstens zwei Prozent falsch sind. Der Prüfstand vom 10.11. verlangt für einen haltenden Lauf 18 von 18 in allen drei Durchgängen; ein Lauf mit 17 hält nicht, obwohl er der Regel vom 27.10. genügt. Hier wird nicht entschieden, welches Maß der Übernahme zugrunde liegt.",
+      "quelle": "Logbuch 2026-10-27 Entscheidung neues Ziel bis 20.11. gegen Prüfstandläufe vom 10.11.2026",
       "freigabe": "intern"
     }
   ],
@@ -6409,7 +6436,7 @@
       "quelle": "Prüfstandlauf 2026-10-23 Hermes drei Wiederholungen, ausgewertet am 23.10.2026, ungeprüft"
     },
     "laeufe": {
-      "stand": "2026-11-06",
+      "stand": "2026-11-10",
       "titel": "Alle Läufe des Orchestrators",
       "satz": "Jeder Lauf stellt Hermes dieselben 18 Prüffälle, jeden dreimal. Erfüllt ist ein Fall nur mit drei von drei richtigen Antworten, wackelig mit einer oder zwei. Gelernt ist er, wenn er in zwei Läufen hintereinander erfüllt ist.",
       "bereiche": [
