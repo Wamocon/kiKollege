@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-06",
+  "stand": "2026-11-11",
   "version": {
     "nummer": "1.0",
     "am": "2026-11-06",
@@ -48,7 +48,7 @@
   "herkunft": {
     "arbeitsordner": "D:\\WAMOCON",
     "einstieg": "KI-Mitarbeiter/75_KI-Mitarbeiter/KI-Mitarbeiter — Einstieg.md",
-    "erzeugt": "2026-11-06",
+    "erzeugt": "2026-11-11",
     "fristTage": 7,
     "verfahren": "Erstbefüllung von Hand aus dem Übergabedokument vom 05.09.2026, am 11.09. fortgeschrieben aus den beiden Blättern vom 09.09., am 17.09. aus dem Vault: Logbuch, Tagesprotokolle, Meilensteinplan, Bestandsaufnahme vom 16.09., Akte des Reviewers, Laufnotizen und Quoten je Regel. Das Abbild der Ablage zählt scripts/abbild-vault.mjs. Spätere Stände der Prüfläufe schreibt scripts/export-vault.mjs aus dem Frontmatter der Laufnotizen.",
     "freigabe": "intern",
@@ -196,7 +196,7 @@
     },
     {
       "id": "verbindlich",
-      "zahl": 11,
+      "zahl": 14,
       "label": "verbindliche Notizen, alle aus Konventionen und Entscheidungen. Alles Fachliche gilt als ungeprüft",
       "art": "warnung",
       "freigabe": "oeffentlich"
@@ -1740,6 +1740,26 @@
       "datum": "2026-11-06",
       "entscheidung": "Die Ampel bleibt gelb; ihr Satz sagt nach dem Endstand der Werkbank, dass WMC Inventar bereit für die Abnahme ist",
       "freigabe": "intern"
+    },
+    {
+      "datum": "2026-11-10",
+      "entscheidung": "Jira: fällige Vorgänge erledigt der Mensch, der sie bekommen hat; Hermes liest Jira nie und setzt den Status nur über die Werkzeuge",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-11-10",
+      "entscheidung": "Der feste Pflegelauf läuft jeden Morgen um 7 Uhr mit einer Vorprüfung ohne Modell, die Karte entsteht nur, wenn die Seite hinter der Ablage zurückliegt",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-11-10",
+      "entscheidung": "Orchestrator: die zusammengeführte Akte und der Prüfstand mit vier Längen werden neu gemessen; der Zielwert ist 18 von 18 in allen Durchgängen",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-11-10",
+      "entscheidung": "Orchestrator: die Fassung geht in den Betrieb, auf Freigabe des Projektverantwortlichen und nach der geänderten Regel: vier Läufe hintereinander ohne Änderung, keine Denkschleife, keine falsche Notiz oder Karte, höchstens zwei falsche Antworten je Lauf und höchstens zwei Prozent über alle vier",
+      "freigabe": "intern"
     }
   ],
   "entscheidungenNachtrag": "Die Entscheidung vom 04.09. dreht bewusst eine zuvor festgelegte Reihenfolge um: Ursprünglich sollte die Fehlalarmquote vor dem Plattformwechsel gemessen werden. Die Technik wurde vorgezogen. Das ist kein Widerspruch, sondern eine andere Reihenfolge mit einer benannten Folge, und die Folge steht im Abschnitt zur Messlücke.",
@@ -2136,6 +2156,13 @@
       "titel": "Für die Abnahme von Entwicklungsaufträgen stehen zwei Maßstäbe",
       "text": "Für WMC Inventar hat der Projektverantwortliche am 05.11. entschieden: Für die Abnahme zählt die Prüfung im Browser, Theos Lauf dient dem Vergleich. Der Arbeitsplan verlangt für die Abnahme von Entwicklungen weiter einen grünen Lauf von Theo, und gefragt war nur nach WMC Inventar. Hier wird nicht entschieden, was für die übrigen Aufträge gilt.",
       "quelle": "Logbuch vom 05.11.2026 gegen Arbeitsplan 2026-10-16",
+      "freigabe": "intern"
+    },
+    {
+      "id": "pruefstand-laeufe-gegen-ziel",
+      "titel": "Der Prüfstand zählt anders als die Regel, die er misst",
+      "text": "Die Regel vom 27.10. gilt für den Betrieb: ein Fall ist gelernt, wenn er in zwei Läufen hintereinander erfüllt ist, und der Lauf zählt ohne Fehler, wenn höchstens zwei Fälle nicht erfüllt sind und über alle vier Läufe höchstens zwei Prozent falsch sind. Der Prüfstand vom 10.11. verlangt für einen haltenden Lauf 18 von 18 in allen drei Durchgängen; ein Lauf mit 17 hält nicht, obwohl er der Regel vom 27.10. genügt. Hier wird nicht entschieden, welches Maß der Übernahme zugrunde liegt.",
+      "quelle": "Logbuch 2026-10-27 Entscheidung neues Ziel bis 20.11. gegen Prüfstandläufe vom 10.11.2026",
       "freigabe": "intern"
     }
   ],
@@ -3116,10 +3143,10 @@
   },
   "ablage": {
     "freigabe": "oeffentlich",
-    "gezaehltAm": "2026-10-22",
-    "notizen": 267,
-    "verweise": 2422,
-    "unaufgeloest": 17,
+    "gezaehltAm": "2026-11-11",
+    "notizen": 710,
+    "verweise": 5795,
+    "unaufgeloest": 139,
     "regelnotizen": 1,
     "bereiche": [
       {
@@ -3127,13 +3154,13 @@
         "gruppe": "wissen",
         "name": "Konventionen und Begriffe",
         "kurz": "Konventionen",
-        "notizen": 7,
-        "verbindlich": 4,
+        "notizen": 8,
+        "verbindlich": 5,
         "informativ": 0,
         "ungeprueft": 1,
         "ohneFeld": 2,
         "verweiseNach": {
-          "entscheidungen": 8,
+          "entscheidungen": 11,
           "unternehmen": 4,
           "bauplan": 64,
           "normbasis": 5,
@@ -3141,7 +3168,7 @@
           "quellen": 0,
           "prueflaeufe": 33,
           "arbeitsstand": 22,
-          "protokoll": 31,
+          "protokoll": 48,
           "einstiege": 3,
           "archiv": 4
         }
@@ -3151,21 +3178,21 @@
         "gruppe": "wissen",
         "name": "Entscheidungen mit Datum",
         "kurz": "Entscheidungen",
-        "notizen": 44,
-        "verbindlich": 7,
+        "notizen": 190,
+        "verbindlich": 8,
         "informativ": 1,
-        "ungeprueft": 36,
+        "ungeprueft": 181,
         "ohneFeld": 0,
         "verweiseNach": {
-          "konventionen": 4,
+          "konventionen": 21,
           "unternehmen": 0,
-          "bauplan": 46,
+          "bauplan": 153,
           "normbasis": 0,
           "massstab": 3,
           "quellen": 0,
           "prueflaeufe": 0,
-          "arbeitsstand": 103,
-          "protokoll": 10,
+          "arbeitsstand": 264,
+          "protokoll": 46,
           "einstiege": 10,
           "archiv": 0
         }
@@ -3183,7 +3210,7 @@
         "verweiseNach": {
           "konventionen": 0,
           "entscheidungen": 0,
-          "bauplan": 3,
+          "bauplan": 2,
           "normbasis": 0,
           "massstab": 3,
           "quellen": 1,
@@ -3199,22 +3226,22 @@
         "gruppe": "wissen",
         "name": "Bauplan der Mitarbeiter",
         "kurz": "Bauplan",
-        "notizen": 21,
+        "notizen": 74,
         "verbindlich": 0,
         "informativ": 1,
-        "ungeprueft": 12,
-        "ohneFeld": 8,
+        "ungeprueft": 59,
+        "ohneFeld": 14,
         "verweiseNach": {
-          "konventionen": 8,
-          "entscheidungen": 68,
-          "unternehmen": 3,
-          "normbasis": 2,
-          "massstab": 10,
+          "konventionen": 14,
+          "entscheidungen": 246,
+          "unternehmen": 5,
+          "normbasis": 3,
+          "massstab": 11,
           "quellen": 0,
           "prueflaeufe": 14,
-          "arbeitsstand": 85,
-          "protokoll": 7,
-          "einstiege": 1,
+          "arbeitsstand": 259,
+          "protokoll": 15,
+          "einstiege": 3,
           "archiv": 2
         }
       },
@@ -3233,7 +3260,7 @@
           "entscheidungen": 0,
           "unternehmen": 0,
           "bauplan": 0,
-          "massstab": 0,
+          "massstab": 1,
           "quellen": 10,
           "prueflaeufe": 0,
           "arbeitsstand": 0,
@@ -3247,9 +3274,9 @@
         "gruppe": "wissen",
         "name": "Prüfmaßstab der Academy",
         "kurz": "Prüfmaßstab",
-        "notizen": 8,
+        "notizen": 9,
         "verbindlich": 0,
-        "informativ": 0,
+        "informativ": 1,
         "ungeprueft": 0,
         "ohneFeld": 8,
         "verweiseNach": {
@@ -3257,7 +3284,7 @@
           "entscheidungen": 0,
           "unternehmen": 1,
           "bauplan": 7,
-          "normbasis": 17,
+          "normbasis": 14,
           "quellen": 0,
           "prueflaeufe": 4,
           "arbeitsstand": 1,
@@ -3295,18 +3322,18 @@
         "gruppe": "gedaechtnis",
         "name": "Prüfläufe und Regeln",
         "kurz": "Prüfläufe",
-        "notizen": 24,
+        "notizen": 25,
         "verbindlich": 0,
         "informativ": 0,
         "ungeprueft": 7,
-        "ohneFeld": 17,
+        "ohneFeld": 18,
         "verweiseNach": {
           "konventionen": 1,
           "entscheidungen": 0,
           "unternehmen": 1,
           "bauplan": 25,
           "normbasis": 3,
-          "massstab": 42,
+          "massstab": 45,
           "quellen": 1,
           "arbeitsstand": 0,
           "protokoll": 0,
@@ -3319,22 +3346,22 @@
         "gruppe": "werkstatt",
         "name": "Pläne, Berichte, Übergaben",
         "kurz": "Arbeitsstände",
-        "notizen": 70,
+        "notizen": 192,
         "verbindlich": 0,
-        "informativ": 6,
-        "ungeprueft": 32,
-        "ohneFeld": 32,
+        "informativ": 7,
+        "ungeprueft": 91,
+        "ohneFeld": 94,
         "verweiseNach": {
-          "konventionen": 19,
-          "entscheidungen": 113,
+          "konventionen": 30,
+          "entscheidungen": 449,
           "unternehmen": 6,
-          "bauplan": 120,
-          "normbasis": 4,
-          "massstab": 23,
+          "bauplan": 525,
+          "normbasis": 6,
+          "massstab": 24,
           "quellen": 0,
           "prueflaeufe": 6,
-          "protokoll": 40,
-          "einstiege": 3,
+          "protokoll": 161,
+          "einstiege": 8,
           "archiv": 5
         }
       },
@@ -3343,22 +3370,22 @@
         "gruppe": "werkstatt",
         "name": "Tagesprotokolle",
         "kurz": "Protokolle",
-        "notizen": 30,
+        "notizen": 48,
         "verbindlich": 0,
         "informativ": 0,
         "ungeprueft": 0,
-        "ohneFeld": 30,
+        "ohneFeld": 48,
         "verweiseNach": {
-          "konventionen": 53,
-          "entscheidungen": 98,
+          "konventionen": 88,
+          "entscheidungen": 330,
           "unternehmen": 0,
-          "bauplan": 88,
-          "normbasis": 4,
+          "bauplan": 245,
+          "normbasis": 5,
           "massstab": 6,
           "quellen": 0,
           "prueflaeufe": 15,
-          "arbeitsstand": 180,
-          "einstiege": 1,
+          "arbeitsstand": 510,
+          "einstiege": 13,
           "archiv": 1
         }
       },
@@ -3367,22 +3394,22 @@
         "gruppe": "werkstatt",
         "name": "Einstiege und Eingang",
         "kurz": "Einstiege",
-        "notizen": 4,
-        "verbindlich": 0,
+        "notizen": 105,
+        "verbindlich": 1,
         "informativ": 1,
-        "ungeprueft": 0,
-        "ohneFeld": 3,
+        "ungeprueft": 21,
+        "ohneFeld": 82,
         "verweiseNach": {
-          "konventionen": 10,
-          "entscheidungen": 1,
+          "konventionen": 28,
+          "entscheidungen": 38,
           "unternehmen": 0,
-          "bauplan": 2,
+          "bauplan": 13,
           "normbasis": 1,
           "massstab": 4,
           "quellen": 2,
           "prueflaeufe": 0,
-          "arbeitsstand": 3,
-          "protokoll": 0,
+          "arbeitsstand": 75,
+          "protokoll": 49,
           "archiv": 0
         }
       },
@@ -3509,7 +3536,7 @@
         "art": "notizen",
         "wofuer": "Wie ein KI-Mitarbeiter gebaut ist: Anatomie, Harness, Orchestrator, Systemarchitektur, Zusammenarbeit, Fahrplan.",
         "hinweis": "Gelesen, wenn an der Architektur gearbeitet wird, nicht bei jeder Aufgabe.",
-        "notizen": 58,
+        "notizen": 154,
         "verbindlich": 0
       },
       {
@@ -3525,7 +3552,7 @@
         "stufe": "ordnung",
         "art": "notizen",
         "wofuer": "Konventionen, Änderungsprotokoll, Status-Übersicht und Tagesprotokolle.",
-        "notizen": 23,
+        "notizen": 39,
         "verbindlich": 3
       },
       {
@@ -3533,7 +3560,7 @@
         "stufe": "ordnung",
         "art": "notizen",
         "wofuer": "Eingang für alles Neue, formlos.",
-        "notizen": 1,
+        "notizen": 24,
         "verbindlich": 0
       },
       {
@@ -3542,7 +3569,7 @@
         "art": "notizen",
         "wofuer": "Aufträge an die Mannschaft, eine Notiz je Auftrag, mit Übersicht.",
         "hinweis": "Seit dem 28.09. angelegt; die erste echte Auftragsnotiz ist vom 18.10.",
-        "notizen": 23,
+        "notizen": 86,
         "verbindlich": 0
       },
       {
@@ -3551,7 +3578,7 @@
         "art": "notizen",
         "wofuer": "Arnolds Entscheidungsvorlagen, eine Notiz je Vorlage, immer ungeprüft.",
         "hinweis": "Seit dem 19.10.; die erste Vorlage ist vom 20.10.",
-        "notizen": 2,
+        "notizen": 11,
         "verbindlich": 0
       },
       {
@@ -3559,7 +3586,7 @@
         "stufe": "ordnung",
         "art": "notizen",
         "wofuer": "Entscheidungen und Ereignisse in zeitlicher Folge.",
-        "notizen": 44,
+        "notizen": 189,
         "verbindlich": 7
       },
       {
@@ -3595,7 +3622,7 @@
         "wofuer": "Website-Abzüge und Datenschicht, nicht im Repository und nicht im Index."
       }
     ],
-    "gezaehltAm": "2026-10-22",
+    "gezaehltAm": "2026-11-11",
     "quelle": "Ordnertabelle und Kontextstrategie im Einstieg des Repositorys KI-Mitarbeiter, Akten nach den Vault-Konventionen, Anzahlen aus der Zählung der Ablage",
     "freigabe": "oeffentlich"
   },
@@ -6409,7 +6436,7 @@
       "quelle": "Prüfstandlauf 2026-10-23 Hermes drei Wiederholungen, ausgewertet am 23.10.2026, ungeprüft"
     },
     "laeufe": {
-      "stand": "2026-11-06",
+      "stand": "2026-11-10",
       "titel": "Alle Läufe des Orchestrators",
       "satz": "Jeder Lauf stellt Hermes dieselben 18 Prüffälle, jeden dreimal. Erfüllt ist ein Fall nur mit drei von drei richtigen Antworten, wackelig mit einer oder zwei. Gelernt ist er, wenn er in zwei Läufen hintereinander erfüllt ist.",
       "bereiche": [
