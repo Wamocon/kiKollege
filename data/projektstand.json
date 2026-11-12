@@ -145,7 +145,8 @@
       "Prüfbericht WMC Inventar Werkbank vom 05.11.2026",
       "Logbuch vom 05.11.2026: Abnahme von WMC Inventar, Nachdenken des Orchestrators, Tickets für Fehler aus dem Test",
       "Logbuch vom 05.11.2026: Entscheidungen WMC Inventar vor der Abnahme, Zählregel und Nachmessen im Prüfstand des Orchestrators, Szene „Aufbau“ der Startseite",
-      "Protokoll KI-Mitarbeiter vom 05.11.2026, Nachträge bis 22:41"
+      "Protokoll KI-Mitarbeiter vom 05.11.2026, Nachträge bis 22:41",
+      "Logbuch 2026-11-11: KI-Guide Epic und Stories in Jira, KI-Guide Prototyp Konzept Ort Repository, Vault main zusammengeführt und gepusht, Theo Playbook nach dem Probelauf angepasst, Theo Nummer der Suite für die Folgefälle, Theo Prüfstand Version 2 Durchsicht, Theo Video-Erweiterung auf die DGX eingespielt, Theo Kartenwortlaute Fälle 15, 23 und 24, Theo Klon main zurückgesetzt, Theo Zeitgrenzen Lauf 2"
     ],
     "getrenntAm": "2026-09-09",
     "notizordner": "KFBM/00_Vault/10_KI-Mitarbeiter"
@@ -1759,6 +1760,56 @@
     {
       "datum": "2026-11-10",
       "entscheidung": "Orchestrator: die Fassung geht in den Betrieb, auf Freigabe des Projektverantwortlichen und nach der geänderten Regel: vier Läufe hintereinander ohne Änderung, keine Denkschleife, keine falsche Notiz oder Karte, höchstens zwei falsche Antworten je Lauf und höchstens zwei Prozent über alle vier",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-11-11",
+      "entscheidung": "KI-Guide: das neue Epic und die vier Stories stehen in Jira, Status Ausarbeitung, die Konzeptwahl ist eine offene Story",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-11-11",
+      "entscheidung": "KI-Guide: der Prototyp zeigt Konzept 2 mit der Werkstatt aus Konzept 4, er steht als Dienst im Büronetz und das private Repository wird angelegt",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-11-11",
+      "entscheidung": "Die lokalen Vault-Commits der Werkbank werden mit dgx/main zusammengeführt und gepusht",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-11-11",
+      "entscheidung": "Die vier Playbook-Sätze nach dem Probelauf der Video-Erweiterung werden in der Akte des Testers angepasst",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-11-11",
+      "entscheidung": "Die Karten, die die Suite ausführen, tragen die Auftragsnummer von Fall 1 Wiederholung 1; der Treiber liest die Zweigspitzen vor und nach jeder Karte und trägt sie in das Protokoll ein",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-11-11",
+      "entscheidung": "Die zehn offenen Punkte des Prüfstands Version 2 werden nach der Empfehlung entschieden; die Karten nennen den Zweig, die Frist beginnt mit Lauf 2 und ein fehlender Commit oder Push zählt als Fehler",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-11-11",
+      "entscheidung": "Die Video-Erweiterung des Testers wird auf die DGX eingespielt: Push, Ziehen und Skill im Profil",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-11-11",
+      "entscheidung": "Die Nummern der Prüfnotizen kommen am Tag des Laufs aus der Auftragsliste; die Karten der Fälle 23 und 24 sind eine Karte und Fall 24 verlangt nur L-01 bis L-08",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-11-11",
+      "entscheidung": "Der lokale main im Klon des Testers wird auf origin/main zurückgesetzt, danach geholt und auf den Stand des Buses gesetzt",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-11-11",
+      "entscheidung": "Die Zeitgrenzen der Fälle 21 bis 26, 29 und 30 von Lauf 2 werden so festgelegt: 45, 45, 60, 90, 30, 45, 60 und 30 Minuten; die Karenz bleibt 900 Sekunden",
       "freigabe": "intern"
     }
   ],
