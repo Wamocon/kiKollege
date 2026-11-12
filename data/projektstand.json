@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-11",
+  "stand": "2026-11-12",
   "version": {
     "nummer": "1.0",
     "am": "2026-11-06",
@@ -48,7 +48,7 @@
   "herkunft": {
     "arbeitsordner": "D:\\WAMOCON",
     "einstieg": "KI-Mitarbeiter/75_KI-Mitarbeiter/KI-Mitarbeiter — Einstieg.md",
-    "erzeugt": "2026-11-11",
+    "erzeugt": "2026-11-12",
     "fristTage": 7,
     "verfahren": "Erstbefüllung von Hand aus dem Übergabedokument vom 05.09.2026, am 11.09. fortgeschrieben aus den beiden Blättern vom 09.09., am 17.09. aus dem Vault: Logbuch, Tagesprotokolle, Meilensteinplan, Bestandsaufnahme vom 16.09., Akte des Reviewers, Laufnotizen und Quoten je Regel. Das Abbild der Ablage zählt scripts/abbild-vault.mjs. Spätere Stände der Prüfläufe schreibt scripts/export-vault.mjs aus dem Frontmatter der Laufnotizen.",
     "freigabe": "intern",
@@ -3143,10 +3143,10 @@
   },
   "ablage": {
     "freigabe": "oeffentlich",
-    "gezaehltAm": "2026-11-11",
-    "notizen": 710,
-    "verweise": 5795,
-    "unaufgeloest": 139,
+    "gezaehltAm": "2026-11-12",
+    "notizen": 765,
+    "verweise": 6212,
+    "unaufgeloest": 155,
     "regelnotizen": 1,
     "bereiche": [
       {
@@ -3168,7 +3168,7 @@
           "quellen": 0,
           "prueflaeufe": 33,
           "arbeitsstand": 22,
-          "protokoll": 48,
+          "protokoll": 49,
           "einstiege": 3,
           "archiv": 4
         }
@@ -3178,21 +3178,21 @@
         "gruppe": "wissen",
         "name": "Entscheidungen mit Datum",
         "kurz": "Entscheidungen",
-        "notizen": 190,
+        "notizen": 214,
         "verbindlich": 8,
         "informativ": 1,
-        "ungeprueft": 181,
+        "ungeprueft": 205,
         "ohneFeld": 0,
         "verweiseNach": {
           "konventionen": 21,
           "unternehmen": 0,
-          "bauplan": 153,
+          "bauplan": 180,
           "normbasis": 0,
           "massstab": 3,
           "quellen": 0,
           "prueflaeufe": 0,
-          "arbeitsstand": 264,
-          "protokoll": 46,
+          "arbeitsstand": 297,
+          "protokoll": 53,
           "einstiege": 10,
           "archiv": 0
         }
@@ -3226,20 +3226,20 @@
         "gruppe": "wissen",
         "name": "Bauplan der Mitarbeiter",
         "kurz": "Bauplan",
-        "notizen": 74,
+        "notizen": 84,
         "verbindlich": 0,
         "informativ": 1,
-        "ungeprueft": 59,
+        "ungeprueft": 69,
         "ohneFeld": 14,
         "verweiseNach": {
           "konventionen": 14,
-          "entscheidungen": 246,
+          "entscheidungen": 260,
           "unternehmen": 5,
           "normbasis": 3,
           "massstab": 11,
           "quellen": 0,
           "prueflaeufe": 14,
-          "arbeitsstand": 259,
+          "arbeitsstand": 290,
           "protokoll": 15,
           "einstiege": 3,
           "archiv": 2
@@ -3346,22 +3346,22 @@
         "gruppe": "werkstatt",
         "name": "Pläne, Berichte, Übergaben",
         "kurz": "Arbeitsstände",
-        "notizen": 192,
+        "notizen": 205,
         "verbindlich": 0,
         "informativ": 7,
-        "ungeprueft": 91,
-        "ohneFeld": 94,
+        "ungeprueft": 97,
+        "ohneFeld": 101,
         "verweiseNach": {
-          "konventionen": 30,
-          "entscheidungen": 449,
+          "konventionen": 33,
+          "entscheidungen": 515,
           "unternehmen": 6,
-          "bauplan": 525,
+          "bauplan": 600,
           "normbasis": 6,
           "massstab": 24,
           "quellen": 0,
           "prueflaeufe": 6,
-          "protokoll": 161,
-          "einstiege": 8,
+          "protokoll": 163,
+          "einstiege": 10,
           "archiv": 5
         }
       },
@@ -3370,22 +3370,22 @@
         "gruppe": "werkstatt",
         "name": "Tagesprotokolle",
         "kurz": "Protokolle",
-        "notizen": 48,
+        "notizen": 49,
         "verbindlich": 0,
         "informativ": 0,
         "ungeprueft": 0,
-        "ohneFeld": 48,
+        "ohneFeld": 49,
         "verweiseNach": {
-          "konventionen": 88,
-          "entscheidungen": 330,
+          "konventionen": 91,
+          "entscheidungen": 358,
           "unternehmen": 0,
-          "bauplan": 245,
+          "bauplan": 256,
           "normbasis": 5,
           "massstab": 6,
           "quellen": 0,
           "prueflaeufe": 15,
-          "arbeitsstand": 510,
-          "einstiege": 13,
+          "arbeitsstand": 520,
+          "einstiege": 15,
           "archiv": 1
         }
       },
@@ -3394,13 +3394,13 @@
         "gruppe": "werkstatt",
         "name": "Einstiege und Eingang",
         "kurz": "Einstiege",
-        "notizen": 105,
+        "notizen": 112,
         "verbindlich": 1,
         "informativ": 1,
-        "ungeprueft": 21,
+        "ungeprueft": 28,
         "ohneFeld": 82,
         "verweiseNach": {
-          "konventionen": 28,
+          "konventionen": 29,
           "entscheidungen": 38,
           "unternehmen": 0,
           "bauplan": 13,
@@ -3408,8 +3408,8 @@
           "massstab": 4,
           "quellen": 2,
           "prueflaeufe": 0,
-          "arbeitsstand": 75,
-          "protokoll": 49,
+          "arbeitsstand": 76,
+          "protokoll": 50,
           "archiv": 0
         }
       },
@@ -3536,7 +3536,7 @@
         "art": "notizen",
         "wofuer": "Wie ein KI-Mitarbeiter gebaut ist: Anatomie, Harness, Orchestrator, Systemarchitektur, Zusammenarbeit, Fahrplan.",
         "hinweis": "Gelesen, wenn an der Architektur gearbeitet wird, nicht bei jeder Aufgabe.",
-        "notizen": 154,
+        "notizen": 166,
         "verbindlich": 0
       },
       {
@@ -3552,7 +3552,7 @@
         "stufe": "ordnung",
         "art": "notizen",
         "wofuer": "Konventionen, Änderungsprotokoll, Status-Übersicht und Tagesprotokolle.",
-        "notizen": 39,
+        "notizen": 40,
         "verbindlich": 3
       },
       {
@@ -3560,7 +3560,7 @@
         "stufe": "ordnung",
         "art": "notizen",
         "wofuer": "Eingang für alles Neue, formlos.",
-        "notizen": 24,
+        "notizen": 33,
         "verbindlich": 0
       },
       {
@@ -3569,7 +3569,7 @@
         "art": "notizen",
         "wofuer": "Aufträge an die Mannschaft, eine Notiz je Auftrag, mit Übersicht.",
         "hinweis": "Seit dem 28.09. angelegt; die erste echte Auftragsnotiz ist vom 18.10.",
-        "notizen": 86,
+        "notizen": 93,
         "verbindlich": 0
       },
       {
@@ -3578,7 +3578,7 @@
         "art": "notizen",
         "wofuer": "Arnolds Entscheidungsvorlagen, eine Notiz je Vorlage, immer ungeprüft.",
         "hinweis": "Seit dem 19.10.; die erste Vorlage ist vom 20.10.",
-        "notizen": 11,
+        "notizen": 13,
         "verbindlich": 0
       },
       {
@@ -3586,7 +3586,7 @@
         "stufe": "ordnung",
         "art": "notizen",
         "wofuer": "Entscheidungen und Ereignisse in zeitlicher Folge.",
-        "notizen": 189,
+        "notizen": 213,
         "verbindlich": 7
       },
       {
@@ -3622,7 +3622,7 @@
         "wofuer": "Website-Abzüge und Datenschicht, nicht im Repository und nicht im Index."
       }
     ],
-    "gezaehltAm": "2026-11-11",
+    "gezaehltAm": "2026-11-12",
     "quelle": "Ordnertabelle und Kontextstrategie im Einstieg des Repositorys KI-Mitarbeiter, Akten nach den Vault-Konventionen, Anzahlen aus der Zählung der Ablage",
     "freigabe": "oeffentlich"
   },
