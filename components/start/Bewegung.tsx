@@ -515,26 +515,24 @@ export function Bewegung() {
       mm.add('(min-width: 900px)', () => {
         const ps = document.querySelector<HTMLElement>('[data-lb-pruefstand]')
         if (!ps) return
-        const laeufe = JSON.parse(ps.dataset.lbPruefstand ?? '[]') as [string, string, number, number, number, number, number[]][]
+        const laeufe = JSON.parse(ps.dataset.lbPruefstand ?? '[]') as [string, number][]
         if (!laeufe.length) return
         const feld = (k: string) => ps.querySelector<HTMLElement>(`[data-ps="${k}"]`)
-        const bereiche = [...ps.querySelectorAll<HTMLElement>('[data-ps-bereich]')]
         const striche = [...ps.querySelectorAll<HTMLElement>('[data-ps-lauf]')]
         let zuletzt = -1
         const zeige = (i: number) => {
           if (i === zuletzt) return
           zuletzt = i
-          const [wann, was, erfuellt, wackelig, nie, gelernt, je] = laeufe[i]
+          const [wann, gelernt] = laeufe[i]
           const setze = (k: string, v: string | number) => { const e = feld(k); if (e) e.textContent = String(v) }
-          setze('wann', wann); setze('was', was); setze('erfuellt', erfuellt); setze('wackelig', wackelig); setze('nie', nie); setze('gelernt', gelernt)
-          bereiche.forEach((b, n) => [...b.children].forEach((k, m) => k.classList.toggle('erfuellt', m < (je[n] ?? 0))))
-          striche.forEach((s, n) => s.classList.toggle('aktiv', n === i))
+          setze('wann', wann); setze('gelernt', gelernt)
+          striche.forEach((s, n) => { s.classList.toggle('erreicht', n <= i); s.classList.toggle('aktiv', n === i) })
         }
         zeige(0)
         ScrollTrigger.create({
           trigger: ps,
           start: 'center center',
-          end: `+=${laeufe.length * 22}%`,
+          end: `+=${Math.max(160, laeufe.length * 6)}%`,
           pin: true,
           pinSpacing: true,
           scrub: true,
