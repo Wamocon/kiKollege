@@ -786,39 +786,20 @@ a.lb-org-karte:hover, a.lb-org-karte:focus-visible { transform: translateY(-3px)
 /* Training: so trainiert der Orchestrator wirklich -------------------------------- */
 .lb-training { margin-top: clamp(5rem, 14vh, 9rem); }
 .lb-training .lb-teilkopf { max-width: 24ch; }
-.lb-fassungen { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr) minmax(0, 1fr); gap: clamp(1rem, 2vw, 2rem); align-items: center; }
-.lb-fassung { padding: 1.6rem 1.8rem 1.8rem; border-radius: var(--lb-rund); border: 1px solid var(--lb-linie); background: var(--lb-flaeche); }
-.lb-fassung.uebung { --lb-leise: rgba(255, 255, 255, 0.7); border-color: var(--lb-buehne); background: var(--lb-buehne); color: var(--lb-hell); }
-.lb-fassung-name { margin: 0; font-family: var(--schrift-mono); font-size: 0.74rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--lb-leise); }
-.lb-fassung-zahl { margin: 0.4rem 0 0.3rem; font-size: clamp(3.4rem, 7vw, 5.6rem); font-weight: 820; line-height: 1; letter-spacing: -0.05em; font-variant-numeric: tabular-nums; }
-.lb-fassung-zahl span { margin-left: 0.5rem; font-size: 1.1rem; font-weight: 600; letter-spacing: 0; color: var(--lb-leise); }
-.lb-fassung p:last-child { margin: 0; font-size: 0.98rem; line-height: 1.5; color: var(--lb-leise); }
-.lb-fassungen-wege { display: grid; gap: 1.8rem; }
-.lb-fassungen-wege p { position: relative; margin: 0; padding: 0 0.6rem 0.9rem; border-bottom: 2px solid var(--lb-ink); font-size: 0.98rem; font-weight: 600; line-height: 1.4; text-align: center; }
-.lb-fassungen-wege p::after { content: ''; position: absolute; bottom: -8px; border: 7px solid transparent; }
-.lb-fassungen-wege p.hin::after { right: -10px; border-left: 11px solid var(--lb-ink); }
-.lb-fassungen-wege p.zurueck { border-color: var(--lb-rot); color: var(--lb-rot-tief); }
-.lb-fassungen-wege p.zurueck::after { left: -10px; border-right: 11px solid var(--lb-rot); }
-.lb-pruefstand { --lb-leise: rgba(255, 255, 255, 0.7); --lb-linie: rgba(255, 255, 255, 0.16); display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.4fr); gap: 1.6rem 3rem; margin: clamp(3rem, 8vh, 5rem) 0 0; padding: clamp(1.6rem, 3vw, 2.6rem); border-radius: var(--lb-rund); background: var(--lb-buehne); color: var(--lb-hell); }
+.lb-pruefstand { --lb-leise: rgba(255, 255, 255, 0.7); display: grid; gap: 1.2rem; margin: clamp(3rem, 8vh, 5rem) 0 0; padding: clamp(1.6rem, 3vw, 2.6rem); border-radius: var(--lb-rund); background: var(--lb-buehne); color: var(--lb-hell); }
 .lb-ps-name { margin: 0; font-family: var(--schrift-mono); font-size: 0.74rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--lb-leise); }
-.lb-ps-wann { margin: 0.6rem 0 0; font-size: clamp(1.6rem, 2.6vw, 2.2rem); font-weight: 780; letter-spacing: -0.02em; }
-.lb-ps-zahl { margin: 0.6rem 0 0; font-size: 1.1rem; }
-.lb-ps-zahl b { margin-right: 0.3rem; font-size: 3.6rem; font-weight: 820; letter-spacing: -0.04em; color: var(--lb-rot); font-variant-numeric: tabular-nums; }
-.lb-ps-rest { margin: 0.3rem 0 0; color: var(--lb-leise); }
-.lb-ps-rest b { color: var(--lb-hell); font-variant-numeric: tabular-nums; }
-.lb-ps-was { display: -webkit-box; margin: 1rem 0 0; overflow: hidden; font-size: 0.92rem; line-height: 1.5; color: var(--lb-leise); -webkit-line-clamp: 5; -webkit-box-orient: vertical; }
-/* Angeheftet behält der Kasten seine Höhe; der Text jedes Laufs bekommt darum immer Platz für fünf Zeilen */
-@media (min-width: 900px) { .lb-ps-was { min-height: calc(5 * 1.5em); } }
-.lb-ps-felder { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.4rem 2rem; align-content: start; }
-.lb-ps-bereich p { margin: 0 0 0.6rem; font-size: 0.95rem; font-weight: 650; }
-.lb-ps-kacheln { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 8px; }
-.lb-ps-kacheln i { aspect-ratio: 1; border-radius: 8px; border: 1.5px solid rgba(255, 255, 255, 0.3); transition: background 0.25s, border-color 0.25s; }
-.lb-ps-kacheln i.erfuellt { border-color: var(--lb-rot); background: var(--lb-rot); }
-.lb-ps-leiste { grid-column: 1 / -1; display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); gap: 4px; list-style: none; margin: 0; padding: 0 0 1.4rem; }
-.lb-ps-leiste li { position: relative; height: 6px; border-radius: 3px; background: rgba(255, 255, 255, 0.2); transition: background 0.25s; }
-.lb-ps-leiste li.aktiv { background: var(--lb-rot); }
-.lb-ps-leiste span { position: absolute; top: 12px; left: 0; font-size: 0.72rem; white-space: nowrap; color: var(--lb-leise); }
-.lb-pruefstand figcaption { grid-column: 1 / -1; max-width: 80ch; font-size: 0.88rem; line-height: 1.5; color: var(--lb-leise); }
+.lb-ps-zahl { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.2rem 0.9rem; margin: 0; font-size: 1.3rem; }
+.lb-ps-zahl b { font-size: clamp(4rem, 8vw, 6.4rem); font-weight: 820; line-height: 1; letter-spacing: -0.05em; color: var(--lb-rot); font-variant-numeric: tabular-nums; }
+.lb-ps-wann { margin-left: auto; font-size: 0.95rem; color: var(--lb-leise); }
+/* Der Verlauf: ein Balken je Lauf, so hoch wie die Zahl der gelernten Fälle; beim Scrollen färbt er sich bis zum aktuellen Lauf */
+.lb-ps-verlauf { display: flex; align-items: flex-end; gap: 4px; height: clamp(7rem, 16vh, 10rem); list-style: none; margin: 0.4rem 0 0; padding: 0; }
+.lb-ps-verlauf li { display: flex; align-items: flex-end; flex: 1 1 0; min-width: 0; height: 100%; }
+.lb-ps-verlauf i { display: block; width: 100%; height: max(5px, calc(var(--h) * 100%)); border-radius: 3px; background: rgba(255, 255, 255, 0.14); transition: background 0.25s; }
+.lb-ps-verlauf li.erreicht i { background: rgba(255, 255, 255, 0.5); }
+.lb-ps-verlauf li.aktiv i { background: var(--lb-rot); }
+.lb-ps-achse { display: flex; justify-content: space-between; margin: 0; font-size: 0.78rem; color: var(--lb-leise); }
+.lb-pruefstand figcaption { max-width: 60ch; font-size: 0.98rem; line-height: 1.55; color: var(--lb-leise); }
+.lb-fassung-satz { max-width: 60ch; margin: 1.6rem 0 0; font-size: 1rem; line-height: 1.55; color: var(--lb-leise); }
 .lb-ablauf { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 1.4rem; list-style: none; margin: clamp(3rem, 8vh, 5rem) 0 0; padding: 0; }
 .lb-ablauf li { padding-top: 1rem; border-top: 2px solid var(--lb-ink); }
 .lb-ablauf b { display: block; margin: 0.4rem 0 0.1rem; font-size: 1.3rem; font-weight: 740; }
@@ -839,10 +820,9 @@ a.lb-org-karte:hover, a.lb-org-karte:focus-visible { transform: translateY(-3px)
 .lb-training-klein { margin: 1rem 0 0; font-size: 0.88rem; line-height: 1.5; color: var(--lb-leise); }
 @media (max-width: 1000px) { .lb-ablauf { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 899px) {
-  .lb-fassungen, .lb-pruefstand, .lb-training-unten { grid-template-columns: minmax(0, 1fr); }
-  .lb-ps-leiste span { display: none; }
+  .lb-training-unten { grid-template-columns: minmax(0, 1fr); }
 }
-@media (max-width: 520px) { .lb-ablauf, .lb-ps-felder { grid-template-columns: minmax(0, 1fr); } .lb-ebenen li { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 520px) { .lb-ablauf { grid-template-columns: minmax(0, 1fr); } .lb-ebenen li { grid-template-columns: minmax(0, 1fr); } }
 
 /* Das Netz der Ablage, wie Obsidian es zeigt, zum Anfassen ------------------------- */
 .lb-netz { margin: 0 0 clamp(3rem, 8vh, 5rem); }

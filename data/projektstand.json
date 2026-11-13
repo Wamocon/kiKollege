@@ -6552,6 +6552,7 @@
       "stand": "2026-11-10",
       "titel": "Alle Läufe des Orchestrators",
       "satz": "Jeder Lauf stellt Hermes dieselben 18 Prüffälle, jeden dreimal. Erfüllt ist ein Fall nur mit drei von drei richtigen Antworten, wackelig mit einer oder zwei. Gelernt ist er, wenn er in zwei Läufen hintereinander erfüllt ist.",
+      "kurz": "Hermes löst in jedem Lauf dieselben 18 Prüffälle, jeden dreimal. Gelernt ist ein Prüffall, wenn alle drei Antworten in zwei Läufen hintereinander richtig waren.",
       "bereiche": [
         {
           "name": "Aufträge annehmen",

@@ -1,8 +1,10 @@
+import type { CSSProperties } from 'react'
 import { daten } from '@/lib/daten'
 
-/** So trainiert der Orchestrator wirklich: zwei Fassungen, der Betrieb und die Übung; der
- *  Prüfstand mit seinen 18 Fällen, Lauf für Lauf beim Scrollen (Bewegung.tsx); der Ablauf mit
- *  den Beteiligten und den Ebenen, an denen nachgeschärft wird. Alles aus training. */
+/** So trainiert der Orchestrator wirklich: der Prüfstand mit einer Zahl und dem Verlauf aller
+ *  Läufe, beim Scrollen läuft er durch (Bewegung.tsx); ein Satz zur Übernahme in den Betrieb;
+ *  der Ablauf mit den Beteiligten und den Ebenen, an denen nachgeschärft wird. Alles aus training.
+ *  Die Einzelwerte je Lauf (erfüllt, wackelig, nie, Bereiche) stehen in den Daten und in der langen Fassung. */
 
 const t = daten.training
 const orchestrator = daten.mannschaft.koepfe.find((k) => k.id === 'orchestrator')
@@ -13,7 +15,6 @@ export function Training() {
   const faelle = l.bereiche.reduce((s, b) => s + b.faelle, 0)
   const z = l.zeilen
   const letzte = z.at(-1)!
-  const erster = (text: string) => text.split(/(?<=\.)\s/)[0]
   const tag = (wann: string) => wann.match(/\d{2}\.\d{2}\./)?.[0] ?? wann
   const name = orchestrator?.name ?? 'Der Orchestrator'
   return (
@@ -25,69 +26,37 @@ export function Training() {
         {t.satz}
       </p>
 
-      <div className="lb-fassungen" data-lb-reveal>
-        <div className="lb-fassung">
-          <p className="lb-fassung-name">Im Betrieb</p>
-          <p className="lb-fassung-zahl">
-            {letzte.gelernt}
-            <span>von {faelle}</span>
-          </p>
-          <p>gelernt. Mit dieser Fassung arbeitet heute der Projektverantwortliche.</p>
-        </div>
-        <div className="lb-fassungen-wege">
-          <p className="hin">{erster(t.kreis[0].text)}</p>
-          <p className="zurueck">Übernommen nach vier Läufen hintereinander mit höchstens zwei Prozent falschen Antworten und dem Ja des Projektverantwortlichen</p>
-        </div>
-        <div className="lb-fassung uebung">
-          <p className="lb-fassung-name">In der Übungsfassung</p>
-          <p className="lb-fassung-zahl">
-            {l.uebung?.gelernt ?? '–'}
-            <span>von {faelle}</span>
-          </p>
-          <p>gelernt, in einem eigenen Übungsprofil, getrennt vom Betrieb.</p>
-        </div>
-      </div>
-
-      <figure className="lb-pruefstand" data-lb-pruefstand={JSON.stringify(z.map((r) => [r.wann, r.was, r.erfuellt, r.wackelig, r.nie, r.gelernt, r.bereiche]))}>
-        <div className="lb-ps-kopf">
-          <p className="lb-ps-name">Der Prüfstand, Lauf für Lauf</p>
-          <p className="lb-ps-wann" data-ps="wann">
-            {letzte.wann}
-          </p>
-          <p className="lb-ps-zahl">
-            <b data-ps="erfuellt">{letzte.erfuellt}</b> von {faelle} Fällen dreimal erfüllt
-          </p>
-          <p className="lb-ps-rest">
-            wackelig <b data-ps="wackelig">{letzte.wackelig}</b>, nie <b data-ps="nie">{letzte.nie}</b>, im Betrieb gelernt{' '}
-            <b data-ps="gelernt">{letzte.gelernt}</b>
-          </p>
-          <p className="lb-ps-was" data-ps="was">
-            {letzte.was}
-          </p>
-        </div>
-        <div className="lb-ps-felder">
-          {l.bereiche.map((b, i) => (
-            <div className="lb-ps-bereich" key={b.name}>
-              <p>{b.name}</p>
-              <div className="lb-ps-kacheln" data-ps-bereich={i}>
-                {Array.from({ length: b.faelle }, (_, n) => (
-                  <i key={n} className={n < letzte.bereiche[i] ? 'erfuellt' : undefined} />
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-        <ol className="lb-ps-leiste" aria-hidden="true">
+      <figure className="lb-pruefstand" data-lb-pruefstand={JSON.stringify(z.map((r) => [tag(r.wann), r.gelernt]))}>
+        <p className="lb-ps-name">Der Prüfstand</p>
+        <p className="lb-ps-zahl">
+          <b data-ps="gelernt">{letzte.gelernt}</b> von {faelle} Prüffällen gelernt
+          <span className="lb-ps-wann">
+            Stand <span data-ps="wann">{tag(letzte.wann)}</span>
+          </span>
+        </p>
+        <ol className="lb-ps-verlauf" aria-hidden="true">
           {z.map((r, i) => (
-            <li key={r.wann} className={i === z.length - 1 ? 'aktiv' : undefined} data-ps-lauf={i}>
-              <span>{tag(r.wann) !== tag(z[i - 1]?.wann ?? '') ? tag(r.wann) : ''}</span>
+            <li
+              key={r.wann}
+              className={i === z.length - 1 ? 'erreicht aktiv' : 'erreicht'}
+              data-ps-lauf={i}
+              style={{ '--h': r.gelernt / faelle } as CSSProperties}
+            >
+              <i />
             </li>
           ))}
         </ol>
-        <figcaption>
-          {l.satz} Rot ist ein Fall, der in diesem Lauf dreimal richtig war.
-        </figcaption>
+        <p className="lb-ps-achse" aria-hidden="true">
+          <span>{tag(z[0].wann)}</span>
+          <span>{tag(letzte.wann)}</span>
+        </p>
+        {l.kurz ? <figcaption>{l.kurz}</figcaption> : null}
       </figure>
+
+      <p className="lb-fassung-satz" data-lb-reveal>
+        Neue Fassungen üben getrennt vom Betrieb und gehen erst nach vier Läufen hintereinander mit höchstens zwei Prozent falschen
+        Antworten und mit dem Ja des Projektverantwortlichen in den Betrieb.
+      </p>
 
       <ol className="lb-ablauf" data-lb-staffel>
         {t.kreis.map((s, i) => (

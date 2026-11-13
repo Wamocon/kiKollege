@@ -269,9 +269,14 @@ Scrollen.
   `ablage` und `kennzahlen`. Die Figur auf der Startseite steht deshalb nicht mehr in den
   Einzelheiten (`DOPPELT`). Ab 900 px Breite fliegen die Karten der Vorstellung beim Scrollen
   an ihren Platz im Organigramm; Galerie und Organigramm finden sich über `data-lb-kopf`.
-- **Training** in der Szene Verlässlich, aus `training`: Betrieb und Übungsfassung, der
-  Prüfstand mit jedem Lauf aus `training.laeufe.zeilen` (beim Scrollen läuft er durch), dazu
-  Ablauf, Ebenen und Beteiligte. Eine neue Zeile in den Läufen erscheint dort von selbst.
+- **Training** in der Szene Verlässlich, aus `training`: der Prüfstand zeigt nur eine Zahl
+  (`gelernt` des Laufs) und je Lauf einen Balken in der Höhe von `gelernt`; beim Scrollen
+  läuft er durch. Dazu ein Satz zur Übernahme in den Betrieb, Ablauf, Ebenen und Beteiligte.
+  Eine neue Zeile in den Läufen erscheint dort von selbst. Erfüllt, wackelig, nie und die
+  Bereiche stehen weiter in den Daten und in der langen Fassung, nicht auf der Startseite.
+  Der Text unter dem Kasten steht in `training.laeufe.kurz`, zwei Sätze ohne Fachwörter.
+  Ändert sich die Zählregel (Wiederholungen, Zahl der Läufe für „gelernt“), ändert sich
+  `satz` **und** `kurz`.
 - **Das Netz der Ablage** in der Szene Aufbau, aus `data/ablage-netz.json`. Neu zählen mit
   `npm run abbild:netz -- --vault "D:\WAMOCON"`; ins Repository gehen nur Lage, Bereich und Zahl
   der Verweise je Notiz, keine Namen und keine Pfade. `_quellen/` bleibt außen vor. Was in
