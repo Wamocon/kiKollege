@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-12",
+  "stand": "2026-11-13",
   "version": {
     "nummer": "1.0",
     "am": "2026-11-06",
@@ -48,7 +48,7 @@
   "herkunft": {
     "arbeitsordner": "D:\\WAMOCON",
     "einstieg": "KI-Mitarbeiter/75_KI-Mitarbeiter/KI-Mitarbeiter — Einstieg.md",
-    "erzeugt": "2026-11-12",
+    "erzeugt": "2026-11-13",
     "fristTage": 7,
     "verfahren": "Erstbefüllung von Hand aus dem Übergabedokument vom 05.09.2026, am 11.09. fortgeschrieben aus den beiden Blättern vom 09.09., am 17.09. aus dem Vault: Logbuch, Tagesprotokolle, Meilensteinplan, Bestandsaufnahme vom 16.09., Akte des Reviewers, Laufnotizen und Quoten je Regel. Das Abbild der Ablage zählt scripts/abbild-vault.mjs. Spätere Stände der Prüfläufe schreibt scripts/export-vault.mjs aus dem Frontmatter der Laufnotizen.",
     "freigabe": "intern",
@@ -146,7 +146,9 @@
       "Logbuch vom 05.11.2026: Abnahme von WMC Inventar, Nachdenken des Orchestrators, Tickets für Fehler aus dem Test",
       "Logbuch vom 05.11.2026: Entscheidungen WMC Inventar vor der Abnahme, Zählregel und Nachmessen im Prüfstand des Orchestrators, Szene „Aufbau“ der Startseite",
       "Protokoll KI-Mitarbeiter vom 05.11.2026, Nachträge bis 22:41",
-      "Logbuch 2026-11-11: KI-Guide Epic und Stories in Jira, KI-Guide Prototyp Konzept Ort Repository, Vault main zusammengeführt und gepusht, Theo Playbook nach dem Probelauf angepasst, Theo Nummer der Suite für die Folgefälle, Theo Prüfstand Version 2 Durchsicht, Theo Video-Erweiterung auf die DGX eingespielt, Theo Kartenwortlaute Fälle 15, 23 und 24, Theo Klon main zurückgesetzt, Theo Zeitgrenzen Lauf 2"
+      "Logbuch 2026-11-11: KI-Guide Epic und Stories in Jira, KI-Guide Prototyp Konzept Ort Repository, KI-Guide Aufbau Fall aus dem Pfad, KI-Guide Verteilen auf die DGX, KUMA Konzepte erst intern Produkt später, KUMA Artifact öffentlich voll aktualisiert, WMC Inventar Betriebsplatz eigener Benutzer, WMC Inventar Vorbedingungen und Betriebsort, Vault main zusammengeführt und gepusht, Theo Playbook nach dem Probelauf angepasst, Theo Nummer der Suite für die Folgefälle, Theo Fälle 29 und 30 ausformuliert, Theo Generator für Lauf 2 gebaut, Theo Prüfstand Version 2 Durchsicht, Theo Video-Erweiterung auf die DGX eingespielt, Theo Kartenwortlaute Fälle 15, 23 und 24, Theo Klon main zurückgesetzt, Theo Zeitgrenzen Lauf 2, Theo Lauf 2 Nacht ab 2026-11-14 vorbereiten, Reifegrad Einordnung bestätigt, Stufe 3 bis zum Wochenende, Gregor Dev Pflegelauf neu starten nach Gateway-Abbruch",
+      "Logbuch 2026-11-12: Theo Lauf 2 auf Freitag 13.11. vorgezogen, Theo Hinweise in der festen Suite neutral gefasst, Theo Lauf 2 Nacht ab 2026-11-14 freigegeben, Theo Echtprobe mit Fall 9 vorgezogen, Arnold Zeilennummern nur aus eigener Suche, Vault Werkbank und DGX auf einen Stand",
+      "Protokoll 2026-11-12 KI-Mitarbeiter"
     ],
     "getrenntAm": "2026-09-09",
     "notizordner": "KFBM/00_Vault/10_KI-Mitarbeiter"
@@ -1764,17 +1766,17 @@
     },
     {
       "datum": "2026-11-11",
-      "entscheidung": "KI-Guide: das neue Epic und die vier Stories stehen in Jira, Status Ausarbeitung, die Konzeptwahl ist eine offene Story",
+      "entscheidung": "KI-Guide: das neue Epic steht in Jira im Status Ausarbeitung, darunter vier Stories; die Konzeptwahl ist eine offene Story",
       "freigabe": "intern"
     },
     {
       "datum": "2026-11-11",
-      "entscheidung": "KI-Guide: der Prototyp zeigt Konzept 2 mit der Werkstatt aus Konzept 4, er steht als Dienst im Büronetz und das private Repository wird angelegt",
+      "entscheidung": "KI-Guide: der Prototyp zeigt Konzept 2 mit der Werkstatt aus Konzept 4, das Team soll ihn als Dienst im Büronetz öffnen, und das private Repository wird angelegt",
       "freigabe": "intern"
     },
     {
       "datum": "2026-11-11",
-      "entscheidung": "Die lokalen Vault-Commits der Werkbank werden mit dgx/main zusammengeführt und gepusht",
+      "entscheidung": "Die lokalen Vault-Commits der Werkbank werden mit dem Stand der DGX zusammengeführt und gepusht",
       "freigabe": "intern"
     },
     {
@@ -1789,7 +1791,7 @@
     },
     {
       "datum": "2026-11-11",
-      "entscheidung": "Die zehn offenen Punkte des Prüfstands Version 2 werden nach der Empfehlung entschieden; die Karten nennen den Zweig, die Frist beginnt mit Lauf 2 und ein fehlender Commit oder Push zählt als Fehler",
+      "entscheidung": "Die zehn offenen Punkte des Prüfstands Version 2 werden nach der Empfehlung entschieden; die Karte der Fälle 1, 6 und 7 nennt den Zweig, die Frist beginnt mit Lauf 2 und ein fehlender Commit oder Push zählt als Fehler",
       "freigabe": "intern"
     },
     {
@@ -1804,12 +1806,72 @@
     },
     {
       "datum": "2026-11-11",
-      "entscheidung": "Der lokale main im Klon des Testers wird auf origin/main zurückgesetzt, danach geholt und auf den Stand des Buses gesetzt",
+      "entscheidung": "Der lokale Hauptzweig im Klon des Testers wird auf den zuletzt geholten Stand zurückgesetzt, danach neu geholt und auf den Stand des Busses gesetzt",
       "freigabe": "intern"
     },
     {
       "datum": "2026-11-11",
       "entscheidung": "Die Zeitgrenzen der Fälle 21 bis 26, 29 und 30 von Lauf 2 werden so festgelegt: 45, 45, 60, 90, 30, 45, 60 und 30 Minuten; die Karenz bleibt 900 Sekunden",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-11-11",
+      "entscheidung": "Die Fälle 29 und 30 des Prüfstands werden ausformuliert: die Karte nennt den Ablauf und die Suite der Werkbank",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-11-11",
+      "entscheidung": "Der Generator für die Fälle 29 und 30 wird gebaut; Lauf 2 ist damit vorbereitet",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-11-11",
+      "entscheidung": "Die Einordnung in den Reifegrad wird bestätigt; Stufe 3 bis zum Wochenende",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-11-11",
+      "entscheidung": "Stufe 3 wird bis zum Wochenende aufrechterhalten",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-11-11",
+      "entscheidung": "Der Pflegelauf von Gregor Dev wird nach dem Gateway-Abbruch neu gestartet",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-11-11",
+      "entscheidung": "Lauf 2 von Theo wird für die Nacht ab dem 14.11. zur Freigabe vorbereitet",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-11-12",
+      "entscheidung": "Lauf 2 von Theo wird auf Freitag, den 13.11., vorgezogen",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-11-12",
+      "entscheidung": "Die Hinweise in der festen Suite werden neutral gefasst",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-11-12",
+      "entscheidung": "Lauf 2 von Theo wird für die Nacht ab dem 14.11. freigegeben",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-11-12",
+      "entscheidung": "Die Echtprobe mit Fall 9 wird vorgezogen",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-11-12",
+      "entscheidung": "Arnold nimmt Zeilennummern nur aus eigener Suche",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-11-12",
+      "entscheidung": "Vault, Werkbank und DGX werden auf einen Stand gebracht",
       "freigabe": "intern"
     }
   ],
@@ -3194,8 +3256,8 @@
   },
   "ablage": {
     "freigabe": "oeffentlich",
-    "gezaehltAm": "2026-11-12",
-    "notizen": 765,
+    "gezaehltAm": "2026-11-13",
+    "notizen": 847,
     "verweise": 6212,
     "unaufgeloest": 155,
     "regelnotizen": 1,
@@ -3673,7 +3735,7 @@
         "wofuer": "Website-Abzüge und Datenschicht, nicht im Repository und nicht im Index."
       }
     ],
-    "gezaehltAm": "2026-11-12",
+    "gezaehltAm": "2026-11-13",
     "quelle": "Ordnertabelle und Kontextstrategie im Einstieg des Repositorys KI-Mitarbeiter, Akten nach den Vault-Konventionen, Anzahlen aus der Zählung der Ablage",
     "freigabe": "oeffentlich"
   },
