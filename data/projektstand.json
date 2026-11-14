@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-13",
+  "stand": "2026-11-14",
   "version": {
     "nummer": "1.0",
     "am": "2026-11-06",
@@ -48,7 +48,7 @@
   "herkunft": {
     "arbeitsordner": "D:\\WAMOCON",
     "einstieg": "KI-Mitarbeiter/75_KI-Mitarbeiter/KI-Mitarbeiter — Einstieg.md",
-    "erzeugt": "2026-11-13",
+    "erzeugt": "2026-11-14",
     "fristTage": 7,
     "verfahren": "Erstbefüllung von Hand aus dem Übergabedokument vom 05.09.2026, am 11.09. fortgeschrieben aus den beiden Blättern vom 09.09., am 17.09. aus dem Vault: Logbuch, Tagesprotokolle, Meilensteinplan, Bestandsaufnahme vom 16.09., Akte des Reviewers, Laufnotizen und Quoten je Regel. Das Abbild der Ablage zählt scripts/abbild-vault.mjs. Spätere Stände der Prüfläufe schreibt scripts/export-vault.mjs aus dem Frontmatter der Laufnotizen.",
     "freigabe": "intern",
@@ -148,7 +148,9 @@
       "Protokoll KI-Mitarbeiter vom 05.11.2026, Nachträge bis 22:41",
       "Logbuch 2026-11-11: KI-Guide Epic und Stories in Jira, KI-Guide Prototyp Konzept Ort Repository, KI-Guide Aufbau Fall aus dem Pfad, KI-Guide Verteilen auf die DGX, KUMA Konzepte erst intern Produkt später, KUMA Artifact öffentlich voll aktualisiert, WMC Inventar Betriebsplatz eigener Benutzer, WMC Inventar Vorbedingungen und Betriebsort, Vault main zusammengeführt und gepusht, Theo Playbook nach dem Probelauf angepasst, Theo Nummer der Suite für die Folgefälle, Theo Fälle 29 und 30 ausformuliert, Theo Generator für Lauf 2 gebaut, Theo Prüfstand Version 2 Durchsicht, Theo Video-Erweiterung auf die DGX eingespielt, Theo Kartenwortlaute Fälle 15, 23 und 24, Theo Klon main zurückgesetzt, Theo Zeitgrenzen Lauf 2, Theo Lauf 2 Nacht ab 2026-11-14 vorbereiten, Reifegrad Einordnung bestätigt, Stufe 3 bis zum Wochenende, Gregor Dev Pflegelauf neu starten nach Gateway-Abbruch",
       "Logbuch 2026-11-12: Theo Lauf 2 auf Freitag 13.11. vorgezogen, Theo Hinweise in der festen Suite neutral gefasst, Theo Lauf 2 Nacht ab 2026-11-14 freigegeben, Theo Echtprobe mit Fall 9 vorgezogen, Arnold Zeilennummern nur aus eigener Suche, Vault Werkbank und DGX auf einen Stand",
-      "Protokoll 2026-11-12 KI-Mitarbeiter"
+      "Protokoll 2026-11-12 KI-Mitarbeiter",
+      "Logbuch 2026-11-13: Prüfstand-Block auf der Startseite schlank und PR 76 mit Merge nach Grün, Gateway-Abbruch von Gregors Lauf zuerst klären",
+      "Protokoll 2026-11-13 KI-Mitarbeiter"
     ],
     "getrenntAm": "2026-09-09",
     "notizordner": "KFBM/00_Vault/10_KI-Mitarbeiter"
@@ -1873,6 +1875,21 @@
       "datum": "2026-11-12",
       "entscheidung": "Vault, Werkbank und DGX werden auf einen Stand gebracht",
       "freigabe": "intern"
+    },
+    {
+      "datum": "2026-11-13",
+      "entscheidung": "Der Prüfstand-Block der Startseite wird auf eine Zahl und den Verlauf gekürzt; die Einzelwerte bleiben in den Daten",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-11-13",
+      "entscheidung": "Die schlanke Fassung wird als Pull Request gestellt und nach Grün zusammengeführt",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-11-13",
+      "entscheidung": "Der Gateway-Abbruch von Gregors Lauf wird als Nächstes geklärt; Logs und Konfiguration werden nur lesend gelesen",
+      "freigabe": "intern"
     }
   ],
   "entscheidungenNachtrag": "Die Entscheidung vom 04.09. dreht bewusst eine zuvor festgelegte Reihenfolge um: Ursprünglich sollte die Fehlalarmquote vor dem Plattformwechsel gemessen werden. Die Technik wurde vorgezogen. Das ist kein Widerspruch, sondern eine andere Reihenfolge mit einer benannten Folge, und die Folge steht im Abschnitt zur Messlücke.",
@@ -3256,10 +3273,10 @@
   },
   "ablage": {
     "freigabe": "oeffentlich",
-    "gezaehltAm": "2026-11-13",
-    "notizen": 847,
-    "verweise": 6212,
-    "unaufgeloest": 155,
+    "gezaehltAm": "2026-11-14",
+    "notizen": 856,
+    "verweise": 6924,
+    "unaufgeloest": 48,
     "regelnotizen": 1,
     "bereiche": [
       {
@@ -3281,7 +3298,7 @@
           "quellen": 0,
           "prueflaeufe": 33,
           "arbeitsstand": 22,
-          "protokoll": 49,
+          "protokoll": 51,
           "einstiege": 3,
           "archiv": 4
         }
@@ -3291,21 +3308,21 @@
         "gruppe": "wissen",
         "name": "Entscheidungen mit Datum",
         "kurz": "Entscheidungen",
-        "notizen": 214,
+        "notizen": 241,
         "verbindlich": 8,
         "informativ": 1,
-        "ungeprueft": 205,
+        "ungeprueft": 232,
         "ohneFeld": 0,
         "verweiseNach": {
-          "konventionen": 21,
+          "konventionen": 24,
           "unternehmen": 0,
-          "bauplan": 180,
+          "bauplan": 197,
           "normbasis": 0,
           "massstab": 3,
           "quellen": 0,
           "prueflaeufe": 0,
-          "arbeitsstand": 297,
-          "protokoll": 53,
+          "arbeitsstand": 342,
+          "protokoll": 66,
           "einstiege": 10,
           "archiv": 0
         }
@@ -3339,20 +3356,20 @@
         "gruppe": "wissen",
         "name": "Bauplan der Mitarbeiter",
         "kurz": "Bauplan",
-        "notizen": 84,
+        "notizen": 88,
         "verbindlich": 0,
         "informativ": 1,
-        "ungeprueft": 69,
+        "ungeprueft": 73,
         "ohneFeld": 14,
         "verweiseNach": {
-          "konventionen": 14,
-          "entscheidungen": 260,
+          "konventionen": 15,
+          "entscheidungen": 277,
           "unternehmen": 5,
           "normbasis": 3,
           "massstab": 11,
           "quellen": 0,
           "prueflaeufe": 14,
-          "arbeitsstand": 290,
+          "arbeitsstand": 317,
           "protokoll": 15,
           "einstiege": 3,
           "archiv": 2
@@ -3459,22 +3476,22 @@
         "gruppe": "werkstatt",
         "name": "Pläne, Berichte, Übergaben",
         "kurz": "Arbeitsstände",
-        "notizen": 205,
+        "notizen": 262,
         "verbindlich": 0,
         "informativ": 7,
-        "ungeprueft": 97,
-        "ohneFeld": 101,
+        "ungeprueft": 119,
+        "ohneFeld": 136,
         "verweiseNach": {
-          "konventionen": 33,
-          "entscheidungen": 515,
-          "unternehmen": 6,
-          "bauplan": 600,
-          "normbasis": 6,
-          "massstab": 24,
+          "konventionen": 37,
+          "entscheidungen": 618,
+          "unternehmen": 7,
+          "bauplan": 717,
+          "normbasis": 9,
+          "massstab": 29,
           "quellen": 0,
           "prueflaeufe": 6,
-          "protokoll": 163,
-          "einstiege": 10,
+          "protokoll": 181,
+          "einstiege": 12,
           "archiv": 5
         }
       },
@@ -3483,21 +3500,21 @@
         "gruppe": "werkstatt",
         "name": "Tagesprotokolle",
         "kurz": "Protokolle",
-        "notizen": 49,
+        "notizen": 51,
         "verbindlich": 0,
         "informativ": 0,
         "ungeprueft": 0,
-        "ohneFeld": 49,
+        "ohneFeld": 51,
         "verweiseNach": {
-          "konventionen": 91,
-          "entscheidungen": 358,
+          "konventionen": 92,
+          "entscheidungen": 397,
           "unternehmen": 0,
-          "bauplan": 256,
+          "bauplan": 264,
           "normbasis": 5,
           "massstab": 6,
           "quellen": 0,
           "prueflaeufe": 15,
-          "arbeitsstand": 520,
+          "arbeitsstand": 570,
           "einstiege": 15,
           "archiv": 1
         }
@@ -3507,14 +3524,14 @@
         "gruppe": "werkstatt",
         "name": "Einstiege und Eingang",
         "kurz": "Einstiege",
-        "notizen": 112,
+        "notizen": 113,
         "verbindlich": 1,
         "informativ": 1,
         "ungeprueft": 28,
-        "ohneFeld": 82,
+        "ohneFeld": 83,
         "verweiseNach": {
           "konventionen": 29,
-          "entscheidungen": 38,
+          "entscheidungen": 39,
           "unternehmen": 0,
           "bauplan": 13,
           "normbasis": 1,
@@ -3649,7 +3666,7 @@
         "art": "notizen",
         "wofuer": "Wie ein KI-Mitarbeiter gebaut ist: Anatomie, Harness, Orchestrator, Systemarchitektur, Zusammenarbeit, Fahrplan.",
         "hinweis": "Gelesen, wenn an der Architektur gearbeitet wird, nicht bei jeder Aufgabe.",
-        "notizen": 166,
+        "notizen": 187,
         "verbindlich": 0
       },
       {
@@ -3665,7 +3682,7 @@
         "stufe": "ordnung",
         "art": "notizen",
         "wofuer": "Konventionen, Änderungsprotokoll, Status-Übersicht und Tagesprotokolle.",
-        "notizen": 40,
+        "notizen": 42,
         "verbindlich": 3
       },
       {
@@ -3682,7 +3699,7 @@
         "art": "notizen",
         "wofuer": "Aufträge an die Mannschaft, eine Notiz je Auftrag, mit Übersicht.",
         "hinweis": "Seit dem 28.09. angelegt; die erste echte Auftragsnotiz ist vom 18.10.",
-        "notizen": 93,
+        "notizen": 128,
         "verbindlich": 0
       },
       {
@@ -3691,7 +3708,7 @@
         "art": "notizen",
         "wofuer": "Arnolds Entscheidungsvorlagen, eine Notiz je Vorlage, immer ungeprüft.",
         "hinweis": "Seit dem 19.10.; die erste Vorlage ist vom 20.10.",
-        "notizen": 13,
+        "notizen": 18,
         "verbindlich": 0
       },
       {
@@ -3699,7 +3716,7 @@
         "stufe": "ordnung",
         "art": "notizen",
         "wofuer": "Entscheidungen und Ereignisse in zeitlicher Folge.",
-        "notizen": 213,
+        "notizen": 240,
         "verbindlich": 7
       },
       {
@@ -3735,7 +3752,7 @@
         "wofuer": "Website-Abzüge und Datenschicht, nicht im Repository und nicht im Index."
       }
     ],
-    "gezaehltAm": "2026-11-13",
+    "gezaehltAm": "2026-11-14",
     "quelle": "Ordnertabelle und Kontextstrategie im Einstieg des Repositorys KI-Mitarbeiter, Akten nach den Vault-Konventionen, Anzahlen aus der Zählung der Ablage",
     "freigabe": "oeffentlich"
   },
