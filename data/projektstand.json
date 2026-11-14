@@ -148,7 +148,9 @@
       "Protokoll KI-Mitarbeiter vom 05.11.2026, Nachträge bis 22:41",
       "Logbuch 2026-11-11: KI-Guide Epic und Stories in Jira, KI-Guide Prototyp Konzept Ort Repository, KI-Guide Aufbau Fall aus dem Pfad, KI-Guide Verteilen auf die DGX, KUMA Konzepte erst intern Produkt später, KUMA Artifact öffentlich voll aktualisiert, WMC Inventar Betriebsplatz eigener Benutzer, WMC Inventar Vorbedingungen und Betriebsort, Vault main zusammengeführt und gepusht, Theo Playbook nach dem Probelauf angepasst, Theo Nummer der Suite für die Folgefälle, Theo Fälle 29 und 30 ausformuliert, Theo Generator für Lauf 2 gebaut, Theo Prüfstand Version 2 Durchsicht, Theo Video-Erweiterung auf die DGX eingespielt, Theo Kartenwortlaute Fälle 15, 23 und 24, Theo Klon main zurückgesetzt, Theo Zeitgrenzen Lauf 2, Theo Lauf 2 Nacht ab 2026-11-14 vorbereiten, Reifegrad Einordnung bestätigt, Stufe 3 bis zum Wochenende, Gregor Dev Pflegelauf neu starten nach Gateway-Abbruch",
       "Logbuch 2026-11-12: Theo Lauf 2 auf Freitag 13.11. vorgezogen, Theo Hinweise in der festen Suite neutral gefasst, Theo Lauf 2 Nacht ab 2026-11-14 freigegeben, Theo Echtprobe mit Fall 9 vorgezogen, Arnold Zeilennummern nur aus eigener Suche, Vault Werkbank und DGX auf einen Stand",
-      "Protokoll 2026-11-12 KI-Mitarbeiter"
+      "Protokoll 2026-11-12 KI-Mitarbeiter",
+      "Logbuch 2026-11-13: Prüfstand-Block auf der Startseite schlank und PR 76 mit Merge nach Grün, Gateway-Abbruch von Gregors Lauf zuerst klären",
+      "Protokoll 2026-11-13 KI-Mitarbeiter"
     ],
     "getrenntAm": "2026-09-09",
     "notizordner": "KFBM/00_Vault/10_KI-Mitarbeiter"
@@ -1872,6 +1874,21 @@
     {
       "datum": "2026-11-12",
       "entscheidung": "Vault, Werkbank und DGX werden auf einen Stand gebracht",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-11-13",
+      "entscheidung": "Der Prüfstand-Block der Startseite wird auf eine Zahl und den Verlauf gekürzt; die Einzelwerte bleiben in den Daten",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-11-13",
+      "entscheidung": "Die schlanke Fassung wird als Pull Request gestellt und nach Grün zusammengeführt",
+      "freigabe": "intern"
+    },
+    {
+      "datum": "2026-11-13",
+      "entscheidung": "Der Gateway-Abbruch von Gregors Lauf wird als Nächstes geklärt; Logs und Konfiguration werden nur lesend gelesen",
       "freigabe": "intern"
     }
   ],
